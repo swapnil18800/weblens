@@ -39,6 +39,7 @@ from typing import AsyncIterator, Optional
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 import db.client as db
@@ -100,6 +101,9 @@ app.add_middleware(
 
 _FRONTEND_DIR = Path(__file__).parent / "frontend"
 _FRONTEND_DIST = _FRONTEND_DIR / "dist"
+
+if _FRONTEND_DIST.exists():
+    app.mount("/assets", StaticFiles(directory=str(_FRONTEND_DIST / "assets")), name="assets")
 
 
 @app.get("/")
