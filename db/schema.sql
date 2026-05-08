@@ -41,14 +41,15 @@ CREATE INDEX IF NOT EXISTS web_chunks_url_idx ON web_chunks (url);
 CREATE INDEX IF NOT EXISTS page_cache_expires_idx ON page_cache (expires_at);
 
 -- ── Session persistence ──────────────────────────────────────────────────────
-CREATE TABLE IF NOT EXISTS sessions (
+CREATE TABLE IF NOT EXISTS rag_sessions (
     session_id  TEXT PRIMARY KEY,
+    title       TEXT,
     created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE IF NOT EXISTS session_messages (
+CREATE TABLE IF NOT EXISTS rag_session_messages (
     id                BIGSERIAL PRIMARY KEY,
-    session_id        TEXT NOT NULL REFERENCES sessions(session_id) ON DELETE CASCADE,
+    session_id        TEXT NOT NULL REFERENCES rag_sessions(session_id) ON DELETE CASCADE,
     question          TEXT NOT NULL,
     answer            TEXT DEFAULT '',
     citations         JSONB DEFAULT '[]',
@@ -57,8 +58,9 @@ CREATE TABLE IF NOT EXISTS session_messages (
     latency_breakdown JSONB DEFAULT '{}',
     total_latency_ms  INTEGER DEFAULT 0,
     sub_queries       JSONB DEFAULT '[]',
+    traces            JSONB DEFAULT '[]',
     created_at        TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX IF NOT EXISTS session_messages_sid_idx
-    ON session_messages (session_id, created_at);
+CREATE INDEX IF NOT EXISTS rag_session_messages_sid_idx
+    ON rag_session_messages (session_id, created_at);
