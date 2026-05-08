@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-bg text-neutral-100;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection { background: rgba(59, 130, 246, 0.35); }
+}
+
+@layer components {
+  .surface  { @apply bg-surface border border-white/[0.06]; }
+  .hairline { @apply border-white/[0.06]; }
+  .chip {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-medium;
+  }
+  .chip-good   { @apply bg-good/15   text-good/90; }
+  .chip-warn   { @apply bg-warn/15   text-warn/90; }
+  .chip-bad    { @apply bg-bad/15    text-bad/90; }
+  .chip-info   { @apply bg-info/15   text-info/90; }
+  .chip-metric { @apply bg-metric/15 text-metric/90; }
+
+  /* Soft pastel chip tags used in the reasoning trace */
+  .tag {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-2xs
+           font-medium tracking-wide whitespace-nowrap;
+  }
+  .tag-good { @apply bg-emerald-400/12 text-emerald-300 border border-emerald-400/20; }
+  .tag-info { @apply bg-sky-400/12     text-sky-300     border border-sky-400/20; }
+  .tag-warn { @apply bg-amber-300/12   text-amber-200   border border-amber-300/25; }
+  .tag-bad  { @apply bg-rose-400/12    text-rose-300    border border-rose-400/20; }
+  .btn {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm
+           text-neutral-300 hover:text-neutral-100 hover:bg-white/5
+           transition-colors duration-150;
+  }
+  .btn-accent {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm
+           bg-accent/90 text-white hover:bg-accent
+           transition-colors duration-150;
+  }
+  .icon-btn {
+    @apply inline-flex items-center justify-center w-8 h-8 rounded-md
+           text-neutral-400 hover:text-neutral-100 hover:bg-white/5
+           transition-colors duration-150;
+  }
+  .step-row {
+    @apply flex items-center gap-2.5 py-2 text-sm rounded
+           hover:bg-white/[0.025] transition-colors duration-100 cursor-pointer;
+  }
+  .mono { @apply font-mono text-2xs; }
+  .scroll-thin::-webkit-scrollbar { width: 10px; height: 10px; }
+  .scroll-thin::-webkit-scrollbar-track { background: transparent; }
+  .scroll-thin::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 5px; }
+  .scroll-thin::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.20); }
+
+  .scroll-fat::-webkit-scrollbar { width: 12px; height: 12px; }
+  .scroll-fat::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+  .scroll-fat::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.18);
+    border: 2px solid #11141a;
+    border-radius: 6px;
+  }
+  .scroll-fat::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.30); }
+}
+
+/* Markdown answer styling */
+.answer-md {
+  @apply text-neutral-100 text-[15px] leading-7;
+}
+.answer-md p { @apply mb-3; }
+.answer-md h1 { @apply text-lg font-semibold mt-5 mb-2; }
+.answer-md h2 { @apply text-base font-semibold mt-5 mb-2; }
+.answer-md h3 { @apply text-sm font-semibold mt-4 mb-2; }
+.answer-md ul { @apply list-disc pl-5 mb-3; }
+.answer-md ol { @apply list-decimal pl-5 mb-3; }
+.answer-md li { @apply mb-1; }
+.answer-md table { @apply w-full text-sm my-3 border border-white/10 rounded-md overflow-hidden; }
+.answer-md th { @apply bg-white/5 px-3 py-2 text-left font-medium border-b border-white/10; }
+.answer-md td { @apply px-3 py-2 border-b border-white/10 align-top; }
+.answer-md tr:last-child td { @apply border-b-0; }
+.answer-md code {
+  @apply font-mono text-2xs bg-white/5 px-1.5 py-0.5 rounded;
+}
+.answer-md pre {
+  @apply font-mono text-xs bg-white/5 p-3 rounded-md overflow-auto my-3;
+}
+.answer-md a.cite {
+  @apply inline-flex items-center justify-center min-w-[1.25rem] h-[1.25rem]
+         px-1 mx-0.5 rounded text-2xs font-medium
+         bg-accent/15 text-accent hover:bg-accent/25 cursor-pointer
+         no-underline align-baseline;
+}
+.answer-md blockquote {
+  @apply border-l-2 border-white/10 pl-3 italic text-neutral-300 my-3;
+}
+
+/* Cursor for streaming */
+.streaming-cursor::after {
+  content: "▍";
+  display: inline-block;
+  margin-left: 2px;
+  color: rgba(59, 130, 246, 0.7);
+  animation: blink 800ms steps(2) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }

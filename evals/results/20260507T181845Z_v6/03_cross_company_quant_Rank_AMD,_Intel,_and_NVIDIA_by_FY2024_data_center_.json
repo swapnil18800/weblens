@@ -1,0 +1,386 @@
+{
+  "category": "cross_company_quant",
+  "expected_behavior": "3-entity Cartesian decomposition (3 entities x 1 metric x 1 year = 3 sub-questions). Per-ticker isolation. Aggregator produces table.",
+  "question": "Rank AMD, Intel, and NVIDIA by FY2024 data center segment revenue based on their annual filings.",
+  "ground_truth": "NVIDIA FY2024 (ended Jan 2024) Data Center revenue was approximately $47.5B. AMD FY2024 Data Center segment revenue was approximately $12.6B. Intel FY2024 Data Center and AI segment revenue was approximately $12.8B (Datacenter and AI). Ranking: NVIDIA >> Intel ≈ AMD. Each should be cited from respective 10-K filings.",
+  "key_facts": [
+    "NVIDIA data center ~$47.5B (FY2024 = fiscal year ending Jan 2024).",
+    "AMD data center ~$12.6B.",
+    "Intel data center/AI ~$12-13B.",
+    "Must cite [SEC-NVDA-*], [SEC-AMD-*], [SEC-INTC-*].",
+    "Answer should rank them explicitly."
+  ],
+  "session_id": "eval-20260507T181845Z-03",
+  "metrics": {
+    "m1_factual_correctness": 0.6,
+    "m3_retrieval_recall": 0.6,
+    "m7_judge_score": 0.65
+  },
+  "timing": {
+    "pipeline_s": 75.28,
+    "latency_breakdown": {
+      "search_ms": 2319,
+      "extract_ms": 16633,
+      "chunk_ms": 114,
+      "retrieve_ms": 5142
+    },
+    "total_latency_ms": 75254
+  },
+  "pipeline": {
+    "answer": "# Ranking of AMD, Intel, and NVIDIA by FY2024 Data Center Segment Revenue\n\nBased on annual filings and financial reports, the three companies can be ranked as follows by Data Center segment revenue for their most recent fiscal years ending in or near calendar year 2024.\n\n## Comparison of Revenue Figures\n\n| Company | FY2024 Data Center Revenue | Year-over-Year Change | Key Segment Name |\n|---|---|---|---|\n| **NVIDIA** | **~$47.5 billion** (FY2024 ended Jan 2024)¹ | +217% (estimated annual)² | Data Center (Compute & Networking) |\n| **Intel** | **~$15.7 billion** | +1% (up $182M) | Data Center and AI (DCAI) |\n| **AMD** | **$12.6 billion** | +94% | Data Center |\n\n**Notes:**\n¹ NVIDIA's fiscal year ends in January. FY2024 spanned February 2023 to January 2024. The Data Center segment generated $47.5 billion in that period, per the company's 10-K filing [NVIDIA source 1].\n² NVIDIA's Data Center revenue grew 217% year-over-year (from $15.0 billion in FY2023 to $47.5 billion in FY2024) [NVIDIA source 1].\n\n## Detailed Breakdown\n\n### Rank 1: NVIDIA — $47.5 billion (FY2024 ended Jan 2024)\n\nNVIDIA's Data Center segment was the overwhelming leader, generating **$47.5 billion** in fiscal year 2024 [NVIDIA source 1]. This accounted for approximately **78% of NVIDIA's total revenue** ($60.9 billion) for the year [NVIDIA source 1]. Key drivers included:\n\n- AI-specific chips (Hopper GPU architecture) and cloud computing platforms\n- End-to-end networking solutions (Quantum InfiniBand and Spectrum Ethernet)\n- NVIDIA AI Enterprise software and DGX Cloud services [NVIDIA source 2]\n\nThe segment grew **217% year-over-year**, fueled by hyperscale AI infrastructure buildouts [NVIDIA source 1]. By Q1 FY2025 (ended April 2024), Data Center revenue accelerated further to $22.6 billion (87% of total revenue) [NVIDIA source 3].\n\n### Rank 2: Intel — ~$15.7 billion (FY2024 ended Dec 2024)\n\nIntel's Data Center and AI (DCAI) segment generated an estimated **$15.7 billion** in fiscal year 2024 [Intel source 3][Intel source 4]. This represents a modest **$182 million (1%) increase** from FY2023 [Intel source 4]. Key dynamics included:\n\n- **Server ASP increased 12%** due to a shift toward higher-core-count products [Intel source 4]\n- **Server unit volume declined** as the market continued transitioning [Intel source 4]\n- Preceded by a dramatic decline from $19.4 billion in FY2022 to $15.5 billion in FY2023 (a 22% drop) [Intel source 3]\n\n### Rank 3: AMD — $12.6 billion (FY2024 ended Dec 2024)\n\nAMD's Data Center segment achieved record annual revenue of **$12.6 billion** in fiscal year 2024 [AMD source 1][AMD source 3]. This represents a **94% increase** from $6.5 billion in FY2023 [AMD source 1]. Key drivers included:\n\n- **AMD Instinct GPU accelerators:** Exceeded **$5 billion** in sales for the year [AMD source 3]\n- **AMD EPYC CPUs:** Combined with Instinct, EPYC sales nearly doubled year-over-year [AMD source 1]\n- Data Center segment contributed ~50% of AMD's total annual revenue of $25.8 billion [AMD source 1][AMD source 2]\n\n## Revenue Share of Parent Company\n\n| Company | Data Center Revenue | Total Company Revenue | Data Center as % of Total |\n|---|---|---|---|\n| NVIDIA | $47.5B | $60.9B | **78%** |\n| AMD | $12.6B | $25.8B | **49%** |\n| Intel | ~$15.7B | $53.1B (est.)¹ | **~30%** (est.) |\n\n¹ Intel's total 2024 revenue was $53.1 billion (per the company's 2024 annual report). DCAI's share is estimated at ~30%.\n\n## Key Takeaways\n\n1. **NVIDIA dominates by a wide margin** — its Data Center revenue ($47.5B) is roughly **3x larger than Intel and AMD combined** ($28.3B).\n2. **AMD showed the fastest growth** (94% YoY), nearly doubling its Data Center revenue and gaining significant market share in AI GPU accelerators.\n3. **Intel experienced only marginal growth** (1% YoY) after a 22% decline the prior year, reflecting a continued loss of market share in data center CPUs and a delayed entry into AI accelerators.\n4. **AI demand is the primary driver** for all three companies, but NVIDIA captured the vast majority of AI infrastructure spending in FY2024.\n5. **NVIDIA's Data Center segment now dominates** the company's total revenue (78%), while AMD's and Intel's data center businesses represent smaller (though significant) portions of their overall portfolios.",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-25-067185/0001193125-25-067185.pdf",
+        "title": "2024 Annual Report",
+        "snippet": "Data Center segment annual revenue increased 94% year-over-year to a record $12.6 billion.\n\nMicrosoft, Oracle Cloud, IBM Cloud and more than a dozen other AI-specialized cloud providers adopted AMD Instinct accelerators to power their public cloud instances, including flagship instances available on"
+      },
+      {
+        "num": 2,
+        "url": "https://finance.yahoo.com/news/amd-sees-record-revenue-25-150031951.html",
+        "title": "https://finance.yahoo.com/news/amd-sees-record-revenue-25-150031951.html",
+        "snippet": "AMD sees record revenue of $25.8 billion in 2024 thanks to data center growth—gaming last seen tumbling into a ditch\nWhen you buy through links on our articles, Future and its syndication partners may earn a commission.\nYou'd be forgiven for thinking that a company called Advanced Micro Devices woul"
+      },
+      {
+        "num": 3,
+        "url": "https://www.jonpeddie.com/news/amd-reports-fourth-quarter-2024-revenue/",
+        "title": "AMD reports fourth-quarter 2024 revenue",
+        "snippet": "Test silicon has come up very well, according to Su. “We were running large-scale LLMs within 24 hours of receiving first silicon and validation. Work is progressing ahead of schedule. The customer feedback on the MI350 series has been strong,” she said.\n\n**AMD results by market segment**\n\n![Image 4"
+      },
+      {
+        "num": 4,
+        "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/a04022024form8-kexhibit991.htm",
+        "title": "Document",
+        "snippet": "(In Millions)\n$9,513 2023 Operating Income\n1,819 Lower period charges primarily driven by the sell-through of previously reserved inventory and lower reserves taken in 2023\n1,600 Lower operating expenses driven by various cost-cutting measures\n(1,382)Lower product profit primarily from lower noteboo"
+      },
+      {
+        "num": 5,
+        "url": "https://www.statista.com/statistics/495928/net-revenue-of-intel-by-segment/?srsltid=AfmBOop3yM5_Ttvys0Zfqa-k6U3EBlgkNWf_F9VH9kQp6ALeCXUWUA2W",
+        "title": "Intel revenue by segment 2024| Statista",
+        "snippet": "Intel revenue from 2022 to 2024, by segment  (in billion U.S. dollars)\n\nSearch:\n\nRecords:\n\n| Characteristic | Client Computing Group (CCG) | Data Center and AI (DCAI) | Network and Edge (NEX) | Intel Foundry | All other | Intersegment eliminations |\n| --- | --- | --- | --- | --- | --- | --- |\n| - | "
+      },
+      {
+        "num": 6,
+        "url": "https://www.intc.com/filings-reports/all-sec-filings/xbrl_doc_only/3556",
+        "title": "Intel Corporation Annual report pursuant to Section 13 and 15(d)",
+        "snippet": "Annual report pursuant to Section 13 and 15(d)\n\nv3.23.4\n| **Operating Segments (Tables)** | 12 Months Ended |\n| --- | --- |\n| Dec. 30, 2023 |\n| [**Segment Reporting [Abstract]**](javascript:void(0);) |  |\n| [Schedule of Segment Reporting Information, by Segment](javascript:void(0);) | Net revenue an"
+      },
+      {
+        "num": 7,
+        "url": "https://www.libertify.com/interactive-library/intel-10k-2024/",
+        "title": "https://www.libertify.com/interactive-library/intel-10k-2024/",
+        "snippet": "— Intel 18A represents the company’s most ambitious process technology node and a critical milestone in its manufacturing competitiveness roadmap.\n- Intel AI Strategy: From Data Center to Edge Computing — Intel’s AI strategy spans the full computing continuum from large-scale data center training to"
+      },
+      {
+        "num": 8,
+        "url": "https://www.statista.com/chart/25578/nvidias-quarterly-revenue-by-segments/?srsltid=AfmBOoo93YBIzf9Yzsjvj9k9GcXMNIQQtX6V9AX-xF-eZ6cnp-cQ9_Co",
+        "title": "Infographic: Data Centers Almost Sole Driver of Nvidia's Revenue Boom",
+        "snippet": "Data Centers Almost Sole Driver of Nvidia's Revenue Boom\n\nby[Florian Zandt](mailto:),\n\nMay 24, 2024\n\nGraphics processing units (GPUs)\n\nAfter an already successful fourth quarter of its fiscal year 2024, generating a $12 billion net income on revenues of $22 billion between November 2023 and January "
+      },
+      {
+        "num": 9,
+        "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2024/ar/NVIDIA-2024-Annual-Report.pdf",
+        "title": "NVIDIA-2024-Annual-Report.pdf",
+        "snippet": "NVIDIA CORPORATION\n\nOur Businesses\n\nWe report our business results in two segments. The Compute & Networking segment is comprised of our Data Center accelerated computing platforms and end-to-end networking platforms including Quantum for InfiniBand and Spectrum for Ethernet; our NVIDIA DRIVE automa"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.reddit.com/r/hardware/comments/1ihtvwm/amd_reports_fourth_quarter_and_full_year_2024/",
+        "title": "AMD Reports Fourth Quarter and Full Year 2024 Financial Results",
+        "snippet": "For 2024, Data Center segment revenue was a record $12.6 billion, an increase of 94% compared to the prior year, driven by growth in both AMD"
+      },
+      {
+        "url": "https://www.jonpeddie.com/news/amd-reports-fourth-quarter-2024-revenue/",
+        "title": "AMD reports fourth-quarter 2024 revenue – Jon Peddie Research",
+        "snippet": "Advanced Micro Devices (AMD) posted fourth-quarter revenue and earnings that set new records and beat expectations, but data center sales came up short despite setting a new record. For the full-year 2024, AMD reported record revenue of $25.8 billion, gross margin of 49%, operating income of $1.9 billion, net income of $1.6 billion, and diluted earnings per share of $1.00. Data Center segment revenue accounted for 50% of total revenue for the quarter and reached a record $3.9 billion, up 69% year over year, primarily driven by the strong ramp of Instinct GPU accelerators and growth in AMD’s Epyc CPU sales. Client segment revenue in the quarter was a record $2.3 billion, up 58% year over year, primarily driven by strong demand for new Ryzen processors with 3D memory for cutting-edge gaming. **AI Processors Market Development – a report on the AI processors market segment** Jon Peddie Research’s AI Processor Market Development report is a supply-side report series that establishes the AI Processing market size by shipments, value, segment type, installed base, and investment from the current quarter back to Q1’14 for a historical perspective."
+      },
+      {
+        "url": "https://finance.yahoo.com/news/amd-sees-record-revenue-25-150031951.html",
+        "title": "AMD sees record revenue of $25.8 billion in 2024 thanks to data ...",
+        "snippet": "AMD saw a record revenue of $25.8 billion in 2024, attributing the gain to 94% growth in our data center segment and a 52% growth in our client segment."
+      },
+      {
+        "url": "https://www.scribd.com/document/869485773/2025-02-04-AMD-Reports-Fourth-Quarter-and-Full-Year-2024-1236",
+        "title": "AMD 2024 Financial Results Overview | PDF - Scribd",
+        "snippet": "AMD reported record financial results for Q4 and full year 2024, with Q4 revenue at $7.7 billion and full year revenue at $25.8 billion."
+      },
+      {
+        "url": "https://ir.amd.com/financial-information/sec-filings/content/0000002488-24-000161/0000002488-24-000161.pdf",
+        "title": "[PDF] 8-K - 10/29/2024 - Advanced Micro Devices, Inc. - AMD",
+        "snippet": "$306 Million a year ago Primarily driven by higher revenue, partially offset by higher operating expenses Driven primarily by strong ramp of AMD Instinct GPU shipments and growth in AMD EPYC CPU sales ▪ Launched AMD EPYC 9005 Series (“Turin”) processors with record-breaking performance and energy efficiency ▪ Unveiled AMD Instinct MI325X accelerators delivering leadership performance and memory capabilities for the most demanding AI workloads ▪ Microsoft, Oracle Cloud and multiple AI-specialized cloud providers expanded their MI300X public cloud instance availability ▪ Announced agreement to acquire ZT Systems to expand data center AI systems capabilities and accelerate deployment of AMD AI rack scale systems with cloud and enterprise customers Q3 2024 FINANCIAL RESULTS – OCTOBER 29, 202417 CLIENT SEGMENT Q3 2024 ▪ Introduced new Ryzen AI PRO 300 Series mobile processors, powering next-gen AI PCs for the enterprise with 50+ AI TOPS and delivering extended battery life ▪ Acer, HP, Lenovo and Asus announced new consumer and commercial notebooks supported by Ryzen AI 300 Series mobile processors ▪ Ramped AMD Ryzen 9000 Series processors based on “Zen 5” architecture; on track to launch next-gen Ryzen 9000 X3D processors in Q4’24 ▪ Released Ryzen AI software 1.2 for developers to build AI-enhanced applications and maximize the performance of Ryzen AI CPU, GPU and NPU architecture Strategic Highlights $1.5B $1.9B Q3 2023 Q3 2024 10% 15% Q3 2023 Q3 2024 Revenue Operating Margin Revenue $1.9 Billion Up 29% y/y Primarily driven by strong demand for “Zen 5” AMD Ryzen processors Operating Income $276 Million vs."
+      },
+      {
+        "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-25-067185/0001193125-25-067185.pdf",
+        "title": "2024 Annual Report - Investor Relations",
+        "snippet": "The forward-looking statements relate to, among other things: possible impact of future accounting rules on AMD’s consolidated financial statements; demand for AMD’s products; AMD’s strategy and expected benefits; the growth, change and competitive landscape of the markets in which AMD participates; international sales will continue to be a significant portion of total sales in the foreseeable future; that AMD’s cash, cash equivalents, and short-term investment balances together with the availability under that certain revolving credit facility (the Revolving Credit Agreement) made available to AMD and certain of its subsidiaries, our commercial paper program, and our cash flows from operations will be sufficient to fund AMD’s operations including capital expenditures and purchase commitments, and acquisitions over the next 12 months and beyond; AMD’s ability to obtain sufficient external financing on favorable terms, or at all; AMD’s expectation that actions associated with the 2024 Restructuring Plan will be substantially completed by the end of the first quarter of fiscal year 2025; AMD’s expectation that based on management’s current knowledge, the potential liability related to AMD’s current litigation will not have a material adverse effect on its financial position, results of operation or cash flows; anticipated ongoing and increased costs related to enhancing and implementing information security controls; revenue allocated to remaining performance obligations that are unsatisfied which will be recognized in the next 12 months; a small number of customers will continue to account for a substantial part of AMD’s revenue and receivables in the future; the expected implications from the development of the legal and regulatory environment relating to emerging technologies such as AI; AMD’s expectation that it will not pay dividends in the near future; AMD’s ability to achieve its corporate responsibility initiatives; expected future AI technology trends and developments; the expected benefits of AMD’s acquisition of Silo AI Oy (Silo AI); AMD’s anticipated acquisition of ZT Group Int’l, Inc."
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/intel-10k-2024/",
+        "title": "Intel 10-K 2024 Annual Report Analysis — Libertify",
+        "snippet": "Intel Corporation’s 2024 Form 10-K reveals a company in the midst of its most ambitious transformation in decades. With total revenue of $53.1 billion — down $1.1 billion or 2% from 2023 — Intel is navigating declining legacy revenue streams while investing aggressively in its foundry business, AI capabilities, and next-generation process technologies. Intel Products revenue reached $48.9 billion, up $1.3 billion or 3% from 2023, driven by recovery in the Client Computing Group (CCG) and modest growth in the Data Center and AI (DCAI) segment. However, these gains were offset by a 60% decline in Intel Foundry external revenue and a 32% drop in “all other” revenue, primarily from Altera and Mobileye as customers reduced inventories across product lines. Intel’s 2024 revenue structure reveals the company’s evolution from a CPU-centric chipmaker to a diversified semiconductor and foundry company. This dramatic decline underscores the early stage of Intel’s foundry transformation — while the company is investing billions in foundry capabilities, external customer revenue remains minimal as the business builds credibility and capacity for leading-edge manufacturing."
+      },
+      {
+        "url": "https://www.statista.com/statistics/495928/net-revenue-of-intel-by-segment/?srsltid=AfmBOop3yM5_Ttvys0Zfqa-k6U3EBlgkNWf_F9VH9kQp6ALeCXUWUA2W",
+        "title": "Intel revenue 2022-2024, by segment - Statista",
+        "snippet": "In 2024, Intel generated **** billion US dollars in revenue, with **** billion US dollars generated by the company's Client Computing Group."
+      },
+      {
+        "url": "https://download.intel.com/newsroom/2024/corporate/resegmentation-infographic.pdf",
+        "title": "[PDF] new financial reporting structure infographic_F - Intel",
+        "snippet": "FROM Allocated Cost Model Manufacturing Technology Development ALLOCATED COST Intel Product BUs CCG, DCAI, NEX REPORTABLE P&Ls TO Foundry Operating Model Intel Foundry REPORTABLE P&L Foundry Services Foundry Manufacturing & Suppy Chain Foundry Technology Development FAIR MARKET PRICE Intel Products REPORTABLE P&Ls Client Computing Data Center & AI Network & Edge Intel’s unique position in the industry as both a world-class semiconductor manufacturer and a fabless technology leader creates vast opportunities to drive long-term sustainable growth. Ultimately, improved cost competitiveness will help us deliver process technology, product and foundry leadership while driving signiﬁcant ﬁnancial upside for Intel and our owners.“ – Dave Zinsner, Intel CFO “ “ Beneﬁts of new operating model: • Provides greater transparency and accountability. • Intel Foundry is driving to achieve break-even operating margins midway between now and the end of 2030, when it targets 40% non-GAAP gross margins and 30% non-GAAP operating margins. • As the model takes hold, Intel expects to accelerate on its path toward achieving 60% non-GAAP gross margins and 40% non-GAAP operating margins in 2030."
+      },
+      {
+        "url": "https://www.hpcwire.com/off-the-wire/intel-reports-fourth-quarter-and-full-year-2024-financial-results/",
+        "title": "Intel Reports Fourth-Quarter and Full-Year 2024 Financial Results - HPCwire",
+        "snippet": "January 31, 2025 Shares SANTA CLARA, Calif., Jan. 31, 2025 — Intel Corporation today reported fourth-quarter and full-year 2024 financial results. January 31, 2025 Shares SANTA CLARA, Calif., Jan. 31, 2025 — Intel Corporation today reported fourth-quarter and full-year 2024 financial results. In October 2022, Intel announced an internal foundry operating model, which took effect in the first quarter of 2024 and created a foundry relationship between its Intel Products business (collectively CCG, DCAI and NEX) and its Intel Foundry business (including Foundry Technology Development, Foundry Manufacturing and Supply Chain, and Foundry Services, formerly IFS). January 31, 2025 Shares SANTA CLARA, Calif., Jan. 31, 2025 — Intel Corporation today reported fourth-quarter and full-year 2024 financial results. January 31, 2025 Shares SANTA CLARA, Calif., Jan. 31, 2025 — Intel Corporation today reported fourth-quarter and full-year 2024 financial results."
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/a04022024form8-kexhibit991.htm",
+        "title": "Document",
+        "snippet": "This retrospective revision to Item 7 of Intel Corporation's Annual Report on Form 10-K \"Management's Discussion and Analysis of Financial Condition and Results of Operations\" for the year ended December 30, 2023, as originally filed with the SEC on January 26, 2024, contains forward-looking statements, including with respect to:. •our business plans and strategy and anticipated benefits therefrom, including with respect to our IDM 2.0 strategy, the transition to an internal foundry model, updates to our reporting structure, and our AI strategy;. •future products, services, and technologies and expectations regarding product and process leadership;. •plans and goals related to Intel's foundry business;. •our anticipated growth, future market share, and trends in our business and operations;. We previously announced the implementation of our internal foundry operating model, which took effect in the first quarter of 2024, and creates a foundry relationship between our Intel Products business (collectively CCG, DCAI, and NEX) and our Intel Foundry business."
+      },
+      {
+        "url": "https://www.intc.com/filings-reports/all-sec-filings/xbrl_doc_only/3556",
+        "title": "Intel Corporation Annual report pursuant to Section 13 and 15(d)",
+        "snippet": "| Schedule of Segment Reporting Information, by Segment;) | Net revenue and operating income (loss) for each period were as follows: | | | | | | | | | | | | | | | | | | | | | | | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | | | | | | | | | | | | | | | | | | | | | | | | Years Ended (In Millions) | | | | | | Dec 30, 2023 | | | | | | Dec 31, 2022 | | | | | | Dec 25, 2021 | | | | Net revenue: | | | | | | | | | | | | | | | | | | | | | | Client Computing | | | | | | | | | | | | | | | | | | | | | | Desktop | | | | | | $ | 10,166 | | | | | $ | 10,661 | | | | | $ | 12,437 | | | Notebook | | | | | | 16,990 | | | | | | 18,781 | | | | | | 25,443 | | | | Other | | | | | | 2,102 | | | | | | 2,331 | | | | | | 3,201 | | | | | | | | | | 29,258 | | | | | | 31,773 | | | | | | 41,081 | | | | | | | | | | | | | | | | | | | | | | | | | |"
+      },
+      {
+        "url": "https://www.linkedin.com/pulse/tech-news-nvidias-fy-2024-revenue-hits-609b-data-center-income-grbbc",
+        "title": "Tech News: NVIDIA's FY 2024 Revenue Hits $60.9B, Data Center ...",
+        "snippet": "The annual revenue for this segment increased by 1% to $1.6 billion. In the automotive business sector, NVIDIA achieved a fourth-quarter revenue"
+      },
+      {
+        "url": "https://www.statista.com/chart/25578/nvidias-quarterly-revenue-by-segments/?srsltid=AfmBOoo93YBIzf9Yzsjvj9k9GcXMNIQQtX6V9AX-xF-eZ6cnp-cQ9_Co",
+        "title": "Chart: Data Centers Almost Sole Driver of Nvidia's Revenue Boom | Statista",
+        "snippet": "# Data Centers Almost Sole Driver of Nvidia's Revenue Boom. Between February and April 2024, $22.6 billion or 87 percent of Nvidia's overall revenue was attributable to data center solutions. \"The next industrial revolution has begun — companies and countries are partnering with NVIDIA to shift the trillion-dollar traditional data centers to accelerated computing and build a new type of data center — AI factories — to produce a new commodity: artificial intelligence\", said Nvidia CEO Jensen Huang in a press release accompanying the financial results. Infographic: Data Centers Almost Sole Driver of Nvidia's Revenue Boom | Statista. Infographic: Data Centers Almost Sole Driver of Nvidia's Revenue Boom | Statista. Data center segment revenue of Nvidia, AMD, and Intel 2021-2025, by quarter+ Premium statistics. Data center segment revenue of Nvidia, AMD, and Intel 2021-2025, by quarter. Nvidia revenue worldwide FY 2017-2026, by segment+ Premium statistics. Nvidia revenue worldwide FY 2017-2026, by segment."
+      },
+      {
+        "url": "https://nvidianews.nvidia.com/_gallery/download_pdf/65d669a33d63329bbf62672a/",
+        "title": "[PDF] NVIDIA Announces Financial Results for Fourth Quarter and Fiscal ...",
+        "snippet": "NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2024 Record quarterly revenue of $22.1 billion, up 22% from Q3, up 265% from year ago Record quarterly Data Center revenue of $18.4 billion, up 27% from Q3, up 409% from year ago Record full-year revenue of $60.9 billion, up 126% NVIDIA (NASDAQ: NVDA) today reported revenue for the fourth quarter ended January 28, 2024, of $22.1 billion, up 22% from the previous quarter and up 265% from a year ago. For the quarter, GAAP earnings per diluted share was $4.93, up 33% from the previous quarter and up 765% from a year ago. Non-GAAP earnings per diluted share was $5.16, up 28% from the previous quarter and up 486% from a year ago."
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=BgRF9WL40MU",
+        "title": "NVIDIA 2024 Annual Report Explained - YouTube",
+        "snippet": "NVIDIA 2024 Annual Report Explained #nvidia #nvidiastock #nvidiaearnings #nvidia #accountingbotcast #botcast #accounting."
+      },
+      {
+        "url": "https://www.reddit.com/r/pcgaming/comments/1rfb3c5/nvidia_reports_a_truly_astonishing_1937_billion/",
+        "title": "Nvidia reports a truly astonishing $193.7 billion in annual data ...",
+        "snippet": "[Skip to main content](https://www.reddit.com/r/pcgaming/comments/1rfb3c5/nvidia_reports_a_truly_astonishing_1937_billion/#main-content)Nvidia reports a truly astonishing $193.7 billion in annual data center revenue in its latest earnings call, up 75% year on year, while little old gaming brought in $16 billion : r/pcgaming. [murshiddar](https://www.reddit.com/user/murshiddar/). [](https://www.pcgamer.com/hardware/nvidia-reports-a-truly-astonishing-usd193-7-billion-in-annual-data-center-revenue-in-its-latest-earnings-call-up-75-percent-year-on-year-while-little-old-gaming-brought-in-usd16-billion/). [![Image 2: r/pcgaming - Nvidia reports a truly astonishing $193.7 billion in annual data center revenue in its latest earnings call, up 75% year on year, while little old gaming brought in $16 billion](https://external-preview.redd.it/nvidia-reports-a-truly-astonishing-193-7-billion-in-annual-v0-tSomYXnDlJW_Q8A3iay_eEZoKh8El_Yf_s9FyyIoT0g.jpeg?width=640&crop=smart&auto=webp&s=dac2d9eb5df5afd6cc6266957d12dbd894e0a8a6)](https://www.pcgamer.com/hardware/nvidia-reports-a-truly-astonishing-usd193-7-billion-in-annual-data-center-revenue-in-its-latest-earnings-call-up-75-percent-year-on-year-while-little-old-gaming-brought-in-usd16-billion/)[![Image 3: r/pcgaming - Nvidia reports a truly astonishing $193.7 billion in annual data center revenue in its latest earnings call, up 75% year on year, while little old gaming brought in $16 billion](https://external-preview.redd.it/nvidia-reports-a-truly-astonishing-193-7-billion-in-annual-v0-tSomYXnDlJW_Q8A3iay_eEZoKh8El_Yf_s9FyyIoT0g.jpeg?width=640&crop=smart&auto=webp&s=dac2d9eb5df5afd6cc6266957d12dbd894e0a8a6)](https://www.pcgamer.com/hardware/nvidia-reports-a-truly-astonishing-usd193-7-billion-in-annual-data-center-revenue-in-its-latest-earnings-call-up-75-percent-year-on-year-while-little-old-gaming-brought-in-usd16-billion/). [pcgamer.com Open](https://www.pcgamer.com/hardware/nvidia-reports-a-truly-astonishing-usd193-7-billion-in-annual-data-center-revenue-in-its-latest-earnings-call-up-75-percent-year-on-year-while-little-old-gaming-brought-in-usd16-billion/). [Nvidia revenue growth insights](https://www.reddit.com/answers/d269e4ba-1892-4c2c-a3d2-5dd646342d1f/?q=Nvidia+revenue+growth+insights&source=PDP). [Nvidia data center vs gaming revenue analysis](https://www.reddit.com/answers/7437ddde-c042-43a7-aad2-9d411ec0cc08/?q=Nvidia+data+center+vs+gaming+revenue+analysis&source=PDP). [Most anticipated PC games of the year](https://www.reddit.com/answers/4f92a618-9ae8-491b-ae58-f738b6511cda/?q=Most+anticipated+PC+games+of+the+year&source=PDP). [Gaming peripherals for immersive experiences](https://www.reddit.com/answers/4dbf6d77-d3f0-4fd0-930f-1c8c25d2c2c1/?q=Gaming+peripherals+for+immersive+experiences&source=PDP). [Hidden gems in the indie gaming scene](https://www.reddit.com/answers/799399c9-3f9e-49d1-90b1-e83a004a33d4/?q=Hidden+gems+in+the+indie+gaming+scene&source=PDP). [Reddit Rules](https://www.redditinc.com/policies/content-policy)[Privacy Policy](https://www.reddit.com/policies/privacy-policy)[User Agreement](https://www.redditinc.com/policies/user-agreement)[Your Privacy Choices](https://support.reddithelp.com/hc/articles/43980704794004)[Accessibility](https://support.reddithelp.com/hc/sections/38303584022676-Accessibility)[Reddit, Inc. All rights reserved.](https://redditinc.com/). *   [About Reddit](https://www.redditinc.com/). *   [Best of Reddit](https://www.reddit.com/posts/2026/global/). *   [Reddit Rules](https://www.redditinc.com/policies/content-policy). *   [Privacy Policy](https://www.reddit.com/policies/privacy-policy)."
+      },
+      {
+        "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2024/ar/NVIDIA-2024-Annual-Report.pdf",
+        "title": "[PDF] 2024 NVIDIA Corporation Annual Review",
+        "snippet": "Jensen Huang CEO and Founder, NVIDIA May 2024 NVIDIA Corporation Notice of 2024 Annual Meeting Proxy Statement and Form 10-K Forward-Looking Statements Certain statements in this document including, but not limited to, statements as to: the impact, benefits, abilities, features, performance, and availability of our products, services, and technologies, including NVIDIA HGX computers, NVIDIA Hopper GPUs, NVIDIA CUDA, Tensor Cores, NVLink, DGX, cuDNN, TensorRT, SHARP in-networking processing, NVIDIA AI Research and application-specific AI platforms—full-stack AI platforms for DLSS RTX neural graphics, DRIVE AV self-driving cars, Isaac robotics, ACE digital humans, NeMo LLMs, BioNeMo digital biology, and Clara medical imaging, NVIDIA Blackwell, NVIDIA’s RAPIDS acceleration libraries, GB200 NVL72, Grace Blackwell GB200 Superchips, NVIDIA B200 Tensor Core GPUs, NVIDIA Grace CPUs, Quantum InfiniBand and Spectrum Ethernet switches, NVIDIA AI Enterprise, NVIDIA NIMs, NVIDIA IGX and Holoscan platforms, NVIDIA RTX GPUs, GeForce NOW, NVIDIA DRIVE Hyperion platform, NVIDIA DRIVE AGX systems-on-a-chip, DRIVE AGX Thor, DRIVE AGX Orin, NVIDIA Omniverse, Omniverse cloud APIs, NVIDIA GR00T, NVIDIA Jetson, Isaac software; third parties using or adopting NVIDIA products, technologies and platforms, and the benefits and impacts thereof; our partnerships and collaborations with third parties; accelerated computing and generative AI transforming the computer industry and every other industry worldwide; the exponentially growing demand for computing in a cost- and energy-sustainable way; accelerated computing modernizing the world’s trillion-dollar data center infrastructure; deep learning being able to scale to tackle many previously impossible challenges with new network architecture innovations, more data, and more compute; NVIDIA’s ability to apply AI firsthand to create new markets; computers now being able to generate information based on human prompts; generative AI gaining a deeper understanding of the world and being able to translate across different modalities; the ability of generative AI to create an image based on a prompt; the ability of AI to generate the structure of a protein from an amino acid sequence; computers understanding people and the world and performing"
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-25-067185/0001193125-25-067185.pdf",
+        "title": "2024 Annual Report",
+        "heading": "Data Center segment annual revenue increased 94% year-over-year to a record $12.6 billion.",
+        "chunk_text": "Data Center segment annual revenue increased 94% year-over-year to a record $12.6 billion.\n\nMicrosoft, Oracle Cloud, IBM Cloud and more than a dozen other AI-specialized cloud providers adopted AMD Instinct accelerators to power their public cloud instances, including flagship instances available on Microsoft Azure that scale up to thousands of GPUs for AI inference and training and high-performance computing workloads.",
+        "score": 6.5954,
+        "rank": 0
+      },
+      {
+        "url": "https://finance.yahoo.com/news/amd-sees-record-revenue-25-150031951.html",
+        "title": "https://finance.yahoo.com/news/amd-sees-record-revenue-25-150031951.html",
+        "heading": "",
+        "chunk_text": "AMD sees record revenue of $25.8 billion in 2024 thanks to data center growth—gaming last seen tumbling into a ditch\nWhen you buy through links on our articles, Future and its syndication partners may earn a commission.\nYou'd be forgiven for thinking that a company called Advanced Micro Devices would make the majority of its profit from said tech, with coveted high-end graphic cards leading the charge. Though gaming hardware continues to do big business, it's been completely overshadowed in recent years by an explosion in demand for data centres handling AI.\nIn a recent earnings call, AMD revealed that revenue from the data centre side of the business had more than doubled, ultimately \"contributing roughly 50% of annual revenue\" in 2024 (via Seeking Alpha). Now, you may be asking 'Half of how much, though?' Well, EVP, CFO and Treasurer Jean Hu revealed that AMD saw a \"record revenue of $25.8 billion\" in 2024, attributing the gain to \"94% growth in our data center segment and a 52% growth in our client segment.\"\nTo be clear, AMD's segment includes AI accelerators, server chips, server GPUs, FPGAs, and more. You know, server stuff. So, that's $12.5 billion for the data centre last year, up from $6.5 billion the year prior.",
+        "score": 5.3095,
+        "rank": 1
+      },
+      {
+        "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-25-067185/0001193125-25-067185.pdf",
+        "title": "2024 Annual Report",
+        "heading": "2024 Financial Performance  Data Center Transformation",
+        "chunk_text": "2024 Financial Performance  Data Center Transformation\n\n• Significantly enhanced our ROCm™\n\nAI software stack by integrating\n\nnew features, optimizing popular\n\nlibraries, enabling new frameworks\n\nand expanding third-party ecosystem\n\nsupport that increased inferencing\n\nperformance of AMD Instinct MI300X\n\naccelerators 2.7x since launch.\n\n• Gained client processor market share\n\nbased on cutting-edge performance,\n\nefficiency and AI capabilities of our\n\nAMD Ryzen™ processors.\n\n• Solidified and extended our position\n\nas the industry’s leading provider of\n\nadaptive computing solutions.\n\nBased on this momentum, we delivered strong financial results in 2024. Annual revenue grew 14% to $25.8 billion as record Data Center and Client segment revenue more than offset declines in our Gaming and Embedded segments. Importantly, combined sales of our AMD EPYC and AMD Instinct data center products nearly doubled year-over-year, contributing approximately 50% of annual revenue. As a result, we achieved record annual revenue while significantly expanding gross margin and increasing profitability year-over-year. services, including Office 365, Facebook, Microsoft Teams, Salesforce, SAP, Zoom, Uber, Netflix and many more. Meta alone has deployed more than 1.5 million EPYC processors across their global data center fleet.",
+        "score": 4.9126,
+        "rank": 2
+      },
+      {
+        "url": "https://finance.yahoo.com/news/amd-sees-record-revenue-25-150031951.html",
+        "title": "https://finance.yahoo.com/news/amd-sees-record-revenue-25-150031951.html",
+        "heading": "",
+        "chunk_text": "AMD's segment includes AI accelerators, server chips, server GPUs, FPGAs, and more. You know, server stuff. So, that's $12.5 billion for the data centre last year, up from $6.5 billion the year prior. As for the client segment, that includes Ryzen CPUs, APUs and chipsets, which all accounted for $7 billion in 2024, up from $4.7 billion in 2023.\nCEO Lisa Su revealed on the same call, \"On a full year basis, annual revenue grew 14% to $25.8 billion as data center revenue nearly doubled and client segment revenue grew 52%, more than offsetting declines in our gaming and embedded segments.\"\nSo, gaming isn't looking too hot for AMD—but how bad is it really? AMD's gaming segment includes discrete GPUs and semi-custom chips. The latter are big money for AMD, as it produces the semi-custom silicon used in PlayStation and Xbox consoles. Lisa Su stated, \"Revenue declined 59% year-over-year,\" which sounds bad but still means AMD made $563 million from this part of the business alone in 2024.\nThe gap between million and billion often makes all the difference for massive corporations, but this decline is a drop in the bucket compared to how much AMD raked in from the data centre segment. That said, AMD will be reeling from a loss of that console business, as the current generation gradually winds down.\n\"Revenue declined 59% year-over-year to $563 million.",
+        "score": 4.4454,
+        "rank": 3
+      },
+      {
+        "url": "https://www.jonpeddie.com/news/amd-reports-fourth-quarter-2024-revenue/",
+        "title": "AMD reports fourth-quarter 2024 revenue",
+        "heading": "",
+        "chunk_text": "Test silicon has come up very well, according to Su. “We were running large-scale LLMs within 24 hours of receiving first silicon and validation. Work is progressing ahead of schedule. The customer feedback on the MI350 series has been strong,” she said.\n\n**AMD results by market segment**\n\n![Image 4: Data center](https://www.jonpeddie.com/wp-content/uploads/2025/02/AMD-Picture3.png)\n\n**_Figure 3. AMD’s Data Center segment results. (Source: AMD)_**\n\nThe Data Center segment’s revenue accounted for 52% of total revenue for the quarter, the first time the data center has led the way. Notable events in the quarter included the launch of the Epyc 9005 series (Turin), the introduction of the Instinct MI325X accelerators, and the planned acquisition of ZT Systems, which specializes in data center system deployment.\n\nData Center segment revenue accounted for 50% of total revenue for the quarter and reached a record $3.9 billion, up 69% year over year, primarily driven by the strong ramp of Instinct GPU accelerators and growth in AMD’s Epyc CPU sales. For 2024, Data Center segment revenue was a record $12.6 billion, an increase of 94% compared to the prior year.\n\n![Image 5: AMD picture4 Q4'24  .pdf](https://www.jonpeddie.com/wp-content/uploads/2025/02/AMD-picture4-Q424-.pdf.png)\n\n**_Figure 4. AMD’s Client segment results. (Source: AMD)_**",
+        "score": 3.6627,
+        "rank": 4
+      },
+      {
+        "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-25-067185/0001193125-25-067185.pdf",
+        "title": "2024 Annual Report",
+        "heading": "ADVANCED MICRO DEVICES, INC.",
+        "chunk_text": "ADVANCED MICRO DEVICES, INC.\n\nIn 2024, we delivered strong annual revenue growth with net revenue increasing 14% to $25.8 billion, compared\n\nto $22.7 billion in 2023. This growth was driven by the performance of our Data Center and Client segments.\n\nData Center net revenue of $12.6 billion increased by 94% compared to $6.5 billion in 2023, driven by higher\n\nsales of our AMD Instinct ™ GPUs and AMD EPYC ™ CPUs. Client segment net revenue of $7.1 billion in 2024\n\nincreased by 52% compared to $4.7 billion in 2023, primarily due to higher sales of our AMD Ryzen ™ mobile\n\nand desktop processors. The increase in annual net revenue was partially offset by a decrease in net revenue in\n\nour Gaming and Embedded segments. Gaming net revenue of $2.6 billion decreased by 58% compared to\n\n$6.2 billion in 2023. The decrease in net revenue was primarily due to lower semi-custom product revenue.\n\nEmbedded net revenue of $3.6 billion decreased by 33% compared to net revenue of $5.3 billion in 2023, as\n\ncustomers normalized their inventory levels.\n\nDuring the year, we successfully launched multiple leadership products and made significant progress executing\n\nour AI strategy. One of our priorities in 2024 was to accelerate growth in our Data Center segment. The demand\n\nfor our Data Center AI accelerator products was very strong led by large hyperscale cloud customers deploying\n\nour AMD Instinct MI300X GPU accelerators. During the year, we unveiled an accelerated AMD Instinct",
+        "score": 3.565,
+        "rank": 5
+      },
+      {
+        "url": "https://www.jonpeddie.com/news/amd-reports-fourth-quarter-2024-revenue/",
+        "title": "AMD reports fourth-quarter 2024 revenue",
+        "heading": "",
+        "chunk_text": "For the full-year 2024, AMD reported record revenue of $25.8 billion, gross margin of 49%, operating income of $1.9 billion, net income of $1.6 billion, and diluted earnings per share of $1.00. On a non-GAAP basis, gross margin was a record 53%, operating income was $6.1 billion, net income was $5.4 billion, and diluted earnings per share was $3.31.\n\n“2024 was a transformative year for AMD as we delivered record annual revenue and strong earnings growth,” said AMD Chair and CEO Lisa Su in a statement. “Data Center segment annual revenue nearly doubled as Epyc processor adoption accelerated and we delivered more than $5 billion of AMD Instinct accelerator revenue. Looking into 2025, we see clear opportunities for continued growth based on the strength of our product portfolio and growing demand for high-performance and adaptive computing.”\n\n![Image 3: Client v Data center](https://www.jonpeddie.com/wp-content/uploads/2025/02/AMD-Picture2.jpg)\n\n**_Figure 2. AMD’s Client versus Data Center results. (Source: AMD and JPR)_**\n\nOn a conference call with Wall Street analysts, the one significant product announcement Su discussed was the next iteration of AMD’s Instinct accelerator, the MI350, which features the next-generation CDNA 4 architecture. “CDNA 4 will deliver the biggest generational leap in AI performance in our history, with a 35 times increase in AI compute performance compared to CDNA 3,” she said.",
+        "score": 3.5494,
+        "rank": 6
+      },
+      {
+        "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-25-067185/0001193125-25-067185.pdf",
+        "title": "2024 Annual Report",
+        "heading": "$ 3.6B",
+        "chunk_text": "$ 3.6B\n\n> Data Center Revenue\n\nAnnual Revenue  Year-over-year\n\n> Record revenue growth in Data Center and Client\n> segments partially offset by lower revenue in\n> Gaming and Embedded segments Gaming Revenue\n> Client Revenue\n> Embedded Revenue",
+        "score": 2.9253,
+        "rank": 7
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/a04022024form8-kexhibit991.htm",
+        "title": "Document",
+        "heading": "",
+        "chunk_text": "(In Millions)\n$9,513 2023 Operating Income\n1,819 Lower period charges primarily driven by the sell-through of previously reserved inventory and lower reserves taken in 2023\n1,600 Lower operating expenses driven by various cost-cutting measures\n(1,382)Lower product profit primarily from lower notebook and desktop revenue\n(731)Higher unit costs primarily from increased mix of Intel 7 products\n\n$8,207 2022 Operating Income\n\nDatacenter and AI\n\nFor information regarding DCAI’s market and business overview, market trends and strategy, products and competition, and certain other information, please refer to our 2023 Annual Report on Form 10-K.\n\nFinancial Performance\n\nDCAI Operating Segment Revenue $B DCAI Segment Operating Income $B\n\n![Image 10: chart-9588020c590643fc98c.jpg](https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/chart-9588020c590643fc98c.jpg)![Image 11: chart-3dd04c5b3bf04da59d7.jpg](https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/chart-3dd04c5b3bf04da59d7.jpg)\n\nOperating Segment Revenue Summary\n\n2023 vs. 2022\n\nRevenue was $12.6 billion, down $4.2 billion from 2022, primarily driven by a decrease in server revenue. Server volume decreased 37% from 2022, due to lower demand in a softening CPU data center market. Server ASPs increased 20% from 2022, primarily due to a lower mix of hyperscale customer-related revenue and a higher mix of high core count products.\n\nSegment Operating Income Summary",
+        "score": 6.3131,
+        "rank": 0
+      },
+      {
+        "url": "https://www.statista.com/statistics/495928/net-revenue-of-intel-by-segment/?srsltid=AfmBOop3yM5_Ttvys0Zfqa-k6U3EBlgkNWf_F9VH9kQp6ALeCXUWUA2W",
+        "title": "Intel revenue by segment 2024| Statista",
+        "heading": "Intel revenue from 2022 to 2024, by segment  (in billion U.S. dollars)",
+        "chunk_text": "Intel revenue from 2022 to 2024, by segment  (in billion U.S. dollars)\n\nSearch:\n\nRecords:\n\n| Characteristic | Client Computing Group (CCG) | Data Center and AI (DCAI) | Network and Edge (NEX) | Intel Foundry | All other | Intersegment eliminations |\n| --- | --- | --- | --- | --- | --- | --- |\n| - | - | - | - | - | - | - |\n| - | - | - | - | - | - | - |\n| - | - | - | - | - | - | - |\n\nShowing entries 1 to 3 (3 entries in total)\n\nThe chart is not accessible to screen readers. Please switch to the table view to access the data.\n\n![Image 16: Statistic: Intel revenue from 2022 to 2024, by segment (in billion U.S. dollars)](https://cdn.statcdn.com/Statistic/495000/495928-blank-754.png)\n\nYou need a **Statista Account** for unlimited access\n\n*   Immediate access to 1m+ statistics\n*   Incl. source references\n*   Download as PNG, PDF, XLS, PPT\n\n[Get full access](https://www.statista.com/accounts/individuals?recommendation=discovery)\n\nAlready have an account?  Login\n\nAdditional Information\n\n[© Statista 2026](https://www.statista.com/statistics/report-content/statistic/495928 \"Report\")\n\nShow source\n\nAdd this content to your personal favorites. These can be accessed from the favorites menu in the main navigation.\n\nGet notified via email when this statistic is updated.\n\n[Learn more about statistics updates via email](https://www.statista.com/getting-started/personalization-receiving-statistic-updates-via-email)\n\nAdjust the presentation of the statistic and data points.",
+        "score": 5.6307,
+        "rank": 1
+      },
+      {
+        "url": "https://www.intc.com/filings-reports/all-sec-filings/xbrl_doc_only/3556",
+        "title": "Intel Corporation Annual report pursuant to Section 13 and 15(d)",
+        "heading": "Annual report pursuant to Section 13 and 15(d)",
+        "chunk_text": "Annual report pursuant to Section 13 and 15(d)\n\nv3.23.4\n| **Operating Segments (Tables)** | 12 Months Ended |\n| --- | --- |\n| Dec. 30, 2023 |\n| [**Segment Reporting [Abstract]**](javascript:void(0);) |  |\n| [Schedule of Segment Reporting Information, by Segment](javascript:void(0);) | Net revenue and operating income (loss) for each period were as follows: Years Ended (In Millions)Dec 30, 2023 Dec 31, 2022 Dec 25, 2021 Net revenue: Client Computing Desktop$10,166$10,661$12,437 Notebook 16,990 18,781 25,443 Other 2,102 2,331 3,201 29,258 31,773 41,081 Data Center and AI$15,521$19,445$22,774 Network and Edge 5,774 8,409 7,665 Mobileye 2,079 1,869 1,386 Intel Foundry Services 952 469 347 All other 644 1,089 5,771 Total net revenue$54,228$63,054$79,024 Operating income (loss): Client Computing$6,520$5,569$15,523 Data Center and AI(530)1,300 7,376 Network and Edge(482)1,033 1,935 Mobileye 664 690 554 Intel Foundry Services(482)(281)76 All other(5,597)(5,977)(6,008) Total operating income (loss)$93$2,334$19,456 |\n| [Schedule of Revenue by Major Customers by Reporting Segments](javascript:void(0);) | In 2023, substantially all of the revenue from our three largest customers was from the sale of platforms and other components by our CCG and DCAI operating segments.",
+        "score": 5.3588,
+        "rank": 2
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/intel-10k-2024/",
+        "title": "https://www.libertify.com/interactive-library/intel-10k-2024/",
+        "heading": "",
+        "chunk_text": "— Intel 18A represents the company’s most ambitious process technology node and a critical milestone in its manufacturing competitiveness roadmap.\n- Intel AI Strategy: From Data Center to Edge Computing — Intel’s AI strategy spans the full computing continuum from large-scale data center training to inference at the edge, reflecting the company’s belief that AI represents a generational shift in computing.\nIntel 10-K 2024: Executive Summary and Financial Overview\nIntel Corporation’s 2024 Form 10-K reveals a company in the midst of its most ambitious transformation in decades. With total revenue of $53.1 billion — down $1.1 billion or 2% from 2023 — Intel is navigating declining legacy revenue streams while investing aggressively in its foundry business, AI capabilities, and next-generation process technologies. The fiscal year ended December 28, 2024 marked a period of difficult financial trade-offs balanced against long-term strategic positioning.\nThe revenue decline masks divergent trends across Intel’s business segments. Intel Products revenue reached $48.9 billion, up $1.3 billion or 3% from 2023, driven by recovery in the Client Computing Group (CCG) and modest growth in the Data Center and AI (DCAI) segment. However, these gains were offset by a 60% decline in Intel Foundry external revenue and a 32% drop in “all other” revenue, primarily from Altera and Mobileye as customers reduced inventories across product lines.\nThe filing reveals significant financial stress.",
+        "score": 4.3734,
+        "rank": 3
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/intel-10k-2024/",
+        "title": "https://www.libertify.com/interactive-library/intel-10k-2024/",
+        "heading": "",
+        "chunk_text": "t by desktop revenue of $9.7 billion (down $516 million). The CCG recovery reflects normalized customer inventory levels after the post-pandemic correction, though notebook ASPs remained roughly flat. Other CCG revenue declined by $530 million due to Intel’s exit from legacy businesses.\nThe Data Center and AI (DCAI) segment posted modest growth of $182 million from 2023, driven by higher server revenue. Server ASPs increased 12% on a shift toward higher core count products, though volume declined as the market continued its transition. The Network and Edge (NEX) segment grew $68 million from 2023 on improved network and edge revenue, partially offset by continued 5G purchase reductions.\nIntel Foundry external revenue declined 60% from 2023, reflecting lower traditional packaging services and equipment sales. This dramatic decline underscores the early stage of Intel’s foundry transformation — while the company is investing billions in foundry capabilities, external customer revenue remains minimal as the business builds credibility and capacity for leading-edge manufacturing.\nIntel Foundry Strategy: Building a World-Class Manufacturing Business\nIntel’s foundry strategy represents the most significant strategic pivot in the company’s history.",
+        "score": 4.1265,
+        "rank": 4
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/a04022024form8-kexhibit991.htm",
+        "title": "Document",
+        "heading": "",
+        "chunk_text": "Total Intel Products revenue was $47.7 billion for 2023 and $57.0 billion for 2022, and declined due to lower revenues across all of our Intel Products operating segments. Total Intel Products operating income declined to $11.3 billion, or 23.8% operating margin for 2023 from $13.9 billion or 24.4% operating margin in 2022 due to lower revenues across all segments and higher unit costs, partially offset by lower 2023 operating expenses and lower period charges driven by the sell-through of previously reserved inventory and lower reserves taken in 2023.\n\nClient Computing\n\nFor information regarding CCG’s market and business overview, market trends and strategy, products and competition, and certain other information, please refer to our 2023 Annual Report on Form 10-K.\n\nFinancial Performance\n\nCCG Operating Segment Revenue $B CCG Segment Operating Income $B\n\n![Image 7: chart-eb7a9668daad4565b32.jpg](https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/chart-eb7a9668daad4565b32.jpg)![Image 8: chart-5b6df4dc95f24ab4beb.jpg](https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/chart-5b6df4dc95f24ab4beb.jpg)\n\n■ |■Notebook■ |■Desktop■ |■Other\n\nOperating Segment Revenue Summary\n\n2023 vs. 2022",
+        "score": 3.7274,
+        "rank": 5
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/a04022024form8-kexhibit991.htm",
+        "title": "Document",
+        "heading": "",
+        "chunk_text": "CCG, DCAI, and Intel Foundry qualify as reportable operating segments. NEX, Altera and Mobileye do not qualify as reportable operating segments; however, we have elected to disclose their results. When we enter into federal contracts, they are aligned to the sponsoring operating segment.\n\nThe accounting policies for our segment reporting are the same for Intel as a whole. A summary of the basis for which we report our operating segment revenues and operating margin is as follows:\n\nIntel Products: CCG, DCAI and NEX\n\n▪Segment revenue: consists of revenues from third party customers. The Intel Products operating segments represent a substantial majority of Intel consolidated revenue and are derived from our principal products that incorporate various components and technologies, including a microprocessor and chipset, a stand-alone SoC, or a multichip package, which are based on Intel architecture.\n\n▪Segment expenses: consists of intersegment charges for product manufacturing and related services from Intel Foundry, external foundry manufacturing, product development costs, allocated expenses as described below, and direct operating expenses.\n\nIntel Foundry",
+        "score": 2.6563,
+        "rank": 6
+      },
+      {
+        "url": "https://www.statista.com/statistics/495928/net-revenue-of-intel-by-segment/?srsltid=AfmBOop3yM5_Ttvys0Zfqa-k6U3EBlgkNWf_F9VH9kQp6ALeCXUWUA2W",
+        "title": "Intel revenue by segment 2024| Statista",
+        "heading": "Intel revenue 2022-2024, by segment",
+        "chunk_text": "Intel revenue 2022-2024, by segment\n\nPublished by\n\n[Petroc Taylor](https://www.statista.com/aboutus/our-research-commitment/3282/petroc-taylor)\n\n![Image 18: Petroc Taylor](https://cdn.statcdn.com/CMS/contactperson/ERI3282_1670843403.png)\n\nPetroc Taylor\n\nResearch expert covering global developments in the use of data\n\n[Get in touch with us now](https://www.statista.com/contact/)\n\n,\n\nNov 27, 2025\n\n[](https://www.statista.com/statistics/495928/net-revenue-of-intel-by-segment/?srsltid=AfmBOop3yM5_Ttvys0Zfqa-k6U3EBlgkNWf_F9VH9kQp6ALeCXUWUA2W#statisticContainer)\nIn 2024, Intel generated\n\n****\n\nLog in or register to access precise data.\n\nGet access now\n\nbillion U.S. dollars in revenue, with\n\n****\n\nLog in or register to access precise data.\n\nGet access now\n\nbillion U.S. dollars generated by the company's Client Computing Group, its core business unit serving the PC market. Revenues associated with [Intel's data center and AI activities](https://www.statista.com/statistics/1425087/data-center-segment-revenue-nvidia-amd-intel/) amounted to\n\n****\n\nLog in or register to access precise data.\n\nGet access now\n\nbillion U.S. dollars in 2024, a part of the business that is expected to receive greater interest moving forward.",
+        "score": 1.4988,
+        "rank": 7
+      },
+      {
+        "url": "https://www.statista.com/chart/25578/nvidias-quarterly-revenue-by-segments/?srsltid=AfmBOoo93YBIzf9Yzsjvj9k9GcXMNIQQtX6V9AX-xF-eZ6cnp-cQ9_Co",
+        "title": "Infographic: Data Centers Almost Sole Driver of Nvidia's Revenue Boom",
+        "heading": "Data Centers Almost Sole Driver of Nvidia's Revenue Boom",
+        "chunk_text": "Data Centers Almost Sole Driver of Nvidia's Revenue Boom\n\nby[Florian Zandt](mailto:),\n\nMay 24, 2024\n\nGraphics processing units (GPUs)\n\nAfter an already successful fourth quarter of its fiscal year 2024, generating a $12 billion net income on revenues of $22 billion between November 2023 and January 2024, chipmaker [Nvidia](https://www.statista.com/topics/7123/nvidia/) outperformed expectations yet again, beating analyst projections with revenues of $26 billion and a net income of roughly $15 billion for the quarter. As our chart shows, this immense success would have been considered improbable just a year ago and is largely built on one pillar of the company.\n\nThis pillar is the data center segment which includes [chips manufactured specifically with the AI industry in mind](https://www.statista.com/topics/6153/artificial-intelligence-ai-chips/), which heavily relies on cloud computing and the required resource-intensive, high-powered server farms. Between February and April 2024, $22.6 billion or 87 percent of Nvidia's overall revenue was attributable to data center solutions. Some of its other segments also showed considerable relative growth year over year, with gaming and visualization solutions bringing in 18 and 45 percent more, respectively, than in the company's fiscal Q1 2024. The growth in the data center segment, however, has been off the charts, rising by 427 percent year over year.",
+        "score": 4.8743,
+        "rank": 0
+      },
+      {
+        "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2024/ar/NVIDIA-2024-Annual-Report.pdf",
+        "title": "NVIDIA-2024-Annual-Report.pdf",
+        "heading": "NVIDIA CORPORATION",
+        "chunk_text": "NVIDIA CORPORATION\n\nOur Businesses\n\nWe report our business results in two segments. The Compute & Networking segment is comprised of our Data Center accelerated computing platforms and end-to-end networking platforms including Quantum for InfiniBand and Spectrum for Ethernet; our NVIDIA DRIVE automated-driving platform and automotive development agreements; Jetson robotics and other embedded platforms; NVIDIA AI Enterprise and other software; and DGX Cloud software and services. The Graphics segment includes GeForce GPUs for gaming and PCs, the GeForce NOW game streaming service and related infrastructure; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics; virtual GPU, or vGPU, software for cloud-based visual and virtual computing; automotive platforms for infotainment systems; and Omniverse Enterprise software for building and operating metaverse and 3D internet applications.\n\nOur Markets\n\nWe specialize in markets where our computing platforms can provide tremendous acceleration for applications. These platforms incorporate processors, interconnects, software, algorithms, systems, and services to deliver unique value. Our platforms address four large markets where our expertise is critical: Data Center, Gaming, Professional Visualization, and Automotive.\n\nData Center",
+        "score": 3.1372,
+        "rank": 1
+      },
+      {
+        "url": "https://www.statista.com/chart/25578/nvidias-quarterly-revenue-by-segments/?srsltid=AfmBOoo93YBIzf9Yzsjvj9k9GcXMNIQQtX6V9AX-xF-eZ6cnp-cQ9_Co",
+        "title": "Infographic: Data Centers Almost Sole Driver of Nvidia's Revenue Boom",
+        "heading": "Chart: Data Centers Almost Sole Driver of Nvidia's Revenue Boom | Statista",
+        "chunk_text": "Chart: Data Centers Almost Sole Driver of Nvidia's Revenue Boom | Statista\n\n[Recent Statistics](https://www.statista.com/statistics/recent/)[Popular Statistics](https://www.statista.com/statistics/popular/)\n\n*   [Global retail e-commerce sales 2022-2028](https://www.statista.com/statistics/379046/worldwide-retail-e-commerce-sales/)\n    *   [Global conversion rate by industry 2025](https://www.statista.com/statistics/1106713/global-conversion-rate-by-industry-and-device/)\n    *   [Amazon revenue 2005-2025](https://www.statista.com/statistics/266282/annual-net-revenue-of-amazoncom/)\n    *   [Global e-commerce revenue by segment 2017-2030](https://www.statista.com/forecasts/1223973/e-commerce-revenue-worldwide-by-segment/)\n    *   [Global social commerce share of online retail 2018-2029](https://www.statista.com/statistics/1251145/social-commerce-share-worldwide/)\n\n[E-Commerce](https://www.statista.com/markets/413/e-commerce/)\n\nTopics\n\n[Topic overview](https://www.statista.com/markets/413/e-commerce/)\n\n*   [Amazon - statistics & facts](https://www.statista.com/topics/846/amazon/)\n    *   [E-commerce worldwide - statistics & facts](https://www.statista.com/topics/871/online-shopping/)\n\nTop Report\n\n[![Image 6: E-commerce worldwide Dossier](https://cdn.statcdn.com/Study/10000/10653-standard.avif)View Report](https://www.statista.com/study/10653/e-commerce-worldwide-statista-dossier/)\n\n[Internet](https://www.statista.com/markets/424/internet/)\n\nMost viewed statistics",
+        "score": 2.5892,
+        "rank": 2
+      },
+      {
+        "url": "https://www.statista.com/chart/25578/nvidias-quarterly-revenue-by-segments/?srsltid=AfmBOoo93YBIzf9Yzsjvj9k9GcXMNIQQtX6V9AX-xF-eZ6cnp-cQ9_Co",
+        "title": "Infographic: Data Centers Almost Sole Driver of Nvidia's Revenue Boom",
+        "heading": "Data Centers Almost Sole Driver of Nvidia's Revenue Boom",
+        "chunk_text": "Data Centers Almost Sole Driver of Nvidia's Revenue Boom\n\nThis coincides with the AI arms race shifting into overdrive due to OpenAI releasing its newest large language model GPT-4 in March 2023 and demand for dedicated AI chips increasing across the board. \"The next industrial revolution has begun — companies and countries are partnering with NVIDIA to shift the trillion-dollar traditional data centers to accelerated computing and build a new type of data center — AI factories — to produce a new commodity: artificial intelligence\", said Nvidia CEO Jensen Huang in a press release accompanying the financial results.\n\nUntil the advent of the AI boom, Nvidia was primarily known for its [graphics processing units](https://www.statista.com/topics/6889/graphics-processing-units-gpus/) (GPU). While still making up the second biggest slice in the chipmaker's revenue pie, this segment only contributed around 10 percent to the revenue generated between February and April 2024. Its biggest contender in this industry is AMD, even though Nvidia's data center success only widened the gulf between the two companies. [AMD's gaming revenue](https://ir.amd.com/financial-information/) was down 48 percent year over year to $922 million, while its data center business grew 80 percent compared to the first quarter of 2023 to $2.3 billion. Overall, AMD made $5.5 billion between January and March 2024.\n\n![Image 15](https://cdn.statcdn.com/contactPerson/2976.jpg)\n\nFlorian Zandt\n\nData Journalist\n\n[](mailto:)",
+        "score": 1.0507,
+        "rank": 3
+      },
+      {
+        "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-25-067185/0001193125-25-067185.pdf",
+        "title": "2024 Annual Report",
+        "heading": "$ 3.6B",
+        "chunk_text": "$ 3.6B\n\n> Data Center Revenue\n\nAnnual Revenue  Year-over-year\n\n> Record revenue growth in Data Center and Client\n> segments partially offset by lower revenue in\n> Gaming and Embedded segments Gaming Revenue\n> Client Revenue\n> Embedded Revenue",
+        "score": 0.902,
+        "rank": 4
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/a04022024form8-kexhibit991.htm",
+        "title": "Document",
+        "heading": "",
+        "chunk_text": "(In Millions)\n$9,513 2023 Operating Income\n1,819 Lower period charges primarily driven by the sell-through of previously reserved inventory and lower reserves taken in 2023\n1,600 Lower operating expenses driven by various cost-cutting measures\n(1,382)Lower product profit primarily from lower notebook and desktop revenue\n(731)Higher unit costs primarily from increased mix of Intel 7 products\n\n$8,207 2022 Operating Income\n\nDatacenter and AI\n\nFor information regarding DCAI’s market and business overview, market trends and strategy, products and competition, and certain other information, please refer to our 2023 Annual Report on Form 10-K.\n\nFinancial Performance\n\nDCAI Operating Segment Revenue $B DCAI Segment Operating Income $B\n\n![Image 10: chart-9588020c590643fc98c.jpg](https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/chart-9588020c590643fc98c.jpg)![Image 11: chart-3dd04c5b3bf04da59d7.jpg](https://www.sec.gov/Archives/edgar/data/50863/000005086324000068/chart-3dd04c5b3bf04da59d7.jpg)\n\nOperating Segment Revenue Summary\n\n2023 vs. 2022\n\nRevenue was $12.6 billion, down $4.2 billion from 2022, primarily driven by a decrease in server revenue. Server volume decreased 37% from 2022, due to lower demand in a softening CPU data center market. Server ASPs increased 20% from 2022, primarily due to a lower mix of hyperscale customer-related revenue and a higher mix of high core count products.\n\nSegment Operating Income Summary",
+        "score": -0.239,
+        "rank": 5
+      },
+      {
+        "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-25-067185/0001193125-25-067185.pdf",
+        "title": "2024 Annual Report",
+        "heading": "2024 Financial Performance  Data Center Transformation",
+        "chunk_text": "2024 Financial Performance  Data Center Transformation\n\n• Significantly enhanced our ROCm™\n\nAI software stack by integrating\n\nnew features, optimizing popular\n\nlibraries, enabling new frameworks\n\nand expanding third-party ecosystem\n\nsupport that increased inferencing\n\nperformance of AMD Instinct MI300X\n\naccelerators 2.7x since launch.\n\n• Gained client processor market share\n\nbased on cutting-edge performance,\n\nefficiency and AI capabilities of our\n\nAMD Ryzen™ processors.\n\n• Solidified and extended our position\n\nas the industry’s leading provider of\n\nadaptive computing solutions.\n\nBased on this momentum, we delivered strong financial results in 2024. Annual revenue grew 14% to $25.8 billion as record Data Center and Client segment revenue more than offset declines in our Gaming and Embedded segments. Importantly, combined sales of our AMD EPYC and AMD Instinct data center products nearly doubled year-over-year, contributing approximately 50% of annual revenue. As a result, we achieved record annual revenue while significantly expanding gross margin and increasing profitability year-over-year. services, including Office 365, Facebook, Microsoft Teams, Salesforce, SAP, Zoom, Uber, Netflix and many more. Meta alone has deployed more than 1.5 million EPYC processors across their global data center fleet.",
+        "score": -1.0263,
+        "rank": 6
+      },
+      {
+        "url": "https://finance.yahoo.com/news/amd-sees-record-revenue-25-150031951.html",
+        "title": "https://finance.yahoo.com/news/amd-sees-record-revenue-25-150031951.html",
+        "heading": "",
+        "chunk_text": "AMD sees record revenue of $25.8 billion in 2024 thanks to data center growth—gaming last seen tumbling into a ditch\nWhen you buy through links on our articles, Future and its syndication partners may earn a commission.\nYou'd be forgiven for thinking that a company called Advanced Micro Devices would make the majority of its profit from said tech, with coveted high-end graphic cards leading the charge. Though gaming hardware continues to do big business, it's been completely overshadowed in recent years by an explosion in demand for data centres handling AI.\nIn a recent earnings call, AMD revealed that revenue from the data centre side of the business had more than doubled, ultimately \"contributing roughly 50% of annual revenue\" in 2024 (via Seeking Alpha). Now, you may be asking 'Half of how much, though?' Well, EVP, CFO and Treasurer Jean Hu revealed that AMD saw a \"record revenue of $25.8 billion\" in 2024, attributing the gain to \"94% growth in our data center segment and a 52% growth in our client segment.\"\nTo be clear, AMD's segment includes AI accelerators, server chips, server GPUs, FPGAs, and more. You know, server stuff. So, that's $12.5 billion for the data centre last year, up from $6.5 billion the year prior.",
+        "score": -1.3881,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "AMD Data Center segment revenue FY2024 annual report",
+      "Intel Data Center and AI (DCAI) segment revenue FY2024 annual report",
+      "NVIDIA Data Center segment revenue FY2024 annual report"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.65,
+    "reasoning": "The response correctly identifies NVIDIA ($47.5B) and AMD ($12.6B) figures, and ranks NVIDIA first. However, Intel's figure is stated as ~$15.7B instead of the ground truth ~$12.8B, which is a significant factual error. The ranking is partially correct (NVIDIA first, but Intel/AMD order is wrong due to the inflated Intel number). Citations are not provided in the expected SEC format. The response is partially correct but has a key factual error and missing proper citations.",
+    "judge_model": "deepseek-chat"
+  }
+}

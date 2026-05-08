@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "timestamp": "20260507T163920Z",
+    "mode": "full",
+    "questions_file": "question_v1.txt",
+    "total_questions": 10,
+    "overall_avg_score": 0.825,
+    "pass_count": 5,
+    "partial_count": 5,
+    "fail_count": 0,
+    "avg_m1": 0.903,
+    "avg_m3": 0.843,
+    "avg_latency_s": 20.4
+  },
+  "category_summary": {
+    "simple_factual": {
+      "n": 1,
+      "avg_m7": 1.0
+    },
+    "retrieval_comparison": {
+      "n": 1,
+      "avg_m7": 0.95
+    },
+    "rag_architecture": {
+      "n": 1,
+      "avg_m7": 0.65
+    },
+    "dense_vs_sparse": {
+      "n": 1,
+      "avg_m7": 0.75
+    },
+    "cross_encoder": {
+      "n": 1,
+      "avg_m7": 0.95
+    },
+    "pgvector": {
+      "n": 1,
+      "avg_m7": 0.95
+    },
+    "chunking_strategies": {
+      "n": 1,
+      "avg_m7": 0.65
+    },
+    "sentence_transformers": {
+      "n": 1,
+      "avg_m7": 0.65
+    },
+    "hybrid_search": {
+      "n": 1,
+      "avg_m7": 0.95
+    },
+    "ivfflat_hnsw": {
+      "n": 1,
+      "avg_m7": 0.75
+    }
+  }
+}

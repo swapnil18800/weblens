@@ -1,0 +1,38 @@
+{
+  "category": "single_simple",
+  "expected_behavior": "Single sub-question fast path. Basic retrieval. Aggregator handles trivial single-fact input.",
+  "question": "What was Apple's total revenue in FY2024 according to its annual report?",
+  "ground_truth": "Apple (AAPL) reported total net sales of approximately $391.0 billion for fiscal year 2024 (ended September 2024). This was a slight increase from $383.3B in FY2023. Services segment was the fastest-growing at about $96.2B. Products revenue was approximately $294.9B.",
+  "key_facts": [
+    "Total revenue approximately $391B for FY2024.",
+    "Must cite [SEC-AAPL-*] or equivalent 10-K chunk.",
+    "Should not fabricate a different figure."
+  ],
+  "session_id": "eval-20260507T180622Z-01",
+  "metrics": {
+    "m1_factual_correctness": 0.0,
+    "m3_retrieval_recall": 0.0,
+    "m7_judge_score": 0.0
+  },
+  "timing": {
+    "pipeline_s": 3.45,
+    "latency_breakdown": {},
+    "total_latency_ms": 0
+  },
+  "pipeline": {
+    "answer": "",
+    "citations": [],
+    "urls": [],
+    "chunks": [],
+    "sub_queries": [
+      "What was Apple's total revenue in FY2024 according to its annual report?"
+    ],
+    "error": "No URLs found. Check TAVILY_API_KEY."
+  },
+  "judgment": {
+    "verdict": "fail",
+    "score": 0.0,
+    "reasoning": "The system response is empty, providing no answer at all. It fails to state Apple's FY2024 revenue (~$391B) and does not cite any source. This is significantly wrong and missing key facts.",
+    "judge_model": "deepseek-chat"
+  }
+}

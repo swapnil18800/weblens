@@ -1,0 +1,42 @@
+{
+  "simple_factual": {
+    "web_search": true,
+    "expected_behavior": "Single focused question answered accurately from web sources with inline citations.",
+    "questions": [
+      "What is Reciprocal Rank Fusion (RRF) and how does it combine ranked lists from multiple retrieval systems?"
+    ],
+    "ground_truth_map": {
+      "What is Reciprocal Rank Fusion (RRF) and how does it combine ranked lists from multiple retrieval systems?": {
+        "ground_truth": "Reciprocal Rank Fusion (RRF) is an ensemble method for merging multiple ranked lists from different retrieval systems (e.g., BM25 and dense vector search). For each document, RRF computes a score of 1/(k + rank) where k is a constant (typically 60) and rank is the document's position in each ranked list. These scores are summed across all lists and documents are re-ranked by total score. RRF was proposed by Cormack, Clarke, and Buettcher (2009). It requires no parameter tuning, is robust to different retrieval methods, and consistently outperforms individual rankers in hybrid search systems.",
+        "key_facts": [
+          "RRF combines multiple ranked lists from different retrieval systems",
+          "score formula is 1/(k + rank)",
+          "k constant is typically 60",
+          "scores are summed across all ranked lists",
+          "no parameter tuning required",
+          "proposed by Cormack Clarke Buettcher"
+        ]
+      }
+    }
+  },
+  "comparison": {
+    "web_search": true,
+    "expected_behavior": "Comparison question decomposed into per-entity sub-queries, synthesized into comparative answer with citations.",
+    "questions": [
+      "Compare BM25 and TF-IDF for text retrieval: what are the key algorithmic differences and when should you prefer each?"
+    ],
+    "ground_truth_map": {
+      "Compare BM25 and TF-IDF for text retrieval: what are the key algorithmic differences and when should you prefer each?": {
+        "ground_truth": "BM25 (Best Match 25) and TF-IDF are both bag-of-words retrieval models. Key differences: (1) BM25 applies term frequency saturation via parameter k1 — additional occurrences contribute diminishing returns — while TF-IDF has unbounded TF growth. (2) BM25 normalizes by document length using parameter b to prevent long documents from dominating. (3) BM25 has tunable parameters (k1 typically 1.2-2.0, b typically 0.75). TF-IDF is simpler and interpretable but generally underperforms BM25. Prefer TF-IDF for simple baselines or interpretability needs; prefer BM25 for production search systems where retrieval accuracy matters.",
+        "key_facts": [
+          "BM25 applies term frequency saturation",
+          "BM25 normalizes by document length",
+          "BM25 has tunable parameters k1 and b",
+          "TF-IDF has unbounded term frequency",
+          "BM25 generally outperforms TF-IDF",
+          "BM25 is preferred for production search"
+        ]
+      }
+    }
+  }
+}

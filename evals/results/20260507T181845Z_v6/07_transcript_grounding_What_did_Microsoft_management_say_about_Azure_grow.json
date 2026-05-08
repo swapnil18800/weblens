@@ -1,0 +1,167 @@
+{
+  "category": "transcript_grounding",
+  "expected_behavior": "Transcript-preferred retrieval. Transcript→10K fallback if empty. Tests earnings_grounding fix.",
+  "question": "What did Microsoft management say about Azure growth deceleration in FY2024 Q3 and Q4 earnings calls?",
+  "ground_truth": "In FY2024 Q3 and Q4 earnings calls, Microsoft CEO Satya Nadella and CFO Amy Hood discussed Azure revenue growth in the range of 28-31% YoY, with capacity constraints cited as a limiting factor rather than demand softness. AI workloads were highlighted as the primary growth driver. The answer must cite transcript chunks from Q3-Q4 FY2024 period. If transcripts are unavailable, 10-K fallback is acceptable but should note the limitation.",
+  "key_facts": [
+    "Azure growth ~28-31% range in Q3/Q4 FY2024.",
+    "Capacity constraints mentioned, not demand weakness.",
+    "AI workloads as growth driver.",
+    "Must cite [TC-MSFT-Q3/Q4-FY2024] or equivalent transcript.",
+    "10-K fallback acceptable if transcripts unavailable."
+  ],
+  "session_id": "eval-20260507T181845Z-07",
+  "metrics": {
+    "m1_factual_correctness": 0.0,
+    "m3_retrieval_recall": 0.8,
+    "m7_judge_score": 0.0
+  },
+  "timing": {
+    "pipeline_s": 38.59,
+    "latency_breakdown": {},
+    "total_latency_ms": 0
+  },
+  "pipeline": {
+    "answer": "",
+    "citations": [],
+    "urls": [
+      {
+        "url": "https://www.microsoft.com/en-us/investor/events/fy-2024/earnings-fy-2024-q3",
+        "title": "Earnings FY 2024 q3",
+        "snippet": "Office 365 commercial revenue increased 15%, in line with expectations, driven by healthy renewal execution, ARPU growth from continued E5 momentum, and early Copilot for Microsoft 365 progress. Azure and other cloud services revenue grew 31%, ahead of expectations, while our AI services contributed 7 points of growth as expected. Windows commercial products and cloud services revenue increased 13% and 12% in constant currency, below expectations with impact from the growth trends in new standalone business noted earlier as well as lower in-period revenue recognition from the mix of contracts. Growth will be driven by our Azure consumption business and continued contribution from AI with some impact from the AI capacity availability noted earlier. We will also continue to prioritize operating leverage and therefore, we expect FY25 operating margins to be down only about one point year-over-year, even with our significant cloud and AI investments as well as a full year of impact from the Activision acquisition."
+      },
+      {
+        "url": "https://finance.yahoo.com/markets/stocks/articles/azures-growth-rate-bounces-back-185000744.html",
+        "title": "Azure's Growth Rate Bounces Back in Q3. Is Microsoft's Stock Due ...",
+        "snippet": "Azure's growth gets back to 40%. Last week, Microsoft reported its latest earnings numbers, covering the first three months of 2026, which"
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q3/intelligent-cloud-performance",
+        "title": "FY24 Q3 - Intelligent Cloud Performance - Investor Relations - Microsoft",
+        "snippet": "•  Server products and cloud services revenue increased $4.8 billion or 24% driven by Azure and other cloud services. Azure and other cloud services revenue grew 31% driven by growth in our consumption-based services. •  Gross margin increased $3.1 billion or 20% driven by growth in Azure. Excluding the impact of the change in accounting estimate, gross margin percentage increased slightly primarily driven by improvement in Azure, inclusive of scaling our AI infrastructure, offset in part by sales mix shift to Azure. *IMPORTANT NOTICE TO USERS (summary only, click here  for full text of notice);*All information is unaudited unless otherwise noted or accompanied by an audit opinion and is subject to the more comprehensive information contained in our SEC reports and filings. All information speaks as of the last fiscal quarter or year for which we have filed a Form 10-K or 10-Q, or for historical information the date or period expressly indicated in or with such information. Information contained in these documents is current as of the earnings date, and not restated for new accounting standards."
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q3/metrics",
+        "title": "FY24 Q3 - Metrics - Investor Relations - Microsoft",
+        "snippet": "| Microsoft Cloud revenue growth (y/y)\\* Revenue from Azure and other cloud services, Office 365 Commercial, the commercial portion of LinkedIn, Dynamics 365, and other commercial cloud properties | 22% / 25% | 21% / 23% | 22% | 24% / 23% | 24% / 22% | 23% / 23% |. | Office Commercial products and cloud services revenue growth (y/y)\\* Revenue from Office Commercial products and cloud services (Office 365 subscriptions, the Office 365 portion of Microsoft 365 Commercial subscriptions, and Office licensed on-premises), comprising Office, Exchange, SharePoint, Microsoft Teams, Office 365 Security and Compliance, Microsoft Viva, and Copilot for Microsoft 365. | Office Consumer products and cloud services revenue growth (y/y)\\* Revenue from Office Consumer products and cloud services, including Microsoft 365 Consumer subscriptions, Office licensed on-premises, and other Office services | 1% / 4% | 3% / 6% | 2% | 3% / 4% | 5% / 4% | 4% / 4% |."
+      },
+      {
+        "url": "https://www.heygotrade.com/en/news/microsoft-q3-beats-estimates-azure-surges-40-percent/",
+        "title": "Microsoft Q3 Beats Estimates as Azure Surges 40 Percent",
+        "snippet": "Azure growth of 40%, a Copilot base topping 20 million users, and the OpenAI restructuring drew global investor focus. The positive sentiment reinforces Microsoft's role as leader in the global AI spending cycle. According to Investing.com, Azure revenue grew 40% in the quarter ended March 2026 across all global regions. The figure matched Wall Street consensus and marked a slight acceleration from 39% the prior quarter. Management guided Azure growth in the June quarter to 39 to 40% in constant currency terms. Total quarterly revenue reached 82.9 billion dollars, up 18% from the same period last year. The Intelligent Cloud segment that houses Azure grew 30% year on year to 34.7 billion dollars. Quarterly capital expenditure reached 31.9 billion dollars, jumping 49% year on year. Microsoft's AI business run rate now sits at 37 billion dollars, up 123% year on year. For investors, aggressive Azure guidance and the 37 billion dollar AI run rate suggest monetization has not peaked."
+      },
+      {
+        "url": "https://247wallst.com/investing/2026/04/29/live-will-microsofts-q3-earnings-snap-its-long-losing-streak/",
+        "title": "Live: Will Microsoft's Q3 Earnings Snap Its Long Losing Streak? - 24/7 Wall St.",
+        "snippet": "Live Video Coverage: Microsoft, Amazon, Alphabet, and Meta Platforms Report After the Bell! The company’s shares crashed after its last earnings report. Wall Street wasn’t happy with an Azure growth guide of 37% to 38%, but Microsoft says its capacity constrained. In addition, CEO Satya Nadella’s commentary on Microsoft’s relationship with OpenAI will be closely studied by the Street. Wall Street expects the company to report revenue of $81.4 billion and EPS of $4.06 tonight. You can also watch a live stream with** **24/7 Wall St. Chief Investment Officer Eric Bleeker, whohosts the 24/7 Wall St. AI Investor Podcast.**. **That live stream will sit at the top of the update feed, while new updates will appear directly below it.**. ### Watch Our Live Coverage of Tonight's Earnings - Including A Break Down of Reaction to Microsoft's Release. It’s the biggest earnings day of the year, and we’re live-streaming our analysis (in addition to more updates posted below on Microsoft’s earnings!)."
+      },
+      {
+        "url": "http://www.moomoo.com/community/feed/microsoft-fy24-q4-earnings-review-azure-growth-slows-sparking-concerns-112880820551689",
+        "title": "Microsoft FY24 Q4 Earnings Review: Azure Growth Slows, Spark... - moomoo Community",
+        "snippet": "Microsoft's Revenue Breakdown (in millions USD). Microsoft's Azure Revenue and Growth Rate (in millions USD). Microsoft's Free Cash Flow (in millions USD; %). Investment products and services are offered through Moomoo Financial Inc., Member SIPC./FINRA. Options trading entails significant risk and is not appropriate for all customers. It is important that investors read Characteristics and Risks of Standardized Options before engaging in any options trading strategies. Options transactions are often complex and may involve the potential of losing the entire investment in a relatively short period of time. Certain complex options strategies carry additional risk, including the potential for losses that may exceed the original investment amount. $0 commission trading is available only to U.S. residents trading in the U.S. markets through Moomoo Financial Inc. Other fees may apply. The services and products are not available to all customers or in all geographic areas or in any jurisdiction where it is unlawful for us to offer such services and products."
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q4/performance",
+        "title": "FY24 Q4 - Performance - Investor Relations - Microsoft",
+        "snippet": "Revenue increased $33.2 billion or 16% driven by growth across each of our segments. Cost of revenue increased $8.3 billion or 13% driven by growth in Microsoft Cloud and Gaming, offset in part by a decline in Devices. Gross margin increased $25.0 billion or 17% driven by growth across each of our segments. Excluding the impact of the change in accounting estimate for the useful lives of our server and network equipment, gross margin percentage increased 2 points driven by improvement in More Personal Computing. Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage increased slightly driven by improvements in Azure and Office 365 Commercial, inclusive of scaling our AI infrastructure, offset in part by sales mix shift to Azure. Operating expenses increased $4.0 billion or 7% driven by Gaming, with 7 points of growth from the Activision Blizzard acquisition, and investments in cloud engineering, offset in part by the prior year Q2 charge."
+      },
+      {
+        "url": "https://msdynamicsworld.com/story/microsoft-2024-q4-earnings-record-cloud-bookings-azure-growth-holds",
+        "title": "Microsoft 2024 Q4 Earnings: Record cloud bookings as Azure growth holds | MSDynamicsWorld.com",
+        "snippet": "# Microsoft 2024 Q4 Earnings: Record cloud bookings as Azure growth holds. Microsoft reported Q4 2024 financial performance today with earnings per share of $2.95 on revenue of $64.7 billion, slightly exceeding analyst estimates. Microsoft Cloud quarterly revenue was $36.8 billion, up 21%. * Azure and other cloud services revenue growth of 29%. * Dynamics products and cloud services revenue increased 16% driven by Dynamics 365 revenue growth of 19% (up 20% in constant currency), offsetting a decline in Dynamics on-premises revenue. * Total quarterly revenue for the Productivity and Business Process segment grew 16%. Full year revenue for 2024 was $245.1 billion, with earnings per share of $11.80, up 22% from 2023. Last quarter, Microsoft reported earnings per share of $2.94 on revenue of $61.9 billion, exceeding analyst estimates. A year ago, Microsoft reported earnings per share of $2.69 on revenue of $56.2 billion. Full-year revenue in 2023 was $211.9 billion with earnings of $9.68 per share."
+      },
+      {
+        "url": "https://cloudwars.com/cloud/microsoft-q4-blowout-nadella-breaks-down-azures-39-growth/",
+        "title": "Microsoft Q4 Blowout: Nadella Breaks Down Azure's 39% Growth - Cloud Wars",
+        "snippet": "Booming customer demand for Microsoft Cloud and AI services revealed itself in multiple ways during Microsoft’s Q4 earnings call, and CEO Satya Nadella said Azure’s 39% Q4 growth was triggered by three distinct factors. Quick refresher: For fiscal Q4 ended June 30, Microsoft posted cloud revenue of a whopping $46.7 billion, up 27%, with Azure accounting for almost $19 billion of that as Azure revenue jumped 39% for the quarter. On-prem migrations to the cloud.** “A good example would be what I remarked about with Nestle,” a massive transformation effort that Nadella earlier in the call had referred to as “one of the largest and most-successful migrations in business history.” Nadella said Azure is now the home for more than 200 SAP instances, more than 10,000 servers, and 1.2 petabytes of data to Azure. Two perfect examples of that are the numbers I cited near the top for the Microsoft Cloud overall, up 27% to $46.7 billion for the quarter, and for Azure, up 39% in the quarter to about $19 billion."
+      },
+      {
+        "url": "https://www.appeconomyinsights.com/p/microsoft-azure-slowdown",
+        "title": "Microsoft: Azure Slowdown",
+        "snippet": "Azure decelerated: Azure grew 30% in constant currency. While that's nothing to scoff at, it came on the low end of the 30%-31% guidance. ·"
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q4/intelligent-cloud-performance",
+        "title": "FY24 Q4 - Intelligent Cloud Performance - Investor Relations - Microsoft",
+        "snippet": "•  Server products and cloud services revenue increased $17.8 billion or 22% driven by Azure and other cloud services. •  Gross margin increased $11.6 billion or 19% driven by growth in Azure. Excluding the impact of the change in accounting estimate, gross margin percentage increased slightly primarily driven by improvement in Azure, inclusive of scaling our AI infrastructure, offset in part by sales mix shift to Azure. •  Operating expenses decreased slightly primarily driven by the prior year Q2 charge, offset in part by investments in Azure. All information speaks as of the last fiscal quarter or year for which we have filed a Form 10-K or 10-Q, or for historical information the date or period expressly indicated in or with such information. Information contained in these documents is current as of the earnings date, and not restated for new accounting standards. #### Related Information."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.appeconomyinsights.com/p/microsoft-azure-slowdown",
+        "title": "💻 Microsoft: Azure Slowdown",
+        "heading": "",
+        "chunk_text": "But hold on a minute. CFO Amy Hood shed light on a key factor during the earnings call. Part of the AI growth is **supply-constrained**, with hardware capacity not keeping up with demand for AI solutions. Microsoft is pouring billions into its infrastructure to catch up, and growth could reaccelerate in 2025.\n\nLet’s break down what we learned from the earnings, visualizing the latest trends.\n\nToday at a glance:\n\n1.   **Microsoft Q4 FY24.**\n\n2.   **Blue screen of death.**\n\n3.   **Earnings call takeaways.**\n\n4.   **OpenAI and Consumer AI.**\n\n[![Image 1](https://substackcdn.com/image/fetch/$s_!90K6!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb63c45c-77ad-448f-af9d-98fd55dc175f_3600x2400.png)](https://substackcdn.com/image/fetch/$s_!90K6!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb63c45c-77ad-448f-af9d-98fd55dc175f_3600x2400.png)\n\nMicrosoft completed its purchase of Activision Blizzard in October 2023. Excluding the acquisition, the company's overall revenue grew by 12% year-over-year.\n\n**Azure**—Microsoft’s cloud computing platform and infrastructure—is included in ‘Server products and cloud services.’ Management shares Azure's growth rate but doesn’t disclose the exact revenue number.",
+        "score": 5.2244,
+        "rank": 0
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/events/fy-2024/earnings-fy-2024-q3",
+        "title": "Earnings FY 2024 q3",
+        "heading": "Microsoft FY24 Third Quarter Earnings Conference Call",
+        "chunk_text": "Microsoft FY24 Third Quarter Earnings Conference Call\n\nIn our consumer business, PC market demand was slightly better than we expected, benefiting Windows OEM, while advertising spend landed relatively in line with our expectations. In Gaming, we also saw better-than-expected performance of Activision titles, benefiting Xbox content and services.\n\nAt a company level, Activision contributed a net impact of approximately 4 points to revenue growth, was a 2 point drag on operating income growth, and had a negative 4 cent impact to earnings per share. A reminder that this net impact includes adjusting for the movement of Activision content from our prior relationship as a third-party partner to first-party, and also includes $935 million from purchase accounting adjustments, integration, and transaction-related costs.\n\nFX did not have a significant impact on our results and was roughly in line with our expectations on total company revenue, segment level revenue, COGS, and operating expense growth.\n\nMicrosoft Cloud gross margin percentage decreased slightly year-over-year to 72%, a bit better than expected. Excluding the impact of the change in accounting estimate for useful lives, gross margin percentage increased slightly driven by improvement in Azure and Office 365, even with the impact of scaling our AI infrastructure, partially offset by sales mix shift to Azure.",
+        "score": 4.656,
+        "rank": 1
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/events/fy-2024/earnings-fy-2024-q3",
+        "title": "Earnings FY 2024 q3",
+        "heading": "Microsoft FY24 Third Quarter Earnings Conference Call",
+        "chunk_text": "Microsoft FY24 Third Quarter Earnings Conference Call\n\nAMY HOOD:Thanks for the question. It’s a good opportunity to clarify, and I would not say that there is a capacity constraint on the copilots. It’s a real priority for us to make sure we optimize the allocation of our capacity to make sure that those per-user businesses are able to continue to grow. And so, think about that as our priority one.\n\nAnd so, then what that does mean is capacity constraints when we have them, you’ll tend to see them on the Azure infrastructure side, the consumption side of the business is a better way of thinking about it.\n\n**ALEX ZUKIN**:Perfect. Thank you.\n\n**BRETT IVERSEN**:Thanks, Alex. That wraps up the Q&A portion of today’s earnings call. Thank you for joining us today, and we look forward to speaking with all of you soon.\n\n**SATYA NADELLA**:Thank you, all.\n\n**AMY HOOD**:Thank you.\n\n(Operator Direction.)\n\nEND",
+        "score": 4.4523,
+        "rank": 2
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/events/fy-2024/earnings-fy-2024-q3",
+        "title": "Earnings FY 2024 q3",
+        "heading": "Microsoft FY24 Third Quarter Earnings Conference Call",
+        "chunk_text": "Microsoft FY24 Third Quarter Earnings Conference Call\n\nIn closing, I am energized about our opportunity ahead, as we innovate to help people and businesses thrive in this new era.\n\nWith that, let me turn it over to Amy.\n\n**AMY HOOD**:\n\nThank you, Satya, and good afternoon everyone.[](https://www.microsoft.com/en-us/investor/events/fy-2024/earnings-fy-2024-q3)Our third quarter revenue was $61.9 billion, up 17% and earnings per share was $2.94, up 20%.\n\nResults exceeded expectations and we delivered another quarter of double-digit top and bottom-line growth with continued share gains across many of our businesses. In our commercial business, bookings increased 29% and 31% in constant currency, significantly ahead of expectations driven by Azure commitments with an increase in average deal size and deal length, as well as strong execution across our core annuity sales motions.\n\nIn Microsoft 365, suite strength contributed to ARPU expansion for our Office Commercial business, although new business growth continued to moderate for standalone products sold outside the Microsoft 365 suite.\n\nCommercial remaining performance obligation increased 20% and 21% in constant currency to $235 billion. Roughly 45% will be recognized in revenue in the next 12 months, up 20% year-over-year. The remaining portion, recognized beyond the next 12 months, increased 21%. And this quarter, our annuity mix increased to 97%.",
+        "score": 3.029,
+        "rank": 3
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/events/fy-2024/earnings-fy-2024-q3",
+        "title": "Earnings FY 2024 q3",
+        "heading": "Microsoft FY24 Third Quarter Earnings Conference Call",
+        "chunk_text": "Microsoft FY24 Third Quarter Earnings Conference Call\n\n**MICHAEL TURRIN, Wells Fargo**:Great, I appreciate you taking the question. I wanted to go back to Azure. You’ve been hinting at stabilization there for the past couple of quarters, but still very good to see the bounce. Maybe you can expand on just what the commercial bookings number, appreciating the variability there, does in terms of visibility. And any characterization you can give us around what you’re seeing in areas like cost optimization and core workload growth coming back is just helpful context for us in unpacking the numbers. Thank you.\n\n**AMY HOOD**:Thanks, Michael. Maybe, I may take those a bit in reverse. It’s a little easier to address them.\n\nWhen you think about we’ve been talking about sort of stabilization and what you saw this quarter, if you break down the Azure number, as you saw, which I think I talked a little bit about with Karl, was seven points of contribution from AI, and you could call them the difference, 24 from our core, really Azure business.\n\nAnd within that, the activity we saw on the consumption side was really this balance that we were quite used to and have seen throughout the cloud transition. We saw new workloads starts, and we saw optimizations. And then those optimizations create new budget, and you apply it. And that cycle, which is actually quite normal, we saw it again this quarter in a balanced way.",
+        "score": 2.5,
+        "rank": 4
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/events/fy-2024/earnings-fy-2024-q3",
+        "title": "Earnings FY 2024 q3",
+        "heading": "Microsoft FY24 Third Quarter Earnings Conference Call",
+        "chunk_text": "Microsoft FY24 Third Quarter Earnings Conference Call\n\nAnd I think that’s why maybe you see our growth be different, of course, than you’d see IT budget spend. It’s because it’s a share, I think, improvement, plus also really focusing on what Satya said, it’s about spending maybe in other areas that we don’t traditionally think of as being in the IT budget spend under a CIO. It’s spend being done by the head of customer service. It’s been being done by the head of marketing. And I do think that will be important as we think about the opportunity ahead.\n\n**MARK MOERDLER**:Incredibly helpful. Thank you both.\n\n**BRETT IVERSEN**:Thanks, Mark. Operator, next question, please.\n\n(Operator Direction.)\n\n**KARL KEIRSTEAD, UBS**:Thank you. And Satya and Amy, congrats on these outstanding Azure results.\n\nI’d love to hone in a little bit on the seven point lift to Azure growth from AI. Outstanding number, but it’s leveling off a little bit from six points in December. I’m wondering if you could unpack that a little bit. To what extent did the capacity issues that you, Amy, highlighted on the call impact that number? Is there any seasonality – I wouldn’t think so – or any other factor that can swing around that number that you’d advise us to keep in mind? Thanks so much.\n\n**AMY HOOD**:Thanks, Karl. There’s not a seasonality to the numbers. You’re absolutely right to start there, and it’s a good question.",
+        "score": 2.2694,
+        "rank": 5
+      },
+      {
+        "url": "https://cloudwars.com/cloud/microsoft-q4-blowout-nadella-breaks-down-azures-39-growth/",
+        "title": "Microsoft Q4 Blowout: Nadella Breaks Down Azure’s 39% Growth",
+        "heading": "Microsoft Q4 Blowout: Nadella Breaks Down Azure’s 39% Growth",
+        "chunk_text": "Microsoft Q4 Blowout: Nadella Breaks Down Azure’s 39% Growth\n\nDuring the Q4 earnings call late last month, Nadella was asked to describe the types of customer demand that have, for the second straight quarter, pushed Azure revenue far above expectations.\n\nNadella pinpointed three primary drivers:\n\n*   ongoing strength for [on-prem-to-cloud](https://cloudwars.com/cloud/ibm-sap-pair-up-to-migrate-10000-on-prem-customers-to-the-cloud/) migrations;\n*   the rapid scaling of cloud-native applications such as e-commerce; and\n*   new AI workloads.\n\n![Image 13](https://cloudwars.com/wp-content/uploads/2024/09/for-maya.png)\n\n_**[AI Agent & Copilot Summit](https://copilot.summitna.com/) is an AI-first event to define opportunities, impact, and outcomes with Microsoft Copilot and agents. Building on its 2025 success, the 2026 event takes place March 17-19 in San Diego. [Get more details.](https://copilot.summitna.com/)**_\n\nLet’s take a quick look at [what Nadella said](https://view.officeapps.live.com/op/view.aspx?src=https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/TranscriptFY25q4) about each.\n\n**1. On-prem migrations to the cloud.** “A good example would be what I remarked about with Nestle,” a massive transformation effort that Nadella earlier in the call had referred to as “one of the largest and most-successful migrations in business history.” Nadella said Azure is now the home for more than 200 SAP instances, more than 10,000 servers, and 1.2 petabytes of data to Azure.",
+        "score": 1.9266,
+        "rank": 6
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/events/fy-2024/earnings-fy-2024-q3",
+        "title": "Earnings FY 2024 q3",
+        "heading": "Microsoft FY24 Third Quarter Earnings Conference Call",
+        "chunk_text": "Microsoft FY24 Third Quarter Earnings Conference Call\n\n**BRETT IVERSEN**:Thanks, Brent. Operator, next question, please.\n\n(Operator Direction.)\n\n**MARK MOERDLER, Bernstein**:Thank you very much for taking my question, and congratulations on the quarter and the guidance. I want to follow up on the AI, obviously. We’re seeing companies shifting their IT spending to invest in and learn about AI, rather than receiving additional budgets for AI. At some point, for AI to be transformative, as everyone expects, it needs to be accretive to spending.\n\nSatya, when do you believe AI will hit the maturity level will be net increase to IT or outside of IT spending? And what would be the leading indicators of that maturation?\n\nAnd Amy, am I characterizing this correctly as it relates to Azure? Some projects are being delayed so that the spending could be shifted to from core Azure toward Azure AI. Thank you.\n\n**SATYA NADELLA**:Yeah, great set of questions, Mark. Let me just start by saying a good place to start is to watch what’s happening in terms of standard issues for software teams, right? I mean, if you think about it, they bought tools in the past. Now, you basically buy tools plus Copilot. You could even say that this is characterized as perhaps shift of what is OpEx dollars into effectively tool spend, because it gives operating leverage to all of the OpEx dollars you’re spending today.",
+        "score": 0.6416,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "What did Microsoft management say about Azure growth deceleration in FY2024 Q3 earnings call?",
+      "What did Microsoft management say about Azure growth deceleration in FY2024 Q4 earnings call?"
+    ],
+    "error": "Connection error."
+  },
+  "judgment": {
+    "verdict": "fail",
+    "score": 0.0,
+    "reasoning": "The system response is empty, providing no answer at all. It fails to address any of the key facts: Azure growth range, capacity constraints, AI workloads, or proper citations. Score is 0.0 as required by the M1 factual correctness score of 0.000.",
+    "judge_model": "deepseek-chat"
+  }
+}

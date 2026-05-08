@@ -1,0 +1,273 @@
+{
+  "category": "hybrid_dual",
+  "expected_behavior": "Filing + web aggregation. Must cite both [SEC/TC-*] and [NEWS:*] markers. Tests hybrid_routing fix.",
+  "question": "Combine Microsoft FY2024 10-K AI strategy disclosures with recent 2025-2026 news on Copilot enterprise adoption.",
+  "ground_truth": "Microsoft's FY2024 10-K describes AI integration across Azure, Microsoft 365 Copilot, GitHub Copilot, and Dynamics 365. The OpenAI partnership and $13B+ investment are noted. Recent news covers Copilot+ PC rollout, Microsoft 365 Copilot seat growth, and enterprise adoption milestones. A good answer cites [SEC-MSFT-*] for 10-K strategy and [NEWS:*] for Copilot adoption news.",
+  "key_facts": [
+    "10-K mentions Azure OpenAI, Microsoft 365 Copilot, GitHub Copilot.",
+    "OpenAI partnership and investment noted in filing.",
+    "Recent news on Copilot enterprise seat growth.",
+    "Must cite [SEC-MSFT-*] AND at least one [NEWS:*].",
+    "Missing either = partial credit."
+  ],
+  "session_id": "eval-20260507T181845Z-12",
+  "metrics": {
+    "m1_factual_correctness": 0.2,
+    "m3_retrieval_recall": 0.4,
+    "m7_judge_score": 0.2
+  },
+  "timing": {
+    "pipeline_s": 69.58,
+    "latency_breakdown": {
+      "search_ms": 2284,
+      "extract_ms": 11929,
+      "chunk_ms": 45,
+      "retrieve_ms": 3060
+    },
+    "total_latency_ms": 69568
+  },
+  "pipeline": {
+    "answer": "# Microsoft's AI Strategy: From FY2024 10-K Disclosures to 2025-2026 Copilot Enterprise Adoption\n\n## Overview\n\nMicrosoft's AI strategy represents a high-stakes, enterprise-first bet that has achieved impressive distribution reach but faces significant headwinds in actual user adoption and market share retention. This synthesis combines the strategic framework disclosed in Microsoft's FY2024 regulatory filings with the real-world adoption metrics from 2025-2026.\n\n---\n\n## 1. Strategic Foundation (FY2024 10-K Disclosures)\n\n### Core Mission and Platform Strategy\n\nMicrosoft's foundational AI strategy is to **\"empower every person and every organization on the planet to achieve more\"** by making digital technology and AI broadly available through integrated platforms [2]. The company deliberately chose a **platform vs. application strategy**:\n\n- **Copilot Studio** exemplifies the long-term goal: enabling organizations to create **custom AI agents** embedded in their own workflows, rather than competing on general-purpose consumer AI chatbots [3]\n- This creates a **\"competitive moat\"** by leveraging enterprise data through Microsoft Graph, making AI solutions deeply integrated and difficult to replace [3]\n\n### Revenue Generation Model\n\nAI is monetized through multiple channels [2]:\n\n| Revenue Stream | Description |\n| :--- | :--- |\n| **Cloud-based solutions** | Azure AI services, Microsoft 365 Copilot |\n| **Content & services** | AI-enhanced offerings |\n| **Licensing & software** | AI-powered productivity tools |\n| **Online advertising** | AI-optimized ad delivery |\n| **Devices** | Surface, Xbox with AI capabilities |\n\n### Financial Commitment\n\nSignificant expenses are incurred to support and invest in cloud-based services foundational to scaling AI capabilities [2].\n\n---\n\n## 2. Competitive Risks and Challenges (10-K Disclosures)\n\nMicrosoft's regulatory filings identify several material risks [2]:\n\n| Risk Category | Specific Disclosures |\n| :--- | :--- |\n| **Algorithmic & Data** | Flawed algorithms, inadequate/biased datasets, harmful AI-generated content |\n| **Operational** | Ineffective deployment practices could impair AI acceptance market-wide; need for expensive human review |\n| **Legal & Regulatory** | Copyright infringement claims, EU AI Act, U.S. AI Executive Order, data protection laws |\n| **Reputational** | Brand harm from AI failures, loss of customer trust |\n| **Ethical & Societal** | Broad societal impacts affecting AI adoption |\n\n---\n\n## 3. Copilot Enterprise Adoption (2025-2026)\n\n### Adoption Milestones\n\n| Date | Key Metric |\n| :--- | :--- |\n| Q1 2024 | 400+ enterprise customers [1] |\n| Q3 2024 | Broader availability and seat expansion [1] |\n| August 2025 | 8M active enterprise licenses; 20M weekly active M365 Copilot users [1] |\n| Q2 FY2026 | 15M paid M365 Copilot seats; 33M active users [1] |\n\n### The Critical Conversion Gap\n\nDespite Microsoft's massive installed base of **400M+ paid M365 seats** (unmatched distribution advantage), the **workplace conversion rate** — percentage of employees with access who actively use Copilot — stands at only **35.8%** as of January 2026 [1][2]. This means **64% of provisioned licenses are unused** — representing significant wasted investment [2].\n\nFor context, ChatGPT's workplace conversion rate is **83.1%** — more than double Copilot's [1].\n\n### Usage Patterns\n\nEnterprise adoption follows a predictable expansion path: **IT/Executive → Knowledge workers → Broad deployment** [1]. Primary use cases include:\n- Meeting summarization (Teams)\n- Email drafting (Outlook)\n- Document creation (Word)\n- Data analysis (Excel)\n\n---\n\n## 4. Market Share Contraction\n\nCopilot's share among paid AI subscribers has declined sharply [1]:\n\n| Period | Copilot Paid Subscriber Share | Change |\n| :--- | :--- | :--- |\n| July 2025 | 18.8% | — |\n| January 2026 | 11.5% | **-39% contraction** |\n\n**Comparative market shares (January 2026)** [1]:\n- **ChatGPT**: 55.2%\n- **Gemini**: 15.7%\n- **Microsoft Copilot**: 11.5%\n\nIn November 2025, Gemini surpassed Copilot in paid subscriber share for the first time, underscoring that **distribution alone does not guarantee adoption** [1].\n\n---\n\n## 5. The \"Adoption Stall\" Problem\n\nThe most significant business impact is the **\"adoption stall\"** — organizations purchase licenses but fail to drive meaningful usage, which is \"quickly becoming the norm\" [2].\n\n### Consequences of Low Adoption [2]\n\n- **Wasted investment**: 64% of licenses unused, costing money without generating results\n- **Inconsistent output**: Unmanaged usage produces \"inconsistent output at scale\"\n- **Compounded problems**: Copilot \"multiplies whatever is already in motion, including the gaps, the errors, and the habits you have not addressed\"\n\n### Adoption Barriers\n\nMost enterprises remain **12-18 months from scaled deployment** [1]. Achieving success requires more than technical rollout (licensing, tenant configuration, governance). Business leaders (CEOs, CFOs, CIOs) must drive:\n- Clear expectations\n- Structured training\n- Expert-led enablement programs [2]\n\n---\n\n## 6. Synthesis: Strategic Framework vs. Market Reality\n\n| Strategic Element (10-K Disclosures) | Market Reality (2025-2026) | Gap Analysis |\n| :--- | :--- | :--- |\n| **Enterprise-first platform strategy** | High distribution (400M+ seats) but low conversion (35.8%) | Platform reach exceeds actual usage |\n| **Competitive moat via data integration** | Users prefer ChatGPT (83.1% conversion vs 35.8%) | Integration alone not enough to drive engagement |\n| **Significant financial investment** | Wasted investment from unused licenses | ROI depends on active adoption management |\n| **Risk: flawed algorithms/biased data** | \"Adoption stall\" produces inconsistent outputs | Realized risk: usage without guardrails |\n| **Risk: regulatory action (EU AI Act)** | Compliance costs may increase | Potential additional barrier to adoption |\n\n---\n\n## Key Takeaways\n\n1. **Distribution ≠ Adoption**: Microsoft's unrivaled M365 installed base (400M+ seats) has not translated into proportional Copilot usage. The 35.8% conversion rate and 64% unused licenses represent a fundamental execution gap.\n\n2. **Market share is eroding**: Copilot's paid subscriber share declined from 18.8% to 11.5% (July 2025–January 2026), with Gemini surpassing it in November 2025. ChatGPT dominates at 55.2% [1].\n\n3. **The 10-K risks are materializing**: The adoption stall validates the regulatory filing's warnings about ineffective deployment practices and the need for human oversight. The \"competitive moat\" strategy faces real-world friction.\n\n4. **Active management is essential**: Microsoft's platform strategy requires organizations to invest in training, governance, and change management. Without this, Copilot multiplies existing organizational gaps rather than solving them [2].\n\n5. **12-18 month deployment lag persists**: Despite aggressive rollout, most enterprises remain far from scaled Copilot integration, suggesting the payoff window for Microsoft's massive AI investment remains uncertain.",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://annualreports.ai/company/united-states/information-technology/microsoft-corporation/",
+        "title": "Download Microsoft Corporation 10-K Annual Report",
+        "snippet": "Download Microsoft Corporation 10-K Annual Report\n\nPerformance cookies are used to understand and analyse the key performance indexes of the website which helps in delivering a better user experience for the visitors.\n\nNo cookies to display.\n\nAdvertisement\n\nAdvertisement cookies are used to provide "
+      },
+      {
+        "num": 2,
+        "url": "https://microsoft.gcs-web.com/static-files/f96f7d38-36ce-4a26-9e29-61701cdca7a7",
+        "title": "Form 10-Q for Microsoft Corp filed 10/30/2024",
+        "snippet": "OPERATIONS\n\nany forward-looking statements, whether because of new information, future events, or otherwise.\n\nThe following Management’s Discussion and Analysis of Financial Condition and Results of Operations (“MD&A”) is intended to help the\n\nreader understand the results of operations and financia"
+      },
+      {
+        "num": 3,
+        "url": "https://aibusinessweekly.net/p/microsoft-copilot-statistics",
+        "title": "Microsoft Copilot Statistics 2026: Users, Adoption & Revenue Data",
+        "snippet": "Microsoft's AI Infrastructure Investment\n\nThe Copilot Studio product is the clearest expression of Microsoft's longer-term AI strategy. Rather than competing head-to-head with ChatGPT for general-purpose AI preference, Microsoft is building infrastructure for organizations to create custom AI agents"
+      },
+      {
+        "num": 4,
+        "url": "https://www.microsoft.com/investor/reports/ar24/index.html",
+        "title": "Microsoft 2024 Annual Report",
+        "snippet": "AVAILABLE INFORMATION\n\nOur Internet address is www.microsoft.com. At our Investor Relations website, www.microsoft.com/investor, we make available free of charge a variety of information for investors. Our goal is to maintain the Investor Relations website as a portal through which investors can eas"
+      },
+      {
+        "num": 5,
+        "url": "https://www.stackmatix.com/blog/copilot-market-adoption-trends",
+        "title": "Microsoft Copilot Adoption Statistics & Trends (2026)",
+        "snippet": "What is Microsoft Copilot's enterprise adoption rate in 2026?\n\nAccording to Recon Analytics' survey of 150,000+ U.S. respondents, Microsoft Copilot's workplace conversion rate stands at **35.8%** — only 36% of employees with access actively use it. This compares to an **83.1%** conversion rate for C"
+      },
+      {
+        "num": 6,
+        "url": "https://avantiico.com/microsoft-365-copilot-adoption-guide-for-businesses/",
+        "title": "The Definitive Microsoft 365 Copilot Adoption Guide for Businesses [2026]",
+        "snippet": "The Definitive Microsoft 365 Copilot Adoption Guide for Businesses [2026]\n\nAvantiico Team\n\nApril 10, 2026\n\nYour organization bought Microsoft 365 Copilot. The licenses are live. And somewhere between the procurement announcement and today,Microsoft 365 Copilot adoption quietly stalled. Now, if you t"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar24/index.html",
+        "title": "Microsoft 2024 Annual Report",
+        "snippet": "*   [Income Taxes](https://www.microsoft.com/investor/reports/ar24/index.html#income-taxes). This year, we also announced a [partnership with G42](https://news.microsoft.com/2024/04/15/microsoft-invests-1-5-billion-in-abu-dhabis-g42-to-accelerate-ai-development-and-global-expansion/), which will run its AI applications and services on our cloud, as we collaborate to bring our latest AI technologies to the United Arab Emirates and other countries. Our [Microsoft Intelligent Data Platform](https://www.microsoft.com/en-us/microsoft-cloud/solutions/intelligent-data-platform) provides customers with the broadest capabilities spanning databases, analytics, business intelligence, and governance—along with seamless integration with all our AI services. And [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric), our AI-powered, next-generation data platform we made generally available this year, now has over 14,000 paid customers who can go from data, to insights, to action—all within the same unified SaaS solution. The decrease from the federal statutory rate in fiscal year 2022 is primarily due to the net income tax benefit related to the transfer of intangible properties, earnings taxed at lower rates in foreign jurisdictions resulting from producing and distributing our products and services through our foreign regional operations center in Ireland, and tax benefits relating to stock-based compensation."
+      },
+      {
+        "url": "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT_FY20Q4_10K",
+        "title": "[DOC] https://cdn-dynmedia-1.microsoft.com/is/content/mi...",
+        "snippet": "$7@\\*JCV`맖pluzXQ?d[-{Y\\,ߩ{˜X\\F L0Qg01 о=59ZA@L/p@FFhei^6[U^q݇×ϻ-ggs'''Q(\\_&W[8#Ƚqr] [8rr$SFUWj上D#DGNVɀ(㽋uI{ !yv̌6RN(i p^\\*#dFbPM cڱLu9Pf#!NZO#rWjH9hl6RN%)GB`:@\"֒ՙɗ~s ˪I$3[ؙw`Vse`,J'OJCmKWd͐%BRP?2z2mY s5ׅ\\*e $:<n\\_ |f\\_޷0/oދx{{wOkLݟ%9n:sTc>6rm\\_O5x1PD͍<).2qZcxFm=a VAm,,uPEc9.U,X>:nmKqpֆkŚkEeXZ%ٵu0QQŽ@ a6< k 75T,F 's} /FqH;V6xukTPkQhJ1JV#QPHXȹ \"5!SGİ,ţ /b?P}2riCmQT\\*I uX\\%RTUDe(\\*0 h1KeW@TB~mCXD%Uп8ɨgzmke^ID6YWDǚ$3Gkb-`pMFe gx1Govc/K[h7(>ZveU$# %A Jo?@Di Fk7q@82lwcO[ \\*#¨ qk\"|zy@W3b[ztYrۭ@dqa/6m<)ĹcKST1`qUjڦQ>xP֎PjրQ$ #P~ H:$7+2$`W2˒t2u{3mmTtQќVDJ԰}\\*l`6ďھG[#q|`ׅ\\*e?Ff\\(4KZIt)Z18jd6JNS=TLw r'IH6CT\\*![Zc!{f+ ?w)$A^.nG@<+|HVoF0{\\_]dmSϪ >T$3FpeRf퓇DPgO R gNev nmr,\\*JDω2xNÿx7|ͺ&ڸAUO\\_q5p(jX3LL\\*fczÆ<\\*o5VPYT :t+'O5xu!x1f P'4bv@2،`:(\\*tt%rİ0lv2MHKl%]?fAeR$2%G\\'e-Њ\\_\\_ߢsr%PWRIBaz;]Oap6ʵI6S؆4J90}|O|${fQR/FyK& M?|}S$Y5ؖ`6ƃ6X2 $| À뇓[D`[ƽ.mkDI)Ϛ$i:R\"ʘըuPd=L2$-<tp֊Ôk$cx`@M@[ͺ6vJ:Tԅ+E8QEVK$p\\*Uh6>`:Xu;©Y41L sk;6%O\"-q[ji?U ZM)`V6xuPާ STBY?pG(E\"ڠ.ˌUdthɊ F(fxiCSIE}jmBdOPfaq\\b J1ڌ:UtrwK0. hTka {ǨP39}PzPWb .{桢IYa| B.bpF 'JJe+WAŋKѫ\\_<w=<yß&iR\"t5v{POHed`DZ;=`9oؿ}n xrmVO5x1x$cbյ ^xQNJҶjqgTkqbT+Aɂ[iTjQjTlq6M, bNb)^qEp ' xj# V26EH2؍m6X)jPK:Ei#b4A Ub]\\1PJAY2x~QM(`ltkG(Dea N0$ 1B($@iW.HզFuW2Dy}G]|R( kSAnDuQ3(p^ V\\$? QlN`^\\*J>(ΒH6A3dD$m|'i (zgƗ](|y/G?>)#,q{L&zSIuDmۋ?n>}}pya7lq{{{۽|$=##\\*xqb1\\*㹈X}ۗjeFT6itT2]:)p}:@o 7i;:)j'}9pnSGnT0Jʤ΢Þt@9՞&d6[ #,y0źrD.Y?$O觊}R,^9#YhJmD0\"6Ah1B)B>h > ~L#+[ѕ{ +ÚȝuMK1ǡ,4@ `J6SrukY9ûe:A[\\_8'a|eF#=h% \\\\*ϯ]D%=QTIǡi\"=6::{}zӝ\\_5;5åfS\\_392ǚ{c~?\\_nQY>SOð:;oo ;ۿ߽ܥO\\_A{2($;&9b/=mn<4^1RS˫yq{7ٻ@J]i]WPQ1\\RUJ:%blKjTIG$Cz2@}2CW+E>: 91Rͨ6BAr%o Ee%f? 7P2H7Rw#@ejZ6]wܢ3(Ɗ9db@{jX8WjN$jr;A@+P/0#V\"1H,\\_ձ4)b<8kd3^!C.ƿP1q!y%bA ,n{xzܶiEj4K%Z/q&܅Dh+WG3oiܧ`bϮ\\`BV-Xlk9(n=୮.}ZUŝN 0)EVsEeA f}8͕[Ҡ2Xd$c! Y.Yܛ(wڷXyM{CLф1\\PLakTKB#\\RFk7TSZ}J/Їwk|~#q :~>Cy,o?nzw78tk93\\_>WyydAh ^ndeA2xF%S\\_TgFM'uP !aɻۈlg(GD0}ӽ\"6#p n!hb3] kbx sak` (Op:X3< 4haH BC3+1\" 1P Ձ%\"\\*+< BX3ba PE 'uk&|E/QfQE `.m3bXg;)@c\\_(FHۛ~z{׽:?qc.F Qg>o7O n@|!`/G #0 [-Z\"7[ \\_Ȝը:Iqo9jÚBBڰ&n&i26a 2vV>&e0|ڳv nm>'\"Dh8%%8 Z@\\Y\\*#oR(kፔ:XZXF60♍W- 5eaF@S =U18ExzQZ\\*<7\\=F9Q%c,)ڨ5a|ҦJM21!R2%VPfYj$UƾnRZ>8mҐŘye :bFRP4VL |R1D%VuR{OPÀ(?ߋQS2/=6.Ը;!thRi!BU'!(΄~\\*&`v8!f+?n>}}mv{Iz-L ̭%d^'G+ǨF$l1]faj@Tmg볪SFSb@`]#!$U 7Q[a 6Ljm( dVqA[sA ᢆȇZ]+ց}`6(W(L!<]'4CM1@OcC$%W}Z %c  >@bG\\3:ư{ 0jc Exux,pi3 C\"G.'/>b1辖p\\_:lX,$Gk۵9]R(/X  6b  .:.W6ok[[R8 `mG{ y@sǳ#b!HwYӰ۞kq%FBώʏ//MR jc9ZA@L !3֨BNSz{ \\_5;5yf)\\_3c1PZu/h\\*8/ +dltC;dK#cssyK-4qRGuM06Hb4ו]h4SH|u ~xHVmCb`-Mi.F:足ʌD10Ѹ5ζM1ruDn4.`bԎ!8ق%q(73' 8Hbyj[QټVCB{YN (Rn4R./L(M-\\_XY[ٔҖɦ/.k`ᬮ+^l^W h(+ YD`Q |X6zWk)RaSp^jh]PzoԴO40͕4UrT~ {=27ǚ{c~?\\_nQY>SOð:;oo\\_vaywAJX\"RIv{wȗo[k?o\\_&COvc/FZqiyqc7ٻgZ~Zw9RAj36 ,\\_ψd5t$\\Eg j(ӈ12:HI˵Y)L$H8q@8 3G Z EeufQW \\\\d\\*6C9.A R.H`hcIPubPqA{:A@ OԄr!u-k6y\\^B3:Sr྘C$N1\\*`j,B͇(ںN3hHL&TV\\z&tkVeu8t}yiVOy?7Y>Sϛԍl?n\\_{t Xh/K}4WTD.3l\\*Iq(ۢŗaKB+z/CdjTY;Șx|E>6B Ϲ-'CAm-'Y^ lTiA b hk b`23iώŏ3|޻k]@ٌ6Ls C9͐rۇzVlqT!X ˸ jӁɵC.N2DS]3DlVySZ+{r>Pra.iB\\*9~ד4&UZ2ocV`R.%uܾ0ish (q0L BW7ir4Ժ$ߢő ͞ \\*m }Vm)kxeF\\*崊D\")F\\*R۞xߧ+2C \\_mŜ6~Tq][s]F)Ϯ^Bӝrhdkf;\\O4eM:@Ye(P֎Pkǒtܞ8ɢW i%F(ώʏӇ&L Qh퓇lAb\\*uŲ\"lb87Ю,ziu=v]sQ-$\\((S.m\"1~~϶8u[` iًԚ~jY3&<[;(Rc9Vx(, aBmqLnm8{RR\\*] n;DAM+urbO( vRGْnk:ݍrx?9jOid=N>ݿ4s:~ΒqWs%qʾZan+=!޺fB\\_|f ̌9Kkrv]=EH[li]y2lۍ耚Z\\_Bri.s #شr5ɡK¦#Sr-,arm XFpځYL8ЀM B+4`Dc9 %̹Ql$Ù-Ï D?m8ƹ˲r9m'.\\N.\\(]BTYKƶ9 Ȧ9ӓڀG?<3YH\"\\*M~Ѫy J%aK] %sif (=m/(]=Hg1> 0ƽ\\*xG$DnZp\\_`ݻO\"]1'ʒ{V\"I|`Tɰ5tGw.\\_VFDs0'yn|50D1w?ޭ^fS{S爐yŒ>[-CwvF7FkZy߾}bVݼN|}#İ.+R9cv+SNdD T5l2(kq+Cn\\_n9d,1N pHh=ȳw(yfئ 48k}lOݨʤi!)-W^[ڿ솝}]G,?cƒI~ v'íb1TcNdAMGbg?ȑ^VaD]ox %Ya٤-Js M,WQ1!.p~Ks&).UT 0mcի\\*^U9h[^!~K<o7d2T.AUV RWPUJӪ ʩŐRl)(i#I`F{2/fJ &\\ڭg$ gm^E!Pkr  ྫ ĥ':a3,Tѥ,iIsxrU%-Z$H1VZ'בKш wHVd%T)Ix \\*cTq.ɊҐh(i\\*Kf\"J sxq\\_ir$h)& eeo},W8է$\\#Ǟ4`!H'۱P$3K \\_| YgmMz  qqx >\\EHrc\\_:Uo\"lg-OĥTpE%MkTv ]{&>$\\*rOE%MUT 9a(}E9$:a\"6IfzʀjXzͿLYfvqihY0 a#c p;u \\_  COX6e[^׍ƔyJwB%8D佻Tbp͠/]̽oɣ6k~w ㏙~y0urT˼NfTI[ZMm&Kn5p-n L(^1Σ!c%ƜaM`(v{gVJ<?gz0R%\\*<-e?`'It}Tiqr+/) N \\*IAIj !\\*Ք}pzS RzQ\\*Xk\\♕,#bi|ž\".o^&ND8a%9\"=ؼ?"
+      },
+      {
+        "url": "https://medium.com/@allthingsproductivity/key-takeaways-from-microsofts-latest-10-k-report-2024-06-30-5e6ac01f2401",
+        "title": "Key Takeaways from Microsoft's Latest 10-K Report (2024–06–30)",
+        "snippet": "Here is a summary of key takeaways from Microsoft's latest 10-K report, focusing on financial performance, operational highlights, risks, and"
+      },
+      {
+        "url": "https://microsoft.gcs-web.com/static-files/f96f7d38-36ce-4a26-9e29-61701cdca7a7",
+        "title": "[PDF] Form 10-Q for Microsoft Corp filed 10/30/2024",
+        "snippet": "The guidance expands the disclosures required for reportable segments in our annual and interim consolidated financial statements, primarily."
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar24/download-center/",
+        "title": "Download Center - Microsoft 2024 Annual Report",
+        "snippet": "# Download Center - Microsoft 2024 Annual Report. # Microsoft Annual Report 2024. *   Accumulated Other Comprehensive Income (Loss). *   Employee Stock and Savings Plans. ## Download Center. ### Microsoft 2024 10-K. ### Letter to Shareholders."
+      },
+      {
+        "url": "https://annualreports.ai/company/united-states/information-technology/microsoft-corporation/",
+        "title": "Download Microsoft Corporation 10-K Annual Report",
+        "snippet": "Microsoft Corporation develops software, cloud platforms, and enterprise technology solutions. # Microsoft Corporation. Microsoft Corporation is a global software company developing operating systems, cloud platforms, and productivity tools. Browse free company annual reports online by sector to track business and market trends. Free online company annual reports arranged by location for regional market insights. Access Microsoft Corporation’s 2025 annual report for financial performance insights and cloud services. ### 2025 Annual Report. Get free online access to company annual reports by financial year for corporate financial insights. Download Report   Download Form 10-K   Create Your Annual Report   Host Your Annual Report. Access Microsoft Corporation’s 2024 annual report for financial performance and software industry insights. Download Report   Download Form 10-K. ## Information Technology Companies In The U.S. Advanced Micro Devices develops processors and graphics technologies for global computing markets. #### Apple Inc. Microsoft Corporation develops software, cloud platforms, and enterprise technology solutions. NVIDIA Corporation designs graphics processors and AI computing technologies."
+      },
+      {
+        "url": "https://www.stackmatix.com/blog/copilot-market-adoption-trends",
+        "title": "Microsoft Copilot Adoption Statistics & Trends (2026) - Stackmatix",
+        "snippet": "## Microsoft Copilot Adoption Statistics & Trends (2026). As of Q2 FY2026, Microsoft Copilot has 15 million paid M365 seats but only 33 million active users, with a workplace conversion rate of just **35.8%**. Despite distribution through Windows, Edge, and Microsoft 365, Copilot faces a significant gap between provisioned licenses and users who actively choose it. This post covers the full copilot market adoption trends and what the data means for 2026. Microsoft Copilot occupies a unique position in the AI landscape—bridging consumer AI search through Bing integration and enterprise productivity through Microsoft 365. Understanding Copilot's adoption patterns across both segments helps businesses determine how much optimization effort to allocate to Microsoft's AI ecosystem versus competitors like ChatGPT and Google Gemini. Three metrics define active adoption: monthly active users across consumer surfaces, enterprise seat activation rates per M365 license tier, and average weekly prompts per active user in business contexts — each tracked separately by Microsoft's admin center."
+      },
+      {
+        "url": "https://windowsforum.com/threads/why-enterprise-copilot-adoption-stalls-4-barriers-and-roi-playbook.404231/",
+        "title": "Why Enterprise Copilot Adoption Stalls: 4 Barriers and ROI Playbook | Windows Forum",
+        "snippet": ":   ai governance   copilot adoption   enterprise ai   microsoft copilot. Microsoft’s revelation that Microsoft 365 Copilot reached 15 million paid seats in its FY2026 Q2 update is both a milestone and a provocation: it proves the product monetizes at scale, yet when measured against Microsoft’s reported 450+ million paid commercial Microsoft 365 seats, paid penetration sits at roughly 3.3%—a figure that demands explanation and provokes a deeper look at why organizations hesitate to pay for Copilot. That strategy produced a complex ecosystem of branded “Copilot” experiences—GitHub Copilot, Microsoft Copilot, Copilot for Microsoft 365, Copilot Pro, Copilot for Sales/Finance/Service/Security, and more—alongside a free, in‑app conversational assistant surface that Microsoft has iteratively expanded. This article draws on the recent reporting and trial data to analyze the four primary obstacles slowing paid Copilot adoption—confusion, cost, camouflaged contribution, and compliance concerns—and to offer practical guidance for Microsoft and IT leaders seeking to move from demonstration to measurable, justifiable ROI."
+      },
+      {
+        "url": "https://avantiico.com/microsoft-365-copilot-adoption-guide-for-businesses/",
+        "title": "The Definitive Microsoft 365 Copilot Adoption Guide for Businesses [2026]",
+        "snippet": "#### Finance Solutions. ### A Day in the Life: The Strategic Role of a Dynamics 365 Project Manager in Business Transformation. # The Definitive Microsoft 365 Copilot Adoption Guide for Businesses [2026]. Ultimately, the best way to achieve M365 Copilot adoption and enablement is by enlisting the help of a premier, expert-led Copilot training provider. ## The Ultimate Microsoft 365 Copilot Adoption Guide for Businesses [2026]. Here is what to know to navigate the adoption of Microsoft Copilot in your business. ### What’s the Microsoft Copilot Adoption Rate? Here are the 5 best practices for Microsoft Copilot adoption that are displayed by organizations that have fully adopted this tool and realized the full potential that it promises:. All the Microsoft 365 Copilot adoption strategies, best practices, and benchmarks in this guide point to the same root cause of failed adoption: organizations that invest in structured, expert-led training get results, and those that skip it don’t."
+      },
+      {
+        "url": "https://aibusinessweekly.net/p/microsoft-copilot-statistics",
+        "title": "Microsoft Copilot Statistics 2026: Users, Adoption & Revenue Data",
+        "snippet": "Over 80% of developers successfully adopted it, with a 96% success rate in getting productive on day one. 67% of users engaged with it at least"
+      },
+      {
+        "url": "https://www.linkedin.com/pulse/top-5-microsoft-copilot-trends-shape-2026-envisionit-mcg6c",
+        "title": "Top 5 Microsoft Copilot Trends That Will Shape 2026 - LinkedIn",
+        "snippet": "In 2026, organizations will move beyond relying solely on Microsoft's built-in agents and begin developing their own custom solutions. With"
+      },
+      {
+        "url": "https://www.ciodive.com/news/microsoft-earnings-Q3-2026/819009/",
+        "title": "Microsoft touts Copilot growth, boosts spending as revenues soar - CIO Dive",
+        "snippet": "*   ![Image 6: search](https://www.ciodive.com/static/img/menu_icons/search.svg?313321260226)Search. *   [![Image 12: Share this article](https://www.ciodive.com/static/img/social_icons/share-icon.svg?313321260226)Share](javascript:void(0)). *   [![Image 15: Post to LinkedIn](https://www.ciodive.com/static/img/social_icons/share_dropdown/linkedin.svg?313321260226)LinkedIn](https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.ciodive.com/news/microsoft-earnings-Q3-2026/819009/&title=Microsoft%20touts%20Copilot%20growth%2C%20boosts%20spending%20as%20revenues%20soar). *   [![Image 16: Post on X](https://www.ciodive.com/static/img/social_icons/share_dropdown/x.svg?313321260226)X/Twitter](https://twitter.com/intent/tweet?text=Microsoft%20touts%20Copilot%20growth%2C%20boosts%20spending%20as%20revenues%20soar%20https%3A//www.ciodive.com/news/microsoft-earnings-Q3-2026/819009/%20via%20@CIOdive). *   [![Image 17: Share on Facebook](https://www.ciodive.com/static/img/social_icons/share_dropdown/facebook.svg?313321260226)Facebook](https://www.facebook.com/sharer/sharer.php?u=https%3A//www.ciodive.com/news/microsoft-earnings-Q3-2026/819009/). *   [![Image 19: License this article](https://www.ciodive.com/static/img/social_icons/article_page/license-icon.svg?313321260226)License](https://www.ciodive.com/selfservice/article-licensing/submit/?newspostUrl=https://www.ciodive.com/news/microsoft-earnings-Q3-2026/819009/). *   [![Image 20: Set preferred source](https://www.ciodive.com/static/img/social_icons/article_page/bookmark-add.svg?313321260226)Add us on Google](https://www.google.com/preferences/source?q=https://www.ciodive.com). *   [![Image 23: Set preferred source](https://www.ciodive.com/static/img/social_icons/article_page/bookmark-add.svg?313321260226)Add us on Google](https://www.google.com/preferences/source?q=https://www.ciodive.com). *   [![Image 27: Post to LinkedIn](https://www.ciodive.com/static/img/social_icons/share_dropdown/linkedin.svg?313321260226)LinkedIn](https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.ciodive.com/news/microsoft-earnings-Q3-2026/819009/&title=Microsoft%20touts%20Copilot%20growth%2C%20boosts%20spending%20as%20revenues%20soar). *   [![Image 28: Post on X](https://www.ciodive.com/static/img/social_icons/share_dropdown/x.svg?313321260226)X/Twitter](https://twitter.com/intent/tweet?text=Microsoft%20touts%20Copilot%20growth%2C%20boosts%20spending%20as%20revenues%20soar%20https%3A//www.ciodive.com/news/microsoft-earnings-Q3-2026/819009/%20via%20@CIOdive). *   [![Image 29: Share on Facebook](https://www.ciodive.com/static/img/social_icons/share_dropdown/facebook.svg?313321260226)Facebook](https://www.facebook.com/sharer/sharer.php?u=https%3A//www.ciodive.com/news/microsoft-earnings-Q3-2026/819009/). *   [![Image 31: License this article](https://www.ciodive.com/static/img/social_icons/article_page/cart.svg?313321260226)purchase licensing rights](https://www.ciodive.com/selfservice/article-licensing/submit/?newspostUrl=https://www.ciodive.com/news/microsoft-earnings-Q3-2026/819009/ \"License\"). ![Image 32: Daily Dive newsletter example](https://www.ciodive.com/static/img/article-signup.png?313321260226). ![Image 39](https://www.ciodive.com/news/microsoft-earnings-Q3-2026/819009/). Explore more of what [](https://www.ciodive.com/news/microsoft-earnings-Q3-2026/819009/) has to offer. *   ![Image 44: editorial resource icon](https://www.ciodive.com/static/img/lib_icons/trendline.svg?353714160519) Trendline [How AI agents are reshaping enterprise work](https://www.ciodive.com/trendline/agentic-ai/598/?utm_source=CIO&utm_medium=Library&utm_campaign=Google)Supported by Google. *   ![Image 46: studioID resource icon](https://www.ciodive.com/static/img/lib_icons/webinar-black.svg?313321260226) Webinar - on demand [How AI-First Teams Turn Enterprise Data Into Action](http://resources.industrydive.com/How-AI-first-teams-turn-enterprise-data-into-action?utm_source=CIO&utm_medium=Library&utm_campaign=Box)Custom content for Box. ![Image 53: Daily Dive newsletter example](https://www.ciodive.com/static/img/article-signup.png?313321260226). *   [![Image 67: linkedin icon](https://www.ciodive.com/static/img/social_icons/article_page/linkedin.svg?313321260226)](https://www.linkedin.com/company/cio-dive-information-and-enterprise-technology-news). *   [![Image 70: rss feed icon](https://www.ciodive.com/static/img/social_icons/article_page/rss.svg?313321260226)](https://www.ciodive.com/feeds/news/). ![Image 72: close menu](https://www.ciodive.com/static/img/menu_icons/close.svg?313321260226). Search ![Image 73: search](https://www.ciodive.com/static/img/menu_icons/search.svg?313321260226). *   Topics![Image 74: down arrow](https://www.ciodive.com/static/img/menu_icons/chevron_down.svg?313321260226)."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://annualreports.ai/company/united-states/information-technology/microsoft-corporation/",
+        "title": "Download Microsoft Corporation 10-K Annual Report",
+        "heading": "Download Microsoft Corporation 10-K Annual Report",
+        "chunk_text": "Download Microsoft Corporation 10-K Annual Report\n\nPerformance cookies are used to understand and analyse the key performance indexes of the website which helps in delivering a better user experience for the visitors.\n\nNo cookies to display.\n\nAdvertisement\n\nAdvertisement cookies are used to provide visitors with customised advertisements based on the pages you visited previously and to analyse the effectiveness of the ad campaigns.\n\nNo cookies to display.\n\nReject All  Save My Preferences  Accept All\n\n[Skip to content](https://annualreports.ai/company/united-states/information-technology/microsoft-corporation/#main)\n\n[![Image 7: AnnualReports.ai logo – AI-powered platform for creating business and annual reports online.](https://annualreports.ai/wp-content/uploads/annual-reports-logo-img.png.webp)![Image 8: AnnualReports.ai logo – AI-powered platform for creating business and annual reports online.](https://annualreports.ai/wp-content/uploads/annual-reports-logo-img.png.webp)](https://annualreports.ai/ \"Annual Reports\")\n\n*   [Our Value Proposition](https://annualreports.ai/our-value-proposition/)\n*   [Services](https://annualreports.ai/services/)\n    *   [Pro Version](https://annualreports.ai/trypro/)\n    *   [Additional Value-Added Services](https://annualreports.ai/additional-value-added-services/)\n    *   [Annual Report Listing](https://annualreports.ai/annual-report-listing/)",
+        "score": 2.9747,
+        "rank": 0
+      },
+      {
+        "url": "https://annualreports.ai/company/united-states/information-technology/microsoft-corporation/",
+        "title": "Download Microsoft Corporation 10-K Annual Report",
+        "heading": "2025 Annual Report",
+        "chunk_text": "2025 Annual Report\n\nFinancial year period\n\n![Image 13: Get free online access to company annual reports by financial year for corporate financial insights.](https://annualreports.ai/wp-content/uploads/company-annual-reports-financial-year-icon-img.png.webp)\n\n1 January 2025 – 30 June 2025\n\n[Download Report](https://annualreports.ai/wp-content/uploads/annual-report-microsoft-2025.pdf)[Download Form 10-K](https://annualreports.ai/wp-content/uploads/10k-form-microsoft-2025.pdf)[Create Your Annual Report](https://annualreports.ai/pricing/)[Host Your Annual Report](https://annualreports.ai/annual-report-listing/)\n\n[![Image 14: Access Microsoft Corporation’s 2024 annual report for financial performance and software industry insights.](https://annualreports.ai/wp-content/uploads/annual-report-microsoft-corporation-2024-img-scaled.jpg.webp)](https://annualreports.ai/wp-content/uploads/annual-report-microsoft-corporation-2024-img-scaled.jpg)",
+        "score": 0.2849,
+        "rank": 1
+      },
+      {
+        "url": "https://annualreports.ai/company/united-states/information-technology/microsoft-corporation/",
+        "title": "Download Microsoft Corporation 10-K Annual Report",
+        "heading": "2024 Annual Report",
+        "chunk_text": "2024 Annual Report\n\nFinancial year period\n\n![Image 15: Get free online access to company annual reports by financial year for corporate financial insights.](https://annualreports.ai/wp-content/uploads/company-annual-reports-financial-year-icon-img.png.webp)\n\n1 January 2024 – 31 December 2024\n\n[Download Report](https://annualreports.ai/wp-content/uploads/annual-report-microsoft-2024.pdf)[Download Form 10-K](https://annualreports.ai/wp-content/uploads/10k-form-microsoft-2024.pdf)",
+        "score": -0.1614,
+        "rank": 2
+      },
+      {
+        "url": "https://microsoft.gcs-web.com/static-files/f96f7d38-36ce-4a26-9e29-61701cdca7a7",
+        "title": "Form 10-Q for Microsoft Corp filed 10/30/2024",
+        "heading": "OPERATIONS",
+        "chunk_text": "OPERATIONS\n\nany forward-looking statements, whether because of new information, future events, or otherwise.\n\nThe following Management’s Discussion and Analysis of Financial Condition and Results of Operations (“MD&A”) is intended to help the\n\nreader understand the results of operations and financial condition of Microsoft Corporation. MD&A is provided as a supplement to, and\n\nshould be read in conjunction with, our Annual Report on Form 10-K for the year ended June 30, 2024, and our financial statements and the\n\naccompanying Notes to Financial Statements (Part I, Item 1 of this Form 10-Q).\n\nOVERVIEW\n\nMicrosoft is a technology company committed to making digital technology and artificial intelligence (“AI”) available broadly and doing so\n\nresponsibly, with a mission to empower every person and every organization on the planet to achieve more. We create platforms and tools,\n\npowered by AI, that deliver innovative solutions that meet the evolving needs of our customers.\n\nWe generate revenue by offering a wide range of cloud-based solutions, content, and other services to people and businesses; licensing and\n\nsupporting an array of software products; delivering relevant online advertising to a global audience; and designing and selling devices. Our\n\nmost significant expenses are related to compensating employees; supporting and investing in our cloud-based services, including",
+        "score": -1.7961,
+        "rank": 3
+      },
+      {
+        "url": "https://aibusinessweekly.net/p/microsoft-copilot-statistics",
+        "title": "Microsoft Copilot Statistics 2026: Users, Adoption & Revenue Data",
+        "heading": "Microsoft's AI Infrastructure Investment",
+        "chunk_text": "Microsoft's AI Infrastructure Investment\n\nThe Copilot Studio product is the clearest expression of Microsoft's longer-term AI strategy. Rather than competing head-to-head with ChatGPT for general-purpose AI preference, Microsoft is building infrastructure for organizations to create custom AI agents embedded in their own workflows. Custom agents built on Microsoft's infrastructure and connected to enterprise data through Microsoft Graph represent a different competitive moat than consumer chatbot preference data captures.",
+        "score": -2.3589,
+        "rank": 4
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar24/index.html",
+        "title": "Microsoft 2024 Annual Report",
+        "heading": "AVAILABLE INFORMATION",
+        "chunk_text": "AVAILABLE INFORMATION\n\nOur Internet address is www.microsoft.com. At our Investor Relations website, www.microsoft.com/investor, we make available free of charge a variety of information for investors. Our goal is to maintain the Investor Relations website as a portal through which investors can easily find or navigate to pertinent information about us, including:\n\n*   Our annual report on Form 10-K, quarterly reports on Form 10-Q, current reports on Form 8-K, and any amendments to those reports, as soon as reasonably practicable after we electronically file that material with or furnish it to the Securities and Exchange Commission (“SEC”) at www.sec.gov.\n*   Information on our business strategies, financial results, and metrics for investors.\n*   Announcements of investor conferences, speeches, and events at which our executives talk about our product, service, and competitive strategies. Archives of these events are also available.\n*   Press releases on quarterly earnings, product and service announcements, legal developments, and international news.\n*   Corporate governance information including our articles of incorporation, bylaws, governance guidelines, committee charters, codes of conduct and ethics, global corporate social responsibility initiatives, and other governance-related policies.\n*   Other news and announcements that we may post from time to time that investors might find useful or interesting.\n*   Opportunities to sign up for email alerts to have information pushed in real time.",
+        "score": -2.409,
+        "rank": 5
+      },
+      {
+        "url": "https://microsoft.gcs-web.com/static-files/f96f7d38-36ce-4a26-9e29-61701cdca7a7",
+        "title": "Form 10-Q for Microsoft Corp filed 10/30/2024",
+        "heading": "ITEM 1A. RI SK FACTORS",
+        "chunk_text": "ITEM 1A. RI SK FACTORS\n\nenvision a future in which AI operating in devices, applications, and the cloud helps our customers be more productive in their work and\n\npersonal lives. As with many innovations, AI presents risks and challenges that could affect its adoption, and therefore our business. AI\n\nalgorithms or training methodologies may be flawed. Datasets may be overbroad, insufficient, or contain biased information. Content\n\ngenerated by AI systems may be offensive, illegal, inaccurate, or otherwise harmful. Ineffective or inadequate AI development or deployment\n\npractices by Microsoft or others could result in incidents that impair the acceptance of AI solutions, cause harm to individuals, customers, or\n\nsociety, or result in our products and services not working as intended. Human review of certain inputs and outputs may be required. Our\n\nimplementation of AI systems could result in legal liability, regulatory action, brand, reputational, or competitive harm, or other adverse\n\nimpacts. These risks may arise from current copyright infringement and other claims related to AI training and output, new and proposed\n\nlegislation and regulations, such as the European Union’s (“EU”) AI Act and the U.S.’s AI Executive Order, and new applications of data\n\nprotection, privacy, consumer protection, intellectual property, and other laws. Some AI scenarios present ethical issues or may have broad",
+        "score": -4.2936,
+        "rank": 6
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar24/index.html",
+        "title": "Microsoft 2024 Annual Report",
+        "heading": "NOTE 1 — ACCOUNTING POLICIES",
+        "chunk_text": "NOTE 1 — ACCOUNTING POLICIES\n\nIn November 2023, the Financial Accounting Standards Board (“FASB”) issued a new standard to improve reportable segment disclosures. The guidance expands the disclosures required for reportable segments in our annual and interim consolidated financial statements, primarily through enhanced disclosures about significant segment expenses. The standard will be effective for us beginning with our annual reporting for fiscal year 2025 and interim periods thereafter, with early adoption permitted. We are currently evaluating the impact of this standard on our segment disclosures.\n\n**_Income Taxes – Improvements to Income Tax Disclosures_**\n\nIn December 2023, the FASB issued a new standard to improve income tax disclosures. The guidance requires disclosure of disaggregated income taxes paid, prescribes standardized categories for the components of the effective tax rate reconciliation, and modifies other income tax-related disclosures. The standard will be effective for us beginning with our annual reporting for fiscal year 2026, with early adoption permitted. We are currently evaluating the impact of this standard on our income tax disclosures.",
+        "score": -6.2924,
+        "rank": 7
+      },
+      {
+        "url": "https://www.stackmatix.com/blog/copilot-market-adoption-trends",
+        "title": "Microsoft Copilot Adoption Statistics & Trends (2026)",
+        "heading": "What is Microsoft Copilot's enterprise adoption rate in 2026?",
+        "chunk_text": "What is Microsoft Copilot's enterprise adoption rate in 2026?\n\nAccording to Recon Analytics' survey of 150,000+ U.S. respondents, Microsoft Copilot's workplace conversion rate stands at **35.8%** — only 36% of employees with access actively use it. This compares to an **83.1%** conversion rate for ChatGPT. Most enterprises remain in pilot mode, 12-18 months from scaled deployment.\n\nAmong paid AI subscribers tracked by Recon Analytics, ChatGPT holds **55.2%** market share, Gemini **15.7%**, and Microsoft Copilot **11.5%** as of January 2026 — down from 18.8% in July 2025, a **-39%** contraction. Gemini surpassed Copilot in paid subscriber share in late November 2025.",
+        "score": 8.4474,
+        "rank": 0
+      },
+      {
+        "url": "https://www.stackmatix.com/blog/copilot-market-adoption-trends",
+        "title": "Microsoft Copilot Adoption Statistics & Trends (2026)",
+        "heading": "Enterprise Copilot: The Bigger Story",
+        "chunk_text": "Enterprise Copilot: The Bigger Story\n\nWorkplace conversion rate refers to the share of provisioned users who actively use Copilot — a defining metric in copilot market adoption trends that separates access from genuine usage.\n\nCopilot for Microsoft 365 is Microsoft's enterprise AI play, showing stronger seat-count growth than consumer metrics suggest. Copilot market adoption trends in enterprise are defined by the gap between provisioned seats and active usage. See also: [SearchGPT market share trends](https://www.stackmatix.com/blog/searchgpt-market-share-adoption-trends).\n\nEnterprise adoption trajectory:\n\nPeriod Enterprise Copilot Milestone\nLate 2023 Initial enterprise rollout\nQ1 2024 400+ enterprise customers\nQ3 2024 Broader availability, seat expansion\n2025 15M paid seats; 8M active enterprise licenses (Aug 2025)\n2026 Automatic M365 installation rollout; mainstream enterprise\n\nAdoption statistics:\n\n*   **15 million** paid M365 Copilot seats (Q2 FY2026)\n*   **8 million** active enterprise licenses (August 2025)\n*   **20 million** weekly active M365 Copilot users (mid-2025)\n*   Primary use cases: meeting summarization (Teams), email drafting (Outlook), document creation (Word), data analysis (Excel)\n*   Expansion pattern: IT/Executive → Knowledge workers → Broad deployment\n\nEnterprise vs consumer strategic importance:",
+        "score": 8.1396,
+        "rank": 1
+      },
+      {
+        "url": "https://avantiico.com/microsoft-365-copilot-adoption-guide-for-businesses/",
+        "title": "The Definitive Microsoft 365 Copilot Adoption Guide for Businesses [2026]",
+        "heading": "The Definitive Microsoft 365 Copilot Adoption Guide for Businesses [2026]",
+        "chunk_text": "The Definitive Microsoft 365 Copilot Adoption Guide for Businesses [2026]\n\nAvantiico Team\n\nApril 10, 2026\n\nYour organization bought Microsoft 365 Copilot. The licenses are live. And somewhere between the procurement announcement and today,Microsoft 365 Copilot adoption quietly stalled. Now, if you think that is an edge case, you are gravely mistaken. The harsh reality is that it is quickly becoming the norm. Industry data shows that only[35.8% of employees with Copilot access actively use it.](https://www.stackmatix.com/blog/copilot-market-adoption-trends)The remaining 64% are costing money without generating results.\n\nWorse, the employees who are using Copilot may be doing so without guardrails, producing inconsistent output at scale. Copilot does not just multiply productivity. It multiplies whatever is already in motion, including the gaps, the errors, and the habits you have not addressed. Getting adoption right is not optional. It requires a plan, clear expectations, and structured training.\n\nUltimately, the best way to achieve M365 Copilot adoption and enablement is by enlisting the help of a premier,[expert-led Copilot training provider](https://avantiico.com/services/microsoft-ai-services/microsoft-365-copilot-training/). But there’s a little more to it than that. Read our definitive Microsoft 365 Copilot AdoptionGuide to ensure adoption sticks.",
+        "score": 8.0116,
+        "rank": 2
+      },
+      {
+        "url": "https://avantiico.com/microsoft-365-copilot-adoption-guide-for-businesses/",
+        "title": "The Definitive Microsoft 365 Copilot Adoption Guide for Businesses [2026]",
+        "heading": "The Ultimate Microsoft 365 Copilot Adoption Guide for Businesses [2026]",
+        "chunk_text": "The Ultimate Microsoft 365 Copilot Adoption Guide for Businesses [2026]\n\nMost Microsoft Copilot adoption guides focus on technical rollout: licensing, tenant configuration, and governance settings. Those are prerequisites, not outcomes. This guide is for the business leaders and decision-makers who own the outcomes, the CEOs, CFOs, CIOs, and operations leads who approved the investment and now need to see it produce measurable value.\n\nHere is what to know to navigate the adoption of Microsoft Copilot in your business.",
+        "score": 7.9303,
+        "rank": 3
+      },
+      {
+        "url": "https://www.stackmatix.com/blog/copilot-market-adoption-trends",
+        "title": "Microsoft Copilot Adoption Statistics & Trends (2026)",
+        "heading": "Copilot vs. ChatGPT in Enterprise Settings",
+        "chunk_text": "Copilot vs. ChatGPT in Enterprise Settings\n\nMicrosoft's enterprise installed base (M365 has 400M+ paid seats) gives Copilot for Microsoft 365 distribution advantages no competitor can match — but distribution and adoption are not the same thing, as the 35.8% conversion rate demonstrates.\n\nAmong paid AI subscribers tracked by Recon Analytics, copilot market adoption trends show Copilot holding **11.5%** share in January 2026, down from **18.8%** in July 2025 — a **-39%** contraction driven by Gemini's rapid growth.",
+        "score": 7.818,
+        "rank": 4
+      },
+      {
+        "url": "https://www.stackmatix.com/blog/copilot-market-adoption-trends",
+        "title": "Microsoft Copilot Adoption Statistics & Trends (2026)",
+        "heading": "",
+        "chunk_text": "As of Q2 FY2026, Microsoft Copilot has 15 million paid M365 seats but only 33 million active users, with a workplace conversion rate of just **35.8%**. Despite distribution through Windows, Edge, and Microsoft 365, Copilot faces a significant gap between provisioned licenses and users who actively choose it. This post covers the full copilot market adoption trends and what the data means for 2026.\n\nMicrosoft Copilot occupies a unique position in the AI landscape—bridging consumer AI search through Bing integration and enterprise productivity through Microsoft 365. Understanding Copilot's adoption patterns across both segments helps businesses determine how much optimization effort to allocate to Microsoft's AI ecosystem versus competitors like ChatGPT and Google Gemini.",
+        "score": 7.7421,
+        "rank": 5
+      },
+      {
+        "url": "https://www.stackmatix.com/blog/copilot-market-adoption-trends",
+        "title": "Microsoft Copilot Adoption Statistics & Trends (2026)",
+        "heading": "Frequently Asked Questions",
+        "chunk_text": "Frequently Asked Questions\n\nThe following copilot market adoption trends questions address the most common inquiries about Microsoft Copilot paid seats, enterprise adoption rates, and market share vs ChatGPT in 2026.",
+        "score": 7.11,
+        "rank": 6
+      },
+      {
+        "url": "https://www.stackmatix.com/blog/copilot-market-adoption-trends",
+        "title": "Microsoft Copilot Adoption Statistics & Trends (2026)",
+        "heading": "Competitive Dynamics: Copilot's Position",
+        "chunk_text": "Competitive Dynamics: Copilot's Position\n\nMarket share contraction means the decline in paid subscriber share, and copilot market adoption trends show a 39% contraction between July 2025 and January 2026.",
+        "score": 6.9048,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "Microsoft FY2024 10-K annual report AI strategy disclosures and competitive risks",
+      "Microsoft Copilot enterprise adoption trends and business impact 2025 to 2026"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "fail",
+    "score": 0.2,
+    "reasoning": "The response fails to cite any [SEC-MSFT-*] or [NEWS:*] markers as required by the expected behavior. It also omits key ground truth facts: the OpenAI partnership and $13B+ investment, Copilot+ PC rollout, and enterprise adoption milestones. The factual correctness score is 0.200, indicating significant missing and incorrect content.",
+    "judge_model": "deepseek-chat"
+  }
+}

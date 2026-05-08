@@ -1,0 +1,54 @@
+Hello, pls load this into your context: 
+
+
+
+I m putting the context in 3 parts:
+
+1) the implementation summary before the overhaul of website code
+
+2) what was my ask
+
+3) summary of what was done later
+
+4) what's been done after summary mentioned in point (2)
+
+5) what's the issue now
+
+6) what I actually want
+
+7) hard constraints
+
+----------
+
+
+
+the implementation summary before the overhaul of website code: @docs/implementation-summary.md 
+
+
+
+2) what was my ask: 
+
+@tmp/prompt_1 
+
+The analysis by claude before doing any change: @tmp/analysis_summary_from_prompt_1 
+
+
+
+3) summary of what was done later:
+
+@tmp/mid_summary_1 
+
++ Created question_v2.txt
+
+
+
+----------
+
+4) what's the issue now:
+
+
+
+
+
+the code is so much changed tat 
+

@@ -1,0 +1,152 @@
+{
+  "category": "single_simple",
+  "expected_behavior": "Single sub-question fast path. Basic retrieval. Aggregator handles trivial single-fact input.",
+  "question": "What was Apple's total revenue in FY2024 according to its annual report?",
+  "ground_truth": "Apple (AAPL) reported total net sales of approximately $391.0 billion for fiscal year 2024 (ended September 2024). This was a slight increase from $383.3B in FY2023. Services segment was the fastest-growing at about $96.2B. Products revenue was approximately $294.9B.",
+  "key_facts": [
+    "Total revenue approximately $391B for FY2024.",
+    "Must cite [SEC-AAPL-*] or equivalent 10-K chunk.",
+    "Should not fabricate a different figure."
+  ],
+  "session_id": "eval-20260507T181518Z-01",
+  "metrics": {
+    "m1_factual_correctness": 0.333,
+    "m3_retrieval_recall": 0.667,
+    "m7_judge_score": 0.9
+  },
+  "timing": {
+    "pipeline_s": 11.44,
+    "latency_breakdown": {
+      "search_ms": 1545,
+      "extract_ms": 2748,
+      "chunk_ms": 4,
+      "retrieve_ms": 2216
+    },
+    "total_latency_ms": 11140
+  },
+  "pipeline": {
+    "answer": "According to Apple's annual financial data, Apple's total revenue in FY2024 (the fiscal year ending September 30, 2024) was **$391.0 billion** (or $391.035 billion when rounded to three decimal places) [1][2].\n\nHere is the specific data from the sources:\n\n- Source [1] states: \"Apple’s total net sales for FY2024 reached **$391.0 billion**, a 2% increase from $383.3 billion in FY2023.\"\n- Source [2] confirms this, reporting: \"Apple annual revenue for 2024 was **$391.035B**\" (millions of US $).",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "snippet": "Revenue Breakdown: $391 Billion Across Five Segments\n\nApple’s total net sales for FY2024 reached **$391.0 billion**, a 2% increase from $383.3 billion in FY2023. While this growth rate may appear modest for a technology giant, it masks significant shifts happening beneath the surface across Apple’s "
+      },
+      {
+        "num": 2,
+        "url": "https://www.macrotrends.net/stocks/charts/AAPL/apple/revenue",
+        "title": "https://www.macrotrends.net/stocks/charts/AAPL/apple/revenue",
+        "snippet": ". Revenue is the top line item on an income statement from which all costs and expenses are subtracted to arrive at net income.\n- Apple revenue for the quarter ending March 31, 2026 was $111.184B, a 16.6% increase year-over-year.\n- Apple revenue for the twelve months ending March 31, 2026 was $451.4"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024 Annual Report Guide | Libertify",
+        "snippet": "# Apple 10-K FY2024: Complete Guide to Apple’s $391 Billion Annual Report. Apple Inc.’s annual 10-K filing with the SEC is one of the most closely watched corporate disclosures in the world. While hardware growth has slowed across most product categories, Apple’s Services ecosystem has emerged as a dominant profit engine, and the launch of Apple Intelligence signals a new chapter in the company’s strategic evolution. This comprehensive guide breaks down every critical component of Apple’s FY2024 annual report — from revenue segmentation and geographic performance to risk factors and capital allocation — providing investors, analysts, and business strategists with actionable insights directly from the source filing. Apple 10-K FY2024 annual report financial dashboard showing key metrics and revenue breakdown. Apple’s total net sales for FY2024 reached **$391.0 billion**, a 2% increase from $383.3 billion in FY2023. Despite representing over half of Apple’s revenue, the iPhone segment delivered essentially flat growth in FY2024 — rising just 0.3% from $200.6 billion to $201.2 billion."
+      },
+      {
+        "url": "https://www.studocu.com/en-us/document/laguardia-community-college/economics/apple-inc-fy2024-annual-10-k-report-comprehensive-overview/148712436",
+        "title": "Apple Inc. FY2024 Annual 10-K Report: Comprehensive Overview",
+        "snippet": "Financial Performance: Overview of Apple's revenue, net income, and gross margins for the fiscal year 2024. Product Segments: Breakdown of sales across"
+      },
+      {
+        "url": "https://www.macrotrends.net/stocks/charts/AAPL/apple/revenue",
+        "title": "Apple Revenue 2012-2026 | AAPL | MacroTrends",
+        "snippet": "## Apple Revenue 2012-2026 | AAPL. * [Prices](https://www.macrotrends.net/stocks/charts/AAPL/apple/stock-price-history). * [Financials](https://www.macrotrends.net/stocks/charts/AAPL/apple/financial-statements). * [Revenue & Profit](https://www.macrotrends.net/stocks/charts/AAPL/apple/revenue). * [Assets & Liabilities](https://www.macrotrends.net/stocks/charts/AAPL/apple/total-assets). * [Margins](https://www.macrotrends.net/stocks/charts/AAPL/apple/profit-margins). * [Price Ratios](https://www.macrotrends.net/stocks/charts/AAPL/apple/pe-ratio). * [Other Ratios](https://www.macrotrends.net/stocks/charts/AAPL/apple/current-ratio). * [Other Metrics](https://www.macrotrends.net/stocks/charts/AAPL/apple/dividend-yield-history). * [Revenue](https://www.macrotrends.net/stocks/charts/AAPL/apple/revenue). * [Gross Profit](https://www.macrotrends.net/stocks/charts/AAPL/apple/gross-profit). * [Operating Income](https://www.macrotrends.net/stocks/charts/AAPL/apple/operating-income). * [EBITDA](https://www.macrotrends.net/stocks/charts/AAPL/apple/ebitda). * [Net Income](https://www.macrotrends.net/stocks/charts/AAPL/apple/net-income). * [EPS](https://www.macrotrends.net/stocks/charts/AAPL/apple/eps-earnings-per-share-diluted). * [Shares Outstanding](https://www.macrotrends.net/stocks/charts/AAPL/apple/shares-outstanding). * Apple revenue for the quarter ending March 31, 2026 was **$111.184B**, a **16.6% increase** year-over-year. * Apple annual revenue for 2025 was **$416.161B**, a **6.43% increase** from 2024. * Apple annual revenue for 2024 was **$391.035B**, a **2.02% increase** from 2023. * Apple annual revenue for 2023 was **$383.285B**, a **2.8% decline** from 2022. | Apple Annual Revenue (Millions of US $) |. | Apple Quarterly Revenue (Millions of US $) |. | [Computer and Technology](https://www.macrotrends.net/stocks/sector/10/computer-and-technology) | [Computer - Microcomputers](https://www.macrotrends.net/stocks/industry/41/) | $3824.144B | $416.161B |. | [Dell (DELL)](/stocks/charts/DELL/dell/revenue) | United States | $114.814B | 18.77 |. | [HP (HPQ)](/stocks/charts/HPQ/hp/revenue) | United States | $16.700B | 5.71 |."
+      },
+      {
+        "url": "https://finance.yahoo.com/news/apple-full-2024-earnings-line-122506497.html",
+        "title": "Apple Full Year 2024 Earnings: In Line With Expectations",
+        "snippet": "### [News](https://www.yahoo.com/). * [US](https://www.yahoo.com/news/us/). * [Health](https://health.yahoo.com/). * [Health](https://health.yahoo.com/). * [Shopping](https://shopping.yahoo.com/). + [Health](https://shopping.yahoo.com/health/). + [Tech](https://shopping.yahoo.com/tech/). ### [Finance](https://finance.yahoo.com/). * [My Portfolio](https://finance.yahoo.com/portfolios/). * [News](https://finance.yahoo.com/news/). + [Tech](https://finance.yahoo.com/topic/tech/). + [More Topics](https://finance.yahoo.com/news/). - [Earnings](https://finance.yahoo.com/topic/earnings/). * [Markets](https://finance.yahoo.com/markets/). + [Stocks](https://finance.yahoo.com/markets/stocks/). - [Most expensive](https://finance.yahoo.com/markets/stocks/most-expensive-stocks/). + [Sectors](https://finance.yahoo.com/sectors/). - [Technology](https://finance.yahoo.com/sectors/technology/). + [Calendar](https://finance.yahoo.com/calendar/). - [Earnings](https://finance.yahoo.com/calendar/earnings/). - [Economic events](https://finance.yahoo.com/calendar/economic/). + [Stock comparison](https://finance.yahoo.com/compare/). + [Advanced charts](https://finance.yahoo.com/chart/%5EGSPC/). * [Community](https://finance.yahoo.com/community/). + [My Money](https://finance.yahoo.com/my-money/). * [Videos](https://finance.yahoo.com/videos/). + [Latest](https://finance.yahoo.com/videos/latest/). * [Watch Now](https://finance.yahoo.com/live/). ### [Sports](https://sports.yahoo.com/). * [Show all](https://sports.yahoo.com/). + [More news](https://sports.yahoo.com/news/). * [Tech](https://tech.yahoo.com/). * [Feedback](https://yahoo.uservoice.com/forums/952723-finance-b3). [Yahoo Finance](https://finance.yahoo.com/). * [News](https://www.yahoo.com/). * [Finance](https://finance.yahoo.com/). * [Sports](https://sports.yahoo.com/). + [News](https://www.yahoo.com/). - [US](https://www.yahoo.com/news/us/). - [Health](https://health.yahoo.com/). - [Health](https://health.yahoo.com/). - [Shopping](https://shopping.yahoo.com/). + [Finance](https://finance.yahoo.com/). - [My portfolio](https://finance.yahoo.com/portfolios/). - [News](https://finance.yahoo.com/news/). - [Markets](https://finance.yahoo.com/markets/). - [Community](https://finance.yahoo.com/community/). - [Videos](https://finance.yahoo.com/videos/). + [Sports](https://sports.yahoo.com/). - [Show all](https://sports.yahoo.com/). * [Tech](https://tech.yahoo.com/). 1. [My Portfolio](https://finance.yahoo.com/portfolios/). 2. [News](https://finance.yahoo.com/news/). 7. [Tech](https://finance.yahoo.com/topic/tech/). 2. [Earnings](https://finance.yahoo.com/topic/earnings/). 3. [Markets](https://finance.yahoo.com/markets/). 1. [Stocks](https://finance.yahoo.com/markets/stocks/). 8. [Most expensive](https://finance.yahoo.com/markets/stocks/most-expensive-stocks/). 5. [Sectors](https://finance.yahoo.com/sectors/). 1. [Technology](https://finance.yahoo.com/sectors/technology/). 3. [Calendar](https://finance.yahoo.com/calendar/). 1. [Earnings](https://finance.yahoo.com/calendar/earnings/). 4. [Economic events](https://finance.yahoo.com/calendar/economic/). 6. [Advanced charts](https://finance.yahoo.com/chart/%5EGSPC/). 5. [Community](https://finance.yahoo.com/community/). 7. [Videos](https://finance.yahoo.com/videos/). 1. [Latest](https://finance.yahoo.com/videos/latest/). 8. [Watch Now](https://finance.yahoo.com/live/). ## Apple ([NASDAQ:AAPL](https://au.finance.yahoo.com/quote/AAPL)) Full Year 2024 Results."
+      },
+      {
+        "url": "https://www.annualreports.com/Company/apple-inc",
+        "title": "Apple Inc. - AnnualReports.com",
+        "snippet": "![Image 6: Apple Inc. Banner Image](https://www.annualreports.com/img/ar/generic_header.webp). ![Image 10](https://www.annualreports.com/img/profile_premiumBadge.webp)Apple Inc. ![Image 11: Apple Inc.](https://www.annualreports.com/HostedData/_ar_prvw/20362.webp). [![Image 12](https://www.annualreports.com/img/ar/sustainability_report_go_icon.webp)](https://www.responsibilityreports.com/Company/apple-inc \"View the latest Apple Inc. sustainability report\"). *   ![Image 13: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/143252.webp)2023 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2023.pdf \"View 2023 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2023.pdf). *   ![Image 14: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/133477.webp)2022 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2022.pdf \"View 2022 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2022.pdf). *   ![Image 15: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/121456.webp)2021 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2021.pdf \"View 2021 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2021.pdf). *   ![Image 16: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/112371.webp)2020 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2020.pdf \"View 2020 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2020.pdf). *   ![Image 17: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/89697.webp)2019 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2019.pdf \"View 2019 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2019.pdf). *   ![Image 18: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/72207.webp)2018 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2018.pdf \"View 2018 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2018.pdf). *   ![Image 19: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/68973.webp)2017 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2017.pdf \"View 2017 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2017.pdf). *   ![Image 20: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/62542.webp)2016 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2016.pdf \"View 2016 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2016.pdf). *   ![Image 21: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/56366.webp)2015 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2015.pdf \"View 2015 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2015.pdf). [Show 27 older reports](https://www.annualreports.com/Company/apple-inc). [x](https://www.annualreports.com/Company/apple-inc \"Close\"). ## [](https://www.annualreports.com/Company/apple-inc). *   [Send Reports](https://www.annualreports.com/sendreports)."
+      },
+      {
+        "url": "https://www.apple.com/newsroom/pdfs/fy2024-q4/FY24_Q4_Consolidated_Financial_Statements.pdf",
+        "title": "[PDF] Apple Inc.",
+        "snippet": "The Company believes that the presentation of results excluding the impact of the reversal of the European General Court’s State Aid decision provides meaningful supplemental information to both management and investors that is indicative of the Company’s core operating results and facilitates comparison of operating results across reporting periods. These non-GAAP measures should not be viewed as a substitute for the Company’s GAAP results. (b) Non-GAAP adjustments to provision for income taxes and net income to reflect the impact of the reversal of the European General Court’s State Aid decision recognized during the fourth quarter of 2024. (c) Represents the per-share impact of the non-GAAP adjustments to net income."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Revenue Breakdown: $391 Billion Across Five Segments",
+        "chunk_text": "Revenue Breakdown: $391 Billion Across Five Segments\n\nApple’s total net sales for FY2024 reached **$391.0 billion**, a 2% increase from $383.3 billion in FY2023. While this growth rate may appear modest for a technology giant, it masks significant shifts happening beneath the surface across Apple’s five reporting segments.\n\nThe revenue composition reveals Apple’s strategic positioning:\n\n| Segment | FY2024 Revenue | % of Total | YoY Change |\n| --- | --- | --- | --- |\n| iPhone | $201.2 billion | 51.4% | +0.3% |\n| Services | $96.2 billion | 24.6% | +12.9% |\n| Wearables, Home & Accessories | $37.0 billion | 9.5% | -7.1% |\n| Mac | $30.0 billion | 7.7% | +2.1% |\n| iPad | $26.7 billion | 6.8% | -5.7% |\n\nThe data tells a clear story: Apple’s hardware portfolio (excluding iPhone) is under pressure, while Services has become the growth locomotive. This structural shift has profound implications for Apple’s margins, as the [broader technology landscape](https://www.libertify.com/interactive-library/stanford-ai-index-report-2025/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K) continues to evolve toward software and subscription-based models.",
+        "score": 7.971,
+        "rank": 0
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Apple Intelligence and R&D Strategy",
+        "chunk_text": "Apple Intelligence and R&D Strategy\n\nApple’s **research and development expenditure** reached approximately **$31.4 billion** in FY2024, up from $29.9 billion in FY2023 — representing roughly 8% of total revenue. While Apple historically spends less on R&D as a percentage of revenue than peers like [AI-focused companies](https://www.libertify.com/interactive-library/deepseek-r1-reinforcement-learning-llm/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K), the absolute dollar figure ranks among the highest in the world.\n\nThe most significant R&D narrative emerging from the FY2024 10-K is **Apple Intelligence** — the company’s on-device AI platform announced at WWDC 2024 and launched with iOS 18.1 in late October 2024. Apple Intelligence represents a fundamentally different approach to AI than competitors like OpenAI or Google:\n\n*   **Privacy-first architecture** — Most AI processing happens on-device using Apple’s Neural Engine, with a “Private Cloud Compute” fallback for heavier tasks\n*   **Integration depth** — Apple Intelligence is woven into the operating system, accessing Siri, Mail, Messages, Photos, and third-party apps seamlessly\n*   **Hardware moat** — Requires A17 Pro or M-series chips, creating a natural upgrade incentive for the 1+ billion devices on older silicon\n*   **OpenAI partnership** — Integrated ChatGPT as an optional capability, balancing Apple’s on-device approach with frontier model access",
+        "score": 7.2881,
+        "rank": 1
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Services: Apple’s High-Margin Growth Engine",
+        "chunk_text": "Services: Apple’s High-Margin Growth Engine\n\nThe Services segment is the standout story of Apple’s FY2024 10-K. Reaching **$96.2 billion** in annual revenue — up 13% year-over-year — Services now generates nearly one-quarter of Apple’s total sales. More importantly, it does so with a **73.9% gross margin**, compared to just 37.2% for hardware products.\n\nApple’s Services ecosystem encompasses:\n\n*   **App Store** — Commissions from app sales and in-app purchases, Apple’s largest services revenue stream\n*   **Advertising** — Search ads in the App Store and targeted advertising across Apple’s platforms\n*   **Cloud services** — iCloud storage subscriptions serving over a billion active devices\n*   **Digital content** — Apple Music, Apple TV+, Apple Arcade, Apple News+, and Fitness+\n*   **Apple Care** — Extended warranty and device protection plans\n*   **Payment services** — Apple Pay, Apple Card, and Apple Cash transaction revenue\n*   **Licensing** — Including the lucrative Google search default deal estimated at $20+ billion annually\n\nThe Services growth trajectory has significant strategic implications. As the [AI revolution reshapes technology business models](https://www.libertify.com/interactive-library/gpt-4-technical-report/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K), Apple’s 2.2 billion active devices serve as the distribution channel for an expanding array of monetizable services.",
+        "score": 7.1339,
+        "rank": 2
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Introduction: Why Apple’s 10-K Matters",
+        "chunk_text": "Introduction: Why Apple’s 10-K Matters\n\nApple Inc.’s annual [10-K filing with the SEC](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-K&dateb=&owner=include&count=10) is one of the most closely watched corporate disclosures in the world. As the planet’s most valuable publicly traded company with a market capitalization exceeding $3 trillion, every data point in Apple’s annual report reverberates across global financial markets.\n\nThe FY2024 10-K, covering the fiscal year ending September 28, 2024, reveals a company navigating a pivotal transition. While hardware growth has slowed across most product categories, Apple’s Services ecosystem has emerged as a dominant profit engine, and the launch of Apple Intelligence signals a new chapter in the company’s strategic evolution.\n\nThis comprehensive guide breaks down every critical component of Apple’s FY2024 annual report — from revenue segmentation and geographic performance to risk factors and capital allocation — providing investors, analysts, and business strategists with actionable insights directly from the source filing.\n\n![Image 1: Apple 10-K FY2024 annual report financial dashboard showing key metrics and revenue breakdown](https://www.libertify.com/wp-content/uploads/2026/03/apple-10k-hero.png.webp)",
+        "score": 6.6879,
+        "rank": 3
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Geographic Revenue and the China Challenge",
+        "chunk_text": "Geographic Revenue and the China Challenge\n\n[Get Started →](https://app.libertify.com/register?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=inline_cta_2&utm_term=apple+annual+report+10-K)",
+        "score": 5.8642,
+        "rank": 4
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Services: Apple’s High-Margin Growth Engine",
+        "chunk_text": "Services: Apple’s High-Margin Growth Engine\n\n![Image 2: Apple Services revenue growth chart showing trajectory from 2020 to 2024 reaching 96.2 billion dollars](https://www.libertify.com/wp-content/uploads/2026/03/apple-services-growth.png.webp)\n\nExplore Apple’s complete 10-K filing as an interactive experience — navigate financial data, risk factors, and strategic insights visually.\n\n[Try It Free →](https://app.libertify.com/register?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=inline_cta_1&utm_term=apple+annual+report+10-K)",
+        "score": 4.5959,
+        "rank": 5
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "iPad: Awaiting a Refresh Catalyst",
+        "chunk_text": "iPad: Awaiting a Refresh Catalyst\n\niPad revenue declined 5.7% to **$26.7 billion**, down from $28.3 billion in FY2023. The decline was driven by lower sales of iPad Pro and entry-level iPad models. However, the late-FY2024 launch of the **M4-powered iPad Pro** — the thinnest Apple product ever — and the redesigned iPad Air with M2 chip are expected to catalyze a rebound in FY2025.",
+        "score": 3.5436,
+        "rank": 6
+      },
+      {
+        "url": "https://www.macrotrends.net/stocks/charts/AAPL/apple/revenue",
+        "title": "https://www.macrotrends.net/stocks/charts/AAPL/apple/revenue",
+        "heading": "",
+        "chunk_text": ". Revenue is the top line item on an income statement from which all costs and expenses are subtracted to arrive at net income.\n- Apple revenue for the quarter ending March 31, 2026 was $111.184B, a 16.6% increase year-over-year.\n- Apple revenue for the twelve months ending March 31, 2026 was $451.442B, a 12.76% increase year-over-year.\n- Apple annual revenue for 2025 was $416.161B, a 6.43% increase from 2024.\n- Apple annual revenue for 2024 was $391.035B, a 2.02% increase from 2023.\n- Apple annual revenue for 2023 was $383.285B, a 2.8% decline from 2022.\nApple Annual Revenue (Millions of US $) |\n|\n---|---|\n2025 | $416,161 |\n2024 | $391,035 |\n2023 | $383,285 |\n2022 | $394,328 |\n2021 | $365,817 |\n2020 | $274,515 |\n2019 | $260,174 |\n2018 | $265,595 |\n2017 | $229,234 |\n2016 | $215,639 |\n2015 | $233,715 |\n2014 | $182,795 |\n2013 | $170,910 |\n2012 | $156,508 |\n2011 | $108,249 |\nApple Quarterly Revenue (Millions of US $) |\n|\n---|---|\n2026-03-31 | $111,184 |\n2025-12-31 | $143,756 |\n2025-09-30 | $102,466 |\n2025-06-30 | $94,036 |\n2025-03-31 | $95,359 |\n2024-12-31 | $124,300 |\n2024-09-30 | $94,930 |\n2024-06-30 | $85,777 |\n2024-03-31 | $90,753 |\n2023-12-31 | $119,575 |\n2023-09-30 | $89,498 |\n2023-06-30 | $81,797 |\n2023-03-31 | $94,836 |\n2022-12-31 | $117,154 |\n2022-09-30 | $90,146 |\n2022-06-30 | $82,959 |\n2022-03-31 | $97,278 |\n2021-12-31 | $123,945 |\n2021-09-30 | $83,360 |\n2021-06-30 | $81,434 |\n2021-03-31 | $89,584 |\n2020-12-31 | $111,439 |\n2020-09-30 | $64,698 |\n2020-06-30 | $59,685 |",
+        "score": 2.1166,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "What was Apple's total revenue in FY2024 according to its annual report?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "pass",
+    "score": 0.9,
+    "reasoning": "The response correctly states Apple's total revenue as $391.0 billion for FY2024, matching the ground truth. It provides accurate citations and covers the key fact. Minor deduction for not citing the exact 10-K chunk, but the answer is factually correct and well-supported.",
+    "judge_model": "deepseek-chat"
+  }
+}

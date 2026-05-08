@@ -1,0 +1,279 @@
+{
+  "category": "hybrid_dual",
+  "expected_behavior": "Filing + web aggregation. Must cite both [SEC/TC-*] and [NEWS:*] markers. Tests hybrid_routing fix.",
+  "question": "What did NVIDIA's most recent 10-K say about AI accelerator competition, and what 2025-2026 news exists about export controls affecting NVIDIA?",
+  "ground_truth": "NVIDIA's 10-K discusses competitive risks from AMD, Intel, Google TPUs, AWS Trainium, and custom silicon. Export control risks (BIS regulations, China restrictions) are highlighted as a key risk factor. Recent news includes US export restrictions to China on H100/H20 chips, resulting in write-downs and guidance revisions. A good answer cites at least one [SEC-NVDA-*] for 10-K content and one [NEWS:*] for recent export control developments.",
+  "key_facts": [
+    "10-K cites AMD, Google TPU, AWS Trainium as competitors.",
+    "Export controls to China are a key 10-K risk factor.",
+    "Recent news should cover H100/H20 export restrictions.",
+    "Must cite [SEC-NVDA-*] AND at least one [NEWS:*].",
+    "Missing either source type = partial credit only."
+  ],
+  "session_id": "eval-20260507T181845Z-11",
+  "metrics": {
+    "m1_factual_correctness": 0.6,
+    "m3_retrieval_recall": 0.8,
+    "m7_judge_score": 0.6
+  },
+  "timing": {
+    "pipeline_s": 68.58,
+    "latency_breakdown": {
+      "search_ms": 2395,
+      "extract_ms": 12028,
+      "chunk_ms": 88,
+      "retrieve_ms": 3268
+    },
+    "total_latency_ms": 68560
+  },
+  "pipeline": {
+    "answer": "# NVIDIA's Competitive Landscape and Export Control Challenges (2025-2026)\n\n## Overview\n\nAnalysis of NVIDIA's most recent 10-K (filed for fiscal year ending January 26, 2025) combined with 2025-2026 news reveals a company enjoying dominant market position while navigating unprecedented regulatory headwinds and emerging competitive threats. The 10-K emphasizes NVIDIA's technological leadership, while external sources detail both competitive pressures and the volatile export control environment.\n\n---\n\n## Part 1: NVIDIA's Self-Portrayed Market Position (from 10-K)\n\n### Strategic Positioning\nThe 10-K describes NVIDIA as a **\"data center scale AI infrastructure company\"** that is \"reshaping all industries\" [2]. The filing emphasizes NVIDIA's **full-stack computing platform** approach extending far beyond individual chips [1]:\n\n| Competitive Advantage | Details from 10-K |\n|:---------------------|:------------------|\n| **Full-Stack Platform** | Combination of GPUs, CPUs, DPUs with CUDA parallel programming model, CUDA-X acceleration libraries, APIs, SDKs, and domain-specific application frameworks [1] |\n| **Architecture Leadership** | Launch of **Blackwell architecture** in fiscal year 2025 - described as \"full set of data center scale infrastructure\" including GPUs, CPUs, DPUs, interconnects, switch chips, systems, and networking adapters [1] |\n| **Ecosystem Scale** | Supports over **6,000 applications**; GPUs and networking power **over 78% of supercomputers** on the global TOP500 list [2] |\n\n### What the 10-K Omits\nThe filing does **not** name specific competitors (AMD, Intel, custom cloud chips) or discuss the export control environment.\n\n---\n\n## Part 2: AI Accelerator Competition (from External Sources)\n\n### Market Share Data\nAccording to Bloomberg Intelligence, NVIDIA's share of the AI accelerator market was **86% in 2025**, unchanged from 2024 [3]. Despite this dominance:\n\n**Key Competitors and Threats [3]:**\n- **Amazon (Trainium)**: Custom AI chips with \"more than $225 billion in revenue commitments,\" including a multi-billion dollar pledge from Meta\n- **Meta**: \"Preparing to deploy homegrown AI chips\"\n- **Intel**: \"Benefiting from AI growth\"\n- **Qualcomm**: \"Making headway in the data center market\"\n\n### Investor Concerns\n| Metric | Value |\n|:-------|:------|\n| Projected revenue expansion (current FY) | **70%** |\n| Prior year growth | **65%** |\n| Projected growth (FY2028) | **32%** (slowing) |\n| PHLX Semiconductor Index (2026) | +60% (NVIDIA was \"one of the worst performers\" among 30 constituents) |\n\nThe core concern: rivals are **\"chipping away at its market share or pricing power\"**, with custom chips (ASICs) from cloud customers representing the main emerging threat [3].\n\n---\n\n## Part 3: Export Controls Timeline (2025-2026)\n\n| Date | Action | Impact on NVIDIA |\n|:----|:-------|:-----------------|\n| **April 2025** | Trump administration imposed indefinite export license requirements on **H20 chips** (downgraded Hopper variant for China compliance) | **$5.5B charge** (later reduced to $4.5B); missed **$2.5B in revenue** [1][2] |\n| **July 2025** | Administration reversed course, allowed H20 exports under licensing assurances, partially tied to rare earth minerals trade negotiations [2] | Sales resumed |\n| **June 2025** | Jensen Huang announced NVIDIA would **stop including China in its forecasts** | Major strategic shift acknowledging market volatility [1] |\n| **December 2025** | BIS introduced case-by-case review system for H200 and similar chips (AMD MI325X) [2] | New conditions: no reduction in US customer capacity, Chinese purchaser compliance, third-party US testing |\n| **December 2025** | Proposed measures: **Unit caps** (75,000 H200/company), **Revenue sharing** (15-25% to US government) | Frame as \"tariffs on routed chips\" [2] |\n| **February 2026** | House committees urged broader restrictions on chipmaking tools; coordinated actions with allies on ASML lithography machines [2] | Expanded scope beyond chips |\n| **March 2026** | Senators Banks (R-IN) and Warren (D-MA) called for suspension/reconsideration of licenses, targeting **Southeast Asian intermediaries** (Malaysia, Thailand, Vietnam, Singapore) [2] | Diversion concerns |\n| **2025 ongoing** | 65 new Chinese entities added to Entity List; Tier 3 countries remain fully restricted for H100/H200/Blackwell [3] | Continuous tightening |\n\n### Three-Tier Global System (Modified Biden-era Rules) [3]\n\n| Tier | Policy |\n|:----|:-------|\n| **Tier 3 countries** | H100/H200/Blackwell GPUs remain **fully restricted** |\n| **Tier 2 organizations** | Validated End User (VEU) status essential for procurement above country caps |\n| **Middle East** | Restrictions relaxed to \"absorb Middle East oil money\" |\n| **China enforcement** | Tightened significantly |\n\n### NVIDIA's Response & Criticism\n\nJensen Huang has been increasingly vocal [1]:\n- **May 2025** (Taiwan): Called curbs a **\"failure\"**\n- Stated restrictions are **\"doing more damage to American business than to China\"**\n- **December 2025**: Met with President Trump to lobby for looser AI GPU export controls [3]\n\n### Ongoing Regulatory Uncertainty\nKevin Hassett (Director, US National Economic Council) indicated \"very, very high-end Nvidia\" AI chips will remain restricted, but the administration might loosen curbs on chips China views as critical to manufacturing [1]. The whipsaw nature—from ban to relaxation to new licensing frameworks—has created significant business uncertainty [2].\n\n---\n\n## Key Takeaways\n\n1. **Market Dominance with Erosion Risk**: NVIDIA holds 86% market share, but investor concerns about custom chips (Amazon Trainium, Meta homegrown, Intel/Qualcomm) are reflected in underperforming stock despite 70% revenue growth [3].\n\n2. **Export Control Volatility as Major Business Risk**: The $5.5B charge on H20 chips, exclusion of China from forecasts, and continuous regulatory whipsaw (ban→relaxation→new framework→stalled sales) represent unprecedented disruption [1][2].\n\n3. **Geopolitical Tension Between US Goals and NVIDIA's Interests**: Huang's public criticism and White House lobbying reflect fundamental disagreement over whether controls effectively limit China or primarily harm American business [1][3].\n\n4. **Regulatory Scope Expanding**: From specific chips to chipmaking equipment (ASML lithography) to Southeast Asian intermediaries, controls are broadening beyond NVIDIA's direct products [2].\n\n5. **Strategic Uncertainty**: NVIDIA cannot reliably project China revenue (excluded from forecasts), faces potential revenue-sharing requirements (15-25%), and confronts unit caps even when sales are permitted [1][2].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
+        "title": "nvda-20250126",
+        "snippet": "nvda-20250126\n\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics"
+      },
+      {
+        "num": 2,
+        "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2026/q4/10K-NVDA.pdf",
+        "title": "0001045810-26-000021",
+        "snippet": "Item 7. Management's Discussion and Analysis of Financial Condition and Results of Operations\n\nThe following discussion and analysis of our financial condition and results of operations should be read in conjunction with “Item 1A. Risk Factors,” our Consolidated Financial Statements and related Note"
+      },
+      {
+        "num": 3,
+        "url": "https://uk.finance.yahoo.com/news/nvidia-facing-more-competition-spooking-110128235.html",
+        "title": "Nvidia Stock Falls Behind as Big Tech Rivals Enter Its Territory",
+        "snippet": "Nvidia Stock Falls Behind as Big Tech Rivals Enter Its Territory\n\nAmazon.com Inc., meanwhile, said its Trainium line of custom AI chips have more than $225 billion in revenue commitments and it recently announced a multi-billion dollar pledge from Meta, which is itself preparing to deploy homegrown "
+      },
+      {
+        "num": 4,
+        "url": "https://www.cnbc.com/2026/02/26/congress-pushes-back-on-nvidia-white-house-with-chip-export-limits.html",
+        "title": "https://www.cnbc.com/2026/02/26/congress-pushes-back-on-nvidia-white-house-with-chip-export-limits.html",
+        "snippet": "the chips would impact military and intelligence.\nAll but two members of the committee voted to advance the measure. There is already a companion bill in the Senate with bipartisan backing from Sens. Jim Banks, R-Ind., and Elizabeth Warren, D-Mass.\n\"We are in an AI arms race, and it's important that"
+      },
+      {
+        "num": 5,
+        "url": "https://www.cnn.com/2025/06/12/tech/nvidia-ceo-china-us-ai-chip-exports",
+        "title": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says",
+        "snippet": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says\n\nNvidia CEO: Forecasts will not include Chinese market\n\n04:08\n\n[![Image 5: This picture shows a view of the Abu Dhabi skyline on May 14, 2025.](https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-221441"
+      },
+      {
+        "num": 6,
+        "url": "https://grokipedia.com/page/United_States_New_Export_Controls_on_Advanced_Computing_and_Semiconductors_to_China",
+        "title": "United States New Export Controls on Advanced Computing and Semiconductors to China",
+        "snippet": "Trump Administration Policy Adjustments (2025–2026)\n\nThe second Trump administration introduced significant fluctuations in export controls on [Nvidia](https://grokipedia.com/page/Nvidia)'s AI chips to [China](https://grokipedia.com/page/China). In April 2025, indefinite export license requirements "
+      },
+      {
+        "num": 7,
+        "url": "https://introl.com/blog/ai-export-controls-navigating-chip-restrictions-globally-2025",
+        "title": "AI Export Controls: Navigating Chip Restrictions Globally",
+        "snippet": "References\n\n9.   Built In. \"Trump Lifted the AI Chip Ban on China, Clearing Nvidia and AMD to Resume Sales: Now What?\" 2025. https://builtin.com/articles/trump-lifts-ai-chip-ban-china-nvidia\n\n10.   Fortune. \"Nvidia takes the gloves off with sharp words for Biden's AI export control rules.\" January 1"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://uk.finance.yahoo.com/news/nvidia-facing-more-competition-spooking-110128235.html",
+        "title": "Nvidia Is Facing More Competition and It's Spooking Investors",
+        "snippet": "... Nvidia is losing significant ground to rivals. The company's share of the AI accelerator market was 86% in 2025, unchanged from 2024"
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/nvidia-10k-annual-report-fy2025/",
+        "title": "NVIDIA 10-K FY2025: $130.5B Revenue & AI Dominance Analysis",
+        "snippet": "While NVIDIA's dominance is clear from the financial results, the 10-K filing also reveals a competitive landscape that is evolving rapidly."
+      },
+      {
+        "url": "https://seekingalpha.com/article/4883665-nvidia-history-says-this-ends-badly",
+        "title": "Nvidia: History Says This Ends Badly (NASDAQ:NVDA)",
+        "snippet": "Nvidia Corporation remains rated Sell due to overvaluation, rising competition, and uncertainty around sustained AI spending by hyperscalers."
+      },
+      {
+        "url": "https://www.facebook.com/TheStreet/posts/nvidias-china-crunch-just-pushed-ai-prices-into-new-territory/1508547587533287/",
+        "title": "Nvidia's China crunch just pushed AI prices into new territory.",
+        "snippet": "Nvidia drops 16% as China's DeepSeek shakes up AI competition. Nvidia's stock fell 16% after Chinese AI startup DeepSeek launched a powerful new"
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
+        "title": "nvda-20250126 - SEC.gov",
+        "snippet": "In 2012, the AlexNet neural network, trained on NVIDIA GPUs, won the ImageNet computer image recognition competition, marking the “Big Bang” moment of AI. We"
+      },
+      {
+        "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2026/q4/10K-NVDA.pdf",
+        "title": "[PDF] FORM 10-K NVIDIA CORPORATION",
+        "snippet": "In addition, it is possible that new competitors or alliances among competitors could emerge and acquire significant market share. A significant"
+      },
+      {
+        "url": "https://introl.com/blog/ai-export-controls-navigating-chip-restrictions-globally-2025",
+        "title": "AI Export Controls: Navigating Chip Restrictions Globally | Introl Blog",
+        "snippet": "Jan 19, 2026 11 min read[Disclaimer](https://introl.com/blog/ai-export-controls-navigating-chip-restrictions-globally-2025#disclaimer). ![Image 3: AI Export Controls: Navigating Chip Restrictions Globally](https://introl.com/static/images/blog/dc-session3-13.webp). NVIDIA's CEO Jensen Huang met with President Trump in early December 2025 to discuss export controls that have whipsawed the AI chip market for three years.¹ The regulations determine which countries can access H100, H200, and Blackwell GPUs—and by extension, which organizations can build competitive AI infrastructure. **For compliance teams:** - Three-tier country classification: Tier 1 (18 allies, no restrictions), Tier 2 (quantity limits ~50K GPUs 2025-2027), Tier 3 (~20 countries, prohibited) - Due diligence requirements: know your customer verification, Entity List screening, ECCN classification, end-use monitoring for diversion prevention - Cloud deployment triggers export controls: technology access applies regardless of physical hardware location; deemed export rules affect multinational teams. **For strategic planning:** - Build compliance capability before urgent need; export controls affect more organizations than commonly assumed - Geographic flexibility: Tier 1 country deployments face fewest restrictions; multi-vendor strategies provide resilience - Policy remains politically contested and coupled to U.S.-China relations; plan for uncertainty and avoid regulatory continuity dependence. https://fortune.com/2025/01/13/nvidia-lashes-out-at-biden-administration-sweeping-last-minute-export-controls-on-ai-chips/."
+      },
+      {
+        "url": "https://grokipedia.com/page/United_States_New_Export_Controls_on_Advanced_Computing_and_Semiconductors_to_China",
+        "title": "United States New Export Controls on Advanced Computing and ...",
+        "snippet": "In 2026, U.S. policies loosened restrictions on certain advanced AI chips, permitting exports of NVIDIA's H200 GPUs to China subject to"
+      },
+      {
+        "url": "https://www.cnn.com/2025/06/12/tech/nvidia-ceo-china-us-ai-chip-exports",
+        "title": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says | CNN Business",
+        "snippet": "# Nvidia will stop including China in its forecasts amid US chip export controls, CEO says. Jensen Huang, CEO of Nvidia, at a conference in Paris on June 11. Chipmaker Nvidia will exclude the Chinese market from its revenue and profit forecasts following the imposition of tough US restrictions on chip sales to China, its CEO said Thursday. Asked whether the US will lift export controls after trade talks with China in London this week, Nvidia CEO Jensen Huang told CNN’s Anna Stewart in Paris: “I’m not counting on it but, if it happens, then it will be a great bonus. Huang’s comments underscore the impact of Washington’s chip curbs on Nvidia, a company once best known for its video game graphics processors, that has profited tremendously from growing demand for AI chips and infrastructure. <p>Nvidia CEO Jensen Huang talks export controls with CNN's Anna Stewart.</p>."
+      },
+      {
+        "url": "https://247wallst.com/investing/2026/03/15/government-drops-sweeping-ai-chip-export-rules-can-nvidia-start-growing-again/",
+        "title": "Government Drops Sweeping AI Chip Export Rules: Can Nvidia ...",
+        "snippet": "The Trump administration's withdrawal of the draft export licensing rule removes a near-term growth constraint on Nvidia's (NVDA) international"
+      },
+      {
+        "url": "https://www.cnbc.com/2026/02/26/congress-pushes-back-on-nvidia-white-house-with-chip-export-limits.html",
+        "title": "Congress takes on Nvidia, White House in push for chip export limits",
+        "snippet": "The effort also pits China hawks on the Hill against Nvidia CEO [Jensen Huang](https://www.cnbc.com/2026/02/03/nvidias-jensen-huang-denies-openai-deal-rumors-theres-no-drama.html), who has repeatedly made the pitch to lawmakers and government official that the more U.S. chips are used in China, the more U.S. companies will be a leader in the space. House Foreign Affairs Committee Chairman Brian Mast, R-Fla., is at the forefront of ensuring [artificial intelligence](https://www.cnbc.com/ai-artificial-intelligence/) and chips are being viewed as a national security asset — and he isn't afraid to call Huang out directly. In the latest salvo, the House Foreign Affairs Committee [advanced legislation](https://www.cnbc.com/2026/01/22/trump-nvidia-ai-chip-exports-china-congress-bill.html) that would allow Congress 30 days to review and block sales of advanced chips to adversarial countries — similar to the power Congress has with [arms and weapons](https://www.cnbc.com/defense/) sales. Mast, a supporter of Trump's, said the committee was in sync with the White House, and the bill codified provisions in a recent Commerce Department regulation that permitted the sale of advanced chips to China."
+      },
+      {
+        "url": "https://finance.yahoo.com/news/nvidia-amd-could-face-worldwide-232031799.html",
+        "title": "Nvidia and AMD Could Face Worldwide AI Chip Export Controls Imposed By the Trump Administration",
+        "snippet": "- Best gifts for sister-in-law. - Best birthday gifts for her. - Best gifts for mother-in-law. - Best anniversary gifts for wife. # Nvidia and AMD Could Face Worldwide AI Chip Export Controls Imposed By the Trump Administration. However, proposed regulations by the Trump administration could mark a major setback for the advancement of AI. U.S. officials are considering rules that would require Nvidia, AMD, and others to obtain government approval before shipping *any* AI chips outside the country, according to a report by Bloomberg. The proposed regulations would require companies to request approval from the U.S. Department of Commerce for the export of any chips designed for AI. In April of 2025, the Trump administration restricted the sale of AI chips to China to conduct a review. For context, Nvidia's chip sales to China totaled $17 billion and 13% of total sales in 2024, helping to illustrate the cost of the previous round of export controls."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
+        "title": "nvda-20250126",
+        "heading": "nvda-20250126",
+        "chunk_text": "nvda-20250126\n\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, AV, robotics, and digital twin applications.\n\nOur two operating segments are \"Compute & Networking\" and \"Graphics.\" Refer to Note 16 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for additional information.\n\nHeadquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\n\nRecent Developments, Future Objectives and Challenges\n\nDemand and Supply\n\nRevenue growth in fiscal year 2025 was driven by data center compute and networking platforms for accelerated computing and AI solutions. Demand for our Hopper architecture drove our significant growth for the full year. We began shipping production systems of the Blackwell architecture in the fourth quarter of fiscal year 2025.",
+        "score": 3.0558,
+        "rank": 0
+      },
+      {
+        "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2026/q4/10K-NVDA.pdf",
+        "title": "0001045810-26-000021",
+        "heading": "Item 7. Management's Discussion and Analysis of Financial Condition and Results of Operations",
+        "chunk_text": "Item 7. Management's Discussion and Analysis of Financial Condition and Results of Operations\n\nThe following discussion and analysis of our financial condition and results of operations should be read in conjunction with “Item 1A. Risk Factors,” our Consolidated Financial Statements and related Notes thereto, as well as other cautionary statements and risks described elsewhere in this Annual Report on Form 10-K, before deciding to purchase, hold, or sell shares of our common stock.\n\nOverview\n\nOur Company and Our Businesses\n\nNVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center scale AI infrastructure company reshaping all industries. Our two operating segments are \"Compute & Networking\" and \"Graphics.\" Refer to Note 16 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for additional information. Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.\n\nRecent Developments, Future Objectives and Challenges",
+        "score": 0.8841,
+        "rank": 1
+      },
+      {
+        "url": "https://uk.finance.yahoo.com/news/nvidia-facing-more-competition-spooking-110128235.html",
+        "title": "Nvidia Stock Falls Behind as Big Tech Rivals Enter Its Territory",
+        "heading": "Nvidia Stock Falls Behind as Big Tech Rivals Enter Its Territory",
+        "chunk_text": "Nvidia Stock Falls Behind as Big Tech Rivals Enter Its Territory\n\nAmazon.com Inc., meanwhile, said its Trainium line of custom AI chips have more than $225 billion in revenue commitments and it recently announced a multi-billion dollar pledge from Meta, which is itself preparing to deploy homegrown AI chips. Meanwhile, Intel Corp. is benefiting from AI growth and Qualcomm Inc. is also making headway in the data center market.\n\n“The problem with having basically 100% market share is that there’s only one direction for it to go, and it certainly seems like these companies could be credible competitors,” said Bill Stone, chief investment officer at Glenview Trust Company.\n\nThere’s little evidence so far to suggest that Nvidia is losing significant ground to rivals. The company’s share of the AI accelerator market was 86% in 2025, unchanged from 2024, according to data compiled by Bloomberg Intelligence. But the threat is raising doubts about the outlook for its long-term growth and making other stocks look relatively more attractive.\n\nNvidia shares are up 7.8% this year, roughly in line with the S&P 500, but the gain pales in comparison to other chip-related companies. The Philadelphia semiconductor index has jumped 60%, leaving Nvidia as one of the worst performers among the benchmark’s 30 constituents in 2026.\n\nStory continues",
+        "score": -0.7357,
+        "rank": 2
+      },
+      {
+        "url": "https://uk.finance.yahoo.com/news/nvidia-facing-more-competition-spooking-110128235.html",
+        "title": "Nvidia Stock Falls Behind as Big Tech Rivals Enter Its Territory",
+        "heading": "Nvidia Stock Falls Behind as Big Tech Rivals Enter Its Territory",
+        "chunk_text": "Nvidia Stock Falls Behind as Big Tech Rivals Enter Its Territory\n\n“If we start to get the sense that Nvidia is losing marginal business, that rivals are chipping away at its market share or pricing power, then that could start to erode its earnings momentum and we could see the stock fall off as a result,” said Stone, who helps oversee $18 billion in assets.\n\nA representative for Nvidia declined to comment, citing a quiet period.\n\nInsatiable demand for AI computing gear fueled Nvidia’s rise to become the world’s most valuable company with a market value of $4.8 trillion. But it’s close to being overtaken by Alphabet, which has seen its market value soar by more than $2.5 trillion over the past year amid excitement about its AI services, which include its popular Gemini chatbot, as well as cloud computing and chip businesses. Alphabet closed on Tuesday with a market value of about $4.7 trillion.\n\nOf course, Nvidia’s revenue growth is still booming. The projected 70% expansion in its current fiscal year, which ends in January, dwarfs growth expected from other megacaps and would be an increase from last year’s 65% clip. But it’s expected to slow to 32% in fiscal 2028, before narrowing further in the subsequent two years. The company is scheduled to report first quarter earnings on May 20.",
+        "score": -3.6669,
+        "rank": 3
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
+        "title": "nvda-20250126",
+        "heading": "nvda-20250126",
+        "chunk_text": "nvda-20250126\n\nWhile our approach starts with powerful chips, what makes it a full-stack computing platform is our large body of software, including the CUDA parallel programming model, the CUDA-X collection of acceleration libraries, APIs, SDKs, and domain-specific application frameworks.\n\nIn addition to software delivered to customers as an integral part of our data center computing platform, we offer paid licenses to NVIDIA AI Enterprise, a comprehensive suite of enterprise-grade AI software and NVIDIA vGPU software for graphics-rich virtual desktops and workstations. We also offer the NVIDIA DGX Cloud, a fully managed AI-training-as-a-service platform which includes cloud-based infrastructure and software for AI, customizable pretrained AI models, and access to NVIDIA experts.\n\nIn fiscal year 2025, we launched the NVIDIA Blackwell architecture, a full set of data center scale infrastructure that includes GPUs, CPUs, DPUs, interconnects, switch chips and systems, and networking adapters. Blackwell excels at processing cutting edge generative AI and accelerated computing workloads with market leading performance and efficiency. Offered in a number of configurations, it can address the needs of customers across industries and a diverse set of AI and accelerated computing use cases.\n\nGaming",
+        "score": -4.4827,
+        "rank": 4
+      },
+      {
+        "url": "https://uk.finance.yahoo.com/news/nvidia-facing-more-competition-spooking-110128235.html",
+        "title": "Nvidia Stock Falls Behind as Big Tech Rivals Enter Its Territory",
+        "heading": "Nvidia Stock Falls Behind as Big Tech Rivals Enter Its Territory",
+        "chunk_text": "Nvidia Stock Falls Behind as Big Tech Rivals Enter Its Territory\n\nFor Nvidia’s bulls, demand for AI processors remains so strong that there’s plenty of revenue growth to go around. Alphabet, Amazon, Meta and Microsoft, plan to spend as much as $725 billion this year on capital expenditures and significantly more in 2027. The four companies account for about 45% of Nvidia’s revenue, according to supply chain data compiled by Bloomberg.\n\nHowever, most of these companies “appear to be putting equal emphasis on heterogenous deployments” of both Nvidia’s chips and custom-made chips, Bank of America analyst Vivek Arya wrote in a research note on April 29.\n\nNotably, Alphabet’s TPUs are seen as one of the best alternatives to Nvidia’s products, and the business has been called Alphabet’s “secret sauce” given they were specifically designed to accelerate machine learning workloads.\n\nIn a sign of how meaningful this business could be, Citizens analyst Andrew Boone estimated that Alphabet will generate about $3 billion of revenue from TPU-related infrastructure in 2026, increasing to $25 billion in 2027.\n\n“I wouldn’t say that Nvidia’s competitive positioning is materially threatened by these new chips, but the market action in Nvidia reflects how people are starting to question its market share, its competitive moat, and its margins,” said Clayton Allison, portfolio manager at Prime Capital Financial, which has about $40 billion in assets.",
+        "score": -4.6214,
+        "rank": 5
+      },
+      {
+        "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2026/q4/10K-NVDA.pdf",
+        "title": "0001045810-26-000021",
+        "heading": "Part I Item 1. Business",
+        "chunk_text": "Part I Item 1. Business\n\nnetworking, data processing, online shopping, live video, and translation. AI model makers use our infrastructure and software hosted at CSPs to develop, build and run AI models, product offerings, and services. Enterprises and startups across a broad range of industries use our accelerated computing platforms to build new generative and agentic AI-enabled products and services, and/or to dramatically accelerate and reduce the costs of their workloads and workflows. The enterprise software industry uses them for new AI assistants, chatbots, and agents; the transportation industry for autonomous driving; the healthcare industry for accelerated and computer-aided drug discovery; and the financial services industry for customer support and fraud detection. Researchers and developers use our computing solutions to accelerate a wide range of important applications, from simulating molecular dynamics to climate forecasting. With support for 6,000 applications, NVIDIA computing enables some of the most promising areas of discovery, from climate prediction to materials science and from wind tunnel simulation to genomics. Including GPUs and networking, NVIDIA powers over 78% of the supercomputers on the global TOP500 list, including 9 of the top 10 systems on the Green500 list. Gamers choose NVIDIA GPUs to enjoy immersive, increasingly cinematic virtual worlds.",
+        "score": -5.4415,
+        "rank": 6
+      },
+      {
+        "url": "https://www.cnbc.com/2026/02/26/congress-pushes-back-on-nvidia-white-house-with-chip-export-limits.html",
+        "title": "https://www.cnbc.com/2026/02/26/congress-pushes-back-on-nvidia-white-house-with-chip-export-limits.html",
+        "heading": "",
+        "chunk_text": "the chips would impact military and intelligence.\nAll but two members of the committee voted to advance the measure. There is already a companion bill in the Senate with bipartisan backing from Sens. Jim Banks, R-Ind., and Elizabeth Warren, D-Mass.\n\"We are in an AI arms race, and it's important that we know where the AI arms dealers are selling,\" Mast said in the interview. He said while Congress has no right to interfere with chips being sold for video games and other commercial purposes, \"when it blends into the world of now, it's real war, real weapon systems, real casualties at the highest level of all militaries, yeah, we're going to have a say.\"\nMast added that Huang \"might not like it, but that's what's going to take place.\"\nNvidia said in a statement to CNBC the likelihood of China's military using American chips was low as \"it makes no sense for the Chinese military to depend on American technology.\"\nThe company added that the \"administration's critics are unintentionally promoting the interests of foreign competitors — America should always want its industry to compete for vetted and approved commercial businesses, and thereby protecting national security, creating American jobs, and keeping America's lead in AI.\"\nMast, a supporter of Trump's, said the committee was in sync with the White House, and the bill codified provisions in a recent Commerce Department regulation that permitted the sale of advanced chips to China.",
+        "score": -6.4708,
+        "rank": 7
+      },
+      {
+        "url": "https://www.cnn.com/2025/06/12/tech/nvidia-ceo-china-us-ai-chip-exports",
+        "title": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says",
+        "heading": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says",
+        "chunk_text": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says\n\nNvidia CEO: Forecasts will not include Chinese market\n\n04:08\n\n[![Image 5: This picture shows a view of the Abu Dhabi skyline on May 14, 2025.](https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2214415461.jpg?c=16x9&q=h_144,w_256,c_fill) This picture shows a view of the Abu Dhabi skyline on May 14, 2025. Fadel Senna/AFP/Getty Images Related article OpenAI and Nvidia among companies building Stargate AI infrastructure in UAE](https://www.cnn.com/2025/05/22/tech/nvidia-openai-stargate-ai-uae-intl)\n\nBut Nvidia missed out on an additional $2.5 billion in revenue because export restrictions prevented it from shipping its H20 AI chips to China. The company developed that chip specifically to accommodate US export controls but was told in April that it would need a special license to do so. Nvidia took a smaller hit than expected from the excess inventory, however: a $4.5 billion charge compared to [the $5.5 billion it had expected](https://www.cnn.com/2025/04/16/tech/nvidia-plunge-h20-chip-china-export-intl-hnk).\n\nKevin Hassett, director of the US National Economic Council, told CNBC Monday that the Trump administration might be open to loosening restrictions on exports of some microchips that China views as critical to its manufacturing sector. But the United States will maintain curbs on “very, very high-end Nvidia” chips that are capable of powering AI systems, he added.\n\nOn Thursday, Nvidia’s Huang again criticized US chip export controls.",
+        "score": 7.771,
+        "rank": 0
+      },
+      {
+        "url": "https://grokipedia.com/page/United_States_New_Export_Controls_on_Advanced_Computing_and_Semiconductors_to_China",
+        "title": "United States New Export Controls on Advanced Computing and Semiconductors to China",
+        "heading": "Trump Administration Policy Adjustments (2025–2026)",
+        "chunk_text": "Trump Administration Policy Adjustments (2025–2026)\n\nThe second Trump administration introduced significant fluctuations in export controls on [Nvidia](https://grokipedia.com/page/Nvidia)'s AI chips to [China](https://grokipedia.com/page/China). In April 2025, indefinite export license requirements were imposed on Nvidia's H20 chips (a downgraded Hopper variant), effectively halting sales and leading to $5.5 billion in charges for Nvidia. This was reversed in July 2025, allowing resumption of H20 exports under licensing assurances, partly tied to trade negotiations involving rare earth minerals.In December 2025/January 2026, the [Bureau of Industry and Security](https://grokipedia.com/page/Bureau_of_Industry_and_Security) revised licensing for Nvidia's H200 and similar chips (e.g., AMD MI325X) to case-by-case review, provided conditions are met: no reduction in global semiconductor capacity for U.S. customers, Chinese purchaser compliance procedures, and independent third-party U.S. testing for performance/security. Proposals included caps (e.g., 75,000 H200 units per Chinese company) and revenue-sharing where the U.S. government receives 15-25% of China sales revenue, framed as tariffs or duties on routed chips.However, sales remained stalled into February/March 2026 pending national security reviews (involving State, Defense, Energy departments), with concerns over diversion.",
+        "score": 7.4976,
+        "rank": 1
+      },
+      {
+        "url": "https://grokipedia.com/page/United_States_New_Export_Controls_on_Advanced_Computing_and_Semiconductors_to_China",
+        "title": "United States New Export Controls on Advanced Computing and Semiconductors to China",
+        "heading": "2023-2025 Updates and Expansions",
+        "chunk_text": "2023-2025 Updates and Expansions\n\ney House committees including the Foreign Affairs Committee, urged the State and Commerce Departments to impose broader restrictions or a sales ban on advanced chipmaking tools and equipment to China. The letter, dated February 11, 2026, targeted gaps in export controls allowing evasion through third countries and emphasized coordination with allies to implement countrywide controls on chokepoint semiconductor manufacturing equipment, such as lithography machines from Dutch firm ASML.[](https://grokipedia.com/page/United_States_New_Export_Controls_on_Advanced_Computing_and_Semiconductors_to_China#ref-27)[[27]](https://grokipedia.com/page/United_States_New_Export_Controls_on_Advanced_Computing_and_Semiconductors_to_China#ref-27)[](https://grokipedia.com/page/United_States_New_Export_Controls_on_Advanced_Computing_and_Semiconductors_to_China#ref-28)[[28]](https://grokipedia.com/page/United_States_New_Export_Controls_on_Advanced_Computing_and_Semiconductors_to_China#ref-28) In March 2026, Senators Jim Banks (R-IN) and Elizabeth Warren (D-MA) sent a letter to Commerce Secretary Howard Lutnick calling for immediate suspension or reconsideration of export licenses for advanced [NVIDIA](https://grokipedia.com/page/Nvidia) AI chips to [China](https://grokipedia.com/page/China) and Southeast Asian intermediaries (Malaysia, Thailand, Vietnam, Singapore).",
+        "score": 6.9522,
+        "rank": 2
+      },
+      {
+        "url": "https://www.cnn.com/2025/06/12/tech/nvidia-ceo-china-us-ai-chip-exports",
+        "title": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says",
+        "heading": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says",
+        "chunk_text": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says\n\n“The goals of the export controls are not being achieved,” he told CNN. “Whatever those goals are that were being discussed initially, (they) are apparently not working. And so I think, with all export controls, the goals have to be well-articulated and tested over time.”\n\nLast month, Huang [said](https://www.cnbc.com/2025/05/21/nvidia-ceo-jensen-huang-slams-us-chip-restrictions-as-a-failure.html) at a news conference in Taiwan that the US curbs on chip exports were a “failure” and warned that the restrictions were doing more damage to American business than to China.\n\nNvidia’s position as a critical supplier of AI chips has put it in the middle of the tech race between the US and China, which escalated earlier this year with the arrival of Chinese tech startup [DeepSeek’s](https://www.cnn.com/2025/02/14/tech/deepseek-ai-openai-hype/index.html) supposedly cheap yet sophisticated AI model. The Trump administration has been eager to position the US as a leader in AI, with Vice President JD Vance saying that “excessive regulation of the AI sector” could “kill a transformative industry just as it’s taking off” [during remarks](https://www.cnn.com/2025/02/11/tech/jd-vance-ai-regulation-paris-intl/index.html) at the Artificial Intelligence Action Summit in Paris earlier this year.\n\nDan Ives, global head of technology research at Wedbush Securities, said easing export controls could be necessary to prevent China from gaining an edge in AI.",
+        "score": 6.9321,
+        "rank": 3
+      },
+      {
+        "url": "https://introl.com/blog/ai-export-controls-navigating-chip-restrictions-globally-2025",
+        "title": "AI Export Controls: Navigating Chip Restrictions Globally",
+        "heading": "References",
+        "chunk_text": "References\n\n9.   Built In. \"Trump Lifted the AI Chip Ban on China, Clearing Nvidia and AMD to Resume Sales: Now What?\" 2025. https://builtin.com/articles/trump-lifts-ai-chip-ban-china-nvidia\n\n10.   Fortune. \"Nvidia takes the gloves off with sharp words for Biden's AI export control rules.\" January 13, 2025. https://fortune.com/2025/01/13/nvidia-lashes-out-at-biden-administration-sweeping-last-minute-export-controls-on-ai-chips/\n\n11.   The Economy. \"'Let's Absorb Middle East Oil Money' — U.S. Eases AI Chip Export Restrictions.\" May 2025. https://economy.ac/news/2025/05/20250549543\n\n12.   TechWire Asia. \"Will US AI Chip export restrictions target Malaysia and Thailand amid China smuggling concerns?\" July 2025. https://techwireasia.com/2025/07/ai-chip-curbs-malaysia-thailand/\n\n13.   IFP. \"The H20 Problem: Inference, Supercomputers, and US Export Control Gaps.\" 2025. https://ifp.org/the-h20-problem/\n\n14.   ———. \"The H20 Problem.\"\n\n15.   The Economy. \"'Let's Absorb Middle East Oil Money.'\"\n\n16.   TrendForce. \"The U.S. Plans to Restrict China's GPU Access via Third Countries Like Singapore and Malaysia.\" December 13, 2024. https://www.trendforce.com/news/2024/12/13/news-the-u-s-plans-to-restrict-chinas-gpu-access-via-third-countries-like-singapore-and-malaysia/",
+        "score": 6.8887,
+        "rank": 4
+      },
+      {
+        "url": "https://www.cnn.com/2025/06/12/tech/nvidia-ceo-china-us-ai-chip-exports",
+        "title": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says",
+        "heading": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says",
+        "chunk_text": "Nvidia will stop including China in its forecasts amid US chip export controls, CEO says\n\nAsked whether the US will lift export controls after [trade talks with China](https://www.cnn.com/2025/06/10/business/us-china-trade-talks-london-agreement-intl-hnk) in London this week, Nvidia CEO Jensen Huang told CNN’s Anna Stewart in Paris: “I’m not counting on it but, if it happens, then it will be a great bonus. I’ve told all of our investors and shareholders that, going forward, our forecasts will not include the China market.”\n\nIn recent years, Washington has stepped up efforts to restrict China’s access to American chip-related technologies, aiming to prevent Beijing from using US innovations to bolster its military and artificial intelligence capabilities.\n\nAd Feedback\n\nAd Feedback\n\nHuang’s comments underscore the impact of Washington’s chip curbs on Nvidia, a company once best known for its video game graphics processors, that has profited tremendously from growing demand for AI chips and infrastructure. The company blew past Wall Street’s revenue expectations [in its first quarter](https://www.cnn.com/2025/05/28/tech/nvidia-earnings-ai-trump-export-controls) of 2025, posting a 69% increase from the same period last year.\n\n![Image 4: <p>Nvidia CEO Jensen Huang talks export controls with CNN's Anna Stewart.</p>](https://media.cnn.com/api/v1/images/stellar/videothumbnails/11329809-61507642-generated-thumbnail.jpg?c=16x9&q=w_1280,c_fill)\n\nVideo Ad Feedback\n\nNvidia CEO: Forecasts will not include Chinese market\n\n04:08  • Source: [CNN](https://www.cnn.com/)",
+        "score": 6.8149,
+        "rank": 5
+      },
+      {
+        "url": "https://introl.com/blog/ai-export-controls-navigating-chip-restrictions-globally-2025",
+        "title": "AI Export Controls: Navigating Chip Restrictions Globally",
+        "heading": "AI Export Controls: Navigating Chip Restrictions Globally",
+        "chunk_text": "AI Export Controls: Navigating Chip Restrictions Globally\n\nNVIDIA's CEO Jensen Huang met with President Trump in early December 2025 to discuss export controls that have whipsawed the AI chip market for three years.¹ The regulations determine which countries\n\n[![Image 2: Blake Crosley](https://introl.com/static/images/blake_crosley_blog_120.webp)](https://blakecrosley.com/)Blake Crosley\n\nJan 19, 2026 11 min read[Disclaimer](https://introl.com/blog/ai-export-controls-navigating-chip-restrictions-globally-2025#disclaimer)\n\n![Image 3: AI Export Controls: Navigating Chip Restrictions Globally](https://introl.com/static/images/blog/dc-session3-13.webp)\n\n**December 2025 Update:** Trump administration modifying Biden-era three-tier export controls, relaxing Middle Eastern restrictions while tightening China enforcement. 65 new Chinese entities added to Entity List in 2025. H100/H200/Blackwell GPUs remain fully restricted to Tier 3 countries. Validated End User (VEU) status becoming essential for Tier 2 organizations seeking procurement above country caps.\n\nNVIDIA's CEO Jensen Huang met with President Trump in early December 2025 to discuss export controls that have whipsawed the AI chip market for three years.¹ The regulations determine which countries can access H100, H200, and Blackwell GPUs—and by extension, which organizations can build competitive AI infrastructure. For enterprises operating globally, understanding export controls has become as essential as understanding the chips themselves.",
+        "score": 6.4877,
+        "rank": 6
+      },
+      {
+        "url": "https://introl.com/blog/ai-export-controls-navigating-chip-restrictions-globally-2025",
+        "title": "AI Export Controls: Navigating Chip Restrictions Globally",
+        "heading": "References",
+        "chunk_text": "References\n\n1.   Tom's Hardware. \"Nvidia lobbies White House and wins loosened AI GPU export control to China.\" December 2025. https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidia-lobbies-white-house-and-wins-loosened-ai-gpu-export-control-to-china-u-s-lawmakers-reportedly-reject-gain-ai-act\n\n2.   EveryCRSReport. \"U.S. Export Controls and China: Advanced Semiconductors.\" 2025. https://www.everycrsreport.com/reports/R48642.html\n\n3.   GamersNexus. \"TIMELINE: GPU Export Controls, NVIDIA GPU Bans, & AI GPU Black Market.\" 2025. https://gamersnexus.net/gpus-news/timeline-gpu-export-controls-nvidia-gpu-bans-ai-gpu-black-market\n\n4.   CSIS. \"Understanding the Biden Administration's Updated Export Controls.\" 2025. https://www.csis.org/analysis/understanding-biden-administrations-updated-export-controls\n\n5.   SemiAnalysis. \"2025 AI Diffusion Export Controls - Microsoft Regulatory Capture, Oracle Tears, Impacts Quantified.\" 2025. https://newsletter.semianalysis.com/p/2025-ai-diffusion-export-controls-microsoft-regulatory-capture-oracle-tears\n\n6.   ———. \"2025 AI Diffusion Export Controls.\"\n\n7.   The Register. \"The risks of export controls on AI chips.\" October 1, 2025. https://www.theregister.com/2025/10/01/the_risks_of_export_controls/\n\n8.   ECIPE. \"H20 Back in the Chinese Market: Washington's Calculated Adjustment.\" 2025. https://ecipe.org/blog/nvidia-in-chinese-market/",
+        "score": 6.337,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "What did NVIDIA's most recent 10-K say about AI accelerator competition?",
+      "What 2025-2026 news exists about export controls affecting NVIDIA?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.6,
+    "reasoning": "The response correctly identifies NVIDIA's competitive landscape and export control risks from the 10-K, but fails to cite any [SEC-NVDA-*] or [NEWS:*] markers as required. It uses generic bracketed numbers [1][2] instead of the specified citation format. The response also cuts off mid-sentence and lacks specific recent news about H100/H20 export restrictions, write-downs, or guidance revisions. While factual content is partially correct, missing required citation format and incomplete coverage of recent news prevent full credit.",
+    "judge_model": "deepseek-chat"
+  }
+}

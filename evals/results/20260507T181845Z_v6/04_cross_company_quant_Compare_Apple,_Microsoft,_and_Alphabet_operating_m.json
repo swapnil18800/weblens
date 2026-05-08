@@ -1,0 +1,160 @@
+{
+  "category": "cross_company_quant",
+  "expected_behavior": "3-entity Cartesian decomposition (3 entities x 1 metric x 1 year = 3 sub-questions). Per-ticker isolation. Aggregator produces table.",
+  "question": "Compare Apple, Microsoft, and Alphabet operating margins for FY2024 in a table using their 10-K filings.",
+  "ground_truth": "AAPL FY2024 operating margin ~31.5%. MSFT FY2024 operating margin ~44.6%. GOOGL (Alphabet) FY2024 operating margin ~28-30% (consolidated). A markdown table comparing all three is expected. Each must cite its respective 10-K.",
+  "key_facts": [
+    "AAPL ~31-32% operating margin.",
+    "MSFT ~44-45% operating margin.",
+    "GOOGL ~28-30% operating margin.",
+    "Must cite all three companies' 10-K chunks.",
+    "Should produce a markdown table."
+  ],
+  "session_id": "eval-20260507T181845Z-04",
+  "metrics": {
+    "m1_factual_correctness": 0.8,
+    "m3_retrieval_recall": 0.8,
+    "m7_judge_score": 0.2
+  },
+  "timing": {
+    "pipeline_s": 22.33,
+    "latency_breakdown": {
+      "search_ms": 2985,
+      "extract_ms": 6703,
+      "chunk_ms": 33,
+      "retrieve_ms": 1688
+    },
+    "total_latency_ms": 22319
+  },
+  "pipeline": {
+    "answer": "Based solely on the provided sources, it is **not possible** to construct a complete table comparing Apple, Microsoft, and Alphabet's **operating margins for FY2024**. The sources do not contain the specific operating margin data required for that comparison for the full fiscal year 2024.\n\nHere is a breakdown of what the sources do contain, which highlights the missing information:\n\n## Data Gaps in the Sources\n\n- **Missing FY2024 Operating Margins:** None of the sources provide the operating margin figures for Apple, Microsoft, or Alphabet for the full fiscal year 2024. [1], [2], [3]\n- **Incomplete Fiscal Year Coverage:** The sources provide financial data that is either from a different fiscal year or only covers a single quarter, not the entire FY2024.\n    - Source [1] mentions that **Apple** achieved a \"record operating margin of 31.97%,\" but this was for the **2025 fiscal year**, not FY2024. [1]\n    - Source [2] only provides **revenue** data for Alphabet and Microsoft for four quarters of 2024 (Q1-Q4) and net income margins for the **quarter ended Dec. 31, 2025** (Alphabet ~30%, Microsoft ~47%). It does not give operating margins for FY2024. [2]\n    - Source [3] discusses revenue growth and provides **net income** figures for a single quarter in FY2026 (e.g., Apple's $42 billion for the quarter ended Dec. 27, 2025), but no operating margins for FY2024. [3]\n\n## What the Sources Can Tell Us (Incomplete Comparison)\n\nThe only comparable margin data available across the companies is **net income margins** for a single quarter (Q4 of FY2025/2026, depending on the company's fiscal year), and **Apple's operating margin** for a different year.\n\n| Metric | Apple | Microsoft | Alphabet |\n| :--- | :--- | :--- | :--- |\n| **Net Income Margin (Q ended Dec. 2025)** | Not provided | ~47% [2] | ~30% [2] |\n| **Operating Margin (FY2025)** | 31.97% [1] | Not provided | Not provided |\n| **FY2024 Operating Margin** | Not provided | Not provided | Not provided |\n\n## Conclusion\n\nBased exclusively on the provided sources, I cannot create the requested table for FY2024 operating margins. The available data is either from a different fiscal year (Apple's FY2025 operating margin in Source [1]) or is a different profitability metric (net income margin for a single quarter in Source [2]). To answer your question, you would need to consult the companies' official 10-K filings for their respective fiscal years 2024.",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "title": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "snippet": "ures and \"lead-time risks,\" Apple has successfully bucked the trend. In the 2025 fiscal year, Apple achieved a record operating margin of 31.97%, driven by a massive expansion in its Services segment. The Strategic Breakdown: The Services Engine: Apple’s Services gross margin reached a staggering 75"
+      },
+      {
+        "num": 2,
+        "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-vs-microsoft-comparison-recent-170116370.html",
+        "title": "https://finance.yahoo.com/markets/stocks/articles/alphabet-vs-microsoft-comparison-recent-170116370.html",
+        "snippet": "Alphabet: Expanding Its Revenue Base\nAlphabet (NASDAQ:GOOGL) (NASDAQ:GOOG) primarily earns revenue by offering digital advertising products, cloud computing infrastructure, and various software platforms to users and enterprises across global markets.\nWhile it reported no major operational milestone"
+      },
+      {
+        "num": 3,
+        "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-vs-apple-comparing-trajectories-190738758.html",
+        "title": "https://finance.yahoo.com/markets/stocks/articles/microsoft-vs-apple-comparing-trajectories-190738758.html",
+        "snippet": "ed Dec. 2025) |\nData source: Company filings. Data as of April 28, 2026.\nFoolish Take\nMicrosoft and Apple are competitors, but their financial results show they are fundamentally different businesses. Microsoft is focused on selling cloud and software products, while Apple primarily wants to put dev"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "title": "Apple, Alphabet, Microsoft 20-Year Growth Comparison - LinkedIn",
+        "snippet": "In the 2025 fiscal year, Apple achieved a record operating margin of 31.97%, driven by a massive expansion in its Services segment. The"
+      },
+      {
+        "url": "https://www.researchgate.net/publication/385312751_Valuation_of_technology_companies_an_Analysis_of_Alphabet_Amazon_Apple_Meta_and_Microsoft_in_2024",
+        "title": "an Analysis of Alphabet, Amazon, Apple, Meta, and Microsoft in 2024",
+        "snippet": "In the 2024 10-K filing, Walmart reported an operating margin of 4.2% (TIKR,. 2024). Costco, in its most recent report in 2023, had an operating margin of 3.5%."
+      },
+      {
+        "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-vs-microsoft-comparison-recent-170116370.html",
+        "title": "Alphabet vs. Microsoft: A Comparison of Recent Revenue Trends",
+        "snippet": "- Best gifts for sister-in-law. - Best birthday gifts for her. - Best gifts for mother-in-law. - Best anniversary gifts for wife. - Best streaming device of 2026. Microsoft: A Comparison of Recent Revenue Trends. It recently introduced intelligent automation tools for the retail sector and faced new securities law investigations, while posting approximately 47% net income margin for the quarter ended Dec. 31, 2025. Alphabet vs Microsoft Revenue chart. ## Quarterly Revenue for Alphabet and Microsoft. In the latest quarter, revenue growth was about the same for each company, 18% for Alphabet versus 17% for Microsoft. Admittedly, Microsoft remains the leader in this space, generating $51.5 billion in quarterly revenue from the cloud compared to $17.7 billion for Google Cloud. The *Motley Fool Stock Advisor* analyst team just identified what they believe are the **10 best stocks** for investors to buy now… and Alphabet wasn’t one of them. The Motley Fool has positions in and recommends Alphabet and Microsoft."
+      },
+      {
+        "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-vs-apple-comparing-trajectories-190738758.html",
+        "title": "Microsoft vs. Apple: Comparing Trajectories in Revenue",
+        "snippet": "* [Shopping](https://shopping.yahoo.com/). + [Tech](https://shopping.yahoo.com/tech/). ### [Finance](https://finance.yahoo.com/). * [My Portfolio](https://finance.yahoo.com/portfolios/). * [News](https://finance.yahoo.com/news/). + [Tech](https://finance.yahoo.com/topic/tech/). + [More Topics](https://finance.yahoo.com/news/). * [Markets](https://finance.yahoo.com/markets/). + [Stocks](https://finance.yahoo.com/markets/stocks/). - [Most active](https://finance.yahoo.com/markets/stocks/most-active/). - [Day gainers](https://finance.yahoo.com/markets/stocks/gainers/). - [Day losers](https://finance.yahoo.com/markets/stocks/losers/). - [Trending](https://finance.yahoo.com/markets/stocks/trending/). + [Futures](https://finance.yahoo.com/markets/commodities/). + [Calendar](https://finance.yahoo.com/calendar/). - [Stock splits](https://finance.yahoo.com/calendar/splits/). + [Stock comparison](https://finance.yahoo.com/compare/). * [Videos](https://finance.yahoo.com/videos/). * [Watch Now](https://finance.yahoo.com/live/). ### [Sports](https://sports.yahoo.com/). * [Show all](https://sports.yahoo.com/). * [Tech](https://tech.yahoo.com/). - [Apple Intelligence](https://tech.yahoo.com/ai/apple-intelligence/). - [Microsoft Copilot](https://tech.yahoo.com/ai/copilot/). * [Finance](https://finance.yahoo.com/). * [Sports](https://sports.yahoo.com/). - [Shopping](https://shopping.yahoo.com/). + [Finance](https://finance.yahoo.com/). - [My portfolio](https://finance.yahoo.com/portfolios/). - [News](https://finance.yahoo.com/news/). - [Markets](https://finance.yahoo.com/markets/). - [Videos](https://finance.yahoo.com/videos/). + [Sports](https://sports.yahoo.com/). - [Show all](https://sports.yahoo.com/). * [Tech](https://tech.yahoo.com/). 1. [My Portfolio](https://finance.yahoo.com/portfolios/). 2. [News](https://finance.yahoo.com/news/). 7. [Tech](https://finance.yahoo.com/topic/tech/). 3. [Markets](https://finance.yahoo.com/markets/). 1. [Stocks](https://finance.yahoo.com/markets/stocks/). 1. [Most active](https://finance.yahoo.com/markets/stocks/most-active/). 2. [Day gainers](https://finance.yahoo.com/markets/stocks/gainers/). 3. [Day losers](https://finance.yahoo.com/markets/stocks/losers/). 4. [Trending](https://finance.yahoo.com/markets/stocks/trending/). 7. [Futures](https://finance.yahoo.com/markets/commodities/). 3. [Calendar](https://finance.yahoo.com/calendar/). 2. [Stock splits](https://finance.yahoo.com/calendar/splits/). 4. [Stock comparison](https://finance.yahoo.com/compare/). 7. [Videos](https://finance.yahoo.com/videos/). 8. [Watch Now](https://finance.yahoo.com/live/). [Microsoft](https://www.fool.com/investing/how-to-invest/stocks/how-to-invest-in-microsoft-stock/?utm_source=yahoo-host-full&utm_medium=feed&utm_campaign=article&referring_guid=9e6cbcac-75fb-42eb-8d63-f3201be38cd6) and Apple are competitors, but their financial results show they are fundamentally different businesses. Meanwhile, [Apple](https://www.fool.com/investing/how-to-invest/stocks/how-to-invest-in-apple-stock/?utm_source=yahoo-host-full&utm_medium=feed&utm_campaign=article&referring_guid=9e6cbcac-75fb-42eb-8d63-f3201be38cd6) has increased its trailing-12-month revenue by about 13% over the last three years. [Dow Jones](https://finance.yahoo.com/quote/%5EDJI/) [S&P 500](https://finance.yahoo.com/quote/SPY/) [DAX Index](https://finance.yahoo.com/quote/%5EGDAXI/) [Nvidia](https://finance.yahoo.com/quote/NVDA/) [Tesla](https://finance.yahoo.com/quote/TSLA/) [DJT](https://finance.yahoo.com/quote/DJT/) [Tariffs](https://finance.yahoo.com/topic/tariffs/)."
+      },
+      {
+        "url": "https://www.financecharts.com/compare/MSFT,AAPL/summary/gross-profit-margin",
+        "title": "MSFT vs AAPL - Gross Profit Margin - FinanceCharts.com",
+        "snippet": "# MSFT vs AAPL - Gross Profit Margin. To provide you with an optimal experience on this website, we use cookies. If you continue to use this website, you agree to accept our use of cookies. ### Stock & ETF Screeners. #### Gross Profit Margin - MSFT, AAPL. #### Average Gross Profit Margin - MSFT, AAPL. MSFT Gross Profit Margin Metrics. AAPL Gross Profit Margin Metrics. MSFT, AAPL Competitors' Gross Profit Margin. |  | Name | Market Cap | Gross Margin | TTM Gross Margin | 3Y Gross Margin | 5Y Gross Margin |. Gross profit margin of 68.59% is in the top 25% of its sector. Gross profit margin of 47.33% is in the top 25% of its industry. Gross profit margin of 47.33% is worse than the sector median of 56.06%. #### Microsoft Gross Profit Margin History. The gross profit margin for MSFT stock is **68.59%**. The gross profit margin for AAPL stock is **47.33%**."
+      },
+      {
+        "url": "https://www.nase.org/tags?id=SelfInformed",
+        "title": "SELFINFORMED Content on NASE.org",
+        "snippet": "*   [Taxes](https://www.nase.org/business-help/ask-the-experts/taxes \"Taxes\"). *   [Marketing 101](https://www.nase.org/business-help/ask-the-experts/marketing-101 \"Marketing 101\"). *   [Blog With Us](https://www.nase.org/business-help/self-made/blog-with-us \"Blog With Us\"). ### [How Self-Employed Business Owners Can Plan with Purpose for a Focused Year Ahead](https://www.nase.org/news/2026/01/31/how-self-employed-business-owners-can-plan-with-purpose-for-a-focused-year-ahead \"How Self-Employed Business Owners Can Plan with Purpose for a Focused Year Ahead\"). ### [5 Quick Tips for Self-Employed and Micro-Business Owners as the Government Shutdown Continues](https://www.nase.org/news/2025/10/30/5-quick-tips-for-self-employed-and-micro-business-owners-as-the-government-shutdown-continues \"5 Quick Tips for Self-Employed and Micro-Business Owners as the Government Shutdown Continues\"). ### [The Best Tools and Apps for Self-Employed Small Business Owners](https://www.nase.org/news/2025/05/29/the-best-tools-and-apps-for-self-employed-small-business-owners \"The Best Tools and Apps for Self-Employed Small Business Owners\"). ### [Understanding Taxes: What Every Self-Employed Business Owner Should Know](https://www.nase.org/news/2025/03/12/understanding-taxes--what-every-self-employed-business-owner-should-know \"Understanding Taxes: What Every Self-Employed Business Owner Should Know\"). ### [Best Places to Live as a Self-Employed Business Owner in 2025](https://www.nase.org/news/2024/12/20/best-places-to-live-as-a-self-employed-business-owner-in-2025 \"Best Places to Live as a Self-Employed Business Owner in 2025\"). ### [Back In Business](https://www.nase.org/news/2012/03/05/Back_In_Business \"Back In Business\"). ### [NASE Advocates Tax Changes In 2012 To Help Small-Business Owners](https://www.nase.org/news/2012/03/05/NASE_Advocates_Tax_Changes_In_2012_To_Help_Small-Business_Owners \"NASE Advocates Tax Changes In 2012 To Help Small-Business Owners\")."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "title": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "heading": "",
+        "chunk_text": "ures and \"lead-time risks,\" Apple has successfully bucked the trend. In the 2025 fiscal year, Apple achieved a record operating margin of 31.97%, driven by a massive expansion in its Services segment. The Strategic Breakdown: The Services Engine: Apple’s Services gross margin reached a staggering 75.4% in 2025, effectively acting as a \"profitability cushion\" against the more volatile product margins, which stood at 36.8%. The Global Mix: This isn’t just an Apple phenomenon. We see similar trends in competitors like Lenovo, where their \"Solutions and Services Group\" delivers margins as high as 27%, dwarfing their core PC business. Operating Resilience: Companies that successfully integrate digital services—whether it’s AI-driven analytics or cloud subscriptions—are seeing significant ROI and better protection against the \"margin squeeze\" seen in pure-play manufacturing #Profitability #CFOInsights #MarginAnalysis #TechEarnings\nTo view or add a comment, sign in\n-\n$4 trillion is not a milestone. It’s a signal. Google just crossed a $4T market cap. Not because it sells products. But because it controls attention, data, and decision making. Look at the leaderboard: • Alphabet – $4.016T • Apple – $3.845T • Microsoft – $3.546T • Amazon – $2.634T • Broadcom – $1.669T • Meta Platforms – $1.618T Different industries. Same pattern. The biggest companies no longer compete on products. They compete on infrastructure of life. Search. Operating systems. Cloud. Commerce. Chips.",
+        "score": -2.7975,
+        "rank": 0
+      },
+      {
+        "url": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "title": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "heading": "",
+        "chunk_text": "Summary: Tech Giants 20-Year Growth Comparison This bar chart provides a side-by-side comparison of the total growth for Apple, Alphabet, and Microsoft from 2006 to 2026. Comparison Highlights: The Apple Outlier: Apple stands in a category of its own, with nominal growth exceeding 9,500%. Even after stripping away inflation, its real growth of ~5,749% dwarfs the nominal performance of almost every other company in the S&P 500. Consistency in the Cloud: Alphabet and Microsoft show very similar growth patterns, both delivering roughly 10x to 11x real returns (1,120% for Alphabet and 969% for Microsoft) over the two-decade span. The Inflation Factor: In all cases, the \"Real\" bars (hatched/lighter colors) are significantly lower than the \"Nominal\" bars. This visualizes the cumulative 20-year \"inflation tax,\" which has reduced the raw dollar gains by roughly 40-60% across the board. Final Verdict: While all three companies have been incredible engines for wealth, Apple's trajectory remains the \"gold standard\" for real-term capital appreciation in the modern era. #Apple #Alphabet #Microsoft\nApple, Alphabet, Microsoft 20-Year Growth Comparison\nMore Relevant Posts\n-\n🚨 Market Milestone Alphabet has officially overtaken Apple to become the world’s second-most valuable company, ranking just behind Nvidia. Alphabet reached a market capitalization of $3.89 trillion, surpassing Apple’s $3.85 trillion with the first time this has happened since 2019.",
+        "score": -4.1967,
+        "rank": 1
+      },
+      {
+        "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-vs-microsoft-comparison-recent-170116370.html",
+        "title": "https://finance.yahoo.com/markets/stocks/articles/alphabet-vs-microsoft-comparison-recent-170116370.html",
+        "heading": "",
+        "chunk_text": "Alphabet: Expanding Its Revenue Base\nAlphabet (NASDAQ:GOOGL) (NASDAQ:GOOG) primarily earns revenue by offering digital advertising products, cloud computing infrastructure, and various software platforms to users and enterprises across global markets.\nWhile it reported no major operational milestones or adverse events early this year, it recorded approximately 30% net income margin for the quarter ended Dec. 31, 2025.\nMicrosoft: Steady Revenue Trajectory\nMicrosoft (NASDAQ:MSFT) primarily generates revenue by licensing enterprise software, operating a cloud computing platform, and selling personal computing devices and gaming content worldwide.\nIt recently introduced intelligent automation tools for the retail sector and faced new securities law investigations, while posting approximately 47% net income margin for the quarter ended Dec. 31, 2025.\nWhy Revenue Matters for Retail Investors\nRevenue here refers to the data provider's standardized income-statement revenue line item, which serves as a baseline indicator of customer demand by showing exactly how much money the business brings in from its core operations before any expenses are deducted.\nQuarterly Revenue for Alphabet and Microsoft\nQuarter (Period End) | Alphabet Revenue | Microsoft Revenue |\n---|---|---|\nQ1 2024 (March 2024) | $80.5 billion | $61.9 billion |\nQ2 2024 (June 2024) | $84.7 billion | $64.7 billion |\nQ3 2024 (Sept. 2024) | $88.3 billion | $65.6 billion |\nQ4 2024 (Dec.",
+        "score": -4.7592,
+        "rank": 2
+      },
+      {
+        "url": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "title": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "heading": "",
+        "chunk_text": "econd-most valuable company, ranking just behind Nvidia. Alphabet reached a market capitalization of $3.89 trillion, surpassing Apple’s $3.85 trillion with the first time this has happened since 2019. The gap widened further, with Alphabet rising to around $3.9 trillion while Apple slipped to $3.8 trillion. 📌 Why it matters? This shift highlights how investor focus continues to rotate toward AI-driven growth, cloud infrastructure, and data dominance, areas where Alphabet is seen as a major long-term beneficiary. Meanwhile, Apple’s valuation remains heavily tied to hardware cycles and incremental innovation, making it more sensitive to near-term sentiment. Markets are increasingly rewarding companies positioned at the core of the AI ecosystem and this ranking change reflects that structural trend more than short-term price action. #Markets #Equities #Technology #AI #Alphabet #Apple #MarketCap #Investing #GlobalMarkets\nTo view or add a comment, sign in\n-\ntoday’s volatile tech landscape, the narrative is no longer just about top-line growth. It’s about the quality of earnings and the strategic shift from hardware-heavy cycles to high-margin, recurring service models. While many hardware competitors are navigating single-digit operating margins due to supply chain pressures and \"lead-time risks,\" Apple has successfully bucked the trend. In the 2025 fiscal year, Apple achieved a record operating margin of 31.97%, driven by a massive expansion in its Services segment.",
+        "score": -6.6464,
+        "rank": 3
+      },
+      {
+        "url": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "title": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "heading": "",
+        "chunk_text": "tion, “Apple determined that Google’s Al technology provides the most capable foundation for Apple Foundation Models and is excited about the innovative new experiences it will unlock for Apple users. Apple Intelligence will continue to run on Apple devices and Private Cloud Compute, while maintaining Apple’s privacy standards.” Continue reading: https://lnkd.in/eJgYEjS7 #ElectonicSpecifier #Engineering #Tech #Electronics #Gemini #Google\nTo view or add a comment, sign in\n-\nGoogle beats Apple in the market cap race 📈 Alphabet has moved past Apple in total company value — a major shift in the tech leaderboard that shows how strong the AI trade remains. Today we also have US inflation data out later, with core inflation expected higher which could shape the Dollar and broader markets. Tech headlines and big economic data happening in the same cycle — definitely one to watch. #StockMarket #Alphabet #Google #Apple #USInflation #PCE #ForexNews #MarketUpdate #FinanceTok\nTo view or add a comment, sign in\n-\nAlphabet’s market value has risen to around $3.89 trillion, pushing it ahead of Apple’s roughly $3.84–3.85 trillion valuation. This makes Alphabet the second most valuable company in the world, behind only Nvidia, which sits at about $4.6 trillion. Coverage notes that Apple has been on a six‑day slump, losing nearly 5% of its value — almost $200 billion — during that stretch. Why Alphabet surged 1.",
+        "score": -6.7663,
+        "rank": 4
+      },
+      {
+        "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-vs-apple-comparing-trajectories-190738758.html",
+        "title": "https://finance.yahoo.com/markets/stocks/articles/microsoft-vs-apple-comparing-trajectories-190738758.html",
+        "heading": "",
+        "chunk_text": "ed Dec. 2025) |\nData source: Company filings. Data as of April 28, 2026.\nFoolish Take\nMicrosoft and Apple are competitors, but their financial results show they are fundamentally different businesses. Microsoft is focused on selling cloud and software products, while Apple primarily wants to put devices in people’s hands.\nMicrosoft’s trailing-12-month revenue has increased 44% over the last three years. The Microsoft Azure enterprise platform is riding strong demand for artificial intelligence (AI) services. Total cloud revenue grew 26% year over year last quarter to $51 billion, with Azure revenue alone up 39%.",
+        "score": -7.0373,
+        "rank": 5
+      },
+      {
+        "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-vs-apple-comparing-trajectories-190738758.html",
+        "title": "https://finance.yahoo.com/markets/stocks/articles/microsoft-vs-apple-comparing-trajectories-190738758.html",
+        "heading": "",
+        "chunk_text": "Apple (NASDAQ:AAPL) is a far bigger business than Microsoft (NASDAQ:MSFT), but that may not make it the better investment.\nApple’s quarterly revenue is far ahead of Microsoft’s, but it’s not the size of these companies that will dictate future returns. It’s how fast they are growing and what that says about their addressable market.\nMicrosoft: Delivering Consistent Revenue Growth\nMicrosoft develops, licenses, and supports software, cloud services, and devices worldwide. It recently reported strong fiscal second-quarter results and amended its hosting agreement with OpenAI. It reported net income of $38.5 billion for the quarter ended Dec. 31, 2025.\nApple: Managing Recurring Revenue Cycles\nApple designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and related services globally.\nIt announced an expansion of its hardware manufacturing operations in Texas and posted $42 billion in net income for the quarter ended Dec. 27, 2025.\nWhy Revenue Matters for Retail Investors\nRevenue is the most fundamental metric to measure a company’s performance over time.",
+        "score": -8.2206,
+        "rank": 6
+      },
+      {
+        "url": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "title": "https://www.linkedin.com/posts/robert-bloch-593b107b_apple-alphabet-microsoft-activity-7415089012400406529-zH_M",
+        "heading": "",
+        "chunk_text": "only Nvidia, which sits at about $4.6 trillion. Coverage notes that Apple has been on a six‑day slump, losing nearly 5% of its value — almost $200 billion — during that stretch. Why Alphabet surged 1. AI leadership: Alphabet’s aggressive push into artificial intelligence — including its TPU chips and advanced models — has boosted investor confidence. 2. Strong stock performance: Alphabet gained more than 65% in 2025, the best among the “Magnificent Seven” tech giants. 3. Market momentum: Shares have continued rising into 2026, widening the gap with Apple as Apple’s stock has slipped over several days. #Apple #Google #Alphabet #Nvidia\nTo view or add a comment, sign in\n-\nAs Apple reports record-setting fiscal Q1 2026 results, the surface story is familiar—revenue of $143.8B, up ~16% year-over-year, all-time highs in iPhone and Services revenue, and EPS of $2.84. Those numbers tell us Apple can still compete. But they don’t answer the real question many executives are asking: can Apple stay relevant in the AI era? What matters isn’t this quarter’s profit or margins. It’s the organizational signals beneath them—the ones that suggest Apple is quietly reshaping itself for what’s next. Over the past year, we’ve seen: • Design and product leadership move closer to the center of strategic decision-making. • New AI leadership relationships and partnerships that Cupertino once avoided.",
+        "score": -8.5537,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "Compare Apple, Microsoft, and Alphabet operating margins for FY2024 in a table using their 10-K filings."
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "fail",
+    "score": 0.2,
+    "reasoning": "The system response fails to produce the required markdown table and incorrectly states that the data is unavailable, despite the ground truth providing the necessary operating margin figures for all three companies. It does not cite the correct 10-K data and misses the key factual requirement of comparing the three entities.",
+    "judge_model": "deepseek-chat"
+  }
+}

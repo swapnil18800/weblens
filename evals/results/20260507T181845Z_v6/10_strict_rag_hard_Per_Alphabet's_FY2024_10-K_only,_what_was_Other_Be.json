@@ -1,0 +1,160 @@
+{
+  "category": "strict_rag_hard",
+  "expected_behavior": "Strict grounding from specific filings. No fabrication. Honest citation with exact figures.",
+  "question": "Per Alphabet's FY2024 10-K only, what was Other Bets segment revenue and operating loss?",
+  "ground_truth": "Alphabet's FY2024 10-K: Other Bets segment revenue was approximately $1.5-2B, with an operating loss of approximately $1.1-1.5B. Other Bets includes Waymo, Verily, Wing, and other moonshots. The answer must cite [SEC-GOOGL-*] or [SEC-GOOG-*] 10-K chunks.",
+  "key_facts": [
+    "Other Bets revenue ~$1.5-2B for FY2024.",
+    "Other Bets operating loss ~$1-1.5B.",
+    "Includes Waymo, Verily, Wing.",
+    "Must cite [SEC-GOOGL-*] or [SEC-GOOG-*] chunk.",
+    "Must not fabricate figures."
+  ],
+  "session_id": "eval-20260507T181845Z-10",
+  "metrics": {
+    "m1_factual_correctness": 0.4,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.2
+  },
+  "timing": {
+    "pipeline_s": 14.98,
+    "latency_breakdown": {
+      "search_ms": 2347,
+      "extract_ms": 6582,
+      "chunk_ms": 68,
+      "retrieve_ms": 1666
+    },
+    "total_latency_ms": 14993
+  },
+  "pipeline": {
+    "answer": "Based solely on Alphabet's FY2024 10-K (filed February 5, 2025), the Other Bets segment reported the following financial results for the year ended December 31, 2024:\n\n- **Other Bets Revenue:** $1,648 million [2][3]\n- **Other Bets Operating Loss:** ($4,444) million [2][3]\n\nThese figures are sourced directly from the segment profitability table included in the Form 10-K [2][3]. The revenue is primarily derived from autonomous transportation services and internet services [2].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?srsltid=AfmBOopErJ75-OoFhj0P-ovB--9P_yQqq7ONP84CSxJv0Dyh3ZuXTbO4",
+        "title": "Alphabet: global annual revenue by segment 2024| Statista",
+        "snippet": "Annual revenue of Alphabet from 2017 to 2024, by segment  (in million U.S. dollars)\n\n_Other Bets_ – Other Bets – Other Bets is a combination of multiple operating segments that are not individually material. Other Bets includes businesses such as Access, Calico, CapitalG, GV, Verily, Waymo, and X. R"
+      },
+      {
+        "num": 2,
+        "url": "https://app.edgar.tools/companies/GOOGL/disclosures/segments",
+        "title": "Alphabet Inc. Segments (2025 10-K)",
+        "snippet": "Alphabet Inc. Segments Disclosure\n\n10-K Filed Feb 5, 2026 3 min read\n\nInformation about Segments and Geographic Areas\n\nWe report our segment results as Google Services, Google Cloud, and Other Bets:\n\n•Google Services includes products and services such as ads, Android, Chrome, devices, Google Maps, "
+      },
+      {
+        "num": 3,
+        "url": "https://s206.q4cdn.com/479360582/files/doc_financials/2024/q4/goog-10-k-2024.pdf",
+        "title": "GOOG 10-K 2024",
+        "snippet": "• Applications: offers a broad applications portfolio, including Gemini for Google Cloud and Gemini for Google Workspace, as well as purpose-built agents for Search and our Customer Engagement Suite. AI has been used in Google Workspace for years to improve grammar, efficiency, security, and more wi"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?srsltid=AfmBOopErJ75-OoFhj0P-ovB--9P_yQqq7ONP84CSxJv0Dyh3ZuXTbO4",
+        "title": "Alphabet: global annual revenue by segment 2024| Statista",
+        "snippet": "Google: global annual revenue 2002-2025](/statistics/266206/googles-annual-global-revenue/)[![](https://cdn.statcdn.com/Statistic/230000/234529-blank-100.png)+. * [Alphabet: global annual revenue 2011-2025](/statistics/507742/alphabet-annual-global-revenue/). * [Alphabet: revenue distribution 2015-2024, by region](/statistics/266250/regional-distribution-of-googles-revenue/). * [Alphabet: global annual revenue 2017-2024, by segment](/statistics/633651/alphabet-annual-global-revenue-by-segment/). * [Google: global annual revenue 2002-2024](/statistics/266206/googles-annual-global-revenue/). * [Basic Statistic Alphabet: global annual revenue 2011-2025](/statistics/507742/alphabet-annual-global-revenue/). * [Basic Statistic Alphabet: revenue distribution 2015-2024, by region](/statistics/266250/regional-distribution-of-googles-revenue/). * [Basic Statistic Alphabet: global annual revenue 2017-2024, by segment](/statistics/633651/alphabet-annual-global-revenue-by-segment/). * [Basic Statistic Alphabet: annual Other Bets revenues 2013-2024](/statistics/771766/alphabet-annual-revenue-other-bets/). * [Basic Statistic Google: revenue distribution 2017-2024, by segment](/statistics/1093781/distribution-of-googles-revenues-by-segment/). * [Basic Statistic Google: global annual revenue 2002-2024](/statistics/266206/googles-annual-global-revenue/). * [Basic Statistic Google Cloud revenue worldwide 2017-2024](/statistics/478176/google-public-cloud-revenue/). Retrieved April 30, 2026, from https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?\\_\\_sso\\_cookie\\_checker=failed&srsltid=AfmBOopfhUk8MKYO91KEiPR6Zj5Kugxpf0BWCvTmGm--JDU-nZedqFCw. https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?\\_\\_sso\\_cookie\\_checker=failed&srsltid=AfmBOopfhUk8MKYO91KEiPR6Zj5Kugxpf0BWCvTmGm--JDU-nZedqFCw. Annual revenue of Alphabet from 2017 to 2024, by segment (in million U.S. dollars). https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?\\_\\_sso\\_cookie\\_checker=failed&srsltid=AfmBOopfhUk8MKYO91KEiPR6Zj5Kugxpf0BWCvTmGm--JDU-nZedqFCw. \"Annual Revenue of Alphabet from 2017 to 2024, by Segment (in Million U.S. Dollars).\" Statista, Statista Inc., 5 Feb 2025, https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?\\_\\_sso\\_cookie\\_checker=failed&srsltid=AfmBOopfhUk8MKYO91KEiPR6Zj5Kugxpf0BWCvTmGm--JDU-nZedqFCw. Alphabet, Annual revenue of Alphabet from 2017 to 2024, by segment (in million U.S. dollars) Statista, https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?\\_\\_sso\\_cookie\\_checker=failed&srsltid=AfmBOopfhUk8MKYO91KEiPR6Zj5Kugxpf0BWCvTmGm--JDU-nZedqFCw (last visited April 30, 2026). Available: https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?\\_\\_sso\\_cookie\\_checker=failed&srsltid=AfmBOopfhUk8MKYO91KEiPR6Zj5Kugxpf0BWCvTmGm--JDU-nZedqFCw."
+      },
+      {
+        "url": "https://last10k.com/sec-filings/googl/0001652044-24-000022.htm",
+        "title": "Alphabet Inc. (GOOGL) 10-K Annual Report January 2024",
+        "snippet": "In addition, for the year...**Read more**. The increase in operating income...**Read more**. Although we believe we have...**Read more**. The increase in other cost...**Read more**. In Google Services, we also...**Read more**. The increase in other cost...**Read more**. Revenues from Other Bets are...**Read more**. The interest rates for all...**Read more**. As of December 31, 2023,...**Read more**. During 2023 we repurchased and...**Read more**. We report Google in two...**Read more**. We have agreements where we...**Read more**. •Cost of revenues was $133.3...**Read more**. Additionally, other cost of revenues...**Read more**. The margins on these revenues...**Read more**. As of December 31, 2023,...**Read more**. As of December 31, 2023, the...**Read more**. As of December 31, 2023, we...**Read more**. On September 14, 2022, the...**Read more**. The increase in operating income...**Read more**. To the extent that the...**Read more**. In 2023, the Internal Revenue...**Read more**. ### Widen Your SEC Filing Reading Experience. Increased Reading Area for SEC Filings. **Read the additional information this company provided in their SEC Filing as an exhibit**."
+      },
+      {
+        "url": "https://app.edgar.tools/companies/GOOGL/disclosures/segments",
+        "title": "Alphabet Inc. Segments (2025 10-K) - edgar.tools",
+        "snippet": "We report our segment results as Google Services, Google Cloud, and Other Bets:. Google Services generates revenues primarily from advertising; fees received for consumer subscription-based products such as YouTube TV, YouTube Music and Premium, and NFL Sunday Ticket, as well as Google One; the sale of apps and in-app purchases; and devices. Google Cloud generates revenues primarily from consumption-based fees and subscriptions received for Google Cloud Platform services, Google Workspace communication and collaboration tools, and other enterprise services. Revenues, certain costs, such as costs associated with content and traffic acquisition, certain engineering activities, and devices, as well as certain operating expenses are directly attributable to our segments. Google Services and Google Cloud other costs and expenses primarily include direct costs, such as advertising and promotional activities, legal and other matters, and third-party services fees as well as allocated costs, such as technical infrastructure and office facilities usage costs."
+      },
+      {
+        "url": "https://s206.q4cdn.com/479360582/files/doc_financials/2024/q4/goog-10-k-2024.pdf",
+        "title": "[PDF] 10-K filings - Alphabet Inc.",
+        "snippet": "(Exact name of registrant as specified in its charter) ___________________________________________ Delaware 61-1767919 (State or other jurisdiction of incorporation or organization) (I.R.S. Employer Identification No.) 1600 Amphitheatre Parkway Mountain View, CA 94043 (Address of principal executive offices, including zip code) (650) 253-0000 (Registrant's telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol(s) Name of each exchange on which registered Class A Common Stock, $0.001 par value GOOGL Nasdaq Stock Market LLC (Nasdaq Global Select Market) Class C Capital Stock, $0.001 par value GOOG Nasdaq Stock Market LLC (Nasdaq Global Select Market) Securities registered pursuant to Section 12(g) of the Act: Title of each class None ___________________________________________ Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes ☒ No ☐ Indicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes ☐ No ☒ Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days."
+      },
+      {
+        "url": "https://abc.xyz/site-map/default.aspx",
+        "title": "Site Map - Alphabet Investor Relations",
+        "snippet": "[Skip to main content](https://abc.xyz/site-map/default.aspx#main-content). [Skip to main content](https://abc.xyz/site-map/default.aspx#maincontent). *   [Home](https://abc.xyz/home/default.aspx). *   [Investors](https://abc.xyz/investor/default.aspx). *   [Earnings](https://abc.xyz/investor/Earnings/default.aspx). *   [SEC Filings](https://abc.xyz/investor/sec-filings/default.aspx). *   [News](https://abc.xyz/investor/news/default.aspx). *   [Events](https://abc.xyz/investor/events/default.aspx). *   [Board & Governance](https://abc.xyz/investor/board-and-governance/default.aspx). *   [Annual Meeting](https://abc.xyz/investor/annual-meeting/default.aspx). *   [Founders’ Letters](https://abc.xyz/investor/founders-letters/default.aspx). *   [FAQs](https://abc.xyz/investor/faqs-and-general-information/). *   [Home](https://abc.xyz/home/default.aspx). *   [Investors](https://abc.xyz/investor/default.aspx). *   [Results & Financials](https://abc.xyz/investor/Earnings/default.aspx). *   [Earnings](https://abc.xyz/investor/Earnings/default.aspx). *   [SEC Filings](https://abc.xyz/investor/sec-filings/default.aspx). *   [Updates](https://abc.xyz/investor/news/default.aspx). *   [News](https://abc.xyz/investor/news/default.aspx). *   [Events](https://abc.xyz/investor/events/default.aspx). *   [Governance](https://abc.xyz/investor/board-and-governance/default.aspx). *   [Board & Governance](https://abc.xyz/investor/board-and-governance/default.aspx). *   [Annual Meeting](https://abc.xyz/investor/annual-meeting/default.aspx). *   [Founders’ Letters](https://abc.xyz/investor/founders-letters/default.aspx). *   [Other](https://abc.xyz/investor/faqs-and-general-information/default.aspx). *   [FAQs](https://abc.xyz/investor/faqs-and-general-information/). *   [Home](https://abc.xyz/home/default.aspx). *   [Investors](https://abc.xyz/investor/default.aspx). *   [Earnings](https://abc.xyz/investor/Earnings/default.aspx). *   [SEC Filings](https://abc.xyz/investor/sec-filings/default.aspx). *   [News](https://abc.xyz/investor/news/default.aspx). *   [Events](https://abc.xyz/investor/events/default.aspx). *   [Board & Governance](https://abc.xyz/investor/board-and-governance/default.aspx). *   [Annual Meeting](https://abc.xyz/investor/annual-meeting/default.aspx). *   [Founders’ Letters](https://abc.xyz/investor/founders-letters/default.aspx). *   [FAQs](https://abc.xyz/investor/faqs-and-general-information/). *   [Home](https://abc.xyz/home/default.aspx). *   [Investors](https://abc.xyz/investor/default.aspx). *   [Results & Financials](https://abc.xyz/investor/Earnings/default.aspx). *   [Earnings](https://abc.xyz/investor/Earnings/default.aspx). *   [SEC Filings](https://abc.xyz/investor/sec-filings/default.aspx). *   [Updates](https://abc.xyz/investor/news/default.aspx). *   [News](https://abc.xyz/investor/news/default.aspx). *   [Events](https://abc.xyz/investor/events/default.aspx). *   [Governance](https://abc.xyz/investor/board-and-governance/default.aspx). *   [Board & Governance](https://abc.xyz/investor/board-and-governance/default.aspx). *   [Annual Meeting](https://abc.xyz/investor/annual-meeting/default.aspx). *   [Founders’ Letters](https://abc.xyz/investor/founders-letters/default.aspx). *   [Other](https://abc.xyz/investor/faqs-and-general-information/default.aspx). *   [FAQs](https://abc.xyz/investor/faqs-and-general-information/). *   [Home](https://abc.xyz/home/default.aspx). *   [Investors](https://abc.xyz/investor/default.aspx). *   [Results & Financials](https://abc.xyz/investor/Earnings/default.aspx). *   [Earnings](https://abc.xyz/investor/Earnings/default.aspx). *   [SEC Filings](https://abc.xyz/investor/sec-filings/default.aspx). *   [Updates](https://abc.xyz/investor/news/default.aspx). *   [News](https://abc.xyz/investor/news/default.aspx). *   [Events](https://abc.xyz/investor/events/default.aspx). *   [Governance](https://abc.xyz/investor/board-and-governance/default.aspx). *   [Board & Governance](https://abc.xyz/investor/board-and-governance/default.aspx). *   [Annual Meeting](https://abc.xyz/investor/annual-meeting/default.aspx). *   [Founders’ Letters](https://abc.xyz/investor/founders-letters/default.aspx). *   [Other](https://abc.xyz/investor/faqs-and-general-information/default.aspx)."
+      },
+      {
+        "url": "https://www.facebook.com/visualcapitalist/posts/charted-alphabets-revenue-breakdown-in-2024-%EF%B8%8F/1075730584585363/",
+        "title": "Charted: Alphabet's Revenue Breakdown in 2024 ... - Facebook",
+        "snippet": "Key Financial Data for the Quarter: Google Search revenue: $48.5 billion (up from $42.6 billion in Q2 2023) Total Alphabet revenue: $84.7"
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?srsltid=AfmBOopErJ75-OoFhj0P-ovB--9P_yQqq7ONP84CSxJv0Dyh3ZuXTbO4",
+        "title": "Alphabet: global annual revenue by segment 2024| Statista",
+        "heading": "Annual revenue of Alphabet from 2017 to 2024, by segment  (in million U.S. dollars)",
+        "chunk_text": "Annual revenue of Alphabet from 2017 to 2024, by segment  (in million U.S. dollars)\n\n_Other Bets_ – Other Bets – Other Bets is a combination of multiple operating segments that are not individually material. Other Bets includes businesses such as Access, Calico, CapitalG, GV, Verily, Waymo, and X. Revenues from the Other Bets are derived primarily through the sales of internet and TV services through Access as well as licensing and R&D services through Verily.\n\n_Google other_ revenues consist primarily of:\n\n• Sales of apps and media content in the Google Play store;\n\n• Sales of certain Google branded hardware, such as Chromecast;\n\n• Service fees received for cloud and apps and our Maps API; and\n\n• Licensing-related revenue. • In Q1 2018, Nest joined Google’s hardware team. Consequently, the financial results of Nest are reported in the Google segment, with Nest revenues reflected in Google other revenues.\n\nCitation formats\n\nCitation formats  View options",
+        "score": 3.8262,
+        "rank": 0
+      },
+      {
+        "url": "https://app.edgar.tools/companies/GOOGL/disclosures/segments",
+        "title": "Alphabet Inc. Segments (2025 10-K)",
+        "heading": "Alphabet Inc. Segments Disclosure",
+        "chunk_text": "Alphabet Inc. Segments Disclosure\n\n10-K Filed Feb 5, 2026 3 min read\n\nInformation about Segments and Geographic Areas\n\nWe report our segment results as Google Services, Google Cloud, and Other Bets:\n\n•Google Services includes products and services such as ads, Android, Chrome, devices, Google Maps, Google Play, Search, and YouTube. Google Services generates revenues primarily from advertising; fees received for consumer subscription-based products such as YouTube TV, YouTube Music and Premium, and NFL Sunday Ticket, as well as Google One; the sale of apps and in-app purchases; and devices.\n\n•Google Cloud includes infrastructure and platform services, applications, and other services for enterprise customers. Google Cloud generates revenues primarily from consumption-based fees and subscriptions received for Google Cloud Platform services, Google Workspace communication and collaboration tools, and other enterprise services.\n\n•Other Bets is a combination of multiple operating segments that are not individually material. Revenues from Other Bets are generated primarily from the sale of autonomous transportation services and internet services.",
+        "score": 3.5412,
+        "rank": 1
+      },
+      {
+        "url": "https://app.edgar.tools/companies/GOOGL/disclosures/segments",
+        "title": "Alphabet Inc. Segments (2025 10-K)",
+        "heading": "Alphabet Inc. Segments Disclosure",
+        "chunk_text": "Alphabet Inc. Segments Disclosure\n\nOur Chief Operating Decision Maker (CODM) is our Chief Executive Officer, Sundar Pichai. Our CODM uses segment operating income (loss) to allocate resources to our segments in our annual planning process and to assess the performance of our segments, primarily by monitoring actual results versus the annual plan. Our operating segments are not evaluated using asset information.\n\nThe following table presents revenue, profitability, and expense information about our segments (in millions):\n\nYear Ended December 31,\n2023 2024 2025\nRevenues:\nGoogle Services$272,543$304,930$342,721\nGoogle Cloud 33,088 43,229 58,705\nOther Bets 1,527 1,648 1,537\nHedging gains (losses)236 211(127)\nTotal revenues$307,394$350,018$402,836\nOperating income (loss):\nGoogle Services$95,858$121,263$139,404\nGoogle Cloud 1,716 6,112 13,910\nOther Bets(4,095)(4,444)(7,515)\nAlphabet-level activities(9,186)(10,541)(16,760)\nTotal income from operations$84,293$112,390$129,039\nSupplemental information about segment expenses:\nGoogle Services:\nEmployee compensation expenses$46,224$44,560$45,124\nOther costs and expenses 130,461 139,107 158,193\nTotal Google Services costs and expenses$176,685$183,667$203,317\nGoogle Cloud:\nEmployee compensation expenses$19,054$20,519$22,078\nOther costs and expenses 12,318 16,598 22,717\nTotal Google Cloud costs and expenses$31,372$37,117$44,795",
+        "score": 1.708,
+        "rank": 2
+      },
+      {
+        "url": "https://s206.q4cdn.com/479360582/files/doc_financials/2024/q4/goog-10-k-2024.pdf",
+        "title": "GOOG 10-K 2024",
+        "heading": "• Applications: offers a broad applications portfolio, including Gemini for Google Cloud and Gemini for Google Workspace, as well as purpose-built agents for Search and our Customer Engagement Suite. AI has been used in Google Workspace for years to improve grammar, efficiency, security, and more with features like Smart Reply, Smart Compose, and malware and phishing protection in Gmail. Now, Gemini for Google Workspace brings our AI-powered agents into Gmail, Docs, Sheets and more to help users write, organize, visualize, accelerate workflows, and have richer meetings.",
+        "chunk_text": "• Applications: offers a broad applications portfolio, including Gemini for Google Cloud and Gemini for Google Workspace, as well as purpose-built agents for Search and our Customer Engagement Suite. AI has been used in Google Workspace for years to improve grammar, efficiency, security, and more with features like Smart Reply, Smart Compose, and malware and phishing protection in Gmail. Now, Gemini for Google Workspace brings our AI-powered agents into Gmail, Docs, Sheets and more to help users write, organize, visualize, accelerate workflows, and have richer meetings.\n\nGeneral and administrative expenses $ 16,425 $ 14,188 General and administrative expenses as a percentage of revenues 5 % 4 % General and administrative expenses decreased $2.2 billion from 2023 to 2024, primarily driven by a reduction in charges related to legal and other matters of $1.3 billion and a decrease in employee compensation expenses of $285 million, primarily due to a decrease in average headcount, in addition to a combination of factors, none of which were individually significant.\n\nSegment Profitability\n\nWe report our segment results as Google Services, Google Cloud, and Other Bets. Additionally, certain costs are not allocated to our segments because they represent Alphabet-level activities. For further details on our segments, see Part I, Item 1 Business and Note 15 of the Notes to Consolidated Financial Statements included in Item 8 of this Annual Report on Form 10-K. The following table presents segment operating income (loss) (in millions).\n\n> Year Ended December 31,\n> 2023 2024\n\nOperating income (loss): Google Services $ 95,858 $ 121,263 Google Cloud 1,716 6,112 Other Bets (4,095) (4,444) Alphabet-level activities (1) (9,186) (10,541) Total income from operations $ 84,293 $ 112,390",
+        "score": -1.005,
+        "rank": 3
+      },
+      {
+        "url": "https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?srsltid=AfmBOopErJ75-OoFhj0P-ovB--9P_yQqq7ONP84CSxJv0Dyh3ZuXTbO4",
+        "title": "Alphabet: global annual revenue by segment 2024| Statista",
+        "heading": "Alphabet: global annual revenue 2017-2024, by segment",
+        "chunk_text": "Alphabet: global annual revenue 2017-2024, by segment\n\nPublished by [Statista Research Department](https://www.statista.com/aboutus/our-research-commitment),  Nov 28, 2025\n\n[](https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?srsltid=AfmBOopErJ75-OoFhj0P-ovB--9P_yQqq7ONP84CSxJv0Dyh3ZuXTbO4#statisticContainer)\nIn 2024, Alphabet's revenue from Google websites (including YouTube advertising) amounted to around 234.23 billion U.S. dollars, up from 206.5 billion U.S. dollars in the previous year. Google Search is by far the biggest revenue segment of Alphabet. Alphabet Inc. is an American multinational conglomerate created in 2015 as the parent company of Google and several other companies previously owned by or tied to Google.\n\nRead more\n\nAdvertisement\n\nAdvertisement",
+        "score": -3.9039,
+        "rank": 4
+      },
+      {
+        "url": "https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?srsltid=AfmBOopErJ75-OoFhj0P-ovB--9P_yQqq7ONP84CSxJv0Dyh3ZuXTbO4",
+        "title": "Alphabet: global annual revenue by segment 2024| Statista",
+        "heading": "Topics",
+        "chunk_text": "Topics\n\nper month, billed annually 1\n\n[Buy now](https://www.statista.com/accounts/individuals?recommendation=professional)\n\n*   Free + Premium Statistics\n*   Reports\n*   Market Insights\n\n1 All prices do not include sales tax. The account requires an annual contract and will renew after one year to the regular list price.\n\n[Compare accounts](https://www.statista.com/accounts/individuals#accountOverview__table)\n\nLearn more about how Statista can support your business.\n\nRequest webinar\n\nAlphabet. (February 5, 2025). Annual revenue of Alphabet from 2017 to 2024, by segment (in million U.S. dollars) [Graph]. In Statista. Retrieved May 07, 2026, from https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?srsltid=AfmBOopErJ75-OoFhj0P-ovB--9P_yQqq7ONP84CSxJv0Dyh3ZuXTbO4\n\nAlphabet. \"Annual revenue of Alphabet from 2017 to 2024, by segment (in million U.S. dollars).\" Chart. February 5, 2025. Statista. Accessed May 07, 2026. https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?srsltid=AfmBOopErJ75-OoFhj0P-ovB--9P_yQqq7ONP84CSxJv0Dyh3ZuXTbO4\n\nAlphabet. (2025). Annual revenue of Alphabet from 2017 to 2024, by segment (in million U.S. dollars). Statista. Statista Inc.. Accessed: May 07, 2026. https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?srsltid=AfmBOopErJ75-OoFhj0P-ovB--9P_yQqq7ONP84CSxJv0Dyh3ZuXTbO4",
+        "score": -6.2457,
+        "rank": 5
+      },
+      {
+        "url": "https://www.statista.com/statistics/633651/alphabet-annual-global-revenue-by-segment/?srsltid=AfmBOopErJ75-OoFhj0P-ovB--9P_yQqq7ONP84CSxJv0Dyh3ZuXTbO4",
+        "title": "Alphabet: global annual revenue by segment 2024| Statista",
+        "heading": "Other statistics on the topic",
+        "chunk_text": "Other statistics on the topic\n\n[Alphabet Inc.](https://www.statista.com/topics/6042/alphabet-inc/)\n\n[![Image 16](https://cdn.statcdn.com/Statistic/265000/266206-blank-100.png) Google: global annual revenue 2002-2025](https://www.statista.com/statistics/266206/googles-annual-global-revenue/)[![Image 17](https://cdn.statcdn.com/Statistic/230000/234529-blank-100.png)+ Apple, Google, and Microsoft: revenue comparison 2008-2025](https://www.statista.com/statistics/234529/comparison-of-apple-and-google-revenues/)[![Image 18](https://cdn.statcdn.com/Statistic/265000/267606-blank-100.png) Google quarterly revenue 2008-2026](https://www.statista.com/statistics/267606/quarterly-revenue-of-google/)[![Image 19](https://cdn.statcdn.com/Statistic/540000/540128-blank-100.png) Alphabet: quarterly revenue 2026](https://www.statista.com/statistics/540128/quarterly-revenue-of-alphabet/)\n\nAccess all statistics starting from **$2,388 USD** yearly *\n\n* For commercial use only\n\nBasic Account\n\nFor single users\n\n$0 USD\n\nAlways free\n\n[Register now](https://www.statista.com/accounts/individuals?recommendation=basic)\n\nAccess limited to **Free Statistics.** Premium Statistics are not included.\n\n*   Free Statistics\n\nBased on your interests\n\nStarter Account\n\nFor single users\n\n$199 USD\n\nper month, billed annually 1\n\n[Buy now](https://www.statista.com/accounts/individuals?recommendation=starter)\n\n*    Free Statistics \n*    Premium Statistics\n\nProfessional Account\n\nFor teams of up to 5 people\n\n$1,399 USD\n\nper month, billed annually 1",
+        "score": -6.3399,
+        "rank": 6
+      },
+      {
+        "url": "https://app.edgar.tools/companies/GOOGL/disclosures/segments",
+        "title": "Alphabet Inc. Segments (2025 10-K)",
+        "heading": "About Segments Disclosures",
+        "chunk_text": "About Segments Disclosures\n\nSegment disclosures break a company into its reportable operating units, revealing revenue, profit, and asset allocation that consolidated financial statements obscure. Under ASC 280, segments must match how the chief operating decision maker views the business, providing a window into internal management structure and resource allocation priorities.\n\nKey signals: compare segment margins to identify which units drive profitability and which destroy value. Watch for changes in the number of reportable segments — segment aggregation or disaggregation often coincides with strategic shifts or attempts to obscure declining performance. Intersegment elimination patterns reveal internal pricing practices. The reconciliation between segment totals and consolidated figures exposes corporate overhead allocation and unallocated items. Geographic revenue concentration highlights regulatory and currency exposure. Compare segment-level capital expenditure against segment revenue to assess where management is investing for future growth versus harvesting existing assets.",
+        "score": -7.4009,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "Per Alphabet's FY2024 10-K only, what was Other Bets segment revenue and operating loss?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "fail",
+    "score": 0.2,
+    "reasoning": "The response fabricates an operating loss of $4,444 million, which is far outside the ground truth range of $1.1-1.5B. It also fails to cite the required [SEC-GOOGL-*] or [SEC-GOOG-*] chunk format, and omits the list of Other Bets businesses (Waymo, Verily, Wing). The revenue figure of $1,648M is within the acceptable range, but the severe fabrication and citation failure make this a fail.",
+    "judge_model": "deepseek-chat"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "category": "hybrid_search",
+  "expected_behavior": "Explanation of hybrid search combining sparse and dense methods with performance context.",
+  "question": "What is hybrid search in information retrieval and why does combining BM25 with vector search outperform either alone?",
+  "ground_truth": "Hybrid search combines sparse (BM25) and dense (vector) retrieval. BM25 excels at exact keyword matching; dense search excels at semantic/paraphrase matching. Their errors are complementary: BM25 fails on synonyms and paraphrases, dense fails on rare proper nouns and exact terms. Fusion methods like RRF merge both ranked lists without requiring score calibration. Studies show hybrid consistently outperforms either alone on BEIR and MS MARCO benchmarks.",
+  "key_facts": [
+    "hybrid combines BM25 sparse and dense vector retrieval",
+    "BM25 excels at exact keyword matching",
+    "dense search excels at semantic matching",
+    "errors are complementary between BM25 and dense",
+    "RRF is a common fusion method",
+    "hybrid outperforms either alone on benchmarks"
+  ],
+  "session_id": "eval-20260507T163245Z-09",
+  "metrics": {
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 1.0
+  },
+  "timing": {
+    "pipeline_s": 15.91,
+    "latency_breakdown": {
+      "search_ms": 1270,
+      "extract_ms": 2131,
+      "chunk_ms": 16,
+      "retrieve_ms": 1292
+    },
+    "total_latency_ms": 15902
+  },
+  "pipeline": {
+    "answer": "## What is Hybrid Search in Information Retrieval?\n\nHybrid search is an information retrieval technique that runs a **sparse retriever** (such as BM25 or SPLADE) and a **dense vector retriever** on the same query **in parallel**, then merges the resulting document lists using a **fusion algorithm** before passing the combined candidate set to the downstream task, such as an LLM in a RAG pipeline [1].\n\nKey technical aspects:\n- **Sparse retrieval (e.g., BM25)** uses term frequency-inverse document frequency (TF-IDF) principles to match exact query terms against documents [2]\n- **Dense vector search** encodes both queries and documents into continuous vector spaces (typically 384–1536 dimensions) and measures similarity via cosine similarity or dot product, using Approximate Nearest Neighbor (ANN) algorithms like HNSW [1]\n- The fusion step uses algorithms like **Reciprocal Rank Fusion (RRF)** (recommended as a zero-config default with k=60) or **convex combination** (requires 50+ labeled query pairs to tune the alpha parameter) [1]\n\n## Why Combining BM25 with Vector Search Outperforms Either Alone\n\nThe hybrid approach outperforms single-method retrieval because **dense retrieval and sparse retrieval have complementary failure modes**:\n\n### Dense Retrieval Weaknesses\n- **Misses exact identifier matches**: Dense vector search can fail when queries contain exact identifiers like error codes, product names, API endpoints, or legal terms because the semantic encoding may not preserve exact keyword boundaries [1]\n- **May miss exact keyword matches even when semantically close** [2]\n\n### Sparse Retrieval Weaknesses (BM25)\n- **No semantic understanding**: BM25 operates purely on exact term matching without any vocabulary expansion or synonym handling [1]\n- **Cannot capture contextual nuances or semantic intent** behind a query [2]\n\n### Synergistic Benefits Achieved by Combining Them\n\n1. **Improved Relevance**: Results contain the exact query keywords (BM25's strength) while also capturing semantic intent (vector search's strength) [2]\n2. **Enhanced Recall**: The combined approach retrieves a broader range of relevant documents, including those that either method alone would miss [2]\n3. **Contextual Understanding**: Goes beyond simple keyword matching to understand the meaning and context of both queries and documents [2]\n\nAs a practical guideline, hybrid search is recommended when queries mix **exact identifiers** with natural language intent. However, if you have fine-tuned embeddings on your specific corpus, the marginal gain from adding BM25 shrinks considerably [1].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://blog.premai.io/hybrid-search-for-rag-bm25-splade-and-vector-search-combined/",
+        "title": "https://blog.premai.io/hybrid-search-for-rag-bm25-splade-and-vector-search-combined/"
+      },
+      {
+        "num": 2,
+        "url": "https://dev.to/aun_aideveloper/combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-perfo-5h8k",
+        "title": "Combining BM25 & Vector Search: A Hybrid Approach for Enhanced Retrieval Performance"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.meilisearch.com/blog/hybrid-search",
+        "title": "Hybrid search: Definition, how it works, benefits and more",
+        "snippet": "Hybrid search systems combine keyword-based retrieval (sparse vector methodology) with semantic search systems (dense vector embeddings) to optimize precision and contextual relevance. Hybrid search combines the strengths of dense and sparse vector retrieval to enhance search scores. Hybrid search works by leveraging the semantic capabilities of dense vectors and the exact matching and accuracy of sparse vectors. 1. **Enhanced search accuracy and relevance**: Hybrid search provides high-quality results by combining exact matches with semantic understanding. While hybrid search offers the best of both keyword-based and semantic search, it also comes with challenges that can impact implementation, performance, and user experience. The AI-enhanced hybrid search from Meilisearch allows third-party embedding models and control over the semantic weight of the outputs, allowing a deeper semantic understanding of the user inputs. | **Hybrid search** | **Vector search** | **Semantic search** | **Keyword search** | **Neural search** |. The better the embedder and the retrieval algorithm applied on the dense vectors, the better the semantical or contextual response of the hybrid search."
+      },
+      {
+        "url": "https://www.coveo.com/blog/hybrid-search/",
+        "title": "What is Hybrid Search?",
+        "snippet": "# What is Hybrid Search? Learn how hybrid search uses lexical, vectors, and AI to deliver fast, relevant, and secure results — no matter where the data lives. **Hybrid search** combines lexical, vector-based, and AI-powered techniques to deliver fast, relevant, and secure results — no matter where the data lives. The knowledge graph aimed to improve search result accuracy by understanding the context and semantic relationships behind queries, rather than just matching keywords. Semantic (vector-based) search is much better at connecting that shopper with the comfy shoes they seek because it uses ML to understand related concepts behind a user’s query. AI enhances traditional keyword-focused approaches, particularly in the areas of personalization and predictive search, by allowing the system to understand user behavior patterns and create “digital twins.” It can learn from one user’s successful interactions to improve results for similar users. Hybrid search technology uses AI to interpret these queries more accurately and, in the case of conversational interfaces, use GenAI to provide more natural human-language results."
+      },
+      {
+        "url": "https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview",
+        "title": "Hybrid Search Overview - Azure AI Search | Microsoft Learn",
+        "snippet": "# Hybrid search using vectors and full text in Azure AI Search. Hybrid search is a single query request configured for both full-text and vector queries. For query purposes, hybrid search:. The advantage of vector search is finding information that's conceptually similar to your search query, even if there are no keyword matches in the inverted index. Hybrid queries take advantage of existing text-based functionality like filtering, faceting, sorting, scoring profiles, and semantic ranking on your text fields, while executing a similarity search against vectors in a single search request. Hybrid search combines results from both full-text and vector queries, which use different ranking functions such as BM25 for text, and Hierarchical Navigable Small World (HNSW) and exhaustive K Nearest Neighbors (eKNN) for vectors. Hybrid search relies on a search index that contains fields of various data types, including plain text and numbers, geo coordinates if you want geospatial search, and vectors to mathematically represent a chunk of text."
+      },
+      {
+        "url": "https://weaviate.io/blog/hybrid-search-explained",
+        "title": "Hybrid Search Explained | Weaviate",
+        "snippet": "It uses sparse and dense vectors to represent the semantic meaning and context of search queries and documents. In this blog post, you will learn the definition of hybrid search, the role of sparse and dense vectors, when to use hybrid search, and more about the implementation of hybrid search in Weaviate and how to use it. Note, the current implementation of hybrid search in Weaviate uses BM25/BM25F and vector search. This example query shows where hybrid search combines the best of both sparse and dense vectors. Hybrid search works by combining the results of sparse vector search (e.g., BM25) and dense vector search into a single, ranked list. For a deep dive into how Weaviate's hybrid search combines sparse and dense vectors, you can read more on these fusion algorithms in our blog post. In the context of the Weaviate vector database, hybrid search is a combination of keyword search and semantic search."
+      },
+      {
+        "url": "https://blog.premai.io/hybrid-search-for-rag-bm25-splade-and-vector-search-combined/",
+        "title": "Hybrid Search for RAG: BM25, SPLADE, and Vector Search Combined",
+        "snippet": "# Hybrid Search for RAG: BM25, SPLADE, and Vector Search Combined. **Quick answer:** Hybrid search runs a sparse retriever (BM25 or SPLADE) and a dense vector retriever in parallel, then merges results with a fusion algorithm before passing chunks to the LLM. It consistently outperforms either method alone because dense retrieval misses exact identifiers and dense retrieval misses semantic matches. Start with RRF at k=60 as the zero-config default. If you have 50+ labeled query pairs, switch to convex combination and tune alpha. Add a cross-encoder reranker after fusion for the biggest single precision gain. This article covers how hybrid search works, when BM25 vs SPLADE is the right sparse retriever, the math behind three fusion strategies (RRF, convex combination, DBSF), four Python code examples including a full reranking pipeline, and a decision framework for every common retrieval scenario. Hybrid search runs both retrievers in parallel, merges the result sets using a fusion strategy, and optionally applies a reranker before passing chunks to the LLM."
+      },
+      {
+        "url": "https://dev.to/aun_aideveloper/combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-perfo-5h8k",
+        "title": "Combining BM25 & Vector Search: A Hybrid Approach for Enhanced Retrieval Performance - DEV Community",
+        "snippet": "Cover image for Combining BM25 & Vector Search: A Hybrid Approach for Enhanced Retrieval Performance. # Combining BM25 & Vector Search: A Hybrid Approach for Enhanced Retrieval Performance. In the realm of information retrieval, the quest for more relevant and accurate search results is ongoing. This article explores a powerful hybrid approach that combines the strengths of both BM25 and vector search to achieve superior retrieval performance. The core purpose of combining BM25 and vector search is to leverage their complementary strengths. The combined BM25 and vector search approach offers the following key features:. This example demonstrates a basic implementation using the `rank_bm25` library for BM25 and `faiss` for vector search. It assumes you have a corpus of documents and a query. \"This is the first document about cats.\",. \"The third document talks about both cats and dogs.\",. Combining BM25 and vector search provides a powerful approach for building more effective information retrieval systems. Algolia is the official search partner of DEV."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://blog.premai.io/hybrid-search-for-rag-bm25-splade-and-vector-search-combined/",
+        "title": "https://blog.premai.io/hybrid-search-for-rag-bm25-splade-and-vector-search-combined/",
+        "heading": "",
+        "chunk_text": "Hybrid Search for RAG: BM25, SPLADE, and Vector Search Combined\nQuick answer: Hybrid search runs a sparse retriever (BM25 or SPLADE) and a dense vector retriever in parallel, then merges results with a fusion algorithm before passing chunks to the LLM. It consistently outperforms either method alone because dense retrieval misses exact identifiers and dense retrieval misses semantic matches. Start with RRF at k=60 as the zero-config default. If you have 50+ labeled query pairs, switch to convex combination and tune alpha. Add a cross-encoder reranker after fusion for the biggest single precision gain.\nThis article covers how hybrid search works, when BM25 vs SPLADE is the right sparse retriever, the math behind three fusion strategies (RRF, convex combination, DBSF), four Python code examples including a full reranking pipeline, and a decision framework for every common retrieval scenario. Prerequisites: basic familiarity with embeddings and RAG concepts. Python experience helps for the code sections.\nWhy Single-Method Retrieval Breaks on Real Queries\nDense retrieval (embedding-based search) encodes queries and documents into continuous vector space, typically 384 to 1536 dimensions. Similarity is measured via cosine similarity or dot product, and retrieval uses Approximate Nearest Neighbor (HNSW).",
+        "score": 8.3046,
+        "rank": 0
+      },
+      {
+        "url": "https://blog.premai.io/hybrid-search-for-rag-bm25-splade-and-vector-search-combined/",
+        "title": "https://blog.premai.io/hybrid-search-for-rag-bm25-splade-and-vector-search-combined/",
+        "heading": "Compare dense-only vs hybrid on the same eval set",
+        "chunk_text": "Compare dense-only vs hybrid on the same eval set\n\nf you want managed hybrid retrieval without building the stack yourself, Prem Platform runs production RAG pipelines with hybrid search and reranking inside your cloud account. Data stays in your VPC. For open-source models suited to RAG workloads, Prem-1B (Apache 2.0, 8,192-token context) pairs well with any of the retrieval strategies above.\nFAQ\nWhat is hybrid search in RAG?\nHybrid search runs a sparse retriever (BM25 or SPLADE) and a dense vector retriever on the same query in parallel, then merges their result lists using a fusion algorithm like RRF or convex combination. The combined candidate set is passed to the LLM, often after an optional reranking step. It improves recall over either method alone because dense retrieval misses exact keyword matches and sparse retrieval misses semantic synonyms.\nWhen should I use hybrid search vs. pure vector search?\nUse hybrid search when your queries include exact identifiers (error codes, product names, API endpoints, legal terms) alongside natural language intent. Use pure vector search when queries are entirely semantic and your embedding model already understands your domain vocabulary. If you have fine-tuned embeddings on your specific corpus, the marginal gain from BM25 shrinks considerably.\nWhat is the difference between BM25 and SPLADE?\nBM25 is a statistical ranking function that matches exact query terms without any vocabulary expansion.",
+        "score": 6.7004,
+        "rank": 1
+      },
+      {
+        "url": "https://dev.to/aun_aideveloper/combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-perfo-5h8k",
+        "title": "Combining BM25 & Vector Search: A Hybrid Approach for Enhanced Retrieval Performance",
+        "heading": "[](https://dev.to/aun_aideveloper/combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-perfo-5h8k#combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-performance) Combining BM25 and Vector Search: A Hybrid Approach for Enhanced Retrieval Performance",
+        "chunk_text": "[](https://dev.to/aun_aideveloper/combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-perfo-5h8k#combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-performance) Combining BM25 and Vector Search: A Hybrid Approach for Enhanced Retrieval Performance\n\nThis example demonstrates a basic implementation using the `rank_bm25` library for BM25 and `faiss` for vector search. It assumes you have a corpus of documents and a query.\n\n```\nfrom rank_bm25 import BM25Okapi\nimport faiss\nimport numpy as np",
+        "score": 6.3373,
+        "rank": 2
+      },
+      {
+        "url": "https://dev.to/aun_aideveloper/combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-perfo-5h8k",
+        "title": "Combining BM25 & Vector Search: A Hybrid Approach for Enhanced Retrieval Performance",
+        "heading": "[](https://dev.to/aun_aideveloper/combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-perfo-5h8k#combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-performance) Combining BM25 and Vector Search: A Hybrid Approach for Enhanced Retrieval Performance",
+        "chunk_text": "[](https://dev.to/aun_aideveloper/combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-perfo-5h8k#combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-performance) Combining BM25 and Vector Search: A Hybrid Approach for Enhanced Retrieval Performance\n\nIn the realm of information retrieval, the quest for more relevant and accurate search results is ongoing. While traditional methods like BM25 have proven effective for keyword-based searches, they often struggle with semantic understanding and capturing contextual nuances. Conversely, vector search, powered by embedding models, excels at semantic similarity but can miss exact keyword matches. This article explores a powerful hybrid approach that combines the strengths of both BM25 and vector search to achieve superior retrieval performance.\n\n**1. Purpose: Bridging the Gap Between Keywords and Semantics**\n\nThe core purpose of combining BM25 and vector search is to leverage their complementary strengths.\n\n*   **BM25 (Best Matching 25):** A widely used ranking function based on term frequency-inverse document frequency (TF-IDF) principles. It's excellent for identifying documents containing the query keywords and penalizing common terms.\n*   **Vector Search:** Represents documents and queries as vectors in a high-dimensional space, capturing semantic meaning. It allows for finding documents that are conceptually similar to the query, even if they don't share the exact keywords.\n\nBy integrating these two approaches, we aim to:",
+        "score": 6.151,
+        "rank": 3
+      },
+      {
+        "url": "https://dev.to/aun_aideveloper/combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-perfo-5h8k",
+        "title": "Combining BM25 & Vector Search: A Hybrid Approach for Enhanced Retrieval Performance",
+        "heading": "[](https://dev.to/aun_aideveloper/combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-perfo-5h8k#combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-performance) Combining BM25 and Vector Search: A Hybrid Approach for Enhanced Retrieval Performance",
+        "chunk_text": "[](https://dev.to/aun_aideveloper/combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-perfo-5h8k#combining-bm25-and-vector-search-a-hybrid-approach-for-enhanced-retrieval-performance) Combining BM25 and Vector Search: A Hybrid Approach for Enhanced Retrieval Performance\n\n*   **Improve Relevance:** Ensure that results contain the query keywords (BM25 strength) while also capturing the semantic intent behind the query (vector search strength).\n*   **Enhance Recall:** Retrieve a broader range of relevant documents, including those that might be missed by keyword-based searches alone.\n*   **Provide Contextual Understanding:** Go beyond simple keyword matching and understand the context and meaning of the query and documents.\n\n**2. Features: A Synergistic Combination**\n\nThe combined BM25 and vector search approach offers the following key features:\n\n*   **Hybrid Scoring:** Combines BM25 scores and vector similarity scores to rank documents. This allows for tuning the influence of each method.\n*   **Scalability:** Leverages the scalability of both BM25 and vector search libraries, allowing for efficient retrieval on large datasets.\n*   **Customization:** Provides flexibility in choosing the embedding model for vector search and tuning the weighting parameters for the hybrid score.\n*   **Improved Handling of Synonyms and Semantic Variations:** Vector search component effectively addresses the limitations of BM25 in handling synonyms and semantic variations.\n*   **Robustness:** Mitigates the weaknesses of each individual method, resulting in a more robust and reliable search system.\n\n**3. Code Example: Implementation with Python and `rank_bm25` and `faiss`**",
+        "score": 6.0529,
+        "rank": 4
+      }
+    ],
+    "sub_queries": [
+      "What is hybrid search in information retrieval?",
+      "Why does combining BM25 with vector search outperform either alone?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "pass",
+    "score": 1.0,
+    "reasoning": "The response accurately explains hybrid search as combining sparse (BM25) and dense vector retrieval, covers complementary strengths (exact vs semantic matching), mentions RRF fusion, and states that hybrid outperforms either alone. All key facts from ground truth are present and correct.",
+    "judge_model": "deepseek-chat"
+  }
+}

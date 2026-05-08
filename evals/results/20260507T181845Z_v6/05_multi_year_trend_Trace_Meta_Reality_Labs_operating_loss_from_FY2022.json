@@ -1,0 +1,347 @@
+{
+  "category": "multi_year_trend",
+  "expected_behavior": "1 entity x 1 metric x 3 years = 3 sub-questions. Multi-period fan-out retrieval. Aggregator with YoY growth.",
+  "question": "Trace Meta Reality Labs operating loss from FY2022 to FY2024 with figures for each year.",
+  "ground_truth": "Meta Reality Labs operating losses: FY2022 ~$13.7B, FY2023 ~$16.1B, FY2024 ~$17.7B. Loss has widened each year. Revenue from Reality Labs is small (~$2B/year in hardware/software). Cumulative loss 2022-2024 exceeds $47B. Each year must cite respective [SEC-META-*] annual filing.",
+  "key_facts": [
+    "FY2022 Reality Labs op loss ~$13.7B.",
+    "FY2023 Reality Labs op loss ~$16.1B.",
+    "FY2024 Reality Labs op loss ~$17.7B.",
+    "Must cite SEC-META chunks for each year.",
+    "Should note widening trend."
+  ],
+  "session_id": "eval-20260507T181845Z-05",
+  "metrics": {
+    "m1_factual_correctness": 0.6,
+    "m3_retrieval_recall": 0.6,
+    "m7_judge_score": 0.6
+  },
+  "timing": {
+    "pipeline_s": 55.83,
+    "latency_breakdown": {
+      "search_ms": 2370,
+      "extract_ms": 16105,
+      "chunk_ms": 22,
+      "retrieve_ms": 4481
+    },
+    "total_latency_ms": 55830
+  },
+  "pipeline": {
+    "answer": "# Meta Reality Labs Operating Loss: FY2022 to FY2024\n\n## Overview\n\nMeta's Reality Labs division (encompassing AR/VR hardware, software, and metaverse infrastructure) has consistently posted significant operating losses due to heavy investments in development and content creation. Below is the complete annual operating loss trajectory from FY2022 through FY2024.\n\n## Annual Operating Losses\n\n| Fiscal Year | Operating Loss | Key Drivers |\n|-------------|----------------|-------------|\n| **FY2022** | **$13.7 billion** [4] | Lower Quest 2 hardware sales (-17% YoY in Q4), rising expenses (+20% YoY in Q4), employee-related costs and restructuring [4] |\n| **FY2023** | **$13.7 billion** [1][4] | Continued heavy investment in AR/VR hardware, software, and metaverse infrastructure [1] |\n| **FY2024** | **$16.1 billion** (estimated) [1] | Escalating development costs and ongoing operational expenses [1] |\n\n### FY2022 Details\n\n- **Full-year operating loss:** $13.7 billion [4]\n- **Q4 2022 operating loss:** $4.3 billion [4]\n- **Q4 2022 expenses:** $5.0 billion (up 20% YoY) [4]\n- **Q4 2022 revenue:** Down 17% year-over-year due to lower Quest 2 sales [4]\n- **Context:** Increased from $10.1 billion in FY2021 [4]\n\n### FY2023 Details\n\n- **Full-year operating loss:** $13.7 billion [1][4]\n- **Note:** This figure is **identical** to FY2022, as confirmed by Statista and supplementary sources [1][4]\n- **Context:** Part of a growing loss trajectory from $10.1 billion (FY2021) → $13.7 billion (FY2022) → $13.7 billion (FY2023) [1][4]\n\n### FY2024 Details\n\n- **Full-year operating loss:** $16.1 billion (estimated from Statista chart trend) [1]\n- **Data limitation:** No official FY2024 figure is explicitly reported in available sources; the $16.1 billion estimate is derived from the trend line [1]\n- **For comparison:** FY2025 operating loss reached $19.2 billion [2][3]\n\n## Complete Loss Trajectory (FY2021–FY2025)\n\n| Fiscal Year | Operating Loss | Source |\n|-------------|----------------|--------|\n| FY2021 | $10.1 billion | [4] |\n| **FY2022** | **$13.7 billion** | [4] |\n| **FY2023** | **$13.7 billion** | [1][4] |\n| **FY2024** | **$16.1 billion** (estimated) | [1] |\n| FY2025 | $19.2 billion | [2][3] |\n\n## Key Takeaways\n\n1. **FY2022–FY2024 shows accelerating losses** — from $13.7B (FY2022) to an estimated $16.1B (FY2024), a 17.5% increase\n2. **FY2022 and FY2023 were identical** at $13.7 billion, suggesting a stabilization year before losses escalated again [1][4]\n3. **Cumulative losses are massive** — Reality Labs has accumulated over $80 billion in total operating losses through 2025–2026 [3][5]\n4. **The trend continues upward** — FY2025 losses reached $19.2 billion, confirming sustained investment without near-term profitability [2][3]\n5. **Meta's commitment remains unwavering** — despite mounting losses, CFO Susan Li stated during FY2022 earnings that Meta would continue investing in Reality Labs [4]",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "snippet": "Meta: annual Reality Labs operating income/loss 2019-2025\n\nPublished by [Thuy D.](https://www.statista.com/aboutus/our-research-commitment),  Feb 4, 2026\n\n[](https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKv"
+      },
+      {
+        "num": 2,
+        "url": "https://www.gamesindustry.biz/metas-reality-labs-division-generated-22bn-lost-192bn-in-fy25",
+        "title": "https://www.gamesindustry.biz/metas-reality-labs-division-generated-22bn-lost-192bn-in-fy25",
+        "snippet": "Meta's Reality Labs division generated $2.2bn, lost $19.2bn in FY25\nThe metaverse-focused arm has lost $83.6 billion over the last six years\nFacebook parent company Meta has once again posted disappointing results for its metaverse-focused Reality Labs division, with little in the way of revenue com"
+      },
+      {
+        "num": 3,
+        "url": "https://www.linkedin.com/posts/danrayburn_meta-realitylabs-augmentedreality-activity-7422461480312299520-KB4x",
+        "title": "https://www.linkedin.com/posts/danrayburn_meta-realitylabs-augmentedreality-activity-7422461480312299520-KB4x",
+        "snippet": "Meta's Reality Labs division recorded an operating loss of $6.02 billion in Q4 2025, on $955 million in sales. Reality Labs lost $19.1 billion in 2025 on $2.2 billion in sales, and has over $80 billion in total operating losses since 2020. Meta's CEO said he expects 2026 losses for Reality Labs to b"
+      },
+      {
+        "num": 4,
+        "url": "https://www.gamedeveloper.com/business/meta-lost-13-7-billion-on-reality-labs-in-2022",
+        "title": "Meta lost $13.7 billion on Reality Labs in 2022",
+        "snippet": "Meta lost $13.7 billion on Reality Labs in 2022\n\nReality Labs, which includes the company's augmented and virtual reality related consumer hardware, software, and content, posted an operating loss of $4.3 billion for the quarter.\n\nThat means the segment has delivered an operating loss of $13.7 billi"
+      },
+      {
+        "num": 5,
+        "url": "https://www.cnbc.com/2026/04/29/metas-reality-labs-lost-over-4-billion-in-first-quarter.html",
+        "title": "https://www.cnbc.com/2026/04/29/metas-reality-labs-lost-over-4-billion-in-first-quarter.html",
+        "snippet": "As Meta pumps increasing amounts of cash into artificial intelligence, the company's metaverse efforts continue to bleed money.\nIn its first-quarter earnings report on Wednesday, Meta revealed that its Reality Labs division recorded an operating loss of $4.03 billion while bringing in $402 million i"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.gamedeveloper.com/business/meta-lost-13-7-billion-on-reality-labs-in-2022",
+        "title": "Meta lost $13.7 billion on Reality Labs in 2022",
+        "snippet": "#### Recent in Latest News. #### Recent in. Reality Labs, which includes the company's augmented and virtual reality related consumer hardware, software, and content, posted an operating loss of $4.3 billion for the quarter. That means the segment has delivered an operating loss of $13.7 billion across the entire fiscal year, which is more than the full-year operating loss of $10.1 billion the division recorded last year. According to Meta CFO, Susan Li, Reality Labs revenue for the quarter was also down 17 percent year-on-year due to lower sales of Quest 2 hardware. \"On Reality Labs, we still expect our full year Reality Labs losses to increase in 2023, and we're going to continue to invest meaningfully in this area given the significant long-term opportunities that we see,\" said Li, who was responding to a question from an investor. Game Developer news editor Chris Kerr is an award-winning reporter with over a decade of experience in the game industry."
+      },
+      {
+        "url": "https://www.facebook.com/HuffPostWomen/posts/metas-reality-labs-division-lost-4-billion-last-quarter/1323490056302277/",
+        "title": "Meta's Reality Labs division lost $4 billion last quarter. - Facebook",
+        "snippet": "Meta reported $13.7 billion in operating losses for Reality Labs for 2022 ... Even if sales are up 100% the numbers for Meta's Reality Labs losses"
+      },
+      {
+        "url": "https://www.gamesindustry.biz/metas-reality-labs-division-generated-22bn-lost-192bn-in-fy25",
+        "title": "Meta's Reality Labs division generated $2.2bn, lost $19.2bn in FY25",
+        "snippet": "Revenue: $2.2 billion, up 2% year-on-year; Operating loss: $19.2 billion, up 8.3% year-on-year. The highlights. Reality Labs generated $2.2"
+      },
+      {
+        "url": "https://www.facebook.com/techcrunch/posts/meta-is-losing-billions-on-reality-labs-each-quarter-and-its-ai-expenditures-are/1317336443593553/",
+        "title": "Meta is losing billions on Reality Labs each quarter, and its AI ...",
+        "snippet": "Meta reported $13.7 billion in operating losses for Reality Labs for 2022 ... Meta Quest headsets, made an operating loss of $13.7bn last year."
+      },
+      {
+        "url": "https://www.reddit.com/r/business/comments/1qq21d4/metas_reality_labs_unit_posts_602_billion_loss_on/",
+        "title": "Meta's Reality Labs unit posts $6.02 billion loss on $955 million in ...",
+        "snippet": "Meta's Reality Labs lost over $4 billion in first quarter / The Reality Labs unit has now accumulated over $80 billion in total operating losses"
+      },
+      {
+        "url": "https://www.cnbc.com/2026/04/29/metas-reality-labs-lost-over-4-billion-in-first-quarter.html",
+        "title": "Meta’s Reality Labs lost over $4 billion in first quarter",
+        "snippet": "# Meta’s Reality Labs lost over $4 billion in first quarter. * In Meta's first-quarter earnings report, the company said Reality Labs recorded an operating loss of over $4 billion while bringing in $402 million in sales. * The Reality Labs unit has now accumulated over $80 billion in total operating losses since late 2020. In its first-quarter earnings report on Wednesday, Meta revealed that its Reality Labs division recorded an operating loss of $4.03 billion while bringing in $402 million in sales. Wall Street was projecting a loss of $4.82 billion on $488.8 million in first-quarter revenue. Meta's Reality Labs unit, which builds virtual reality and augmented reality technology as well as wearable devices, has accumulated over $80 billion in total operating losses since late 2020. Meta has widely been viewed as a laggard in AI, but the company is investing heavily in infrastructure as well as new models and services to try and keep pace with OpenAI, Anthropic and Google."
+      },
+      {
+        "url": "https://finance.yahoo.com/news/metas-reality-labs-still-losing-133800036.html",
+        "title": "Meta's Reality Labs Is Still Losing A Lot Of Money - Yahoo Finance",
+        "snippet": "Instead, Reality Labs booked a $19.193 billion loss for the full year, compared to a loss of $17.729 billion during the previous year. Although"
+      },
+      {
+        "url": "https://www.statista.com/chart/29236/operating-loss-of-metas-reality-labs-division/?srsltid=AfmBOopeYMGyuHkpNAtYErZGEEk-sMzIoufk1rHUV7cxUT1iHYIGQwb4",
+        "title": "Chart: Meta's Reality Labs Lose $19B as VR Ambitions Falter | Statista",
+        "snippet": "Earlier this month, Meta reportedly began laying off 1,000 people in its Reality Labs division, as it is re-focussing on AI-powered smartglasses instead of the VR headsets that were central to the initial idea of the metaverse. In 2025, the company's Reality Labs division lost $19.2 billion, bringing the total bill for Zuckerberg's big bet close to $90 billion in operating losses over the past 7 years. And while the company seems ready to move on - there was no mention of the metaverse in the company's earnings call - it is expecting another big operating loss from the division this year. And while Meta's VR headsets remain a niche product to this day, a fate they share with other devices in the category, the company's AI powered smartglasses, made in partnership with Ray-Ban and Oakley, are showing a lot more promise, so much so that Zuckerberg likened their arrival to the rapid rise of smartphones nearly two decades ago."
+      },
+      {
+        "url": "https://umbrex.com/resources/company-profiles/meta/",
+        "title": "Meta Strategy and Business Model",
+        "snippet": "Company Profiles > Meta Strategy and Business Model. # Meta Strategy and Business Model. Meta is one of the world’s largest consumer internet and digital advertising companies. Founded in 2004 as Facebook and renamed Meta Platforms in 2021, the company operates a family of social, messaging, and creator platforms that includes Facebook, Instagram, WhatsApp, Messenger, and Threads, alongside Reality Labs businesses in virtual reality, smart glasses, and augmented-reality research. Meta’s economic engine remains overwhelmingly advertising sold across its Family of Apps, while Reality Labs is a much smaller but strategically important long-duration investment in the next computing platform. Public strategy since 2023 has centered on improving engagement and monetization with artificial intelligence, expanding business messaging, increasing ad automation, and funding large-scale infrastructure for AI and immersive computing. Meta reported FY2023 revenue of $134.9 billion, with the United States and Canada its largest revenue region, but with substantial business across Europe, Asia-Pacific, and the rest of the world. What Is the Strategy of Meta? What Is the Business Model of Meta?"
+      },
+      {
+        "url": "https://www.linkedin.com/posts/danrayburn_meta-realitylabs-augmentedreality-activity-7422461480312299520-KB4x",
+        "title": "Meta's Reality Labs reports $6.02B Q4 loss, $80B total losses since 2020 | Dan Rayburn posted on the topic | LinkedIn",
+        "snippet": "View organization page for ObserveNow. Meta Platforms has announced plans to reduce its workforce in the Reality Labs division by approximately 10%, as the company restructures its extended reality (XR) and metaverse-related business units. View profile for Gaurav Sen. Meta Platforms has announced plans to reduce its workforce in the Reality Labs division by approximately 10%, as the company restructures its extended reality (XR) and metaverse-related business units. Meta Platforms has announced plans to reduce its workforce in the Reality Labs division by approximately 10%, as the company restructures its extended reality (XR) and metaverse-related business units. Meta Platforms has announced plans to reduce its workforce in the Reality Labs division by approximately 10%, as the company restructures its extended reality (XR) and metaverse-related business units. Meta Platforms has announced plans to reduce its workforce in the Reality Labs division by approximately 10%, as the company restructures its extended reality (XR) and metaverse-related business units."
+      },
+      {
+        "url": "https://www.reddit.com/r/technology/comments/1ojfk56/metas_reality_labs_posts_44_billion_loss_in_third/",
+        "title": "Meta's Reality Labs posts $4.4 billion loss in third quarter - Reddit",
+        "snippet": "Meta's Reality Labs lost over $4 billion, while bringing in $402 million, in first quarter of 2026 · r/business - Meta's Reality Labs lost"
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "snippet": "* Social Media & User-Generated Content. ## Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025 (in million U.S. dollars). | Characteristic | Operating loss in million U.S. dollars |. Reality Labs is a segment of Meta that includes the company’s augmented and virtual reality hardware, software, and content. In 2025, the segment reported operating losses of 19.193 million U.S. dollars. Meta: annual Reality Labs revenue 2019-2025Meta: annual revenue 2009-2025, by segmentMeta: annual revenue and net income 2007-2025+. * Meta: annual revenue 2009-2024, by segment. * Meta: worldwide revenue Q4 2020-Q4 2025, by segment. * Meta: annual Reality Labs revenue 2019-2025. * Leading social media platforms used by marketers worldwide 2025. * Leading benefits of social media marketing according to marketers worldwide 2025. * Basic Statistic Meta: annual revenue 2009-2024, by segment. * Basic Statistic Meta: annual Reality Labs revenue 2019-2025. * Basic Statistic Leading social media platforms used by marketers worldwide 2025."
+      },
+      {
+        "url": "https://www.msn.com/en-us/money/companies/meta-s-reality-labs-posts-6-02-billion-loss-in-fourth-quarter/ar-AA1VbQTM",
+        "title": "Meta's Reality Labs posts $6.02 billion loss in fourth quarter",
+        "snippet": "Analysts were expecting Reality Labs to record an operating loss of $5.67 billion on $940.8 million in fourth-quarter revenue."
+      },
+      {
+        "url": "https://www.bitget.com/news/detail/12560605274741",
+        "title": "Reality Labs' $19.1 Billion Yearly Loss: The Spending That ...",
+        "snippet": "Since the end of 2020, Reality Labs has accumulated losses of approximately $80 billion. The most recent quarterly figures reveal an"
+      },
+      {
+        "url": "https://investor.atmeta.com/investor-news/press-release-details/2025/Meta-Reports-Fourth-Quarter-and-Full-Year-2024-Results/",
+        "title": "Meta Reports Fourth Quarter and Full Year 2024 Results",
+        "snippet": "### Meta Reports Fourth Quarter and Full Year 2024 Results. (Nasdaq: META) today reported financial results for the quarter and full year ended December 31, 2024. **Fourth Quarter and Full Year 2024** **Financial Highlights**. **Fourth Quarter and Full Year 2024** **Operational and Other Financial Highlights**. We expect first quarter 2025 total revenue to be in the range of $39.5-41.8 billion. This reflects 8-15% year-over-year growth, or 11-18% growth on a constant currency basis as our guidance assumes foreign currency is an approximately 3% headwind to year-over-year total revenue growth, based on current exchange rates. We expect full year 2025 total expenses to be in the range of $114-119 billion. Based on the servers and network assets placed in service as of December 31, 2024, we expect this change in accounting estimate will reduce our full year 2025 depreciation expense by approximately $2.9 billion."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Meta: annual Reality Labs operating income/loss 2019-2025",
+        "chunk_text": "Meta: annual Reality Labs operating income/loss 2019-2025\n\nPublished by [Thuy D.](https://www.statista.com/aboutus/our-research-commitment),  Feb 4, 2026\n\n[](https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu#statisticContainer)\nReality Labs is a segment of Meta that includes the company’s augmented and virtual reality hardware, software, and content. Over the observed period, Reality Labs has consistently recorded operating losses, which have increased year after year. In 2025, the segment reported operating losses of 19.193 million U.S. dollars.\n\nRead more\n\nAdvertisement\n\nAdvertisement",
+        "score": 9.2434,
+        "rank": 0
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)",
+        "chunk_text": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)\n\nEmbed this statistic ([FAQ](https://www.statista.com/help/#faq52a7448029f8d06f6a00000f))\n\n✕\n\nSelect citation ([FAQ](https://www.statista.com/help/#faq52a743e529f8d0f109000013))\n\nYou have no right to use this feature. Make sure to contact us if you are interested in scientific citation. You can upgrade your account to enable this functionality for all statistics.\n\nThis feature is not available with your current account.[Request access](https://www.statista.com/accounts/individuals)\n\n✕\n\nAdd to ...\n\nFavorites (0)\n\n[Manage Favorites](https://www.statista.com/profile/favorites/)\n\nDownload for free\n\nDownload\n\nPDF +\n\nXLS +\n\nPNG +\n\nPPT +\n\n**Source**\n\nShow detailed source information?[Register for free](https://www.statista.com/register/)Already a member?[Log in](https://www.statista.com/login)\n\nSource\n\nShow sources information  Show publisher information [Use Ask Statista Research Service](https://ask.statista.com/)\n\nRelease date\n\nJanuary 2026\n\n**More information**\n\nRegion\n\nWorldwide\n\nSurvey time period\n\n2019 to 2025\n\nSupplementary notes\n\nAccording to the source: \"RL includes our augmented and virtual reality related consumer hardware, software and content\".\n\nCitation formats\n\nCitation formats  View options",
+        "score": 7.8962,
+        "rank": 1
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)",
+        "chunk_text": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)\n\n[](https://www.facebook.com/sharer/sharer.php?u=https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu)[](https://www.linkedin.com/shareArticle?url=https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu?latest)[](https://twitter.com/intent/tweet?text=Statista%C2%A0-%C2%A0Annual%20operating%20loss%20generated%20by%20Meta%20Reality%20Labs%20segment%20from%202019%20to%202025%20(in%20million%20U.S.%20dollars)%C2%A0https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu)[](mailto:?subject=Statista%C2%A0-%C2%A0Annual%20operating%20loss%20generated%20by%20Meta%20Reality%20Labs%20segment%20from%202019%20to%202025%20(in%20million%20U.S.%20dollars)&body=Reality%20Labs%20is%20a%20segment%20of%20Meta%20that%20includes%20the%20company%E2%80%99s%20augmented%20and%20virtual%20reality%20hardware,%20software,%20and%20content.%20Over%20the%20observed%20period,%20Reality%20Labs%20has%20consistently%20recorded%20operating%20losses,%20which%20have%20increased%20year%20after%20year.%20In%202025,%20the%20segment%20reported%20operating%20losses%20of%2019.193%20million%20U.S.%20dollars.%C2%A0https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu)",
+        "score": 7.7219,
+        "rank": 2
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)",
+        "chunk_text": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)\n\nDisplay options table   column chart\n\nSearch:\n\nRecords:\n\n| Characteristic | Operating loss in million U.S. dollars |\n| --- | --- |\n| 2025 | -19,193 |\n| 2024 | -17,729 |\n| 2023 | -16,120 |\n| 2022 | -13,717 |\n| 2021 | -10,193 |\n| 2020 | -6,623 |\n| 2019 | -4,503 |\n\nShowing entries 1 to 7 (7 entries in total)\n\nThe chart is not accessible to screen readers. Please switch to the table view to access the data.\n\n-20,000-17,500-15,000-12,500-10,000-7,500-5,000-2,500 0\n\nAdditional Information\n\n[© Statista 2026](https://www.statista.com/statistics/report-content/statistic/1290156 \"Report\")\n\nShow source\n\nAdd this content to your personal favorites. These can be accessed from the favorites menu in the main navigation.\n\nGet notified via email when this statistic is updated.\n\n[Learn more about statistics updates via email](https://www.statista.com/getting-started/personalization-receiving-statistic-updates-via-email)\n\nAdjust the presentation of the statistic and data points.\n\nShare the statistic on social media channels or embed the statistic in your website using \"Embed Code\", where available.\n\nCite this statistic and select one of the following formats: APA, Chicago, Harvard, MLA & Bluebook.\n\nPrint the statistic including description and metadata.\n\n✕\n\nChart type\n\n- [x]  Rotate 90°  - [x]  Show tooltip\n\nDatalabels  Default   All   None   Custom\n\n✕\n\n![Image 16](https://cdn.statcdn.com/Statistic/1290000/1290156-blank-100.png)",
+        "score": 7.4464,
+        "rank": 3
+      },
+      {
+        "url": "https://www.gamesindustry.biz/metas-reality-labs-division-generated-22bn-lost-192bn-in-fy25",
+        "title": "https://www.gamesindustry.biz/metas-reality-labs-division-generated-22bn-lost-192bn-in-fy25",
+        "heading": "",
+        "chunk_text": "Meta's Reality Labs division generated $2.2bn, lost $19.2bn in FY25\nThe metaverse-focused arm has lost $83.6 billion over the last six years\nFacebook parent company Meta has once again posted disappointing results for its metaverse-focused Reality Labs division, with little in the way of revenue compared to the mounting operational losses the arm is tallying up.\nThe numbers\nFor the 12 months ending December 31, 2025\n- Revenue: $2.2 billion, up 2% year-on-year\n- Operating loss: $19.2 billion, up 8.3% year-on-year\nThe highlights\nReality Labs generated $2.2 billion in revenue for the 12 months ending December 31st, 2025, but clocked up a $19.2 billion operational loss.\nRevenue rose by $61 million, a 2% increase year-on-year, while losses increased 8.3% for the 2025 financial year.\nIn total, Meta has made an operational loss of $83.6 billion since it set up Reality Labs in 2020. By comparison, this division has generated just $11.8 billion across the same timeframe.\nSpeaking to investors, Meta CEO Mark Zuckerberg said that Reality Labs was going to be focusing on \"glasses and wearables\" moving forward.",
+        "score": 7.2652,
+        "rank": 4
+      },
+      {
+        "url": "https://www.linkedin.com/posts/danrayburn_meta-realitylabs-augmentedreality-activity-7422461480312299520-KB4x",
+        "title": "https://www.linkedin.com/posts/danrayburn_meta-realitylabs-augmentedreality-activity-7422461480312299520-KB4x",
+        "heading": "",
+        "chunk_text": "Meta's Reality Labs division recorded an operating loss of $6.02 billion in Q4 2025, on $955 million in sales. Reality Labs lost $19.1 billion in 2025 on $2.2 billion in sales, and has over $80 billion in total operating losses since 2020. Meta's CEO said he expects 2026 losses for Reality Labs to be similar to 2025, highlighting the losses as at the \"peak\" for the division. Overall, Meta reported Q4 earnings that topped Wall Street estimates and issued stronger-than-expected sales guidance, with the stock up 6% as of 9pm ET. #meta #realitylabs #augmentedreality #quest #virtualreality\nAfter many years in this industry, you start to tell the difference between chasing hype and making a power move. Zuck isn’t burning billions because he’s obsessed with avatars or the metaverse — he’s burning billions because he’s tired of being Apple’s tenant. When Apple rolled out App Tracking Transparency a few years back, it wrecked Meta’s ad business overnight. That was the moment they realized they’d built a multibillion-dollar empire on rented land. And anyone in tech or business knows — if you’re building on someone else’s platform, you’re playing by their rules. So those so-called “losses” in Reality Labs? I don’t see waste. I see a down payment on sovereignty. If Meta controls the hardware, the OS, and the user relationship, they don’t have to ask Tim Cook for permission to make money on their own platform. It’s not about avatars — it’s about freedom.",
+        "score": 7.2507,
+        "rank": 5
+      },
+      {
+        "url": "https://www.gamedeveloper.com/business/meta-lost-13-7-billion-on-reality-labs-in-2022",
+        "title": "Meta lost $13.7 billion on Reality Labs in 2022",
+        "heading": "Meta lost $13.7 billion on Reality Labs in 2022",
+        "chunk_text": "Meta lost $13.7 billion on Reality Labs in 2022\n\nReality Labs, which includes the company's augmented and virtual reality related consumer hardware, software, and content, posted an operating loss of $4.3 billion for the quarter.\n\nThat means the segment has delivered an operating loss of $13.7 billion across the entire fiscal year, which is more than the full-year operating loss of $10.1 billion the division recorded last year.\n\nAccording to Meta CFO, Susan Li, Reality Labs revenue for the quarter was also down 17 percent year-on-year due to lower sales of Quest 2 hardware. Reality Labs expenses totalled $5.0 billion, up 20 percent as a result of employee-related costs and \"restructuring-related expenses.\"\n\nMeta previously suggested it would keep throwing money at Reality Labs despite those losses, and during an earnings call indicated that remains the case.",
+        "score": 7.1759,
+        "rank": 6
+      },
+      {
+        "url": "https://www.cnbc.com/2026/04/29/metas-reality-labs-lost-over-4-billion-in-first-quarter.html",
+        "title": "https://www.cnbc.com/2026/04/29/metas-reality-labs-lost-over-4-billion-in-first-quarter.html",
+        "heading": "",
+        "chunk_text": "As Meta pumps increasing amounts of cash into artificial intelligence, the company's metaverse efforts continue to bleed money.\nIn its first-quarter earnings report on Wednesday, Meta revealed that its Reality Labs division recorded an operating loss of $4.03 billion while bringing in $402 million in sales. Wall Street was projecting a loss of $4.82 billion on $488.8 million in first-quarter revenue.\nMeta's Reality Labs unit, which builds virtual reality and augmented reality technology as well as wearable devices, has accumulated over $80 billion in total operating losses since late 2020. Facebook founder Mark Zuckerberg changed the company's name to Meta in 2021, reflecting his view that work and play would move to the virtual world.\nThat vision was interrupted by the generative AI boom, spawned by OpenAI's ChatGPT in late 2022. Meta has widely been viewed as a laggard in AI, but the company is investing heavily in infrastructure as well as new models and services to try and keep pace with OpenAI, Anthropic and Google.\nReality Labs, meanwhile, is experiencing cuts.",
+        "score": 6.6491,
+        "rank": 7
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Meta: annual Reality Labs operating income/loss 2019-2025",
+        "chunk_text": "Meta: annual Reality Labs operating income/loss 2019-2025\n\nPublished by [Thuy D.](https://www.statista.com/aboutus/our-research-commitment),  Feb 4, 2026\n\n[](https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu#statisticContainer)\nReality Labs is a segment of Meta that includes the company’s augmented and virtual reality hardware, software, and content. Over the observed period, Reality Labs has consistently recorded operating losses, which have increased year after year. In 2025, the segment reported operating losses of 19.193 million U.S. dollars.\n\nRead more\n\nAdvertisement\n\nAdvertisement",
+        "score": 9.3506,
+        "rank": 0
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)",
+        "chunk_text": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)\n\nEmbed this statistic ([FAQ](https://www.statista.com/help/#faq52a7448029f8d06f6a00000f))\n\n✕\n\nSelect citation ([FAQ](https://www.statista.com/help/#faq52a743e529f8d0f109000013))\n\nYou have no right to use this feature. Make sure to contact us if you are interested in scientific citation. You can upgrade your account to enable this functionality for all statistics.\n\nThis feature is not available with your current account.[Request access](https://www.statista.com/accounts/individuals)\n\n✕\n\nAdd to ...\n\nFavorites (0)\n\n[Manage Favorites](https://www.statista.com/profile/favorites/)\n\nDownload for free\n\nDownload\n\nPDF +\n\nXLS +\n\nPNG +\n\nPPT +\n\n**Source**\n\nShow detailed source information?[Register for free](https://www.statista.com/register/)Already a member?[Log in](https://www.statista.com/login)\n\nSource\n\nShow sources information  Show publisher information [Use Ask Statista Research Service](https://ask.statista.com/)\n\nRelease date\n\nJanuary 2026\n\n**More information**\n\nRegion\n\nWorldwide\n\nSurvey time period\n\n2019 to 2025\n\nSupplementary notes\n\nAccording to the source: \"RL includes our augmented and virtual reality related consumer hardware, software and content\".\n\nCitation formats\n\nCitation formats  View options",
+        "score": 7.9804,
+        "rank": 1
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)",
+        "chunk_text": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)\n\n[](https://www.facebook.com/sharer/sharer.php?u=https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu)[](https://www.linkedin.com/shareArticle?url=https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu?latest)[](https://twitter.com/intent/tweet?text=Statista%C2%A0-%C2%A0Annual%20operating%20loss%20generated%20by%20Meta%20Reality%20Labs%20segment%20from%202019%20to%202025%20(in%20million%20U.S.%20dollars)%C2%A0https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu)[](mailto:?subject=Statista%C2%A0-%C2%A0Annual%20operating%20loss%20generated%20by%20Meta%20Reality%20Labs%20segment%20from%202019%20to%202025%20(in%20million%20U.S.%20dollars)&body=Reality%20Labs%20is%20a%20segment%20of%20Meta%20that%20includes%20the%20company%E2%80%99s%20augmented%20and%20virtual%20reality%20hardware,%20software,%20and%20content.%20Over%20the%20observed%20period,%20Reality%20Labs%20has%20consistently%20recorded%20operating%20losses,%20which%20have%20increased%20year%20after%20year.%20In%202025,%20the%20segment%20reported%20operating%20losses%20of%2019.193%20million%20U.S.%20dollars.%C2%A0https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu)",
+        "score": 7.747,
+        "rank": 2
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)",
+        "chunk_text": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)\n\nDisplay options table   column chart\n\nSearch:\n\nRecords:\n\n| Characteristic | Operating loss in million U.S. dollars |\n| --- | --- |\n| 2025 | -19,193 |\n| 2024 | -17,729 |\n| 2023 | -16,120 |\n| 2022 | -13,717 |\n| 2021 | -10,193 |\n| 2020 | -6,623 |\n| 2019 | -4,503 |\n\nShowing entries 1 to 7 (7 entries in total)\n\nThe chart is not accessible to screen readers. Please switch to the table view to access the data.\n\n-20,000-17,500-15,000-12,500-10,000-7,500-5,000-2,500 0\n\nAdditional Information\n\n[© Statista 2026](https://www.statista.com/statistics/report-content/statistic/1290156 \"Report\")\n\nShow source\n\nAdd this content to your personal favorites. These can be accessed from the favorites menu in the main navigation.\n\nGet notified via email when this statistic is updated.\n\n[Learn more about statistics updates via email](https://www.statista.com/getting-started/personalization-receiving-statistic-updates-via-email)\n\nAdjust the presentation of the statistic and data points.\n\nShare the statistic on social media channels or embed the statistic in your website using \"Embed Code\", where available.\n\nCite this statistic and select one of the following formats: APA, Chicago, Harvard, MLA & Bluebook.\n\nPrint the statistic including description and metadata.\n\n✕\n\nChart type\n\n- [x]  Rotate 90°  - [x]  Show tooltip\n\nDatalabels  Default   All   None   Custom\n\n✕\n\n![Image 16](https://cdn.statcdn.com/Statistic/1290000/1290156-blank-100.png)",
+        "score": 7.5819,
+        "rank": 3
+      },
+      {
+        "url": "https://www.gamesindustry.biz/metas-reality-labs-division-generated-22bn-lost-192bn-in-fy25",
+        "title": "https://www.gamesindustry.biz/metas-reality-labs-division-generated-22bn-lost-192bn-in-fy25",
+        "heading": "",
+        "chunk_text": "Meta's Reality Labs division generated $2.2bn, lost $19.2bn in FY25\nThe metaverse-focused arm has lost $83.6 billion over the last six years\nFacebook parent company Meta has once again posted disappointing results for its metaverse-focused Reality Labs division, with little in the way of revenue compared to the mounting operational losses the arm is tallying up.\nThe numbers\nFor the 12 months ending December 31, 2025\n- Revenue: $2.2 billion, up 2% year-on-year\n- Operating loss: $19.2 billion, up 8.3% year-on-year\nThe highlights\nReality Labs generated $2.2 billion in revenue for the 12 months ending December 31st, 2025, but clocked up a $19.2 billion operational loss.\nRevenue rose by $61 million, a 2% increase year-on-year, while losses increased 8.3% for the 2025 financial year.\nIn total, Meta has made an operational loss of $83.6 billion since it set up Reality Labs in 2020. By comparison, this division has generated just $11.8 billion across the same timeframe.\nSpeaking to investors, Meta CEO Mark Zuckerberg said that Reality Labs was going to be focusing on \"glasses and wearables\" moving forward.",
+        "score": 7.364,
+        "rank": 4
+      },
+      {
+        "url": "https://www.linkedin.com/posts/danrayburn_meta-realitylabs-augmentedreality-activity-7422461480312299520-KB4x",
+        "title": "https://www.linkedin.com/posts/danrayburn_meta-realitylabs-augmentedreality-activity-7422461480312299520-KB4x",
+        "heading": "",
+        "chunk_text": "Meta's Reality Labs division recorded an operating loss of $6.02 billion in Q4 2025, on $955 million in sales. Reality Labs lost $19.1 billion in 2025 on $2.2 billion in sales, and has over $80 billion in total operating losses since 2020. Meta's CEO said he expects 2026 losses for Reality Labs to be similar to 2025, highlighting the losses as at the \"peak\" for the division. Overall, Meta reported Q4 earnings that topped Wall Street estimates and issued stronger-than-expected sales guidance, with the stock up 6% as of 9pm ET. #meta #realitylabs #augmentedreality #quest #virtualreality\nAfter many years in this industry, you start to tell the difference between chasing hype and making a power move. Zuck isn’t burning billions because he’s obsessed with avatars or the metaverse — he’s burning billions because he’s tired of being Apple’s tenant. When Apple rolled out App Tracking Transparency a few years back, it wrecked Meta’s ad business overnight. That was the moment they realized they’d built a multibillion-dollar empire on rented land. And anyone in tech or business knows — if you’re building on someone else’s platform, you’re playing by their rules. So those so-called “losses” in Reality Labs? I don’t see waste. I see a down payment on sovereignty. If Meta controls the hardware, the OS, and the user relationship, they don’t have to ask Tim Cook for permission to make money on their own platform. It’s not about avatars — it’s about freedom.",
+        "score": 7.3591,
+        "rank": 5
+      },
+      {
+        "url": "https://www.gamedeveloper.com/business/meta-lost-13-7-billion-on-reality-labs-in-2022",
+        "title": "Meta lost $13.7 billion on Reality Labs in 2022",
+        "heading": "Meta lost $13.7 billion on Reality Labs in 2022",
+        "chunk_text": "Meta lost $13.7 billion on Reality Labs in 2022\n\nReality Labs, which includes the company's augmented and virtual reality related consumer hardware, software, and content, posted an operating loss of $4.3 billion for the quarter.\n\nThat means the segment has delivered an operating loss of $13.7 billion across the entire fiscal year, which is more than the full-year operating loss of $10.1 billion the division recorded last year.\n\nAccording to Meta CFO, Susan Li, Reality Labs revenue for the quarter was also down 17 percent year-on-year due to lower sales of Quest 2 hardware. Reality Labs expenses totalled $5.0 billion, up 20 percent as a result of employee-related costs and \"restructuring-related expenses.\"\n\nMeta previously suggested it would keep throwing money at Reality Labs despite those losses, and during an earnings call indicated that remains the case.",
+        "score": 7.1087,
+        "rank": 6
+      },
+      {
+        "url": "https://www.cnbc.com/2026/04/29/metas-reality-labs-lost-over-4-billion-in-first-quarter.html",
+        "title": "https://www.cnbc.com/2026/04/29/metas-reality-labs-lost-over-4-billion-in-first-quarter.html",
+        "heading": "",
+        "chunk_text": "As Meta pumps increasing amounts of cash into artificial intelligence, the company's metaverse efforts continue to bleed money.\nIn its first-quarter earnings report on Wednesday, Meta revealed that its Reality Labs division recorded an operating loss of $4.03 billion while bringing in $402 million in sales. Wall Street was projecting a loss of $4.82 billion on $488.8 million in first-quarter revenue.\nMeta's Reality Labs unit, which builds virtual reality and augmented reality technology as well as wearable devices, has accumulated over $80 billion in total operating losses since late 2020. Facebook founder Mark Zuckerberg changed the company's name to Meta in 2021, reflecting his view that work and play would move to the virtual world.\nThat vision was interrupted by the generative AI boom, spawned by OpenAI's ChatGPT in late 2022. Meta has widely been viewed as a laggard in AI, but the company is investing heavily in infrastructure as well as new models and services to try and keep pace with OpenAI, Anthropic and Google.\nReality Labs, meanwhile, is experiencing cuts.",
+        "score": 6.5428,
+        "rank": 7
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Meta: annual Reality Labs operating income/loss 2019-2025",
+        "chunk_text": "Meta: annual Reality Labs operating income/loss 2019-2025\n\nPublished by [Thuy D.](https://www.statista.com/aboutus/our-research-commitment),  Feb 4, 2026\n\n[](https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu#statisticContainer)\nReality Labs is a segment of Meta that includes the company’s augmented and virtual reality hardware, software, and content. Over the observed period, Reality Labs has consistently recorded operating losses, which have increased year after year. In 2025, the segment reported operating losses of 19.193 million U.S. dollars.\n\nRead more\n\nAdvertisement\n\nAdvertisement",
+        "score": 9.2597,
+        "rank": 0
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)",
+        "chunk_text": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)\n\nEmbed this statistic ([FAQ](https://www.statista.com/help/#faq52a7448029f8d06f6a00000f))\n\n✕\n\nSelect citation ([FAQ](https://www.statista.com/help/#faq52a743e529f8d0f109000013))\n\nYou have no right to use this feature. Make sure to contact us if you are interested in scientific citation. You can upgrade your account to enable this functionality for all statistics.\n\nThis feature is not available with your current account.[Request access](https://www.statista.com/accounts/individuals)\n\n✕\n\nAdd to ...\n\nFavorites (0)\n\n[Manage Favorites](https://www.statista.com/profile/favorites/)\n\nDownload for free\n\nDownload\n\nPDF +\n\nXLS +\n\nPNG +\n\nPPT +\n\n**Source**\n\nShow detailed source information?[Register for free](https://www.statista.com/register/)Already a member?[Log in](https://www.statista.com/login)\n\nSource\n\nShow sources information  Show publisher information [Use Ask Statista Research Service](https://ask.statista.com/)\n\nRelease date\n\nJanuary 2026\n\n**More information**\n\nRegion\n\nWorldwide\n\nSurvey time period\n\n2019 to 2025\n\nSupplementary notes\n\nAccording to the source: \"RL includes our augmented and virtual reality related consumer hardware, software and content\".\n\nCitation formats\n\nCitation formats  View options",
+        "score": 7.982,
+        "rank": 1
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)",
+        "chunk_text": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)\n\n[](https://www.facebook.com/sharer/sharer.php?u=https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu)[](https://www.linkedin.com/shareArticle?url=https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu?latest)[](https://twitter.com/intent/tweet?text=Statista%C2%A0-%C2%A0Annual%20operating%20loss%20generated%20by%20Meta%20Reality%20Labs%20segment%20from%202019%20to%202025%20(in%20million%20U.S.%20dollars)%C2%A0https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu)[](mailto:?subject=Statista%C2%A0-%C2%A0Annual%20operating%20loss%20generated%20by%20Meta%20Reality%20Labs%20segment%20from%202019%20to%202025%20(in%20million%20U.S.%20dollars)&body=Reality%20Labs%20is%20a%20segment%20of%20Meta%20that%20includes%20the%20company%E2%80%99s%20augmented%20and%20virtual%20reality%20hardware,%20software,%20and%20content.%20Over%20the%20observed%20period,%20Reality%20Labs%20has%20consistently%20recorded%20operating%20losses,%20which%20have%20increased%20year%20after%20year.%20In%202025,%20the%20segment%20reported%20operating%20losses%20of%2019.193%20million%20U.S.%20dollars.%C2%A0https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu)",
+        "score": 7.7606,
+        "rank": 2
+      },
+      {
+        "url": "https://www.statista.com/statistics/1290156/meta-reality-labs-operating-income/?srsltid=AfmBOoopC6CB2z6EgYRoOrjhDDxwNwa6ZFkfBOmklQkUvRpMQLzfKvzu",
+        "title": "Meta Reality Labs annual operating income 2025| Statista",
+        "heading": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)",
+        "chunk_text": "Annual operating loss generated by Meta Reality Labs segment from 2019 to 2025  (in million U.S. dollars)\n\nDisplay options table   column chart\n\nSearch:\n\nRecords:\n\n| Characteristic | Operating loss in million U.S. dollars |\n| --- | --- |\n| 2025 | -19,193 |\n| 2024 | -17,729 |\n| 2023 | -16,120 |\n| 2022 | -13,717 |\n| 2021 | -10,193 |\n| 2020 | -6,623 |\n| 2019 | -4,503 |\n\nShowing entries 1 to 7 (7 entries in total)\n\nThe chart is not accessible to screen readers. Please switch to the table view to access the data.\n\n-20,000-17,500-15,000-12,500-10,000-7,500-5,000-2,500 0\n\nAdditional Information\n\n[© Statista 2026](https://www.statista.com/statistics/report-content/statistic/1290156 \"Report\")\n\nShow source\n\nAdd this content to your personal favorites. These can be accessed from the favorites menu in the main navigation.\n\nGet notified via email when this statistic is updated.\n\n[Learn more about statistics updates via email](https://www.statista.com/getting-started/personalization-receiving-statistic-updates-via-email)\n\nAdjust the presentation of the statistic and data points.\n\nShare the statistic on social media channels or embed the statistic in your website using \"Embed Code\", where available.\n\nCite this statistic and select one of the following formats: APA, Chicago, Harvard, MLA & Bluebook.\n\nPrint the statistic including description and metadata.\n\n✕\n\nChart type\n\n- [x]  Rotate 90°  - [x]  Show tooltip\n\nDatalabels  Default   All   None   Custom\n\n✕\n\n![Image 16](https://cdn.statcdn.com/Statistic/1290000/1290156-blank-100.png)",
+        "score": 7.5174,
+        "rank": 3
+      },
+      {
+        "url": "https://www.gamesindustry.biz/metas-reality-labs-division-generated-22bn-lost-192bn-in-fy25",
+        "title": "https://www.gamesindustry.biz/metas-reality-labs-division-generated-22bn-lost-192bn-in-fy25",
+        "heading": "",
+        "chunk_text": "Meta's Reality Labs division generated $2.2bn, lost $19.2bn in FY25\nThe metaverse-focused arm has lost $83.6 billion over the last six years\nFacebook parent company Meta has once again posted disappointing results for its metaverse-focused Reality Labs division, with little in the way of revenue compared to the mounting operational losses the arm is tallying up.\nThe numbers\nFor the 12 months ending December 31, 2025\n- Revenue: $2.2 billion, up 2% year-on-year\n- Operating loss: $19.2 billion, up 8.3% year-on-year\nThe highlights\nReality Labs generated $2.2 billion in revenue for the 12 months ending December 31st, 2025, but clocked up a $19.2 billion operational loss.\nRevenue rose by $61 million, a 2% increase year-on-year, while losses increased 8.3% for the 2025 financial year.\nIn total, Meta has made an operational loss of $83.6 billion since it set up Reality Labs in 2020. By comparison, this division has generated just $11.8 billion across the same timeframe.\nSpeaking to investors, Meta CEO Mark Zuckerberg said that Reality Labs was going to be focusing on \"glasses and wearables\" moving forward.",
+        "score": 7.3775,
+        "rank": 4
+      },
+      {
+        "url": "https://www.linkedin.com/posts/danrayburn_meta-realitylabs-augmentedreality-activity-7422461480312299520-KB4x",
+        "title": "https://www.linkedin.com/posts/danrayburn_meta-realitylabs-augmentedreality-activity-7422461480312299520-KB4x",
+        "heading": "",
+        "chunk_text": "Meta's Reality Labs division recorded an operating loss of $6.02 billion in Q4 2025, on $955 million in sales. Reality Labs lost $19.1 billion in 2025 on $2.2 billion in sales, and has over $80 billion in total operating losses since 2020. Meta's CEO said he expects 2026 losses for Reality Labs to be similar to 2025, highlighting the losses as at the \"peak\" for the division. Overall, Meta reported Q4 earnings that topped Wall Street estimates and issued stronger-than-expected sales guidance, with the stock up 6% as of 9pm ET. #meta #realitylabs #augmentedreality #quest #virtualreality\nAfter many years in this industry, you start to tell the difference between chasing hype and making a power move. Zuck isn’t burning billions because he’s obsessed with avatars or the metaverse — he’s burning billions because he’s tired of being Apple’s tenant. When Apple rolled out App Tracking Transparency a few years back, it wrecked Meta’s ad business overnight. That was the moment they realized they’d built a multibillion-dollar empire on rented land. And anyone in tech or business knows — if you’re building on someone else’s platform, you’re playing by their rules. So those so-called “losses” in Reality Labs? I don’t see waste. I see a down payment on sovereignty. If Meta controls the hardware, the OS, and the user relationship, they don’t have to ask Tim Cook for permission to make money on their own platform. It’s not about avatars — it’s about freedom.",
+        "score": 7.3668,
+        "rank": 5
+      },
+      {
+        "url": "https://www.gamedeveloper.com/business/meta-lost-13-7-billion-on-reality-labs-in-2022",
+        "title": "Meta lost $13.7 billion on Reality Labs in 2022",
+        "heading": "Meta lost $13.7 billion on Reality Labs in 2022",
+        "chunk_text": "Meta lost $13.7 billion on Reality Labs in 2022\n\nReality Labs, which includes the company's augmented and virtual reality related consumer hardware, software, and content, posted an operating loss of $4.3 billion for the quarter.\n\nThat means the segment has delivered an operating loss of $13.7 billion across the entire fiscal year, which is more than the full-year operating loss of $10.1 billion the division recorded last year.\n\nAccording to Meta CFO, Susan Li, Reality Labs revenue for the quarter was also down 17 percent year-on-year due to lower sales of Quest 2 hardware. Reality Labs expenses totalled $5.0 billion, up 20 percent as a result of employee-related costs and \"restructuring-related expenses.\"\n\nMeta previously suggested it would keep throwing money at Reality Labs despite those losses, and during an earnings call indicated that remains the case.",
+        "score": 7.0925,
+        "rank": 6
+      },
+      {
+        "url": "https://www.cnbc.com/2026/04/29/metas-reality-labs-lost-over-4-billion-in-first-quarter.html",
+        "title": "https://www.cnbc.com/2026/04/29/metas-reality-labs-lost-over-4-billion-in-first-quarter.html",
+        "heading": "",
+        "chunk_text": "As Meta pumps increasing amounts of cash into artificial intelligence, the company's metaverse efforts continue to bleed money.\nIn its first-quarter earnings report on Wednesday, Meta revealed that its Reality Labs division recorded an operating loss of $4.03 billion while bringing in $402 million in sales. Wall Street was projecting a loss of $4.82 billion on $488.8 million in first-quarter revenue.\nMeta's Reality Labs unit, which builds virtual reality and augmented reality technology as well as wearable devices, has accumulated over $80 billion in total operating losses since late 2020. Facebook founder Mark Zuckerberg changed the company's name to Meta in 2021, reflecting his view that work and play would move to the virtual world.\nThat vision was interrupted by the generative AI boom, spawned by OpenAI's ChatGPT in late 2022. Meta has widely been viewed as a laggard in AI, but the company is investing heavily in infrastructure as well as new models and services to try and keep pace with OpenAI, Anthropic and Google.\nReality Labs, meanwhile, is experiencing cuts.",
+        "score": 6.5276,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "Meta Reality Labs operating loss FY2022 annual figures",
+      "Meta Reality Labs operating loss FY2023 annual figures",
+      "Meta Reality Labs operating loss FY2024 annual figures"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.6,
+    "reasoning": "The response correctly identifies FY2022 operating loss as $13.7B, but incorrectly states FY2023 as $13.7B (should be ~$16.1B) and FY2024 as $16.1B (should be ~$17.7B). It also fails to cite the required SEC-META annual filings for each year and does not explicitly note the widening trend. The score matches the provided M1 factual correctness of 0.600.",
+    "judge_model": "deepseek-chat"
+  }
+}

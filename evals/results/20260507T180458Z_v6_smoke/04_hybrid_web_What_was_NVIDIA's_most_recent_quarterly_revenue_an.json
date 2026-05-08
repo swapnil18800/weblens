@@ -1,0 +1,39 @@
+{
+  "category": "hybrid_web",
+  "expected_behavior": "Always-parallel web search when web_flag=True. Aggregator integrating web + filing context.",
+  "question": "What was NVIDIA's most recent quarterly revenue and what does their latest 10-K say about data center strategy?",
+  "ground_truth": "NVIDIA's most recent quarterly results (as of mid-2025) show continued strong data center revenue driven by H100/H200/Blackwell GPU demand. The latest 10-K describes the data center segment as the primary revenue driver, covering HPC, AI training, and inference workloads. A good answer cites at least one [SEC-NVDA-*] or [TC-NVDA-*] chunk for strategy and ideally a [NEWS:*] chunk for the most recent quarter.",
+  "key_facts": [
+    "Must include data center strategy from 10-K with citation.",
+    "Should include recent quarterly revenue (from web if available).",
+    "Hybrid: should cite both filing and web sources if web is on.",
+    "Should NOT fabricate specific revenue figures without citation."
+  ],
+  "session_id": "eval-20260507T180458Z-04",
+  "metrics": {
+    "m1_factual_correctness": 0.0,
+    "m3_retrieval_recall": 0.0,
+    "m7_judge_score": 0.0
+  },
+  "timing": {
+    "pipeline_s": 1.55,
+    "latency_breakdown": {},
+    "total_latency_ms": 0
+  },
+  "pipeline": {
+    "answer": "",
+    "citations": [],
+    "urls": [],
+    "chunks": [],
+    "sub_queries": [
+      "What was NVIDIA's most recent quarterly revenue and what does their latest 10-K say about data center strategy?"
+    ],
+    "error": "No URLs found. Check TAVILY_API_KEY."
+  },
+  "judgment": {
+    "verdict": "fail",
+    "score": 0.0,
+    "reasoning": "The system response is empty, providing no information at all. It fails to address any part of the question, including the required data center strategy from the 10-K and recent quarterly revenue. No citations are provided, and the response does not meet the expected hybrid behavior.",
+    "judge_model": "deepseek-chat"
+  }
+}

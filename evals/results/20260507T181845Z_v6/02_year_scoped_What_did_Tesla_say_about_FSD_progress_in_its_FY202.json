@@ -1,0 +1,171 @@
+{
+  "category": "year_scoped",
+  "expected_behavior": "Temporal resolution via filing_year_lookup. Retrieval must filter to the specified year. Citations must be year-correct.",
+  "question": "What did Tesla say about FSD progress in its FY2023 10-K only, not later filings?",
+  "ground_truth": "Tesla's FY2023 10-K describes Full Self-Driving (FSD) as a supervised system requiring driver attention, highlights NHTSA investigations and safety concerns, and discusses Autopilot/FSD recall in late 2023. The answer must cite [SEC-TSLA-2023] or equivalent FY2023 filing chunk. Citing FY2024 or FY2025 10-K = year-filter failure.",
+  "key_facts": [
+    "Must cite FY2023 10-K chunk (filing_year 2023 or 2024 for FY2023 content).",
+    "FSD described as supervised, requires driver attention.",
+    "NHTSA investigations and recall mentioned.",
+    "Citing FY2024/FY2025 filings = FAIL."
+  ],
+  "session_id": "eval-20260507T181845Z-02",
+  "metrics": {
+    "m1_factual_correctness": 0.5,
+    "m3_retrieval_recall": 0.75,
+    "m7_judge_score": 0.5
+  },
+  "timing": {
+    "pipeline_s": 23.69,
+    "latency_breakdown": {
+      "search_ms": 2320,
+      "extract_ms": 8028,
+      "chunk_ms": 94,
+      "retrieve_ms": 1760
+    },
+    "total_latency_ms": 23684
+  },
+  "pipeline": {
+    "answer": "## Tesla's FY2023 10-K Filing on Full Self-Driving (FSD) Progress\n\nBased on the provided sources, Tesla's FY2023 10-K filing (for the year ending December 31, 2023) discusses the **current limitations, regulatory challenges, and legal risks** surrounding FSD, rather than celebrating technical milestones. The filing does not report specific deployment numbers or performance statistics for FSD in FY2023.\n\n### Key Disclosures in the FY2023 10-K\n\n1.  **Current Operational Status of FSD**: Tesla explicitly states that its Autopilot and FSD Capability features \"today assist drivers with certain tedious and potentially dangerous aspects of road travel, but which currently require drivers to remain fully engaged in the driving operation\" [5]. This description makes clear that, as of FY2023, FSD was **not** fully autonomous and still required active driver supervision.\n\n2.  **Ongoing Development**: The filing notes that Tesla is \"continuing to develop our Autopilot and FSD Capability technology,\" indicating that the company views these systems as works-in-progress [5].\n\n3.  **Regulatory Risks and Challenges**: Tesla discloses a \"variety of international, federal and state regulations that may apply to, and may adversely affect, the design and performance, sale, registration and operation of Autopilot and FSD Capability, and future capability, including full self-driving vehicles that may not be operated by a human driver\" [5]. The company warns that \"such regulations continue to rapidly change, which increases the likelihood of a patchwork of complex or conflicting regulations, or may delay, restrict or prohibit the availability of certain functionalities\" [5].\n\n4.  **Legal Proceedings**: While the 10-K itself focuses on regulatory compliance, related context from a 2023 filing reveals that Tesla was subject to significant legal challenges. Tesla admitted it \"has received requests from the DOJ for documents related to Tesla's Autopilot and FSD features\" as part of a criminal investigation [1]. The company also faced a class action lawsuit seeking to prohibit the use of the term \"Full Self-Driving Capability\" and to require deactivation of the feature [4]. Tesla notes that if any government agency concludes wrongdoing occurred, \"there exists the possibility of a material adverse impact\" on the company [1].\n\n### What the FY2023 Filing Does NOT Say\n\nThe FY2023 10-K filing does **not** report:\n\n- The total number of FSD miles driven (a milestone of 10 billion FSD Supervised miles was reported by a third party in a later, separate update) [3].\n- Active FSD subscription numbers (Tesla first disclosed 1.1 million active subscriptions in its Q4 2025 earnings, two years after the FY2023 filing) [2].\n- Any specific technical performance metrics or timelines for achieving unsupervised full autonomy [5].\n\n**Summary**: In its FY2023 10-K, Tesla presented FSD as a **supervised driver-assistance system under active development** that faces **substantial regulatory uncertainty and legal scrutiny**, with no claims about technical breakthroughs or market adoption progress.",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.theregister.com/2023/02/01/tesla_autopilot_investigation/",
+        "title": "Tesla admits to DoJ Autopilot investigation in SEC filing",
+        "snippet": "Tesla admits it was asked to hand over Autopilot, Full Self-Driving docs to investigators\n\nIn its annual [10-K filing](https://www.sec.gov/Archives/edgar/data/1318605/000095017023001409/tsla-20221231.htm#legal_proceedings) with the SEC, Tesla said it was subject to various legal proceedings, includi"
+      },
+      {
+        "num": 2,
+        "url": "https://finance.yahoo.com/news/tesla-full-self-driving-subscriptions-232330021.html",
+        "title": "https://finance.yahoo.com/news/tesla-full-self-driving-subscriptions-232330021.html",
+        "snippet": "Tesla says Full Self-Driving subscriptions surged in 2025. It's key to Tesla's future thesis—even amid numerous safety investigations.\n-\nIn its fourth-quarter 2025 earnings report, Tesla announced that it has 1.1 million active subscriptions of Full Self-Driving (Supervised).\n-\nDriving FSD subscript"
+      },
+      {
+        "num": 3,
+        "url": "https://www.facebook.com/entrelligence/posts/tech-tesla-crosses-10-billion-fsd-miles-marking-major-step-toward-unsupervised-d/1431119542150119/",
+        "title": "Entrelligence",
+        "snippet": "[**Entrelligence**](https://www.facebook.com/entrelligence?__cft__[0]=AZYSZzZFhEUpF6aK95HOzj9LO_hjMhEOx14Po0966VbuB0qcMVWcvS8wofZLko0_IeIEtZQQ4zUSeEOrpBp6QGUsNt6n09OPZC-I8HkH_dA22o156kGaQ49ATA7USXTjz_8dSqgXv6HguJpciSxKBuY7L8EC-6xPfj5b1DD28cBTaQ&__tn__=-UC%2CP-R)\n\nThis milestone strengthens Tesla’s d"
+      },
+      {
+        "num": 4,
+        "url": "https://ir.tesla.com/_flysystem/s3/sec/000162828024002390/tsla-20231231-gen.pdf",
+        "title": "tsla-20231231-gen.pdf",
+        "snippet": "Tesla, Inc.\n\nother relief on behalf of all persons who purchased or leased from Tesla between January 1, 2016 to the present. On October 5, 2022 a proposed class\n\naction complaint was filed in the U.S. District Court for the Eastern District of New York asserting similar state and federal law claims"
+      },
+      {
+        "num": 5,
+        "url": "https://stocklight.com/stocks/us/manufacturing/nasdaq-tsla/tesla/annual-reports/nasdaq-tsla-2023-10K-23570030.pdf",
+        "title": "10-K",
+        "snippet": "Tesla, Inc.\n\nmaterially different from equivalent requirements in the U.S., thus resulting in additional investment into the vehicles and systems to ensure regulatory\n\ncompliance in all countries. This process may include official review and certification of our vehicles by foreign regulatory agenci"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://fintel.io/doc/sec-tesla-inc-1318605-10k-2023-january-31-19388-712",
+        "title": "Tesla, Inc. - 10K - Annual Report - January 31, 2023 - Fintel",
+        "snippet": "We plan to continue leveraging developments in our proprietary Full Self-Driving (“FSD”), battery cell and other technologies. Energy Generation"
+      },
+      {
+        "url": "https://finance.yahoo.com/news/tesla-full-self-driving-subscriptions-232330021.html",
+        "title": "Tesla Says It Has 1.1 Million Full Self-Driving Subscribers, Amid ...",
+        "snippet": "Tesla says Full Self-Driving subscriptions surged in 2025. It's key to Tesla's future thesis—even amid numerous safety investigations."
+      },
+      {
+        "url": "https://www.theregister.com/2023/02/01/tesla_autopilot_investigation/",
+        "title": "Tesla admits to DoJ Autopilot investigation in SEC filing",
+        "snippet": "# Tesla admits it was asked to hand over Autopilot, Full Self-Driving docs to investigators. Tesla has confirmed the Department of Justice asked it to hand over documents related to Autopilot and Tesla Full Self-Driving (FSD), as the US government's criminal probe into hype surrounding the software continues. In its annual 10-K filing with the SEC, Tesla said it was subject to various legal proceedings, including the criminal investigation of Autopilot that was first reported in October. That inquiry is looking into whether Tesla misled consumers about the capabilities and safety of Autopilot and FSD, and whether it is culpable for the many fatal accidents the systems have been linked to. While Tesla didn't explicitly state it had handed documents to the DoJ, it did say it \"has received requests from the DOJ for documents related to Tesla's Autopilot and FSD features,\" and that it routinely cooperates \"with such regulatory and governmental requests, including subpoenas, formal and informal requests and other investigations and inquiries.\"."
+      },
+      {
+        "url": "https://www.facebook.com/entrelligence/posts/tech-tesla-crosses-10-billion-fsd-miles-marking-major-step-toward-unsupervised-d/1431119542150119/",
+        "title": "#TECH: Tesla Crosses 10 Billion FSD Miles, Marking Major Step ...",
+        "snippet": "Tesla has shared its second-quarter 2025 vehicle safety report. The results show clear improvements linked to Autopilot and Full Self-Driving ("
+      },
+      {
+        "url": "https://ir.tesla.com/_flysystem/s3/sec/000162828024002390/tsla-20231231-gen.pdf",
+        "title": "[PDF] Annual Report - Tesla Investor Relations",
+        "snippet": "... Full Self-Driving (“FSD”) Capability features, battery cell and other technologies. Energy Generation and Storage. Energy Storage Products."
+      },
+      {
+        "url": "https://stocklight.com/stocks/us/manufacturing/nasdaq-tsla/tesla/annual-reports/nasdaq-tsla-2023-10K-23570030.pdf",
+        "title": "[PDF] Tesla Annual Report 2023 Form 10-K (NASDAQ:TSLA) Published",
+        "snippet": "(Exact name of registrant as specified in its charter) Delaware 91-2197729 (State or other jurisdiction of incorporation or organization) (I.R.S. Employer Identification No.) 1 Tesla Road Austin, Texas 78725 (Address of principal executive offices) (Zip Code) (512) 516-8177 (Registrant’s telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol(s) Name of each exchange on which registered Common stock TSLA The Nasdaq Global Select Market Securities registered pursuant to Section 12(g) of the Act: None Indicate by check mark whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes ☒ No ☐ Indicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes ☐ No ☒ Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 (“Exchange Act”) during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.theregister.com/2023/02/01/tesla_autopilot_investigation/",
+        "title": "Tesla admits to DoJ Autopilot investigation in SEC filing",
+        "heading": "Tesla admits it was asked to hand over Autopilot, Full Self-Driving docs to investigators",
+        "chunk_text": "Tesla admits it was asked to hand over Autopilot, Full Self-Driving docs to investigators\n\nIn its annual [10-K filing](https://www.sec.gov/Archives/edgar/data/1318605/000095017023001409/tsla-20221231.htm#legal_proceedings) with the SEC, Tesla said it was subject to various legal proceedings, including the [criminal investigation of Autopilot](https://www.theregister.com/2022/10/27/doj_self_driving_car_criminal/) that was first reported in October. That inquiry is looking into whether Tesla misled consumers about the capabilities and safety of Autopilot and FSD, and whether it is culpable for the [many fatal accidents](https://www.theregister.com/2022/11/16/tesla_nhtsa_report/) the systems have been linked to.\n\nWhile Tesla didn't explicitly state it had handed documents to the DoJ, it did say it \"has received requests from the DOJ for documents related to Tesla's Autopilot and FSD features,\" and that it routinely cooperates \"with such regulatory and governmental requests, including subpoenas, formal and informal requests and other investigations and inquiries.\"\n\nREG AD\n\nStill, Tesla made sure to note that, as far as it was aware, \"no government agency in any ongoing investigation has concluded that any wrongdoing occurred.\" Were that to happen, \"there exists the possibility of a material adverse impact on our business, results of operation, prospects, cash flows and financial position,\" Tesla said.\n\nREG AD",
+        "score": 6.7101,
+        "rank": 0
+      },
+      {
+        "url": "https://finance.yahoo.com/news/tesla-full-self-driving-subscriptions-232330021.html",
+        "title": "https://finance.yahoo.com/news/tesla-full-self-driving-subscriptions-232330021.html",
+        "heading": "",
+        "chunk_text": "Tesla says Full Self-Driving subscriptions surged in 2025. It's key to Tesla's future thesis—even amid numerous safety investigations.\n-\nIn its fourth-quarter 2025 earnings report, Tesla announced that it has 1.1 million active subscriptions of Full Self-Driving (Supervised).\n-\nDriving FSD subscriptions is a key component of CEO Elon Musk's trillion-dollar compensation package.\n-\nBut the camera-and-AI-based automated driving system is the subject of multiple investigations, complaints and even lawsuits.\nIn order to secure his unprecedented $1 trillion pay package, Tesla CEO Elon Musk has to hit some aggressive milestones. One of those is selling 10 million subscriptions to Full Self-Driving (Supervised), Tesla's hands-free automated driving assistance system.\nIf the numbers in Tesla's fourth-quarter earnings update are accurate, then Musk is more than one-tenth of the way there. The electric automaker—which is attempting to pivot to a robotics, energy and artificial intelligence company—boasted that it had 1.1 million active FSD subscriptions by the end of 2025. That number represents a 38% increase from about 800,000 subscriptions in the fourth quarter of 2024.\nIt is the first time Tesla has officially disclosed the total number of FSD subscriptions. It's not immediately clear how that tracks with the total number of FSD-capable Teslas sold to date; according to the International Council on Clean Transportation, over 7 million EVs were sold in the U.S.",
+        "score": 5.005,
+        "rank": 1
+      },
+      {
+        "url": "https://www.theregister.com/2023/02/01/tesla_autopilot_investigation/",
+        "title": "Tesla admits to DoJ Autopilot investigation in SEC filing",
+        "heading": "Tesla admits it was asked to hand over Autopilot, Full Self-Driving docs to investigators",
+        "chunk_text": "Tesla admits it was asked to hand over Autopilot, Full Self-Driving docs to investigators\n\n[](https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.theregister.com%2Fsoftware%2F2023%2F02%2F01%2Ftesla-admits-to-doj-autopilot-investigation-in-sec-filing%2F1449578)[](https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.theregister.com%2Fsoftware%2F2023%2F02%2F01%2Ftesla-admits-to-doj-autopilot-investigation-in-sec-filing%2F1449578)[](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.theregister.com%2Fsoftware%2F2023%2F02%2F01%2Ftesla-admits-to-doj-autopilot-investigation-in-sec-filing%2F1449578)[](https://bsky.app/intent/compose?text=Tesla%20admits%20to%20DoJ%20Autopilot%20investigation%20in%20SEC%20filing%0Ahttps%3A%2F%2Fwww.theregister.com%2Fsoftware%2F2023%2F02%2F01%2Ftesla-admits-to-doj-autopilot-investigation-in-sec-filing%2F1449578)[](https://www.reddit.com/submit?url=https%3A%2F%2Fwww.theregister.com%2Fsoftware%2F2023%2F02%2F01%2Ftesla-admits-to-doj-autopilot-investigation-in-sec-filing%2F1449578&title=Tesla%20admits%20to%20DoJ%20Autopilot%20investigation%20in%20SEC%20filing)[](https://api.whatsapp.com/send?text=Tesla%20admits%20to%20DoJ%20Autopilot%20investigation%20in%20SEC%20filing%0Ahttps%3A%2F%2Fwww.theregister.com%2Fsoftware%2F2023%2F02%2F01%2Ftesla-admits-to-doj-autopilot-investigation-in-sec-filing%2F1449578)\n\nTesla has confirmed the Department of Justice asked it to hand over documents related to Autopilot and Tesla Full Self-Driving (FSD), as the US government's criminal probe into hype surrounding the software continues.",
+        "score": 0.3552,
+        "rank": 2
+      },
+      {
+        "url": "https://www.facebook.com/entrelligence/posts/tech-tesla-crosses-10-billion-fsd-miles-marking-major-step-toward-unsupervised-d/1431119542150119/",
+        "title": "Entrelligence",
+        "heading": "[**Entrelligence**](https://www.facebook.com/entrelligence?__cft__[0]=AZYSZzZFhEUpF6aK95HOzj9LO_hjMhEOx14Po0966VbuB0qcMVWcvS8wofZLko0_IeIEtZQQ4zUSeEOrpBp6QGUsNt6n09OPZC-I8HkH_dA22o156kGaQ49ATA7USXTjz_8dSqgXv6HguJpciSxKBuY7L8EC-6xPfj5b1DD28cBTaQ&__tn__=-UC%2CP-R)",
+        "chunk_text": "[**Entrelligence**](https://www.facebook.com/entrelligence?__cft__[0]=AZYSZzZFhEUpF6aK95HOzj9LO_hjMhEOx14Po0966VbuB0qcMVWcvS8wofZLko0_IeIEtZQQ4zUSeEOrpBp6QGUsNt6n09OPZC-I8HkH_dA22o156kGaQ49ATA7USXTjz_8dSqgXv6HguJpciSxKBuY7L8EC-6xPfj5b1DD28cBTaQ&__tn__=-UC%2CP-R)\n\nThis milestone strengthens Tesla’s data driven approach to autonomy, where continuous feedback from millions of vehicles feeds into system improvements. It highlights how scale and real world exposure are becoming key differentiators in the race to achieve reliable, fully autonomous driving.\n\n-\n\nWhat are your thoughts? Drop a comment below!![Image 2: 👇](https://static.xx.fbcdn.net/images/emoji.php/v9/tee/2/16/1f447.png)![Image 3: 💬](https://static.xx.fbcdn.net/images/emoji.php/v9/td/2/16/1f4ac.png)\n\n[![Image 4: May be an image of ‎car and ‎text that says '‎UPERVISED MILES 10,000,000,000 DRIVEN MILESTONE FSD SUPERVISED SUPERVISED ISED מ ENTRELLIGENCE TESLA'S FSD SUPERVISED HITS 10 BILLION MILES DRIVEN MILESTONE‎'‎‎](https://scontent-sof1-2.xx.fbcdn.net/v/t39.30808-6/690641674_1431119518816788_993353758468910918_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=13d280&_nc_ohc=YM0yEk271r4Q7kNvwHEm4xs&_nc_oc=AdrZ3jVZ5b2MOhRjuSLxist5O_Zrga7pOk-25Rj1V0iexuPCUNIOSWTbGe3i8aL7bwBOZNrNiiGLpupLdors_cZz&_nc_zt=23&_nc_ht=scontent-sof1-2.xx&_nc_gid=bgNtjQJSOwz1aSVYJC4sZQ&_nc_ss=7b289&oh=00_Af4y1YLntt9gVvDXbKvWttL-zlG-RUpETvkPQisk5Hr1nA&oe=6A02BA4D)](https://www.facebook.com/photo/?fbid=1431119515483455&set=a.626617639266984&__cft__[0]=AZYSZzZFhEUpF6aK95HOzj9LO_hjMhEOx14Po0966VbuB0qcMVWcvS8wofZLko0_IeIEtZQQ4zUSeEOrpBp6QGUsNt6n09OPZC-I8HkH_dA22o156kGaQ49ATA7USXTjz_8dSqgXv6HguJpciSxKBuY7L8EC-6xPfj5b1DD28cBTaQ&__tn__=EH-R)\n\n![Image 5](blob:http://localhost/85d8b181a20aeb64a3afc2f1c39d2480)",
+        "score": -1.4074,
+        "rank": 3
+      },
+      {
+        "url": "https://ir.tesla.com/_flysystem/s3/sec/000162828024002390/tsla-20231231-gen.pdf",
+        "title": "tsla-20231231-gen.pdf",
+        "heading": "Tesla, Inc.",
+        "chunk_text": "Tesla, Inc.\n\nother relief on behalf of all persons who purchased or leased from Tesla between January 1, 2016 to the present. On October 5, 2022 a proposed class\n\naction complaint was filed in the U.S. District Court for the Eastern District of New York asserting similar state and federal law claims against the same\n\ndefendants. On September 30, 2023, the Court dismissed this action with leave to amend the complaint. On November 20, 2023, the plaintiff moved to\n\namend the complaint, which Tesla opposed. On March 22, 2023, the plaintiffs in the Northern District of California consolidated action filed a motion for a\n\npreliminary injunction to order Tesla to (1) cease using the term “Full Self-Driving Capability” (FSD Capability), (2) cease the sale and activation of FSD\n\nCapability and deactivate FSD Capability on Tesla vehicles, and (3) provide certain notices to consumers about proposed court-findings about the\n\naccuracy of the use of the terms Autopilot and FSD Capability. Tesla opposed the motion. On September 30, 2023, the Court denied the request for a\n\npreliminary injunction, compelled four of five plaintiffs to arbitration, and dismissed the claims of the fifth plaintiff with leave to amend the complaint. On\n\nOctober 31, 2023, the remaining plaintiff in the Northern District of California action filed an amended complaint, which Tesla has moved to dismiss. On",
+        "score": -1.4303,
+        "rank": 4
+      },
+      {
+        "url": "https://www.theregister.com/2023/02/01/tesla_autopilot_investigation/",
+        "title": "Tesla admits to DoJ Autopilot investigation in SEC filing",
+        "heading": "MORE CONTEXT",
+        "chunk_text": "MORE CONTEXT\n\nWhether the increased scrutiny is to blame or not, Autopilot doesn't appear to be the cutting-edge technology it was once considered to be either. In a recent review of ADAS software, Consumer Reports said Tesla fell from second best to seventh out of a dozen different platforms.\n\nIts report [said](https://www.theregister.com/2023/01/25/ford_gm_tesla_consumer_reports/) that Autopilot's basic functionality hasn't improved since launch, and that other companies are getting in the fast lane to innovate right past it.\n\nAs an example of that, Mercedes-Benz [announced](https://group.mercedes-benz.com/innovation/product-innovation/autonomous-driving/drive-pilot-nevada.html) last week that it was the first automotive company to receive level 3 ADAS certification in the US – but only in Nevada. Mercedes-Benz describes level 3 in its press release as the ADAS function taking over certain tasks, but a driver must be ready to take control when prompted to intervene. Tesla Autopilot and Full Self-Driving, meanwhile, are still operating at level 2.\n\nREG AD\n\nWe asked Tesla to comment, and received a prompt reply: the company's press mailbox is full and no longer accepting new messages. ®",
+        "score": -1.5183,
+        "rank": 5
+      },
+      {
+        "url": "https://finance.yahoo.com/news/tesla-full-self-driving-subscriptions-232330021.html",
+        "title": "https://finance.yahoo.com/news/tesla-full-self-driving-subscriptions-232330021.html",
+        "heading": "",
+        "chunk_text": "not immediately clear how that tracks with the total number of FSD-capable Teslas sold to date; according to the International Council on Clean Transportation, over 7 million EVs were sold in the U.S. between 2015 and Sept. 2025, and most of those have been Teslas, although the company's EV market share has dwindled in recent years.\nThe result also means that Tesla has nearly twice as many FSD subscribers as General Motors does for Super Cruise, its hands-free automated driving system. (Unlike FSD, Super Cruise only operates on mapped highways, while FSD can drive in urban areas as well.) And in the view of Musk and his executives, selling FSD subscriptions is even more important than selling EVs, because \"the future is autonomous,\" as the CEO said.\nA version of the FSD software is used in Tesla's Robotaxi service, which recently started operating without human safety minders in Austin. Musk said the service is expected to expand to several other cities in 2026, including Dallas, Phoenix and Miami. (It's not immediately clear whether Tesla's FSD subscription figure extends to cars in its own fleet.)\n\"This new autonomous market, you have to start thinking about us as providing transportation as a service, more than the total... market for vehicles alone,\" said Tesla engineering VP Lars Moravy on the earnings call. Musk added that he sees \"the vast majority of miles traveled will be autonomous in the future.\"",
+        "score": -1.6097,
+        "rank": 6
+      },
+      {
+        "url": "https://stocklight.com/stocks/us/manufacturing/nasdaq-tsla/tesla/annual-reports/nasdaq-tsla-2023-10K-23570030.pdf",
+        "title": "10-K",
+        "heading": "Tesla, Inc.",
+        "chunk_text": "Tesla, Inc.\n\nmaterially different from equivalent requirements in the U.S., thus resulting in additional investment into the vehicles and systems to ensure regulatory\n\ncompliance in all countries. This process may include official review and certification of our vehicles by foreign regulatory agencies prior to market entry,\n\nas well as compliance with foreign reporting and recall management systems requirements.\n\nIn particular, we offer in our vehicles in certain markets Autopilot and FSD Capability features that today assist drivers with certain tedious and\n\npotentially dangerous aspects of road travel, but which currently require drivers to remain fully engaged in the driving operation. We are continuing to\n\ndevelop our Autopilot and FSD Capability technology. There are a variety of international, federal and state regulations that may apply to, and may\n\nadversely affect, the design and performance, sale, registration and operation of Autopilot and FSD Capability, and future capability, including full self-\n\ndriving vehicles that may not be operated by a human driver. This includes many existing vehicle standards that were not originally intended to apply to\n\nvehicles that may not be operated by a human driver. Such regulations continue to rapidly change, which increases the likelihood of a patchwork of\n\ncomplex or conflicting regulations, or may delay, restrict or prohibit the availability of certain functionalities and vehicle designs, which could adversely\n\naffect our business.",
+        "score": -3.8366,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "What did Tesla say about Full Self-Driving (FSD) progress in its FY2023 10-K filing?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.5,
+    "reasoning": "The response correctly cites the FY2023 10-K and describes FSD as requiring driver attention, but omits key facts: NHTSA investigations and the Autopilot/FSD recall in late 2023. The factual correctness score (0.5) reflects this partial coverage.",
+    "judge_model": "deepseek-chat"
+  }
+}

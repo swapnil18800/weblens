@@ -1,0 +1,134 @@
+{
+  "category": "chunking_strategies",
+  "expected_behavior": "Covers multiple chunking strategies with trade-offs. Structured answer with citations.",
+  "question": "What are the main chunking strategies for RAG systems and what are the trade-offs between them?",
+  "ground_truth": "Main chunking strategies: (1) Fixed-size character/token chunking — simple, fast, may split mid-sentence. (2) Sentence-based chunking — respects sentence boundaries, variable size. (3) Semantic/paragraph chunking — splits on structural boundaries (headings, blank lines), best for coherent retrieval. (4) Sliding window with overlap — adds context continuity across chunks. Trade-offs: smaller chunks improve precision but lose context; larger chunks improve recall but may dilute relevance scores.",
+  "key_facts": [
+    "fixed-size character or token chunking",
+    "sentence-based chunking respects boundaries",
+    "semantic chunking uses structural boundaries",
+    "sliding window adds overlap for context",
+    "smaller chunks improve precision larger improve recall"
+  ],
+  "session_id": "eval-20260507T163245Z-07",
+  "metrics": {
+    "m1_factual_correctness": 0.8,
+    "m3_retrieval_recall": 0.8,
+    "m7_judge_score": 0.65
+  },
+  "timing": {
+    "pipeline_s": 20.85,
+    "latency_breakdown": {
+      "search_ms": 1283,
+      "extract_ms": 2322,
+      "chunk_ms": 12,
+      "retrieve_ms": 1126
+    },
+    "total_latency_ms": 20848
+  },
+  "pipeline": {
+    "answer": "## Main Chunking Strategies for RAG Systems and Their Trade-offs\n\nChunking is the process of breaking large documents into smaller, manageable pieces called chunks before they are indexed and retrieved in a RAG pipeline [2]. This is essential because LLMs have a limited **context window**—if too much text is passed in, important details can be lost, resulting in incomplete or inaccurate answers [2]. Here are the main chunking strategies and their associated trade-offs:\n\n### 1. Semantic Chunking\nThis strategy respects **semantic boundaries** such as paragraphs, sentences, or logical sections of text [2]. Chunks are created at natural breakpoints so that each piece contains a coherent, self-contained unit of meaning.\n\n**Trade-offs:**\n- **Context preservation**: High — chunks retain full meaning and avoid cutting off sentences mid-thought [3].\n- **Computational cost**: Higher than naive fixed-size splitting, because the system must detect boundaries (e.g., using NLP parsers).\n- **Implementation complexity**: Moderate — requires careful logic to detect sentence or paragraph boundaries without losing context.\n\n### 2. Fixed-Size / Recursive Chunking\nDocuments are divided into chunks of a predefined size (e.g., by character count, word count, or token count). A common variant is **recursive chunking**, where if a chunk boundary falls mid-sentence, the chunk is broken at the nearest natural boundary (sentence end, paragraph break, etc.) [1][2].\n\n**Trade-offs:**\n- **Speed and ease of implementation**: Very high — specialized libraries make this fast [2].\n- **Context preservation**: Low — arbitrary cuts can split sentences, ideas, or technical terms, harming retrieval quality [3].\n- **Customizability**: Low — the system cannot adapt to document structure.\n\n### 3. Overlapping Chunks\nChunks are created with a small overlap (e.g., appending the previous chunk's last few sentences to the next chunk) to ensure that important context is not lost at boundaries [1][3].\n\n**Trade-offs:**\n- **Retrieval reliability**: Improved — overlapping reduces the risk of losing critical context at chunk edges.\n- **Storage and processing overhead**: Increased — overlapping creates redundant data, raising indexing costs and potentially leading to duplicate retrievals.\n- **Deduplication needed**: To manage overlapping content, you must implement deduplication strategies [3].\n\n### 4. Metadata-Enhanced Chunking\nEach chunk is enriched with metadata (e.g., source document, section heading, page number) that helps the retriever find and rank chunks more accurately [3].\n\n**Trade-offs:**\n- **Retrieval relevance**: Better — metadata provides valuable signals for filtering and ranking.\n- **Implementation complexity**: Higher — requires extra logic to extract, store, and query metadata alongside chunks.\n- **Storage overhead**: Slightly increased.\n\n### 5. Monitored Chunk Sizing\nThe best practice is to monitor chunk sizes to ensure they stay within the token limits of the language model [3]. This is not a stand-alone strategy but a hygiene factor that cuts across all chunking approaches.\n\n**Trade-offs:**\n- **System reliability**: Essential — avoids context-window overflows.\n- **Requires tuning**: Chunk size must be optimized empirically for each dataset and query type [3].\n\n### Summary of Key Trade-offs\n\nThe sources highlight a **classic trade-off** between using a specialized library for speed and ease versus building custom logic for full control [2]. Specifically:\n- **Fixed-size chunking** is fast and simple but risks cutting logical units arbitrarily.\n- **Semantic chunking** preserves meaning but is computationally heavier.\n- **Overlapping chunks** improve retrieval completeness at the cost of redundancy and scaling.\n- **Metadata-enhanced chunks** boost relevance but add complexity.\n\nUltimately, the best chunking strategy depends on your specific data, the types of queries users will ask, and the balance you need between **context preservation, computational cost, and implementation complexity**[3]. Recommended best practices include: testing extensively with your own data, avoiding arbitrary splits of sentences or logical units, and leveraging metadata for improved retrieval relevance [3].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://tusharghosh09006.medium.com/basic-chunking-strategies-in-rag-concepts-and-trade-offs-4e0c6bb6b77a?source=rss-------1",
+        "title": "Basic Chunking Strategies in RAG: Concepts and Trade-offs"
+      },
+      {
+        "num": 2,
+        "url": "https://weaviate.io/blog/chunking-strategies-for-rag",
+        "title": "Chunking Strategies to Improve LLM RAG Pipeline Performance | Weaviate"
+      },
+      {
+        "num": 3,
+        "url": "https://masteringllm.medium.com/11-chunking-strategies-for-rag-simplified-visualized-df0dbec8e373",
+        "title": "11 Chunking Strategies for RAG — Simplified & Visualized"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.reddit.com/r/Rag/comments/1rab7rs/what_chunking_strategies_are_you_using_in_your/",
+        "title": "What chunking strategies are you using in your RAG pipelines?",
+        "snippet": "Chunking strategies for RAG systems. Best practices for chunking in RAG. Recursive chunking vs semantic chunking. Parent-child chunking in RAG."
+      },
+      {
+        "url": "https://masteringllm.medium.com/11-chunking-strategies-for-rag-simplified-visualized-df0dbec8e373",
+        "title": "11 Chunking Strategies for RAG — Simplified & Visualized",
+        "snippet": "For Speed: Use fixed-length or sentence-based chunking. For Context: Opt for sliding window, semantic, or context-enriched chunking. For Mixed"
+      },
+      {
+        "url": "https://weaviate.io/blog/chunking-strategies-for-rag",
+        "title": "Chunking Strategies to Improve LLM RAG Pipeline Performance",
+        "snippet": "# Chunking Strategies to Improve LLM RAG Pipeline Performance. Chunking Strategies to Improve Your RAG Performance. If you’re building AI applications with Large Language Models (LLMs), grounding generated text responses with your specific data is key to accurate answers. Retrieval-Augmented Generation (RAG), often referred to as LLM RAG, connects a large language model to an outside knowledge source as part of a broader RAG pipeline. The quality of your retrieval process is one of the biggest factors influencing your application's performance. This is where **chunking** comes in. In this post, we’ll review some essential chunking strategies, from fundamentals to advanced techniques, their trade-offs, and tips for choosing the right approach for your RAG application. The **size, content, and semantic boundaries** of each chunk influence retrieval performance, and so deciding which technique to use can have a huge downstream impact on your RAG system’s performance. Getting chunking right is one of the **most important decisions in building your RAG pipeline**."
+      },
+      {
+        "url": "https://developer.nvidia.com/blog/finding-the-best-chunking-strategy-for-accurate-ai-responses/",
+        "title": "Finding the Best Chunking Strategy for Accurate AI Responses",
+        "snippet": "* The optimal chunking strategy varies depending on the specific dataset and query characteristics, with factoid queries performing well with smaller chunks (256-512 tokens) and complex analytical queries benefiting from larger chunks (1,024 tokens) or page-level chunking using NVIDIA NeMo Retriever extraction. 1. **NVIDIA NeMo Retriever**: Used for extracting content for page-level and token-based chunking strategies. These state-of-the-art models from NVIDIA  provide the foundation for our retrieval and generation capabilities, helping us isolate the impact of different chunking strategies on overall RAG performance. This observation is particularly evident in financial documents, where we observed three different optimal strategies across three datasets: FinanceBench performed best with 1,024-token chunks (0.579), Earnings with 512-token chunks (0.681), and KG-RAG with page-level chunking (0.520). Our comprehensive evaluation across diverse datasets demonstrates that page-level chunking is the most effective chunking strategy for RAG systems, offering the highest average accuracy and most consistent performance."
+      },
+      {
+        "url": "https://tusharghosh09006.medium.com/basic-chunking-strategies-in-rag-concepts-and-trade-offs-4e0c6bb6b77a?source=rss-------1",
+        "title": "Basic Chunking Strategies in RAG: Concepts and Trade-offs | Medium",
+        "snippet": "This section focuses on six commonly used chunking strategies, along with their strengths, weaknesses, and ideal use cases. Fixed-Size Chunking:."
+      },
+      {
+        "url": "https://www.reddit.com/r/Rag/comments/1gcf39v/comparative_analysis_of_chunking_strategies_which/",
+        "title": "Comparative Analysis of Chunking Strategies - Which one do you ...",
+        "snippet": "It's the Parent Chunk strategy that is good - so small chunks to help with accurate retrieval and larger chunks that are sent to LLM to have context."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://tusharghosh09006.medium.com/basic-chunking-strategies-in-rag-concepts-and-trade-offs-4e0c6bb6b77a?source=rss-------1",
+        "title": "Basic Chunking Strategies in RAG: Concepts and Trade-offs",
+        "heading": "Basic Chunking Strategies in RAG: Concepts and Trade-offs",
+        "chunk_text": "Basic Chunking Strategies in RAG: Concepts and Trade-offs\n\nRetrieval-Augmented Generation (RAG) systems combine information retrieval with language models to produce grounded, context-aware responses. Instead of relying solely on a model’s internal knowledge, RAG retrieves relevant pieces of external data and injects them into the model’s context.\n\nA critical design decision in any RAG pipeline is **how documents are divided into smaller units (chunks)** before indexing and retrieval.",
+        "score": 7.9892,
+        "rank": 0
+      },
+      {
+        "url": "https://weaviate.io/blog/chunking-strategies-for-rag",
+        "title": "Chunking Strategies to Improve LLM RAG Pipeline Performance | Weaviate",
+        "heading": "Tools and Libraries for Chunking[​](https://weaviate.io/blog/chunking-strategies-for-rag#tools-and-libraries-for-chunking \"Direct link to Tools and Libraries for Chunking\")",
+        "chunk_text": "Tools and Libraries for Chunking[​](https://weaviate.io/blog/chunking-strategies-for-rag#tools-and-libraries-for-chunking \"Direct link to Tools and Libraries for Chunking\")\n\nWhen setting up a data ingestion pipeline for your RAG application, you often face a classic trade-off with chunking: you can rely on a specialized library for speed and ease, or build the logic yourself to have full control.",
+        "score": 5.2724,
+        "rank": 1
+      },
+      {
+        "url": "https://masteringllm.medium.com/11-chunking-strategies-for-rag-simplified-visualized-df0dbec8e373",
+        "title": "11 Chunking Strategies for RAG — Simplified & Visualized",
+        "heading": "Best Practices for Implementing Chunking in RAG",
+        "chunk_text": "Best Practices for Implementing Chunking in RAG\n\n*   **Monitor Chunk Sizes**: Ensure chunks stay within the token limits of your language model.\n*   **Preserve Meaning**: Avoid splitting sentences or logical units arbitrarily.\n*   **Optimize Retrieval**: Use efficient indexing and retrieval mechanisms suited to your chunking strategy.\n*   **Handle Redundancy**: Implement deduplication to manage overlapping content.\n*   **Test Extensively**: Evaluate different strategies with your specific data and queries to find the optimal approach.\n*   **Leverage Metadata**: Enhance chunks with metadata for improved retrieval relevance.\n\nChunking is a fundamental step in the Retrieval-Augmented Generation process, directly impacting the efficiency and accuracy of the system. Understanding the various chunking strategies and their appropriate use cases allows developers to tailor RAG systems to their specific needs. By balancing the trade-offs between context preservation, computational cost, and implementation complexity, one can choose the most suitable chunking method to enhance their language models effectively.",
+        "score": 5.2345,
+        "rank": 2
+      },
+      {
+        "url": "https://weaviate.io/blog/chunking-strategies-for-rag",
+        "title": "Chunking Strategies to Improve LLM RAG Pipeline Performance | Weaviate",
+        "heading": "Summary[​](https://weaviate.io/blog/chunking-strategies-for-rag#summary \"Direct link to Summary\")",
+        "chunk_text": "Summary[​](https://weaviate.io/blog/chunking-strategies-for-rag#summary \"Direct link to Summary\")\n\nUnderstanding the different chunking strategies is the first step, but the best way to master them is by seeing them in action. If you're looking for a practical example, check out[**Verba**](https://weaviate.io/blog/verba-open-source-rag-app), our open-source RAG application. You can even fork the repository, load your own data, and start experimenting today. Open source is only possible because of you and the community 💚, so if you have questions or want to troubleshoot, join the conversation in our [Forum](https://forum.weaviate.io/). See you there!",
+        "score": 5.1914,
+        "rank": 3
+      },
+      {
+        "url": "https://weaviate.io/blog/chunking-strategies-for-rag",
+        "title": "Chunking Strategies to Improve LLM RAG Pipeline Performance | Weaviate",
+        "heading": "What is Chunking?[​](https://weaviate.io/blog/chunking-strategies-for-rag#what-is-chunking \"Direct link to What is Chunking?\")",
+        "chunk_text": "What is Chunking?[​](https://weaviate.io/blog/chunking-strategies-for-rag#what-is-chunking \"Direct link to What is Chunking?\")\n\nIn simple terms,**chunking**is the process of breaking down large documents into smaller, manageable pieces called _chunks_. This is a crucial first step when preparing data for use with Large Language Models (LLMs).\n\nThe main reason is that LLMs have a limited**context window,** meaning they can only focus on a certain amount of text at once. If there is too much text within the context window, important details are lost, resulting in incomplete or inaccurate answers.\n\nChunking solves this by creating smaller, focused pieces of content that an LLM can use to answer the users query without getting lost in irrelevant information.\n\nThe **size, content, and semantic boundaries** of each chunk influence retrieval performance, and so deciding which technique to use can have a huge downstream impact on your RAG system’s performance.",
+        "score": 5.0289,
+        "rank": 4
+      }
+    ],
+    "sub_queries": [
+      "What are the main chunking strategies for RAG systems?",
+      "What are the trade-offs between different chunking strategies in RAG systems?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.65,
+    "reasoning": "The response covers semantic and fixed-size chunking with trade-offs, but omits sentence-based chunking and sliding window with overlap. It also misses the key trade-off about precision vs. recall. The response is partially correct but incomplete.",
+    "judge_model": "deepseek-chat"
+  }
+}

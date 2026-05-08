@@ -1,0 +1,129 @@
+{
+  "category": "cross_encoder",
+  "expected_behavior": "Technical explanation with citations on how cross-encoders improve retrieval quality.",
+  "question": "What is cross-encoder reranking and how does it improve retrieval quality compared to bi-encoders?",
+  "ground_truth": "Cross-encoders take a (query, document) pair and compute a relevance score jointly using a transformer that attends to both simultaneously. Bi-encoders encode query and document independently as separate vectors and use cosine similarity. Cross-encoders are more accurate because they model query-document interactions, but are slower (cannot pre-compute document representations). In practice: bi-encoder for fast first-stage retrieval, cross-encoder for reranking top-K candidates.",
+  "key_facts": [
+    "cross-encoder processes query and document jointly",
+    "bi-encoder encodes query and document independently",
+    "cross-encoder is more accurate than bi-encoder",
+    "cross-encoder cannot pre-compute document representations",
+    "cross-encoder used for reranking top-K candidates"
+  ],
+  "session_id": "eval-20260507T162203Z-05",
+  "metrics": {
+    "m1_factual_correctness": 0.8,
+    "m3_retrieval_recall": 0.8,
+    "m7_judge_score": 0.75
+  },
+  "timing": {
+    "pipeline_s": 25.34,
+    "latency_breakdown": {
+      "search_ms": 2411,
+      "extract_ms": 9181,
+      "chunk_ms": 12,
+      "retrieve_ms": 1405
+    },
+    "total_latency_ms": 25359
+  },
+  "pipeline": {
+    "answer": "## What is Cross-Encoder Reranking?\n\nCross-encoder reranking is a **two-stage retrieval pattern** where a fast, approximate first-stage model (typically a bi-encoder or BM25) retrieves a broad set of candidate documents, and then a slower but more precise cross-encoder model re-orders those candidates by directly measuring relevance between the query and each document [1].\n\n### Core Mechanism\n\n- **Stage 1 (Bi-encoder)**: Casts a wide net using embedding similarity to achieve high recall quickly [1]\n- **Stage 2 (Cross-encoder)**: Runs the query together with each candidate document through a single transformer model in a pair-wise manner, computing a relevance score that directly measures query-document alignment [1]\n\nCross-encoders are described as \"probably your best bet\" for the reranking step when RAG pipeline results feel \"okay but not great\" [1].\n\n## How It Improves Over Bi-Encoders Alone\n\nThe improvement is substantial and measurable:\n\n### Quantitative Gains\nAdding a cross-encoder reranker on top of bi-encoder retrieval improves **NDCG@10 by 5-20%** across verticals [2]. Gains are largest in **legal, healthcare, and finance** where queries are nuanced and keyword overlap is a poor proxy for relevance [2].\n\n### Specific Failure Modes Corrected\n\n**1. False Positives Demoted** — Documents ranked highly by the bi-encoder due to vocabulary overlap with the query, despite not actually answering it, get pushed down or out of the top 10 entirely [2].\n\n**2. False Negatives Promoted** — Documents that are genuinely relevant but were underscored by the bi-encoder because their surface text diverges from the query are elevated. In one documented example, a document ranked **47th by the bi-encoder jumped to position 3 after reranking** [2].\n\n### Architectural Comparison\n\n| Aspect | Bi-Encoder | Cross-Encoder |\n|--------|------------|---------------|\n| Speed | Fast | Slow |\n| Quality | Lower (approximate) | Highest (direct relevance) |\n| Candidate set | Large corpora | Under ~100 docs |\n| Production role | First-pass retrieval | Reranking top candidates |\n\n## Production Recommendations\n\nA mature search system might combine multiple approaches: a **distilled bi-encoder** for first-pass retrieval, a **cross-encoder** for reranking the top candidates, **semantic caching** to skip redundant work, and **ColBERT-like interaction** as a fallback when latency budget is tight [1].\n\nThe key insight: \"First-stage retrieval quality determines the ceiling for the reranker. Reranker quality determines whether that ceiling is reached\" [2]. The bi-encoder and cross-encoder together outperform either architecture alone [2].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://towardsdatascience.com/advanced-rag-retrieval-cross-encoders-reranking/",
+        "title": "Advanced RAG Retrieval: Cross-Encoders & Reranking"
+      },
+      {
+        "num": 2,
+        "url": "https://zeroentropy.dev/articles/biencoder-vs-crossencoder/",
+        "title": "Bi-Encoders vs Cross-Encoders — ZeroEntropy Blog"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.cloudthat.com/resources/blog/the-power-of-cross-encoders-in-re-ranking-for-nlp-and-rag-systems/",
+        "title": "The Power of Cross-Encoders in Re-Ranking for NLP and RAG Systems",
+        "snippet": "In this blog, we will discuss how cross-encoders work, why they are important, and how you can use pre-trained models for re-ranking. Many pretrained cross-encoder models are available that you can use for re-ranking tasks without having to train one from scratch. ## How do you use pre-trained cross encoders for re-ranking? You can easily use pre-trained cross-encoder models to re-rank query-document pairs. After the **cross-encoder** is applied to re-rank the documents based on their context relevance to the query:. Cross-encoders are powerful tools for re-ranking tasks, especially when you need precise relevance scoring between a query and a document. ANS: – Re-ranking is taking a set of initially retrieved documents and reordering them based on their relevance to a specific query, typically using more advanced methods like cross-encoders. ANS: – A cross-encoder jointly processes the query and each document to produce a relevance score, allowing it to evaluate the context and relationship between the two, which helps in more accurate ranking."
+      },
+      {
+        "url": "https://medium.com/@aishikbhattacharjee98/reranking-using-cross-encoder-boost-your-rag-pipeline-accuracy-d2da22006dad",
+        "title": "Reranking using Cross Encoder — Boost Your RAG Pipeline Accuracy",
+        "snippet": "Cross-encoders can make far more precise judgments about relevance, which is essential in reranking tasks. They are especially effective in RAG"
+      },
+      {
+        "url": "https://towardsdatascience.com/advanced-rag-retrieval-cross-encoders-reranking/",
+        "title": "Advanced RAG Retrieval: Cross-Encoders & Reranking | Towards Data Science",
+        "snippet": "A deep-dive and practical guide to cross-encoders, advanced techniques, and why your retrieval pipeline deserves a second pass. If you’ve ever built a RAG pipeline and thought “the results are *okay* but not *great*”, the solution isn’t always to choose a better embedding model. Instead, you should consider including a reranking step, and **cross-encoders** are probably your best bet. **This article covers what cross-encoders are, why they’re so good at reranking, how to fine-tune them on your own data, and some ideas for pushing them even further.**. And that’s because the embedding model has to compress all semantics into a single vector *before* it ever compares anything. A bi-encoder can’t reason about the *relationship* between “cheap” in your query and “$500/night” in the document. **A cross-encoder ‘reads’ the query and document together at one go**, so it catches that $500/night contradicts “cheap” and ranks it lower. In the real world, we can use a combination of bi-encoders and cross-encoders to achieve the most optimal retrieval and relevance performance."
+      },
+      {
+        "url": "https://weaviate.io/blog/cross-encoders-as-reranker",
+        "title": "Using Cross-Encoders as reranker in multistage vector search | Weaviate",
+        "snippet": "In search, or semantic matching of sentences, we can see this tradeoff in *Bi-Encoder* models compared with *Cross-Encoder* models. Vector databases like Weaviate use Bi-Encoder machine learning models to compute the similarity between search queries and data in a vector space. The models that compute **dense vector embeddings for data** (which later can be used for **search queries**) are so-called *Bi-Encoder models*. All data items in the database can be represented by a vector embedding using a Bi-Encoder model. Cross-Encoder models do not produce vector embeddings for data, but use a classification mechanism for data pairs instead. However, since you need to use the Cross-Encoder model during a search for every single data item in combination with the query, this method is very inefficient. With a vector database like Weaviate, you can store and retrieve vectors and data efficiently using Bi-Encoder models to encode data and queries."
+      },
+      {
+        "url": "https://app.ailog.fr/en/blog/news/reranking-cross-encoders-study",
+        "title": "New Research: Cross-Encoder Reranking Improves RAG Accuracy by 40% | Ailog RAG",
+        "snippet": "# New Research: Cross-Encoder Reranking Improves RAG Accuracy by 40%. MIT study demonstrates that two-stage retrieval with cross-encoder reranking significantly outperforms single-stage vector search across multiple benchmarks. MIT researchers published a comprehensive study analyzing the impact of cross-encoder reranking on RAG system performance, finding consistent improvements across diverse datasets and query types. | Rank | Model | ELO Score | Context Window | Best For |. | 2 | **Cohere Rerank 4 Pro** | 1627 | 32K | Enterprise, long docs |. | 7 | Cohere Rerank 4 Fast | 1506 | 32K | Speed-optimized |. *Cohere Rerank 4 Pro improves +170 ELO over v3.5, with +400 ELO on business/finance tasks. * Retrieve top-100 with bi-encoder (fast). * Rerank to top-10 with cross-encoder (accurate). * Use top-10 for generation. Query → Embed → Vector Search → Top-100 → Cross-Encoder Rerank → Top-10 → LLM. 2. **Cohere Rerank 4 Fast** (NEW). 2. **For production:** Use Cohere Rerank 4 Pro for best results."
+      },
+      {
+        "url": "https://zeroentropy.dev/articles/biencoder-vs-crossencoder/",
+        "title": "Bi-Encoders vs Cross-Encoders — ZeroEntropy Blog",
+        "snippet": "* Bi-Encoders and Cross-Encoders. * Every embedding model is a **bi-encoder**: it encodes queries and documents independently, which is what makes vector search fast — and what limits its accuracy. * Every reranker is a **cross-encoder**: it reads the query and document together, which is what makes reranking precise — and what makes it too expensive for first-stage retrieval. The bi-encoder retrieves candidates in milliseconds; the cross-encoder rescores them in order of actual relevance. This is the **retrieve-then-rerank** pattern, and it is how virtually every serious search and RAG system works today. Every modern search and RAG system runs two models in sequence: an embedding model for fast retrieval, and a reranker for precise scoring. These correspond to two fundamentally different transformer architectures — **bi-encoders** and **cross-encoders** — with different strengths, different costs, and a well-understood division of labor in production. A **cross-encoder** concatenates query and document into a single sequence and passes them through a transformer together. The retrieve-then-rerank pipeline: bi-encoder retrieves candidates, cross-encoder reranks them."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://towardsdatascience.com/advanced-rag-retrieval-cross-encoders-reranking/",
+        "title": "Advanced RAG Retrieval: Cross-Encoders & Reranking",
+        "heading": "Where Does This Leave Us?",
+        "chunk_text": "Where Does This Leave Us?\n\nThese examples illustrate options on retrieval and reranking:\n\n*   Cross-encoder (raw): Slow, highest quality. Use for small candidate sets under 100 docs.\n*   Fine-tuned cross-encoder: Slow, highest quality for your domain. Use when general models perform poorly on domain content.\n*   Semantic caching: Instant on cache hit, same quality as underlying ranker. Use for high-traffic systems with repeated queries.\n*   Multi-stage funnel: Slow per query, scales to large corpora, performance near cross-encoder\n*   Distilled bi-encoder: Fast, near cross-encoder quality. Use as first stage of a funnel or for domain-specific retrieval.\n*   ColBERT-like (late interaction): Medium speed, near cross-encoder quality. Use for high-QPS services where tail latency matters.\n\nA mature search system might combine any of them: a distilled bi-encoder for first-pass retrieval, a cross-encoder for reranking the top candidates, semantic caching to skip redundant work, and ColBERT-like interaction as a fallback when the latency budget is tight.\n\nAll the code is available at [https://github.com/ianhohoho/cross-encoder-and-reranking-demo](https://github.com/ianhohoho/cross-encoder-and-reranking-demo). In fact, every example runs end-to-end without API keys required except Example 6, which calls an LLM through OpenRouter for the list-wise reranking stage.",
+        "score": 7.3865,
+        "rank": 0
+      },
+      {
+        "url": "https://zeroentropy.dev/articles/biencoder-vs-crossencoder/",
+        "title": "Bi-Encoders vs Cross-Encoders — ZeroEntropy Blog",
+        "heading": "How Much Does Reranking Actually Move the Needle?",
+        "chunk_text": "How Much Does Reranking Actually Move the Needle?\n\nOn our evaluations, adding zerank-2 on top of zembed-1 retrieval improves NDCG@10 by 5-20% across verticals. The gains are largest exactly where you’d expect: legal, healthcare, and finance, where queries are nuanced and keyword overlap is a poor proxy for relevance.\n\nThe aggregate number understates what happens at the individual query level. The reranker corrects two specific failure modes:\n\n**False positives demoted.** Documents ranked highly by the bi-encoder due to vocabulary overlap with the query, despite not actually answering it. These get pushed down or out of the top 10 entirely.\n\n**False negatives promoted.** Documents that are genuinely relevant but were underscored by the bi-encoder because their surface text diverges from the query. In the pipeline diagram above, doc 47 — ranked 47th by the bi-encoder — jumps to position 3 after reranking. Without the cross-encoder, that document never enters the context window.\n\n**In our voyage-4 comparison, when we looked at documents where zembed-1 and voyage-4 disagree on ranking and asked three separate LLMs to judge which ordering was correct, zembed-1 was preferred by a 15–20% margin. When filtered to top-10 disagreements — the ones that actually affect your application — the gap widened to 27–33%.**\n\nFirst-stage retrieval quality determines the ceiling for the reranker. Reranker quality determines whether that ceiling is reached.",
+        "score": 6.7458,
+        "rank": 1
+      },
+      {
+        "url": "https://towardsdatascience.com/advanced-rag-retrieval-cross-encoders-reranking/",
+        "title": "Advanced RAG Retrieval: Cross-Encoders & Reranking",
+        "heading": "The Two-Stage Pattern",
+        "chunk_text": "The Two-Stage Pattern\n\nIn the real world, we can use a combination of bi-encoders and cross-encoders to achieve the most optimal retrieval and relevance performance.\n\n*   **Stage 1**: Fast, approximate retrieval. Cast a wide net to achieve high recall with a bi-encoder or BM25. Get your top k candidates.\n*   **Stage 2**: Precise reranking. Run a cross-encoder over those candidates in a pair-wise manner. Get a much better ranking that directly measures relevance.\n\nIt’s actually already quite a standard pattern in production, at least for teams at the frontier:",
+        "score": 6.3074,
+        "rank": 2
+      },
+      {
+        "url": "https://zeroentropy.dev/articles/biencoder-vs-crossencoder/",
+        "title": "Bi-Encoders vs Cross-Encoders — ZeroEntropy Blog",
+        "heading": "Two Architectures, One Pipeline",
+        "chunk_text": "Two Architectures, One Pipeline\n\nEvery modern search and RAG system runs two models in sequence: an embedding model for fast retrieval, and a reranker for precise scoring. These correspond to two fundamentally different transformer architectures — **bi-encoders** and **cross-encoders** — with different strengths, different costs, and a well-understood division of labor in production.\n\nThis post covers what each architecture does, where each one breaks, and why the combination outperforms either alone.",
+        "score": 4.7869,
+        "rank": 3
+      },
+      {
+        "url": "https://towardsdatascience.com/advanced-rag-retrieval-cross-encoders-reranking/",
+        "title": "Advanced RAG Retrieval: Cross-Encoders & Reranking",
+        "heading": "",
+        "chunk_text": "Semantic search, or embedding-based retrieval, has been a key component within many AI applications.Yet, a surprising number of applications I’ve seen still don’t do reranking, despite the relative ease of implementation.\n\nIf you’ve ever built a RAG pipeline and thought “the results are _okay_ but not _great_”, the solution isn’t always to choose a better embedding model. Instead, you should consider including a reranking step, and **cross-encoders** are probably your best bet.\n\n**This article covers what cross-encoders are, why they’re so good at reranking, how to fine-tune them on your own data, and some ideas for pushing them even further.**\n\nAll the code is available at [https://github.com/ianhohoho/cross-encoder-and-reranking-demo](https://github.com/ianhohoho/cross-encoder-and-reranking-demo).\n\n> Let’s connect! _**![Image 1: 🤝🏻](https://s.w.org/images/core/emoji/17.0.2/svg/1f91d-1f3fb.svg) with me on [LinkedIn](https://www.linkedin.com/in/ianhojy/) or check out my [site](https://ianho.xyz/)**_\n\n* * *",
+        "score": 4.5841,
+        "rank": 4
+      }
+    ],
+    "sub_queries": [
+      "What is cross-encoder reranking in information retrieval?",
+      "How does cross-encoder reranking improve retrieval quality compared to bi-encoders?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.75,
+    "reasoning": "The response correctly explains cross-encoder reranking as a two-stage process, mentions joint processing vs independent encoding, and cites accuracy improvements. However, it omits the key fact that cross-encoders cannot pre-compute document representations (a critical trade-off), and the response is cut off mid-sentence, missing the full explanation of gains. The factual correctness score of 0.800 aligns with a partial verdict.",
+    "judge_model": "deepseek-chat"
+  }
+}

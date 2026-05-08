@@ -1,0 +1,97 @@
+{
+  "category": "hybrid_web",
+  "expected_behavior": "Always-parallel web search when web_flag=True. Aggregator integrating web + filing context.",
+  "question": "What was NVIDIA's most recent quarterly revenue and what does their latest 10-K say about data center strategy?",
+  "ground_truth": "NVIDIA's most recent quarterly results (as of mid-2025) show continued strong data center revenue driven by H100/H200/Blackwell GPU demand. The latest 10-K describes the data center segment as the primary revenue driver, covering HPC, AI training, and inference workloads. A good answer cites at least one [SEC-NVDA-*] or [TC-NVDA-*] chunk for strategy and ideally a [NEWS:*] chunk for the most recent quarter.",
+  "key_facts": [
+    "Must include data center strategy from 10-K with citation.",
+    "Should include recent quarterly revenue (from web if available).",
+    "Hybrid: should cite both filing and web sources if web is on.",
+    "Should NOT fabricate specific revenue figures without citation."
+  ],
+  "session_id": "eval-20260507T175645Z-04",
+  "metrics": {
+    "m1_factual_correctness": 0.5,
+    "m3_retrieval_recall": 0.0,
+    "m7_judge_score": 0.65
+  },
+  "timing": {
+    "pipeline_s": 25.07,
+    "latency_breakdown": {
+      "search_ms": 2140,
+      "extract_ms": 11877,
+      "chunk_ms": 35,
+      "retrieve_ms": 1357
+    },
+    "total_latency_ms": 25065
+  },
+  "pipeline": {
+    "answer": "## NVIDIA's Most Recent Quarterly Revenue\n\nNVIDIA's most recently reported quarter is the fourth quarter of fiscal 2026, ended January 25, 2026. The company achieved **record quarterly revenue of $68.1 billion**, up 20% from the prior quarter (Q3) and up 73% from the same quarter a year ago [3]. This represented an acceleration from the fiscal third quarter of 2026, where NVIDIA reported $51.2 billion in data center sales alone, with total quarterly revenue at that time being lower [1][3].\n\nWithin the Q4 FY2026 results, **Data Center revenue reached a record $62.3 billion**, up 22% from the previous quarter and up 75% year-over-year [3]. For context, in the prior quarter (Q3 FY2026), data center revenue was reported at $51.2 billion, which included $43 billion from GPU compute sales and $8.2 billion from networking [1]. For the full fiscal year 2026, NVIDIA reported record total revenue of $215.9 billion, up 65% year-over-year [2][3].\n\n## Data Center Strategy per the Latest 10-K\n\nThe sources provide multiple insights into NVIDIA's data center strategy as reflected in the fiscal 2026 10-K and supporting reports:\n\n**Core Business Focus:** NVIDIA's most important business is data center sales [1]. The company's Compute & Networking segment, which includes Data Center accelerated computing and networking platforms, saw a significant revenue increase driven by major platform shifts toward accelerated computing and AI [2].\n\n**Product Leadership and Demand:** The company's best-selling chip family is now **Blackwell Ultra**, the second-generation version of its Blackwell chips [1]. CEO Jensen Huang stated that \"cloud GPUs are sold out,\" and Huang noted the company has approximately **$500 billion in orders** for its AI chips across 2025 and 2026 combined, with CFO Colette Kress adding that \"the number will grow\" [1].\n\n**Strategic Positioning:** NVIDIA has expanded from its original PC graphics focus to create platforms for **scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications** [4]. The 10-K highlights that demand is being driven by \"major platform shifts towards accelerated computing and AI,\" and the company's megacap customers—Microsoft, Meta, Amazon, and Alphabet—collectively expect to spend more than **$380 billion this year** on AI buildouts, providing strong downstream demand visibility [1][2].\n\nThe 10-K also notes that NVIDIA's full-year gross margin was 71.1%, impacted by a $4.5 billion charge associated with excess H20 inventory, indicating active management of product transitions in the data center segment [2].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.cnbc.com/2025/11/19/nvidia-nvda-earnings-report-q3-2026.html",
+        "title": "https://www.cnbc.com/2025/11/19/nvidia-nvda-earnings-report-q3-2026.html"
+      },
+      {
+        "num": 2,
+        "url": "https://www.tradingview.com/news/tradingview:602edbd315060:0-nvidia-corp-sec-10-k-report/",
+        "title": "https://www.tradingview.com/news/tradingview:602edbd315060:0-nvidia-corp-sec-10-k-report/"
+      },
+      {
+        "num": 3,
+        "url": "https://investor.nvidia.com/financial-info/financial-reports/default.aspx",
+        "title": "NVIDIA Corporation - Financial Reports"
+      },
+      {
+        "num": 4,
+        "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2025/q4/177440d5-3b32-4185-8cc8-95500a9dc783.pdf",
+        "title": "0001045810-25-000023"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.macrotrends.net/stocks/charts/NVDA/nvidia/revenue",
+        "title": "NVIDIA Revenue 2012-2026 | NVDA - Macrotrends",
+        "snippet": "NVIDIA revenue for the twelve months ending January 31, 2026 was $215.938B ... Quarterly Revenue. 2026-01-31, $68.127B. 2025-10-31, $57.006B. 2025-07-31"
+      },
+      {
+        "url": "https://investor.nvidia.com/financial-info/financial-reports/default.aspx",
+        "title": "Financial Reports - NVIDIA Investor Relations",
+        "snippet": "Record quarterly revenue of $68.1 billion, up 20% from Q3 and up 73% from a year ago · Record quarterly Data Center revenue of $62.3 billion, up 22% from Q3 and"
+      },
+      {
+        "url": "https://www.cbsnews.com/news/nvidia-third-quarter-earnings-artificial-intelligence/",
+        "title": "Nvidia reports strong quarterly earnings, topping Wall Street forecasts",
+        "snippet": "The chipmaker reported earnings of $31.9 billion on record revenue of $57 billion for the third quarter. Revenue for the period surged 22% from"
+      },
+      {
+        "url": "https://www.cnbc.com/2025/11/19/nvidia-nvda-earnings-report-q3-2026.html",
+        "title": "Nvidia (NVDA) earnings report Q3 2026 - CNBC",
+        "snippet": "Revenue: $57.01 billion vs. $54.92 billion estimated. Nvidia said it expects about $65 billion in sales in the current quarter, versus $61.66"
+      },
+      {
+        "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2025/q4/177440d5-3b32-4185-8cc8-95500a9dc783.pdf",
+        "title": "[PDF] FORM 10-K NVIDIA CORPORATION",
+        "snippet": "The NVIDIA Data Center platform is focused on accelerating the most ... We expanded our Data Center product portfolio to offer new"
+      },
+      {
+        "url": "https://www.tradingview.com/news/tradingview:602edbd315060:0-nvidia-corp-sec-10-k-report/",
+        "title": "NVIDIA CORP SEC 10-K Report - TradingView",
+        "snippet": "Revenue: $215,938 million, up 65% from the previous year, driven by strong demand in Data Center and Gaming segments. Gross Profit: $153,463"
+      }
+    ],
+    "chunks": [],
+    "sub_queries": [
+      "What was NVIDIA's most recent quarterly revenue?",
+      "What does NVIDIA's latest 10-K say about data center strategy?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.65,
+    "reasoning": "The response correctly identifies record quarterly revenue ($68.1B) and data center revenue ($62.3B) for Q4 FY2026, and mentions the data center as the core business focus. However, it fails to cite any [SEC-NVDA-*] or [TC-NVDA-*] chunk for the 10-K strategy (only generic source references like [1][2][3] without proper filing citations), and the 10-K strategy discussion is incomplete and lacks a direct citation. The hybrid integration of web and filing context is insufficient, and the revenue figures appear fabricated without verifiable source support. Score reflects partial correctness but missing key citations and incomplete strategy coverage.",
+    "judge_model": "deepseek-chat"
+  }
+}

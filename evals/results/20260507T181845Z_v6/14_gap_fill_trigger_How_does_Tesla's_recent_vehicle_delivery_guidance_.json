@@ -1,0 +1,166 @@
+{
+  "category": "gap_fill_trigger",
+  "expected_behavior": "10-K has capacity data; web has recent guidance. Tests tavily_extract gap_filler for no_info sub-questions.",
+  "question": "How does Tesla's recent vehicle delivery guidance compare to their disclosed production capacity in the 10-K?",
+  "ground_truth": "Tesla's 10-K discloses annual production capacity across Fremont, Gigafactory Texas, Berlin, and Shanghai facilities (combined multi-million units/year). Recent guidance from earnings calls or news covers 2024-2025 delivery targets and actual deliveries (~1.8M in 2023, with varying 2024 targets). A good answer cites [SEC-TSLA-*] for capacity and [NEWS/TC] for recent guidance, noting the gap between capacity and actual deliveries.",
+  "key_facts": [
+    "10-K discloses production capacity at multiple Gigafactories.",
+    "Recent guidance covers delivery targets for 2024-2025.",
+    "Must cite [SEC-TSLA-*] for capacity.",
+    "Must cite transcript or news for delivery guidance.",
+    "Should compare the two numbers or note if gap_filler recovered the guidance data."
+  ],
+  "session_id": "eval-20260507T181845Z-14",
+  "metrics": {
+    "m1_factual_correctness": 0.4,
+    "m3_retrieval_recall": 0.4,
+    "m7_judge_score": 0.2
+  },
+  "timing": {
+    "pipeline_s": 33.34,
+    "latency_breakdown": {
+      "search_ms": 3450,
+      "extract_ms": 11838,
+      "chunk_ms": 2,
+      "retrieve_ms": 1517
+    },
+    "total_latency_ms": 33324
+  },
+  "pipeline": {
+    "answer": "Based solely on the provided sources, we cannot directly answer the question comparing Tesla's **Q1 2026 delivery guidance** to their **disclosed production capacity in the 10-K for the current period** (which would be FY 2025). None of the provided sources cite or summarize the content of Tesla's 10-K annual report.\n\nHowever, the sources do contain detailed **Q1 2026 delivery and production numbers** that we can compare against each other, and we can identify the **analyst consensus (which serves as guidance)** for the quarter.\n\n## Tesla’s Q1 2026 Delivery Guidance vs. Actual Production\n\n### Delivery Guidance (Analyst Consensus)\nBefore the results were released, Tesla published a company-compiled consensus of 23 analysts (including Goldman Sachs, Morgan Stanley, and JP Morgan) that set the expected delivery figure for Q1 2026 at **365,645 vehicles** [3][4]. StreetAccount estimates were slightly higher at **370,000 deliveries** [1].\n\n### Actual Q1 2026 Results\nThe actual delivery and production numbers reported by Tesla for Q1 2026 are [1][2]:\n\n| Metric | Q1 2026 Actual |\n|---|---|\n| **Total deliveries** | **358,023** |\n| **Total production** | **408,386** |\n| **Inventory build** | **50,363 vehicles** |\n| **Model 3 / Model Y deliveries** | 341,893 |\n\n### Key Comparison Points\n\n- **Deliveries vs. Guidance**: Tesla’s actual deliveries of **358,023** fell short of both the company-compiled consensus (365,645) by approximately **7,622 vehicles (2.1%)** and the StreetAccount estimate (370,000) by about **11,977 vehicles (3.2%)** [1][3]. This miss contributed to a 5%+ decline in Tesla’s stock [1].\n\n- **Production vs. Deliveries (The “Gap”)**: The most telling comparison is between production and deliveries. Tesla produced **408,386** vehicles but delivered only **358,023** [1][2]. This created an inventory build of **50,363 vehicles** for the quarter – a significant gap that Seeking Alpha described as “getting worse” [2]. This production-to-delivery mismatch indicates that Tesla is producing vehicles faster than it can sell them, a reversal from previous periods of production-constrained demand.\n\n- **Year-Over-Year Trend**: While deliveries improved **6%** from Q1 2025 (336,681), production figures for Q1 2025 are not provided in the sources for a direct comparison [1]. The Q1 2025 figure included a 13% decline from Q1 2024, and the full-year 2025 deliveries fell to 1.64 million from 1.79 million in 2024 [1].\n\n### Context About Tesla’s 10-K (Production Capacity)\n\nThe sources do not reference Tesla’s **10-K** or provide any specific **installed annual production capacity** figures for the current period. Without that data, we cannot determine **capacity utilization** (i.e., whether 408,386 units produced in Q1 represents running at 50%, 70%, or 90% of total available capacity).\n\nHowever, the sources do indicate broader production trends:\n- **Model S and X discontinuation**: Tesla announced in January 2026 it was ending production of the Model S and X. The Fremont, California lines that built them are being repurposed for Optimus robot production [1][4]. This effectively reduces Tesla's maximum vehicle production capacity going forward.\n- **Cybertruck struggles**: The Cybertruck “has not become a mainstream success,” and Tesla is only beginning to ramp up deliveries of the Semi heavy truck in 2026 [1].\n- **Model 3/Y dominance**: The Model 3 and Model Y accounted for **97% of deliveries** in the prior year and **95.5%** (341,893 / 358,023) of Q1 2026 deliveries [1].\n\n### Summary\nThe sources show that Tesla’s **actual Q1 2026 deliveries (358,023) missed analyst guidance (~365,645)** and that **production (408,386) significantly exceeded deliveries**, resulting in an **inventory build of ~50,000 vehicles**. The sources do **not contain the 10-K production capacity data** needed to assess how the 408,386 unit quarterly production figure compares to Tesla’s stated annual capacity.",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.cnbc.com/2026/04/02/tesla-tsla-q1-2026-vehicle-delivery-production.html",
+        "title": "https://www.cnbc.com/2026/04/02/tesla-tsla-q1-2026-vehicle-delivery-production.html",
+        "snippet": "Tesla shares slid more than 5% on Thursday, their worst slump of the year, after the company's deliveries and production report for the first quarter showed a drop from the prior period, with mild growth from a year earlier. Tesla has recorded annual declines in the past two years.\nHere are the key "
+      },
+      {
+        "num": 2,
+        "url": "https://seekingalpha.com/article/4889058-tesla-q1-2026-deliveries-strengthen-the-bearish-outlook",
+        "title": "Tesla Q1 2026 Deliveries Strengthen The Bearish Outlook",
+        "snippet": "Summary\n\n*   Tesla, Inc.'s Q1 2026 delivery report highlights three critical numbers that encapsulate the company's current trajectory.\n*   Inventory build is getting worse with 50,363 vehicles.\n*   Energy storage is under pressure after missing estimates by 38.9%.\n*   TSLA's competitive EV moat has"
+      },
+      {
+        "num": 3,
+        "url": "https://teslahubs.com/blogs/tips/tesla-releases-q1-2026-delivery-estimates-from-analysts?srsltid=AfmBOoo8fyth18SPTpm22vPHfRuRfSXUMOSc2QmGLgV9r_Ystdr5j0fd",
+        "title": "https://teslahubs.com/blogs/tips/tesla-releases-q1-2026-delivery-estimates-from-analysts?srsltid=AfmBOoo8fyth18SPTpm22vPHfRuRfSXUMOSc2QmGLgV9r_Ystdr5j0fd",
+        "snippet": "Tesla has released a company-compiled consensus of analyst estimates for the first quarter of 2026, outlining what Wall Street expects ahead of next week’s reported results. The dataset aggregates input from 23 firms, including Goldman Sachs, Morgan Stanley, and JP Morgan, covering anticipated vehic"
+      },
+      {
+        "num": 4,
+        "url": "https://www.morningstar.com/news/marketwatch/20260327215/teslas-upcoming-delivery-report-is-a-lot-more-important-than-it-may-seem",
+        "title": "Tesla's upcoming delivery report is a lot more important than it may seem",
+        "snippet": "Tesla is expected to report deliveries of 365,645 vehicles for the first quarter of 2026, according to a company-compiled consensus of sell-side analyst estimates. That implies growth of more than 8% compared to a year earlier. However, Tesla's performance in the first quarter of 2025 was also its w"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://seekingalpha.com/article/4889058-tesla-q1-2026-deliveries-strengthen-the-bearish-outlook",
+        "title": "Tesla Q1 2026 Deliveries Strengthen The Bearish Outlook",
+        "snippet": "In terms of production, it produced 408,386 vehicles in Q1 2026 compared to a delivery of 358,023. This gap is the key point for investors"
+      },
+      {
+        "url": "https://www.cnbc.com/2026/04/02/tesla-tsla-q1-2026-vehicle-delivery-production.html",
+        "title": "Tesla TSLA Q1 2026 vehicle delivery and production numbers - CNBC",
+        "snippet": "Deliveries fell 14% from last quarter, but showed modest growth from a year ago. Analysts were expecting 370,000 deliveries, according to"
+      },
+      {
+        "url": "https://ir.tesla.com/press-release/tesla-first-quarter-2026-production-deliveries-and-deployments",
+        "title": "Tesla First Quarter 2026 Production, Deliveries & Deployments",
+        "snippet": "AUSTIN, Texas, April 2, 2026 – In the first quarter, we produced over 408,000 vehicles, delivered over 358,000 vehicles and deployed 8.8 GWh"
+      },
+      {
+        "url": "https://teslahubs.com/blogs/tips/tesla-releases-q1-2026-delivery-estimates-from-analysts?srsltid=AfmBOoo8fyth18SPTpm22vPHfRuRfSXUMOSc2QmGLgV9r_Ystdr5j0fd",
+        "title": "Tesla Releases Q1 2026 Delivery Estimates From Analysts",
+        "snippet": "Breaking Down the Numbers. Reaching 365,645 deliveries would mark a year-over-year increase versus the 336,681 vehicles delivered in Q1 2025,"
+      },
+      {
+        "url": "https://www.fool.com/investing/2026/04/10/tesla-just-missed-electric-vehicle-delivery-expect/",
+        "title": "Tesla Just Missed Electric Vehicle Delivery Expectations Yet Again ...",
+        "snippet": "Tesla once again reported disappointing deliveries of 358,023 for the first quarter of 2026, below the 370,000 that Wall Street analysts had"
+      },
+      {
+        "url": "https://www.morningstar.com/news/marketwatch/20260327215/teslas-upcoming-delivery-report-is-a-lot-more-important-than-it-may-seem",
+        "title": "Tesla's upcoming delivery report is a lot more important than it may ...",
+        "snippet": "Tesla is expected to report deliveries of 365,645 vehicles for the first quarter of 2026, according to a company-compiled consensus of sell-side"
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.cnbc.com/2026/04/02/tesla-tsla-q1-2026-vehicle-delivery-production.html",
+        "title": "https://www.cnbc.com/2026/04/02/tesla-tsla-q1-2026-vehicle-delivery-production.html",
+        "heading": "",
+        "chunk_text": "Tesla shares slid more than 5% on Thursday, their worst slump of the year, after the company's deliveries and production report for the first quarter showed a drop from the prior period, with mild growth from a year earlier. Tesla has recorded annual declines in the past two years.\nHere are the key numbers:\n- Total Q1 vehicle deliveries: 358,023\n- Total Q1 vehicle production: 408,386\nAnalysts were expecting 370,000 deliveries, according to StreetAccount estimates, while a company-compiled consensus by Tesla, published on March 26, said the average estimate was for 365,645 deliveries in the first quarter.\nDeliveries improved 6% from a year ago, when Tesla reported 336,681. The first quarter of 2025 marked a decline of 13% over the first quarter of 2024. Tesla's total deliveries for 2025 fell to 1.64 million from 1.79 million in 2024.\nWith Thursday's drop, the stock is down 20% in 2026.\nTesla's entry-level Model 3 sedan and most popular Model Y SUVs accounted for 341,893 for the quarter, the company said in the latest report. Deliveries are the closest approximation of sales reported by Tesla, but are not precisely defined in the company's shareholder communications.\nWhile CEO Elon Musk has been refocusing the company to produce a driverless Cybercab and Optimus humanoid robots, Tesla has yet to sell those products and still relies on auto sales for the bulk of its revenue.",
+        "score": 2.9234,
+        "rank": 0
+      },
+      {
+        "url": "https://seekingalpha.com/article/4889058-tesla-q1-2026-deliveries-strengthen-the-bearish-outlook",
+        "title": "Tesla Q1 2026 Deliveries Strengthen The Bearish Outlook",
+        "heading": "Summary",
+        "chunk_text": "Summary\n\n*   Tesla, Inc.'s Q1 2026 delivery report highlights three critical numbers that encapsulate the company's current trajectory.\n*   Inventory build is getting worse with 50,363 vehicles.\n*   Energy storage is under pressure after missing estimates by 38.9%.\n*   TSLA's competitive EV moat has narrowed, raising questions about its long-term market dominance and valuation.\n\n![Image 15: Tesla Signage at Delivery Front Entrance](https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1500886695/image_1500886695.jpg?io=getty-c-w630)\n\nbaileystock/iStock Editorial via Getty Images",
+        "score": 1.2509,
+        "rank": 1
+      },
+      {
+        "url": "https://teslahubs.com/blogs/tips/tesla-releases-q1-2026-delivery-estimates-from-analysts?srsltid=AfmBOoo8fyth18SPTpm22vPHfRuRfSXUMOSc2QmGLgV9r_Ystdr5j0fd",
+        "title": "https://teslahubs.com/blogs/tips/tesla-releases-q1-2026-delivery-estimates-from-analysts?srsltid=AfmBOoo8fyth18SPTpm22vPHfRuRfSXUMOSc2QmGLgV9r_Ystdr5j0fd",
+        "heading": "",
+        "chunk_text": "Tesla has released a company-compiled consensus of analyst estimates for the first quarter of 2026, outlining what Wall Street expects ahead of next week’s reported results. The dataset aggregates input from 23 firms, including Goldman Sachs, Morgan Stanley, and JP Morgan, covering anticipated vehicle deliveries and energy storage deployments.\nConsensus calls for 365,645 vehicle deliveries in Q1 2026 and 14.4 GWh of energy storage deployments this quarter. In its investor relations note, Tesla added that it \"does not endorse any information, recommendations or conclusions made by the analysts.\"\nBreaking Down the Numbers\nReaching 365,645 deliveries would mark a year-over-year increase versus the 336,681 vehicles delivered in Q1 2025, but would be below the 418,227 units reported in Q4 2025, a period boosted by holiday demand. Such a first-quarter dip is typical for the auto industry.\nAnalysts expect the Model 3 and Model Y to account for 351,179 units. The \"Other Models\" category—which includes the Cybertruck, Semi, and the outgoing Model S and X—is projected at 13,946 units.\nEnergy Storage: The Rising Star\nThe energy business is expected to set a new company record, with consensus at 14.4 GWh of deployments, narrowly topping the 14.2 GWh reported last quarter.\nTesla Energy is preparing to begin shipments of its next-gen Megapack 3 and Megablock products.",
+        "score": 0.3386,
+        "rank": 2
+      },
+      {
+        "url": "https://www.morningstar.com/news/marketwatch/20260327215/teslas-upcoming-delivery-report-is-a-lot-more-important-than-it-may-seem",
+        "title": "Tesla's upcoming delivery report is a lot more important than it may seem",
+        "heading": "",
+        "chunk_text": "Tesla is expected to report deliveries of 365,645 vehicles for the first quarter of 2026, according to a company-compiled consensus of sell-side analyst estimates. That implies growth of more than 8% compared to a year earlier. However, Tesla's performance in the first quarter of 2025 was also its worst, in terms of car sales, since the second quarter of 2022.\n\nThe report will be one of the last to include sales of the Model X and Model S vehicles. RBC analyst Tom Narayan said in a recent note to clients that the discontinuation of those models after June reflects Musk's \"strategic pivot\" toward futuristic undertakings, though the shift could pressure Tesla's vehicle business.\n\nDon't miss: Tesla's self-driving effort could be worth more than double its EV division\n\nTesla has said it plans for at least $20 billion in capital expenditures this year. That excludes costs associated with the \"Terafab,\" a planned semiconductor-manufacturing project Tesla is developing alongside SpaceX, another of Musk's companies. Analysts say that venture could easily cost trillions of dollars over time. It's unclear how costs associated with the Terafab will be divided up among Tesla and SpaceX.\n\nSee: Tesla finally catches a break in Europe",
+        "score": -1.1238,
+        "rank": 3
+      },
+      {
+        "url": "https://www.morningstar.com/news/marketwatch/20260327215/teslas-upcoming-delivery-report-is-a-lot-more-important-than-it-may-seem",
+        "title": "Tesla's upcoming delivery report is a lot more important than it may seem",
+        "heading": "",
+        "chunk_text": "Tesla's automotive business brought in $69.5 billion in revenue last year, more than double what the rest of the company generated, even as sales from cars fell 10%. The company's energy and service-oriented business segments both logged growth in 2025, and each generated more than $12 billion in revenue.\n\nTesla next week is also expected to report energy-storage deployments of 14.4 gigawatt hours for the March quarter, according to analysts. That would be a new quarterly record.\n\nAt the end of 2025, Tesla said it had a little more than $44 billion in cash, cash equivalents and investments on hand. Tesla's free cash flow could turn negative this year for the first time since 2018, analysts have noted.\n\nTesla shares were down more than 2% in afternoon action on Friday, adding to their recent declines. The stock is off 23% over the last three months.\n\nInvestors are looking ahead to SpaceX's potentially record-breaking initial public offering, which could happen by the end of the second quarter. SpaceX is reportedly considering giving Tesla shareholders preferential treatment in the IPO and setting aside 30% of the offered shares to retail investors.\n\nRead: 'Do you believe in Elon?': Musk tests Tesla investors' faith with an expensive chip-making plan",
+        "score": -3.2962,
+        "rank": 4
+      },
+      {
+        "url": "https://www.cnbc.com/2026/04/02/tesla-tsla-q1-2026-vehicle-delivery-production.html",
+        "title": "https://www.cnbc.com/2026/04/02/tesla-tsla-q1-2026-vehicle-delivery-production.html",
+        "heading": "",
+        "chunk_text": "Elon Musk has been refocusing the company to produce a driverless Cybercab and Optimus humanoid robots, Tesla has yet to sell those products and still relies on auto sales for the bulk of its revenue. In January, Tesla announced it was ending production of its flagship Model S and X vehicles, and would use the factory lines where they were assembled in Fremont, California, to build Optimus robots.\nThe S and X had long been in decline for Tesla. The 3 and Y accounted for 97% of the company's deliveries last year.\nMusk said in a post on his social network X on Wednesday that orders of the S and X have \"come to an end,\" but some were left in inventory. \"We will have an official ceremony to mark the ending of an era. I love those cars,\" he added.\nThe angular, steel Cybertruck, which Tesla started delivering to customers in late 2023, has not become a mainstream success. Tesla is poised to ramp up deliveries of its fully electric Semi in 2026, a class 8 truck with a promised range of 500 miles.\nIn its energy business, Tesla said that it deployed 8.8 gigawatt hours of battery energy storage systems in the first quarter, following a record of 14.2 gigawatt hours in the fourth quarter of 2025.",
+        "score": -3.6298,
+        "rank": 5
+      },
+      {
+        "url": "https://www.morningstar.com/news/marketwatch/20260327215/teslas-upcoming-delivery-report-is-a-lot-more-important-than-it-may-seem",
+        "title": "Tesla's upcoming delivery report is a lot more important than it may seem",
+        "heading": "",
+        "chunk_text": "By William Gavin\n\nInvestors have lost some of their fascination with Tesla's car business, but selling lots of EVs is critical to funding Elon Musk's more futuristic ambitions\n\nTesla's electric-vehicle business still accounts for the vast majority of its revenue.\n\nTesla's delivery report used to be viewed as key barometer of the company's health, and its stock's momentum.\n\nNow, ahead of next week's first-quarter update, UBS analyst Joseph Spak is asking: \"Do deliveries even matter?\"\n\nThe answer to that question is complicated. Are delivery numbers key to Tesla's (TSLA) stock performance? \"Probably not,\" or at least not like before, according to Spak.\n\nBut as investors have grown ever more preoccupied with futuristic ventures like robotaxis and humanoid robots, there's a fundamental disconnect between what's supporting Tesla's valuation and what's actually paying the bills.\n\nSince Tesla isn't making any money off its robotaxi or humanoid-robot plans, and likely won't for a while, cars are still the moneymaker. For that reason, the delivery report is key to helping CEO Elon Musk achieve his lofty and expensive goals.\n\n\"While we expect sentiment will continue to overwhelmingly drive the stock (certainly more than auto deliveries), it is (primarily) the auto business that helps fund Tesla's cash flow and hence their investment for growth,\" Spak wrote. He rates Tesla at sell with a $352 per share price target.",
+        "score": -3.6474,
+        "rank": 6
+      },
+      {
+        "url": "https://www.cnbc.com/2026/04/02/tesla-tsla-q1-2026-vehicle-delivery-production.html",
+        "title": "https://www.cnbc.com/2026/04/02/tesla-tsla-q1-2026-vehicle-delivery-production.html",
+        "heading": "",
+        "chunk_text": "In its energy business, Tesla said that it deployed 8.8 gigawatt hours of battery energy storage systems in the first quarter, following a record of 14.2 gigawatt hours in the fourth quarter of 2025. In Q1 of 2025 the company deployed 10.4 GWh of its energy products.\nTesla's battery energy storage products include its Powerwall backup batteries for homes, and larger Megapack and Megablock systems used alongside data centers and utilities.\nWilliam Blair equity analysts, led by Jed Dorsheimer, said in a note Thursday that they were not surprised by Tesla's automotive numbers because \"global EV demand ex-China remains under pressure, and Tesla is actively sacrificing its EV business in favor of a fully autonomous future.\"\nHowever, Tesla's whiff on energy was of greater concern.\n\"This business can be lumpy and swing depending on customer grid hook-up timing, but that does not fully explain this drop-off,\" the note said. \"We are confused as to what happened with supply this quarter.\"\nTesla shares dropped 15% in the first quarter, continuing a trend that started two years ago. The stock plunged from January through March in 2024 and 2025 but rose in every other quarter to end the years higher.\nTesla's 2025 vehicle sales slump stemmed from increased competition across the globe, and a consumer backlash against Musk in response to his politics.",
+        "score": -3.8741,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "How do Tesla's recent vehicle delivery guidance numbers compare to their disclosed production capacity in the 10-K for the current period?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "fail",
+    "score": 0.2,
+    "reasoning": "The system response fails to address the core question: comparing Tesla's recent delivery guidance to their 10-K production capacity. It fabricates a Q1 2026 context not present in the ground truth (which discusses 2023-2025), does not cite any [SEC-TSLA-*] source for capacity, and does not cite any [NEWS/TC] source for guidance. The response is significantly off-topic and misses all key facts.",
+    "judge_model": "deepseek-chat"
+  }
+}

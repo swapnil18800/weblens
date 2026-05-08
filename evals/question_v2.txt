@@ -1,0 +1,233 @@
+{
+  "easy_single_fact": {
+    "web_search": false,
+    "expected_behavior": "Single sub-question retrieval of one specific metric from a well-known SEC filing. Tests basic factual grounding and citation quality.",
+    "questions": [
+      "What was Amazon's total net sales for FY2024 according to its annual report?",
+      "What was Alphabet's Google Search and other advertising revenue for FY2024?",
+      "What were Tesla's total vehicle deliveries for FY2024?"
+    ],
+    "ground_truth_map": {
+      "What was Amazon's total net sales for FY2024 according to its annual report?": {
+        "ground_truth": "Amazon's FY2024 annual report (10-K for fiscal year ended December 2024) reported total net sales of approximately $638 billion, up from approximately $575 billion in FY2023, representing approximately 11% year-over-year growth. AWS contributed approximately $107.6 billion, North America net sales were approximately $387 billion, and International net sales were approximately $143 billion.",
+        "key_facts": [
+          "Total net sales approximately $638B for FY2024.",
+          "YoY growth approximately 11% from FY2023 $575B.",
+          "Must cite [SEC-AMZN-*] or equivalent 10-K chunk.",
+          "Should not fabricate a significantly different revenue figure."
+        ]
+      },
+      "What was Alphabet's Google Search and other advertising revenue for FY2024?": {
+        "ground_truth": "Alphabet's FY2024 10-K reports Google Search and other advertising revenue of approximately $198 billion, up from approximately $175 billion in FY2023, representing roughly 13% growth. Google Services total revenue was approximately $307 billion. Total Alphabet revenue was approximately $350 billion for FY2024.",
+        "key_facts": [
+          "Google Search and other advertising approximately $198B for FY2024.",
+          "Total Alphabet revenue approximately $350B for FY2024.",
+          "Google Services approximately $307B.",
+          "Must cite [SEC-GOOGL-*] or equivalent 10-K chunk.",
+          "Should not fabricate a significantly different figure."
+        ]
+      },
+      "What were Tesla's total vehicle deliveries for FY2024?": {
+        "ground_truth": "Tesla delivered approximately 1.789 million vehicles in FY2024 (calendar year 2024), a slight decline from approximately 1.808 million in FY2023. This was the first year-over-year delivery decline in Tesla's history as a public company. Model Y remained the highest-volume vehicle. The figure comes from Tesla's quarterly delivery reports and FY2024 10-K.",
+        "key_facts": [
+          "FY2024 total deliveries approximately 1.789 million vehicles.",
+          "Slight decline from FY2023 approximately 1.808 million.",
+          "First annual delivery decline in Tesla's public history.",
+          "Must cite [SEC-TSLA-*] or quarterly delivery report.",
+          "Should not fabricate a significantly different figure."
+        ]
+      }
+    }
+  },
+  "easy_segment_metric": {
+    "web_search": false,
+    "expected_behavior": "Single-entity segment-level retrieval. Tests ability to extract subsidiary or segment figures from a 10-K filing.",
+    "questions": [
+      "What was AWS revenue and operating income for FY2024 per Amazon's 10-K?",
+      "What were Apple's FY2024 revenue and gross margin for the Services segment?"
+    ],
+    "ground_truth_map": {
+      "What was AWS revenue and operating income for FY2024 per Amazon's 10-K?": {
+        "ground_truth": "Per Amazon's FY2024 10-K, AWS (Amazon Web Services) reported revenue of approximately $107.6 billion, up roughly 17% from $91 billion in FY2023, and operating income of approximately $39.8 billion, representing an operating margin of approximately 37%. AWS accounted for the majority of Amazon's total consolidated operating income despite being a minority of total revenue.",
+        "key_facts": [
+          "AWS revenue approximately $107.6B for FY2024.",
+          "AWS operating income approximately $39.8B.",
+          "AWS operating margin approximately 37%.",
+          "Must cite [SEC-AMZN-*] 10-K chunk.",
+          "Should note AWS is majority of Amazon total operating income."
+        ]
+      },
+      "What were Apple's FY2024 revenue and gross margin for the Services segment?": {
+        "ground_truth": "Per Apple's FY2024 10-K (fiscal year ended September 2024), the Services segment reported revenue of approximately $96.2 billion, up roughly 13% from $85.2 billion in FY2023, and gross margin of approximately $74.9 billion (roughly 78% gross margin rate). Services is Apple's highest-margin and fastest-growing segment. The Products segment had a gross margin of approximately 37%.",
+        "key_facts": [
+          "Services revenue approximately $96.2B for FY2024.",
+          "Services gross margin approximately $74-75B (approximately 78%).",
+          "Services YoY revenue growth approximately 13%.",
+          "Must cite [SEC-AAPL-*] 10-K chunk.",
+          "Services is Apple's highest-margin segment."
+        ]
+      }
+    }
+  },
+  "medium_cross_company": {
+    "web_search": false,
+    "expected_behavior": "3-entity cross-company comparison requiring parallel retrieval from 3 different filings. Tests decomposition quality and aggregator ability to produce a comparison table.",
+    "questions": [
+      "Compare AWS, Microsoft Intelligent Cloud, and Google Cloud revenue for FY2024 using each company's 10-K filings.",
+      "Compare Apple, Amazon, and Alphabet free cash flow for FY2024 based on their annual filings."
+    ],
+    "ground_truth_map": {
+      "Compare AWS, Microsoft Intelligent Cloud, and Google Cloud revenue for FY2024 using each company's 10-K filings.": {
+        "ground_truth": "AWS FY2024 (calendar year 2024): approximately $107.6 billion (+17% YoY). Microsoft Intelligent Cloud FY2024 (fiscal year ended June 2024): approximately $105.4 billion (+19% YoY; Azure is the primary component, growing ~29% in constant currency). Google Cloud FY2024 (calendar year 2024): approximately $43.2 billion (+29% YoY from ~$33.1B). AWS leads, followed closely by Microsoft Intelligent Cloud, then Google Cloud at roughly 40% of AWS scale. Each figure must cite its respective 10-K.",
+        "key_facts": [
+          "AWS approximately $107.6B for FY2024.",
+          "Microsoft Intelligent Cloud approximately $105.4B for FY2024 fiscal (ended June 2024).",
+          "Google Cloud approximately $43.2B for FY2024.",
+          "Must cite [SEC-AMZN-*], [SEC-MSFT-*], [SEC-GOOGL-*].",
+          "Answer should include a comparison table."
+        ]
+      },
+      "Compare Apple, Amazon, and Alphabet free cash flow for FY2024 based on their annual filings.": {
+        "ground_truth": "Apple FY2024 (fiscal year ended Sept 2024): operating cash flow approximately $118 billion minus capex approximately $9 billion = free cash flow approximately $108-110 billion. Amazon FY2024: operating cash flow approximately $115 billion minus capex approximately $78 billion = free cash flow approximately $35-44 billion. Alphabet FY2024: operating cash flow approximately $125 billion minus capex approximately $52 billion = free cash flow approximately $67-73 billion. All figures from respective 10-K cash flow statements.",
+        "key_facts": [
+          "Apple FCF approximately $108-110B for FY2024.",
+          "Amazon FCF approximately $35-44B for FY2024.",
+          "Alphabet FCF approximately $67-73B for FY2024.",
+          "Must cite each company's 10-K cash flow statement.",
+          "Answer should rank or compare all three companies."
+        ]
+      }
+    }
+  },
+  "medium_multi_year": {
+    "web_search": false,
+    "expected_behavior": "Single entity, multi-year trend requiring fan-out retrieval across multiple annual filings. Tests temporal decomposition and year-over-year growth computation.",
+    "questions": [
+      "Trace Meta's total revenue from FY2022 to FY2024 with year-over-year growth rates based on its 10-K filings.",
+      "Show NVIDIA's gross margin percentage for FY2023, FY2024, and FY2025 based on its annual filings."
+    ],
+    "ground_truth_map": {
+      "Trace Meta's total revenue from FY2022 to FY2024 with year-over-year growth rates based on its 10-K filings.": {
+        "ground_truth": "Meta total revenue: FY2022 approximately $116.6 billion (declined approximately 1% from $117.9B in FY2021, driven by iOS ATT privacy changes and macro headwinds). FY2023 approximately $134.9 billion (+16% YoY), driven by advertising efficiency improvements during the 'Year of Efficiency' cost-cutting. FY2024 approximately $164.5 billion (+22% YoY), fueled by AI-driven ad targeting and Reels monetization. Each year must cite respective [SEC-META-*] 10-K.",
+        "key_facts": [
+          "FY2022 revenue approximately $116.6B.",
+          "FY2023 revenue approximately $134.9B, approximately 16% YoY growth.",
+          "FY2024 revenue approximately $164.5B, approximately 22% YoY growth.",
+          "Must cite [SEC-META-*] for each year.",
+          "Should note Year of Efficiency context for recovery."
+        ]
+      },
+      "Show NVIDIA's gross margin percentage for FY2023, FY2024, and FY2025 based on its annual filings.": {
+        "ground_truth": "NVIDIA fiscal year ends in January. FY2023 (ended Jan 2023): gross margin approximately 56-57%, pressured by gaming inventory corrections. FY2024 (ended Jan 2024): gross margin approximately 72-73%, dramatic expansion driven by Data Center GPU demand at premium ASPs (H100 accelerators). FY2025 (ended Jan 2025): gross margin approximately 74-75%, sustained by Blackwell architecture ramp and continued AI infrastructure demand. Must cite [SEC-NVDA-*] for each fiscal year.",
+        "key_facts": [
+          "NVIDIA FY2023 gross margin approximately 56-57%.",
+          "NVIDIA FY2024 gross margin approximately 72-73%.",
+          "NVIDIA FY2025 gross margin approximately 74-75%.",
+          "Must cite [SEC-NVDA-*] for each fiscal year.",
+          "Should note Data Center mix shift as the driver."
+        ]
+      }
+    }
+  },
+  "medium_strict_refusal": {
+    "web_search": false,
+    "expected_behavior": "Tests honest 'not found in sources' behavior when asked for data granularity that does not exist in public filings. Answer must state the limitation without fabricating the unavailable breakdown.",
+    "questions": [
+      "What is Microsoft's FY2024 revenue broken down by individual Azure service category, such as Azure Compute, Azure Storage, and Azure AI separately?"
+    ],
+    "ground_truth_map": {
+      "What is Microsoft's FY2024 revenue broken down by individual Azure service category, such as Azure Compute, Azure Storage, and Azure AI separately?": {
+        "ground_truth": "Microsoft does not disclose Azure revenue broken down by individual service categories (compute, storage, AI, networking, etc.) in its 10-K or any public earnings materials. The FY2024 10-K reports Intelligent Cloud segment revenue of approximately $105.4 billion and discloses Azure constant-currency growth rate (approximately 29% for FY2024) but does not break out individual Azure service lines. An honest answer states the total Intelligent Cloud figure, cites the Azure growth rate, and clearly states the per-service breakdown is not publicly disclosed.",
+        "key_facts": [
+          "Microsoft does NOT disclose per-Azure-service revenue breakdown.",
+          "Intelligent Cloud segment total approximately $105.4B is available.",
+          "Azure overall growth rate approximately 29% constant currency is available.",
+          "Answer must NOT fabricate per-service figures.",
+          "Must clearly state the breakdown is unavailable in the 10-K."
+        ]
+      }
+    }
+  },
+  "hard_multi_hop": {
+    "web_search": false,
+    "expected_behavior": "Multi-entity, multi-metric, multi-period questions requiring 6+ sub-questions. Tests decomposition depth, per-entity isolation, and synthesis of computed ratios.",
+    "questions": [
+      "Compute and compare R&D spending as a percentage of revenue for Amazon, Alphabet, and Meta for both FY2023 and FY2024 using their 10-K filings.",
+      "Compare Apple and Microsoft capital return programs (buybacks plus dividends) for FY2023 and FY2024: show total capital returned and year-over-year change."
+    ],
+    "ground_truth_map": {
+      "Compute and compare R&D spending as a percentage of revenue for Amazon, Alphabet, and Meta for both FY2023 and FY2024 using their 10-K filings.": {
+        "ground_truth": "Amazon (technology and content R&D broadly defined): FY2023 approximately $85.6B / $575B = ~14.9%; FY2024 approximately $100B / $638B = ~15.7%. Alphabet R&D: FY2023 approximately $45.4B / $307.4B = ~14.8%; FY2024 approximately $49.3B / $350B = ~14.1%. Meta R&D: FY2023 approximately $38.5B / $134.9B = ~28.5%; FY2024 approximately $43.6B / $164.5B = ~26.5%. Meta consistently invests the highest proportion of revenue in R&D at roughly double the rate of Amazon and Alphabet. All figures must cite respective [SEC-*] 10-K filings for both years.",
+        "key_facts": [
+          "Amazon R&D-to-revenue approximately 14-16% for FY2023 and FY2024.",
+          "Alphabet R&D-to-revenue approximately 14-15% for FY2023 and FY2024.",
+          "Meta R&D-to-revenue approximately 26-29% (much higher) for both years.",
+          "Must cite each company's 10-K for both fiscal years.",
+          "Answer should compute and show percentages explicitly and compare."
+        ]
+      },
+      "Compare Apple and Microsoft capital return programs (buybacks plus dividends) for FY2023 and FY2024: show total capital returned and year-over-year change.": {
+        "ground_truth": "Apple FY2023: approximately $89B share repurchases + approximately $15B dividends = approximately $104B total returned to shareholders. Apple FY2024: approximately $95B buybacks + approximately $15.2B dividends = approximately $110B total returned (+6% YoY). Microsoft FY2023: approximately $22.2B buybacks + approximately $20.3B dividends = approximately $42.5B total. Microsoft FY2024: approximately $17.6B buybacks + approximately $21.8B dividends = approximately $39.4B total (-7% YoY). Apple returns approximately 3x more than Microsoft in absolute terms. Must cite [SEC-AAPL-*] and [SEC-MSFT-*] cash flow statements.",
+        "key_facts": [
+          "Apple FY2024 total capital return approximately $110B.",
+          "Apple FY2023 total capital return approximately $104B.",
+          "Microsoft FY2024 total capital return approximately $39B.",
+          "Microsoft FY2023 total capital return approximately $42.5B.",
+          "Must cite Apple and Microsoft 10-K cash flow statements.",
+          "Answer should note Apple returns approximately 3x more than Microsoft."
+        ]
+      }
+    }
+  },
+  "hard_hybrid_synthesis": {
+    "web_search": true,
+    "expected_behavior": "Requires both 10-K filing data and recent web news to fully answer. Tests hybrid routing, gap filling, and citation source diversity (must cite both filing and web sources).",
+    "questions": [
+      "What did Amazon's FY2024 10-K say about AWS AI services strategy, and what recent 2025 news exists about AWS AI model offerings and customer adoption?",
+      "Per Tesla's FY2024 10-K, what is their disclosed manufacturing capacity, and how does recent 2025 delivery guidance compare to that capacity?"
+    ],
+    "ground_truth_map": {
+      "What did Amazon's FY2024 10-K say about AWS AI services strategy, and what recent 2025 news exists about AWS AI model offerings and customer adoption?": {
+        "ground_truth": "Amazon's FY2024 10-K describes AWS AI strategy around three layers: infrastructure (custom silicon including Trainium and Inferentia chips), platform (Amazon Bedrock for multi-model foundation model access), and application (Amazon Q for enterprise AI assistants). The 10-K notes AWS AI services as a key growth driver for the segment. Recent 2025 news covers Amazon Bedrock expansion, the Nova foundation model family, and enterprise customer wins. A complete answer cites [SEC-AMZN-*] for 10-K content and [NEWS:*] for 2025 developments.",
+        "key_facts": [
+          "10-K describes Trainium and Inferentia custom silicon.",
+          "Amazon Bedrock foundation model platform mentioned in 10-K.",
+          "Amazon Q enterprise AI assistant mentioned in 10-K.",
+          "Must cite [SEC-AMZN-*] AND at least one [NEWS:*] for 2025.",
+          "Missing either source type = partial credit only."
+        ]
+      },
+      "Per Tesla's FY2024 10-K, what is their disclosed manufacturing capacity, and how does recent 2025 delivery guidance compare to that capacity?": {
+        "ground_truth": "Tesla's FY2024 10-K discloses combined installed capacity across Fremont CA (approximately 500K/year), Gigafactory Texas (approximately 250K/year), Gigafactory Berlin (approximately 375K/year), and Gigafactory Shanghai (approximately 750K/year), totaling approximately 2+ million vehicles per year of installed capacity. FY2024 actual deliveries were approximately 1.789 million, well below installed capacity implying a utilization gap. Recent 2025 news covers delivery guidance for 2025 including Cybertruck volume ramp and a new lower-cost model timeline. Must cite [SEC-TSLA-*] for capacity and [NEWS:*] for 2025 guidance.",
+        "key_facts": [
+          "10-K discloses installed capacity at multiple Gigafactories totaling approximately 2M+ per year.",
+          "FY2024 deliveries approximately 1.789M were below installed capacity.",
+          "Recent 2025 news covers delivery targets and new model plans.",
+          "Must cite [SEC-TSLA-*] for capacity.",
+          "Must cite [NEWS:*] for 2025 delivery guidance.",
+          "Should note utilization gap between capacity and actual deliveries."
+        ]
+      }
+    }
+  },
+  "hard_transcript_synthesis": {
+    "web_search": false,
+    "expected_behavior": "Requires synthesis across multiple earnings call transcripts for the same company across multiple quarters. Tests temporal multi-document retrieval and management sentiment tracking.",
+    "questions": [
+      "How did Alphabet management discuss YouTube monetization evolution across FY2024 Q1 through Q4 earnings calls? Trace key themes and any quantitative disclosures quarter by quarter."
+    ],
+    "ground_truth_map": {
+      "How did Alphabet management discuss YouTube monetization evolution across FY2024 Q1 through Q4 earnings calls? Trace key themes and any quantitative disclosures quarter by quarter.": {
+        "ground_truth": "Across Alphabet's FY2024 earnings calls (Q1-Q4 calendar 2024), YouTube monetization themes include: Q1 - YouTube Shorts monetization approaching parity with long-form content on a revenue-per-view basis and connected TV (CTV) advertising growth accelerating; Q2 - subscription revenue from YouTube Premium and YouTube TV becoming a meaningful contributor alongside ads; Q3 - AI-driven ad relevance improvements boosting CPMs across Shorts and long-form; Q4 - YouTube full-year FY2024 advertising revenue approximately $36 billion total (+13% YoY from approximately $32B in FY2023). Management consistently emphasized diversification beyond pure advertising. Citations should reference [TC-GOOGL-Q*-FY2024] chunks for multiple quarters.",
+        "key_facts": [
+          "YouTube Shorts monetization parity with long-form discussed across calls.",
+          "Connected TV (CTV) advertising growth highlighted.",
+          "YouTube Premium and TV subscription contribution mentioned.",
+          "YouTube FY2024 full-year advertising approximately $36B (+13% YoY).",
+          "Must cite transcript chunks from at least two different quarters.",
+          "Answer should trace themes across multiple quarters, not just one."
+        ]
+      }
+    }
+  }
+}

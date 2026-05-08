@@ -1,0 +1,194 @@
+{
+  "simple_factual": {
+    "web_search": true,
+    "expected_behavior": "Single focused question answered accurately from web sources with inline citations.",
+    "questions": [
+      "What is Reciprocal Rank Fusion (RRF) and how does it combine ranked lists from multiple retrieval systems?"
+    ],
+    "ground_truth_map": {
+      "What is Reciprocal Rank Fusion (RRF) and how does it combine ranked lists from multiple retrieval systems?": {
+        "ground_truth": "Reciprocal Rank Fusion (RRF) is an ensemble method for merging multiple ranked lists from different retrieval systems. For each document, it computes 1/(k + rank) where k=60 (constant). Scores are summed across lists and documents are re-ranked by total. Proposed by Cormack, Clarke, and Buettcher (2009). Requires no parameter tuning, robust to scale differences between retrieval systems.",
+        "key_facts": [
+          "RRF combines ranked lists from multiple retrieval systems",
+          "score formula is 1/(k + rank)",
+          "k is typically 60",
+          "scores are summed across ranked lists",
+          "no parameter tuning required"
+        ]
+      }
+    }
+  },
+  "retrieval_comparison": {
+    "web_search": true,
+    "expected_behavior": "Comparison decomposed into sub-queries per retrieval type, synthesized into comparative answer.",
+    "questions": [
+      "Compare BM25 and TF-IDF for text retrieval: what are the key algorithmic differences and when should you prefer each?"
+    ],
+    "ground_truth_map": {
+      "Compare BM25 and TF-IDF for text retrieval: what are the key algorithmic differences and when should you prefer each?": {
+        "ground_truth": "BM25 uses term frequency saturation (parameter k1) and document length normalization (parameter b). TF-IDF has unbounded TF and no length normalization. BM25 outperforms TF-IDF on most benchmarks. Use TF-IDF for simple baselines; use BM25 for production systems.",
+        "key_facts": [
+          "BM25 applies term frequency saturation",
+          "BM25 normalizes by document length",
+          "BM25 has parameters k1 and b",
+          "TF-IDF has unbounded term frequency",
+          "BM25 outperforms TF-IDF"
+        ]
+      }
+    }
+  },
+  "rag_architecture": {
+    "web_search": true,
+    "expected_behavior": "Multi-component explanation. Answer covers all four RAG pipeline stages with citations.",
+    "questions": [
+      "What are the key components of a Retrieval Augmented Generation (RAG) system and how do they work together?"
+    ],
+    "ground_truth_map": {
+      "What are the key components of a Retrieval Augmented Generation (RAG) system and how do they work together?": {
+        "ground_truth": "A RAG system has four main components: (1) Document ingestion and chunking — splitting source documents into retrievable chunks. (2) Embedding and indexing — encoding chunks as dense vectors in a vector store. (3) Retrieval — given a query, finding the most relevant chunks via semantic similarity or hybrid search. (4) Generation — an LLM generates an answer conditioned on the retrieved context. RAG improves accuracy over pure LLMs by grounding answers in current, specific documents.",
+        "key_facts": [
+          "document ingestion and chunking",
+          "embedding and vector indexing",
+          "retrieval using semantic similarity",
+          "LLM generation conditioned on retrieved context",
+          "reduces hallucination by grounding answers"
+        ]
+      }
+    }
+  },
+  "dense_vs_sparse": {
+    "web_search": true,
+    "expected_behavior": "Dense vs sparse comparison decomposed into two sub-queries, merged into structured comparison.",
+    "questions": [
+      "Compare dense retrieval and sparse retrieval: how do they differ in representation and when does each excel?"
+    ],
+    "ground_truth_map": {
+      "Compare dense retrieval and sparse retrieval: how do they differ in representation and when does each excel?": {
+        "ground_truth": "Sparse retrieval (BM25, TF-IDF) represents documents as high-dimensional sparse vectors with exact term matching. Dense retrieval (DPR, sentence-transformers) encodes documents as low-dimensional dense embeddings using neural networks, capturing semantic similarity. Sparse excels for keyword-specific queries and out-of-domain data; dense excels for semantic/paraphrase matching. Hybrid retrieval combining both typically outperforms either alone.",
+        "key_facts": [
+          "sparse retrieval uses term-based exact matching",
+          "dense retrieval uses neural network embeddings",
+          "sparse excels for keyword queries",
+          "dense excels for semantic similarity",
+          "hybrid retrieval outperforms either alone"
+        ]
+      }
+    }
+  },
+  "cross_encoder": {
+    "web_search": true,
+    "expected_behavior": "Technical explanation with citations on how cross-encoders improve retrieval quality.",
+    "questions": [
+      "What is cross-encoder reranking and how does it improve retrieval quality compared to bi-encoders?"
+    ],
+    "ground_truth_map": {
+      "What is cross-encoder reranking and how does it improve retrieval quality compared to bi-encoders?": {
+        "ground_truth": "Cross-encoders take a (query, document) pair and compute a relevance score jointly using a transformer that attends to both simultaneously. Bi-encoders encode query and document independently as separate vectors and use cosine similarity. Cross-encoders are more accurate because they model query-document interactions, but are slower (cannot pre-compute document representations). In practice: bi-encoder for fast first-stage retrieval, cross-encoder for reranking top-K candidates.",
+        "key_facts": [
+          "cross-encoder processes query and document jointly",
+          "bi-encoder encodes query and document independently",
+          "cross-encoder is more accurate than bi-encoder",
+          "cross-encoder cannot pre-compute document representations",
+          "cross-encoder used for reranking top-K candidates"
+        ]
+      }
+    }
+  },
+  "pgvector": {
+    "web_search": true,
+    "expected_behavior": "Technical explanation of pgvector capabilities and use cases with citations.",
+    "questions": [
+      "What is pgvector and how is it used to implement vector similarity search in PostgreSQL?"
+    ],
+    "ground_truth_map": {
+      "What is pgvector and how is it used to implement vector similarity search in PostgreSQL?": {
+        "ground_truth": "pgvector is a PostgreSQL extension that adds vector data types and similarity search operators. It supports storing float32 vectors of arbitrary dimensions, and computing L2, cosine, and inner product distances. Indexing options include IVFFlat (approximate, fast) and HNSW (more accurate, added in v0.5.0). Used widely for RAG, semantic search, and recommendation systems. Example: `CREATE INDEX ON items USING ivfflat (embedding vector_cosine_ops)`.",
+        "key_facts": [
+          "pgvector is a PostgreSQL extension",
+          "supports cosine L2 and inner product distances",
+          "IVFFlat index for approximate nearest neighbor",
+          "HNSW index available in v0.5.0",
+          "used for semantic search and RAG"
+        ]
+      }
+    }
+  },
+  "chunking_strategies": {
+    "web_search": true,
+    "expected_behavior": "Covers multiple chunking strategies with trade-offs. Structured answer with citations.",
+    "questions": [
+      "What are the main chunking strategies for RAG systems and what are the trade-offs between them?"
+    ],
+    "ground_truth_map": {
+      "What are the main chunking strategies for RAG systems and what are the trade-offs between them?": {
+        "ground_truth": "Main chunking strategies: (1) Fixed-size character/token chunking — simple, fast, may split mid-sentence. (2) Sentence-based chunking — respects sentence boundaries, variable size. (3) Semantic/paragraph chunking — splits on structural boundaries (headings, blank lines), best for coherent retrieval. (4) Sliding window with overlap — adds context continuity across chunks. Trade-offs: smaller chunks improve precision but lose context; larger chunks improve recall but may dilute relevance scores.",
+        "key_facts": [
+          "fixed-size character or token chunking",
+          "sentence-based chunking respects boundaries",
+          "semantic chunking uses structural boundaries",
+          "sliding window adds overlap for context",
+          "smaller chunks improve precision larger improve recall"
+        ]
+      }
+    }
+  },
+  "sentence_transformers": {
+    "web_search": true,
+    "expected_behavior": "Technical explanation of sentence transformer architecture and training.",
+    "questions": [
+      "How do sentence transformers like all-MiniLM-L6-v2 work to generate semantic embeddings?"
+    ],
+    "ground_truth_map": {
+      "How do sentence transformers like all-MiniLM-L6-v2 work to generate semantic embeddings?": {
+        "ground_truth": "Sentence transformers are BERT-based models fine-tuned with a Siamese network architecture to produce semantically meaningful fixed-size embeddings. all-MiniLM-L6-v2 has 6 transformer layers and outputs 384-dimensional embeddings. It is trained on large datasets using contrastive learning (cosine similarity of positive pairs should be high). L2 normalization enables cosine similarity via dot product. The model is fast (CPU-friendly) and suitable for embedding thousands of documents.",
+        "key_facts": [
+          "based on BERT transformer architecture",
+          "Siamese network training with contrastive learning",
+          "all-MiniLM-L6-v2 outputs 384 dimensions",
+          "6 transformer layers",
+          "L2 normalization enables cosine similarity via dot product"
+        ]
+      }
+    }
+  },
+  "hybrid_search": {
+    "web_search": true,
+    "expected_behavior": "Explanation of hybrid search combining sparse and dense methods with performance context.",
+    "questions": [
+      "What is hybrid search in information retrieval and why does combining BM25 with vector search outperform either alone?"
+    ],
+    "ground_truth_map": {
+      "What is hybrid search in information retrieval and why does combining BM25 with vector search outperform either alone?": {
+        "ground_truth": "Hybrid search combines sparse (BM25) and dense (vector) retrieval. BM25 excels at exact keyword matching; dense search excels at semantic/paraphrase matching. Their errors are complementary: BM25 fails on synonyms and paraphrases, dense fails on rare proper nouns and exact terms. Fusion methods like RRF merge both ranked lists without requiring score calibration. Studies show hybrid consistently outperforms either alone on BEIR and MS MARCO benchmarks.",
+        "key_facts": [
+          "hybrid combines BM25 sparse and dense vector retrieval",
+          "BM25 excels at exact keyword matching",
+          "dense search excels at semantic matching",
+          "errors are complementary between BM25 and dense",
+          "RRF is a common fusion method",
+          "hybrid outperforms either alone on benchmarks"
+        ]
+      }
+    }
+  },
+  "ivfflat_hnsw": {
+    "web_search": true,
+    "expected_behavior": "Technical comparison of ANN index types decomposed into IVFFlat and HNSW sub-queries.",
+    "questions": [
+      "Compare IVFFlat and HNSW indexes for approximate nearest neighbor search: trade-offs in accuracy, speed, and memory?"
+    ],
+    "ground_truth_map": {
+      "Compare IVFFlat and HNSW indexes for approximate nearest neighbor search: trade-offs in accuracy, speed, and memory?": {
+        "ground_truth": "IVFFlat (Inverted File Flat) partitions the vector space into clusters (cells) using k-means. At query time it searches only nprobe cells, giving approximate results. It uses less memory than HNSW but requires a training phase and has lower recall. HNSW (Hierarchical Navigable Small World) builds a multi-layer graph; it provides higher recall and faster queries but uses significantly more memory (graph structure). IVFFlat: good for large datasets with memory constraints; HNSW: preferred when recall and query speed matter and memory is available.",
+        "key_facts": [
+          "IVFFlat partitions space into clusters using k-means",
+          "IVFFlat searches nprobe clusters at query time",
+          "HNSW builds a hierarchical graph structure",
+          "HNSW has higher recall and faster queries than IVFFlat",
+          "HNSW uses more memory than IVFFlat",
+          "IVFFlat requires a training phase"
+        ]
+      }
+    }
+  }
+}

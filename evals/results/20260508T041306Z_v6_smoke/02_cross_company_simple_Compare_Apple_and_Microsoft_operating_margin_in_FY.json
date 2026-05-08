@@ -1,0 +1,255 @@
+{
+  "category": "cross_company_simple",
+  "expected_behavior": "2-axis Cartesian decomposition (2 entities x 1 metric x 1 year = 2 sub-questions). Per-entity retrieval isolation tested.",
+  "question": "Compare Apple and Microsoft operating margin in FY2024 based on their annual filings.",
+  "ground_truth": "Apple FY2024 operating margin was approximately 31.5% (operating income ~$123.2B / revenue ~$391.0B). Microsoft FY2024 operating margin was approximately 44.6% (operating income ~$109.4B / revenue ~$245.1B). Microsoft's operating margin is significantly higher than Apple's for FY2024. Both should be cited from respective 10-K filings.",
+  "key_facts": [
+    "AAPL FY2024 operating margin approximately 31-32%.",
+    "MSFT FY2024 operating margin approximately 44-45%.",
+    "Must cite both [SEC-AAPL-*] and [SEC-MSFT-*] chunks.",
+    "Answer should include a comparison or table."
+  ],
+  "session_id": "eval-20260508T041306Z-02",
+  "metrics": {
+    "m1_factual_correctness": 0.75,
+    "m3_retrieval_recall": 0.5,
+    "m7_judge_score": 0.15
+  },
+  "timing": {
+    "pipeline_s": 31.17,
+    "latency_breakdown": {
+      "decompose_ms": 2274,
+      "search_ms": 2969,
+      "extract_ms": 6781,
+      "chunk_ms": 250,
+      "retrieve_ms": 5261
+    },
+    "total_latency_ms": 31147
+  },
+  "pipeline": {
+    "answer": "Based on the provided sub-answers, a direct comparison of Apple and Microsoft operating margins for FY2024 is not possible due to a lack of data for both companies. The sources cited contain no quarterly or annual operating margin figures for Microsoft, and only full-year gross margin data—not operating margins—for Apple.\n\n**Apple FY2024 (from 10-K):** The source reports only full-year gross margins, segmented by category: Services gross margin of 73.9% and Products (hardware) gross margin of 37.2% [1]. Total annual net sales for FY2024 were $391.0 billion [1]. No quarterly or annual operating margin figures are provided, nor is there a breakdown of operating profit by period [1]. Therefore, a quarterly disaggregation of Apple’s operating margin is **not found in sources**.\n\n**Microsoft FY2024 (from 10-K):** The cited sources contain no Microsoft financial data. Source [1] and [2] are exclusively about Apple’s FY2024 10-K [1][2]. Source [3] is Microsoft’s Form 10-Q for the quarter ended September 30, 2024, but it only includes Sarbanes-Oxley certifications and no financial performance data, operating margins, or income statements [3]. Consequently, no quarterly breakdown of Microsoft’s operating margin for FY2024 is present in any cited source.\n\nA summary of available data is below:\n\n| Metric | Apple (FY2024) | Microsoft (FY2024) |\n| :--- | :--- | :--- |\n| **Operating Margin (Annual)** | Not found in sources | Not found in sources |\n| **Operating Margin (Quarterly)** | Not found in sources | Not found in sources |\n| **Gross Margin – Services** | 73.9% [1] | Not in cited sources |\n| **Gross Margin – Products** | 37.2% [1] | Not in cited sources |\n| **Total Net Sales** | $391.0 billion [1] | Not in cited sources |\n\nGiven these gaps, the following takeaways rely on what the sources do and do not contain.\n\n## Key Takeaways\n- **No operating margin data available:** Neither Apple’s nor Microsoft’s FY2024 operating margin—annual or quarterly—appears in any cited source, making a comparative analysis impossible.\n- **Apple gross margin data present:** Apple’s FY2024 10-K does provide full-year gross margins for Services (73.9%) and Products (37.2%), along with total net sales of $391.0 billion [1], but these are not operating margins.\n- **Microsoft data entirely absent:** Microsoft’s financial results are not represented in the provided sources; the only Microsoft document cited (a Form 10-Q) contains certifications, not performance figures [3].\n- **Reliable comparison awaits supplementary sources:** To compare Apple and Microsoft operating margins, additional financial filings or earnings reports for both companies would be required.",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "snippet": "Introduction: Why Apple’s 10-K Matters\n\nApple Inc.’s annual [10-K filing with the SEC](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-K&dateb=&owner=include&count=10) is one of the most closely watched corporate disclosures in the world. As the planet’s most valuab"
+      },
+      {
+        "num": 2,
+        "url": "https://www.stock-analysis-on.net/NASDAQ/Company/Apple-Inc/Ratios/Profitability/Quarterly-Data?srsltid=AfmBOoq2s355TSvok7TVwhCF3dL6zKaCq1uusm3svRxJPG5rtfyxbtxy",
+        "title": "Apple Inc. (NASDAQ:AAPL) | Analysis of Profitability Ratios (Q)",
+        "snippet": "Operating Profit Margin\n\n[Annual Data](https://www.stock-analysis-on.net/NASDAQ/Company/Apple-Inc/Ratios/Profitability#Operating-Profit-Margin)[Quarterly Data](https://www.stock-analysis-on.net/NASDAQ/Company/Apple-Inc/Ratios/Profitability/Quarterly-Data#Operating-Profit-Margin)\n\nApple Inc., operati"
+      },
+      {
+        "num": 3,
+        "url": "https://microsoft.gcs-web.com/static-files/f96f7d38-36ce-4a26-9e29-61701cdca7a7",
+        "title": "Form 10-Q for Microsoft Corp filed 10/30/2024",
+        "snippet": "ITEM 6. E XHIBITS\n\nIn connection with the Quarterly Report of Microsoft Corporation, a Washington corporation (the “Company”), on Form 10-Q for the quarter\n\nended September 30, 2024, as filed with the Securities and Exchange Commission (the “Report”), Satya Nadella, Chief Executive Officer of\n\nthe C"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024 Annual Report Guide - Libertify.com",
+        "snippet": "# Apple 10-K FY2024: Complete Guide to Apple’s $391 Billion Annual Report. Apple Inc.’s annual 10-K filing with the SEC is one of the most closely watched corporate disclosures in the world. While hardware growth has slowed across most product categories, Apple’s Services ecosystem has emerged as a dominant profit engine, and the launch of Apple Intelligence signals a new chapter in the company’s strategic evolution. This comprehensive guide breaks down every critical component of Apple’s FY2024 annual report — from revenue segmentation and geographic performance to risk factors and capital allocation — providing investors, analysts, and business strategists with actionable insights directly from the source filing. Apple 10-K FY2024 annual report financial dashboard showing key metrics and revenue breakdown. Apple’s total net sales for FY2024 reached **$391.0 billion**, a 2% increase from $383.3 billion in FY2023. Despite representing over half of Apple’s revenue, the iPhone segment delivered essentially flat growth in FY2024 — rising just 0.3% from $200.6 billion to $201.2 billion."
+      },
+      {
+        "url": "https://www.apple.com/newsroom/pdfs/fy2024-q4/FY24_Q4_Consolidated_Financial_Statements.pdf",
+        "title": "[PDF] Apple Inc.",
+        "snippet": "Total net sales (1) 94,930 89,498 391,035 383,285. Other income/(expense), net 19 29 269 (565). Net income $ 14,736 $ 22,956 $ 93,736 $ 96,995. Total net sales $ 94,930 $ 89,498 $ 391,035 $ 383,285. Total net sales $ 94,930 $ 89,498 $ 391,035 $ 383,285 Apple Inc. CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited). Total non -current assets 211,993 209,017. Total non -current liabilities 131,638 145,129. Net income 93,736 96,995. Adjustments to reconcile net income to cash generated by operating activities:. Payments for taxes related to net share settlement of equity awards (5,441) (5,431). Cash paid for income taxes, net $ 26,102 $ 18,679 Apple Inc. RECONCILIATION OF NON -GAAP TO GAAP RESULTS OF OPERATIONS (Unaudited). (b) Non -GAAP adjustments to provision for income taxes and net income to reflect the impact of the reversal of the European General C ourt’s State Aid decision recognized during. (c) Represents the per -share impact of the non -GAAP adjustments to net income."
+      },
+      {
+        "url": "https://s2.q4cdn.com/470004039/files/doc_earnings/2024/q4/filing/10-Q4-2024-As-Filed.pdf",
+        "title": "[PDF] Apple Inc. on Form 10-K for the fiscal year ended September 28, 2024",
+        "snippet": "The trading restrictions set forth in this policy do not apply to transactions under a Trading Plan that: • has been submitted to and pre-approved by Apple’s Corporate Legal team; • includes a “Cooling Off Period” for; o Section 16 reporting persons (in which case the Cooling Off Period extends to the later of 90 days after adoption or modification of a Trading Plan or two business days after filing the Form 10-K or Form 10-Q covering the fiscal quarter in which the Trading Plan was adopted, up to a maximum of 120 days); and o all other employees and other covered persons or entities, other than the company (in which case the Cooling Off Period extends to the later of 30 calendar days after the date the plan is executed and 24 hours after the public announcement of our earnings for the quarter in which the plan is executed)."
+      },
+      {
+        "url": "https://www.stock-analysis-on.net/NASDAQ/Company/Apple-Inc/Ratios/Profitability/Quarterly-Data?srsltid=AfmBOoq2s355TSvok7TVwhCF3dL6zKaCq1uusm3svRxJPG5rtfyxbtxy",
+        "title": "Apple Inc. (NASDAQ:AAPL) | Analysis of Profitability Ratios (Q)",
+        "snippet": "## Analysis of Profitability Ratios Quarterly Data. Profitability ratios measure the company ability to generate profitable sales from its resources (assets). Apple Inc., profitability ratios (quarterly data). :   The gross profit margin consistently increased from 38.78% in December 2020 to a peak of 47.33% in December 2025. The rate of increase slowed in the latter half of the period, with margins stabilizing between 46.52% and 46.91% from December 2024 through June 2025. :   Similar to the gross profit margin, the operating profit margin showed a steady increase from 25.24% in December 2020 to 32.38% in December 2025. :   The net profit margin followed a similar pattern, rising from 21.73% in December 2020 to 27.04% in December 2025. A notable decrease to 23.97% occurred in September 2024, followed by a substantial increase to 26.92% in December 2025. :   ROE demonstrated substantial growth, increasing from 96.54% in December 2020 to 151.91% in September 2025, before decreasing to 133.55% in December 2025."
+      },
+      {
+        "url": "https://www.annualreports.com/Company/apple-inc",
+        "title": "Apple Inc. - AnnualReports.com",
+        "snippet": "![Image 6: Apple Inc. Banner Image](https://www.annualreports.com/img/ar/generic_header.webp). ![Image 10](https://www.annualreports.com/img/profile_premiumBadge.webp)Apple Inc. ![Image 11: Apple Inc.](https://www.annualreports.com/HostedData/_ar_prvw/20362.webp). [![Image 12](https://www.annualreports.com/img/ar/sustainability_report_go_icon.webp)](https://www.responsibilityreports.com/Company/apple-inc \"View the latest Apple Inc. sustainability report\"). *   ![Image 13: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/143252.webp)2023 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2023.pdf \"View 2023 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2023.pdf). *   ![Image 14: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/133477.webp)2022 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2022.pdf \"View 2022 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2022.pdf). *   ![Image 15: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/121456.webp)2021 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2021.pdf \"View 2021 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2021.pdf). *   ![Image 16: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/112371.webp)2020 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2020.pdf \"View 2020 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2020.pdf). *   ![Image 17: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/89697.webp)2019 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2019.pdf \"View 2019 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2019.pdf). *   ![Image 18: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/72207.webp)2018 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2018.pdf \"View 2018 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2018.pdf). *   ![Image 19: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/68973.webp)2017 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2017.pdf \"View 2017 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2017.pdf). *   ![Image 20: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/62542.webp)2016 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2016.pdf \"View 2016 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2016.pdf). *   ![Image 21: Apple Inc.](https://www.annualreports.com/HostedData/_ara_prvw/56366.webp)2015 Annual Report[View Annual Report](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2015.pdf \"View 2015 Annual Report (PDF)\")[Download](https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_AAPL_2015.pdf). [Show 27 older reports](https://www.annualreports.com/Company/apple-inc). [x](https://www.annualreports.com/Company/apple-inc \"Close\"). ## [](https://www.annualreports.com/Company/apple-inc). *   [Send Reports](https://www.annualreports.com/sendreports)."
+      },
+      {
+        "url": "https://www.apple.com/newsroom/2024/10/apple-reports-fourth-quarter-results/",
+        "title": "Apple reports fourth quarter results",
+        "snippet": "*   [Apple](https://www.apple.com/). *   [Store](https://www.apple.com/us/shop/goto/store). *   [Mac](https://www.apple.com/mac/). *   [iPad](https://www.apple.com/ipad/). *   [iPhone](https://www.apple.com/iphone/). *   [Watch](https://www.apple.com/watch/). *   [AirPods](https://www.apple.com/airpods/). *   [Entertainment](https://www.apple.com/entertainment/). *   [Accessories](https://www.apple.com/us/shop/goto/buy_accessories). *   [](https://www.apple.com/us/search). *   [](https://www.apple.com/us/shop/goto/bag)0+. [Newsroom](https://www.apple.com/newsroom/). *   [Apple Services](https://www.apple.com/newsroom/apple-services/). Read more](https://www.apple.com/newsroom/). [Apple](https://www.apple.com/). 1.   [Newsroom](https://www.apple.com/newsroom/). *   [Store](https://www.apple.com/us/shop/goto/store). *   [Mac](https://www.apple.com/mac/). *   [iPad](https://www.apple.com/ipad/). *   [iPhone](https://www.apple.com/iphone/). *   [Watch](https://www.apple.com/watch/). *   [AirPods](https://www.apple.com/airpods/). *   [AirTag](https://www.apple.com/airtag/). *   [Accessories](https://www.apple.com/us/shop/goto/buy_accessories). *   [Gift Cards](https://www.apple.com/us/shop/goto/giftcards). *   [Wallet](https://www.apple.com/wallet/). *   [Apple Store Account](https://www.apple.com/us/shop/goto/account). *   [Apple One](https://www.apple.com/apple-one/). *   [App Store](https://www.apple.com/app-store/). *   [Find a Store](https://www.apple.com/retail/). *   [Today at Apple](https://www.apple.com/today/). *   [Certified Refurbished](https://www.apple.com/us/shop/goto/special_deals). *   [Apple Trade In](https://www.apple.com/us/shop/goto/trade_in). *   [Financing](https://www.apple.com/us/shop/goto/payment_plan). *   [Order Status](https://www.apple.com/us/shop/goto/order/list). *   [Shopping Help](https://www.apple.com/us/shop/goto/help). *   [Apple and Business](https://www.apple.com/business/). *   [Shop for Business](https://www.apple.com/retail/business/). *   [Apple and Education](https://www.apple.com/education/). *   [Shop for K-12](https://www.apple.com/education/k12/how-to-buy/). *   [Shop for College](https://www.apple.com/us/shop/goto/educationrouting). *   [Apple and Healthcare](https://www.apple.com/healthcare/). *   [Apple and Government](https://www.apple.com/government/). *   [Shop for State and Local Employees](https://www.apple.com/us_epp_67909/store). *   [Shop for Federal Employees](https://www.apple.com/us_epp_55499/store). *   [Accessibility](https://www.apple.com/accessibility/). *   [Education](https://www.apple.com/education-initiative/). *   [Environment](https://www.apple.com/environment/). *   [Inclusion and Diversity](https://www.apple.com/diversity/). *   [Privacy](https://www.apple.com/privacy/). *   [Newsroom](https://www.apple.com/newsroom/). *   [Apple Leadership](https://www.apple.com/leadership/). *   [Career Opportunities](https://www.apple.com/careers/us/). *   [Ethics & Compliance](https://www.apple.com/compliance/). *   [Events](https://www.apple.com/apple-events/). *   [Contact Apple](https://www.apple.com/contact/). *   [Legal](https://www.apple.com/legal/). *   [Site Map](https://www.apple.com/sitemap/)."
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q4/productivity-and-business-processes-performance",
+        "title": "Productivity and Business Processes Performance - Investor Relations",
+        "snippet": "Gross margin increased $6.5 billion or 12% driven by growth in Office 365 Commercial. Gross margin percentage decreased slightly. Excluding the impact of the"
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q4/segment-revenues",
+        "title": "FY24 Q4 - Segment Revenue and Operating Income - Microsoft",
+        "snippet": "All information speaks as of the last fiscal quarter or year for which we have filed a Form 10-K or 10-Q, or for historical information the date or period"
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q4/performance",
+        "title": "FY24 Q4 - Performance - Investor Relations - Microsoft",
+        "snippet": "Revenue increased $33.2 billion or 16% driven by growth across each of our segments. Cost of revenue increased $8.3 billion or 13% driven by growth in Microsoft Cloud and Gaming, offset in part by a decline in Devices. Gross margin increased $25.0 billion or 17% driven by growth across each of our segments. Excluding the impact of the change in accounting estimate for the useful lives of our server and network equipment, gross margin percentage increased 2 points driven by improvement in More Personal Computing. Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage increased slightly driven by improvements in Azure and Office 365 Commercial, inclusive of scaling our AI infrastructure, offset in part by sales mix shift to Azure. Operating expenses increased $4.0 billion or 7% driven by Gaming, with 7 points of growth from the Activision Blizzard acquisition, and investments in cloud engineering, offset in part by the prior year Q2 charge."
+      },
+      {
+        "url": "https://www.macrotrends.net/stocks/charts/MSFT/microsoft/operating-margin",
+        "title": "Microsoft Operating Margin 2012-2025 | MSFT | MacroTrends",
+        "snippet": "| Oracle (ORCL) | United States | $397.153B | 23.29 |. | Intuit (INTU) | United States | $97.052B | 20.83 |. | Adobe (ADBE) | United States | $91.086B | 12.68 |. | Synopsys (SNPS) | United States | $75.138B | 41.38 |. | Cadence Design Systems (CDNS) | United States | $73.347B | 48.30 |. | SS&C Technologies Holdings (SSNC) | United States | $16.192B | 12.48 |. | PTC (PTC) | United States | $15.879B | 17.91 |. | Pegasystems (PEGA) | United States | $6.655B | 28.74 |. | CommVault Systems (CVLT) | United States | $3.908B | 37.98 |. | Blackbaud (BLKB) | United States | $1.574B | 12.02 |. | Progress Software (PRGS) | United States | $1.121B | 5.56 |. | OptimizeRx (OPRX) | United States | $0.115B | 9.15 |. | NetSol Technologies (NTWK) | United States | $0.040B | 21.06 |. | Smith Micro Software (SMSI) | United States | $0.018B | 0.00 |."
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar25/index.html",
+        "title": "Microsoft Annual Report 2025",
+        "snippet": "*   [Other Income (Expense), Net](https://www.microsoft.com/investor/reports/ar25/index.html#other-income). *   [Income Taxes](https://www.microsoft.com/investor/reports/ar25/index.html#income-taxes). Enterprise and partner services, including Enterprise Support Services, Industry Solutions, Nuance professional services, Microsoft Partner Network, and Learning Experience, assist customers in developing, deploying, and managing Microsoft server solutions, Microsoft desktop solutions, and Nuance conversational AI and ambient intelligent solutions, along with providing training and certification to developers and IT professionals on various Microsoft products. We make significant investments in research and development for new and existing products, services, and technologies, including tools and platforms spanning digital work and life experiences, cloud computing, AI, devices, security, and operating systems. The Company’s long-term income taxes liability includes uncertain tax positions related to transfer pricing issues that remain unresolved with the Internal Revenue Service (“IRS”)."
+      },
+      {
+        "url": "https://microsoft.gcs-web.com/static-files/f96f7d38-36ce-4a26-9e29-61701cdca7a7",
+        "title": "[PDF] Form 10-Q for Microsoft Corp filed 10/30/2024",
+        "snippet": "The information included in this Form 10-Q should be read in conjunction with information included in the Microsoft Corporation fiscal year 2024"
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Introduction: Why Apple’s 10-K Matters",
+        "chunk_text": "Introduction: Why Apple’s 10-K Matters\n\nApple Inc.’s annual [10-K filing with the SEC](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-K&dateb=&owner=include&count=10) is one of the most closely watched corporate disclosures in the world. As the planet’s most valuable publicly traded company with a market capitalization exceeding $3 trillion, every data point in Apple’s annual report reverberates across global financial markets.\n\nThe FY2024 10-K, covering the fiscal year ending September 28, 2024, reveals a company navigating a pivotal transition. While hardware growth has slowed across most product categories, Apple’s Services ecosystem has emerged as a dominant profit engine, and the launch of Apple Intelligence signals a new chapter in the company’s strategic evolution.\n\nThis comprehensive guide breaks down every critical component of Apple’s FY2024 annual report — from revenue segmentation and geographic performance to risk factors and capital allocation — providing investors, analysts, and business strategists with actionable insights directly from the source filing.\n\n![Image 1: Apple 10-K FY2024 annual report financial dashboard showing key metrics and revenue breakdown](https://www.libertify.com/wp-content/uploads/2026/03/apple-10k-hero.png.webp)",
+        "score": 6.4885,
+        "rank": 0
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Services: Apple’s High-Margin Growth Engine",
+        "chunk_text": "Services: Apple’s High-Margin Growth Engine\n\nThe Services segment is the standout story of Apple’s FY2024 10-K. Reaching **$96.2 billion** in annual revenue — up 13% year-over-year — Services now generates nearly one-quarter of Apple’s total sales. More importantly, it does so with a **73.9% gross margin**, compared to just 37.2% for hardware products.\n\nApple’s Services ecosystem encompasses:\n\n*   **App Store** — Commissions from app sales and in-app purchases, Apple’s largest services revenue stream\n*   **Advertising** — Search ads in the App Store and targeted advertising across Apple’s platforms\n*   **Cloud services** — iCloud storage subscriptions serving over a billion active devices\n*   **Digital content** — Apple Music, Apple TV+, Apple Arcade, Apple News+, and Fitness+\n*   **Apple Care** — Extended warranty and device protection plans\n*   **Payment services** — Apple Pay, Apple Card, and Apple Cash transaction revenue\n*   **Licensing** — Including the lucrative Google search default deal estimated at $20+ billion annually\n\nThe Services growth trajectory has significant strategic implications. As the [AI revolution reshapes technology business models](https://www.libertify.com/interactive-library/gpt-4-technical-report/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K), Apple’s 2.2 billion active devices serve as the distribution channel for an expanding array of monetizable services.",
+        "score": 6.3472,
+        "rank": 1
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Revenue Breakdown: $391 Billion Across Five Segments",
+        "chunk_text": "Revenue Breakdown: $391 Billion Across Five Segments\n\nApple’s total net sales for FY2024 reached **$391.0 billion**, a 2% increase from $383.3 billion in FY2023. While this growth rate may appear modest for a technology giant, it masks significant shifts happening beneath the surface across Apple’s five reporting segments.\n\nThe revenue composition reveals Apple’s strategic positioning:\n\n| Segment | FY2024 Revenue | % of Total | YoY Change |\n| --- | --- | --- | --- |\n| iPhone | $201.2 billion | 51.4% | +0.3% |\n| Services | $96.2 billion | 24.6% | +12.9% |\n| Wearables, Home & Accessories | $37.0 billion | 9.5% | -7.1% |\n| Mac | $30.0 billion | 7.7% | +2.1% |\n| iPad | $26.7 billion | 6.8% | -5.7% |\n\nThe data tells a clear story: Apple’s hardware portfolio (excluding iPhone) is under pressure, while Services has become the growth locomotive. This structural shift has profound implications for Apple’s margins, as the [broader technology landscape](https://www.libertify.com/interactive-library/stanford-ai-index-report-2025/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K) continues to evolve toward software and subscription-based models.",
+        "score": 6.0102,
+        "rank": 2
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "The Bear Case",
+        "chunk_text": "The Bear Case\n\nThe full FY2024 10-K filing is available on the [SEC’s EDGAR database](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-K&dateb=&owner=include&count=10) and through [Apple’s Investor Relations page](https://investor.apple.com/sec-filings/default.aspx). For a deeper understanding of how technology companies are navigating the current landscape, explore our analysis of the [WEF Global Risks Report 2025](https://www.libertify.com/interactive-library/global-risks-report-2025-wef/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K) and the [Bitcoin White Paper](https://www.libertify.com/interactive-library/bitcoin-white-paper-satoshi-nakamoto/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K) for complementary perspectives on finance and technology convergence.\n\n![Image 5: Apple 10-K investment analysis bull vs bear case balanced visualization for FY2024 annual report](https://www.libertify.com/wp-content/uploads/2026/03/apple-investment-analysis.png.webp)",
+        "score": 5.5739,
+        "rank": 3
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Apple Intelligence and R&D Strategy",
+        "chunk_text": "Apple Intelligence and R&D Strategy\n\nApple’s **research and development expenditure** reached approximately **$31.4 billion** in FY2024, up from $29.9 billion in FY2023 — representing roughly 8% of total revenue. While Apple historically spends less on R&D as a percentage of revenue than peers like [AI-focused companies](https://www.libertify.com/interactive-library/deepseek-r1-reinforcement-learning-llm/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K), the absolute dollar figure ranks among the highest in the world.\n\nThe most significant R&D narrative emerging from the FY2024 10-K is **Apple Intelligence** — the company’s on-device AI platform announced at WWDC 2024 and launched with iOS 18.1 in late October 2024. Apple Intelligence represents a fundamentally different approach to AI than competitors like OpenAI or Google:\n\n*   **Privacy-first architecture** — Most AI processing happens on-device using Apple’s Neural Engine, with a “Private Cloud Compute” fallback for heavier tasks\n*   **Integration depth** — Apple Intelligence is woven into the operating system, accessing Siri, Mail, Messages, Photos, and third-party apps seamlessly\n*   **Hardware moat** — Requires A17 Pro or M-series chips, creating a natural upgrade incentive for the 1+ billion devices on older silicon\n*   **OpenAI partnership** — Integrated ChatGPT as an optional capability, balancing Apple’s on-device approach with frontier model access",
+        "score": 5.0713,
+        "rank": 4
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Services: Apple’s High-Margin Growth Engine",
+        "chunk_text": "Services: Apple’s High-Margin Growth Engine\n\n![Image 2: Apple Services revenue growth chart showing trajectory from 2020 to 2024 reaching 96.2 billion dollars](https://www.libertify.com/wp-content/uploads/2026/03/apple-services-growth.png.webp)\n\nExplore Apple’s complete 10-K filing as an interactive experience — navigate financial data, risk factors, and strategic insights visually.\n\n[Try It Free →](https://app.libertify.com/register?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=inline_cta_1&utm_term=apple+annual+report+10-K)",
+        "score": 4.4596,
+        "rank": 5
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Capital Returns and Shareholder Value",
+        "chunk_text": "Capital Returns and Shareholder Value\n\nApple’s capital return program remains the **largest in corporate history**. In FY2024, the company returned over **$110 billion** to shareholders through a combination of share repurchases and dividends.\n\nKey capital allocation metrics from the 10-K:\n\n*   **Operating cash flow:** Approximately $110 billion for the full year, with Q4 alone generating $27 billion\n*   **Share repurchases:** Approximately $95 billion in FY2024, reducing diluted share count year-over-year\n*   **Dividends:** $0.25 per share quarterly ($1.00 annualized), totaling approximately $15 billion for the year\n*   **Cumulative returns since 2012:** Over $700 billion returned to shareholders\n*   **Net cash position:** Apple continues to target a net cash neutral position over time\n\nAs Tim Cook’s Apple has demonstrated, the company’s cash generation capabilities are extraordinary. Even with significant R&D investments, capital expenditures, and content spending for Apple TV+, Apple generates far more cash than it can productively deploy — enabling massive and consistent shareholder returns that few companies in history can match.\n\n![Image 4: Apple shareholder capital return program visualization showing buybacks and dividends totaling over 700 billion dollars](https://www.libertify.com/wp-content/uploads/2026/03/apple-capital-returns.png.webp)",
+        "score": 4.2217,
+        "rank": 6
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Competition and Market Maturation",
+        "chunk_text": "Competition and Market Maturation\n\nThe 10-K acknowledges intense competition across all product lines. In smartphones, Samsung, Huawei, Xiaomi, and other Android manufacturers compete aggressively. In services, Google, Amazon, Spotify, Netflix, and others contest every subcategory. In wearables, Samsung, Google (Fitbit), and Garmin present viable alternatives.\n\nMake any SEC filing, annual report, or financial document interactive in minutes — help your audience actually engage with the data.\n\n[Start Now →](https://app.libertify.com/register?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=inline_cta_3&utm_term=apple+annual+report+10-K)",
+        "score": 3.0698,
+        "rank": 7
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Introduction: Why Apple’s 10-K Matters",
+        "chunk_text": "Introduction: Why Apple’s 10-K Matters\n\nApple Inc.’s annual [10-K filing with the SEC](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-K&dateb=&owner=include&count=10) is one of the most closely watched corporate disclosures in the world. As the planet’s most valuable publicly traded company with a market capitalization exceeding $3 trillion, every data point in Apple’s annual report reverberates across global financial markets.\n\nThe FY2024 10-K, covering the fiscal year ending September 28, 2024, reveals a company navigating a pivotal transition. While hardware growth has slowed across most product categories, Apple’s Services ecosystem has emerged as a dominant profit engine, and the launch of Apple Intelligence signals a new chapter in the company’s strategic evolution.\n\nThis comprehensive guide breaks down every critical component of Apple’s FY2024 annual report — from revenue segmentation and geographic performance to risk factors and capital allocation — providing investors, analysts, and business strategists with actionable insights directly from the source filing.\n\n![Image 1: Apple 10-K FY2024 annual report financial dashboard showing key metrics and revenue breakdown](https://www.libertify.com/wp-content/uploads/2026/03/apple-10k-hero.png.webp)",
+        "score": 5.4258,
+        "rank": 0
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Services: Apple’s High-Margin Growth Engine",
+        "chunk_text": "Services: Apple’s High-Margin Growth Engine\n\nThe Services segment is the standout story of Apple’s FY2024 10-K. Reaching **$96.2 billion** in annual revenue — up 13% year-over-year — Services now generates nearly one-quarter of Apple’s total sales. More importantly, it does so with a **73.9% gross margin**, compared to just 37.2% for hardware products.\n\nApple’s Services ecosystem encompasses:\n\n*   **App Store** — Commissions from app sales and in-app purchases, Apple’s largest services revenue stream\n*   **Advertising** — Search ads in the App Store and targeted advertising across Apple’s platforms\n*   **Cloud services** — iCloud storage subscriptions serving over a billion active devices\n*   **Digital content** — Apple Music, Apple TV+, Apple Arcade, Apple News+, and Fitness+\n*   **Apple Care** — Extended warranty and device protection plans\n*   **Payment services** — Apple Pay, Apple Card, and Apple Cash transaction revenue\n*   **Licensing** — Including the lucrative Google search default deal estimated at $20+ billion annually\n\nThe Services growth trajectory has significant strategic implications. As the [AI revolution reshapes technology business models](https://www.libertify.com/interactive-library/gpt-4-technical-report/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K), Apple’s 2.2 billion active devices serve as the distribution channel for an expanding array of monetizable services.",
+        "score": 5.2545,
+        "rank": 1
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "The Bear Case",
+        "chunk_text": "The Bear Case\n\nThe full FY2024 10-K filing is available on the [SEC’s EDGAR database](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-K&dateb=&owner=include&count=10) and through [Apple’s Investor Relations page](https://investor.apple.com/sec-filings/default.aspx). For a deeper understanding of how technology companies are navigating the current landscape, explore our analysis of the [WEF Global Risks Report 2025](https://www.libertify.com/interactive-library/global-risks-report-2025-wef/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K) and the [Bitcoin White Paper](https://www.libertify.com/interactive-library/bitcoin-white-paper-satoshi-nakamoto/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K) for complementary perspectives on finance and technology convergence.\n\n![Image 5: Apple 10-K investment analysis bull vs bear case balanced visualization for FY2024 annual report](https://www.libertify.com/wp-content/uploads/2026/03/apple-investment-analysis.png.webp)",
+        "score": 4.4654,
+        "rank": 2
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Revenue Breakdown: $391 Billion Across Five Segments",
+        "chunk_text": "Revenue Breakdown: $391 Billion Across Five Segments\n\nApple’s total net sales for FY2024 reached **$391.0 billion**, a 2% increase from $383.3 billion in FY2023. While this growth rate may appear modest for a technology giant, it masks significant shifts happening beneath the surface across Apple’s five reporting segments.\n\nThe revenue composition reveals Apple’s strategic positioning:\n\n| Segment | FY2024 Revenue | % of Total | YoY Change |\n| --- | --- | --- | --- |\n| iPhone | $201.2 billion | 51.4% | +0.3% |\n| Services | $96.2 billion | 24.6% | +12.9% |\n| Wearables, Home & Accessories | $37.0 billion | 9.5% | -7.1% |\n| Mac | $30.0 billion | 7.7% | +2.1% |\n| iPad | $26.7 billion | 6.8% | -5.7% |\n\nThe data tells a clear story: Apple’s hardware portfolio (excluding iPhone) is under pressure, while Services has become the growth locomotive. This structural shift has profound implications for Apple’s margins, as the [broader technology landscape](https://www.libertify.com/interactive-library/stanford-ai-index-report-2025/?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=internal_link&utm_term=apple+annual+report+10-K) continues to evolve toward software and subscription-based models.",
+        "score": 4.0253,
+        "rank": 3
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Services: Apple’s High-Margin Growth Engine",
+        "chunk_text": "Services: Apple’s High-Margin Growth Engine\n\n![Image 2: Apple Services revenue growth chart showing trajectory from 2020 to 2024 reaching 96.2 billion dollars](https://www.libertify.com/wp-content/uploads/2026/03/apple-services-growth.png.webp)\n\nExplore Apple’s complete 10-K filing as an interactive experience — navigate financial data, risk factors, and strategic insights visually.\n\n[Try It Free →](https://app.libertify.com/register?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=inline_cta_1&utm_term=apple+annual+report+10-K)",
+        "score": 1.1454,
+        "rank": 4
+      },
+      {
+        "url": "https://www.stock-analysis-on.net/NASDAQ/Company/Apple-Inc/Ratios/Profitability/Quarterly-Data?srsltid=AfmBOoq2s355TSvok7TVwhCF3dL6zKaCq1uusm3svRxJPG5rtfyxbtxy",
+        "title": "Apple Inc. (NASDAQ:AAPL) | Analysis of Profitability Ratios (Q)",
+        "heading": "Operating Profit Margin",
+        "chunk_text": "Operating Profit Margin\n\n[Annual Data](https://www.stock-analysis-on.net/NASDAQ/Company/Apple-Inc/Ratios/Profitability#Operating-Profit-Margin)[Quarterly Data](https://www.stock-analysis-on.net/NASDAQ/Company/Apple-Inc/Ratios/Profitability/Quarterly-Data#Operating-Profit-Margin)\n\nApple Inc., operating profit margin calculation (quarterly data)\n\n[![Image 4: Microsoft Excel](https://cdn.stock-analysis-on.net/images/microsoft-excel.svg)](https://www.stock-analysis-on.net/Spreadsheet/NASDAQ/Company/Apple-Inc/Ratios/Profitability/Quarterly-Data/Operating-Profit-Margin.xlsx \"Export table to Microsoft Excel\")",
+        "score": 0.0793,
+        "rank": 5
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-fy2024/?utm_source=libertify_blog&utm_medium=article&utm_campaign=nist-cybersecurity-framework-2-guide&utm_content=body_link",
+        "title": "Apple 10-K FY2024: Complete Guide to Apple's $391 Billion Annual Report",
+        "heading": "Geographic Revenue and the China Challenge",
+        "chunk_text": "Geographic Revenue and the China Challenge\n\n[Get Started →](https://app.libertify.com/register?utm_source=libertify_blog&utm_medium=article&utm_campaign=apple-10k-annual-report-fy2024&utm_content=inline_cta_2&utm_term=apple+annual+report+10-K)",
+        "score": -0.5108,
+        "rank": 6
+      },
+      {
+        "url": "https://microsoft.gcs-web.com/static-files/f96f7d38-36ce-4a26-9e29-61701cdca7a7",
+        "title": "Form 10-Q for Microsoft Corp filed 10/30/2024",
+        "heading": "ITEM 6. E XHIBITS",
+        "chunk_text": "ITEM 6. E XHIBITS\n\nIn connection with the Quarterly Report of Microsoft Corporation, a Washington corporation (the “Company”), on Form 10-Q for the quarter\n\nended September 30, 2024, as filed with the Securities and Exchange Commission (the “Report”), Satya Nadella, Chief Executive Officer of\n\nthe Company, does hereby certify, pursuant to § 906 of the Sarbanes-Oxley Act of 2002 (18 U.S.C. § 1350), that to his knowledge:\n\n(1) The Report fully complies with the requirements of section 13(a) or 15(d) of the Securities Exchange Act of 1934; and\n\n(2) The information contained in the Report fairly presents, in all material respects, the financial condition and results of operations of the\n\nCompany.\n\n/s/ S ATYA  NADELLA\n\nSatya Nadella\n\nChief Executive Officer\n\nOctober 30, 2024\n\n[A signed original of this written statement required by Section 906 has been provided to Microsoft Corporation and will be retained by\n\nMicrosoft Corporation and furnished to the Securities and Exchange Commission or its staff upon request.] Exhibit 32.2\n\nCERTIFICATION PURSUANT TO\n\nSECTION 906 OF THE SARBANES-OXLEY ACT OF 2002\n\n(18 U.S.C. SECTION 1350)\n\nIn connection with the Quarterly Report of Microsoft Corporation, a Washington corporation (the “Company”), on Form 10-Q for the quarter\n\nended September 30, 2024, as filed with the Securities and Exchange Commission (the “Report”), Amy E. Hood, Chief Financial Officer of",
+        "score": -4.0772,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "Apple operating margin FY2024 from annual report (10-K) quarterly breakdown",
+      "Microsoft operating margin FY2024 from annual report (10-K) quarterly breakdown"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "fail",
+    "score": 0.15,
+    "reasoning": "The system response fails to provide the required operating margin figures for both Apple and Microsoft, incorrectly stating that the data is unavailable. It does not cite the correct 10-K sources for either company, and it omits the key comparison that Microsoft's operating margin is significantly higher than Apple's for FY2024.",
+    "judge_model": "deepseek-chat"
+  }
+}

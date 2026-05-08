@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "timestamp": "20260507T180458Z",
+    "mode": "v6_smoke",
+    "questions_file": "question_v6_smoke.txt",
+    "total_questions": 5,
+    "overall_avg_score": 0.0,
+    "pass_count": 0,
+    "partial_count": 0,
+    "fail_count": 5,
+    "avg_m1": 0.0,
+    "avg_m3": 0.0,
+    "avg_latency_s": 2.2
+  },
+  "category_summary": {
+    "single_simple": {
+      "n": 1,
+      "avg_m7": 0.0
+    },
+    "cross_company_simple": {
+      "n": 1,
+      "avg_m7": 0.0
+    },
+    "strict_refusal": {
+      "n": 1,
+      "avg_m7": 0.0
+    },
+    "hybrid_web": {
+      "n": 1,
+      "avg_m7": 0.0
+    },
+    "multi_part": {
+      "n": 1,
+      "avg_m7": 0.0
+    }
+  }
+}

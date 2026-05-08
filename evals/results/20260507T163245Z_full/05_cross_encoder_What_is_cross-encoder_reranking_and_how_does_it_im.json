@@ -1,0 +1,135 @@
+{
+  "category": "cross_encoder",
+  "expected_behavior": "Technical explanation with citations on how cross-encoders improve retrieval quality.",
+  "question": "What is cross-encoder reranking and how does it improve retrieval quality compared to bi-encoders?",
+  "ground_truth": "Cross-encoders take a (query, document) pair and compute a relevance score jointly using a transformer that attends to both simultaneously. Bi-encoders encode query and document independently as separate vectors and use cosine similarity. Cross-encoders are more accurate because they model query-document interactions, but are slower (cannot pre-compute document representations). In practice: bi-encoder for fast first-stage retrieval, cross-encoder for reranking top-K candidates.",
+  "key_facts": [
+    "cross-encoder processes query and document jointly",
+    "bi-encoder encodes query and document independently",
+    "cross-encoder is more accurate than bi-encoder",
+    "cross-encoder cannot pre-compute document representations",
+    "cross-encoder used for reranking top-K candidates"
+  ],
+  "session_id": "eval-20260507T163245Z-05",
+  "metrics": {
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 0.8,
+    "m7_judge_score": 0.95
+  },
+  "timing": {
+    "pipeline_s": 25.37,
+    "latency_breakdown": {
+      "search_ms": 2242,
+      "extract_ms": 10091,
+      "chunk_ms": 15,
+      "retrieve_ms": 1240
+    },
+    "total_latency_ms": 25368
+  },
+  "pipeline": {
+    "answer": "## What is Cross-Encoder Reranking?\n\nCross-encoder reranking is a neural retrieval technique that jointly encodes a query and each candidate document in a single transformer-based forward pass, allowing full cross-attention between every token in both the query and the candidate [1]. Unlike simpler methods that process query and document independently, a cross-encoder takes both inputs simultaneously through a transformer network and outputs a single relevance score (typically between 0 and 1) indicating how relevant the document is for the given query [2].\n\nThis architecture is typically used as a **second-stage reranker** in multi-stage retrieval pipelines. An efficient first-stage retriever (e.g., a bi-encoder) quickly retrieves a shortlist of candidate documents, and then the cross-encoder provides fine-grained reordering of that shortlist [1].\n\n## How Cross-Encoders Improve Retrieval Quality Compared to Bi-Encoders\n\n### 1. Full Token-Level Interaction\nThe primary advantage of cross-encoders is their ability to model intricate, token-level interactions between query and candidate [1]. Bi-encoders encode the query and each document independently into separate vector representations, creating a representational bottleneck that limits their ability to capture nuanced relationships [1]. In contrast, cross-encoders use full cross-attention, enabling detailed contextual dependencies between query and document tokens [1].\n\n### 2. Higher Accuracy and Contextual Scoring\nBecause cross-encoders process both query and document together, they better capture subtle interactions between the two, leading to more accurate relevance judgments [3]. The self-attention mechanism in transformers allows the model to account for token-level interactions between query and document, providing a more context-aware relevance score [3].\n\n### 3. Superior Performance on Fine-Grained Tasks\nCross-encoders excel at tasks requiring fine-grained relevance assessment, such as in Retrieval-Augmented Generation (RAG) systems. In these systems, documents must be very well matched to the query before the generative model can produce high-quality outputs [3]. The fine-grained reordering delivered by cross-encoders substantially improves final results for users [2].\n\n## Trade-offs and Limitations\n\nDespite their superior accuracy, cross-encoders incur high computational cost due to requiring multiple transformer evaluations (one for each query-candidate pair) [1]. This is why they are typically used only as a second-stage reranker on a short document list rather than as the primary retriever [1].\n\n## Extensions\n\nThe source material notes that cross-encoder reranking is being extended to multilingual and cross-modal scenarios. For example, ViRanker demonstrates cross-encoder adaptation (using RoPE and blockwise parallel transformers) specialized for Vietnamese language reranking [1]. For cross-modal image-text retrieval, cross-encoders yield concentrated score distributions that require specialized distillation techniques (e.g., CPRD—Contrastive Partial Ranking Distillation) to transfer hard-negative orderings to efficient dual-encoders [1].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.emergentmind.com/topics/cross-encoder-reranking",
+        "title": "Cross-Encoder Reranking"
+      },
+      {
+        "num": 2,
+        "url": "https://medium.com/@rossashman/the-art-of-rag-part-3-reranking-with-cross-encoders-688a16b64669",
+        "title": "The aRt of RAG Part 3: Reranking with Cross Encoders"
+      },
+      {
+        "num": 3,
+        "url": "https://www.cloudthat.com/resources/blog/the-power-of-cross-encoders-in-re-ranking-for-nlp-and-rag-systems/",
+        "title": "The Power of Cross-Encoders in Re-Ranking for NLP and RAG Systems"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.emergentmind.com/topics/cross-encoder-reranking",
+        "title": "Cross-Encoder Reranking",
+        "snippet": "A cross-encoder reranker is a neural retrieval or ranking module that jointly encodes a query and each candidate item in a single transformer-based forward pass, allowing full cross-attention between every token in both query and candidate. For advanced retrieval scenarios, cross-encoder architectures may be extended to process multiple candidates in a permutation-invariant or listwise way—examples include the Set-Encoder (Schlatt et al., 2024), where each (query, candidate) pair is encoded individually but inter-passage attention is performed via exchange of [CLS] tokens, and joint models like CROSS-JEM (Paliwal et al., 2024), which encode multiple candidates and the query together, leveraging token overlaps for computation savings and richer modeling of competition among candidates. * **Cross-Modal and Image-Text Retrieval**: For cross-modal scenarios, cross-encoder rerankers yield concentrated score distributions (binary match probabilities), requiring specialized distillation techniques (e.g., CPRD—Contrastive Partial Ranking Distillation) to successfully transfer hard-negative orderings to efficient dual-encoders (Chen et al., 2024)."
+      },
+      {
+        "url": "https://medium.com/@rossashman/the-art-of-rag-part-3-reranking-with-cross-encoders-688a16b64669",
+        "title": "The aRt of RAG Part 3: Reranking with Cross Encoders - Medium",
+        "snippet": "# The aRt of RAG Part 3: Reranking with Cross Encoders | by Ross Ashman (PhD) | Medium. # The aRt of RAG Part 3: Reranking with Cross Encoders. Its main function is to re-rank the candidates based on relevance, coherence, or other criteria to ensure that the most suitable options are presented for the generation stage. 3.   **Semantic Similarity**: Assessing the semantic similarity between queries and documents can be used to rerank candidates. In a cross-encoder architecture the input of the model always consists of a data pair(e.g., two sentences or documents) which are processed jointly by the encoder. In terms of search, you need to use the Cross-Encoder with each data item and the search query, to calculate the similarity between the query and data object. Cross encoders are not a distinct reranking technique on their own, they can be employed as a component within a reranking system to enhance the semantic understanding of the relationship between queries and documents, ultimately contributing to more accurate reranking."
+      },
+      {
+        "url": "https://www.cloudthat.com/resources/blog/the-power-of-cross-encoders-in-re-ranking-for-nlp-and-rag-systems/",
+        "title": "The Power of Cross-Encoders in Re-Ranking for NLP and RAG ...",
+        "snippet": "In this blog, we will discuss how cross-encoders work, why they are important, and how you can use pre-trained models for re-ranking. Many pretrained cross-encoder models are available that you can use for re-ranking tasks without having to train one from scratch. ## How do you use pre-trained cross encoders for re-ranking? You can easily use pre-trained cross-encoder models to re-rank query-document pairs. After the **cross-encoder** is applied to re-rank the documents based on their context relevance to the query:. Cross-encoders are powerful tools for re-ranking tasks, especially when you need precise relevance scoring between a query and a document. ANS: – Re-ranking is taking a set of initially retrieved documents and reordering them based on their relevance to a specific query, typically using more advanced methods like cross-encoders. ANS: – A cross-encoder jointly processes the query and each document to produce a relevance score, allowing it to evaluate the context and relationship between the two, which helps in more accurate ranking."
+      },
+      {
+        "url": "https://en.wiktionary.org/wiki/what",
+        "title": "what - Wiktionary, the free dictionary",
+        "snippet": "* [Terms with Chinese translations](/wiki/Category:Terms_with_Chinese_translations \"Category:Terms with Chinese translations\"). * [Terms with Finnish translations](/wiki/Category:Terms_with_Finnish_translations \"Category:Terms with Finnish translations\"). * [Terms with German translations](/wiki/Category:Terms_with_German_translations \"Category:Terms with German translations\"). * [Terms with Hindi translations](/wiki/Category:Terms_with_Hindi_translations \"Category:Terms with Hindi translations\"). * [Terms with Hungarian translations](/wiki/Category:Terms_with_Hungarian_translations \"Category:Terms with Hungarian translations\"). * [Terms with Spanish translations](/wiki/Category:Terms_with_Spanish_translations \"Category:Terms with Spanish translations\"). * [Terms with Swedish translations](/wiki/Category:Terms_with_Swedish_translations \"Category:Terms with Swedish translations\"). * [Terms with Dutch translations](/wiki/Category:Terms_with_Dutch_translations \"Category:Terms with Dutch translations\"). * [Terms with Norwegian translations](/wiki/Category:Terms_with_Norwegian_translations \"Category:Terms with Norwegian translations\"). * [Terms with Cantonese translations](/wiki/Category:Terms_with_Cantonese_translations \"Category:Terms with Cantonese translations\"). * [Terms with Scots translations](/wiki/Category:Terms_with_Scots_translations \"Category:Terms with Scots translations\"). * [Terms with Arabic translations](/wiki/Category:Terms_with_Arabic_translations \"Category:Terms with Arabic translations\"). * [Terms with Even translations](/wiki/Category:Terms_with_Even_translations \"Category:Terms with Even translations\"). * [Terms with White Hmong translations](/wiki/Category:Terms_with_White_Hmong_translations \"Category:Terms with White Hmong translations\"). * [Terms with Old English translations](/wiki/Category:Terms_with_Old_English_translations \"Category:Terms with Old English translations\"). * [Terms with Yola translations](/wiki/Category:Terms_with_Yola_translations \"Category:Terms with Yola translations\"). * [Terms with ǃKung translations](/wiki/Category:Terms_with_%C7%83Kung_translations \"Category:Terms with ǃKung translations\")."
+      },
+      {
+        "url": "https://www.merriam-webster.com/dictionary/what",
+        "title": "WHAT Definition & Meaning - Merriam-Webster",
+        "snippet": "**:** [whatever sense 1a](/dictionary/whatever). **:** in what respect **:** [how](/dictionary/how). —used as an interrogative expressing inquiry about the identity, nature, or value of a person, object, or matter. **:** [whatever sense 1a](/dictionary/whatever). * [but what](/dictionary/but%20what). * [do what with (something)](/dictionary/do%20what%20with%20%28something%29). * [know what it is](/dictionary/know%20what%20it%20is). * [or what](/dictionary/or%20what). * [so what](/dictionary/so%20what). * [what about](/dictionary/what%20about). * [what all](/dictionary/what%20all). * [what does one know](/dictionary/what%20does%20one%20know). * [what do you know](/dictionary/what%20do%20you%20know). * [what for](/dictionary/what%20for). * [what have you](/dictionary/what%20have%20you). * [what-if](/dictionary/what%20if#what-if). * [what-is-it](/dictionary/whatsit#what-is-it). * [what is (someone) doing with (something)](/dictionary/what%20is%20%28someone%29%20doing%20with%20%28something%29). * [what it used to be](/dictionary/what%20it%20used%20to%20be). * [what of](/dictionary/what%20of). * [what one will](/dictionary/what%20one%20will). * [what's doing](/dictionary/what%27s%20doing). * [what's-her-name](/dictionary/what%27s-her-name). * [what's-his-name](/dictionary/what%27s-his-name). * [what's it to (someone)](/dictionary/what%27s%20it%20to%20%28someone%29). * [what's more](/dictionary/what%27s%20more). * [what someone is made of](/dictionary/what%20someone%20is%20made%20of). * [what's the good word](/dictionary/what%27s%20the%20good%20word). * [what's this about](/dictionary/what%27s%20this%20about). * [what's up?](/dictionary/what%27s%20up%3F). * [what's up with](/dictionary/what%27s%20up%20with). * [what's up with that](/dictionary/what%27s%20up%20with%20that). * [what's what](/dictionary/what%27s%20what). * [what's with](/dictionary/what%27s%20with). * [what then](/dictionary/what%20then). * [what though](/dictionary/what%20though). * [what/who should someone see but](/dictionary/what%2Fwho%20should%20someone%20see%20but). * [what with](/dictionary/what%20with). [what's](/dictionary/what%27s). [See all Nearby Words](/browse/dictionary/w/14)."
+      },
+      {
+        "url": "https://www.dictionary.com/browse/what",
+        "title": "WHAT Definition & Meaning - Dictionary.com",
+        "snippet": "1. (used interrogatively as a request for specific information). 3. (used interrogatively to inquire as to the origin, identity, etc., of something). 4. (used interrogatively to inquire as to the worth, usefulness, force, or importance of something). 5. (used interrogatively to request a repetition of words or information not fully understood, usually used in elliptical constructions). > *does he know what man did this?* *tell me what he said*. 2. *informal* a punishment or reprimand (esp in the phrase **give** ( **a person** ) **what for** ). * [come what may](/browse/come-what-may). * [get what's coming to one](/browse/get-whats-coming-to-one). > From [MarketWatch](https://www.marketwatch.com/story/are-businesses-really-starting-to-hire-again-the-april-jobs-report-will-help-clue-us-in-97c1730e) • May 7, 2026. > From [Science Daily](https://www.sciencedaily.com/releases/2026/05/260506225428.htm) • May 7, 2026. > From [Los Angeles Times](https://www.latimes.com/lifestyle/image/story/2026-05-07/profile-of-betye-saar-100th-birthday-costume-design-show-roberts-projects) • May 7, 2026. > From [MarketWatch](https://www.marketwatch.com/story/kevin-warshs-undisclosed-wealth-leaves-a-100-million-mystery-atop-the-federal-reserve-19f0dc78) • May 7, 2026. Definitions and idiom definitions from Dictionary.com Unabridged, based on the Random House Unabridged Dictionary, © Random House, Inc. 2023. Idioms from The American Heritage® Idioms Dictionary copyright © 2002, 2001, 1995 by Houghton Mifflin Harcourt Publishing Company."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.emergentmind.com/topics/cross-encoder-reranking",
+        "title": "Cross-Encoder Reranking",
+        "heading": "",
+        "chunk_text": "Updated 5 October 2025\n\n*   Cross-encoder reranking is a neural retrieval technique that jointly encodes queries and candidates in a single transformer pass, enabling detailed token-level interactions.\n*   It leverages full cross-attention between query and candidate tokens to effectively capture contextual dependencies for tasks like entity linking and text ranking.\n*   Despite its superior accuracy, the method incurs high computational cost due to multiple transformer evaluations, motivating hybrid and efficiency-enhancing strategies.\n\nA [cross-encoder reranker](https://www.emergentmind.com/topics/cross-encoder-reranker) is a neural retrieval or ranking module that jointly encodes a query and each candidate item in a single transformer-based forward pass, allowing full cross-attention between every token in both query and candidate. This architectural design enables modeling of intricate, token-level interactions between query context and candidate, surpassing the representational bottlenecks of independent encoders. [Cross-encoder rerankers](https://www.emergentmind.com/topics/cross-encoder-rerankers) are widely employed in multi-stage pipelines across information retrieval and entity linking, often serving as a second-stage model to provide fine-grained reordering of a shortlist delivered by a more efficient (but less expressive) dual-encoder or first-stage retriever.",
+        "score": 6.6385,
+        "rank": 0
+      },
+      {
+        "url": "https://medium.com/@rossashman/the-art-of-rag-part-3-reranking-with-cross-encoders-688a16b64669",
+        "title": "The aRt of RAG Part 3: Reranking with Cross Encoders",
+        "heading": "Reranking",
+        "chunk_text": "Reranking\n\nThese techniques can be used individually or in combination depending on the specific requirements and characteristics of the task at hand. A re-ranker can substantially improve the final results for the user.\n\nContinuing with the theme from [Part 1](https://medium.com/@rossashman/the-art-of-rag-with-textract-and-mongodb-atlas-e287714a606f)&[Part 2](https://medium.com/@rossashman/the-art-of-rag-with-atlas-part-2-hybrid-retrieval-77631457b565) of utilising embeddings here we look at techniques that fit under “ Semantic similarity”. A common semantic re-ranker is the Cross-Encoder. The query and a possible document is passed simultaneously to transformer network, which then outputs a single score between 0 and 1 indicating how relevant the document is for the given query.\n\nThe advantage of Cross-Encoders is the higher performance, as they perform attention across the query and the document.",
+        "score": 5.5397,
+        "rank": 1
+      },
+      {
+        "url": "https://www.cloudthat.com/resources/blog/the-power-of-cross-encoders-in-re-ranking-for-nlp-and-rag-systems/",
+        "title": "The Power of Cross-Encoders in Re-Ranking for NLP and RAG Systems",
+        "heading": "Why Use Cross Encoder for Re-ranking?",
+        "chunk_text": "Why Use Cross Encoder for Re-ranking?\n\nCross-encoder re-ranking has several advantages:\n\n*   **High Accuracy**:Because the cross-encoders process both the query and the document,they better capture subtle interactions between both,leading to more accurate relevance judgment.\n*   **Contextualized Scoring:** The self-attention mechanism in transformers allows the model to account for the interaction between tokens in the query and document, providing a more context-aware relevance score.\n*   **Better suited for Fine-Grained Tasks**: Cross-encoders do well on tasks requiring finer grain relevance, such as in RAG systems wherein documents need to be very well matched to the query before any generative model is allowed to produce high quality outputs.",
+        "score": 4.6891,
+        "rank": 2
+      },
+      {
+        "url": "https://www.cloudthat.com/resources/blog/the-power-of-cross-encoders-in-re-ranking-for-nlp-and-rag-systems/",
+        "title": "The Power of Cross-Encoders in Re-Ranking for NLP and RAG Systems",
+        "heading": "Overview",
+        "chunk_text": "Overview\n\nRe-ranking is critical in many natural language processing (NLP) tasks, particularly in retrieval-augmented generation systems (RAG). It refines the selection of retrieved documents or passages before passing them to the generative model. Cross-encoders are one of the most effective tools for this task, as they present an advanced method of assessing the relevance of query-document pairs. In this blog, we will discuss how cross-encoders work, why they are important, and how you can use pre-trained models for re-ranking.",
+        "score": 4.2197,
+        "rank": 3
+      },
+      {
+        "url": "https://www.emergentmind.com/topics/cross-encoder-reranking",
+        "title": "Cross-Encoder Reranking",
+        "heading": "5. Extensions: Multilingual, Parameter-Efficient, and Specialized Cross-Encoder Reranking",
+        "chunk_text": "5. Extensions: Multilingual, Parameter-Efficient, and Specialized Cross-Encoder Reranking\n\n.com/topics/rotary-position-embeddings-rope) and flooding-efficient methods, improving multilingual reranking for long documents ([Zhang et al., 2024](https://www.emergentmind.com/papers/2407.19669)). ViRanker demonstrates cross-encoder adaptation (using RoPE and blockwise parallel transformers) specialized for the Vietnamese language, yielding strong NDCG@3 and early-rank metrics ([Dang et al., 11 Sep 2025](https://www.emergentmind.com/papers/2509.09131)).\n*   **Cross-Modal and Image-Text Retrieval**: For cross-modal scenarios, cross-encoder rerankers yield concentrated score distributions (binary match probabilities), requiring specialized distillation techniques (e.g., CPRD—Contrastive Partial Ranking Distillation) to successfully transfer hard-negative orderings to efficient dual-encoders ([Chen et al., 2024](https://www.emergentmind.com/papers/2407.07479)).",
+        "score": 4.1124,
+        "rank": 4
+      }
+    ],
+    "sub_queries": [
+      "What is cross-encoder reranking?",
+      "What is a bi-encoder in information retrieval?",
+      "How does cross-encoder reranking improve retrieval quality compared to bi-encoders?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "pass",
+    "score": 0.95,
+    "reasoning": "The response accurately explains cross-encoder reranking, its joint encoding mechanism, and how it improves retrieval quality over bi-encoders through full token-level interactions. It correctly describes the two-stage pipeline (bi-encoder for first-stage retrieval, cross-encoder for reranking). The response covers all key facts from the ground truth, though it is slightly cut off at the end. Minor truncation prevents a perfect score, but the content is otherwise complete and well-cited.",
+    "judge_model": "deepseek-chat"
+  }
+}

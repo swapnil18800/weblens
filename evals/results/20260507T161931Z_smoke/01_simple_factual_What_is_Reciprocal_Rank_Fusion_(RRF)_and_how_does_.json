@@ -1,0 +1,135 @@
+{
+  "category": "simple_factual",
+  "expected_behavior": "Single focused question answered accurately from web sources with inline citations.",
+  "question": "What is Reciprocal Rank Fusion (RRF) and how does it combine ranked lists from multiple retrieval systems?",
+  "ground_truth": "Reciprocal Rank Fusion (RRF) is an ensemble method for merging multiple ranked lists from different retrieval systems (e.g., BM25 and dense vector search). For each document, RRF computes a score of 1/(k + rank) where k is a constant (typically 60) and rank is the document's position in each ranked list. These scores are summed across all lists and documents are re-ranked by total score. RRF was proposed by Cormack, Clarke, and Buettcher (2009). It requires no parameter tuning, is robust to different retrieval methods, and consistently outperforms individual rankers in hybrid search systems.",
+  "key_facts": [
+    "RRF combines multiple ranked lists from different retrieval systems",
+    "score formula is 1/(k + rank)",
+    "k constant is typically 60",
+    "scores are summed across all ranked lists",
+    "no parameter tuning required",
+    "proposed by Cormack Clarke Buettcher"
+  ],
+  "session_id": "eval-20260507T161931Z-01",
+  "metrics": {
+    "m1_factual_correctness": 0.667,
+    "m3_retrieval_recall": 0.833,
+    "m7_judge_score": 0.67
+  },
+  "timing": {
+    "pipeline_s": 28.52,
+    "latency_breakdown": {
+      "search_ms": 2191,
+      "extract_ms": 14393,
+      "chunk_ms": 14,
+      "retrieve_ms": 2071
+    },
+    "total_latency_ms": 28211
+  },
+  "pipeline": {
+    "answer": "## What is Reciprocal Rank Fusion (RRF)?\n\nReciprocal Rank Fusion (RRF) is an algorithm for combining multiple ranked lists of search results into a single unified ranking, originally developed for information retrieval research [2]. It has become a standard approach in modern search systems, particularly for hybrid search applications that need to merge results from different retrieval techniques, such as combining lexical and semantic search results [1][2].\n\n### How RRF Combines Ranked Lists\n\nRRF operates on a simple but elegant principle: rather than relying on raw similarity scores — which can vary in scale and meaning across different retrieval systems — it assigns each result a score based solely on its position in each list, then sums these scores to produce a final ordering [1]. This makes RRF **score agnostic**, meaning it works with any retrieval method regardless of score scale and requires no calibration or normalization between systems [1][3].\n\nThe core formula works as follows:\n\n- For each document in each ranked list, RRF assigns a score of **1/(k + rank)**, where **k** is a damping constant (default value is 60) and **rank** is the document's position in that list [3]\n- The scores for each document are summed across all lists to produce a final combined score\n- Documents are then reordered based on their total RRF scores\n\n### Key Properties and Benefits\n\n**Consensus Boosting**: RRF naturally rewards documents that appear in multiple lists, even if they don't rank at the very top of any single list. This property surfaces broadly relevant results that achieve consensus across different retrieval methods [3].\n\n**Simplicity and Robustness**: The algorithm requires only one constant (k = 60 by default) and needs no training data, making it practical and reliable for merging results from heterogeneous sources such as keyword search, semantic search, or multiple vector indexes [1][3].\n\nIn production RAG pipelines, RRF typically sits between retrieval and generation, automatically merging results from multiple query variants when multi-query retrieval is enabled [3].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.ai21.com/glossary/tech/what-is-reciprocal-rank-fusion-rrf/",
+        "title": "What is Reciprocal Rank Fusion (RRF)? | AI21"
+      },
+      {
+        "num": 2,
+        "url": "https://www.paradedb.com/learn/search-concepts/reciprocal-rank-fusion",
+        "title": "What is Reciprocal Rank Fusion?"
+      },
+      {
+        "num": 3,
+        "url": "https://docs.lm-kit.com/lm-kit-net/guides/glossary/reciprocal-rank-fusion.html",
+        "title": "LM-Kit.NET Reciprocal Rank Fusion (RRF): Merge Retrieval Results in C# .NET"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.ai21.com/glossary/tech/what-is-reciprocal-rank-fusion-rrf/",
+        "title": "What is Reciprocal Rank Fusion (RRF)? | AI21",
+        "snippet": "# What is Reciprocal Rank Fusion (RRF)? Reciprocal Rank Fusion (RRF) is a method for combining multiple ranked lists of search results into a single unified ranking. Rather than relying on raw similarity scores – which can vary in scale and meaning across different retrieval systems – RRF assigns each result a score based solely on its position in each list, then sums these scores to produce a final ordering. For each result in each ranked list, RRF computes a score using the formula 1 / (rank + k), where rank is the result’s position in the list and k is a constant (typically 60) that dampens the influence of very high-ranked results. These scores are then summed across all lists for each unique result, and the results are re-ranked accordingly. RRF is widely used in hybrid retrieval systems that combine keyword-based and semantic search, where each method produces its own ranked list and scores are not directly comparable."
+      },
+      {
+        "url": "https://www.paradedb.com/learn/search-concepts/reciprocal-rank-fusion",
+        "title": "What is Reciprocal Rank Fusion? | ParadeDB",
+        "snippet": "Reciprocal Rank Fusion (RRF) is a technique for combining multiple ranked lists of search results into a single ranking. Originally developed for information retrieval research, RRF has become essential in modern search systems to allow ranking across multiple retrieval methods, such as combining lexical and semantic search results in hybrid search applications. RRF's elegance lies in its simplicity: rather than normalizing scores within each scoring system, it works directly with document positions in the ranked lists. RRF operates on a simple principle: documents that appear highly ranked across multiple search methods are likely to be genuinely relevant. The standard RRF formula treats all ranking sources equally, but *Weighted RRF* allows you to assign different weights to each method. For example, when combining BM25 and vector search you might assign weights of 1.0 and 0.7 respectively to show that you value lexical over semantic meaning. * rankr​(d) is the rank of document d in ranking r. * wr​ is the weight for ranking r (typically between 0 and 1)."
+      },
+      {
+        "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+        "title": "Reciprocal rank fusion | Elasticsearch Reference",
+        "snippet": "# Reciprocal rank fusion. Reciprocal rank fusion (RRF) is a method for combining multiple result sets with different relevance indicators into a single result set. RRF uses the following formula to determine the score for ranking each document:. if d in result(q):. score += 1.0 / ( k + rank( result(q), d ) ). # q is a query in the set of queries. # d is a document in the result set of q. # result(q) is the result set of q. # rank( result(q), d ) is d's rank within the result(q) starting from 1`. For the most up-to-date API details, refer to Search APIs. You can use RRF as part of a search to combine and rank documents using separate sets of top documents (result sets) from a combination of child retrievers using an RRF retriever. An RRF retriever is an optional object defined as part of a search request’s retriever parameter."
+      },
+      {
+        "url": "https://learn.microsoft.com/en-us/azure/search/hybrid-search-ranking",
+        "title": "Hybrid Search Scoring (RRF) - Azure AI Search",
+        "snippet": "Reciprocal Rank Fusion (RRF) is an algorithm that evaluates the search scores from multiple, previously ranked results to produce a unified result set. RRF works by taking the search results from multiple methods, assigning a reciprocal rank score to each document in the results, and then combining the scores to create a new ranking. RRF generates a new `@search.score` for each match in each result set. For each document in the search results, the engine assigns a reciprocal rank score based on its position in the list. | hybrid search | `@search.score` | RRF algorithm | Upper limit is bounded by the number of queries being fused, with each query contributing a maximum of approximately `1/k` to the RRF score (this is the `k` parameter in the RRF algorithm, not the vector query). For example, merging three queries produces higher RRF scores than if only two search results are merged. Assume a document shows up in three separate search results, where the results are from two vector queries and one text BM25-ranked query."
+      },
+      {
+        "url": "https://glaforge.dev/posts/2026/02/10/advanced-rag-understanding-reciprocal-rank-fusion-in-hybrid-search/",
+        "title": "Advanced RAG — Understanding Reciprocal Rank Fusion in Hybrid ...",
+        "snippet": "# Advanced RAG — Understanding Reciprocal Rank Fusion in Hybrid Search. Enter **Reciprocal Rank Fusion (RRF)**. RRF is a robust, *“zero-shot”* algorithm for merging search results from different retrieval methods. It ensures that a document appearing consistently (e.g., ranked #10 in *both* keyword and vector search) will score higher than a document that is #1 in only one list but completely missing from the others. RRF will simply interleave the results: you’ll get the #1 from list A, then #1 from list B, followed by the #2 from list A, and so on. ## Why Use RRF in RAG? While RRF is excellent at merging lists, it lacks deep semantic understanding of the query-document relationship. By using RRF to merge results from *multiple* query variations, the system naturally filters out “topic drift.”. By **focusing on rank** rather than arbitrary scores, RRF provides a robust and scalable way to merge diverse search results,."
+      },
+      {
+        "url": "https://docs.lm-kit.com/lm-kit-net/guides/glossary/reciprocal-rank-fusion.html",
+        "title": "LM-Kit.NET Reciprocal Rank Fusion (RRF): Merge Retrieval Results in C# .NET",
+        "snippet": "# What is Reciprocal Rank Fusion (RRF)? **Reciprocal Rank Fusion (RRF)** is a simple, effective algorithm for merging ranked result lists from multiple retrieval sources into a single combined ranking. When you have results from multiple searches, whether from multi-query retrieval, different retrieval methods (semantic + keyword), or multiple indices, RRF combines them by assigning each document a score based on its rank position in each list, then sorting by the combined score. Documents that appear in multiple lists and rank highly in each receive the highest combined scores. RRF requires no training, no tuning of weights, and no normalization of score scales, making it the standard approach for result fusion in modern RAG pipelines. The challenge is combining them into a single list that reflects the best of all sources:. score**: A document ranked #1 in one list and #5 in another: is it better than a document ranked #2 in all three?"
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.ai21.com/glossary/tech/what-is-reciprocal-rank-fusion-rrf/",
+        "title": "What is Reciprocal Rank Fusion (RRF)? | AI21",
+        "heading": "What is Reciprocal Rank Fusion (RRF)?",
+        "chunk_text": "What is Reciprocal Rank Fusion (RRF)?\n\nReciprocal Rank Fusion (RRF) is a method for combining multiple ranked lists of search results into a single unified ranking. Rather than relying on raw similarity scores – which can vary in scale and meaning across different retrieval systems – RRF assigns each result a score based solely on its position in each list, then sums these scores to produce a final ordering.\n\nBecause it operates on ranks rather than scores, RRF requires no calibration or normalization between systems. This makes it a practical and reliable choice for merging results from heterogeneous sources, such as keyword search, semantic search, or multiple vector indexes.",
+        "score": 10.3633,
+        "rank": 0
+      },
+      {
+        "url": "https://www.paradedb.com/learn/search-concepts/reciprocal-rank-fusion",
+        "title": "What is Reciprocal Rank Fusion?",
+        "heading": "",
+        "chunk_text": "[Reciprocal Rank Fusion](https://plg.uwaterloo.ca/%7Egvcormac/cormacksigir09-rrf.pdf) (RRF) is a technique for combining multiple ranked lists of search results into a single ranking. Originally developed for information retrieval research, RRF has become essential in modern search systems to allow ranking across multiple retrieval methods, such as combining lexical and semantic search results in hybrid search applications.\n\nRRF's elegance lies in its simplicity: rather than normalizing scores within each scoring system, it works directly with document positions in the ranked lists.",
+        "score": 9.5607,
+        "rank": 1
+      },
+      {
+        "url": "https://docs.lm-kit.com/lm-kit-net/guides/glossary/reciprocal-rank-fusion.html",
+        "title": "LM-Kit.NET Reciprocal Rank Fusion (RRF): Merge Retrieval Results in C# .NET",
+        "heading": "**Key Terms**[](https://docs.lm-kit.com/lm-kit-net/guides/glossary/reciprocal-rank-fusion.html#key-terms)",
+        "chunk_text": "**Key Terms**[](https://docs.lm-kit.com/lm-kit-net/guides/glossary/reciprocal-rank-fusion.html#key-terms)\n\n*   **Reciprocal Rank Fusion (RRF)**: An algorithm that merges multiple ranked lists by assigning each document a score of 1/(k + rank) from each list and summing across lists.\n\n*   **Rank Fusion**: The general problem of combining multiple ranked result lists into a single unified ranking.\n\n*   **k Constant**: The damping parameter in RRF (default: 60) that controls how steeply scores decrease with rank position.\n\n*   **Hybrid Search**: Combining semantic (dense vector) and keyword (sparse) retrieval methods, typically merged with RRF.\n\n*   **Consensus Boosting**: The property of RRF where documents appearing in multiple lists receive higher combined scores, surfacing broadly relevant results.\n\n*   **Score Agnostic**: RRF's key property of using only rank positions, not raw similarity scores, making it compatible with any retrieval method regardless of score scale.",
+        "score": 8.7273,
+        "rank": 2
+      },
+      {
+        "url": "https://www.paradedb.com/learn/search-concepts/reciprocal-rank-fusion",
+        "title": "What is Reciprocal Rank Fusion?",
+        "heading": "Summary",
+        "chunk_text": "Summary\n\nReciprocal Rank Fusion provides an elegant solution for combining multiple search rankings without the complexity that comes from score based systems. Its simplicity, robustness, and proven effectiveness make it the standard approach for hybrid search systems that need to merge results from different retrieval techniques.",
+        "score": 8.4157,
+        "rank": 3
+      },
+      {
+        "url": "https://docs.lm-kit.com/lm-kit-net/guides/glossary/reciprocal-rank-fusion.html",
+        "title": "LM-Kit.NET Reciprocal Rank Fusion (RRF): Merge Retrieval Results in C# .NET",
+        "heading": "Summary[](https://docs.lm-kit.com/lm-kit-net/guides/glossary/reciprocal-rank-fusion.html#summary)",
+        "chunk_text": "Summary[](https://docs.lm-kit.com/lm-kit-net/guides/glossary/reciprocal-rank-fusion.html#summary)\n\n**Reciprocal Rank Fusion (RRF)** is the standard algorithm for combining multiple ranked result lists in [RAG](https://docs.lm-kit.com/lm-kit-net/guides/glossary/RAG.html) pipelines. By scoring each document as 1/(k + rank) and summing across lists, RRF produces a merged ranking that rewards documents appearing highly in multiple sources. Its key strengths are simplicity (one constant, k = 60), score agnosticism (works with any retrieval method regardless of score scale), and robustness (no training data required). LM-Kit.NET uses RRF internally when `QueryGenerationMode.MultiQuery` is enabled, automatically merging results from multiple query variants. In a production RAG pipeline, RRF sits between retrieval and generation: [multi-query](https://docs.lm-kit.com/lm-kit-net/guides/glossary/multi-query-retrieval.html) generates variants, parallel retrieval produces multiple result lists, RRF merges them, [MMR](https://docs.lm-kit.com/lm-kit-net/guides/glossary/maximal-marginal-relevance.html) ensures diversity, and [reranking](https://docs.lm-kit.com/lm-kit-net/guides/glossary/reranking.html) refines precision. This combination delivers comprehensive, relevant, and diverse context to the LLM for accurate answer generation.\n\nShare",
+        "score": 8.1409,
+        "rank": 4
+      }
+    ],
+    "sub_queries": [
+      "What is Reciprocal Rank Fusion (RRF)?",
+      "How does RRF combine ranked lists from multiple retrieval systems?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.67,
+    "reasoning": "The response correctly explains RRF's purpose, formula (1/(k+rank)), and k=60. However, it omits two key facts from ground truth: that RRF requires no parameter tuning and that it was proposed by Cormack, Clarke, and Buettcher (2009). The response also cuts off mid-sentence, missing the closing bracket. These omissions prevent a 'pass' but the core explanation is accurate.",
+    "judge_model": "deepseek-chat"
+  }
+}

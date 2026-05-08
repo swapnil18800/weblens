@@ -1,0 +1,138 @@
+{
+  "category": "sentence_transformers",
+  "expected_behavior": "Technical explanation of sentence transformer architecture and training.",
+  "question": "How do sentence transformers like all-MiniLM-L6-v2 work to generate semantic embeddings?",
+  "ground_truth": "Sentence transformers are BERT-based models fine-tuned with a Siamese network architecture to produce semantically meaningful fixed-size embeddings. all-MiniLM-L6-v2 has 6 transformer layers and outputs 384-dimensional embeddings. It is trained on large datasets using contrastive learning (cosine similarity of positive pairs should be high). L2 normalization enables cosine similarity via dot product. The model is fast (CPU-friendly) and suitable for embedding thousands of documents.",
+  "key_facts": [
+    "based on BERT transformer architecture",
+    "Siamese network training with contrastive learning",
+    "all-MiniLM-L6-v2 outputs 384 dimensions",
+    "6 transformer layers",
+    "L2 normalization enables cosine similarity via dot product"
+  ],
+  "session_id": "eval-20260507T163245Z-08",
+  "metrics": {
+    "m1_factual_correctness": 0.8,
+    "m3_retrieval_recall": 0.8,
+    "m7_judge_score": 0.65
+  },
+  "timing": {
+    "pipeline_s": 18.03,
+    "latency_breakdown": {
+      "search_ms": 1182,
+      "extract_ms": 4476,
+      "chunk_ms": 17,
+      "retrieve_ms": 1244
+    },
+    "total_latency_ms": 18020
+  },
+  "pipeline": {
+    "answer": "## How Sentence Transformers Like all-MiniLM-L6-v2 Generate Semantic Embeddings\n\nSentence transformers are deep learning models that convert sentences into fixed-length vector representations (embeddings) that capture semantic meaning [1][3]. The all-MiniLM-L6-v2 model, a popular example, works through a specific architectural pipeline and training process.\n\n### Core Architecture and Output\n\nall-MiniLM-L6-v2 maps sentences to a **384-dimensional dense vector space** [1]. It is based on a distilled version of a larger model, specifically the Microsoft MiniLM-L6-H384-uncased architecture, with **6 transformer layers** and approximately **22 million parameters** [2][4]. This is significantly smaller than models like all-mpnet-base-v2, which has 12 layers and 110 million parameters and outputs 768-dimensional embeddings [2].\n\n### The Embedding Generation Pipeline\n\nThe model works in two stages:\n\n1. **Transformer Encoding**: The input sentence is first passed through the transformer model, which generates **contextualized word embeddings** for each token [1]. Unlike static word vectors, these embeddings change based on surrounding words.\n\n2. **Pooling Operation**: After the transformer produces token-level embeddings, a pooling operation is applied to derive a single sentence-level embedding [1]. The standard approach for all-MiniLM-L6-v2 is **mean pooling**, which averages the token embeddings while accounting for the attention mask (to ignore padding tokens). The mathematical computation involves expanding the attention mask, multiplying it element-wise with the token embeddings, summing across tokens, then dividing by the sum of the expanded mask [1].\n\n### Training and Fine-Tuning\n\nall-MiniLM-L6-v2 was created through a two-step process [4]:\n- First, it was based on the pre-trained MiniLM-L6-H384-uncased model (a distilled model trained to mimic larger models like BERT or RoBERTa) [2]\n- Then, it was **fine-tuned on a dataset of 1 billion sentence pairs** to optimize for semantic similarity tasks [4]\n\nThis fine-tuning allows the model to learn that semantically similar sentences should have similar vector representations, making it suitable for clustering, semantic search, and classification [1][3].\n\n### Performance Characteristics\n\nThe model is optimized for speed and efficiency rather than maximum accuracy. On benchmarks like STS-B, it achieves approximately **84-85% accuracy** compared to larger models (e.g., all-mpnet-base-v2 achieves 87-88%) [2]. However, it processes **~14,000 sentences per second on a CPU** (versus ~4,000 for larger models), making it ideal for real-time applications, edge devices, and high-throughput scenarios [2].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+        "title": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"
+      },
+      {
+        "num": 2,
+        "url": "https://milvus.io/ai-quick-reference/what-are-some-popular-pretrained-sentence-transformer-models-and-how-do-they-differ-for-example-allminilml6v2-vs-allmpnetbasev2",
+        "title": "What are some popular pre-trained Sentence Transformer models and how do they differ (for example, all-MiniLM-L6-v2 vs all-mpnet-base-v2)?"
+      },
+      {
+        "num": 3,
+        "url": "https://aws.amazon.com/blogs/machine-learning/create-and-fine-tune-sentence-transformers-for-enhanced-classification-accuracy/",
+        "title": "Create and fine-tune sentence transformers for enhanced classification accuracy | Amazon Web Services"
+      },
+      {
+        "num": 4,
+        "url": "https://www.mdpi.com/2078-2489/15/2/68",
+        "title": "Performance of 4 Pre-Trained Sentence Transformer Models in the Semantic Query of a Systematic Review Dataset on Peri-Implantitis"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+        "title": "sentence-transformers/all-MiniLM-L6-v2 · Hugging Face",
+        "snippet": "# sentence-transformers / all-MiniLM-L6-v2 like 4.76k Follow Sentence Transformers 4.57k. ### Instructions to use sentence-transformers/all-MiniLM-L6-v2 with libraries, inference providers, notebooks, and local apps. How to use sentence-transformers/all-MiniLM-L6-v2 with sentence-transformers:. How to use sentence-transformers/all-MiniLM-L6-v2 with Transformers:. # all-MiniLM-L6-v2. This is a sentence-transformers model: It maps sentences & paragraphs to a 384 dimensional dense vector space and can be used for tasks like clustering or semantic search. ## Usage (Sentence-Transformers). Then you can use the model like this:. model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2'). Without sentence-transformers, you can use the model like this: First, you pass your input through the transformer model, then you have to apply the right pooling-operation on-top of the contextualized word embeddings. # Load model from HuggingFace Hub. tokenizer = AutoTokenizer.from_pretrained('sentence-transformers/all-MiniLM-L6-v2'). model = AutoModel.from_pretrained('sentence-transformers/all-MiniLM-L6-v2'). We use a contrastive learning objective: given a sentence from the pair, the model should predict which out of a set of randomly sampled other sentences, was actually paired with it in our dataset. ## Model tree for sentence-transformers/all-MiniLM-L6-v2. ## Datasets used to train sentence-transformers/all-MiniLM-L6-v2."
+      },
+      {
+        "url": "https://www.sbert.net/docs/sentence_transformer/pretrained_models.html",
+        "title": "Pretrained Models — Sentence Transformers documentation",
+        "snippet": "* **Community models**: [All Sentence Transformer models on Hugging Face](https://huggingface.co/models?library=sentence-transformers). from sentence_transformers import SentenceTransformer# Load https://huggingface.co/sentence-transformers/all-mpnet-base-v2 model = SentenceTransformer(\"sentence-transformers/all-mpnet-base-v2\") embeddings = model. Consider using the [Massive Textual Embedding Benchmark leaderboard](https://huggingface.co/spaces/mteb/leaderboard) as an inspiration of strong Sentence Transformer models. The [**sentence-transformers/all-mpnet-base-v2**](https://huggingface.co/sentence-transformers/all-mpnet-base-v2) model provides the best quality, while [**sentence-transformers/all-MiniLM-L6-v2**](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) is 5 times faster and still offers good quality. from sentence_transformers import SentenceTransformer model = SentenceTransformer(\"sentence-transformers/multi-qa-mpnet-base-cos-v1\") query_embedding = model. The following models have been trained on [215M question-answer pairs](https://huggingface.co/sentence-transformers/multi-qa-MiniLM-L6-dot-v1#training) from various sources and domains, including StackExchange, Yahoo Answers, Google & Bing search queries and many more. * **[sentence-transformers/LaBSE](https://huggingface.co/sentence-transformers/LaBSE)** - [LaBSE](https://huggingface.co/papers/2007.01852) Model. The original Sentence Transformers image-text models are based on CLIP. * **[sentence-transformers/clip-ViT-B-32-multilingual-v1](https://huggingface.co/sentence-transformers/clip-ViT-B-32-multilingual-v1)** - Multilingual text encoder for the [sentence-transformers/clip-ViT-B-32](https://huggingface.co/sentence-transformers/clip-ViT-B-32) model using [Multilingual Knowledge Distillation](https://huggingface.co/papers/2004.09813). This model can encode text in 50+ languages to match the image vectors from the [sentence-transformers/clip-ViT-B-32](https://huggingface.co/sentence-transformers/clip-ViT-B-32) model. Some INSTRUCTOR models, such as [hkunlp/instructor-large](https://huggingface.co/hkunlp/instructor-large), are natively supported in Sentence Transformers."
+      },
+      {
+        "url": "https://milvus.io/ai-quick-reference/what-are-some-popular-pretrained-sentence-transformer-models-and-how-do-they-differ-for-example-allminilml6v2-vs-allmpnetbasev2",
+        "title": "What are some popular pre-trained Sentence Transformer models and how do they differ (for example, all-MiniLM-L6-v2 vs all-mpnet-base-v2)?",
+        "snippet": "What are some popular pre-trained Sentence Transformer models and how do they differ (for example, all-MiniLM-L6-v2 vs all-mpnet-base-v2)? # What are some popular pre-trained Sentence Transformer models and how do they differ (for example, all-MiniLM-L6-v2 vs all-mpnet-base-v2)? Several popular pre-trained Sentence Transformer models are widely used for converting text into embeddings, with **all-MiniLM-L6-v2** and **all-mpnet-base-v2** being two common choices. For example, all-MiniLM-L6-v2 is a compact, efficiency-focused model, while all-mpnet-base-v2 prioritizes higher accuracy at the cost of computational resources. The **all-mpnet-base-v2** model is based on MPNet, a pretraining architecture that combines masked language modeling (like BERT) with permuted sentence training (like XLNet). In contrast, **all-MiniLM-L6-v2** uses a distilled version of a larger model (like BERT or RoBERTa) to reduce size while preserving performance. In benchmarks like the Massive Text Embedding Benchmark (MTEB), **all-mpnet-base-v2** often ranks higher in accuracy for tasks like semantic similarity or retrieval, thanks to its larger size and pretraining method. However, **all-MiniLM-L6-v2** runs faster (e.g., ~14k sentences/sec vs."
+      },
+      {
+        "url": "https://www.mdpi.com/2078-2489/15/2/68",
+        "title": "Performance of 4 Pre-Trained Sentence Transformer Models in the ...",
+        "snippet": "Transformers can generate word and sentence embeddings in a highly efficient manner by incorporating contextual information, which enriches their content and"
+      },
+      {
+        "url": "https://aws.amazon.com/blogs/machine-learning/create-and-fine-tune-sentence-transformers-for-enhanced-classification-accuracy/",
+        "title": "Create and fine-tune sentence transformers for enhanced classification accuracy | Artificial Intelligence",
+        "snippet": "In this post, we demonstrate how to fine-tune a sentence transformer with Amazon product data and how to use the resulting sentence transformer to improve classification accuracy of product categories using an XGBoost decision tree. To observe whether our resulting fine-tuned sentence transformer improves our product category classification accuracy, we use it as our text embedder in the XGBoost classifier in the next step. We use the following code to use the standard `paraphrase-MiniLM-L6-v2` sentence transformer before it was fine-tuned to classify Amazon products to their respective categories:. Because `M5_ASIN_SMALL_V20` was pre-trained on Amazon product data specifically, we hypothesize that building a sentence transformer from it will increase the accuracy of product category classification. We dived deep into the sentence transformer `paraphrase-MiniLM-L6-v2`, demonstrated how to use a BERT-based model like `M5_ASIN_SMALL_V20` to create a sentence transformer, showed how to fine-tune sentence transformers, and showed the accuracy effects of fine-tuning sentence transformers."
+      },
+      {
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/16cdsv6/which_sentence_transformer_is_the_best_one_for/",
+        "title": "Which sentence transformer is the best one for similarity search and ...",
+        "snippet": "The embedding models find similarities in the domain you use them. All of your texts talk about people and happiness, so the model finds them"
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+        "title": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+        "heading": "",
+        "chunk_text": "all-MiniLM-L6-v2\nThis is a sentence-transformers model: It maps sentences & paragraphs to a 384 dimensional dense vector space and can be used for tasks like clustering or semantic search.\nUsage (Sentence-Transformers)\nUsing this model becomes easy when you have sentence-transformers installed:\npip install -U sentence-transformers\nThen you can use the model like this:\nfrom sentence_transformers import SentenceTransformer\nsentences = [\"This is an example sentence\", \"Each sentence is converted\"]\nmodel = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')\nembeddings = model.encode(sentences)\nprint(embeddings)\nUsage (HuggingFace Transformers)\nWithout sentence-transformers, you can use the model like this: First, you pass your input through the transformer model, then you have to apply the right pooling-operation on-top of the contextualized word embeddings.\nfrom transformers import AutoTokenizer, AutoModel\nimport torch\nimport torch.nn.functional as F\n#Mean Pooling - Take attention mask into account for correct averaging\ndef mean_pooling(model_output, attention_mask):\ntoken_embeddings = model_output[0] #First element of model_output contains all token embeddings\ninput_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()\nreturn torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)",
+        "score": 9.5019,
+        "rank": 0
+      },
+      {
+        "url": "https://milvus.io/ai-quick-reference/what-are-some-popular-pretrained-sentence-transformer-models-and-how-do-they-differ-for-example-allminilml6v2-vs-allmpnetbasev2",
+        "title": "What are some popular pre-trained Sentence Transformer models and how do they differ (for example, all-MiniLM-L6-v2 vs all-mpnet-base-v2)?",
+        "heading": "What are some popular pre-trained Sentence Transformer models and how do they differ (for example, all-MiniLM-L6-v2 vs all-mpnet-base-v2)?",
+        "chunk_text": "What are some popular pre-trained Sentence Transformer models and how do they differ (for example, all-MiniLM-L6-v2 vs all-mpnet-base-v2)?\n\n**Performance and Use Cases** In benchmarks like the Massive Text Embedding Benchmark (MTEB), **all-mpnet-base-v2** often ranks higher in accuracy for tasks like semantic similarity or retrieval, thanks to its larger size and pretraining method. For example, on the STS-B semantic similarity task, it achieves scores around 87-88%, compared to MiniLM’s 84-85%. However, **all-MiniLM-L6-v2** runs faster (e.g., ~14k sentences/sec vs. ~4k on a CPU) and uses less memory, making it ideal for edge devices, real-time APIs, or applications where latency matters. Developers might choose MPNet for backend systems requiring high precision (e.g., legal document analysis) and MiniLM for mobile apps or high-throughput scenarios (e.g., real-time recommendation systems). Both models are accessible via the `sentence-transformers` library, allowing easy integration into Python pipelines.\n\n[Previous](https://milvus.io/ai-quick-reference/why-was-the-sentencebert-approach-needed-even-with-powerful-language-models-like-bert-already-available)\n\n[Next](https://milvus.io/ai-quick-reference/what-role-do-special-tokens-such-as-cls-or-sep-play-in-sentence-transformer-models)",
+        "score": 8.3934,
+        "rank": 1
+      },
+      {
+        "url": "https://aws.amazon.com/blogs/machine-learning/create-and-fine-tune-sentence-transformers-for-enhanced-classification-accuracy/",
+        "title": "Create and fine-tune sentence transformers for enhanced classification accuracy | Amazon Web Services",
+        "heading": "",
+        "chunk_text": "Sentence transformers are powerful deep learning models that convert sentences into high-quality, fixed-length embeddings, capturing their semantic meaning. These embeddings are useful for various natural language processing (NLP) tasks such as text classification, clustering, semantic search, and information retrieval.\n\nIn this post, we showcase how to fine-tune a sentence transformer specifically for classifying an Amazon product into its product category (such as toys or sporting goods). We showcase two different sentence transformers, [paraphrase-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/paraphrase-MiniLM-L6-v2) and a proprietary Amazon large language model (LLM) called `M5_ASIN_SMALL_V2.0`, and compare their results. M5 LLMS are BERT-based LLMs fine-tuned on internal Amazon product catalog data using product title, bullet points, description, and more. They are currently being used for use cases such as automated product classification and similar product recommendations. Our hypothesis is that `M5_ASIN_SMALL_V2.0` will perform better for the use case of Amazon product category classification due to it being fine-tuned with Amazon product data. We prove this hypothesis in the following experiment illustrated in this post.",
+        "score": 8.0644,
+        "rank": 2
+      },
+      {
+        "url": "https://www.mdpi.com/2078-2489/15/2/68",
+        "title": "Performance of 4 Pre-Trained Sentence Transformer Models in the Semantic Query of a Systematic Review Dataset on Peri-Implantitis",
+        "heading": "2.3. Models",
+        "chunk_text": "2.3. Models\n\nFour pre-trained sentence-transformer models were used to generate sentence embeddings. All models were freely available on Huggingface.com.\n\n(1)\nsentence-transformers/all-MiniLM-L6-v2. This model is based on the nreimers/MiniLM-L6-H384-uncased model and was further fine-tuned using a dataset of 1 billion sentence pairs. The embeddings’ length is 384. ([https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) (accessed on 15 January 2024))\n\n(2)\nsentence-transformers/all-MiniLM-L12-v2. This model is based on the microsoft/MiniLM-L12-H384-uncased model and was further fine-tuned using a dataset of 1 billion sentence pairs. The embeddings’ length is 384. ([https://huggingface.co/sentence-transformers/all-MiniLM-L12-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L12-v2) (accessed on 15 January 2024))\n\n(3)\nsentence-transformers/all-mpnet-base-v2. The model underwent pretraining on the microsoft/mpnet-base model and was subsequently fine-tuned on a dataset consisting of 1 billion sentence pairs. The embeddings’ length is 768. ([https://huggingface.co/sentence-transformers/all-mpnet-base-v2](https://huggingface.co/sentence-transformers/all-mpnet-base-v2) (accessed on 15 January 2024))",
+        "score": 7.9761,
+        "rank": 3
+      },
+      {
+        "url": "https://milvus.io/ai-quick-reference/what-are-some-popular-pretrained-sentence-transformer-models-and-how-do-they-differ-for-example-allminilml6v2-vs-allmpnetbasev2",
+        "title": "What are some popular pre-trained Sentence Transformer models and how do they differ (for example, all-MiniLM-L6-v2 vs all-mpnet-base-v2)?",
+        "heading": "What are some popular pre-trained Sentence Transformer models and how do they differ (for example, all-MiniLM-L6-v2 vs all-mpnet-base-v2)?",
+        "chunk_text": "What are some popular pre-trained Sentence Transformer models and how do they differ (for example, all-MiniLM-L6-v2 vs all-mpnet-base-v2)?\n\nSeveral popular pre-trained Sentence Transformer models are widely used for converting text into embeddings, with **all-MiniLM-L6-v2** and **all-mpnet-base-v2** being two common choices. These models differ primarily in architecture, size, and performance trade-offs. For example, all-MiniLM-L6-v2 is a compact, efficiency-focused model, while all-mpnet-base-v2 prioritizes higher accuracy at the cost of computational resources. Both are part of the “all-*” family, meaning they’re fine-tuned on diverse datasets for general-purpose tasks like semantic search, clustering, or retrieval.\n\n**Architectural Differences** The **all-mpnet-base-v2** model is based on MPNet, a pretraining architecture that combines masked language modeling (like BERT) with permuted sentence training (like XLNet). This hybrid approach helps MPNet better capture word order and context, resulting in robust embeddings. It has 12 transformer layers and outputs 768-dimensional vectors. In contrast, **all-MiniLM-L6-v2** uses a distilled version of a larger model (like BERT or RoBERTa) to reduce size while preserving performance. It has 6 transformer layers and 384-dimensional embeddings, making it significantly smaller (about 22 million parameters vs. MPNet’s 110 million). MiniLM achieves this by training a smaller model to mimic the behavior of a larger one, sacrificing some nuance for speed and resource efficiency.",
+        "score": 7.3537,
+        "rank": 4
+      }
+    ],
+    "sub_queries": [
+      "How do sentence transformers like all-MiniLM-L6-v2 work to generate semantic embeddings?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.65,
+    "reasoning": "The response correctly identifies the architecture (6 transformer layers, 384-dimensional output) and mentions the embedding pipeline (transformer encoding + pooling). However, it omits key facts from the ground truth: Siamese network architecture, contrastive learning training (positive pairs with high cosine similarity), and L2 normalization enabling cosine similarity via dot product. The response is partially cut off, missing the pooling operation details. It covers about 3 of 6 key facts.",
+    "judge_model": "deepseek-chat"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "category": "ivfflat_hnsw",
+  "expected_behavior": "Technical comparison of ANN index types decomposed into IVFFlat and HNSW sub-queries.",
+  "question": "Compare IVFFlat and HNSW indexes for approximate nearest neighbor search: trade-offs in accuracy, speed, and memory?",
+  "ground_truth": "IVFFlat (Inverted File Flat) partitions the vector space into clusters (cells) using k-means. At query time it searches only nprobe cells, giving approximate results. It uses less memory than HNSW but requires a training phase and has lower recall. HNSW (Hierarchical Navigable Small World) builds a multi-layer graph; it provides higher recall and faster queries but uses significantly more memory (graph structure). IVFFlat: good for large datasets with memory constraints; HNSW: preferred when recall and query speed matter and memory is available.",
+  "key_facts": [
+    "IVFFlat partitions space into clusters using k-means",
+    "IVFFlat searches nprobe clusters at query time",
+    "HNSW builds a hierarchical graph structure",
+    "HNSW has higher recall and faster queries than IVFFlat",
+    "HNSW uses more memory than IVFFlat",
+    "IVFFlat requires a training phase"
+  ],
+  "session_id": "eval-20260507T163245Z-10",
+  "metrics": {
+    "m1_factual_correctness": 0.667,
+    "m3_retrieval_recall": 0.833,
+    "m7_judge_score": 0.65
+  },
+  "timing": {
+    "pipeline_s": 18.76,
+    "latency_breakdown": {
+      "search_ms": 1258,
+      "extract_ms": 1060,
+      "chunk_ms": 39,
+      "retrieve_ms": 1172
+    },
+    "total_latency_ms": 18752
+  },
+  "pipeline": {
+    "answer": "# Comparing IVFFlat and HNSW Indexes for Approximate Nearest Neighbor Search\n\nIVFFlat (Inverted File Flat) and HNSW (Hierarchical Navigable Small World) are two popular approximate nearest neighbor (ANN) indexes, each offering distinct trade-offs across accuracy, speed, and memory. Both sacrifice some exactness to drastically outperform brute-force search, but they do so through fundamentally different strategies [1][3].\n\n## Accuracy\n\n**HNSW** is the more accurate of the two. It is described as a \"highly accurate ANN algorithm\" that can maintain near-perfect recall, often achieving 0.9–0.99 recall@k [1][3]. HNSW is \"data agnostic,\" meaning it does not rely on clustering and performs well across varied data distributions [1].\n\n**IVFFlat** is \"slower and less accurate than HNSW\" [1]. Its accuracy suffers because it reduces the search scope through pre-built clusters — if the query vector lies near the boundary between clusters, true nearest neighbors may be missed [1]. In practice, IVFFlat achieves high recall but typically below HNSW's levels for the same parameter settings [3].\n\n## Speed\n\nBoth indexes offer massive speedups over brute-force Flat search, but with important operational differences [2][3].\n\n**HNSW** delivers very fast query times, reducing latency to milliseconds even on large datasets. Its graph-based structure enables efficient navigation directly to the nearest neighbors [2][3]. However, the build time is slower because constructing the hierarchical graph is compute-intensive [1].\n\n**IVFFlat** processes queries in sub-millisecond responses due to its clustering approach — it only searches within the most relevant clusters rather than the entire dataset [3]. Critically, IVFFlat has a \"fast build time\" because clustering is relatively cheap compared to building a graph; this makes IVFFlat substantially faster to build than HNSW [1].\n\n## Memory\n\nThis is where the indexes diverge most sharply.\n\n**HNSW** is \"memory-intensive\" [1]. The memory overhead can be 30–50% more than the raw vectors due to storing additional graph links at each hierarchical level [2]. For example, querying 1 million 768-dimensional vectors (already ~3GB for raw vectors) would require substantially more RAM with HNSW [2].\n\n**IVFFlat** is explicitly designed for \"low memory usage\" [1]. It only stores the cluster centroids and the raw vectors assigned to each cluster, adding minimal structural overhead beyond the vectors themselves. This makes IVFFlat \"more scalable\" for very large datasets where memory is constrained [1].\n\n## Summary of Trade-offs\n\n| Dimension | HNSW | IVFFlat |\n|-----------|------|---------|\n| **Accuracy** | Higher (near-perfect recall) | Lower (may miss neighbors at cluster boundaries) |\n| **Query Speed** | Very fast (milliseconds) | Very fast (sub-millisecond) |\n| **Build Speed** | Slow | Fast |\n| **Memory** | High (30-50% overhead) | Low (minimal overhead) |\n| **Data Agnostic** | Yes | No (relies on clustering) |\n\n**When to choose HNSW:** If memory is abundant and you need the highest possible recall with fast queries, and can tolerate a slower index build time [1][2].\n\n**When to choose IVFFlat:** If memory or build time is constrained (e.g., frequently re-indexing large datasets), or if you can accept slightly reduced accuracy in exchange for scalability and low memory footprint [1][3].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://pixion.co/blog/choosing-your-index-with-pg-vector-flat-vs-hnsw-vs-ivfflat",
+        "title": "Choosing your Index with PGVector | PIXION Blog"
+      },
+      {
+        "num": 2,
+        "url": "https://milvus.io/ai-quick-reference/what-tradeoffs-exist-between-using-an-exact-bruteforce-search-versus-an-approximate-index-in-a-vector-database-considering-factors-like-speed-memory-and-accuracy",
+        "title": "What trade-offs exist between using an exact brute-force search versus an approximate index in a vector database (considering factors like speed, memory, and accuracy)?"
+      },
+      {
+        "num": 3,
+        "url": "https://pyimagesearch.com/2026/02/16/vector-search-with-faiss-approximate-nearest-neighbor-ann-explained/",
+        "title": "Vector Search with FAISS: Approximate Nearest Neighbor (ANN) Explained - PyImageSearch"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://pyimagesearch.com/2026/02/16/vector-search-with-faiss-approximate-nearest-neighbor-ann-explained/",
+        "title": "Vector Search with FAISS: Approximate Nearest Neighbor ...",
+        "snippet": "Learn how FAISS powers fast vector search using Flat, IVF, and HNSW indexes, balancing recall and speed for large-scale retrieval."
+      },
+      {
+        "url": "https://pixion.co/blog/choosing-your-index-with-pg-vector-flat-vs-hnsw-vs-ivfflat",
+        "title": "Choosing your Index with PGVector | PIXION Blog",
+        "snippet": "If you happen to use Postgres as your vector database of choice, you might have noticed that you can utilize various indexes with it — Flat, HNSW, and IVFFlat. In the flat index, when you retrieve *k* relevant vectors, you can be assured that these vectors are indeed the nearest neighbors to our query vector. And if you are concerned about search speed in a flat index, unless you have a large enough dataset (numbers higher than a million vectors) — there is no noticeable slowdown. That means that the index performance doesn't depend on the data (vectors inside of the database) it's built upon. On the other hand, the HNSW and IVFFlat indexes introduce approximations to improve search speed, offering solutions for larger datasets. The Postgres database utilizes three index types: Flat, HNSW, and IVFFlat. The HNSW (Hierarchical Navigable Small World) index, a highly accurate ANN (Approximate Nearest Neighbor) algorithm, offers a fast solution that works well with high-dimensional vectors but is **memory-intensive**."
+      },
+      {
+        "url": "https://milvus.io/ai-quick-reference/what-tradeoffs-exist-between-using-an-exact-bruteforce-search-versus-an-approximate-index-in-a-vector-database-considering-factors-like-speed-memory-and-accuracy",
+        "title": "What trade-offs exist between using an exact brute-force search versus an approximate index in a vector database (considering factors like speed, memory, and accuracy)?",
+        "snippet": "What trade-offs exist between using an exact brute-force search versus an approximate index in a vector database (considering factors like speed, memory, and accuracy)? The choice between exact brute-force search and approximate indexing in vector databases involves balancing speed, memory usage, and accuracy. Brute-force methods guarantee perfect accuracy by comparing every query against all vectors, but they scale poorly with dataset size. Approximate indexes prioritize speed and memory efficiency by trading some accuracy, using techniques like graph-based or tree-based structures to narrow the search space. For example, querying 1 million vectors requires 1 million distance calculations, leading to latency proportional to dataset size—a query might take seconds, which is untenable for real-time use cases like chatbots. Additionally, brute-force requires storing all vectors in memory, which can be costly (e.g., 1M 768-dimension vectors consume ~3GB of RAM). In contrast, approximate methods like HNSW (Hierarchical Navigable Small World) or IVF (Inverted File Index) reduce latency to milliseconds by organizing vectors into precomputed clusters or graphs."
+      },
+      {
+        "url": "https://arxiv.org/html/2602.23999v1",
+        "title": "GPU-Native Approximate Nearest Neighbor Search with ...",
+        "snippet": "IVF-Flat stores full-precision vectors and performs brute-force scanning within selected clusters. Its accuracy is strong, but the scan stage is"
+      },
+      {
+        "url": "https://arxiv.org/pdf/2602.21600",
+        "title": "[PDF] AQR-HNSW: Accelerating Approximate Nearest Neighbor Search ...",
+        "snippet": "AQR-HNSW: Accelerating Approximate Nearest Neighbor Search via Density-aware ! zhang@asu.edu Arizona State University Tempe, AZ, USA Abstract Approximate Nearest Neighbor (ANN) search has become funda-mental to modern AI infrastructure, powering recommendation systems, search engines, and large language models across indus-try leaders from Google to OpenAI. This paper presents Adaptive Quantization and Rerank HNSW (AQR-HNSW), a novel framework that syner-gistically integrates three strategies to enhance HNSW’s scalability. AQR-HNSW introduces (1) density-aware adaptive quantization, achieving 4× compression while preserving distance relationships; (2) multi-state re-ranking that reduces unnecessary computations by 35%; and (3) quantization-optimized SIMD implementations de-livering 16-64 operations per cycle across architectures. Evaluation on standard benchmarks demonstrates 2.5-3.3× higher queries per second (QPS) than state-of-the-art HNSW implementations while maintaining 98%+ recall, with 75% memory reduction for the index graph and 5× faster index construction. Among ANN approaches, graph-based [6, 15, 35] approaches have emerged as the dominant paradigm due to their superior recall-latency characteristics compared to tree-based [4, 26, 28] and quantization-based methods [3, 16, 24]."
+      },
+      {
+        "url": "https://mbrenndoerfer.com/writing/hnsw-index-vector-search-architecture",
+        "title": "HNSW Index: Architecture for Fast Vector Search - Interactive | Michael Brenndoerfer | Michael Brenndoerfer",
+        "snippet": "# HNSW Index: Architecture for Fast Vector Search. Master Hierarchical Navigable Small World (HNSW) graphs for vector search. Learn graph architecture, construction, and tuning for high-speed retrieval. In the previous chapter, we explored vector similarity search and the fundamental challenge it presents: given a query vector, find the most similar vectors in a collection. The brute-force approach, computing distances between the query and every vector in the database, delivers perfect accuracy but scales linearly with the number of vectors. The result is an index structure that supports both fast construction and fast search, with tunable parameters that let you precisely control the tradeoff between speed and recall. If a graph has a million nodes and each node connects only to a few neighbors, you might imagine that traversing from one side of the graph to the other would require thousands or even hundreds of thousands of hops."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://pixion.co/blog/choosing-your-index-with-pg-vector-flat-vs-hnsw-vs-ivfflat",
+        "title": "Choosing your Index with PGVector | PIXION Blog",
+        "heading": "Summary",
+        "chunk_text": "Summary\n\nCopied!\n\nThe Postgres database utilizes three index types: Flat, HNSW, and IVFFlat.\n\nThe Flat index, although slow, offers the **most accurate search** —courtesy of the kNN search algorithm. However, as data volumes grow, search speed can fall off.\n\nThe HNSW (Hierarchical Navigable Small World) index, a highly accurate ANN (Approximate Nearest Neighbor) algorithm, offers a fast solution that works well with high-dimensional vectors but is **memory-intensive**. The benefit is that the index is **data agnostic**.\n\nLastly, the IVFFlat (Inverted File Flat) index, although slower and less accurate than HNSW, is more scalable due to its **low memory usage** and **fast build time**. It reduces the search scope through clustering, which makes it non-data-agnostic.\n\nWhile learning how to build RAG applications is fun, when it comes to delivering products to production, we need to do more than build applications. That’s why, in our next blog post, we will talk about testing and evaluating RAG.",
+        "score": 7.2392,
+        "rank": 0
+      },
+      {
+        "url": "https://milvus.io/ai-quick-reference/what-tradeoffs-exist-between-using-an-exact-bruteforce-search-versus-an-approximate-index-in-a-vector-database-considering-factors-like-speed-memory-and-accuracy",
+        "title": "What trade-offs exist between using an exact brute-force search versus an approximate index in a vector database (considering factors like speed, memory, and accuracy)?",
+        "heading": "What trade-offs exist between using an exact brute-force search versus an approximate index in a vector database (considering factors like speed, memory, and accuracy)?",
+        "chunk_text": "What trade-offs exist between using an exact brute-force search versus an approximate index in a vector database (considering factors like speed, memory, and accuracy)?\n\nBrute-force search excels in accuracy but becomes impractical for large datasets. For example, querying 1 million vectors requires 1 million distance calculations, leading to latency proportional to dataset size—a query might take seconds, which is untenable for real-time use cases like chatbots. Additionally, brute-force requires storing all vectors in memory, which can be costly (e.g., 1M 768-dimension vectors consume ~3GB of RAM). In contrast, approximate methods like HNSW (Hierarchical Navigable Small World) or IVF (Inverted File Index) reduce latency to milliseconds by organizing vectors into precomputed clusters or graphs. However, these structures add memory overhead. An HNSW index, for instance, might use 30–50% more memory than raw vectors due to layered graph links. While faster, approximate indexes may miss some true nearest neighbors, with accuracy often measured via metrics like recall@k (e.g., finding 9 of the top 10 matches).",
+        "score": 6.6638,
+        "rank": 1
+      },
+      {
+        "url": "https://pyimagesearch.com/2026/02/16/vector-search-with-faiss-approximate-nearest-neighbor-ann-explained/",
+        "title": "Vector Search with FAISS: Approximate Nearest Neighbor (ANN) Explained - PyImageSearch",
+        "heading": "[Summary](https://pyimagesearch.com/2026/02/16/vector-search-with-faiss-approximate-nearest-neighbor-ann-explained/#TOC-h2-Summary)",
+        "chunk_text": "[Summary](https://pyimagesearch.com/2026/02/16/vector-search-with-faiss-approximate-nearest-neighbor-ann-explained/#TOC-h2-Summary)\n\nIn this tutorial, you moved beyond understanding embeddings and stepped into the practical world of **vector search**. You began by revisiting the limitations of brute-force similarity search and saw why indexing is crucial when datasets grow larger. Then, you explored how **FAISS**, Meta’s open-source library for efficient similarity search, builds the backbone of modern vector databases.\n\nFrom there, you implemented and compared 3 major index types (i.e., **Flat**, **HNSW**, and **IVF-Flat**) each offering a different trade-off between speed, recall, and memory. You wrote code to benchmark their performance, measuring `recall@k`, **query latency**, **build time**, and **memory usage**, and visualized the results directly in your terminal. Along the way, you saw how HNSW maintains near-perfect accuracy while drastically improving query speed, and how IVF-Flat compresses the search space to achieve sub-millisecond responses even with slight precision loss.\n\nBy the end, you not only understood _how_ approximate nearest neighbor (ANN) search works but also saw _why_ it matters — enabling scalable, real-time retrieval without compromising too much on accuracy. You also saved your indexes, preparing them for use in the next lesson, where we’ll connect them to a **Retrieval-Augmented Generation (RAG)**pipeline and bring everything full circle: embeddings, vector search, and large language models working together in action.\n\n* * *",
+        "score": 6.5272,
+        "rank": 2
+      },
+      {
+        "url": "https://pixion.co/blog/choosing-your-index-with-pg-vector-flat-vs-hnsw-vs-ivfflat",
+        "title": "Choosing your Index with PGVector | PIXION Blog",
+        "heading": "Approximation in vector databases",
+        "chunk_text": "Approximation in vector databases\n\nCopied!\n\nWhen we start working with large volumes of data, the speed of the flat index begins to fall off. If we want to know the _k_ nearest neighbors, there is no shortcut to comparing the query vector against every other vector in the database. That is why we must start **introducing trade-offs** to increase our search speed.\n\nFor our particular case, we will introduce the **search speed and accuracy trade-off**. We can do this by incorporating approximation into our kNN, resulting in an **approximate nearest neighbor (ANN) search**. The challenge lies in where to draw the line on the ratio.\n\nThis concept is based on the idea that we no longer search the entire database — but a reduced version. How depends on the implementation. There are techniques like dimensionality and search scope reduction, but we won't cover them as concepts in this article.\n\n![Image 2: ANN search](https://pixionweb.blob.core.windows.net/web/lib/ANN_f358389198.svg)_Image 2 - Approximate Nearest Neighbour Search. The image shows the consequences of approximation. With this approach, we may miss the actual nearest neighbors. Concretely, in our case, we missed two out of five of the nearest neighbors. However, the result is still satisfactory as all the found neighbors are still near enough to our query vector._\n\nThe important thing to remember with ANN is that **we can no longer be sure that we have _k_ nearest neighbors**, as we have approximated them.",
+        "score": 6.194,
+        "rank": 3
+      },
+      {
+        "url": "https://pyimagesearch.com/2026/02/16/vector-search-with-faiss-approximate-nearest-neighbor-ann-explained/",
+        "title": "Vector Search with FAISS: Approximate Nearest Neighbor (ANN) Explained - PyImageSearch",
+        "heading": "[Accuracy vs. Latency: The Core Trade-Off](https://pyimagesearch.com/2026/02/16/vector-search-with-faiss-approximate-nearest-neighbor-ann-explained/#TOC-h3-Accuracy-vs-Latency-The-Core-Trade-Off)",
+        "chunk_text": "[Accuracy vs. Latency: The Core Trade-Off](https://pyimagesearch.com/2026/02/16/vector-search-with-faiss-approximate-nearest-neighbor-ann-explained/#TOC-h3-Accuracy-vs-Latency-The-Core-Trade-Off)\n\nANN methods exist in many flavors — graph-based (HNSW), cluster-based (IVF), tree-based (LSH, KD-Tree), and hybrid approaches — but they all share a single philosophy:\n\n![Image 12: \\text{Speed up retrieval by avoiding exhaustive search.}](blob:http://localhost/9fb80fdbec9bedfb2ac8872cab2d2dbf)\n\nThey do so by:\n\n*   **Pre-structuring** the vector space (clustering, graphs, hashing).\n*   **Restricting** comparisons to only nearby candidates.\n*   **Accepting** that some true neighbors might be missed — in exchange for massive speed-ups.\n\nYou’ll often see performance expressed using `recall@k`, the fraction of true neighbors recovered among the top-_k_ results.\n\nA good ANN index achieves 0.9 – 0.99 `recall@k` while being orders of magnitude faster than brute force.\n\n[![Image 13](blob:http://localhost/98e5b1c7679bded924b0d5732007d5df)](https://pyimagesearch.com/wp-content/uploads/2026/02/image-52-scaled.png)\n\n**Table 2:** Example recall and latency comparison of Flat, IVF-Flat, and HNSW indexes on a medium-scale corpus.\n\n[![Image 14](blob:http://localhost/5bac17db07275fdb8a9832a05489d363)](https://pyimagesearch.com/wp-content/uploads/2026/02/image-62.png)\n\n**Figure 3:** Approximate indexes (e.g., HNSW and IVF-Flat) achieve near-perfect recall while being orders of magnitude faster than brute-force Flat search (source: image by the author).\n\nThe Flat index delivers exact results but with high latency, whereas HNSW and IVF-Flat balance speed and accuracy for scalable retrieval.",
+        "score": 6.1633,
+        "rank": 4
+      }
+    ],
+    "sub_queries": [
+      "What are the accuracy, speed, and memory trade-offs of IVFFlat index for approximate nearest neighbor search?",
+      "What are the accuracy, speed, and memory trade-offs of HNSW index for approximate nearest neighbor search?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.65,
+    "reasoning": "The response correctly identifies key trade-offs (HNSW higher accuracy, faster queries, more memory; IVFFlat less accurate, slower, less memory) and cites sources. However, it misses two important factual details from ground truth: IVFFlat partitions space using k-means and requires a training phase. The response is partially correct but incomplete.",
+    "judge_model": "deepseek-chat"
+  }
+}

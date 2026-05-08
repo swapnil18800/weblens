@@ -1,0 +1,40 @@
+{
+  "category": "strict_refusal",
+  "expected_behavior": "Honest no_info refusal when data granularity doesn't exist in filings. Validator's refusal_appropriate flag tested.",
+  "question": "What was Apple's FY2024 R&D spending broken down by specific patent category and invention type?",
+  "ground_truth": "Apple's 10-K does not break down R&D spending by patent category or invention type. The 10-K reports total R&D expense of approximately $31.4B for FY2024 as a single line item. No patent-category breakdown is disclosed in SEC filings. An honest answer states the total R&D figure and explains that the requested breakdown is not available.",
+  "key_facts": [
+    "Total R&D ~$31.4B for FY2024 is available.",
+    "Patent-category breakdown does NOT exist in 10-K.",
+    "Answer must NOT fabricate a breakdown.",
+    "Should cite [SEC-AAPL-*] for the total R&D figure.",
+    "Should clearly state the breakdown is unavailable."
+  ],
+  "session_id": "eval-20260507T180458Z-03",
+  "metrics": {
+    "m1_factual_correctness": 0.0,
+    "m3_retrieval_recall": 0.0,
+    "m7_judge_score": 0.0
+  },
+  "timing": {
+    "pipeline_s": 1.54,
+    "latency_breakdown": {},
+    "total_latency_ms": 0
+  },
+  "pipeline": {
+    "answer": "",
+    "citations": [],
+    "urls": [],
+    "chunks": [],
+    "sub_queries": [
+      "What was Apple's FY2024 R&D spending broken down by specific patent category and invention type?"
+    ],
+    "error": "No URLs found. Check TAVILY_API_KEY."
+  },
+  "judgment": {
+    "verdict": "fail",
+    "score": 0.0,
+    "reasoning": "The system response is empty, which fails to provide any information. It does not state the total R&D figure (~$31.4B), does not explain that the requested breakdown is unavailable, and does not cite any source. This violates all key facts and the expected behavior of an honest no_info refusal.",
+    "judge_model": "deepseek-chat"
+  }
+}

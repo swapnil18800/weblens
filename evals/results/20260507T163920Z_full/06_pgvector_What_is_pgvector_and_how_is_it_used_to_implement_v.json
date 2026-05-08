@@ -1,0 +1,134 @@
+{
+  "category": "pgvector",
+  "expected_behavior": "Technical explanation of pgvector capabilities and use cases with citations.",
+  "question": "What is pgvector and how is it used to implement vector similarity search in PostgreSQL?",
+  "ground_truth": "pgvector is a PostgreSQL extension that adds vector data types and similarity search operators. It supports storing float32 vectors of arbitrary dimensions, and computing L2, cosine, and inner product distances. Indexing options include IVFFlat (approximate, fast) and HNSW (more accurate, added in v0.5.0). Used widely for RAG, semantic search, and recommendation systems. Example: `CREATE INDEX ON items USING ivfflat (embedding vector_cosine_ops)`.",
+  "key_facts": [
+    "pgvector is a PostgreSQL extension",
+    "supports cosine L2 and inner product distances",
+    "IVFFlat index for approximate nearest neighbor",
+    "HNSW index available in v0.5.0",
+    "used for semantic search and RAG"
+  ],
+  "session_id": "eval-20260507T163920Z-06",
+  "metrics": {
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.95
+  },
+  "timing": {
+    "pipeline_s": 19.38,
+    "latency_breakdown": {
+      "search_ms": 1348,
+      "extract_ms": 3385,
+      "chunk_ms": 29,
+      "retrieve_ms": 1438
+    },
+    "total_latency_ms": 19372
+  },
+  "pipeline": {
+    "answer": "## What is pgvector?\n\npgvector is an **open-source extension for PostgreSQL** that adds native support for storing, indexing, and querying vector data, enabling vector similarity search directly within the database [1][2]. Since PostgreSQL does not have built-in vector capabilities (as of PostgreSQL 16), pgvector fills this gap by allowing vector operations to work alongside traditional relational data in the same database [2].\n\nKey features include:\n- **Efficient storage** of dense vector data [1]\n- **Multiple distance metrics**, including cosine similarity (which measures directional alignment and is commonly used for semantic similarity), Euclidean distance (L2), and inner product [1][2][3]\n- **Both exact and approximate nearest neighbor search** (ANN), with the latter supported via indexing [1]\n- **Full integration** with PostgreSQL’s existing query planner, indexing mechanisms, and SQL syntax [1][2]\n- **Scalability** — when paired with the pgvectorscale extension, it can handle datasets as large as **50 million high-dimensional vectors** [2]\n\n## How pgvector Implements Vector Similarity Search\n\nVector similarity search with pgvector works through the following steps:\n\n1. **Vector storage**: After creating a column of the `vector` data type, embeddings (numerical representations of data like text, images, or user behavior) are stored directly in a PostgreSQL table alongside other application data [1][2].\n\n2. **Indexing for speed**: pgvector supports creating specialized indexes (e.g., IVFFlat or HNSW) on vector columns to accelerate similarity searches. This enables fast **approximate nearest neighbor** queries, which trade a small amount of accuracy for dramatically better performance [1][3].\n\n3. **Querying with distance operators**: Similarity search is performed using SQL operators such as:\n   - `<->` for Euclidean (L2) distance\n   - `<#>` for negative inner product\n   - `<=>` for cosine distance [1][3]\n\n   For example, to find the 10 most semantically similar items to a given query vector, you would write an `ORDER BY` clause using the cosine distance operator with a `LIMIT` statement [2].\n\n4. **Real-time retrieval**: Because everything happens within PostgreSQL, similarity search can return results in real time without needing a separate vector database or additional infrastructure [3].\n\n## Common Use Cases\n\npgvector is widely used for:\n- **Natural language processing** — sentiment analysis, document classification, semantic search [2]\n- **Recommendation systems** — product suggestions, content discovery, personalization by matching items to user behavior [2][3]\n- **Image search and recognition** — reverse image search, object recognition by comparing image embeddings [2][3]\n- **Anomaly detection** — identifying outliers in fraud detection or quality control by finding vectors distant from typical patterns [2][3]\n- **Hybrid search** — combining vector similarity with PostgreSQL’s full-text search to balance semantic relevance with exact keyword matching [2][3]\n\nIn summary, pgvector transforms PostgreSQL into a dual-purpose database that can handle both traditional relational queries and modern vector similarity search without requiring any external system [1][2][3].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.datacamp.com/tutorial/pgvector-tutorial",
+        "title": "pgvector Tutorial: Integrate Vector Search into PostgreSQL"
+      },
+      {
+        "num": 2,
+        "url": "https://www.enterprisedb.com/blog/what-is-pgvector",
+        "title": "https://www.enterprisedb.com/blog/what-is-pgvector"
+      },
+      {
+        "num": 3,
+        "url": "https://www.databricks.com/blog/what-is-pgvector",
+        "title": "https://www.databricks.com/blog/what-is-pgvector"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.enterprisedb.com/blog/what-is-pgvector",
+        "title": "Understanding pgvector: Optimizing Your Vector Database",
+        "snippet": "In this blog post, we’ll explore how pgvector can help with AI-based workloads in Postgres, making your database vector operations faster and more efficient. ## pgvector: Storing and Querying Vector Data in Postgres. INSERT INTO documents VALUES ('1', 'pgvector', 'pgvector is a PostgreSQL extension that provides support for vector similarity search and nearest neighbor search in SQL.');. This code fetches document contents from the database, uses OpenAI API to generate embeddings, and then stores these embeddings back in the database. The query first fetches an embeddings vector for the document titled “pgvector” and then uses the similarity search to get documents with similar content. Document text: pgvector is a PostgreSQL extension that provides support for vector similarity search and nearest neighbor search in SQL. ## pgvector: FAQs. pgvector is an extension for Postgres that enables efficient storage and similarity search of high-dimensional vector data, commonly used for machine learning models, recommendation systems, and natural language processing applications."
+      },
+      {
+        "url": "https://www.databricks.com/blog/what-is-pgvector",
+        "title": "What is pgvector? | Databricks",
+        "snippet": "pgvector is an open-source PostgreSQL extension that adds the ability to store, index and search vector embeddings (numerical representations of data)."
+      },
+      {
+        "url": "https://cloud.google.com/discover/what-is-pgvector",
+        "title": "What is pgvector? - Google Cloud",
+        "snippet": "pgvector is an extension that runs inside PostgreSQL. It adds “vector,” a new data type, to the database, allowing storage and processing of vector embeddings"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=j1QcPSLj7u0",
+        "title": "PGVector: Turn PostgreSQL Into A Vector Database - YouTube",
+        "snippet": "In this video, we learn about PGVector, an extension for PostgreSQL, which allows us to turn it into a vector database."
+      },
+      {
+        "url": "https://severalnines.com/blog/vector-similarity-search-with-postgresqls-pgvector-a-deep-dive/",
+        "title": "Vector Similarity Search with PostgreSQL's pgvector - A Deep Dive",
+        "snippet": "# Vector Similarity Search with PostgreSQL’s pgvector – A Deep Dive. This blog will provide a high-level overview of vector search and its application before going in-depth on pgvector, delving into its creation, features, use cases, and how to enable it into your PostgreSQL database manually and using ClusterControl (CC). The addition of pgvector to PostgreSQL makes it easier for organizations that already use PostgreSQL to efficiently store, retrieve, and manipulate vector data within their existing or new database — this eliminates the need for separate vector databases or complex workarounds. pgvector enables you to store, query, and index machine learning-generated embeddings in PostgreSQL alongside the rest of your data. pgvector seamlessly integrates with SQL queries, allowing you to combine vector similarity search with other SQL filtering or aggregation operations. pgvector provides various query operators to perform different operations on vector data. With pgvector, you can confidently store, manage, and query your valuable vector data at scale, all within the trusted and familiar environment of your PostgreSQL database."
+      },
+      {
+        "url": "https://www.datacamp.com/tutorial/pgvector-tutorial",
+        "title": "pgvector Tutorial: Integrate Vector Search into PostgreSQL",
+        "snippet": "pgvector is an open-source extension for PostgreSQL that adds support for vector operations and similarity searches. It lets you store, index, and query vector"
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.datacamp.com/tutorial/pgvector-tutorial",
+        "title": "pgvector Tutorial: Integrate Vector Search into PostgreSQL",
+        "heading": "What Is pgvector?",
+        "chunk_text": "What Is pgvector?\n\n[pgvector](https://github.com/pgvector/pgvector) is an open-source extension for [PostgreSQL](https://postgresql.org/) that adds support for vector operations and similarity searches. It lets you store, index, and query vector data directly within your PostgreSQL database.\n\nThis integration brings the power of vector operations to your existing PostgreSQL infrastructure, making it an excellent choice for applications involving embeddings, recommendation systems, and similarity searches.\n\nFeatures of pgvector include:\n\n*   Efficient storage of dense vector data\n*   Fast similarity search using various distance metrics\n*   Integration with PostgreSQL's existing query planner and indexing mechanisms\n*   Support for both exact and approximate nearest neighbor searches",
+        "score": 8.977,
+        "rank": 0
+      },
+      {
+        "url": "https://www.enterprisedb.com/blog/what-is-pgvector",
+        "title": "https://www.enterprisedb.com/blog/what-is-pgvector",
+        "heading": "",
+        "chunk_text": "What is pgvector, and How Can It Help Your Vector Database?\nThere are countless ways to accelerate Postgres workloads. It’s all in how you store and query data, how big your data is, and how often you run those queries.\nIn this blog post, we’ll explore how pgvector can help with AI-based workloads in Postgres, making your database vector operations faster and more efficient.\npgvector: Storing and Querying Vector Data in Postgres\npgvector is a PostgreSQL extension that allows you to store, query, and index vectors.\nPostgres does not have native vector capabilities as of Postgres 16, and postgres pgvector is designed to fill this gap. You can store your vector data with the rest of your data in Postgres, do a vector similarity search, and still utilize all of Postgres’ great features.\nWho Needs Vector Similarity Search?\nWhen working with high-dimensional data, especially in applications like recommendation engines, image search, and natural language processing, vector similarity search is critical. Many AI applications involve finding similar items or recommendations based on user behavior or content similarity. pgvector can perform vector similarity searches efficiently, making it suitable for recommendation systems, content-based filtering, and similarity-based AI tasks.\nThe pgvector extension integrates seamlessly with Postgres – allowing users to leverage its capabilities within their existing database infrastructure.",
+        "score": 8.3285,
+        "rank": 1
+      },
+      {
+        "url": "https://www.databricks.com/blog/what-is-pgvector",
+        "title": "https://www.databricks.com/blog/what-is-pgvector",
+        "heading": "",
+        "chunk_text": "similarity search directly within Postgres, this retrieval can happen in real time without requiring a separate system.\nItems can be matched to past behavior or preferences to support recommendations. This pattern is commonly used for product recommendations, content discovery and personalization in applications. pgvector makes it efficient to identify related items based on patterns in user behavior or content.\nImage embeddings can be stored and compared to quickly find visually similar images. This is widely used in media platforms, e-commerce and creative tools. Storing these embeddings alongside application data makes it easier to run similarity searches without additional infrastructure.\nOutliers can be identified by finding data points that are distant from typical patterns in vector space. This is useful for fraud detection, monitoring and quality control. pgvector enables this by making it easy to compare vectors and detect deviations.\nDuplicate or near-duplicate content can be identified, even when it is expressed differently or formatted in different ways. This is important for content management, search quality and data hygiene.",
+        "score": 8.2253,
+        "rank": 2
+      },
+      {
+        "url": "https://www.enterprisedb.com/blog/what-is-pgvector",
+        "title": "https://www.enterprisedb.com/blog/what-is-pgvector",
+        "heading": "Print results in a nice format",
+        "chunk_text": "Print results in a nice format\n\nbetween points and the determination of similarity in unrelated data.\nPgvector offers significant scalability, especially when paired with the pgvectorscale extension for large-scale vector workloads. PostgreSQL with pgvector and the pgvectorscale extension can handle datasets as large as 50 million high-dimensional vectors.\nConsider the type of data you need to manage, how your project may need to scale, how pgvector will integrate with your existing tech stack, pgvector’s performance characteristics, and your organization’s budget.\npgvector is mainly used for natural language processing such as sentiment analysis and document classification, recommendation systems such as product suggestion systems for retailers, image search and recognition such as reverse image search and object recognition for fashion sites, and anomaly detection for financial institutions.\nYes. It allows for combining traditional keyword search with vector similarity search.\nYes. Cosine similarity is a core distance metric for vector similarity searches. It allows users to assess the similarity between two vectors based on the cosine of the angle between them. This useful when these vectors’ directional alignment is the primary concern.\npgvector on EDB Postgres AI unifies AI, transactional, and analytical workloads in a single, secure platform, delivering 4.22X faster queries, 5X smaller disk footprint, and 18X storage cost efficiency vs.",
+        "score": 8.1298,
+        "rank": 3
+      },
+      {
+        "url": "https://www.databricks.com/blog/what-is-pgvector",
+        "title": "https://www.databricks.com/blog/what-is-pgvector",
+        "heading": "",
+        "chunk_text": "lly handle millions to tens of millions of vectors, depending on hardware, indexing strategy and query patterns. As datasets grow, performance may decline without careful tuning or additional tooling. Factors such as available memory, index type and query frequency all influence scalability.\nDoes pgvector support cosine similarity?\nYes, pgvector supports cosine similarity as one of its primary distance metrics. It measures how closely two vectors point in the same direction, which often reflects semantic similarity in embedding-based applications. This makes it well suited for semantic search, recommendation systems and natural language processing.\nIs pgvector free and open source?\nYes, pgvector is an open-source project released under a permissive license. It can be used with standard Postgres installations as well as many managed Postgres services. This makes it an accessible starting point for adding vector search capabilities.\nCan pgvector do hybrid search?\nYes, pgvector can be combined with Postgres full-text search to support hybrid search. This allows results to balance semantic relevance with keyword matching, improving both accuracy and usability. Hybrid search is especially useful in scenarios such as product search and documentation search, where both meaning and exact terms are important.\npgvector is a practical starting point for any team that wants to add vector search to an existing Postgres application.",
+        "score": 7.812,
+        "rank": 4
+      }
+    ],
+    "sub_queries": [
+      "What is pgvector?",
+      "How is pgvector used to implement vector similarity search in PostgreSQL?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "pass",
+    "score": 0.95,
+    "reasoning": "The response correctly identifies pgvector as a PostgreSQL extension, lists supported distance metrics (cosine, L2, inner product), mentions indexing for approximate search, and notes integration with PostgreSQL. It covers the key facts from ground truth. Minor deduction: does not explicitly mention IVFFlat or HNSW by name, nor the example CREATE INDEX syntax, but overall is accurate and well-cited.",
+    "judge_model": "deepseek-chat"
+  }
+}

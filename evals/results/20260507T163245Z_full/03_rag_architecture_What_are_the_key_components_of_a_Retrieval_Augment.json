@@ -1,0 +1,129 @@
+{
+  "category": "rag_architecture",
+  "expected_behavior": "Multi-component explanation. Answer covers all four RAG pipeline stages with citations.",
+  "question": "What are the key components of a Retrieval Augmented Generation (RAG) system and how do they work together?",
+  "ground_truth": "A RAG system has four main components: (1) Document ingestion and chunking — splitting source documents into retrievable chunks. (2) Embedding and indexing — encoding chunks as dense vectors in a vector store. (3) Retrieval — given a query, finding the most relevant chunks via semantic similarity or hybrid search. (4) Generation — an LLM generates an answer conditioned on the retrieved context. RAG improves accuracy over pure LLMs by grounding answers in current, specific documents.",
+  "key_facts": [
+    "document ingestion and chunking",
+    "embedding and vector indexing",
+    "retrieval using semantic similarity",
+    "LLM generation conditioned on retrieved context",
+    "reduces hallucination by grounding answers"
+  ],
+  "session_id": "eval-20260507T163245Z-03",
+  "metrics": {
+    "m1_factual_correctness": 0.4,
+    "m3_retrieval_recall": 0.2,
+    "m7_judge_score": 0.55
+  },
+  "timing": {
+    "pipeline_s": 19.58,
+    "latency_breakdown": {
+      "search_ms": 2186,
+      "extract_ms": 4832,
+      "chunk_ms": 5,
+      "retrieve_ms": 1334
+    },
+    "total_latency_ms": 19572
+  },
+  "pipeline": {
+    "answer": "## Key Components of a Retrieval-Augmented Generation (RAG) System\n\nA Retrieval-Augmented Generation (RAG) system is built around three primary components that work together in sequence: **Indexing**, **Retrieval**, and **Generation**. These components enable the system to produce grounded, accurate, and explainable responses by supplementing a large language model's (LLM) internal knowledge with external, real-time information [1][2]. Below is a detailed breakdown of each component and how they interact.\n\n### 1. Indexing — Preparing the Knowledge Base\nIndexing is the foundational component that prepares a searchable knowledge database from external data sources (e.g., company documents, database tables, or ticket collections) [2]. This step transforms raw data into an encoded representation that the system can efficiently search. The indexing process produces a structured \"encoded query\" representation, ready for retrieval [3].\n\n### 2. Retrieval — Fetching Relevant Information\nThe retrieval component is the critical bridge between the user's query and the knowledge base. It follows these steps [3]:\n- **Input Query:** A user provides a specific question or prompt.\n- **Encoding:** The query is converted into a mathematical representation (an \"encoded query\") that captures its semantic essence.\n- **Document Retrieval:** Using that encoded query, the system searches the indexed corpus—often employing dense retrieval mechanisms—to find the most relevant information [3]. This retrieval happens in real time, ensuring the responses are contextually relevant and up-to-date [3].\n\n### 3. Generation — Synthesizing the Response\nOnce relevant documents are retrieved, the **Generation** component takes over. The LLM receives both the original query and the retrieved external information as additional context [2]. Instead of relying solely on the knowledge encoded in its parameters, the LLM uses this fresh, grounded information to generate a response that is factually accurate and explainable [1][2]. This process addresses the limitations of traditional models that rely only on pre-existing knowledge [3].\n\n### How They Work Together\n\nThe three components form a seamless pipeline:\n\n1. **Indexing** creates the searchable repository.\n2. **Retrieval** scans that repository in real time to fetch the most relevant documents for a user's query [2][3].\n3. **Generation** combines the user's original input with the retrieved documents to produce a final answer that is backed by facts rather than hallucinations [1][2].\n\nThis architecture ensures the system can deliver up-to-date, contextually relevant responses, making it highly effective for applications like research assistance, code generation, and content creation where grounding in reliable knowledge is critical [3].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://skphd.medium.com/the-anatomy-of-retrieval-augmented-generation-rag-components-a0a1520656e8",
+        "title": "The Anatomy of Retrieval-Augmented Generation (RAG) Components"
+      },
+      {
+        "num": 2,
+        "url": "https://www.aimon.ai/posts/rag_and_its_different_components/",
+        "title": "An overview of Retrieval-Augmented Generation (RAG) and it's different components - AIMon Labs"
+      },
+      {
+        "num": 3,
+        "url": "https://customgpt.ai/components-of-a-rag-system/",
+        "title": "https://customgpt.ai/components-of-a-rag-system/"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://skphd.medium.com/the-anatomy-of-retrieval-augmented-generation-rag-components-a0a1520656e8",
+        "title": "The Anatomy of Retrieval-Augmented Generation (RAG ...",
+        "snippet": "This document will break down the critical components of a RAG system, highlighting the five essential building blocks that bring GenAI solutions to life."
+      },
+      {
+        "url": "https://www.aimon.ai/posts/rag_and_its_different_components/",
+        "title": "An overview of Retrieval-Augmented Generation (RAG) and it's different components - AIMon Labs",
+        "snippet": "Retrieval-Augmented Generation (RAG) is a technique that enhances the generation of an output from a Large Language Model (LLM) by supplementing the input to the LLM with relevant external information. Instead of relying solely on the internal knowledge the LLM was trained with i.e. the knowledge encoded in the model’s parameters, a RAG system retrieves relevant information from external data sources (e.g., tickets, database tables or collections, internal company documents) and uses this information as additional context for the LLM to generate more accurate and relevant responses. RAG addresses these issues by grounding the model’s output in up-to-date, domain-specific information retrieved from relevant sources, making it particularly valuable for a variety of enterprise use cases, for example, Customer Support where tickets and knowledge articles are in a constant state of flux. Indexing ensures that the system can quickly locate and retrieve relevant information based on user queries, forming the backbone of a robust and responsive RAG system."
+      },
+      {
+        "url": "https://www.ibm.com/think/topics/retrieval-augmented-generation",
+        "title": "What is RAG (Retrieval Augmented Generation)? - IBM",
+        "snippet": "Retrieval augmented generation, or RAG, is an architecture for optimizing the performance of an [artificial intelligence (AI)](https://www.ibm.com/think/topics/artificial-intelligence) model by connecting it with external knowledge bases. [Generative AI](https://www.ibm.com/think/topics/generative-ai) (gen AI) models are trained on large datasets and refer to this information to generate outputs. RAG allows generative AI models to access additional external knowledge bases, such as internal organizational data, scholarly journals and specialized datasets. Enterprises can use RAG to complete gaps in a [machine learning](https://www.ibm.com/think/topics/machine-learning) model’s knowledge base so it can provide better answers. Generative AI models such as OpenAI’s [GPT](https://www.ibm.com/think/topics/gpt#:~:text=GPT%20models%20work%20by%20analyzing,based%20on%20all%20previous%20words.) work by detecting patterns in their data, then using those patterns to predict the most likely outcomes to user inputs. By combining generative AI with retrieval systems, RAG models can retrieve and integrate information from multiple data sources in response to complex queries. The [difference between RAG and fine-tuning](https://www.ibm.com/think/topics/rag-vs-fine-tuning) is that RAG lets an LLM query an external data source while fine-tuning trains an LLM on domain-specific data."
+      },
+      {
+        "url": "https://customgpt.ai/components-of-a-rag-system/",
+        "title": "The Key Components Of A RAG System: A Technical Deep Dive - CustomGPT",
+        "snippet": "Building upon the foundation of RAG, which combines retrieval and generation techniques, we will dive into each component practically, providing step-by-step instructions for building and implementing an RAG pipeline. Whether you’re developing a question-answering system, a chatbot, or a content summarization tool, understanding and implementing the RAG framework can greatly enhance the capabilities of your AI applications. Throughout this guide, we will explore specialized algorithms, APIs, and pre-trained models to demonstrate how RAG can be customized and tailored to suit your specific needs. By the end, you will have a comprehensive understanding of how to leverage the power of RAG in your AI projects, empowering your systems to deliver more contextually rich and accurate responses using CustomGPT, thereby enhancing user experience and satisfaction. In the Retrieval component of Retrieval-Augmented Generation (RAG), the goal is to fetch relevant information from external data sources, such as databases or knowledge bases, based on the user’s query."
+      },
+      {
+        "url": "https://medium.com/@punya8147_26846/components-of-retrieval-augmented-generation-rag-e3447eeaac85",
+        "title": "Components of Retrieval-Augmented Generation (RAG) - Medium",
+        "snippet": "RAG is a powerful technique in natural language processing (NLP) that combines the strengths of two core components: retrievers and generators."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://skphd.medium.com/the-anatomy-of-retrieval-augmented-generation-rag-components-a0a1520656e8",
+        "title": "The Anatomy of Retrieval-Augmented Generation (RAG) Components",
+        "heading": "The Anatomy of Retrieval-Augmented Generation (RAG) Components",
+        "chunk_text": "The Anatomy of Retrieval-Augmented Generation (RAG) Components\n\n![Image 10](https://miro.medium.com/v2/resize:fit:700/1*z5ca-3H9F-iKjLVKe53Row.png)\n\nAs enterprises increasingly adopt Generative AI (GenAI), the architecture known as Retrieval-Augmented Generation (RAG) is emerging as a leading solution for delivering grounded, accurate, and explainable results. RAG effectively bridges the gap between large language models and trusted knowledge sources, enabling systems to generate answers that are backed by facts rather than hallucinations. This document will break down the critical components of a RAG system, highlighting the five essential building blocks that bring GenAI solutions to life, particularly when utilizing Azure and OpenAI services.",
+        "score": 8.158,
+        "rank": 0
+      },
+      {
+        "url": "https://www.aimon.ai/posts/rag_and_its_different_components/",
+        "title": "An overview of Retrieval-Augmented Generation (RAG) and it's different components - AIMon Labs",
+        "heading": "Key Components of a RAG System",
+        "chunk_text": "Key Components of a RAG System\n\nA RAG system consists of three main components: Indexing, Retrieval, and Generation. Each plays a critical role in ensuring the system delivers accurate, contextually rich responses. **Indexing** prepares a searchable knowledge database, **Retrieval** fetches relevant data in real time, and **Generation** synthesizes a response using the retrieved information.\n\n![Image 3: Elaborate Architecture](https://www.aimon.ai/content_images/rag_elaborate_arch.png)",
+        "score": 7.5148,
+        "rank": 1
+      },
+      {
+        "url": "https://www.aimon.ai/posts/rag_and_its_different_components/",
+        "title": "An overview of Retrieval-Augmented Generation (RAG) and it's different components - AIMon Labs",
+        "heading": "What is RAG?",
+        "chunk_text": "What is RAG?\n\nRetrieval-Augmented Generation (RAG) is a technique that enhances the generation of an output from a Large Language Model (LLM) by supplementing the input to the LLM with relevant external information. Instead of relying solely on the internal knowledge the LLM was trained with i.e. the knowledge encoded in the model’s parameters, a RAG system retrieves relevant information from external data sources (e.g., tickets, database tables or collections, internal company documents) and uses this information as additional context for the LLM to generate more accurate and relevant responses.",
+        "score": 7.2579,
+        "rank": 2
+      },
+      {
+        "url": "https://customgpt.ai/components-of-a-rag-system/",
+        "title": "https://customgpt.ai/components-of-a-rag-system/",
+        "heading": "",
+        "chunk_text": "does RAG ensure that the generated responses are contextually relevant and up-to-date?\nRAG ensures contextually relevant and up-to-date responses by retrieving real-time information during generation. By connecting with external knowledge bases, RAG keeps the AI model informed about the latest data, addressing the limitations of traditional models relying solely on pre-existing knowledge.\nWhat are the retrieval steps in Retrieval-Augmented Generation (RAG)?\nThe retrieval step in Retrieval-Augmented Generation (RAG) is a key component that enhances the generative capabilities of the AI model. Here’s a breakdown of how the retrieval step works in RAG:\nInput Query:\nIt all begins with a user providing a query or prompt, seeking information or an answer to a specific question.\nEncoding:\nThe input query undergoes encoding, a process where it is transformed into a representation suitable for further processing. This encoded representation captures the essence of the query in a format that the system can work with.\nEncoded Query:\nThe result of the encoding step is the encoded query, which serves as a processed representation of the original query, ready for the retrieval process.\nDocument Retrieval:\nUsing the encoded query, the system searches through a large corpus of information, often employing dense retrieval mechanisms.",
+        "score": 7.1964,
+        "rank": 3
+      },
+      {
+        "url": "https://customgpt.ai/components-of-a-rag-system/",
+        "title": "https://customgpt.ai/components-of-a-rag-system/",
+        "heading": "",
+        "chunk_text": "ng?\nRAG contributes to content creation systems, such as those generating code or creative writing, by ensuring the information used in the generation process is grounded in a reliable knowledge base. This results in more efficient code generation, bug-free outputs, and creative writing that is both engaging and contextually relevant.\nHow does RAG benefit research assistance applications?\nRAG is instrumental in research assistance applications, where it helps researchers find relevant information, generate hypotheses, and write papers. By providing access to external knowledge sources, RAG facilitates more effective and accurate research processes, ultimately contributing to advancements in various fields.\n#7. FAQ About the Future of RAG\nWhat ongoing developments are there in the field of Retrieval-Augmented Generation?\nThe field of Retrieval-Augmented Generation (RAG) is experiencing continuous developments as researchers work on refining the technology. Ongoing efforts focus on improving the efficiency and scalability of retrieval and generation algorithms. Additionally, researchers explore new ways to integrate RAG with other AI technologies, such as machine learning and natural language processing, to enhance overall system capabilities.\nHow are researchers working to address the challenges associated with RAG, such as computational expenses?\nResearchers are actively working to address the challenges associated with computational expenses in RAG.",
+        "score": 6.0794,
+        "rank": 4
+      }
+    ],
+    "sub_queries": [
+      "What are the key components of a Retrieval Augmented Generation (RAG) system?",
+      "How do the components of a Retrieval Augmented Generation (RAG) system work together?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.55,
+    "reasoning": "The response correctly identifies retrieval and generation stages, but omits document ingestion/chunking and embedding/indexing as distinct stages, and does not mention grounding/hallucination reduction. It covers only 2 of 4 key components and 1 of 2 key benefits.",
+    "judge_model": "deepseek-chat"
+  }
+}

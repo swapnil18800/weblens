@@ -1,0 +1,419 @@
+You are continuing development of the minimal web-search RAG system.
+
+The current implementation quality is NOT sufficient yet.
+There are major UX, retrieval visibility, evaluation, persistence, and architectural issues.
+
+Your job now is to systematically FIX and IMPROVE the system into a polished, professional, portfolio-grade AI search application.
+
+IMPORTANT:
+Do NOT blindly patch things.
+Think holistically about:
+
+* architecture
+* state management
+* retrieval observability
+* UI/UX
+* evaluation rigor
+* developer experience
+* latency
+* answer quality
+
+The system should feel:
+
+* clean
+* modern
+* intentional
+* explainable
+* production-inspired
+* interview-worthy
+
+==================================================
+HIGH PRIORITY FIXES & IMPROVEMENTS
+==================================
+
+1. TESTS TAB IS BROKEN
+   Currently:
+
+* test folders do not expand properly
+* sections do not open
+* traces seem incomplete
+
+Questions:
+
+* Are URLs stored?
+* Are citations stored?
+* Are retrieved chunks stored?
+* Are reranked chunks stored?
+* Are decomposed questions stored?
+
+If not:
+STORE THEM.
+
+Create proper persistence for:
+
+* retrieval traces
+* urls
+* chunks
+* rerank scores
+* subquestions
+* synthesized context
+* latency metrics
+* evaluation metrics
+
+Design a clean schema for this.
+
+Tests tab should become:
+
+* fully navigable
+* expandable
+* debuggable
+* useful for retrieval inspection
+
+==================================================
+
+2. SESSION HISTORY IS BROKEN
+
+Previous sessions are greyed out and non-clickable.
+
+Fix:
+
+* session retrieval
+* loading
+* navigation
+* hydration
+* UI state restoration
+
+Sessions MUST open correctly.
+
+==================================================
+
+3. CHAT UX REDESIGN
+
+Current UX:
+
+* replaces entire UI each query
+* no conversation flow
+* poor usability
+
+Redesign into a proper chat interface.
+
+Requirements:
+
+* persistent bottom input bar
+* streaming responses
+* stop generation button
+* conversation turns
+* multiple queries visible in same session
+* smooth scrolling
+* polished interaction flow
+
+IMPORTANT:
+No need for full conversational memory yet.
+
+For now:
+each query may remain independently answered.
+
+But the interface MUST visually feel like a modern AI chat product.
+
+Think:
+
+* ChatGPT
+* Perplexity
+* Claude
+* modern AI UX
+
+Also:
+The left sidebar should become:
+
+* collapsible session history
+* navigable
+* clean
+
+Remove current top-right history button.
+
+==================================================
+
+4. GOLDEN EVAL DATASET
+
+Create a HIGH-QUALITY evaluation benchmark.
+
+Requirements:
+
+* 15 questions
+* financial domain focused
+* easy → hard progression
+* realistic web-search challenges
+
+Cover:
+
+* multi-hop reasoning
+* query decomposition
+* synthesis
+* hallucination resistance
+* retrieval grounding
+* temporal reasoning
+* contradictory information
+* aggregation across sources
+* SEC filings
+* earnings analysis
+* macroeconomic interpretation
+* market structure
+* entity ambiguity
+
+VERY IMPORTANT:
+Ground truth quality must be EXTREMELY high.
+
+Use:
+
+* research tools
+* internet
+* careful fact verification
+
+This benchmark should become:
+THE canonical evaluation suite.
+
+Use it for:
+
+* smoke eval
+* full eval
+
+Smoke eval:
+should support:
+
+* category filtering
+* question number filtering
+
+==================================================
+
+5. ANSWERS ARE TOO VERBOSE
+
+Current answers feel like:
+
+* deep research reports
+* unnecessarily long
+* latency-heavy
+
+Fix:
+
+* concise answers
+* high signal density
+* fast readability
+* grounded synthesis
+* directness
+
+Target:
+Perplexity-style concise intelligence.
+
+==================================================
+
+6. PIPELINE TRACE UX IS BAD
+
+Current problems:
+
+* URLs truncated
+* decomposed questions truncated
+* poor scrolling behavior
+* trace panel tied to answer panel scroll
+
+Fix:
+
+* independent scrolling
+* expandable sections
+* full URLs visible
+* better typography
+* better hierarchy
+* cleaner layout
+
+==================================================
+
+7. TRACE SHOULD BE SUBQUESTION-CENTRIC
+
+IMPORTANT ARCHITECTURAL CHANGE
+
+Instead of:
+one giant flat trace
+
+I want:
+
+Subquestion
+├── search queries
+├── URLs
+├── extracted pages
+├── retrieved chunks
+├── reranked chunks
+├── synthesis notes
+
+Then:
+global synthesis stage.
+
+This is VERY important for explainability.
+
+Retrieved chunks should appear INSIDE trace,
+not below citations section.
+
+==================================================
+
+8. RIGHT PANEL SIMPLIFICATION
+
+The right side should ONLY contain:
+
+* answer
+* citations
+
+Citations should:
+
+* be collapsible
+* grouped nicely
+* easy to scan
+
+==================================================
+
+9. ANSWER STRUCTURE
+
+Answer formatting should become:
+
+Subquestion Title
+Short grounded answer
+
+Subquestion Title
+Short grounded answer
+
+Final Synthesis
+Final answer
+
+Subquestion titles should be:
+
+* nicely humanized
+* readable
+* clean section headers
+
+==================================================
+
+10. DEV VS PROD MODE
+
+Tests tab should:
+
+* exist ONLY in development mode
+* not appear in production UI
+
+You may use:
+
+* feature flags
+* environment config
+* build flags
+
+==================================================
+
+11. EVALUATION IS INCOMPLETE
+
+Current eval only checks 3 parameters.
+
+This is insufficient.
+
+Refer to:
+AlphaLens run_eval implementation.
+
+Add:
+
+* precision
+* relevancy
+* faithfulness
+* grounding quality
+* citation quality
+* retrieval quality
+* answer correctness
+* hallucination scoring
+* latency tracking
+
+Design this PROPERLY.
+
+==================================================
+
+12. UI/UX POLISH
+
+Improve the overall design significantly.
+
+The app should feel:
+
+* premium
+* minimal
+* modern
+* readable
+* professional
+
+Focus on:
+
+* spacing
+* hierarchy
+* typography
+* panel structure
+* loading states
+* animations
+* responsiveness
+
+Avoid:
+
+* clutter
+* excessive colors
+* over-design
+
+==================================================
+ENGINEERING REQUIREMENTS
+========================
+
+* Keep logging MINIMAL
+* Be SMART about token usage
+* Avoid unnecessary LLM calls
+* Prefer deterministic processing where possible
+* Optimize retrieval pipeline quality first
+
+==================================================
+IMPLEMENTATION STRATEGY
+=======================
+
+Work via:
+
+1. Checklist-driven implementation
+2. Iterative improvements
+3. Evaluation-driven refinement
+
+Do NOT stop after implementing features once.
+
+Iteratively:
+
+* improve question set
+* improve retrieval
+* improve synthesis
+* improve evaluation
+* improve UX
+* improve latency
+
+until the system feels genuinely polished.
+
+==================================================
+FINAL REQUIREMENT
+=================
+
+When fully done:
+
+Create a comprehensive summary document containing:
+
+* architecture improvements
+* implemented fixes
+* schema changes
+* retrieval improvements
+* evaluation methodology
+* UI/UX changes
+* latency optimizations
+* future improvement scope
+* tradeoff decisions
+* known limitations
+
+The final system should feel:
+
+* elegant
+* intentional
+* explainable
+* senior-engineered
+* portfolio-worthy
+* close to a real AI search product

@@ -1,0 +1,260 @@
+{
+  "category": "cross_company_simple",
+  "expected_behavior": "2-axis Cartesian decomposition (2 entities x 1 metric x 1 year = 2 sub-questions). Per-entity retrieval isolation tested.",
+  "question": "Compare Apple and Microsoft operating margin in FY2024 based on their annual filings.",
+  "ground_truth": "Apple FY2024 operating margin was approximately 31.5% (operating income ~$123.2B / revenue ~$391.0B). Microsoft FY2024 operating margin was approximately 44.6% (operating income ~$109.4B / revenue ~$245.1B). Microsoft's operating margin is significantly higher than Apple's for FY2024. Both should be cited from respective 10-K filings.",
+  "key_facts": [
+    "AAPL FY2024 operating margin approximately 31-32%.",
+    "MSFT FY2024 operating margin approximately 44-45%.",
+    "Must cite both [SEC-AAPL-*] and [SEC-MSFT-*] chunks.",
+    "Answer should include a comparison or table."
+  ],
+  "session_id": "eval-20260507T181518Z-02",
+  "metrics": {
+    "m1_factual_correctness": 0.75,
+    "m3_retrieval_recall": 0.75,
+    "m7_judge_score": 0.35
+  },
+  "timing": {
+    "pipeline_s": 46.64,
+    "latency_breakdown": {
+      "search_ms": 2582,
+      "extract_ms": 13556,
+      "chunk_ms": 109,
+      "retrieve_ms": 3643
+    },
+    "total_latency_ms": 46634
+  },
+  "pipeline": {
+    "answer": "# Apple vs Microsoft: Operating Margin Comparison for FY2024\n\nBased on the available research sources, a complete comparison is only possible for Apple, as Microsoft's FY2024 operating margin data could not be extracted from the provided sub-answers.\n\n---\n\n## Apple Operating Margin – FY2024\n\n**Apple's operating margin for fiscal year 2024 (ending September 28, 2024) was 31.97%** [4].\n\n| Metric | Value |\n|--------|-------|\n| **Operating Margin** | 31.97% |\n| **Total Net Sales** | $391 billion [1] |\n| **Operating Income (implied)** | ~$125 billion |\n| **Fiscal Year Period** | October 1, 2023 – September 28, 2024 [3] |\n\n### Calculation Basis\nOperating margin = Operating Income ÷ Total Revenues [4]\n\nApple's high operating margin is driven by:\n- **High-margin Services revenue**, which significantly exceeds product margins [1]\n- **Efficient R&D spending**, with increased investment in Apple Intelligence kept proportionate to revenue [1]\n- **Strong geographic revenue distribution** contributing to overall profitability [1]\n\n### Apple's Operating Margin Trend (Recent Years)\n\n| Fiscal Year | Operating Margin [4] |\n|-------------|----------------------|\n| 2025 | 31.97% (most recent) |\n| **2024** | **31.97%** |\n| 2023 | 34.78% |\n| 2022 | 31.89% |\n| 2021 | 26.92% |\n\nApple's operating margin has been relatively stable in the 31–35% range over the past four fiscal years, with a slight dip from the 2023 peak.\n\n---\n\n## Microsoft Operating Margin – FY2024\n\n**Data unavailable from the provided sources.** The sub-answer explicitly states it is impossible to determine Microsoft's FY2024 operating margin based on the given research materials [sub-answer 2].\n\n### Why Data Is Missing\n- **Source [1]** is only the cover page of Microsoft's 10-K on Last10k.com, containing links but **no financial figures** (revenue, operating income, or margin) [1]\n- **Source [2]** is an analysis of **Apple's** 10-K, containing no Microsoft data [2]\n\nTo find Microsoft's FY2024 operating margin, one would need access to the actual financial statements within Microsoft's 10-K (fiscal year: July 1, 2023 – June 30, 2024) and compute: Operating Income ÷ Revenue.\n\n---\n\n## Key Takeaways\n\n| Aspect | Apple (FY2024) | Microsoft (FY2024) |\n|--------|---------------|--------------------|\n| **Operating Margin** | **31.97%** ✅ | **Not available** |\n| **Data Source** | AlphaQuery [4] + 10-K revenue [1] | No financial figures in provided sources |\n| **Fiscal Year End** | September 28, 2024 | June 30, 2024 |\n| **Recent Trend** | Stable (~32% for 2024, 2022, 2025; higher at ~35% in 2023) | Unknown |\n\n### Summary\n- **Apple** maintains a strong operating margin of **31.97%** for FY2024, consistent with its multi-year trend of high profitability driven by services and efficient operations.\n- **Microsoft’s** operating margin for FY2024 cannot be determined from the available research; the provided sources lack the necessary financial data. To complete this comparison, access to Microsoft's actual 10-K financial statements is required.",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-2024/",
+        "title": "https://www.libertify.com/interactive-library/apple-10k-annual-report-2024/",
+        "snippet": "f Apple’s highest-margin geographic segments. The company’s strategic investments in retail presence and developer relations in Japan continue to reinforce its competitive position in this key market. Understanding regional financial dynamics is essential for any comprehensive investment trend analy"
+      },
+      {
+        "num": 2,
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "10-K Annual Report Wed Jul 30 2025",
+        "snippet": "Microsoft Corp (MSFT) SEC Filing 10-K Annual Report for the fiscal year ending Monday, June 30, 2025\n\n1.   [Home](https://last10k.com/)\n2.   [SEC Filings](https://last10k.com/sec-filings)\n3.   [Microsoft Corp (MSFT)](https://last10k.com/sec-filings/msft)\n4.   10-K Annual Report Wed Jul 30 2025\n\n####"
+      },
+      {
+        "num": 3,
+        "url": "https://s2.q4cdn.com/470004039/files/doc_earnings/2024/q4/filing/10-Q4-2024-As-Filed.pdf",
+        "title": "10-K 2024, 09.28.2024-2024-10-31-12-16",
+        "snippet": "Apple Inc.\n\n10.21*, ** Form of CEO Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024.\n\n10.22*, ** Form of CEO Performance Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024.\n\n19.1** Insider Trading Policy\n\n21.1** Su"
+      },
+      {
+        "num": 4,
+        "url": "https://www.alphaquery.com/stock/AAPL/fundamentals/annual/operating-profit-margin",
+        "title": "https://www.alphaquery.com/stock/AAPL/fundamentals/annual/operating-profit-margin",
+        "snippet": "Operating Margin: Operating margin measurement of what proportion of a company's revenue is left over after paying for variable costs of production such as wages, raw materials, etc. Calculated as: Operating Income / Total Revenues\nApple Inc. (AAPL) had Operating Margin of 31.97% for the most recent"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.macrotrends.net/stocks/charts/AAPL/apple/operating-margin",
+        "title": "Apple Operating Margin 2012-2026 | AAPL - Macrotrends",
+        "snippet": "Stock Screener  Start Free Trial Sign In Manage Account Subscribe Now Sign Out. ## Apple Operating Margin 2012-2025 | AAPL. Current and historical operating margin for Apple (AAPL) over the last 10 years. The current operating profit margin for Apple as of December 31, 2025 is **27.04%**. | Apple Operating Margin Historical Data |. | Date | TTM Revenue | TTM Operating Income | Operating Margin |. In fact, Apple dominates the Wearables and Hearables markets due to the growing adoption of Watch and AirPods. Solid uptake of Apple Watch also helps Apple to strengthen its presence in the personal health monitoring space. | Dell (DELL) | United States | $114.814B | 18.77 |. | HP (HPQ) | United States | $16.700B | 5.71 |. | One Stop Systems (OSS) | United States | $0.193B | 0.00 |. Please register using your email address to continue enjoying our free content."
+      },
+      {
+        "url": "https://www.alphaquery.com/stock/AAPL/fundamentals/annual/operating-profit-margin",
+        "title": "Apple Inc. (AAPL) - Operating Margin (Annual) - AlphaQuery",
+        "snippet": "| Cost of Goods Sold | $220.96B |. | Pre-Tax Income | $132.73B |. | Normalized Pre-Tax Income | $132.73B |. | Income after Taxes | $112.01B |. | Income from Continuous Operations | $112.01B |. | Consolidated Net Income/Loss | $112.01B |. | Normalized Income after Taxes | $112.01B |. | Weighted-Average Shares Outstanding (Basic) | 14.95B |. | Weighted-Average Shares Outstanding (Diluted) | 15.00B |. | Long-Term Assets | $211.28B |. | Long-Term Debt | $78.33B |. | Long-Term Liabilities | $119.88B |. | Tangible Shareholders Equity | $73.73B |. | Common Shares Outstanding | 14.77B |. | Cash Flow from Operating Activities | $111.48B |. | Cash Flow from Investing Activities | $15.20B |. | Cash Flow from Financial Activities | $-120.69B |. | Increase/Decrease in Cash | $5.99B |. | Stock-Based Compensation | $12.86B |. | Free Cash Flow | $98.77B |. | Free Cash Flow per Share |  |. | Operating Cash Flow per Share |  |."
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-2024/",
+        "title": "Apple 10-K Analysis 2024: Annual Report Deep Dive —...",
+        "snippet": "# Apple 10-K Analysis 2024: Comprehensive Annual Report Breakdown. ## Apple 10-K Analysis: Fiscal 2024 Financial Overview. The **Apple 10-K analysis** for fiscal year 2024 reveals a company that continues to demonstrate remarkable financial resilience while navigating an increasingly complex global landscape. Apple Inc. reported total net sales of $391 billion for the fiscal year ended September 28, 2024, representing a 2% increase from $383.3 billion in fiscal 2023. While this growth rate appears modest by historical standards, it masks significant underlying dynamics including the acceleration of high-margin Services revenue and the strategic positioning of Apple’s product ecosystem for the AI era. The **Apple 10-K analysis** of revenue composition reveals the continued centrality of iPhone to Apple’s business model. Perhaps the most significant finding in any **Apple 10-K analysis** is the continued acceleration of the Services segment, which generated $96.2 billion in fiscal 2024 — a 13% year-over-year increase."
+      },
+      {
+        "url": "https://en.macromicro.me/series/1066/us-aapl_nasdaq-operating_income_ratio",
+        "title": "US-Apple[AAPL]-Operating Margin | Series - MacroMicro",
+        "snippet": "###### ETF. # [US-Apple[AAPL]-Operating Margin](/series/1066/us-aapl_nasdaq-operating_income_ratio). US-Apple[AAPL]-Operating Margin. This is exclusive to MM Max annual subscribers. Join now for the lowest lifetime early bird price. #### Latest Stats. #### Related Charts. #### Apple - Financial Statement. #### World - Smartphone Brands - Operating Margin. #### World - Mobile Phone Brand Companies - Operating Margin. #### Big Tech - Operating Margin. #### Download Chart (png). Upgrade to the Business Plan to export charts with the latest values and without watermarks. ###### Charts & Market. ###### Analysis. ###### Tools. The data, analysis tools, and content on this website are for informational purposes only and do not constitute financial advice, investment recommendations, or an offer to buy or sell any financial product. While we strive for accuracy, we do not guarantee the completeness or timeliness of the information provided. Users are solely responsible for their investment decisions and assume all associated risks; this website bears no liability for any losses incurred. All website content is protected by copyright."
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000081/aapl-20240629.htm",
+        "title": "aapl-20240629 - SEC.gov",
+        "snippet": "The Company’s proportion of net sales by disaggregated revenue source was generally consistent for each reportable segment in Note 11, “Segment Information and Geographic Data” for the three- and nine-month periods ended June 29, 2024 and July 1, 2023, except in Greater China, where iPhone revenue represented a moderately higher proportion of net sales. The following table shows share-based compensation expense and the related income tax benefit included in the Condensed Consolidated Statements of Operations for the three- and nine-month periods ended June 29, 2024 and July 1, 2023 (in millions):. A reconciliation of the Company’s segment operating income to the Condensed Consolidated Statements of Operations for the three- and nine-month periods ended June 29, 2024 and July 1, 2023 is as follows (in millions):. The Company’s effective tax rate for the third quarter and first nine months of 2024 was higher compared to the same periods in 2023 due primarily to a higher effective tax rate on foreign earnings and lower tax benefits from share-based compensation, partially offset by lower state income taxes."
+      },
+      {
+        "url": "https://s2.q4cdn.com/470004039/files/doc_earnings/2024/q4/filing/10-Q4-2024-As-Filed.pdf",
+        "title": "[PDF] Apple Inc. on Form 10-K for the fiscal year ended September 28, 2024",
+        "snippet": "Members of the Board of Directors, executive officers and any other individuals subject to Section 16 (the “Section 16 reporting persons”) of the Act must also comply with the reporting obligations and limitations on short-swing profit transactions set forth in that section of the Act. Rule 10b5-1 Trading Plans The trading restrictions set forth in this policy do not apply to transactions under a Trading Plan that: • has been submitted to and pre-approved by Apple’s Corporate Legal team; • includes a “Cooling Off Period” for; o Section 16 reporting persons (in which case the Cooling Off Period extends to the later of 90 days after adoption or modification of a Trading Plan or two business days after filing the Form 10-K or Form 10-Q covering the fiscal quarter in which the Trading Plan was adopted, up to a maximum of 120 days); and o all other employees and other covered persons or entities, other than the company (in which case the Cooling Off Period extends to the later of 30 calendar days after the date the plan is executed and 24 hours after the public announcement of our earnings for the quarter in which the plan is executed)."
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q4/productivity-and-business-processes-performance",
+        "title": "FY24 Q4 - Productivity and Business Processes Performance - Investor Relations - Microsoft",
+        "snippet": "Revenue increased $8.5 billion or 12%. •  Office Commercial products and cloud services revenue increased $5.8 billion or 14%. Office 365 Commercial revenue grew 16% with seat growth of 7%, driven by small and medium business and frontline worker offerings, as well as growth in revenue per user. •  Office Consumer products and cloud services revenue increased $237 million or 4%. Microsoft 365 Consumer subscribers grew 10% to 82.5 million. •  Dynamics products and cloud services revenue increased $1.0 billion or 19% driven by Dynamics 365. •  Gross margin increased $6.5 billion or 12% driven by growth in Office 365 Commercial. Excluding the impact of the change in accounting estimate, gross margin percentage increased slightly driven by improvement in Office 365 Commercial. All information speaks as of the last fiscal quarter or year for which we have filed a Form 10-K or 10-Q, or for historical information the date or period expressly indicated in or with such information."
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q4/performance",
+        "title": "FY24 Q4 - Performance - Investor Relations - Microsoft",
+        "snippet": "Revenue increased $33.2 billion or 16% driven by growth across each of our segments. Cost of revenue increased $8.3 billion or 13% driven by growth in Microsoft Cloud and Gaming, offset in part by a decline in Devices. Gross margin increased $25.0 billion or 17% driven by growth across each of our segments. Excluding the impact of the change in accounting estimate for the useful lives of our server and network equipment, gross margin percentage increased 2 points driven by improvement in More Personal Computing. Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage increased slightly driven by improvements in Azure and Office 365 Commercial, inclusive of scaling our AI infrastructure, offset in part by sales mix shift to Azure. Operating expenses increased $4.0 billion or 7% driven by Gaming, with 7 points of growth from the Activision Blizzard acquisition, and investments in cloud engineering, offset in part by the prior year Q2 charge."
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
+        "title": "10-K",
+        "snippet": "|  | ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 |. |  | TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 |. Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. Indicate by check mark whether the registrant has filed a report on and attestation to its management’s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report."
+      },
+      {
+        "url": "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT_FY17Q4_10K",
+        "title": "[DOC] Download - Microsoft",
+        "snippet": "PNp!IjT6aE7fro(|EfXvn3s$SxFbg<-Y\\Jx CtkA=7{dאJ>q(.I,g)=Ck;pVxT9VL$ c >9D03F9;$S7skD\\*jMV]kk!}0?J6JQUhd2ee&U%D+Q gH etBq3h0M=Djt׊nj,tʜVM[N֯VtIGi{N9 ]CKWP2e(+QTVԺ5-\\b5~=Q|\\_q κ[R|f3R@ӻ(Y F;~QQk|v)AZ),rZjWmx; @TCA@bTٴQQ+.=>\\_MZ\"3Z~U15׏+LDfkaI+JJʹlB-9wd4ZcJ;a:Tn]\\H~:,%7BM0]]f;nY06P.VlkTr`T%Ya~ p/gѣ 3,dqI&ceFr|ٝW8h\" W}GG+M^jȜm+{e#/SZ AfW\\_lA^z\"u.OQfnm&Ml'Ls\\j\\rJ ݼrns=nokg2+%3\"3Ш\\*:;sCҴ,(439o^(ZͳZ;&D& h<ȡ<fgKV׿ȗλ݂eH5|mP}]M[VGY|&dsTXӥpњ0w yR{1W9,`VӃe\"|.Z%4NfkFk3\\_SmsElUENY[h~ݒpDI E\"$\\*-{Ge J'4m3%Y87Օr(+}4o7NG6 Q!$Ϻ6#P,#X:a6]ߗ>+mE)~ ,, ~IŖl.WUJ\\<ԗ0T%~sk3V1,{mmHx,~e`\\_C4(<g\\*J#YAIT\\3p Kv4o ?vkGF\\*opql^eeIچ.ym\"F{-<ijcI3ajiţe+BUQ&ykעE)x 7?lTxd3v>-oB9m!{:mßSa[.&/eׂl+Tv@2 9֌|57#s.d]cu@-~ܙ\\_iA$ϟ`OD Sw qi3܆Py łJcJ[[^0/gJ[ZWXAV#U4&9Rʞ g8氍%ݜ'y$(#?YeY:NYvG4-\"[^dg!T%s37٭Q~T,k>G 'ډ.S{73s%l&XVoG[ [O}jψDj\\_ 9h\\'P#:xFΎr^-vܨ&nk0T=#LI\"ѼjUE.P̊u\\ Y)\\q\\_q/s'xFBWh\\*3Nx\\*\\_/oJLٜIڼF )mUDhV^ gZ c\\_넃 uPn¤n罹RS`M!` AuPr$XR߸y,  [gfġ-\\&rBfh }6|g+M̲K `#e<'6\\,&VQ6\\*䚍ey&Բo\\_:,f>x6Y9~(/\\fkj DM=5jL傕d'ƺJžĵHpjwc5` eh햗\\*BdDC K\\_#ep5 ͇rpf$}QgTw؇yP`z?-Pa˚צȫX^Y6Q9:Uzc B^z?.`\"]4åM\\*I4Zw/ mA38\\*|u5ק]f7C$\"6c=q(+c$UkVG^\\_EBFfFMNg.\\*ČtFK\\*Ym@4:`Wn=QfN7rЛjqѶ%W}B?2 ˭ҟ8&s1hP%ݢVHY9<\\_\\*<7$sWƂ\\*,Em3|Fȅ}g4Fŋ3W-[==+lbpɱM2\\ͼ颼V0bu:Xoڠ`7V $v9{լJwYϒ38k C>ShIsUD=f H,VDY=knm>Zd{eUqVp M`lk+8\\ x^Jٖ\"YP  &y@kV B\"H7?e5+bYEIBٳ.]7Wm3[>`jZ ͘Yv1>E'癈\\*:+9l̚v\\*`^nbyDc&uDO-̇ ,,tB9a36N.;v`7A3R|f<[q##b\\j`]?wQڮ״\\ ~܋H(vvWʹvYt͛:MrzdӴkڴrJUcuC2\\_q$0<ࡵ0ӼMx G-{\\LVIFeR>VǛ!.@6%s?tE'7SĪR/GKz'FY\"xca̟H WN2}^0GhI冩HMozgcۊ\\H֙kw3/k.Vqy@,ɝuڞҽoiVԶf}J+|3MiG[N޷>bʦ4\\*͝r\\:QvMGܼKk ^3#Jىy Sxo^Q+  p `Nz{ɔik #4%30&-m (0:d` m!䳙Sn2ܬ]=Rx&o7,n\\ |N[(wLf{fbY}P- < یQXS MGq͋RTR˟cWtEJ.l: e-2a筟\\_V>T/\\_rOD0ͣbfS'YDE qu߅}\\_0B5̌ڬklI<^%y&bS|V3y.1G0\"kVR՚Xl% am3]krc  櫥ro K9foe)}\"߷ /i\\_gbZOjoR[3SYW!?m33c &[͵TuϒL~n՘,݋lцyLI-~/}= r&!6 Lyn\"}N2 [-b^l\"a(, r~[;9ղO}\"U@LN (Nk\"!ղ3͎ mD1YͺL\"P+9q 楜ky^n0 zxΒގ{C+YQg Iۅ(Yj2ELVەZP ¯ŠMEcȹ';44J٥> U5BƗ^\\_^>VnGgW۳mҩ>!e<Jq0aU4jm:edF`%3<+g7#AnEM@|DIZQcN&>;A2l^ /Mh,c}z1<`qp򼵜7g73hVl 5(v4U [ rֺRfhI4f6bxZ^(7v~[&xa<fuKRwW[%֧(o4c|ۡiX6\"#E' '/{<biQv2|tJϞlr ]jBdZȍDdE<^cE 477cÍbGCH:B3 aofcƳc̲ Wϫٳ94Sg]Cʌ`Zl<áڝV3 4-Գ?bo>^oԻygЦkVNu05wqehv{ɋJyFH6'+[L\\*'8m'3ׇVESե㓔yͫMgc05ݳ4yVd@C afxdhQ5\\*K 67(fIL۽i`z;Y\\űl\\*90^B6[՝f(oR)&ދ7+y#%ܻ5q¥ F=Т;.;Oa=@ LQ@ SŶ'&Z<~n5!\\*J`]K]+=36Et]U 0 jQ\"bL\\w}UB(kՄp ٚiS1 \"DhcJp\\_ 4x%yBKw$AȽv]S5\\*;򚃥 (I,J\\\\*ARfdn5bN\"gqqkT$aXbq (srOyp3fm!\\_j-JQm Ԙq%\\*` چu͍@=װۇÁWcŉ-.sHpE/nVN )SbեV%~eLu++R h6o!gJժZ8'ԛ7 YUzi92p 8HFco8jdv̼\\ii뽁jھ{K\\_Zے֑jU:I)\"|vWs)JԄʸl t[ ѯv,tpvӃ-|L$m5z  Uhw xĴ4hv\\*Qm\\*f\\WX\"cF:cU~]9Wb sVlي` d=DfL{ӻǙiBYK٫4,g̅aKk \\ Ŭ2 ݼ(T  6Mիf'Ne<,f!.Zu՝Q7]mshH$(quЦ{nԢy^Ѧfggj@@ 3 5y3  -Rgɷu> y ,ebSMv+-:q荳3[<gٓN?Fa8\"&#?J>uEQfuM\\_5jox\\_ٱ`v ^F3`X`y̔x>l~ ,E(ka]zRiܭ'G\\?%6\\B5Ц!Z\"nlŸ#6 ,y;lY(iPŰj473+ >P'1(kKEq858/,41\\*K'ػtȮ6'3Z <V3P4t16DZ&\\*= 6K &$kilK1Q١4:r cx^<O1\\*B>,Rqss9\\$s1$صdP?#^mO >Eb7:`uz<~g+z.pSEeU,YXJv,[]Z83rg5[q[f)B|PrrSMypV-,%ߵevӬ^oi[ JafB VTTvVմ}xxS 1zOK kt [?' hl\\*Ĭz ~Q}ND́2ZD@Z+dSejJ[g4ҫ+Y6)`j)S$h8e-gi(5]6q%wg/=@\\*\\*|e(,a:=]oECSYceX뉀ޛ2i,k5/\\*ܫy?N2љgKǔQRӹDe:r5Ǐ 8mف7\\_7olǈ5ux5o~5pG]NeelCK'S[dO8 Uns~M!5yǬ^+`Ǿ lx@N`L  Q^g$#6J`@וgوa(UKGSEm>7`i~|d`Dcn鼝Ms6shM]\\_'UC FFSz&'\\~/\\_\\_-nhߏzWWot/o\\* ZOɖ+ȳAn <{W ,(wܚ޼zi;92v5-8hҙ{>%\"(Db\"՛ZBV9#ȉn07l5(A[k\\*p82a0l0)tm쭊E-#H 出e(D(>%'\\_\\_ů߼R=-)ա%e1m;kIBuH[B8-B\\r|!S͸hic`=8Z6dj-7~ 1v9\\\\_\\_XK.@Қt2 y(35 l),toZҰ>³O}W\\*g;6 =lQ}BM[N~q320 lDMVr[+l<4 70v&e/ȃEY/Y\"8E2\\؁0eLmjmfiڵ٢~uX,N@\\*?s߫<酩;{ٷ6F@ԧ#HtϨ\\*9Fc`j\\*V34mdfAՑmct2(P )β#|V5G\\*ؗPJga>l|48i?HҶM->6|g/7~I 5M:حhݔZ}z Erů fot&rڅM,\"k0}lߴC/ިk̥gZJnŤۄyJ۩4,LX҆46z/-gӶh۪DPk~e `YA䣬J7}o6~Cc\\QJ|Q \"\\ι ǩfg&IHCʻwFz0\"O>˿lhǖH[%׊q3Z`2wxx?|^{c4)Z[D9in| E ~GH1ZKߦ\"%Kf/Zeo\\*Yb.g\\_fRɌ'0EJ2zMOXݿ|&o\\*?=L10Cy<wFYr1#g[v8,^߼&]YpQ/V2µd&Cԏ8 3mQ+\\*oU2\\_&b¨xNc+bq '%˛v6\\_ϟ^Q+Zv,p@-~`<N{v4L?@?2cx;MCX8./o4p3~8צfGF[ -ah[З $ hվ-47e!Aw#(K} 0'HLT(L뱷Γ.OzS\\_ L5塝X^ Iy138< bvŋdT$,!eU$Cx8GA0 \"yR<2{x>]iG\"U}5GCc^llf0,h3-HZ$6>s1!Xvg\\*i=PYuBN;A\"J5i0N^(NҷKD( IzgCBtz}6BL1]17:C%t u2QVZAc\\*B o]9בt} }\"^~O?$e2DQEE#jh@Cg[l7\\_ϺUEZ<ǴrL Gj 1ȚYoZ/OxZa\\*$Q2a8.|u5-uK,MU8ƿOz:vX\\_\\lϞhE.6RmtC 1Q)>jemYcD$52rFke啃.Jj',H@-BCpԎh(9cVhuI$e&9.A;7A& 0aM\\ܙ@$VFPg2FB SHs ] ( Hw&j)\\_0Agi]į:NH;ml<J<=iZ 4㽜`D=dD+L։/\"Z ugD!pDJD!L@U\\FF\"}n(2>K @˼/#.X叩| |Q-1YI1[Wܵbj.# v܀O)}jk3\\GL95O`>N.,I⫳OLns,L3dͱ; WrڷP i$S{)ab\\_LdK'u%`<[\\2lGKfzV9~M(a1V8.8ԅ`N y%Qb?:ʙMȘ5;ܜ0!Z xv9e\\rki \\_,Q 3E2\"?\\>~ńC+ۿ{ 3GYH₻eܒ;#!>!?t. G ZUTJ-rF$/׻%-rD\"%Q,L\\3qK|5zT&!kA&nc?uvUpۑtǚ0b-$ܥCIc~vsҌJuS(yi], q6=4:pV>b!Ʒt 4/(zd%RľPhC ,'0`OИE6M Z?̋nuCrQ$0d[().`KJֈ\\*Uj\"LN=g}>\",<\\*uxZK}&~x=L'0K!Oxc-clh?Y$7fԗAȘtNOAU;97..Gavњb鎪tg\\ On9)d2À緱:1K'C1N!BV!,>ъӽ^FLxc GBߘz~|r% ^-zrJx;n6v<\"N`R6ɿ-`72b((˵NN7ϟ?ϟ^?#{wWdwG?/x0xey`)62eٚ4ͮdaIߚ;،\\_iQwxlR/߃vxQ}\\_zN;pLuo4zM҇1m:J'.l?/ӣ`6yAotz.ߏI?ڟ&\\Wc]\\_oA8xQXn?oЛn^a /v7{\"6`VAd`]t6ܘ5xcb'tj:'?7%Gǿ=3X̽MԻ޻^o{\\_3Xh8{s3VJ`gx7؃c ytEnG0T-C{gy5uX, `y3~?N)tjV7Jo?&7>1\\_2Ğ[o#O;,Zv>l޾rz  {WUTUcו0B\\6~R4n`.p/y ;'a '` 7gh0 m1-|7g[6õʖ,[Ŀ a'HS=`;GˬAq:xzg޶Gm{ ~7Ny.5w\\_\" G;rVfa [$5b}P-DRu`T;lf cכyi79.1~7wiw5c}!\\_ˣYY% +R|%V $\\_zXz1J c`w9 r2~e/.O~h{oUU]:?-CA&MSsΊy9Ź7?B\"\\_ f7 b=ʆa0aQ;\\zo`vögO[ l#ޛ?^( T|tzXh&h߉t4]kK~}|q @W^k:u\\_gnӧw0=x/\\_7q]5O͛ՅWW{~{5]o\\_yqDWaדXlrN-1{IIBN8lْ@{߼(e0}| ;mQԛ~7ޯ# ?B@K gH0N!g#|~qt<ľw7' \\_\\*ژw>E![\\_io?ӻ^L(XDŻ8x()7>?6lF{IptN33ٸh֥|-z̜b\\0L.^0Gko?W+\\_('͸?.O!-'%%Z{smAٲ7Yv~ \\_b'W~b^ӥVj,-0p)֨ePR+Js.d2 9<!r9,$6xٞ{X>{j`0FejG<-IXMӔ@-F [IK6(|kmgɏafX࿡-1:%?0 y%ޝ8 $ Jl?᪃@S# \".Bu82DqgM~\\*ȾA=(hwGۤ'j\"bmsgܧK\\_'\"&8dݑy[b<kQ4-ߵ' }J ZwIlOS0XKQmCcXE1^%b 4mժX˩1\"dmev6:$$X\\*[&V1ߟ1C:=BVaӬ Ogki ~K#}(OgiL\"y,Msjn4DjY, P`LOgi޹5-Y\"YSz:f\\_V\"fM>,ud,@`x~\"6b`SͳEkw g tiJԔ>ܹ>X0․mALA 7B%nbLZ?ˍQ%]UKeԉ&zI\"l܌gkl9ѦF@g{z#aYC-a#2ÜhQkS8ظSߣ~\"+v,$`[뇮dDHx@[j[k ,B:LT~滗!PtR?ȮuQZۼGM=S!"
+      },
+      {
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "Microsoft Corp (MSFT) 10K Annual Reports & 10Q SEC Filings",
+        "snippet": "# Microsoft Corp (MSFT) SEC Filing 10-K Annual Report for the fiscal year ending Monday, June 30, 2025. ### MSFT Annual Reports * **10-K Annual Report July 2025** + **Select PDF Feature:** + Include Exhibits + Highlight YoY Changes + 10-K Only 10-K Annual Report July 2023 10-K Annual Report July 2022 10-K Annual Report July 2021 10-K Annual Report July 2020 10-K Annual Report August 2019 10-K Annual Report August 2018 10-K Annual Report August 2017 10-K Annual Report July 2016. Revenue in Productivity and Business Processes was $29.9 billion and increased 10% (up 13% in constant currency), with the following business highlights:. Microsoft 365 Commercial products and cloud services revenue increased 11% (up 14% in constant currency) driven by Microsoft 365 Commercial cloud revenue growth of 12% (up 15% in constant currency). Microsoft 365 Consumer products and cloud services revenue increased 10% (up 12% in constant currency) driven by Microsoft 365 Consumer cloud revenue growth of 10% (up 12% in constant currency). *Screenshot: 10-K Annual Report*."
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar24/index.html",
+        "title": "Microsoft 2024 Annual Report",
+        "snippet": "*   [Income Taxes](https://www.microsoft.com/investor/reports/ar24/index.html#income-taxes). This year, we also announced a [partnership with G42](https://news.microsoft.com/2024/04/15/microsoft-invests-1-5-billion-in-abu-dhabis-g42-to-accelerate-ai-development-and-global-expansion/), which will run its AI applications and services on our cloud, as we collaborate to bring our latest AI technologies to the United Arab Emirates and other countries. Our [Microsoft Intelligent Data Platform](https://www.microsoft.com/en-us/microsoft-cloud/solutions/intelligent-data-platform) provides customers with the broadest capabilities spanning databases, analytics, business intelligence, and governance—along with seamless integration with all our AI services. And [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric), our AI-powered, next-generation data platform we made generally available this year, now has over 14,000 paid customers who can go from data, to insights, to action—all within the same unified SaaS solution. The decrease from the federal statutory rate in fiscal year 2022 is primarily due to the net income tax benefit related to the transfer of intangible properties, earnings taxed at lower rates in foreign jurisdictions resulting from producing and distributing our products and services through our foreign regional operations center in Ireland, and tax benefits relating to stock-based compensation."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-2024/",
+        "title": "https://www.libertify.com/interactive-library/apple-10k-annual-report-2024/",
+        "heading": "",
+        "chunk_text": "f Apple’s highest-margin geographic segments. The company’s strategic investments in retail presence and developer relations in Japan continue to reinforce its competitive position in this key market. Understanding regional financial dynamics is essential for any comprehensive investment trend analysis.\nApple Intelligence and AI Strategy in the 10-K Filing\nWhile the Apple 10-K is primarily a financial document, the fiscal 2024 filing provides important context for Apple’s artificial intelligence strategy. Apple Intelligence, announced at WWDC 2024, represents the company’s most significant AI initiative, integrating on-device and cloud-based AI capabilities across the Apple ecosystem. The 10-K references increased research and development spending that supports this strategic direction, with R&D expenses reflecting Apple’s commitment to remaining at the forefront of consumer AI applications.\nThe on-device AI approach, powered by Apple Silicon and the Neural Engine, differentiates Apple’s strategy from competitors who rely more heavily on cloud-based processing. This architectural choice aligns with Apple’s privacy-first philosophy and creates a potential competitive moat that leverages the company’s hardware-software integration capabilities.",
+        "score": 5.6112,
+        "rank": 0
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-2024/",
+        "title": "https://www.libertify.com/interactive-library/apple-10k-annual-report-2024/",
+        "heading": "",
+        "chunk_text": "lysis: Balance Sheet and Capital Allocation — Apple’s balance sheet as disclosed in the 10-K filing reflects extraordinary financial strength.\n- Regional Performance: Geographic Analysis from Apple’s 10-K — The geographic breakdown in the Apple 10-K analysis reveals important patterns in Apple’s global revenue distribution.\nApple 10-K Analysis: Fiscal 2024 Financial Overview\nThe Apple 10-K analysis for fiscal year 2024 reveals a company that continues to demonstrate remarkable financial resilience while navigating an increasingly complex global landscape. Apple Inc. reported total net sales of $391 billion for the fiscal year ended September 28, 2024, representing a 2% increase from $383.3 billion in fiscal 2023. While this growth rate appears modest by historical standards, it masks significant underlying dynamics including the acceleration of high-margin Services revenue and the strategic positioning of Apple’s product ecosystem for the AI era.\nThe filing, submitted to the Securities and Exchange Commission, provides investors with a comprehensive view of Apple’s financial health, strategic priorities, and risk factors.",
+        "score": 4.5961,
+        "rank": 1
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-2024/",
+        "title": "https://www.libertify.com/interactive-library/apple-10k-annual-report-2024/",
+        "heading": "",
+        "chunk_text": "—\n0:00\nApple 10-K Analysis 2024: Comprehensive Annual Report Breakdown\nTable of Contents\n- Apple 10-K Analysis: Fiscal 2024 Financial Overview\n- Revenue Breakdown: iPhone Dominance and Apple 10-K Insights\n- Services Segment: The Growth Engine in Apple’s Annual Report\n- Apple 10-K Analysis: Balance Sheet and Capital Allocation\n- Regional Performance: Geographic Analysis from Apple’s 10-K\n- Apple Intelligence and AI Strategy in the 10-K Filing\n- Risk Factors: Critical Disclosures in Apple’s Annual Report\n- Research and Development: Innovation Investment in the Apple 10-K\n- Apple 10-K Analysis: Tax Strategy and the EU State Aid Decision\n🔑 Key Takeaways\n- Apple 10-K Analysis: Fiscal 2024 Financial Overview — The Apple 10-K analysis for fiscal year 2024 reveals a company that continues to demonstrate remarkable financial resilience while navigating an increasingly complex global landscape.\n- Revenue Breakdown: iPhone Dominance and Apple 10-K Insights — The Apple 10-K analysis of revenue composition reveals the continued centrality of iPhone to Apple’s business model.\n- Services Segment: The Growth Engine in Apple’s Annual Report — Perhaps the most significant finding in any Apple 10-K analysis is the continued acceleration of the Services segment, which generated $96.\n- Apple 10-K Analysis: Balance Sheet and Capital Allocation — Apple’s balance sheet as disclosed in the 10-K filing reflects extraordinary financial strength.\n- Regional Performance: Geographic Analysis from Apple’s",
+        "score": 3.0714,
+        "rank": 2
+      },
+      {
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "10-K Annual Report Wed Jul 30 2025",
+        "heading": "Microsoft Corp (MSFT) SEC Filing 10-K Annual Report for the fiscal year ending Monday, June 30, 2025",
+        "chunk_text": "Microsoft Corp (MSFT) SEC Filing 10-K Annual Report for the fiscal year ending Monday, June 30, 2025\n\n1.   [Home](https://last10k.com/)\n2.   [SEC Filings](https://last10k.com/sec-filings)\n3.   [Microsoft Corp (MSFT)](https://last10k.com/sec-filings/msft)\n4.   10-K Annual Report Wed Jul 30 2025\n\n##### SEC Filings",
+        "score": 0.484,
+        "rank": 3
+      },
+      {
+        "url": "https://s2.q4cdn.com/470004039/files/doc_earnings/2024/q4/filing/10-Q4-2024-As-Filed.pdf",
+        "title": "10-K 2024, 09.28.2024-2024-10-31-12-16",
+        "heading": "Apple Inc.",
+        "chunk_text": "Apple Inc.\n\n10.21*, ** Form of CEO Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024.\n\n10.22*, ** Form of CEO Performance Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024.\n\n19.1** Insider Trading Policy\n\n21.1** Subsidiaries of the Registrant.\n\n23.1** Consent of Independent Registered Public Accounting Firm.\n\n24.1** Power of Attorney (included on the Signatures page of this Annual Report on Form 10-K).\n\n31.1** Rule 13a-14(a) / 15d-14(a) Certification of Chief Executive Officer.\n\n31.2** Rule 13a-14(a) / 15d-14(a) Certification of Chief Financial Officer.\n\n32.1*** Section 1350 Certifications of Chief Executive Officer and Chief Financial Officer.\n\n97.1*, ** Rule 10D-1 Recovery Policy\n\n> Incorporated by Reference\n> Exhibit Number Exhibit Description Form Exhibit\n> Filing Date/ Period End Date\n> Apple Inc. | 2024 Form 10-K | 55\n\n101** Inline XBRL Document Set for the consolidated financial statements and accompanying notes in Part II, Item 8, “Financial Statements and Supplementary Data” of this Annual Report on Form 10-K.\n\n104** Inline XBRL for the cover page of this Annual Report on Form 10-K, included in the Exhibit 101 Inline XBRL Document Set.\n\nIncorporated by Reference\n\nExhibit Number Exhibit Description Form Exhibit\n\nFiling Date/ Period End Date",
+        "score": -1.0677,
+        "rank": 4
+      },
+      {
+        "url": "https://www.alphaquery.com/stock/AAPL/fundamentals/annual/operating-profit-margin",
+        "title": "https://www.alphaquery.com/stock/AAPL/fundamentals/annual/operating-profit-margin",
+        "heading": "",
+        "chunk_text": "Operating Margin: Operating margin measurement of what proportion of a company's revenue is left over after paying for variable costs of production such as wages, raw materials, etc. Calculated as: Operating Income / Total Revenues\nApple Inc. (AAPL) had Operating Margin of 31.97% for the most recently reported fiscal year, ending 2025-09-30.\nIncome Statement Financials | |\n$416.16B |\n|\n$112.01B |\n|\n$220.96B |\n|\n$195.20B |\n|\n$283.11B |\n|\n$133.05B |\n|\n$-321.00M |\n|\n$132.73B |\n|\n$132.73B |\n|\n$112.01B |\n|\n$112.01B |\n|\n$112.01B |\n|\n$112.01B |\n|\n$133.05B |\n|\n$144.75B |\n|\n14.95B |\n|\n15.00B |\n|\n$7.49 |\n|\n$7.46 |\n|\nBalance Sheet Financials | |\n$147.96B |\n|\n$49.83B |\n|\n$211.28B |\n|\n$359.24B |\n|\n$165.63B |\n|\n$78.33B |\n|\n$119.88B |\n|\n$285.51B |\n|\n$73.73B |\n|\n$73.73B |\n|\n$73.73B |\n|\n14.77B |\n|\nCash Flow Statement Financials | |\n$111.48B |\n|\n$15.20B |\n|\n$-120.69B |\n|\n$29.94B |\n|\n$35.93B |\n|\n$5.99B |\n|\n$12.86B |\n|\n$-15.42B |\n|\n-- |\n|\nFundamental Metrics & Ratios | |\n0.89 |\n|\n-- |\n|\n-- |\n|\n0.52 |\n|\n1.34 |\n|\n46.91% |\n|\nOperating Margin |\n31.97% |\n31.97% |\n|\n34.78% |\n|\n31.89% |\n|\n26.92% |\n|\n$98.77B |\n|\n-- |\n|\n-- |\n|\n-- |\n|\n1.16 |\n|\n38.64 |\n|\n5.70 |\n|\n63.99 |\n|\n151.91% |\n|\n151.91% |\n|\n31.18% |\n|\n73.66% |\n|\n$4.99 |\n|\n$6.58 |\n|\n$7.43 |",
+        "score": -1.9362,
+        "rank": 5
+      },
+      {
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "10-K Annual Report Wed Jul 30 2025",
+        "heading": "SEC Filing Financial Summary",
+        "chunk_text": "SEC Filing Financial Summary\n\n[![Image 19: Adobe PDF](https://last10k.com/wp-content/themes/Last10K/assets/img/icon-pdf.png) PDF Download](https://last10k.com/search/loadpdf \"Download this 10-K Annual Report section as one PDF file\")[![Image 20: Microsoft Excel](https://last10k.com/wp-content/themes/Last10K/assets/img/icon-excel.png) Excel Download](https://last10k.com/register \"Download all financial statements and disclosures contained inside this 10-K Annual Report into one Excel file\")\n\nLoading SEC Filing Financial Summary...",
+        "score": -3.0429,
+        "rank": 6
+      },
+      {
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "10-K Annual Report Wed Jul 30 2025",
+        "heading": "Never Miss A New SEC Filing Again",
+        "chunk_text": "Never Miss A New SEC Filing Again\n\n![Image 6: Real-Time SEC Filing Notifications](https://last10k.com/wp-content/uploads/notifications.png)\n\n_Screenshot taken from Gmail for a new 10-K Annual Report_\n\n**Last10K.com Member Feature**\n\n**Receive an e-mail as soon as a company files an Annual Report, Quarterly Report or has new 8-K corporate news**\n\n[Continue](https://last10k.com/features)",
+        "score": -3.5347,
+        "rank": 7
+      },
+      {
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "10-K Annual Report Wed Jul 30 2025",
+        "heading": "Microsoft Corp",
+        "chunk_text": "Microsoft Corp\n\nCIK: **789019** Ticker: **MSFT**\n\n[Earnings Press Release](https://last10k.com/sec-filings/msft#summary \"Financial highlights from Microsoft Corp's 10-K Annual Report\")[10-K Annual Report](https://last10k.com/sec-filings/msft#fullReport \"View Microsoft Corp's 10-K Annual Report in its entirety\")[10-K YoY Changes](https://last10k.com/sec-filings/msft#compare \"View changes Microsoft Corp made to their 10-K Annual Report\")[Annual Proxy](https://last10k.com/sec-filings/msft#proxy \"Annual Proxy Statement (DEF 14A) as referenced by Microsoft Corp 10-K Annual Report\")",
+        "score": 5.6443,
+        "rank": 0
+      },
+      {
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "10-K Annual Report Wed Jul 30 2025",
+        "heading": "Microsoft Corp (MSFT) SEC Filing 10-K Annual Report for the fiscal year ending Monday, June 30, 2025",
+        "chunk_text": "Microsoft Corp (MSFT) SEC Filing 10-K Annual Report for the fiscal year ending Monday, June 30, 2025\n\n1.   [Home](https://last10k.com/)\n2.   [SEC Filings](https://last10k.com/sec-filings)\n3.   [Microsoft Corp (MSFT)](https://last10k.com/sec-filings/msft)\n4.   10-K Annual Report Wed Jul 30 2025\n\n##### SEC Filings",
+        "score": 4.7261,
+        "rank": 1
+      },
+      {
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "10-K Annual Report Wed Jul 30 2025",
+        "heading": "Microsoft Corp",
+        "chunk_text": "Microsoft Corp\n\nThe following information was filed by Microsoft Corp (MSFT) on Wednesday, April 30, 2025 as an 8K 2.02 statement, which is an earnings press release pertaining to results of operations and financial condition. It may be helpful to assess the quality of management by comparing the information in the press release to the information in the accompanying 10-K Annual Report statement of earnings and operation as management may choose to highlight particular information in the press release.\n\n#### **View Microsoft Corp's 10-K Annual Report in its entirety.**\n\n![Image 2: 10-K Annual Report](https://last10k.com/wp-content/uploads/sec_10-k.png)\n\n_Screenshot: 10-K Annual Report_\n\n_Become a member and read about Microsoft Corp's business, financial health and more._\n\n[Continue for FREE](https://last10k.com/features)\n\n#### **View differences made from one year to another to evaluate Microsoft Corp's financial trajectory**\n\n![Image 3: Compare SEC Filings Year-over-Year (YoY) and Quarter-over-Quarter (QoQ)](https://last10k.com/compare.gif)\n\n_Sample 10-K Year-over-Year (YoY) Comparison_\n\n_Compare this 10-K Annual Report to its predecessor by reading our highlights to see what text and tables were~~**removed**~~, **added** and **changed**by Microsoft Corp._\n\n[Continue](https://last10k.com/features)\n\n#### **Assess how Microsoft Corp's management team is paid from their Annual Proxy**",
+        "score": 2.5787,
+        "rank": 2
+      },
+      {
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "10-K Annual Report Wed Jul 30 2025",
+        "heading": "Microsoft Corp",
+        "chunk_text": "Microsoft Corp\n\n![Image 4: Definitive Proxy Statement (Form DEF 14A)](https://last10k.com/wp-content/uploads/proxy-statement.png)\n\n_Screenshot example of actual Proxy Statement_\n\n_Microsoft Corp's Definitive Proxy Statement (Form DEF 14A) filed after their 2025 10-K Annual Report includes:_\n\n*   Voting Procedures\n*   Board Members\n*   Executive Team\n*   Salaries, Bonuses, Perks\n*   Peers / Competitors\n\n[Continue](https://last10k.com/features)\n\n##### SEC Filing Tools\n\n[Sections](https://last10k.com/sec-filings/msft#sections \"Click to view a specific section in this SEC Filings report\")[Exhibits](https://last10k.com/sec-filings/msft#exhibits \"View additional information Microsoft Corp (MSFT) filed with this 10-K Annual Report\")[Stats](https://last10k.com/sec-filings/msft#stats \"View the attributes of Microsoft Corp (MSFT)'s 10-K Annual Report including when it was filed, stock quotes, social media and more\")\n\n> #### Financial Statements, Disclosures and Schedules\n> \n> \n> Inside this 10-K Annual Report",
+        "score": 1.769,
+        "rank": 3
+      },
+      {
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "10-K Annual Report Wed Jul 30 2025",
+        "heading": "Microsoft Corp",
+        "chunk_text": "Microsoft Corp\n\n> #### Material Contracts, Statements, Certifications & more\n> \n> \n> Microsoft Corp provided additional information to their SEC Filing as exhibits\n\n[Exhibit 10.7: Material Contract](javascript:;)[Exhibit 10.8: Material Contract](javascript:;)[Exhibit 21: Subsidaries Of The Registrant](javascript:;)[Exhibit 23.1: Consents Of Experts And Counsel](javascript:;)[Exhibit 31.1: Rule 13A-14(A)/15D-14(A) Certification](javascript:;)[Exhibit 31.2: Rule 13A-14(A)/15D-14(A) Certification](javascript:;)[Exhibit 32.1: Section 1350 Certification](javascript:;)[Exhibit 32.2: Section 1350 Certification](javascript:;)\n\n> **Ticker:**MSFT\n> \n> **CIK:**789019\n> \n> **Form Type:**[10-K Annual Report](https://last10k.com/stock-screeners/annual-reports)\n> \n> **Accession Number:**0000950170-25-100235\n> \n> **Submitted to the SEC:**Wed Jul 30 2025 4:11:40 PM EST\n> \n> **Accepted by the SEC:**Wed Jul 30 2025\n> \n> **Period:**Monday, June 30, 2025\n> \n> **Industry:**Prepackaged Software\n\n**External Resources:**\n\n[Stock Quote](https://www.tradingview.com/symbols/MSFT \"View Microsoft Corp (MSFT) stock quote at TradingView\")\n\n[Social Media](https://stocktwits.com/symbol/MSFT \"Participate in real-time trade and investing ideas for Microsoft Corp (MSFT) at StockTwits\")\n\n[SEC.gov](https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm \"View this 10-K Annual Report on SEC.gov\")\n\n**Bookmark the Permalink:**",
+        "score": -0.1172,
+        "rank": 4
+      },
+      {
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "10-K Annual Report Wed Jul 30 2025",
+        "heading": "SEC Filing Financial Summary",
+        "chunk_text": "SEC Filing Financial Summary\n\n[![Image 19: Adobe PDF](https://last10k.com/wp-content/themes/Last10K/assets/img/icon-pdf.png) PDF Download](https://last10k.com/search/loadpdf \"Download this 10-K Annual Report section as one PDF file\")[![Image 20: Microsoft Excel](https://last10k.com/wp-content/themes/Last10K/assets/img/icon-excel.png) Excel Download](https://last10k.com/register \"Download all financial statements and disclosures contained inside this 10-K Annual Report into one Excel file\")\n\nLoading SEC Filing Financial Summary...",
+        "score": -0.256,
+        "rank": 5
+      },
+      {
+        "url": "https://www.libertify.com/interactive-library/apple-10k-annual-report-2024/",
+        "title": "https://www.libertify.com/interactive-library/apple-10k-annual-report-2024/",
+        "heading": "",
+        "chunk_text": "—\n0:00\nApple 10-K Analysis 2024: Comprehensive Annual Report Breakdown\nTable of Contents\n- Apple 10-K Analysis: Fiscal 2024 Financial Overview\n- Revenue Breakdown: iPhone Dominance and Apple 10-K Insights\n- Services Segment: The Growth Engine in Apple’s Annual Report\n- Apple 10-K Analysis: Balance Sheet and Capital Allocation\n- Regional Performance: Geographic Analysis from Apple’s 10-K\n- Apple Intelligence and AI Strategy in the 10-K Filing\n- Risk Factors: Critical Disclosures in Apple’s Annual Report\n- Research and Development: Innovation Investment in the Apple 10-K\n- Apple 10-K Analysis: Tax Strategy and the EU State Aid Decision\n🔑 Key Takeaways\n- Apple 10-K Analysis: Fiscal 2024 Financial Overview — The Apple 10-K analysis for fiscal year 2024 reveals a company that continues to demonstrate remarkable financial resilience while navigating an increasingly complex global landscape.\n- Revenue Breakdown: iPhone Dominance and Apple 10-K Insights — The Apple 10-K analysis of revenue composition reveals the continued centrality of iPhone to Apple’s business model.\n- Services Segment: The Growth Engine in Apple’s Annual Report — Perhaps the most significant finding in any Apple 10-K analysis is the continued acceleration of the Services segment, which generated $96.\n- Apple 10-K Analysis: Balance Sheet and Capital Allocation — Apple’s balance sheet as disclosed in the 10-K filing reflects extraordinary financial strength.\n- Regional Performance: Geographic Analysis from Apple’s",
+        "score": -1.5743,
+        "rank": 6
+      },
+      {
+        "url": "https://last10k.com/sec-filings/msft",
+        "title": "10-K Annual Report Wed Jul 30 2025",
+        "heading": "Never Miss A New SEC Filing Again",
+        "chunk_text": "Never Miss A New SEC Filing Again\n\n![Image 6: Real-Time SEC Filing Notifications](https://last10k.com/wp-content/uploads/notifications.png)\n\n_Screenshot taken from Gmail for a new 10-K Annual Report_\n\n**Last10K.com Member Feature**\n\n**Receive an e-mail as soon as a company files an Annual Report, Quarterly Report or has new 8-K corporate news**\n\n[Continue](https://last10k.com/features)",
+        "score": -3.1609,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "Apple operating margin FY2024 based on annual filing (10-K)",
+      "Microsoft operating margin FY2024 based on annual filing (10-K)"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "fail",
+    "score": 0.35,
+    "reasoning": "The response fails to provide Microsoft's FY2024 operating margin, which is a required key fact. It only covers Apple, missing the comparison entirely. No Microsoft citation is provided. Score is low due to incomplete answer.",
+    "judge_model": "deepseek-chat"
+  }
+}

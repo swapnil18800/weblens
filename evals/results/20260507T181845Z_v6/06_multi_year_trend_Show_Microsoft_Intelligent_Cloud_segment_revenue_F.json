@@ -1,0 +1,263 @@
+{
+  "category": "multi_year_trend",
+  "expected_behavior": "1 entity x 1 metric x 3 years = 3 sub-questions. Multi-period fan-out retrieval. Aggregator with YoY growth.",
+  "question": "Show Microsoft Intelligent Cloud segment revenue FY2022 to FY2024 with year-over-year growth rates.",
+  "ground_truth": "Microsoft Intelligent Cloud segment revenue: FY2022 ~$75.3B, FY2023 ~$87.9B (+17% YoY), FY2024 ~$105.4B (+20% YoY). Azure growth was a primary driver each year. Each figure should cite the respective 10-K filing.",
+  "key_facts": [
+    "FY2022 Intelligent Cloud ~$75.3B.",
+    "FY2023 ~$87.9B, ~17% YoY growth.",
+    "FY2024 ~$105.4B, ~20% YoY growth.",
+    "Must cite [SEC-MSFT-*] chunks for each year.",
+    "Should include YoY growth percentages."
+  ],
+  "session_id": "eval-20260507T181845Z-06",
+  "metrics": {
+    "m1_factual_correctness": 0.6,
+    "m3_retrieval_recall": 0.8,
+    "m7_judge_score": 0.65
+  },
+  "timing": {
+    "pipeline_s": 49.86,
+    "latency_breakdown": {
+      "search_ms": 4321,
+      "extract_ms": 8133,
+      "chunk_ms": 71,
+      "retrieve_ms": 3233
+    },
+    "total_latency_ms": 49860
+  },
+  "pipeline": {
+    "answer": "# Microsoft Intelligent Cloud Segment Revenue: FY2022–FY2024\n\n## Overview\n\nMicrosoft's Intelligent Cloud segment (comprising Azure, enterprise services, and other cloud infrastructure) has demonstrated accelerating growth over the past three fiscal years, driven primarily by Azure and AI services adoption.\n\n## Annual Revenue and Growth Rates\n\n| Fiscal Year | Intelligent Cloud Revenue | Year-over-Year Growth |\n|-------------|--------------------------|----------------------|\n| **FY2022**  | **$74,965 million** ($75.0B) | — (base year) |\n| **FY2023**  | **$87,907 million** ($87.9B) | **+17%** |\n| **FY2024**  | **$105,362 million** ($105.4B) | **+20%** |\n\n*Data sourced from Microsoft's official annual reports [3][4][6]*\n\n## Growth Trajectory Analysis\n\n### FY2022→FY2023: 17% Growth\n- Revenue increased from $74,965M to $87,907M [3][4]\n- Primary driver: Azure and other cloud services growth [3]\n- Reflects continued enterprise cloud migration and adoption [2]\n\n### FY2023→FY2024: 20% Growth\n- Revenue increased from $87,907M to $105,362M [3][6]\n- Growth acceleration from 17% to 20%, marking the highest rate in the three-year period [1][3]\n- Key driver: Azure, with Microsoft explicitly noting the increase was \"driven by Azure\" [5]\n- AI services and OpenAI workloads began contributing meaningfully to revenue during this period [1][5]\n\n## Segment Comparison (FY2022–FY2024)\n\nBy FY2024, Intelligent Cloud became Microsoft's **largest revenue segment**, surpassing both Productivity & Business Processes and More Personal Computing:\n\n| Segment | FY2022 | FY2023 | FY2024 |\n|---------|--------|--------|--------|\n| Productivity & Business Processes | $63,364M | $69,274M | $77,728M |\n| **Intelligent Cloud** | **$74,965M** | **$87,907M** | **$105,362M** |\n| More Personal Computing | $59,941M | $54,734M | $62,032M |\n| **Total Revenue** | **$198,270M** | **$211,915M** | **$245,122M** |\n\n*All figures in millions of U.S. dollars, per Microsoft's fiscal years ending June 30 [3][4]*\n\n## Growth Drivers\n\n1. **Azure:** The primary growth engine across all three years, with consistent double-digit expansion [3][5]\n2. **AI Services:** By late FY2024/Q1 FY2025, Microsoft disclosed its AI business reached a $37 billion annual revenue run rate, accelerating growth [1][5]\n3. **Enterprise Cloud Adoption:** Ongoing digital transformation across industries fueled steady demand for cloud infrastructure and services [2]\n\n## Post-FY2024 Trajectory (Context)\n\nThe acceleration trend continued beyond FY2024, with the Intelligent Cloud segment posting **30% year-over-year growth** in subsequent quarterly results [1][5], indicating sustained momentum from AI and cloud investments.\n\n---\n\n## Key Takeaways\n\n| Metric | FY2022 | FY2023 | FY2024 |\n|--------|--------|--------|--------|\n| Revenue ($B) | $75.0B | $87.9B | $105.4B |\n| YoY Growth | — | **+17%** | **+20%** |\n| Growth Trend | — | Steady | **Accelerating** |\n| Primary Driver | Azure | Azure | Azure + AI |\n\n- **Intelligent Cloud grew from $75B to $105.4B over three years** — a $30.4B absolute increase\n- **Growth rate accelerated from 17% to 20%**, driven by Azure and the ramp-up of AI services\n- The segment **became Microsoft's largest revenue contributor** by FY2024, surpassing all other segments\n- **AI emerged as a key growth catalyst** by FY2024, with the trend continuing into subsequent fiscal years [1][5]",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://mlq.ai/news/microsoft-cloud-and-ai-acceleration-drive-market-outperformance-despite-capital-intensity-concerns/",
+        "title": "MLQ.ai | AI for investors",
+        "snippet": "Microsoft reported third-quarter earnings that exceeded Wall Street expectations across all major metrics, with the company's cloud and AI businesses driving substantial revenue growth. The Intelligent Cloud segment, home to Azure, posted $34.7 billion in revenue with 30% year-over-year growth, whil"
+      },
+      {
+        "num": 2,
+        "url": "https://www.statista.com/chart/29863/microsofts-cloud-revenue-vs-total-revenue/?srsltid=AfmBOorJXPWsfQtQmr98U3lnlALcDf--WcFJuU0HEhLUBCLU2oxz6BJ_",
+        "title": "Infographic: Cloud Business Continues to Drive Microsoft's Growth",
+        "snippet": "Cloud Business Continues to Drive Microsoft's Growth\n\nMicrosoft's Intelligent Cloud segment alone generates more than $100 billion in annual revenue now, as global demand for cloud infrastructure continues to grow. The transition to AI has given another boost to the [global cloud market](https://www"
+      },
+      {
+        "num": 3,
+        "url": "https://www.microsoft.com/investor/reports/ar24/index.html",
+        "title": "Microsoft 2024 Annual Report",
+        "snippet": "SEGMENT RESULTS OF OPERATIONS\n\n**(In millions, except percentages)****2024****2023****Percentage\n\nChange**\n**Revenue**\nProductivity and Business Processes**$ 77,728**$ 69,274 12%\nIntelligent Cloud**105,362**87,907 20%\nMore Personal Computing**62,032**54,734 13%\nTotal**$ 245,122**$ 211,915 16%\n**Oper"
+      },
+      {
+        "num": 4,
+        "url": "https://www.microsoft.com/investor/reports/ar23/index.html",
+        "title": "Microsoft 2023 Annual Report",
+        "snippet": "SEGMENT RESULTS OF OPERATIONS\n\n**(In millions, except percentages)****2023****2022****Percentage\n\nChange**\n**Revenue**\nProductivity and Business Processes**$ 69,274**$ 63,364 9%\nIntelligent Cloud**87,907**74,965 17%\nMore Personal Computing**54,734**59,941(9)%\nTotal**$ 211,915**$ 198,270 7%\n**Operati"
+      },
+      {
+        "num": 5,
+        "url": "https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/",
+        "title": "Microsoft tops Wall Street expectations, reports accelerating Azure growth and $37B AI run rate",
+        "snippet": "Microsoft tops Wall Street expectations, reports accelerating Azure growth and $37B AI run rate\n\n![Image 7](https://cdn.geekwire.com/wp-content/uploads/2026/04/msft-capex.png)\n**Copilot:**For the quarter, Microsoft 365 Copilot now exceeds 20 million paid seats, up from 15 million in January. That me"
+      },
+      {
+        "num": 6,
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q4/performance",
+        "title": "FY24 Q4 - Performance - Investor Relations - Microsoft",
+        "snippet": "Fiscal Year 2024 Compared with Fiscal Year 2023\n\nRevenue increased $33.2 billion or 16% driven by growth across each of our segments. Intelligent Cloud revenue increased driven by Azure. Productivity and Business Processes revenue increased driven by Office 365 Commercial. More Personal Computing re"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar23/index.html",
+        "title": "Microsoft 2023 Annual Report",
+        "snippet": "# Microsoft Annual Report 2023. We are living through a time of historic challenge and opportunity. At the same time, we have entered a new age of AI that will fundamentally transform productivity for every individual, organization, and industry on earth, and help us address some of our most pressing challenges. This next generation of AI will reshape every software category and every business, including our own. As a company, we believe we can be the democratizing force for this new generation of technology and the opportunity it will help unlock for every country, community, and individual, while mitigating its risks. To build on this progress, we remain convicted on three things: First, we will maintain our lead as the top commercial cloud while innovating in consumer categories, from gaming to professional social networks. As we make progress on these priorities, we delivered strong results in fiscal year 2023, including a record $211 billion in revenue and over $88 billion in operating income."
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q3/intelligent-cloud-performance",
+        "title": "FY24 Q3 - Intelligent Cloud Performance - Investor Relations - Microsoft",
+        "snippet": "•  Server products and cloud services revenue increased $4.8 billion or 24% driven by Azure and other cloud services. Azure and other cloud services revenue grew 31% driven by growth in our consumption-based services. •  Gross margin increased $3.1 billion or 20% driven by growth in Azure. Excluding the impact of the change in accounting estimate, gross margin percentage increased slightly primarily driven by improvement in Azure, inclusive of scaling our AI infrastructure, offset in part by sales mix shift to Azure. *IMPORTANT NOTICE TO USERS (summary only, click here  for full text of notice);*All information is unaudited unless otherwise noted or accompanied by an audit opinion and is subject to the more comprehensive information contained in our SEC reports and filings. All information speaks as of the last fiscal quarter or year for which we have filed a Form 10-K or 10-Q, or for historical information the date or period expressly indicated in or with such information. Information contained in these documents is current as of the earnings date, and not restated for new accounting standards."
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q4/intelligent-cloud-performance",
+        "title": "FY24 Q4 - Intelligent Cloud Performance - Investor Relations - Microsoft",
+        "snippet": "•  Server products and cloud services revenue increased $17.8 billion or 22% driven by Azure and other cloud services. •  Gross margin increased $11.6 billion or 19% driven by growth in Azure. Excluding the impact of the change in accounting estimate, gross margin percentage increased slightly primarily driven by improvement in Azure, inclusive of scaling our AI infrastructure, offset in part by sales mix shift to Azure. •  Operating expenses decreased slightly primarily driven by the prior year Q2 charge, offset in part by investments in Azure. All information speaks as of the last fiscal quarter or year for which we have filed a Form 10-K or 10-Q, or for historical information the date or period expressly indicated in or with such information. Information contained in these documents is current as of the earnings date, and not restated for new accounting standards. #### Related Information."
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar24/index.html",
+        "title": "Microsoft 2024 Annual Report",
+        "snippet": "*   [Income Taxes](https://www.microsoft.com/investor/reports/ar24/index.html#income-taxes). This year, we also announced a [partnership with G42](https://news.microsoft.com/2024/04/15/microsoft-invests-1-5-billion-in-abu-dhabis-g42-to-accelerate-ai-development-and-global-expansion/), which will run its AI applications and services on our cloud, as we collaborate to bring our latest AI technologies to the United Arab Emirates and other countries. Our [Microsoft Intelligent Data Platform](https://www.microsoft.com/en-us/microsoft-cloud/solutions/intelligent-data-platform) provides customers with the broadest capabilities spanning databases, analytics, business intelligence, and governance—along with seamless integration with all our AI services. And [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric), our AI-powered, next-generation data platform we made generally available this year, now has over 14,000 paid customers who can go from data, to insights, to action—all within the same unified SaaS solution. The decrease from the federal statutory rate in fiscal year 2022 is primarily due to the net income tax benefit related to the transfer of intangible properties, earnings taxed at lower rates in foreign jurisdictions resulting from producing and distributing our products and services through our foreign regional operations center in Ireland, and tax benefits relating to stock-based compensation."
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2025-q1/intelligent-cloud-performance",
+        "title": "FY25 Q1 - Intelligent Cloud Performance - Investor Relations",
+        "snippet": "Revenue increased $4.1 billion or 20%. • Server products and cloud services revenue increased $4.1 billion or 23% driven by Azure and other cloud services."
+      },
+      {
+        "url": "https://finance.yahoo.com/news/microsofts-annual-cloud-revenue-hits-202158684.html",
+        "title": "Microsoft's annual cloud revenue hits $75B, profit beats expectations",
+        "snippet": "It posted revenue of $76.4 billion in the April-June period, up 18% from last year. Analysts polled by FactSet Research had been looking for"
+      },
+      {
+        "url": "https://mlq.ai/news/microsoft-cloud-and-ai-acceleration-drive-market-outperformance-despite-capital-intensity-concerns/",
+        "title": "MLQ.ai | AI for investors",
+        "snippet": "* Microsoft's AI business reached a $37 billion annual revenue run rate, up 123% year-over-year, marking the first update since reporting $13 billion in January 2025[1]. * Azure and cloud services revenue grew 40% in the quarter, accelerating past the company's own forecast and topping analyst expectations[1]. * Microsoft Cloud revenue hit $54.5 billion with 29% growth, while the Intelligent Cloud segment generated $34.7 billion with 30% growth[1]. The Intelligent Cloud segment, home to Azure, posted $34.7 billion in revenue with 30% year-over-year growth, while the company disclosed that its AI business has reached a $37 billion annual revenue run rate, up 123% from a year ago[1]. The company's AI business surpassed the $37 billion annual revenue run rate milestone, up 123% year-over-year and nearly triple the $13 billion run rate disclosed in January 2025[1][3]. Capital expenditures decreased to $31.9 billion from $37.5 billion in the previous quarter, but the company clarified that this decline reflected the timing of data center construction and hardware deliveries rather than reduced demand for cloud and AI services[1]."
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q4/performance",
+        "title": "FY24 Q4 - Performance - Investor Relations - Microsoft",
+        "snippet": "Revenue increased $33.2 billion or 16% driven by growth across each of our segments. Cost of revenue increased $8.3 billion or 13% driven by growth in Microsoft Cloud and Gaming, offset in part by a decline in Devices. Gross margin increased $25.0 billion or 17% driven by growth across each of our segments. Excluding the impact of the change in accounting estimate for the useful lives of our server and network equipment, gross margin percentage increased 2 points driven by improvement in More Personal Computing. Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage increased slightly driven by improvements in Azure and Office 365 Commercial, inclusive of scaling our AI infrastructure, offset in part by sales mix shift to Azure. Operating expenses increased $4.0 billion or 7% driven by Gaming, with 7 points of growth from the Activision Blizzard acquisition, and investments in cloud engineering, offset in part by the prior year Q2 charge."
+      },
+      {
+        "url": "https://www.statista.com/chart/29863/microsofts-cloud-revenue-vs-total-revenue/?srsltid=AfmBOorJXPWsfQtQmr98U3lnlALcDf--WcFJuU0HEhLUBCLU2oxz6BJ_",
+        "title": "Chart: Cloud Business Continues to Drive Microsoft's Growth | Statista",
+        "snippet": "While revenues from Intelligent Cloud and other cloud services have grown more than 50 percent between Q2 2024 and Q2 2026, revenue from"
+      },
+      {
+        "url": "https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/",
+        "title": "Microsoft tops Wall Street expectations, reports accelerating Azure ...",
+        "snippet": "*   [Home](https://www.geekwire.com/). *   [News](https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/#). *   [Amazon](https://www.geekwire.com/amazon/). *   [Microsoft](https://www.geekwire.com/microsoft/). *   [Podcasts](https://www.geekwire.com/podcast/). *   [Space](https://www.geekwire.com/space/). *   [GeekWork](https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/#). *   [Events](https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/#). *   [Lists](https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/#). *   [Members](https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/#). *   [Memberships](https://www.geekwire.com/memberships/). *   [Studios](https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/#). *   [About](https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/#). *   [Advertise](https://www.geekwire.com/advertise/). *   [LinkedIn](https://www.linkedin.com/company/geekwire/). *   [Newsletter](https://www.geekwire.com/newsletters/). *   [LinkedIn](https://www.linkedin.com/company/geekwire/). *   [Newsletter](https://www.geekwire.com/newsletters/). *   [Amazon](https://www.geekwire.com/amazon/). *   [Microsoft](https://www.geekwire.com/microsoft/). *   [Startups](https://www.geekwire.com/startups/). *   [AI](https://www.geekwire.com/ai/). *   [Science](https://www.geekwire.com/science/). *   [Sustainability](https://www.geekwire.com/sustainability/). *   [Facebook](https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.geekwire.com%2F2026%2Fmicrosoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate%2F). *   [LinkedIn](https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.geekwire.com%2F2026%2Fmicrosoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate%2F&title=Microsoft%20tops%20Wall%20Street%20expectations%2C%20reports%20accelerating%20Azure%20growth%20and%20%2437B%20AI%20run%20rate&summary=Microsoft%27s%20Azure%20cloud%20business%20accelerated%20in%20the%20March%20quarter%2C%20growing%2040%25%20and%20topping%20the%20company%27s%20own%20forecast%2C%20giving%20the%20tech%20giant%20a%20new%20answer%20to%20questions%20about%20its%20ability%20to%20translate%20record%20capital%20spending%20on%20AI%20infrastructure%20into%20stronger%20financial%20results.%20%3Ca%20href%3D%22https%3A%2F%2Fwww.geekwire.com%2F2026%2Fmicrosoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate%2F%22%3ERead%20More%3C%2Fa%3E&source=GeekWire). It’s the first time the company has updated the figure since it reported [a $13 billion run rate](https://www.geekwire.com/2025/microsoft-earnings-2/) in January 2025. [![Image 6](https://cdn.geekwire.com/wp-content/uploads/2026/02/Sponsored_Post_225x225.jpg)](https://www.geekwire.com/events/2026-geekwire-awards/). *   [Facebook](https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.geekwire.com%2F2026%2Fmicrosoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate%2F). *   [LinkedIn](https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.geekwire.com%2F2026%2Fmicrosoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate%2F&title=Microsoft%20tops%20Wall%20Street%20expectations%2C%20reports%20accelerating%20Azure%20growth%20and%20%2437B%20AI%20run%20rate&summary=Microsoft%27s%20Azure%20cloud%20business%20accelerated%20in%20the%20March%20quarter%2C%20growing%2040%25%20and%20topping%20the%20company%27s%20own%20forecast%2C%20giving%20the%20tech%20giant%20a%20new%20answer%20to%20questions%20about%20its%20ability%20to%20translate%20record%20capital%20spending%20on%20AI%20infrastructure%20into%20stronger%20financial%20results.%20%3Ca%20href%3D%22https%3A%2F%2Fwww.geekwire.com%2F2026%2Fmicrosoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate%2F%22%3ERead%20More%3C%2Fa%3E&source=GeekWire). [Read All Stories](https://www.geekwire.com/all/). [![Image 7: 2026 GeekWire Awards](https://cdn.geekwire.com/wp-content/uploads/2026/01/300x50-1.png)](https://www.geekwire.com/events/2026-geekwire-awards/). [![Image 8](https://cdn.geekwire.com/wp-content/uploads/2025/04/20250404_Microsoft_97-300x214.jpg)](https://www.geekwire.com/2026/microsoft-earnings-preview-after-a-357-billion-wipeout-tech-giant-gets-another-chance/). [![Image 9](https://cdn.geekwire.com/wp-content/uploads/2024/10/microsoft-campus-2-300x225.jpg)](https://www.geekwire.com/2025/microsoft-earnings-2/). **[Microsoft’s AI revenue run rate reaches $13B annually as tech giant tops earnings expectations](https://www.geekwire.com/2025/microsoft-earnings-2/)**. [![Image 10](https://cdn.geekwire.com/wp-content/uploads/2025/05/P1512066-300x200.jpg)](https://www.geekwire.com/2025/microsoft-earnings-preview-ai-fuels-cloud-growth-boosts-capital-costs-upends-workforce/). [![Image 11](https://cdn.geekwire.com/wp-content/uploads/2025/07/Screenshot-2025-07-30-150038-300x196.png)](https://www.geekwire.com/2025/microsoft-plans-record-30b-in-quarterly-capital-spending-to-meet-surging-ai-demand/). *   [![Image 12](https://cdn.geekwire.com/wp-content/uploads/2026/04/20250227_182738-300x225.jpg)](https://www.geekwire.com/2026/microsoft-puts-a-price-on-its-voluntary-retirement-program/). *   [![Image 13](https://cdn.geekwire.com/wp-content/uploads/2026/05/openclaw-300x225.png)](https://www.geekwire.com/2026/microsofts-openclaw-team-takes-on-the-personal-assistant-challenge/). *   [![Image 15](https://cdn.geekwire.com/wp-content/uploads/2026/05/Panthalassa-300x200.jpg)](https://www.geekwire.com/2026/data-centers-at-sea-oregons-panthalassa-nets-140m-led-by-peter-thiel-for-wave-powered-ai/). [![Image 16](https://cdn.geekwire.com/wp-content/uploads/sites/2/2023/03/INRIX_Logo-300x157.jpg)](https://www.geekwire.com/jobs/job/inrix-remote-2-customer-success-manager-public-sector/). [![Image 17](https://cdn.geekwire.com/wp-content/uploads/sites/2/2023/03/INRIX_Logo-300x157.jpg)](https://www.geekwire.com/jobs/job/inrix-bellevue-wa-2-senior-software-engineer-backend-data-platforms/). [![Image 18](https://cdn.geekwire.com/wp-content/uploads/sites/2/2023/03/INRIX_Logo-300x157.jpg)](https://www.geekwire.com/jobs/job/inrix-seattle-bellevue-2-sales-account-manager-strategic-logistics-customer-seattle-bellevue/). [![Image 19](https://cdn.geekwire.com/wp-content/uploads/sites/2/2023/03/INRIX_Logo-300x157.jpg)](https://www.geekwire.com/jobs/job/inrix-bellevue-wa-2-cloud-systems-engineer/). [![Image 20](https://cdn.geekwire.com/wp-content/uploads/sites/2/2023/03/INRIX_Logo-300x157.jpg)](https://www.geekwire.com/jobs/job/inrix-2-account-executive-public-sector-sales/). [![Image 21](https://cdn.geekwire.com/wp-content/uploads/sites/2/2023/03/INRIX_Logo-300x157.jpg)](https://www.geekwire.com/jobs/job/inrix-2-account-executive-enterprise-sales/). [![Image 22](https://cdn.geekwire.com/wp-content/uploads/sites/2/2023/03/INRIX_Logo-300x157.jpg)](https://www.geekwire.com/jobs/job/inrix-bellevue-wa-2-software-development-engineer/). Find more jobs on [GeekWork](https://www.geekwire.com/jobs/). [![Image 24](https://cdn.geekwire.com/wp-content/uploads/2026/04/Sponsored_Post_225x225-1-200x200.jpg)](https://www.geekwire.com/events/2026-geekwire-awards/). [![Image 26](https://cdn.geekwire.com/wp-content/uploads/2026/04/autessa_225x225-200x200.jpg)](https://www.geekwire.com/sponsor-post/why-moving-fast-with-ai-shouldnt-mean-sacrificing-safety/). *   [Partner With Us](https://www.geekwire.com/advertise/). *   [Facebook](https://www.facebook.com/geekwire). *   [LinkedIn](https://www.linkedin.com/company/geekwire). *   [Terms of Use](https://www.geekwire.com/termsofuse/). [Return to Top of Page](https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/#). [Consent Preferences](https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/#)."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://mlq.ai/news/microsoft-cloud-and-ai-acceleration-drive-market-outperformance-despite-capital-intensity-concerns/",
+        "title": "MLQ.ai | AI for investors",
+        "heading": "",
+        "chunk_text": "Microsoft reported third-quarter earnings that exceeded Wall Street expectations across all major metrics, with the company's cloud and AI businesses driving substantial revenue growth. The Intelligent Cloud segment, home to Azure, posted $34.7 billion in revenue with 30% year-over-year growth, while the company disclosed that its AI business has reached a $37 billion annual revenue run rate, up 123% from a year ago[1](https://mlq.ai/news/microsoft-cloud-and-ai-acceleration-drive-market-outperformance-despite-capital-intensity-concerns/# \"Click to view source\").",
+        "score": 3.6603,
+        "rank": 0
+      },
+      {
+        "url": "https://www.statista.com/chart/29863/microsofts-cloud-revenue-vs-total-revenue/?srsltid=AfmBOorJXPWsfQtQmr98U3lnlALcDf--WcFJuU0HEhLUBCLU2oxz6BJ_",
+        "title": "Infographic: Cloud Business Continues to Drive Microsoft's Growth",
+        "heading": "Cloud Business Continues to Drive Microsoft's Growth",
+        "chunk_text": "Cloud Business Continues to Drive Microsoft's Growth\n\nMicrosoft's Intelligent Cloud segment alone generates more than $100 billion in annual revenue now, as global demand for cloud infrastructure continues to grow. The transition to AI has given another boost to the [global cloud market](https://www.statista.com/chart/34022/cloud-infrastructure-service-revenues/), re-accelerating a market that has grown from less than $100 billion in 2019 to more than $400 billion in 2025. According to estimates from [Synergy Research](https://www.statista.com/chart/18819/worldwide-market-share-of-leading-cloud-infrastructure-service-providers/), Microsoft is one of the market leaders in the cloud infrastructure market, trailing only Amazon Web Services (AWS) in terms of market share.\n\n![Image 15](https://cdn.statcdn.com/contactPerson/367.jpg)\n\nFelix Richter\n\nData Journalist\n\n[felix.richter@statista.com](mailto:felix.richter@statista.com) +49 (40) 284 841 557\n\n![Image 16: Infographic: Cloud Business Continues to Drive Microsoft's Growth | Statista](https://cdn.statcdn.com/Infographic/images/normal/29863.jpeg)\n\nDescription\n\nThis chart shows Microsoft's cloud revenue and total revenue per fiscal year.\n\n[Report](https://www.statista.com/statistics/report-content/infographic/29863 \"Report\")\n\n[Download Chart](https://cdn.statcdn.com/Infographic/images/normal/29863.jpeg \"Download Chart\")",
+        "score": 2.2554,
+        "rank": 1
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar24/index.html",
+        "title": "Microsoft 2024 Annual Report",
+        "heading": "SEGMENT RESULTS OF OPERATIONS",
+        "chunk_text": "SEGMENT RESULTS OF OPERATIONS\n\n**(In millions, except percentages)****2024****2023****Percentage\n\nChange**\n**Revenue**\nProductivity and Business Processes**$ 77,728**$ 69,274 12%\nIntelligent Cloud**105,362**87,907 20%\nMore Personal Computing**62,032**54,734 13%\nTotal**$ 245,122**$ 211,915 16%\n**Operating Income**\nProductivity and Business Processes**$ 40,540**$ 34,189 19%\nIntelligent Cloud**49,584**37,884 31%\nMore Personal Computing**19,309**16,450 17%\nTotal**$ 109,433**$ 88,523 24%\n\n**Reportable Segments**\n\n**_Fiscal Year 2024 Compared with Fiscal Year 2023_**\n\n_Productivity and Business Processes_\n\nRevenue increased $8.5 billion or 12%.\n\n*   Office Commercial products and cloud services revenue increased $5.8 billion or 14%. Office 365 Commercial revenue grew 16% with seat growth of 7%, driven by small and medium business and frontline worker offerings, as well as growth in revenue per user. Office Commercial products revenue declined 16% driven by continued customer shift to cloud offerings.\n*   Office Consumer products and cloud services revenue increased $237 million or 4%. Microsoft 365 Consumer subscribers grew 10% to 82.5 million.\n*   LinkedIn revenue increased $1.4 billion or 9% driven by growth across all lines of business – Talent Solutions, Premium Subscriptions, Marketing Solutions, and Sales Solutions.\n*   Dynamics products and cloud services revenue increased $1.0 billion or 19% driven by Dynamics 365. Dynamics 365 revenue grew 24% driven by growth across all workloads.",
+        "score": 0.2654,
+        "rank": 2
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar23/index.html",
+        "title": "Microsoft 2023 Annual Report",
+        "heading": "SEGMENT RESULTS OF OPERATIONS",
+        "chunk_text": "SEGMENT RESULTS OF OPERATIONS\n\n**(In millions, except percentages)****2023****2022****Percentage\n\nChange**\n**Revenue**\nProductivity and Business Processes**$ 69,274**$ 63,364 9%\nIntelligent Cloud**87,907**74,965 17%\nMore Personal Computing**54,734**59,941(9)%\nTotal**$ 211,915**$ 198,270 7%\n**Operating Income**\nProductivity and Business Processes**$ 34,189**$ 29,690 15%\nIntelligent Cloud**37,884**33,203 14%\nMore Personal Computing**16,450**20,490(20)%\nTotal**$ 88,523**$ 83,383 6%\n\n**Reportable Segments**\n\n**_Fiscal Year 2023 Compared with Fiscal Year 2022_**\n\n_Productivity and Business Processes_\n\nRevenue increased $5.9 billion or 9%.\n\n*   Office Commercial products and cloud services revenue increased $3.7 billion or 10%. Office 365 Commercial revenue grew 13% with seat growth of 11%, driven by small and medium business and frontline worker offerings, as well as growth in revenue per user. Office Commercial products revenue declined 21% driven by continued customer shift to cloud offerings.\n*   Office Consumer products and cloud services revenue increased $140 million or 2%. Microsoft 365 Consumer subscribers grew 12% to 67.0 million.\n*   LinkedIn revenue increased $1.3 billion or 10% driven by Talent Solutions.\n*   Dynamics products and cloud services revenue increased $750 million or 16% driven by Dynamics 365 growth of 24%.\n\nOperating income increased $4.5 billion or 15%.",
+        "score": -0.662,
+        "rank": 3
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar23/index.html",
+        "title": "Microsoft 2023 Annual Report",
+        "heading": "NOTE 13 — UNEARNED REVENUE",
+        "chunk_text": "NOTE 13 — UNEARNED REVENUE\n\nUnearned revenue by segment was as follows:\n\n**(In millions)**\n**June 30,****2023****2022**\nProductivity and Business Processes**$ 27,572**$ 24,558\nIntelligent Cloud**21,563**19,371\nMore Personal Computing**4,678**4,479\nTotal**$ 53,813**$ 48,408\n\nChanges in unearned revenue were as follows:\n\n**(In millions)**\n**Year Ended June 30, 2023**\nBalance, beginning of period**$ 48,408**\nDeferral of revenue**123,935**\nRecognition of unearned revenue**(118,530)**\nBalance, end of period**$ 53,813**\n\nRevenue allocated to remaining performance obligations, which includes unearned revenue and amounts that will be invoiced and recognized as revenue in future periods, was $229 billion as of June 30, 2023, of which $224 billion is related to the commercial portion of revenue. We expect to recognize approximately 45% of this revenue over the next 12 months and the remainder thereafter.",
+        "score": -0.9582,
+        "rank": 4
+      },
+      {
+        "url": "https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/",
+        "title": "Microsoft tops Wall Street expectations, reports accelerating Azure growth and $37B AI run rate",
+        "heading": "Microsoft tops Wall Street expectations, reports accelerating Azure growth and $37B AI run rate",
+        "chunk_text": "Microsoft tops Wall Street expectations, reports accelerating Azure growth and $37B AI run rate\n\n![Image 7](https://cdn.geekwire.com/wp-content/uploads/2026/04/msft-capex.png)\n**Copilot:**For the quarter, Microsoft 365 Copilot now exceeds 20 million paid seats, up from 15 million in January. That means about 4.4% of the company’s commercial base is on its paid enterprise AI plan.\n\n**Cloud overall:** Microsoft Cloud revenue, which includes Azure, commercial Microsoft 365, LinkedIn, and Dynamics 365, rose 29% to $54.5 billion. The company’s remaining performance obligations, a measure of contracted future revenue, was $627 billion, with a significant part of that backlog tied to OpenAI.\n\nElsewhere in Microsoft’s business:\n\n*   **Revenue in the More Personal Computing segment**fell 1% to $13.2 billion, with Xbox content and services revenue down 5% and Windows OEM and devices revenue down 2%. Search advertising revenue grew 12%.\n*   **The Productivity and Business Processes segment,** which includes Microsoft 365, LinkedIn, and Dynamics 365, grew 17% to $35 billion. LinkedIn revenue rose 12%, and Dynamics 365 revenue increased 22%.\n*   **The Intelligent Cloud segment,** home to Azure, grew 30% to $34.7 billion, making it nearly equal in size to the productivity segment for the first time.",
+        "score": -1.6793,
+        "rank": 5
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar23/index.html",
+        "title": "Microsoft 2023 Annual Report",
+        "heading": "NOTE 19 — SEGMENT INFORMATION AND GEOGRAPHIC DATA",
+        "chunk_text": "NOTE 19 — SEGMENT INFORMATION AND GEOGRAPHIC DATA\n\n**(In millions)**\n**Year Ended June 30,****2023****2022****2021**\n**Revenue**\nProductivity and Business Processes**$ 69,274**$ 63,364$ 53,915\nIntelligent Cloud**87,907**74,965 59,728\nMore Personal Computing**54,734**59,941 54,445\nTotal**$ 211,915**$ 198,270$ 168,088\n**Operating Income**\nProductivity and Business Processes**$ 34,189**$ 29,690$ 24,351\nIntelligent Cloud**37,884**33,203 26,471\nMore Personal Computing**16,450**20,490 19,094\nTotal**$ 88,523**$ 83,383$ 69,916\n\nNo sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2023, 2022, or 2021. Revenue, classified by the major geographic areas in which our customers were located, was as follows:\n\n**(In millions)**\n**Year Ended June 30,****2023****2022****2021**\nUnited States (a)**$ 106,744**$ 100,218$ 83,953\nOther countries**105,171**98,052 84,135\nTotal**$ 211,915**$ 198,270$ 168,088\n\n1.   _Includes billings to OEMs and certain multinational organizations because of the nature of these businesses and the impracticability of determining the geographic source of the revenue._\n\nRevenue, classified by significant product and service offerings, was as follows:",
+        "score": -1.9081,
+        "rank": 6
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar24/index.html",
+        "title": "Microsoft 2024 Annual Report",
+        "heading": "NOTE 19 — SEGMENT INFORMATION AND GEOGRAPHIC DATA",
+        "chunk_text": "NOTE 19 — SEGMENT INFORMATION AND GEOGRAPHIC DATA\n\n**(In millions)**\n**Year Ended June 30,****2024****2023****2022**\n**Revenue**\nProductivity and Business Processes**$ 77,728**$ 69,274$ 63,364\nIntelligent Cloud**105,362**87,907 74,965\nMore Personal Computing**62,032**54,734 59,941\nTotal**$ 245,122**$ 211,915$ 198,270\n**Operating Income**\nProductivity and Business Processes**$ 40,540**$ 34,189$ 29,690\nIntelligent Cloud**49,584**37,884 33,203\nMore Personal Computing**19,309**16,450 20,490\nTotal**$ 109,433**$ 88,523$ 83,383\n\nNo sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2024, 2023, or 2022. Revenue, classified by the major geographic areas in which our customers were located, was as follows:\n\n**(In millions)**\n**Year Ended June 30,****2024****2023****2022**\nUnited States (a)**$ 124,704**$ 106,744$ 100,218\nOther countries**120,418**105,171 98,052\nTotal**$ 245,122**$ 211,915$ 198,270\n\n1.   _Includes billings to OEMs and certain multinational organizations because of the nature of these businesses and the impracticability of determining the geographic source of the revenue._\n\nRevenue, classified by significant product and service offerings, was as follows:",
+        "score": -2.0773,
+        "rank": 7
+      },
+      {
+        "url": "https://mlq.ai/news/microsoft-cloud-and-ai-acceleration-drive-market-outperformance-despite-capital-intensity-concerns/",
+        "title": "MLQ.ai | AI for investors",
+        "heading": "",
+        "chunk_text": "Microsoft reported third-quarter earnings that exceeded Wall Street expectations across all major metrics, with the company's cloud and AI businesses driving substantial revenue growth. The Intelligent Cloud segment, home to Azure, posted $34.7 billion in revenue with 30% year-over-year growth, while the company disclosed that its AI business has reached a $37 billion annual revenue run rate, up 123% from a year ago[1](https://mlq.ai/news/microsoft-cloud-and-ai-acceleration-drive-market-outperformance-despite-capital-intensity-concerns/# \"Click to view source\").",
+        "score": 4.8674,
+        "rank": 0
+      },
+      {
+        "url": "https://www.statista.com/chart/29863/microsofts-cloud-revenue-vs-total-revenue/?srsltid=AfmBOorJXPWsfQtQmr98U3lnlALcDf--WcFJuU0HEhLUBCLU2oxz6BJ_",
+        "title": "Infographic: Cloud Business Continues to Drive Microsoft's Growth",
+        "heading": "Cloud Business Continues to Drive Microsoft's Growth",
+        "chunk_text": "Cloud Business Continues to Drive Microsoft's Growth\n\nMicrosoft's Intelligent Cloud segment alone generates more than $100 billion in annual revenue now, as global demand for cloud infrastructure continues to grow. The transition to AI has given another boost to the [global cloud market](https://www.statista.com/chart/34022/cloud-infrastructure-service-revenues/), re-accelerating a market that has grown from less than $100 billion in 2019 to more than $400 billion in 2025. According to estimates from [Synergy Research](https://www.statista.com/chart/18819/worldwide-market-share-of-leading-cloud-infrastructure-service-providers/), Microsoft is one of the market leaders in the cloud infrastructure market, trailing only Amazon Web Services (AWS) in terms of market share.\n\n![Image 15](https://cdn.statcdn.com/contactPerson/367.jpg)\n\nFelix Richter\n\nData Journalist\n\n[felix.richter@statista.com](mailto:felix.richter@statista.com) +49 (40) 284 841 557\n\n![Image 16: Infographic: Cloud Business Continues to Drive Microsoft's Growth | Statista](https://cdn.statcdn.com/Infographic/images/normal/29863.jpeg)\n\nDescription\n\nThis chart shows Microsoft's cloud revenue and total revenue per fiscal year.\n\n[Report](https://www.statista.com/statistics/report-content/infographic/29863 \"Report\")\n\n[Download Chart](https://cdn.statcdn.com/Infographic/images/normal/29863.jpeg \"Download Chart\")",
+        "score": 3.7979,
+        "rank": 1
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar23/index.html",
+        "title": "Microsoft 2023 Annual Report",
+        "heading": "SEGMENT RESULTS OF OPERATIONS",
+        "chunk_text": "SEGMENT RESULTS OF OPERATIONS\n\n**(In millions, except percentages)****2023****2022****Percentage\n\nChange**\n**Revenue**\nProductivity and Business Processes**$ 69,274**$ 63,364 9%\nIntelligent Cloud**87,907**74,965 17%\nMore Personal Computing**54,734**59,941(9)%\nTotal**$ 211,915**$ 198,270 7%\n**Operating Income**\nProductivity and Business Processes**$ 34,189**$ 29,690 15%\nIntelligent Cloud**37,884**33,203 14%\nMore Personal Computing**16,450**20,490(20)%\nTotal**$ 88,523**$ 83,383 6%\n\n**Reportable Segments**\n\n**_Fiscal Year 2023 Compared with Fiscal Year 2022_**\n\n_Productivity and Business Processes_\n\nRevenue increased $5.9 billion or 9%.\n\n*   Office Commercial products and cloud services revenue increased $3.7 billion or 10%. Office 365 Commercial revenue grew 13% with seat growth of 11%, driven by small and medium business and frontline worker offerings, as well as growth in revenue per user. Office Commercial products revenue declined 21% driven by continued customer shift to cloud offerings.\n*   Office Consumer products and cloud services revenue increased $140 million or 2%. Microsoft 365 Consumer subscribers grew 12% to 67.0 million.\n*   LinkedIn revenue increased $1.3 billion or 10% driven by Talent Solutions.\n*   Dynamics products and cloud services revenue increased $750 million or 16% driven by Dynamics 365 growth of 24%.\n\nOperating income increased $4.5 billion or 15%.",
+        "score": 2.2815,
+        "rank": 2
+      },
+      {
+        "url": "https://www.geekwire.com/2026/microsoft-tops-wall-street-expectations-reports-accelerating-azure-growth-and-37b-ai-run-rate/",
+        "title": "Microsoft tops Wall Street expectations, reports accelerating Azure growth and $37B AI run rate",
+        "heading": "Microsoft tops Wall Street expectations, reports accelerating Azure growth and $37B AI run rate",
+        "chunk_text": "Microsoft tops Wall Street expectations, reports accelerating Azure growth and $37B AI run rate\n\n![Image 7](https://cdn.geekwire.com/wp-content/uploads/2026/04/msft-capex.png)\n**Copilot:**For the quarter, Microsoft 365 Copilot now exceeds 20 million paid seats, up from 15 million in January. That means about 4.4% of the company’s commercial base is on its paid enterprise AI plan.\n\n**Cloud overall:** Microsoft Cloud revenue, which includes Azure, commercial Microsoft 365, LinkedIn, and Dynamics 365, rose 29% to $54.5 billion. The company’s remaining performance obligations, a measure of contracted future revenue, was $627 billion, with a significant part of that backlog tied to OpenAI.\n\nElsewhere in Microsoft’s business:\n\n*   **Revenue in the More Personal Computing segment**fell 1% to $13.2 billion, with Xbox content and services revenue down 5% and Windows OEM and devices revenue down 2%. Search advertising revenue grew 12%.\n*   **The Productivity and Business Processes segment,** which includes Microsoft 365, LinkedIn, and Dynamics 365, grew 17% to $35 billion. LinkedIn revenue rose 12%, and Dynamics 365 revenue increased 22%.\n*   **The Intelligent Cloud segment,** home to Azure, grew 30% to $34.7 billion, making it nearly equal in size to the productivity segment for the first time.",
+        "score": 2.2043,
+        "rank": 3
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2024-q4/performance",
+        "title": "FY24 Q4 - Performance - Investor Relations - Microsoft",
+        "heading": "Fiscal Year 2024 Compared with Fiscal Year 2023",
+        "chunk_text": "Fiscal Year 2024 Compared with Fiscal Year 2023\n\nRevenue increased $33.2 billion or 16% driven by growth across each of our segments. Intelligent Cloud revenue increased driven by Azure. Productivity and Business Processes revenue increased driven by Office 365 Commercial. More Personal Computing revenue increased driven by Gaming.\n\nCost of revenue increased $8.3 billion or 13% driven by growth in Microsoft Cloud and Gaming, offset in part by a decline in Devices.\n\nGross margin increased $25.0 billion or 17% driven by growth across each of our segments.\n\n• Gross margin percentage increased slightly. Excluding the impact of the change in accounting estimate for the useful lives of our server and network equipment, gross margin percentage increased 2 points driven by improvement in More Personal Computing.\n\n• Microsoft Cloud gross margin percentage decreased slightly to 71%. Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage increased slightly driven by improvements in Azure and Office 365 Commercial, inclusive of scaling our AI infrastructure, offset in part by sales mix shift to Azure.\n\nOperating expenses increased $4.0 billion or 7% driven by Gaming, with 7 points of growth from the Activision Blizzard acquisition, and investments in cloud engineering, offset in part by the prior year Q2 charge.\n\nOperating income increased $20.9 billion or 24% driven by growth across each of our segments.",
+        "score": 2.1919,
+        "rank": 4
+      },
+      {
+        "url": "https://www.microsoft.com/investor/reports/ar24/index.html",
+        "title": "Microsoft 2024 Annual Report",
+        "heading": "SEGMENT RESULTS OF OPERATIONS",
+        "chunk_text": "SEGMENT RESULTS OF OPERATIONS\n\n**(In millions, except percentages)****2024****2023****Percentage\n\nChange**\n**Revenue**\nProductivity and Business Processes**$ 77,728**$ 69,274 12%\nIntelligent Cloud**105,362**87,907 20%\nMore Personal Computing**62,032**54,734 13%\nTotal**$ 245,122**$ 211,915 16%\n**Operating Income**\nProductivity and Business Processes**$ 40,540**$ 34,189 19%\nIntelligent Cloud**49,584**37,884 31%\nMore Personal Computing**19,309**16,450 17%\nTotal**$ 109,433**$ 88,523 24%\n\n**Reportable Segments**\n\n**_Fiscal Year 2024 Compared with Fiscal Year 2023_**\n\n_Productivity and Business Processes_\n\nRevenue increased $8.5 billion or 12%.\n\n*   Office Commercial products and cloud services revenue increased $5.8 billion or 14%. Office 365 Commercial revenue grew 16% with seat growth of 7%, driven by small and medium business and frontline worker offerings, as well as growth in revenue per user. Office Commercial products revenue declined 16% driven by continued customer shift to cloud offerings.\n*   Office Consumer products and cloud services revenue increased $237 million or 4%. Microsoft 365 Consumer subscribers grew 10% to 82.5 million.\n*   LinkedIn revenue increased $1.4 billion or 9% driven by growth across all lines of business – Talent Solutions, Premium Subscriptions, Marketing Solutions, and Sales Solutions.\n*   Dynamics products and cloud services revenue increased $1.0 billion or 19% driven by Dynamics 365. Dynamics 365 revenue grew 24% driven by growth across all workloads.",
+        "score": 2.1382,
+        "rank": 5
+      },
+      {
+        "url": "https://www.statista.com/chart/29863/microsofts-cloud-revenue-vs-total-revenue/?srsltid=AfmBOorJXPWsfQtQmr98U3lnlALcDf--WcFJuU0HEhLUBCLU2oxz6BJ_",
+        "title": "Infographic: Cloud Business Continues to Drive Microsoft's Growth",
+        "heading": "Cloud Business Continues to Drive Microsoft's Growth",
+        "chunk_text": "Cloud Business Continues to Drive Microsoft's Growth\n\nby[Felix Richter](mailto:felix.richter@statista.com),\n\nJan 29, 2026\n\nCloud computing\n\nEven though Microsoft is best known for Windows and its productivity suite Microsoft 365 (formerly known as Microsoft Office), cloud services have been integral to the company's success over the last couple of years. In the quarter that ended December 31, Microsoft's cloud revenue surpassed $50 billion for the first time, accounting for 63 percent of the company's total revenue.\n\nMore impressively, though, Microsoft's diverse cloud offerings, most importantly Azure and Microsoft 365 Commercial and Consumer cloud have been responsible for more than 90 percent of the company's revenue growth over the past two years. While revenues from Intelligent Cloud and other cloud services have grown more than 50 percent between Q2 2024 and Q2 2026, revenue from Microsoft's other products and services have only increased 5 percent.",
+        "score": 0.2951,
+        "rank": 6
+      },
+      {
+        "url": "https://mlq.ai/news/microsoft-cloud-and-ai-acceleration-drive-market-outperformance-despite-capital-intensity-concerns/",
+        "title": "MLQ.ai | AI for investors",
+        "heading": "Financial Performance and Earnings Beat",
+        "chunk_text": "Financial Performance and Earnings Beat\n\nTotal revenue reached $82.9 billion, beating the $81.4 billion analyst consensus estimate, while earnings per share jumped 23% to $4.27, above the $4.06 expected by Wall Street[1](https://mlq.ai/news/microsoft-cloud-and-ai-acceleration-drive-market-outperformance-despite-capital-intensity-concerns/# \"Click to view source\"). The Intelligent Cloud segment, which accounts for a growing portion of company revenue, grew 30% to $34.7 billion, making it nearly equal in size to the productivity segment for the first time[1](https://mlq.ai/news/microsoft-cloud-and-ai-acceleration-drive-market-outperformance-despite-capital-intensity-concerns/# \"Click to view source\"). Microsoft's commercial remaining performance obligations increased 99% to $627 billion, a measure of contracted future revenue with a significant portion tied to OpenAI and other cloud commitments[1](https://mlq.ai/news/microsoft-cloud-and-ai-acceleration-drive-market-outperformance-despite-capital-intensity-concerns/# \"Click to view source\").",
+        "score": -1.8506,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "Microsoft Intelligent Cloud segment revenue FY2022 FY2023 FY2024 annual",
+      "Microsoft Intelligent Cloud segment year-over-year growth rates FY2023 FY2024"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "partial",
+    "score": 0.65,
+    "reasoning": "The response correctly provides the three revenue figures and YoY growth rates, matching the ground truth closely. However, it fails to cite the required SEC-MSFT-* chunks for each year, instead using generic citations [3][4][6]. This omission of the expected citation format and the minor truncation in the analysis prevent full marks.",
+    "judge_model": "deepseek-chat"
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "category": "transcript_grounding",
+  "expected_behavior": "Transcript-preferred retrieval. Transcript→10K fallback if empty. Tests earnings_grounding fix.",
+  "question": "What did NVIDIA's CEO say about Blackwell production timeline in earnings calls?",
+  "ground_truth": "In NVIDIA's FY2025 earnings calls (calendar 2024-2025), CEO Jensen Huang discussed Blackwell GPU production ramping in Q4 FY2025 and beyond, with demand described as exceeding supply. He mentioned 'insane' demand for Blackwell architecture. Production yield improvements and customer deployments at hyperscalers were discussed. Must cite NVDA transcript chunks.",
+  "key_facts": [
+    "Blackwell production ramp Q4 FY2025 timeframe.",
+    "Demand exceeds supply according to Jensen Huang.",
+    "Hyperscaler customer deployments mentioned.",
+    "Must cite [TC-NVDA-*] transcript chunks.",
+    "If no transcript: 10-K fallback acceptable."
+  ],
+  "session_id": "eval-20260507T181845Z-08",
+  "metrics": {
+    "m1_factual_correctness": 0.4,
+    "m3_retrieval_recall": 0.6,
+    "m7_judge_score": 0.25
+  },
+  "timing": {
+    "pipeline_s": 25.41,
+    "latency_breakdown": {
+      "search_ms": 2304,
+      "extract_ms": 11087,
+      "chunk_ms": 13,
+      "retrieve_ms": 1725
+    },
+    "total_latency_ms": 25410
+  },
+  "pipeline": {
+    "answer": "## Jensen Huang’s Statements on Blackwell Production Timeline\n\nNVIDIA CEO Jensen Huang has made several key statements about the Blackwell production timeline across multiple earnings calls and public appearances, consistently projecting confidence in the ramp despite earlier production challenges.\n\n### Q3 FY2025 Earnings Call (November 2024)\n\nDuring the Q3 earnings call, Huang addressed Blackwell’s status directly, stating **“Blackwell production is in full steam”** [1]. He brushed aside reported engineering snags and indicated that the rollout **“has avoided major issues”** and would **“start boosting the company’s top line ahead of schedule”** [1]. Huang specifically noted that NVIDIA was on track to **outdo prior Q4 estimates for Blackwell sales**, having previously stated the platform would initially account for several billion dollars in additional revenue [1].\n\nHuang also addressed a report about overheating issues with server racks, saying he **“believes the Blackwell ramp is in great shape”** and that demand would **exceed supply for at least several more quarters** [1].\n\n### CNBC Appearance (October 2024)\n\nIn an October 2024 video, Huang repeated his confidence, stating **“Blackwell is in full production”** and that **“everything is on track”** [2].\n\n### Q4 FY2025 Earnings Call (February 2025)\n\nBy the February 2025 earnings call, Huang provided concrete results: **Blackwell had generated $11 billion in revenue during the fourth quarter alone**, making it **“the fastest product ramp”** in NVIDIA’s history [3]. He declared the company was **“just getting started”** in satiating global AI demand [3].\n\n### Key Production Milestones\n\n| Milestone | Timeline | Detail |\n|-----------|----------|--------|\n| Initial delays | Prior to Q3 2024 | Production snags delayed release by at least one quarter [1] |\n| Full production declared | October 2024 | “Blackwell is in full production” [2] |\n| Revenue ramp | Q4 FY2025 (ending Jan 2025) | $11 billion in Blackwell revenue [3] |\n| Future outlook | FY2026 Q1 forecast | Expected $43 billion in total revenue [3] |\n\nHuang’s overall message has been consistently optimistic—he has **dismissed concerns about production issues** [1] and positioned Blackwell as a transformative product that will require **“100,000 Blackwells”** for next-generation AI models, compared to the 100,000 Hopper chips used previously [1].",
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://fortune.com/2024/11/21/nvidia-ceo-jensen-huang-blackwell/",
+        "title": "https://fortune.com/2024/11/21/nvidia-ceo-jensen-huang-blackwell/",
+        "snippet": "Nvidia avoided the selloff many on Wall Street feared, in part because of another blowout earnings beat. Perhaps more important, the world’s largest company had plenty of good things to say about its next-generation offering of graphics processing units—the chips at the heart of the AI boom. On the "
+      },
+      {
+        "num": 2,
+        "url": "https://www.facebook.com/cnbc/videos/jensen-huang-nvidia-ceo-says-that-blackwell-is-in-full-production-and-that-every/1075795847464534/",
+        "title": "54K views · 354 reactions | Jensen Huang, Nvidia CEO, says that \"Blackwell is in full production\" and that \"everything is on track.\" | CNBC",
+        "snippet": "Jensen Huang, Nvidia CEO, says that \"Blackwell is in full production\" and that \"everything is on track.\" | CNBC | Facebook\n\n[Log In](https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&next=https%3A%2F%2Fwww.facebook.com%2Fcnbc%2Fvideos%2Fjensen-huang-nvidia-ceo-says-that-blac"
+      },
+      {
+        "num": 3,
+        "url": "https://www.crn.com/news/ai/2025/jensen-huang-nvidia-s-just-getting-started-after-blackwell-s-unprecedented-11b-ramp",
+        "title": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp",
+        "snippet": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp\n\n“We're just at the start of the age of AI. Multimodal AI, enterprise AI, sovereign AI and physical AI are right around the corner,” Huang said Wednesday during Nvidia’s fourth-quarter earnings call. “We will grow "
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://fortune.com/2024/11/21/nvidia-ceo-jensen-huang-blackwell/",
+        "title": "Nvidia CEO soothes concerns over Blackwell chip production | Fortune",
+        "snippet": "# Nvidia CEO waves off Blackwell production concerns; CFO says demand is ‘staggering’. Jensen Huang talks onstage in a big chair with greenery and a projection of nature in the background. Perhaps more important, the world’s largest company had plenty of good things to say about its next-generation offering of graphics processing units—the chips at the heart of the AI boom. On the company’s Q3 earnings call, CEO Jensen Huang said the rollout of the new platform, known as Blackwell, has avoided major issues and will start boosting the company’s top line ahead of schedule. On the call, Huang brushed aside reported engineering snags, saying Nvidia is on track to outdo its prior Q4 estimates for Blackwell sales (he’s previously said the platform will initially account for several billion dollars in additional revenue). The most recent large AI models, he said, required a maximum of 100,000 Nvidia Hopper chips, previously the company’s premier offering."
+      },
+      {
+        "url": "https://www.reddit.com/r/NVDA_Stock/comments/1hiy5sg/nvidia_ceo_jensen_huang_confirms_blackwell_ai/",
+        "title": "Nvidia CEO Jensen Huang confirms Blackwell AI \"production is ...",
+        "snippet": "Nvidia CEO Jensen Huang confirms Blackwell AI production is progressing smoothly with 30x performance boost."
+      },
+      {
+        "url": "https://www.facebook.com/cnbc/videos/jensen-huang-nvidia-ceo-says-that-blackwell-is-in-full-production-and-that-every/1075795847464534/",
+        "title": "Jensen Huang, Nvidia CEO, says that \"Blackwell is in full production ...",
+        "snippet": "Jensen Huang, Nvidia CEO, says that \"Blackwell is in full ... Good TWGS 2025 will talk AI www.cisw- twgs.com. cisw-twgs.com. Home"
+      },
+      {
+        "url": "https://www.bloomberg.com/news/videos/2024-08-28/in-full-nvidia-ceo-on-earnings-demand-blackwell-chip-challenges",
+        "title": "In Full: Nvidia CEO Huang on Earnings, Blackwell Chip - Bloomberg",
+        "snippet": "Nvidia CEO Jensen Huang defends the rollout of its next-generation Blackwell chips after the company admitted problems with its design."
+      },
+      {
+        "url": "https://www.facebook.com/TheNationalNews/posts/chief-executive-jensen-huang-says-sales-of-blackwell-chips-are-off-the-charts/1274203928069362/",
+        "title": "Chief executive Jensen Huang says sales of Blackwell chips are \"off ...",
+        "snippet": "CEO Jensen Huang said sales for Nvidia's current- generation GPU, called Blackwell, are “off the charts.” • Nvidia said it expects about $65"
+      },
+      {
+        "url": "https://www.crn.com/news/ai/2025/jensen-huang-nvidia-s-just-getting-started-after-blackwell-s-unprecedented-11b-ramp",
+        "title": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp",
+        "snippet": "*After more than doubling revenue to $130.5 billion last year and making $11 billion from early shipments of its Blackwell GPUs in the fourth quarter alone, Nvidia CEO Jensen Huang says the AI computing giant is just getting started in satiating global demand.*. Nvidia more than doubled revenue to $130.5 billion last year due to high demand for its AI chips and systems, and the company made $11 billion from early shipments of its next-generation Blackwell GPUs in the last three months alone—its “fastest product ramp” yet. The remarks were made after Nvidia announced that its revenue for the fourth quarter of its 2025 fiscal year, which ended in January, was $39.3 billion, up 12 percent sequentially and 78 percent higher than it was a year ago. Out of the company’s $39.3 billion in fourth-quarter revenue, $32.5 billion, or 82.6 percent, came from Nvidia’s data center compute segment, which includes the $11 billion it made from early shipments of its Blackwell GPUs during that period."
+      }
+    ],
+    "chunks": [
+      {
+        "url": "https://fortune.com/2024/11/21/nvidia-ceo-jensen-huang-blackwell/",
+        "title": "https://fortune.com/2024/11/21/nvidia-ceo-jensen-huang-blackwell/",
+        "heading": "",
+        "chunk_text": "Nvidia avoided the selloff many on Wall Street feared, in part because of another blowout earnings beat. Perhaps more important, the world’s largest company had plenty of good things to say about its next-generation offering of graphics processing units—the chips at the heart of the AI boom. On the company’s Q3 earnings call, CEO Jensen Huang said the rollout of the new platform, known as Blackwell, has avoided major issues and will start boosting the company’s top line ahead of schedule.\nOn the call, Huang brushed aside reported engineering snags, saying Nvidia is on track to outdo its prior Q4 estimates for Blackwell sales (he’s previously said the platform will initially account for several billion dollars in additional revenue). Huang touted ravenous demand for the new offering, which promises to dramatically boost AI data center performance.\n“Blackwell production is in full steam,” he said.\nThere’s broad consensus Blackwell will be a game changer, but the path to market has not been without recent hiccups. Multiple analysts have told Fortune that production snags, which delayed Blackwell’s release by at least a quarter, were not a surprise.",
+        "score": 7.4285,
+        "rank": 0
+      },
+      {
+        "url": "https://www.facebook.com/cnbc/videos/jensen-huang-nvidia-ceo-says-that-blackwell-is-in-full-production-and-that-every/1075795847464534/",
+        "title": "54K views · 354 reactions | Jensen Huang, Nvidia CEO, says that \"Blackwell is in full production\" and that \"everything is on track.\" | CNBC",
+        "heading": "Jensen Huang, Nvidia CEO, says that \"Blackwell is in full production\" and that \"everything is on track.\" | CNBC | Facebook",
+        "chunk_text": "Jensen Huang, Nvidia CEO, says that \"Blackwell is in full production\" and that \"everything is on track.\" | CNBC | Facebook\n\n[Log In](https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&next=https%3A%2F%2Fwww.facebook.com%2Fcnbc%2Fvideos%2Fjensen-huang-nvidia-ceo-says-that-blackwell-is-in-full-production-and-that-every%2F1075795847464534%2F)\n\nLog In\n\n[Forgot Account?](https://www.facebook.com/recover/initiate?ars=royal_blue_bar)",
+        "score": 6.6797,
+        "rank": 1
+      },
+      {
+        "url": "https://www.crn.com/news/ai/2025/jensen-huang-nvidia-s-just-getting-started-after-blackwell-s-unprecedented-11b-ramp",
+        "title": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp",
+        "heading": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp",
+        "chunk_text": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp\n\n“We're just at the start of the age of AI. Multimodal AI, enterprise AI, sovereign AI and physical AI are right around the corner,” Huang said Wednesday during Nvidia’s fourth-quarter earnings call. “We will grow strongly in 2025. Going forward, data centers will dedicate most of [capital expenditures] to accelerated computing and AI.”\n\nThe remarks were made after Nvidia announced that its revenue for the fourth quarter of its 2025 fiscal year, which ended in January, was $39.3 billion, up 12 percent sequentially and 78 percent higher than it was a year ago. Non-GAAP earnings per share were 89 cents, up 10 percent from the previous quarter and 71 percent higher year over year.\n\nAdvertisement\n\nThese figures beat the average estimates of Wall Street analysts, per Yahoo Finance, for revenue by more than $1.1 billion and for earnings per share by 4 cents.\n\nNvidia expects revenue in the first quarter of its 2026 fiscal year, which began late last month, to reach $43 billion, plus or minus 2 percent, which would represent a 9.4 percent sequential increase and a 65 percent year-over-year increase. This is nearly $1 billion higher than what Wall Street analysts had expected for Nvidia’s first-quarter revenue forecast.",
+        "score": 5.0154,
+        "rank": 2
+      },
+      {
+        "url": "https://fortune.com/2024/11/21/nvidia-ceo-jensen-huang-blackwell/",
+        "title": "https://fortune.com/2024/11/21/nvidia-ceo-jensen-huang-blackwell/",
+        "heading": "",
+        "chunk_text": "er, but the path to market has not been without recent hiccups. Multiple analysts have told Fortune that production snags, which delayed Blackwell’s release by at least a quarter, were not a surprise. Early this week, however, The Information reported Nvidia had asked suppliers to adjust the design of the platform’s server racks multiple times in recent months owing to overheating issues.\nWhile Huang did not specifically address the report, he said he believes the Blackwell ramp is in great shape.\n“He pretty much kind of threw cold water on all those concerns,” Angelo Zino, a senior vice president and tech analyst at CFRA Research, told Fortune after the call.\nHuang says AI capex isn’t going anywhere\nAnalysts on the earnings call also got assurance from Huang that demand will exceed supply for at least several more quarters. The first question the CEO fielded concerned a growing debate about whether advancements in large language models have stalled. That claim has been floated by the likes of Yann LeCun, Meta’s chief AI scientist, who suggested greater volumes of more powerful chips won’t be enough to produce further breakthroughs.\nHuang tried to assuage those concerns.",
+        "score": 4.831,
+        "rank": 3
+      },
+      {
+        "url": "https://www.crn.com/news/ai/2025/jensen-huang-nvidia-s-just-getting-started-after-blackwell-s-unprecedented-11b-ramp",
+        "title": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp",
+        "heading": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp",
+        "chunk_text": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp\n\nOut of the company’s $39.3 billion in fourth-quarter revenue, $32.5 billion, or 82.6 percent, came from Nvidia’s data center compute segment, which includes the $11 billion it made from early shipments of its [Blackwell GPUs](https://www.crn.com/news/components-peripherals/2024/nvidia-reveals-next-gen-blackwell-gpus-promised-to-unlock-breakthroughs-in-genai \"Blackwell GPUs\") during that period.",
+        "score": 4.076,
+        "rank": 4
+      },
+      {
+        "url": "https://www.crn.com/news/ai/2025/jensen-huang-nvidia-s-just-getting-started-after-blackwell-s-unprecedented-11b-ramp",
+        "title": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp",
+        "heading": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp",
+        "chunk_text": "Jensen Huang: Nvidia’s Just Getting Started After Blackwell’s Unprecedented $11B Ramp\n\nBy[Dylan Martin](https://www.crn.com/authors/dylan-martin)\n\nFebruary 26, 2025, 7:07 PM EST\n\n[![Image 7: Google preference source button](https://www.crn.com/icons/crn-google-preference-desktop-150px-smooth.png)](https://www.google.com/preferences/source?q=crn.com)\n\n_After more than doubling revenue to $130.5 billion last year and making $11 billion from early shipments of its Blackwell GPUs in the fourth quarter alone, Nvidia CEO Jensen Huang says the AI computing giant is just getting started in satiating global demand._\n\n![Image 8](https://www.crn.com/news/ai/2025/media_17c4feb5ffa832951980901f4d58bd56cdeac1b59.png?width=750&format=png&optimize=medium)\n\nshare\n\nthis\n\nNvidia more than doubled revenue to $130.5 billion last year due to high demand for its AI chips and systems, and the company made $11 billion from early shipments of its next-generation Blackwell GPUs in the last three months alone—its “fastest product ramp” yet.\n\nBut despite concerns about whether Nvidia can continue this breakneck momentum well into the future, Nvidia CEO Jensen Huang said the global economy’s appetite for AI and the company’s ability to satiate those cravings are “just in the beginning.”\n\n**[Related: [Nvidia: ‘We Are Racing To Scale Supply To Meet Incredible’ Blackwell Demand](https://www.crn.com/news/components-peripherals/2024/nvidia-we-are-racing-to-scale-supply-to-meet-incredible-blackwell-demand \"Nvidia: ‘We Are Racing To Scale Supply To Meet Incredible’ Blackwell Demand\")]**",
+        "score": 3.3047,
+        "rank": 5
+      },
+      {
+        "url": "https://www.facebook.com/cnbc/videos/jensen-huang-nvidia-ceo-says-that-blackwell-is-in-full-production-and-that-every/1075795847464534/",
+        "title": "54K views · 354 reactions | Jensen Huang, Nvidia CEO, says that \"Blackwell is in full production\" and that \"everything is on track.\" | CNBC",
+        "heading": "**[CNBC](https://www.facebook.com/cnbc?__tn__=-]C)**",
+        "chunk_text": "**[CNBC](https://www.facebook.com/cnbc?__tn__=-]C)**\n\n[October 2, 2024](https://www.facebook.com/reel/1075795847464534/?__tn__=%2CO) ·\n\nFollow\n\nJensen Huang, Nvidia CEO, says that \"Blackwell is in full production\" and that \"everything is on track.\"\n\nSee more",
+        "score": 2.3347,
+        "rank": 6
+      },
+      {
+        "url": "https://fortune.com/2024/11/21/nvidia-ceo-jensen-huang-blackwell/",
+        "title": "https://fortune.com/2024/11/21/nvidia-ceo-jensen-huang-blackwell/",
+        "heading": "",
+        "chunk_text": "ted by the likes of Yann LeCun, Meta’s chief AI scientist, who suggested greater volumes of more powerful chips won’t be enough to produce further breakthroughs.\nHuang tried to assuage those concerns. The most recent large AI models, he said, required a maximum of 100,000 Nvidia Hopper chips, previously the company’s premier offering.\n“The next generation starts at 100,000 Blackwells,” he said.\nHuang cited numerous customers already up and running with the platform, including the likes of Google, Dell, and Oracle. Chief financial officer Colette Kress said Microsoft has seen performance increase more than two times compared with Hopper.\n“Blackwell demand is staggering, and we are racing to scale supply to meet the incredible demand customers are placing on us,” she added.\nThat said, the company’s forecast of $37.5 billion in revenue for Q4, a slight beat on the Street’s consensus, was somewhat conservative, Zino noted. That caused the stock to dip slightly in after-hours trading before shares recovered those losses Thursday.\nThe muted forecast, he added, could set up an even stronger earnings beat in late February.\nUnsurprisingly, this view is shared by one of Wall Street’s most prominent tech bulls.",
+        "score": 1.6548,
+        "rank": 7
+      }
+    ],
+    "sub_queries": [
+      "What did NVIDIA CEO Jensen Huang say about Blackwell production timeline in earnings calls?"
+    ],
+    "error": null
+  },
+  "judgment": {
+    "verdict": "fail",
+    "score": 0.25,
+    "reasoning": "The response fails to cite any NVDA transcript chunks (TC-NVDA-*), which is required by the ground truth. It instead cites a generic source [1] that is not a transcript chunk. Additionally, it misses key facts about hyperscaler customer deployments and yield improvements. The mention of 'insane' demand is absent. The response partially covers the production timeline and demand exceeding supply, but the citation failure and missing critical details result in a fail.",
+    "judge_model": "deepseek-chat"
+  }
+}
