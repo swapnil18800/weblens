@@ -1,10 +1,6 @@
 [build]
 builder = "nixpacks"
 
-[build.nixpacks]
-python = "3.11"
-nodejs = "18"
-
 [deploy]
 healthcheck.path = "/api/health"
 healthcheck.interval = 30
@@ -12,6 +8,3 @@ healthcheck.interval = 30
 [env]
 ENVIRONMENT = "production"
 LOG_LEVEL = "INFO"
-
-[network]
-port = 8000
