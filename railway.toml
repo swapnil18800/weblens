@@ -2,26 +2,16 @@
 builder = "nixpacks"
 
 [build.nixpacks]
-# Python version
 python = "3.11"
-
-# Node.js for frontend build
 nodejs = "18"
 
 [deploy]
-# Build frontend, then start backend
-startCommand = "npm run build --prefix frontend && python -m uvicorn app:app --host 0.0.0.0 --port $PORT"
-
-# Health check endpoint
 healthcheck.path = "/api/health"
 healthcheck.interval = 30
 
-# Environment variables required at deployment
-# Set these in Railway dashboard or via railway env add
 [env]
 ENVIRONMENT = "production"
 LOG_LEVEL = "INFO"
 
-# Port configuration
 [network]
 port = 8000
