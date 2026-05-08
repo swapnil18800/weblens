@@ -1,8 +1,11 @@
 [phases.setup]
-nixPkgs = ["nodejs_18"]
+nixPkgs = ["python311", "gcc", "nodejs_18"]
+
+[phases.install]
+cmds = [
+  "python3.11 -m venv --copies /opt/venv && . /opt/venv/bin/activate && pip install -r requirements.txt",
+  "npm --prefix frontend install"
+]
 
 [phases.build]
-cmds = [
-  "npm --prefix frontend install",
-  "npm --prefix frontend run build"
-]
+cmds = ["npm --prefix frontend run build"]
