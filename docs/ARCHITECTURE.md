@@ -1,539 +1,348 @@
 # WebLens Architecture
 
-## System Overview
+Current as of v6 (May 2026). For per-version change history see
+[OVERALL-IMPROVEMENT-SUMMARY.md](./OVERALL-IMPROVEMENT-SUMMARY.md). For the
+on-disk layout see [DIRECTORY-STRUCTURE.md](./DIRECTORY-STRUCTURE.md).
 
-WebLens is a full-stack web-search RAG system designed for accuracy through complete page extraction and intelligent retrieval ranking. The architecture emphasizes directness—each pipeline stage is a standalone module with minimal abstraction.
+---
 
-## High-Level Flow
+## 1. System overview
+
+WebLens is a full-stack web-search RAG system. The backend is a single FastAPI
+process that streams a multi-stage pipeline over Server-Sent Events; the
+frontend is a React + Vite SPA that mirrors the stream into a live trace
+panel and a streaming answer.
 
 ```mermaid
 graph LR
-    A["🖥️ Frontend"] -->|SSE| B["🔄 FastAPI<br/>Backend"]
-    B -->|Stream| A
-    B -->|Async| C["🔍 Pipeline<br/>8 Stages"]
-    C -->|Query| D["Tavily<br/>API"]
-    C -->|Extract| E["Jina Reader<br/>+ trafilatura"]
-    C -->|Embed & Rank| F["🗄️ Supabase<br/>pgvector"]
-    C -->|LLM| G["DeepSeek V3<br/>+ OpenAI"]
+    A["React SPA<br/>(Vite + Zustand)"] -->|POST /api/search| B["FastAPI<br/>app.py"]
+    B -->|SSE stream| A
+    B --> C["pipeline/*"]
+    C -->|search| D["Tavily API"]
+    C -->|extract| E["Jina Reader<br/>+ trafilatura fallback"]
+    C -->|embed/rerank| F["sentence-transformers<br/>(MiniLM + TinyBERT)"]
+    C -->|generate| G["DeepSeek V3<br/>or OpenAI"]
+    B --> H["Postgres<br/>(Supabase + pgvector)"]
+    H -.->|page cache, chunks,<br/>sessions, traces| B
 ```
 
-## Pipeline Architecture
+Key non-negotiables:
+
+- **Every query passes through the LLM.** No length / shape heuristics. Both
+  decompose and rewrite are LLM calls (see v3 / v6 changes).
+- **Extraction runs ONCE globally** on the deduplicated URL union, not per
+  sub-query. Per-sub-query stats are post-hoc partitions (v6).
+- **One global citation map** spans all sub-queries so `[N]` numbers are
+  consistent between sub-answers and the final synthesis.
+- **Pipeline traces are persisted in JSONB** so reload / chat-switch shows
+  the same rich trace as the live stream (v6).
+
+---
+
+## 2. Pipeline (8 stages)
 
 ```mermaid
 graph TD
-    A["📤 User Query"] --> B["⚙️ Stage 1:<br/>Query Decomposition"]
-    B -->|Is simple?| C["✓ Fast Path<br/>One query"]
-    B -->|Is complex?| D["LLM Decompose<br/>Multiple sub-queries"]
-    C --> E["Stage 2: URL Discovery<br/>Tavily API"]
-    D --> E
-    E -->|URLs| F["Stage 3:<br/>Full-Page Extraction<br/>Jina Reader"]
-    F -->|Fallback| G["trafilatura"]
-    F -->|Pages| H["Stage 4:<br/>Intelligent Chunking<br/>Heading-aware"]
-    H -->|Chunks| I["Stage 5:<br/>Embedding Generation<br/>all-MiniLM-L6-v2"]
-    I -->|Embeddings| J["Database<br/>pgvector"]
-    J -->|Chunks + Embeddings| K["Stage 6:<br/>Hybrid Retrieval<br/>BM25 + Dense + RRF"]
-    K -->|Top-20 Candidates| L["Stage 7:<br/>Cross-Encoder<br/>Reranking"]
-    L -->|Top-5 Ranked| M["Stage 8:<br/>LLM Generation<br/>Streaming"]
-    M -->|Tokens| N["Citation Building"]
-    N --> O["✅ Final Answer<br/>With [N] citations"]
-    M -->|Persist| P["💾 Session Store"]
+    Q["User query"] --> S0["0. Decompose + Rewrite<br/>pipeline/decompose.py"]
+    S0 -->|sub-queries| S1["1. URL Discovery<br/>pipeline/search.py<br/>(Tavily, parallel per SQ)"]
+    S1 --> S2["2. Page Extraction<br/>pipeline/extract.py<br/>(Jina + trafilatura, global)"]
+    S2 --> S3["3. Chunking<br/>pipeline/chunk.py<br/>(heading-aware, dedup)"]
+    S3 --> S4["4. Embed + Index<br/>pipeline/embed.py<br/>(MiniLM, 384-dim)"]
+    S4 --> S5["5. Retrieve<br/>pipeline/retrieve.py<br/>(BM25 + Dense → RRF)"]
+    S5 --> S6["6. Rerank<br/>(TinyBERT cross-encoder)"]
+    S6 --> S7["7. Generate<br/>pipeline/generate.py<br/>(per-SQ streaming)"]
+    S7 --> S8["8. Synthesise<br/>(only if >1 SQ)"]
+    S8 --> A["Final answer<br/>+ citations"]
+    A --> FU["Followups<br/>pipeline/followups.py"]
+    A --> T["Title<br/>pipeline/title.py"]
 ```
 
-## Stage Details
+### 0. Decompose + Rewrite — `pipeline/decompose.py`
 
-### Stage 1: Query Decomposition
-**Module:** `pipeline/decompose.py`
+Two LLM calls, both with today's date injected at runtime:
 
-Determines whether to run the query as-is (fast path) or decompose it into sub-queries:
+1. **Rewrite** (only if conversation history exists). The system prompt
+   distinguishes anaphoric / fragment / transformation messages (apply prior
+   context) from standalone messages (leave unchanged). Negative examples
+   defend against topic-shift contamination.
+2. **Decompose** the rewritten query into the minimum set of sub-questions.
+   The prompt's **Temporal Reasoning** section anchors all date inferences
+   to `{today}` instead of training-data defaults.
 
-```mermaid
-graph LR
-    A["Input: query"] --> B{"Query length < 60<br/>AND<br/>Simple keywords?"}
-    B -->|Yes| C["Fast Path<br/>Skip LLM"]
-    B -->|No| D["Call LLM<br/>Generate sub-queries"]
-    C --> E["Output: 1 query"]
-    D --> F["Output: N queries"]
+### 1. URL Discovery — `pipeline/search.py`
+
+Tavily search per sub-query, parallel via `asyncio.gather`. Default
+`max_results=6` per sub-query. Results are deduplicated globally by URL but
+the `url_to_subqueries` map is preserved (a URL surfaced by 2 sub-queries
+keeps both indices) so per-sub-query stats can be computed downstream.
+
+### 2. Page Extraction — `pipeline/extract.py`
+
+Runs **once globally** on the deduplicated URL list. Tries Jina Reader
+(`r.jina.ai/{url}`) first, falls back to trafilatura on 4xx/timeout. Hits
+the `page_cache` table first; new fetches are written back with a 24h TTL.
+
+Returns `ExtractionResult { pages, failures }` where each failure carries a
+`reason ∈ {timeout, http_error, too_short, parse_failed}`.
+
+### 3. Chunking — `pipeline/chunk.py`
+
+Heading-aware markdown chunker. Returns
+`(chunks, global_stats, per_url_stats)` — the third tuple element (added
+in v6) lets `app.py` partition drop counts back to each URL so
+per-sub-query chunk stats are honest.
+
+Configurable: `MAX_CHARS=1500`, `OVERLAP_CHARS=200`, `MIN_CHUNK_BODY=150`.
+Drop categories: `garbage_dropped` (boilerplate / nav), `min_body_dropped`
+(too short), `dedup_dropped` (near-duplicate from sliding-window overlap).
+
+### 4. Embed + Index — `pipeline/embed.py`
+
+`sentence-transformers` MiniLM (`all-MiniLM-L6-v2`, 384-dim, L2-normalised).
+Encoding runs in `loop.run_in_executor(...)` so the event loop stays unblocked
+(v3). Device auto-detected (CUDA if available, else CPU). Embeddings are
+upserted to `web_chunks` for cross-query reuse.
+
+### 5–6. Retrieve + Rerank — `pipeline/retrieve.py`
+
+```
+ALL chunks ─┬─ BM25 → top EMBED_POOL (24)
+            └─ embed those 24 + cosine → dense ranks
+                                         │
+                   BM25 ranks ───────────┼─ RRF (k=60) → CE_POOL (16)
+                   dense ranks ──────────┘
+                                         │
+                              CrossEncoder (TinyBERT) → top TOP_K (8)
+                                         │
+                              dedup + per-URL cap → final ranked
 ```
 
-**Decision Logic:**
-- If `len(query) < 60` AND LLM returns same query → fast path (0ms extra)
-- Otherwise → run full decomposition via LLM (~200ms)
+The cross-encoder model is `cross-encoder/ms-marco-TinyBERT-L-2-v2`.
+Scoring also runs in an executor.
 
-**Output Format:**
-```python
-{
-  "sub_queries": ["Q1", "Q2", ...],
-  "original_query": "original",
-  "mode": "fast_path" | "llm",
-  "latency_ms": int
-}
-```
+### 7. Generate — `pipeline/generate.py`
+
+One streaming LLM call per sub-query, multiplexed onto a single `asyncio.Queue`
+so all sub-query coroutines stream concurrently into the SSE response (v3).
+
+`_build_prompt` packs source blocks **round-robin across URLs** under
+`_PROMPT_CHAR_BUDGET = 48,000` chars (~12k tokens) — replaces the v5
+per-URL 6,000-char hard cap that silently dropped chunks (v6).
+
+### 8. Synthesise — `pipeline/generate.py:synthesize_stream`
+
+Only runs when `len(sub_queries) > 1`. Merges sub-answers into a final
+markdown answer; the global citation map ensures every `[N]` survives the
+synthesis rewrite.
 
 ---
 
-### Stage 2: URL Discovery
-**Module:** `pipeline/search.py`
+## 3. SSE protocol
 
-Uses Tavily API to find relevant URLs. Runs in parallel for each sub-query.
+The backend emits ~16 distinct event names. Frontend handlers in
+`frontend/src/state/chatStore.ts` accumulate state per turn.
 
-```mermaid
-graph TB
-    A["Sub-queries"] -->|Parallel| B["Query 1"]
-    A -->|Parallel| C["Query 2"]
-    A -->|Parallel| D["Query 3"]
-    B -->|Tavily API| E["Results 1: URLs + snippets"]
-    C -->|Tavily API| F["Results 2: URLs + snippets"]
-    D -->|Tavily API| G["Results 3: URLs + snippets"]
-    E --> H["Deduplicate<br/>Keep insertion order"]
-    F --> H
-    G --> H
-    H --> I["Final URLs"]
+```
+decompose_done        → sub_queries, rewritten_query, mode
+search_done           → urls, per_subquery: [{index, urls, count, ...}]
+extract_done          → pages, failures, per_subquery: [{index, pages, succeeded, attempted, failures}]
+chunk_done            → count, stats, per_subquery: [{index, count, pages, stats}]
+embed_done            → candidate_count, device, per_subquery: [{index, candidate_count}]
+retrieve_done         → total_chunks, sub_queries
+rerank_done           → per_subquery: [{index, top_k, max_score, min_score, explain}]
+sub_answer_start (×N) → index, query, chunks, citations, urls
+sub_answer_token (×M) → index, text
+sub_answer_done  (×N) → index, latency_ms, [error]
+synthesis_start       → {} (multi-SQ only)
+token            (×M) → text (synthesis-phase tokens)
+done                  → session_id, citations, latency_breakdown, followups
+error                 → message, reason, [failures]
 ```
 
-**Key Design:**
-- Deduplicates URLs across sub-queries
-- Preserves snippet metadata (not used for extraction, only metadata)
-- **Critical:** Jina Reader extracts full markdown, NOT Tavily snippets
-- Timeout: 30s per query (configurable)
-
-**Output Format:**
-```python
-[
-  {
-    "url": "https://...",
-    "title": "Page title",
-    "snippet": "Summary (metadata only)"
-  },
-  ...
-]
-```
+The `per_subquery` arrays on extract / chunk / embed / rerank are the v6
+mechanism that makes the per-sub-query trace UI show different numbers per
+sub-query (extract+chunk run globally; the array is a post-hoc partition).
 
 ---
 
-### Stage 3: Full-Page Extraction
-**Module:** `pipeline/extract.py`
-
-Extracts complete page markdown using Jina Reader with trafilatura fallback.
-
-```mermaid
-graph TB
-    A["URLs from Stage 2"] -->|Parallel| B["Jina Reader<br/>r.jina.ai/{url}"]
-    B -->|Success| C["✓ Markdown<br/>Full page"]
-    B -->|Fail 403/timeout| D["trafilatura<br/>Fallback"]
-    D -->|Success| E["✓ HTML → Markdown"]
-    D -->|Fail| F["✗ Skip page"]
-    C --> G["Page objects<br/>url, title, markdown"]
-    E --> G
-    G -->|Cache| H["Supabase<br/>page_cache<br/>24h TTL"]
-```
-
-**Cache Strategy:**
-- Check `page_cache` for recent URLs
-- Only fetch if missing or expired (>24h)
-- Store with 24-hour TTL to balance freshness and cost
-
-**Output Format:**
-```python
-class Page:
-  url: str
-  title: str
-  markdown: str  # Full page content
-  fetched_at: datetime
-```
-
----
-
-### Stage 4: Intelligent Chunking
-**Module:** `pipeline/chunk.py`
-
-Splits markdown into chunks while preserving heading hierarchy and context.
-
-```mermaid
-graph TB
-    A["Pages with markdown"] --> B["Heading hierarchy parser<br/># / ## / ### structure"]
-    B --> C["Split by headings<br/>Maintain context"]
-    C --> D["Text chunks<br/>max_chars=1500"]
-    D --> E["Overlap<br/>150 chars"]
-    E --> F["Chunks with metadata<br/>heading, url, title"]
-    F --> G["Chunk objects"]
-```
-
-**Configuration:**
-- `MAX_CHARS = 1500` — Max chunk size
-- `OVERLAP = 150` — Overlap between chunks
-- Preserves heading context for every chunk
-
-**Output Format:**
-```python
-class Chunk:
-  url: str
-  title: str
-  chunk_index: int
-  chunk_text: str
-  heading: str  # Parent heading
-```
-
----
-
-### Stage 5: Embedding Generation
-**Module:** `pipeline/embed.py`
-
-Converts chunks to dense embeddings using `all-MiniLM-L6-v2`.
-
-```mermaid
-graph TB
-    A["Chunks"] -->|Batch| B["Sentence Transformer<br/>all-MiniLM-L6-v2<br/>384 dimensions"]
-    B -->|Normalize| C["L2 Normalized<br/>Vectors"]
-    C -->|Store| D["Supabase pgvector<br/>web_chunks table"]
-    C -->|Cache| E["In-memory index<br/>Per-query retrieval"]
-```
-
-**Key Properties:**
-- Model: `all-MiniLM-L6-v2` (fast, 384-dim)
-- Normalized: L2 norm for cosine similarity
-- Device: GPU if available, else CPU
-- Batch size: 32 (configurable for OOM)
-
-**Persistence:**
-- Store embeddings in pgvector
-- No re-compute on cache hit
-- Device info surfaced in SSE event
-
----
-
-### Stage 6: Hybrid Retrieval
-**Module:** `pipeline/retrieve.py`
-
-Combines sparse (BM25) and dense (cosine) retrieval via Reciprocal Rank Fusion (RRF).
-
-```mermaid
-graph TB
-    A["Sub-query + Chunks"] --> B["Branch 1: BM25"]
-    A --> C["Branch 2: Dense<br/>Cosine Similarity"]
-    B -->|Rank scores| D["Top-20 by BM25<br/>score"]
-    C -->|Cosine scores| E["Top-20 by density<br/>score"]
-    D --> F["RRF Fusion<br/>k=60"]
-    E --> F
-    F -->|Combined ranking| G["Top-20 candidates<br/>RRF score"]
-    G --> H["Reranking Stage 7"]
-```
-
-**Algorithm: Reciprocal Rank Fusion (RRF)**
-
-```
-RRF_score(i) = sum(1 / (k + rank_i))
-              over all ranker methods i
-```
-
-- `k = 60` (tuned empirically)
-- Combines BM25 and cosine ranks fairly
-- Produces top-20 candidates per sub-query
-
-**Output Format:**
-```python
-class RankedChunk:
-  chunk: Chunk
-  score: float  # RRF score
-  bm25_score: float
-  dense_score: float
-```
-
----
-
-### Stage 7: Cross-Encoder Reranking
-**Module:** `pipeline/retrieve.py` (end)
-
-Uses cross-encoder to rerank top-20 → top-5 with query-chunk relevance scores.
-
-```mermaid
-graph TB
-    A["Top-20 candidates<br/>+ query"] --> B["Cross-Encoder<br/>ms-marco-TinyBERT-L-2-v2"]
-    B -->|Relevance scores<br/>0-1| C["Sort by score<br/>descending"]
-    C -->|Top-5| D["Final ranking<br/>Ready for LLM"]
-    D -->|Score summary| E["SSE: rerank_done<br/>min/max/top-k count"]
-```
-
-**Model:** `ms-marco-TinyBERT-L-2-v2`
-- Fast (<100ms for 20 pairs)
-- Trained on MS MARCO dataset
-- Outputs single relevance score
-
-**Output:** Top-5 chunks per sub-query
-
----
-
-### Stage 8: LLM Generation
-**Module:** `pipeline/generate.py`
-
-Generates streaming answers using LLM with reranked chunks as context.
-
-```mermaid
-graph TB
-    A["Query + Top-5 chunks<br/>from reranker"] --> B["Build prompt<br/>Context + Instructions"]
-    B --> C["LLM Stream<br/>DeepSeek V3<br/>or OpenAI"]
-    C -->|Tokens| D["Parse citations<br/>[1], [2], ..."]
-    D -->|Token event| E["SSE: token<br/>Sent to frontend"]
-    D -->|Answer text| F["Accumulate<br/>per sub-query"]
-    F -->|All tokens| G["Answer<br/>for sub-query"]
-```
-
-**LLM Selection:**
-- **Primary:** DeepSeek V3 (`deepseek-chat`)
-- **Fallback:** OpenAI GPT-4o
-
-**Prompt Format:**
-```
-You are a helpful assistant. Answer the following question using ONLY the provided context.
-If the context doesn't contain the answer, say "I don't have enough information."
-
-Context:
-[Top-5 chunks formatted with [N] citation markers]
-
-Question: {query}
-
-Answer:
-```
-
-**Citation Format:**
-- Answer includes `[1]`, `[2]`, etc.
-- Citation mapping done in post-processing
-
----
-
-### Stage 8b: Multi-Query Synthesis
-**Module:** `pipeline/generate.py`
-
-If multiple sub-queries were used, synthesize into single answer:
-
-```mermaid
-graph TB
-    A["Multiple sub-answers"] -->|Decomposed| B["Were sub-queries used?"]
-    B -->|Single query| C["Use answer as-is"]
-    B -->|Multiple queries| D["Synthesis LLM<br/>Combine & deduplicate"]
-    D -->|Token stream| E["Final synthesized<br/>answer"]
-```
-
-**Synthesis Prompt:**
-```
-Combine these sub-answers into a coherent response.
-Merge duplicate information and maintain citations.
-
-Sub-answers:
-[Each with [N] citations]
-
-Combined answer:
-```
-
----
-
-## Database Schema
+## 4. Database schema
 
 ```mermaid
 erDiagram
-    CHAT_SESSIONS ||--o{ CHAT_MESSAGES : contains
-    CHAT_MESSAGES ||--o{ PAGE_CACHE : references
-    PAGE_CACHE ||--o{ WEB_CHUNKS : contains
+    rag_sessions ||--o{ rag_session_messages : has
+    page_cache ||--o{ web_chunks : "(by url)"
     
-    CHAT_SESSIONS {
-        uuid id PK
-        text title
-        timestamp created_at
-        timestamp updated_at
+    rag_sessions {
+        TEXT session_id PK
+        TEXT title
+        TIMESTAMPTZ created_at
     }
     
-    CHAT_MESSAGES {
-        bigserial id PK
-        uuid session_id FK
-        text question
-        text answer
-        jsonb citations
-        jsonb urls
-        jsonb chunks
-        jsonb traces
-        jsonb latency_breakdown
-        int total_latency_ms
-        timestamp created_at
+    rag_session_messages {
+        BIGSERIAL id PK
+        TEXT session_id FK
+        TEXT question
+        TEXT answer
+        JSONB citations
+        JSONB urls
+        JSONB chunks
+        JSONB latency_breakdown
+        INTEGER total_latency_ms
+        JSONB sub_queries
+        JSONB traces
+        TIMESTAMPTZ created_at
     }
     
-    PAGE_CACHE {
-        text url PK
-        text title
-        text markdown
-        timestamp fetched_at
-        timestamp expires_at
+    page_cache {
+        TEXT url PK
+        TEXT title
+        TEXT markdown
+        TIMESTAMPTZ fetched_at
+        TIMESTAMPTZ expires_at
     }
     
-    WEB_CHUNKS {
-        bigserial id PK
-        text url FK
-        text title
-        int chunk_index
-        text chunk_text
-        text heading
-        vector embedding
-        jsonb metadata
-        timestamp created_at
-        unique "url, chunk_index"
+    web_chunks {
+        BIGSERIAL id PK
+        TEXT url
+        TEXT title
+        INT chunk_index
+        TEXT chunk_text
+        TEXT heading
+        VECTOR embedding
+        JSONB metadata
+        TIMESTAMPTZ created_at
     }
 ```
 
----
+`rag_session_messages.traces` is a JSONB array of per-sub-query records:
+`{index, query, urls, chunks, answer, latency_ms, extract_stats, chunk_stats, embed_count}`.
+The last three fields (added v6) carry the per-sub-query slices that drive
+chip + drop-breakdown rendering after reload.
 
-## Streaming Protocol
+`web_chunks` has an IVFFlat index on `embedding vector_cosine_ops` for ANN
+search across cached corpora.
 
-The backend streams 9+ event types via SSE. Frontend accumulates state:
-
-```mermaid
-sequenceDiagram
-    participant Frontend
-    participant Backend
-    participant Pipeline
-    
-    Frontend->>Backend: POST /api/search {query, session_id}
-    Backend->>Pipeline: Start pipeline
-    
-    Pipeline->>Backend: decompose_done
-    Backend->>Frontend: SSE event
-    Frontend->>Frontend: Show query decomposition
-    
-    Pipeline->>Backend: search_done
-    Backend->>Frontend: SSE event
-    Frontend->>Frontend: Show URLs
-    
-    Pipeline->>Backend: extract_done
-    Backend->>Frontend: SSE event
-    
-    Pipeline->>Backend: chunk_done
-    Backend->>Frontend: SSE event
-    
-    Pipeline->>Backend: embed_done
-    Backend->>Frontend: SSE event
-    
-    Pipeline->>Backend: retrieve_done
-    Backend->>Frontend: SSE event
-    
-    Pipeline->>Backend: rerank_done
-    Backend->>Frontend: SSE event
-    Frontend->>Frontend: Show confidence scores
-    
-    Pipeline->>Backend: sub_answer_start
-    Backend->>Frontend: SSE event
-    Frontend->>Frontend: Show sub-query header
-    
-    Pipeline->>Backend: sub_answer_token (×N)
-    Backend->>Frontend: SSE event (×N)
-    Frontend->>Frontend: Stream tokens to user
-    
-    Pipeline->>Backend: sub_answer_done
-    Backend->>Frontend: SSE event
-    
-    Pipeline->>Backend: synthesis_start (optional)
-    Backend->>Frontend: SSE event
-    
-    Pipeline->>Backend: token (synthesis tokens)
-    Backend->>Frontend: SSE event
-    
-    Pipeline->>Backend: done {session_id, citations, latency}
-    Backend->>Frontend: SSE event
-    Frontend->>Frontend: Show final answer, citations
-```
+Authoritative DDL: [db/schema.sql](../db/schema.sql).
 
 ---
 
-## Error Handling
+## 5. Frontend state model
 
-```mermaid
-graph TB
-    A["Pipeline Stage"] --> B{"Success?"}
-    B -->|Yes| C["Next stage"]
-    B -->|No| D{"Fatal?"}
-    D -->|Yes| E["Emit error<br/>Save stub"]
-    D -->|No| F["Log warning<br/>Continue"]
-    E --> G["Frontend shows<br/>error message"]
-    F --> C
+`frontend/src/state/chatStore.ts` is a single Zustand store. The shape is:
+
+```
+ChatStore
+├── sessionId, sessions, loadingSessionId
+├── pendingInput, isStreaming
+├── reactions, selectedVersion          // UI ephemera
+└── turns: Turn[]
+        ├── id, versionGroupId, versionIndex   // retry / edit grouping
+        ├── question, status, errorMsg
+        ├── subQueries, subqueries: SubqueryState[]
+        │       ├── index, query, steps: ReasoningStep[]
+        │       ├── tokens, done, chunks, urls, citations
+        │       └── latencyMs, startedAt, completedAt
+        ├── pipeline: PipelineGlobals             // wall-clock latencies
+        ├── synthesisMd, synthesizing, citations, citationRemap
+        ├── followups, rewrittenQuery
+        └── totalLatencyMs, createdAt, ...synthesis-phase timestamps
 ```
 
-**Fatal Errors:**
-- No URLs found
-- No pages extracted
-- No chunks generated
+Two flows produce identical `ReasoningStep[]` shapes:
 
-**Non-Fatal (logged):**
-- Single URL extraction fails
-- Jina Reader timeout → trafilatura fallback
+1. **Live SSE handlers** (`handleSse`) — fire as events arrive.
+2. **`rehydrateSteps`** — rebuilds the trace from a persisted `traces[i]`
+   record on session load. Reads the v6-added `extract_stats` /
+   `chunk_stats` / `embed_count` to reproduce the rich live trace.
+
+Persistence: only the active `session_id` is in `localStorage`. The actual
+turns come from the server (`GET /api/sessions/{id}`); session IDs and
+short metadata are listed via `GET /api/sessions`.
 
 ---
 
-## Performance Characteristics
+## 6. UI components
 
-```
-Query Decomposition:    0-300ms   (0ms if fast_path)
-URL Discovery:          500-1500ms  (parallel)
-Page Extraction:        1000-3000ms (parallel, cached)
-Chunking:               50-200ms    (linear in content)
-Embedding:              100-500ms   (batched, GPU if available)
-Retrieval:              200-500ms   (RRF + rerank)
-Generation:             2000-5000ms (depends on LLM)
-─────────────────────────────────────────────────────
-Total (typical):        4-6 seconds
-```
+`frontend/src/components/`:
 
-Bottleneck: LLM generation (streaming improves perceived latency).
-
----
-
-## Extensibility
-
-### Adding a Custom Retriever
-```python
-# pipeline/retrieve.py
-async def custom_retrieve(query: str, chunks: list, top_k: int) -> list:
-    """Your retriever here."""
-    ranked = [RankedChunk(chunk=c, score=s) for c, s in ...]
-    return ranked[:top_k]
-```
-
-Then update `Stage 6` to call it.
-
-### Swapping the LLM
-```python
-# pipeline/generate.py
-async def generate_stream(query: str, ranked_chunks: list):
-    """Swap to your LLM."""
-    async for token in your_llm.stream(prompt):
-        yield token
-```
-
-### Custom Chunking Strategy
-```python
-# pipeline/chunk.py
-def chunk_pages(pages: list) -> list:
-    """Your chunking logic here."""
-    return chunks
-```
-
-All modules are designed to be replaced independently.
+- **ChatPage / ChatThread / ChatInput** — page shell, scrolling thread,
+  composer. The thread carries a tail spacer so new questions can always
+  scroll to the viewport top (v6).
+- **ChatTurn** — one Q+A. Renders the question bubble (with hover icons:
+  Edit / Retry / Copy), `ReasoningTrace`, `SubAnswerCard`s, the streamed
+  `Answer`, and the followup list.
+- **ReasoningTrace + SubqueryTrace + PipelineStep** — collapsible per-turn
+  trace. Each `PipelineStep` row optionally expands; the rerank step's
+  expansion is the top-N passages list (folded in from the old `ChunksPanel`).
+- **Answer** — markdown renderer with inline `[N]` citation buttons.
+- **CitationPreview / RetrievedDataPanel** — slide-in side panels for
+  drilling into citations or retrieved chunks.
+- **Sidebar** — session list, drag-resizable, collapsible to a 40 px rail.
+- **Hero / ExamplesDropdown / Header / Logo / InfoPopover** — landing
+  affordances.
 
 ---
 
-## Deployment Considerations
+## 7. LLM abstraction
 
-- **Environment Variables:** 7 required (see [DEPLOYMENT.md](./DEPLOYMENT.md))
-- **Database:** Requires pgvector extension
-- **LLM Cost:** ~$0.01–0.05 per query (DeepSeek cheaper than OpenAI)
-- **Embedding Cost:** ~$0.000003 per 1K chunks (one-time)
-- **Caching:** 24h page cache reduces extraction costs
+`llm/` provides a thin protocol for streaming completions:
+
+- `llm/base.py` — `LLM` protocol with `acomplete(prompt, system, max_tokens)`
+  and `astream(...)` async iterator.
+- `llm/deepseek.py` — DeepSeek V3 (default; cheaper).
+- `llm/openai_client.py` — OpenAI fallback.
+
+Model selection via `config.py` (env-driven). All pipeline modules call
+`get_llm()` — they never instantiate a vendor client directly.
 
 ---
 
-## Diagrams Legend
+## 8. Performance characteristics
 
-- 🖥️ Frontend
-- 🔄 Processing
-- 🔍 Search
-- 📄 Content
-- 📊 Data/ML
-- 💬 Generation
-- 🗄️ Database
-- ✅ Output
-- ⚙️ Configuration
+Typical end-to-end latency (single sub-query, warm cache):
+
+```
+Decompose + Rewrite     200–800ms      (2 LLM calls)
+Tavily search          400–1200ms      (parallel per SQ)
+Extract                500–2500ms      (parallel; cache hits ~50ms)
+Chunk + Embed + Rerank 300–700ms       (BM25 fast, MiniLM batched)
+Generate (streaming)  1500–4000ms      (depends on LLM)
+Synthesise (multi-SQ) 1000–3000ms      (only if >1 SQ)
+─────────────────────────────────────────
+Total                 3–7s typical, 10–15s for multi-hop
+```
+
+Streaming hides most of the perceived latency — the user sees
+`decompose_done` within ~500ms and tokens within ~3s.
+
+---
+
+## 9. Error handling
+
+Each pipeline stage either continues or short-circuits with an `error` SSE
+event:
+
+| Stage failure | Behaviour |
+|---|---|
+| Tavily returns no URLs | `error: no_urls`, persist stub, return |
+| All extractions fail | `error: extract_failed`, persist stub, return |
+| All pages produce 0 chunks | `error: no_chunks`, persist stub, return |
+| One URL extract fails | logged; failure surfaces in extract chip |
+| Jina Reader 4xx | trafilatura fallback; if both fail, mark URL failed |
+| LLM call fails | sub-answer marked `error`; other sub-queries continue |
+
+Persistence is fire-and-forget — `app.py` schedules `save_message` as a
+task so SSE is never blocked. If save fails, the in-memory turn still
+renders correctly; only history is missing.
+
+---
+
+## 10. Extensibility hooks
+
+- **Custom retriever** — implement an `async retrieve(...)` returning
+  `RankedChunk[]` and swap into `app.py:_pipeline_stream` step 5.
+- **Custom LLM** — implement the `LLM` protocol in `llm/`, register in
+  `config.py`.
+- **Custom chunker** — replace `chunk_pages(pages) → (chunks, stats, per_url_stats)`.
+- **Custom decompose prompt** — both prompts are module-level format strings
+  in `pipeline/decompose.py`; date injection is at the bottom via `_today()`.

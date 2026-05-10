@@ -55,10 +55,14 @@ python app.py
 
 Or with uvicorn directly:
 ```bash
-uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+python -m uvicorn app:app --reload --port 8765
 ```
 
-Open your browser at `http://localhost:8000`.
+then for front
+```bash
+cd frontend && npm run dev
+```
+Open your browser at `http://localhost:5174`.
 
 On first startup, sentence-transformer models (`all-MiniLM-L6-v2`, `ms-marco-MiniLM-L-2-v2`) are downloaded and cached (~100 MB total). Subsequent starts are fast.
 

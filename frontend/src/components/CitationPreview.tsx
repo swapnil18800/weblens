@@ -1,39 +1,58 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ExternalLink, X } from "lucide-react";
+import { ChevronDown, ExternalLink, X } from "lucide-react";
 import type { ChunkDict, Citation } from "../lib/types";
 import { shortHost } from "../lib/format";
+import ChunkBody from "./ChunkBody";
 
 interface Props {
-  /** When true, the panel is open. */
   open: boolean;
-  /** Citations to list when no specific one is selected. */
   citations: Citation[];
-  /** Currently-selected citation (preview mode); null = list mode. */
+  /** Open the panel pre-expanded on this citation (e.g. clicked from a [N] or chunk). */
   citation: Citation | null;
-  /** Best-matching chunk for the selected citation. */
-  chunk: ChunkDict | null;
+  /** All chunks from all sub-queries for this turn; used to build the per-URL preview map. */
+  allChunks: ChunkDict[];
+  /** Display-time renumber: original Citation.num → 1..N display number. */
+  citationRemap?: Record<number, number>;
   onClose: () => void;
-  /** Switch to a specific citation (preview mode). */
-  onSelectCitation: (num: number) => void;
-  /** Go back from preview to list. */
-  onBack: () => void;
+  onSelectCitation?: (num: number) => void;
+  onBack?: () => void;
 }
 
-export default function CitationPreview({
-  open,
-  citations,
-  citation,
-  chunk,
-  onClose,
-  onSelectCitation,
-  onBack,
-}: Props) {
+/**
+ * Side panel with a single chunk-list. Clicking a row toggles an inline preview
+ * card BELOW that row — only one preview is open at a time. No separate
+ * "preview mode" / sub-screen.
+ */
+export default function CitationPreview({ open, citations, citation, allChunks, citationRemap, onClose }: Props) {
+  // Track the currently expanded citation by num; preset to the chunk-clicked citation.
+  const [expandedNum, setExpandedNum] = useState<number | null>(citation?.num ?? null);
+
+  // When the panel re-opens with a pre-selected citation (e.g. via chunk-click),
+  // honour that selection. Closing the panel resets the expanded item.
+  useEffect(() => {
+    if (open) setExpandedNum(citation?.num ?? null);
+    else setExpandedNum(null);
+  }, [open, citation?.num]);
+
   useEffect(() => {
     const k = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", k);
     return () => window.removeEventListener("keydown", k);
   }, [onClose]);
+
+  // Map url → best-score chunk so every row gets a full preview regardless of how the panel was opened.
+  const chunksByUrl = useMemo(() => {
+    const m = new Map<string, ChunkDict>();
+    for (const ch of allChunks) {
+      const existing = m.get(ch.url);
+      if (!existing || ch.score > existing.score) m.set(ch.url, ch);
+    }
+    return m;
+  }, [allChunks]);
+
+  const onToggle = (num: number) =>
+    setExpandedNum((prev) => (prev === num ? null : num));
 
   return (
     <AnimatePresence>
@@ -43,7 +62,7 @@ export default function CitationPreview({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.12 }}
+            transition={{ duration: 0.14 }}
             className="fixed inset-0 bg-black/40 z-40"
             onClick={onClose}
           />
@@ -51,37 +70,35 @@ export default function CitationPreview({
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "tween", duration: 0.22, ease: "easeOut" }}
-            className="fixed right-0 top-0 bottom-0 w-full sm:w-[30rem] bg-bg border-l hairline z-50 flex flex-col"
+            transition={{ type: "tween", duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed right-0 top-0 bottom-0 w-full sm:w-[32rem] bg-bg border-l hairline z-50 flex flex-col"
           >
-            <div className="h-12 px-4 flex items-center gap-2 border-b hairline">
-              {citation ? (
-                <>
-                  <button onClick={onBack} className="icon-btn !w-8 !h-8" title="Back to citations">
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <span className="cite flex items-center justify-center min-w-[1.5rem] h-[1.5rem] rounded bg-accent/15 text-accent text-2xs font-mono">
-                    {citation.num}
-                  </span>
-                  <span className="text-2xs uppercase tracking-wider text-neutral-200 font-semibold truncate">
-                    Source preview
-                  </span>
-                </>
-              ) : (
-                <span className="text-sm uppercase tracking-wider text-neutral-100 font-semibold">
-                  Citations <span className="text-2xs font-mono text-neutral-400 ml-1">{citations.length}</span>
-                </span>
-              )}
+            <div className="h-12 px-4 flex items-center gap-2 border-b hairline shrink-0">
+              <span className="text-sm uppercase tracking-wider text-neutral-100 font-semibold">
+                Citations
+                <span className="text-2xs font-mono text-neutral-400 ml-2">{citations.length}</span>
+              </span>
               <button onClick={onClose} className="icon-btn ml-auto" title="Close (Esc)">
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto scroll-fat px-4 py-4">
-              {citation ? (
-                <PreviewBody citation={citation} chunk={chunk} />
+            <div className="flex-1 overflow-y-auto scroll-fat px-3 py-3">
+              {!citations.length ? (
+                <div className="text-2xs text-neutral-400 py-4 px-2">No citations yet.</div>
               ) : (
-                <CitationListBody citations={citations} onSelect={onSelectCitation} />
+                <ul className="space-y-1.5">
+                  {citations.map((c) => (
+                    <CitationRow
+                      key={c.num}
+                      citation={c}
+                      displayNum={citationRemap?.[c.num] ?? c.num}
+                      chunk={chunksByUrl.get(c.url) || null}
+                      expanded={expandedNum === c.num}
+                      onToggle={() => onToggle(c.num)}
+                    />
+                  ))}
+                </ul>
               )}
             </div>
           </motion.aside>
@@ -91,101 +108,100 @@ export default function CitationPreview({
   );
 }
 
-function PreviewBody({ citation, chunk }: { citation: Citation; chunk: ChunkDict | null }) {
-  return (
-    <>
-      <h3 className="text-base text-neutral-50 font-semibold mb-1 break-words">
-        {citation.title || shortHost(citation.url)}
-      </h3>
-      <div className="text-2xs font-mono text-neutral-400 break-all mb-3">{citation.url}</div>
-
-      {chunk && (
-        <div className="flex items-center gap-2 mb-3 text-2xs flex-wrap">
-          <span className="chip chip-info">rank #{chunk.rank + 1}</span>
-          <span className="chip chip-info">score {chunk.score?.toFixed(3)}</span>
-          {chunk.heading && <span className="text-neutral-300 font-mono truncate">{chunk.heading}</span>}
-        </div>
-      )}
-
-      <a
-        href={citation.url}
-        target="_blank"
-        rel="noreferrer"
-        className="btn-accent !py-1 !text-xs mb-4 inline-flex"
-      >
-        <ExternalLink className="w-3.5 h-3.5" />
-        Open source
-      </a>
-
-      <div className="text-2xs uppercase tracking-wider text-neutral-200 font-semibold mb-1.5">
-        Chunk
-      </div>
-      <div className="surface rounded-lg px-4 py-3 text-sm text-neutral-100 leading-7 whitespace-pre-wrap">
-        {chunk?.chunk_text || citation.snippet || "No preview text available."}
-      </div>
-    </>
-  );
-}
-
-function CitationListBody({
-  citations,
-  onSelect,
+function CitationRow({
+  citation,
+  displayNum,
+  chunk,
+  expanded,
+  onToggle,
 }: {
-  citations: Citation[];
-  onSelect: (num: number) => void;
+  citation: Citation;
+  displayNum: number;
+  chunk: ChunkDict | null;
+  expanded: boolean;
+  onToggle: () => void;
 }) {
-  if (!citations.length) {
-    return <div className="text-2xs text-neutral-400 py-4">No citations yet.</div>;
-  }
   return (
-    <ul className="space-y-1.5">
-      {citations.map((c) => (
-        <li
-          key={c.num}
-          onClick={() => onSelect(c.num)}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              onSelect(c.num);
-            }
-          }}
-          className="surface rounded-lg p-3 hover:bg-white/[0.04] cursor-pointer
-                     transition-colors flex items-start gap-2"
-        >
-          <span className="cite flex items-center justify-center min-w-[1.5rem] h-[1.5rem] mt-0.5
-                           rounded bg-accent/15 text-accent text-2xs font-mono shrink-0">
-            {c.num}
-          </span>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-neutral-50 truncate font-medium">
-                {c.title || shortHost(c.url)}
-              </span>
-              <a
-                href={c.url}
-                target="_blank"
-                rel="noreferrer"
-                className="icon-btn !w-5 !h-5"
-                title="Open source"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-            <div className="text-2xs font-mono text-neutral-400 truncate">{c.url}</div>
-            {c.snippet && (
-              <div className="text-2xs text-neutral-300 mt-1 line-clamp-2">{c.snippet}</div>
-            )}
+    <li
+      className={`rounded-xl border overflow-hidden transition-colors
+                  ${expanded
+                    ? "border-accent/30 bg-accent/[0.04]"
+                    : "border-white/[0.06] bg-surface hover:bg-white/[0.025]"}`}
+    >
+      <button
+        onClick={onToggle}
+        className="w-full flex items-start gap-2.5 px-3 py-2.5 text-left"
+      >
+        <span className="inline-flex items-center justify-center min-w-[1.5rem] h-6 mt-0.5
+                         rounded-md bg-accent/15 text-accent text-2xs font-mono font-semibold shrink-0">
+          {displayNum}
+        </span>
+        <div className="flex-1 min-w-0">
+          <div className="text-sm text-neutral-50 font-medium truncate">
+            {citation.title || shortHost(citation.url)}
           </div>
-        </li>
-      ))}
-    </ul>
+          <div className="text-2xs font-mono text-neutral-400 truncate">
+            {shortHost(citation.url)}
+          </div>
+        </div>
+        <a
+          href={citation.url}
+          target="_blank"
+          rel="noreferrer"
+          className="icon-btn !w-7 !h-7 shrink-0"
+          title="Open source"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <ExternalLink className="w-3.5 h-3.5" />
+        </a>
+        <ChevronDown
+          className={`w-4 h-4 text-neutral-400 transition-transform duration-200 shrink-0 mt-0.5
+                      ${expanded ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      <AnimatePresence initial={false}>
+        {expanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="px-3 pb-3 pt-1 border-t border-accent/15">
+              <div className="flex items-center gap-1.5 mb-2 text-2xs flex-wrap">
+                {chunk && (
+                  <>
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px]
+                                     font-mono bg-accent/10 text-accent border border-accent/25">
+                      rank #{chunk.rank + 1}
+                    </span>
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px]
+                                     font-mono bg-metric/10 text-metric border border-metric/25">
+                      score {chunk.score?.toFixed(3)}
+                    </span>
+                    {chunk.heading && (
+                      <span className="text-neutral-300 font-mono truncate text-2xs">
+                        {chunk.heading}
+                      </span>
+                    )}
+                  </>
+                )}
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px]
+                                 font-mono bg-white/[0.04] text-neutral-400 border border-white/[0.08]">
+                  BM25 + cross-encoder
+                </span>
+              </div>
+              <ChunkBody
+                text={chunk?.chunk_text || citation.snippet || "No preview text available."}
+                defaultOpen={false}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </li>
   );
 }
 
-// Re-export for callers that still import the old component shape.
-// Kept for compatibility; new callers should pass the full props above.
-// Removed: see ChatTurn.tsx for current usage.
-export { CitationPreview as _Renamed };

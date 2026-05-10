@@ -2,8 +2,8 @@
 
 export function ms(n?: number): string {
   if (n === undefined || n === null) return "—";
-  if (n < 1000) return `${n}ms`;
-  return `${(n / 1000).toFixed(2)}s`;
+  if (n < 1000) return `${Math.round(n)}ms`;
+  return `${Math.round(n / 1000)}s`;
 }
 
 export function num(n?: number): string {

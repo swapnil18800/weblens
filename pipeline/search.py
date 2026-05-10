@@ -14,7 +14,7 @@ from config import settings
 
 logger = logging.getLogger(__name__)
 
-_SEARCH_TIMEOUT_S = 10
+_SEARCH_TIMEOUT_S = 30
 _DEFAULT_MAX_RESULTS = 6
 
 
@@ -25,15 +25,19 @@ class SearchResult:
     snippet: str  # kept for display only — NOT used as RAG context
 
 
-async def discover_urls(query: str, max_results: int = _DEFAULT_MAX_RESULTS) -> List[SearchResult]:
+async def discover_urls(
+    query: str,
+    max_results: int = _DEFAULT_MAX_RESULTS,
+) -> tuple[List[SearchResult], str | None]:
     """
-    Run Tavily search and return top URLs + titles.
+    Run Tavily search and return (urls, error_reason).
+    error_reason ∈ {None, "no_api_key", "tavily_timeout", "tavily_http_error"}.
     Content/snippets from Tavily are intentionally ignored for RAG context —
     full pages are extracted separately in extract.py.
     """
     if not settings.tavily_api_key:
         logger.warning("[search] TAVILY_API_KEY not set — returning empty results")
-        return []
+        return [], "no_api_key"
 
     def _sync_search() -> List[SearchResult]:
         from tavily import TavilyClient
@@ -62,10 +66,10 @@ async def discover_urls(query: str, max_results: int = _DEFAULT_MAX_RESULTS) -> 
             timeout=_SEARCH_TIMEOUT_S,
         )
         logger.info("[search] Tavily returned %d URLs for: %s", len(results), query[:60])
-        return results
+        return results, None
     except asyncio.TimeoutError:
         logger.warning("[search] Tavily timeout after %ds", _SEARCH_TIMEOUT_S)
-        return []
+        return [], "tavily_timeout"
     except Exception as exc:
         logger.error("[search] Tavily error: %s", exc)
-        return []
+        return [], "tavily_http_error"

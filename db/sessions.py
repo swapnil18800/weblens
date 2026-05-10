@@ -73,6 +73,30 @@ async def update_session_title_if(session_id: str, new_title: str, was_title: st
         logger.warning("[session] update_session_title_if failed: %s", exc)
 
 
+async def recent_turns(session_id: str, limit: int = 4) -> List[dict]:
+    """Return the most recent N turns (oldest→newest) for follow-up resolution."""
+    try:
+        rows = await db.fetch(
+            """
+            SELECT question, answer, created_at
+            FROM rag_session_messages
+            WHERE session_id = $1
+            ORDER BY created_at DESC
+            LIMIT $2
+            """,
+            session_id,
+            limit,
+        )
+        # Reverse to chronological order
+        return [
+            {"question": r["question"], "answer": r["answer"]}
+            for r in reversed(rows)
+        ]
+    except Exception as exc:
+        logger.warning("[session] recent_turns failed: %s", exc)
+        return []
+
+
 async def session_message_count(session_id: str) -> int:
     """Return how many messages the session already has (0 if missing)."""
     try:

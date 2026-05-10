@@ -31,7 +31,7 @@ export function evalQuestionToTurn(q: EvalQuestion): Turn {
   const subQueries = q.pipeline?.sub_queries?.length ? q.pipeline.sub_queries : [q.question];
   const allUrls: UrlInfo[] = q.pipeline?.urls || [];
   const allChunks: ChunkDict[] = q.pipeline?.chunks || [];
-  const breakdown = q.timing?.latency_breakdown || {};
+  const breakdown: Record<string, any> = q.timing?.latency_breakdown || {};
   const totalMs =
     q.timing?.total_latency_ms ??
     (q.timing?.pipeline_s ? Math.round(q.timing.pipeline_s * 1000) : undefined);
@@ -43,68 +43,97 @@ export function evalQuestionToTurn(q: EvalQuestion): Turn {
     perSqChunks[i % subQueries.length].push(c);
   });
 
+  // Match the live trace exactly: Search → Read pages → Split → Indexed → Picked best → Drafted answer.
+  const pageCount = breakdown.pages_count ?? allUrls.length;
+  const passageCount = breakdown.chunks_count ?? allChunks.length;
+  const answer = q.pipeline?.answer || "";
+  const wc = answer.trim() ? answer.trim().split(/\s+/).length : 0;
+
   const subqueries: SubqueryState[] = subQueries.map((sq, idx) => {
     const myChunks = perSqChunks[idx];
     const steps: ReasoningStep[] = [];
+    const subTotalMs = totalMs ? Math.round(totalMs / Math.max(1, subQueries.length)) : 0;
+
     if (allUrls.length) {
-      steps.push(step("search", "Search", `${allUrls.length} URLs`, { urls: allUrls, query: sq }, breakdown.search_ms));
+      steps.push(step("search", "Searched the web",
+        `Found ${allUrls.length} source${allUrls.length === 1 ? "" : "s"}`,
+        { urls: allUrls, query: sq }, breakdown.search_ms));
     }
-    if (typeof breakdown.extract_ms === "number") {
-      steps.push(step("extract", "Extract", `${allUrls.length} pages`, null, breakdown.extract_ms));
+    if (pageCount > 0) {
+      steps.push(step("extract", "Read pages",
+        `Read ${pageCount} page${pageCount === 1 ? "" : "s"}`,
+        null, breakdown.extract_ms));
     }
-    if (typeof breakdown.chunk_ms === "number") {
-      steps.push(step("chunk", "Chunk", `${allChunks.length} chunks`, null, breakdown.chunk_ms));
+    if (passageCount > 0) {
+      steps.push(step("chunk", "Split into passages",
+        `Built ${passageCount} passage${passageCount === 1 ? "" : "s"}`,
+        null, breakdown.chunk_ms));
+      steps.push(step("embed", "Indexed passages",
+        `${passageCount} passage${passageCount === 1 ? "" : "s"} ready for ranking`,
+        null, breakdown.embed_ms ?? breakdown.retrieve_ms));
     }
-    if (typeof breakdown.retrieve_ms === "number") {
-      steps.push(step("rerank", "Cross-encoder rerank",
-        `top ${myChunks.length}`,
-        myChunks.length
-          ? { candidates: allChunks.length, top_k: myChunks.length,
-              max_score: Math.max(...myChunks.map((c) => c.score || 0)),
-              min_score: Math.min(...myChunks.map((c) => c.score || 0)) }
-          : null,
-        Math.round((breakdown.retrieve_ms || 0) / Math.max(1, subQueries.length)),
+    if (myChunks.length) {
+      steps.push(step("rerank", "Picked best evidence",
+        `Selected top ${myChunks.length} passage${myChunks.length === 1 ? "" : "s"}`,
+        { candidates: allChunks.length, top_k: myChunks.length,
+          max_score: Math.max(...myChunks.map((c) => c.score || 0)),
+          min_score: Math.min(...myChunks.map((c) => c.score || 0)) },
+        breakdown.rerank_ms ?? breakdown.retrieve_ms,
       ));
     }
-    steps.push(step("generate", "Generate",
-      idx === 0 && q.pipeline?.answer ? `${q.pipeline.answer.split(/\s+/).length} words` : "complete",
-      null,
-      undefined,
+    steps.push(step("generate", "Drafted answer",
+      idx === 0 && wc ? `${wc} word${wc === 1 ? "" : "s"}` : "complete",
+      null, subTotalMs,
     ));
 
     return {
       index: idx,
       query: sq,
       steps,
-      tokens: idx === 0 ? (q.pipeline?.answer || "") : "",
+      tokens: idx === 0 ? answer : "",
       done: true,
       chunks: myChunks,
       urls: allUrls,
       citations: q.pipeline?.citations || [],
+      startedAt: 0,
+      completedAt: subTotalMs,
     };
   });
 
   const pipeline: PipelineGlobals = {
     decomposeMs: breakdown.decompose_ms,
+    decomposeMode: breakdown.decompose_mode,
     searchMs: breakdown.search_ms,
     extractMs: breakdown.extract_ms,
     chunkMs: breakdown.chunk_ms,
+    embedMs: breakdown.embed_ms ?? breakdown.retrieve_ms,
+    embedDevice: breakdown.embed_device,
     retrieveMs: breakdown.retrieve_ms,
-    totalChunks: allChunks.length,
+    rerankMs: breakdown.rerank_ms ?? breakdown.retrieve_ms,
+    totalChunks: passageCount,
   };
 
   return {
     id: `eval-${q.question.slice(0, 40)}`,
+    versionGroupId: `eval-grp-${q.question.slice(0, 40)}`,
+    versionIndex: 0,
     question: q.question,
     status: "done",
     subQueries,
     subqueries,
     pipeline,
-    synthesisMd: q.pipeline?.answer || "",
+    synthesisMd: answer,
     synthesizing: false,
     citations: q.pipeline?.citations || [],
     totalLatencyMs: totalMs,
     createdAt: 0,
+    // Render synthesis-phase rows so eval traces match the live trace structure.
+    combiningStatus: "done",
+    finalStatus: "done",
+    combiningStartedAt: 0,
+    combiningCompletedAt: 0,
+    finalStartedAt: 0,
+    finalCompletedAt: breakdown.synthesis_ms || 0,
   };
 }
 

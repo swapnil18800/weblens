@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 import { api } from "../../lib/api";
 import { evalQuestionToTurn, m7ChipClass } from "../../lib/eval-adapter";
 import { ms } from "../../lib/format";
-import type { ChunkDict, Citation, EvalQuestion, EvalRunDetail } from "../../lib/types";
+import type { Citation, EvalQuestion, EvalRunDetail } from "../../lib/types";
 import Answer from "../Answer";
 import CitationList from "../CitationList";
 import CitationPreview from "../CitationPreview";
@@ -109,18 +109,10 @@ function QDetailBody({ q }: { q: EvalQuestion }) {
   const [previewNum, setPreviewNum] = useState<number | null>(null);
   const previewCitation: Citation | null =
     previewNum !== null ? (citations.find((c) => c.num === previewNum) || null) : null;
-  const previewChunk: ChunkDict | null = useMemo(() => {
-    if (!previewCitation) return null;
-    let best: ChunkDict | null = null;
-    for (const sq of turn.subqueries) {
-      for (const ch of sq.chunks) {
-        if (ch.url === previewCitation.url) {
-          if (!best || ch.score > best.score) best = ch;
-        }
-      }
-    }
-    return best;
-  }, [previewCitation, turn]);
+  const allChunks = useMemo(
+    () => turn.subqueries.flatMap((sq) => sq.chunks),
+    [turn.subqueries],
+  );
 
   const onCiteClick = (num: number) => setPreviewNum(num);
 
@@ -160,7 +152,7 @@ function QDetailBody({ q }: { q: EvalQuestion }) {
         open={previewNum !== null}
         citations={citations}
         citation={previewCitation}
-        chunk={previewChunk}
+        allChunks={allChunks}
         onClose={() => setPreviewNum(null)}
         onSelectCitation={(num) => setPreviewNum(num)}
         onBack={() => setPreviewNum(null)}

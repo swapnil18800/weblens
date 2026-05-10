@@ -18,7 +18,9 @@ const FALLBACK_CHIPS = [
 
 export default function Hero() {
   const setPendingInput = useChat((s) => s.setPendingInput);
-  const [chips, setChips] = useState<string[]>(FALLBACK_CHIPS);
+  // null = still loading → render skeleton. We never show FALLBACK_CHIPS until
+  // the fetch has actually failed, so users don't see a flash of stale prompts.
+  const [chips, setChips] = useState<string[] | null>(null);
 
   useEffect(() => {
     let alive = true;
@@ -34,9 +36,9 @@ export default function Hero() {
             }
           }
         }
-        if (collected.length) setChips(collected.slice(0, 8));
+        setChips(collected.length ? collected.slice(0, 8) : FALLBACK_CHIPS);
       })
-      .catch(() => { /* fallback used */ });
+      .catch(() => { if (alive) setChips(FALLBACK_CHIPS); });
     return () => { alive = false; };
   }, []);
 
@@ -75,22 +77,33 @@ export default function Hero() {
             Try one of these
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            {chips.slice(0, 8).map((q, i) => (
-              <motion.button
-                key={i}
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.04 * i, duration: 0.18 }}
-                onClick={() => setPendingInput(q)}
-                className="group text-left text-sm px-4 py-3 surface rounded-lg
-                           hover:bg-white/[0.05] hover:border-accent/30
-                           transition-colors min-h-[68px] leading-snug
-                           flex items-start justify-between gap-2"
-              >
-                <span className="text-neutral-200 group-hover:text-neutral-100 flex-1">{q}</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-neutral-500 group-hover:text-accent shrink-0 mt-0.5" />
-              </motion.button>
-            ))}
+            {chips === null
+              ? Array.from({ length: 8 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="surface rounded-lg min-h-[68px] px-4 py-3 animate-pulse
+                               flex flex-col gap-2"
+                  >
+                    <div className="h-3 bg-white/10 rounded-full w-5/6" />
+                    <div className="h-3 bg-white/5 rounded-full w-3/5" />
+                  </div>
+                ))
+              : chips.slice(0, 8).map((q, i) => (
+                  <motion.button
+                    key={i}
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.04 * i, duration: 0.18 }}
+                    onClick={() => setPendingInput(q)}
+                    className="group text-left text-sm px-4 py-3 surface rounded-lg
+                               hover:bg-white/[0.05] hover:border-accent/30
+                               transition-colors min-h-[68px] leading-snug
+                               flex items-start justify-between gap-2"
+                  >
+                    <span className="text-neutral-200 group-hover:text-neutral-100 flex-1">{q}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-neutral-500 group-hover:text-accent shrink-0 mt-0.5" />
+                  </motion.button>
+                ))}
           </div>
         </div>
       </motion.div>

@@ -3,6 +3,8 @@ import { streamSearch } from "../lib/sse";
 import { api } from "../lib/api";
 import type {
   ChunkDict,
+  ErrorReason,
+  ExtractFailure,
   PersistedSession,
   ReasoningStep,
   SessionListItem,
@@ -10,7 +12,32 @@ import type {
   SubqueryState,
   Turn,
 } from "../lib/types";
-import { ms } from "../lib/format";
+
+const FRIENDLY_ERROR: Record<ErrorReason, string> = {
+  tavily_timeout:    "Search timed out. The web is slow or unreachable — try again.",
+  tavily_http_error: "Search provider returned an error. Try again in a moment.",
+  no_api_key:        "Search is not configured. Set TAVILY_API_KEY on the server.",
+  no_urls:           "Couldn't find any web sources for this question.",
+  extract_failed:    "Found sources but couldn't read any of them.",
+  no_chunks:         "Sources read, but nothing useful to cite — try a different query.",
+  internal:          "Something went wrong on our end.",
+};
+
+function friendlyError(reason: ErrorReason | undefined, fallback: string): string {
+  if (reason && FRIENDLY_ERROR[reason]) return FRIENDLY_ERROR[reason];
+  return fallback || "Something went wrong.";
+}
+
+function summariseFailures(failures: ExtractFailure[] | undefined): string {
+  if (!failures || failures.length === 0) return "";
+  const counts: Record<string, number> = {};
+  for (const f of failures) counts[f.reason] = (counts[f.reason] || 0) + 1;
+  const parts: string[] = [];
+  for (const [reason, n] of Object.entries(counts)) {
+    parts.push(`${n} ${reason.replace(/_/g, " ")}`);
+  }
+  return parts.join(", ");
+}
 
 const SESSION_KEY = "wsr_session_id";
 
@@ -24,9 +51,11 @@ function readSessionId(): string {
   return localStorage.getItem(SESSION_KEY) || newSessionId();
 }
 
-function newTurn(question: string): Turn {
+function newTurn(question: string, versionGroupId?: string, versionIndex = 0): Turn {
   return {
     id: `turn-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    versionGroupId: versionGroupId || `grp-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    versionIndex,
     question,
     status: "streaming",
     subQueries: [],
@@ -84,6 +113,9 @@ interface ChatStore {
   loadingSessionId: string | null;
   reactions: Record<string, "like" | "dislike" | undefined>;
   setReaction: (turnId: string, r: "like" | "dislike" | null) => void;
+  /** versionGroupId → index of the currently displayed sibling. */
+  selectedVersion: Record<string, number>;
+  selectVersion: (groupId: string, index: number) => void;
 
   // Lifecycle
   init: () => Promise<void>;
@@ -98,7 +130,9 @@ interface ChatStore {
   setSidebarOpen: (v: boolean) => void;
 
   // Streaming
-  submitQuery: (q: string) => Promise<void>;
+  submitQuery: (q: string, versionGroupId?: string) => Promise<void>;
+  retryTurn: (turnId: string) => Promise<void>;
+  editTurn: (turnId: string, newQuestion: string) => Promise<void>;
   stop: () => void;
 
   // SSE handler (exposed for tests; called internally by submitQuery)
@@ -122,6 +156,9 @@ export const useChat = create<ChatStore>((set, get) => ({
     else next[turnId] = r;
     return { reactions: next };
   }),
+  selectedVersion: {},
+  selectVersion: (groupId, index) =>
+    set((s) => ({ selectedVersion: { ...s.selectedVersion, [groupId]: index } })),
 
   init: async () => {
     try {
@@ -148,37 +185,71 @@ export const useChat = create<ChatStore>((set, get) => ({
     try {
       const data: PersistedSession = await api.getSession(id);
       const turns: Turn[] = data.messages.map((m) => {
+        const br = (m.latency_breakdown || {}) as Record<string, any>;
+        const createdAtMs = new Date(m.created_at).getTime();
         const subqueries: SubqueryState[] = (m.traces || []).map((t) => ({
           index: t.index,
           query: t.query,
-          steps: rehydrateSteps(t),
+          steps: rehydrateSteps(t, br),
           tokens: t.answer || "",
           done: true,
           chunks: t.chunks || [],
           urls: t.urls || [],
           citations: [],
           latencyMs: t.latency_ms,
+          startedAt: createdAtMs,
+          completedAt: createdAtMs + (t.latency_ms || 0),
         }));
 
+        const remap: Record<number, number> = {};
+        (m.citations || []).forEach((c, i) => { remap[c.num] = i + 1; });
+        const followups: string[] | undefined = Array.isArray((br as any).followups)
+          ? ((br as any).followups as string[]).slice(0, 3)
+          : undefined;
+        const rewrittenQuery: string | undefined = typeof (br as any).rewritten_query === "string"
+          ? ((br as any).rewritten_query as string)
+          : undefined;
         const turn: Turn = {
           id: `hydrated-${m.id}`,
+          // Each hydrated turn is its own group — version history isn't
+          // persisted to DB yet, so loaded sessions show each row as a single
+          // version. Live retries in this session still group correctly.
+          versionGroupId: `hydrated-grp-${m.id}`,
+          versionIndex: 0,
           question: m.question,
           status: "done",
           subQueries: m.sub_queries || [],
           subqueries,
+          citationRemap: remap,
+          followups,
+          rewrittenQuery,
           pipeline: {
-            decomposeMs: m.latency_breakdown?.decompose_ms,
-            searchMs: m.latency_breakdown?.search_ms,
-            extractMs: m.latency_breakdown?.extract_ms,
-            chunkMs: m.latency_breakdown?.chunk_ms,
-            retrieveMs: m.latency_breakdown?.retrieve_ms,
-            totalChunks: m.chunks?.length,
+            decomposeMs: br.decompose_ms,
+            decomposeMode: br.decompose_mode,
+            searchMs: br.search_ms,
+            extractMs: br.extract_ms,
+            chunkMs: br.chunk_ms,
+            embedMs: br.embed_ms,
+            embedDevice: br.embed_device,
+            retrieveMs: br.retrieve_ms,
+            rerankMs: br.rerank_ms,
+            totalChunks: br.chunks_count ?? m.chunks?.length,
           },
           synthesisMd: m.answer,
           synthesizing: false,
           citations: m.citations || [],
           totalLatencyMs: m.total_latency_ms,
-          createdAt: new Date(m.created_at).getTime(),
+          createdAt: createdAtMs,
+          // Restore synthesis-phase rows so the trace renders the full sequence,
+          // and set wall-clock anchors so the elapsed-time chips render. For
+          // multi-Q runs the synthesis call dominates the final phase; combining
+          // is essentially instant. For single-Q both phases are zero-length.
+          combiningStatus: "done",
+          finalStatus: "done",
+          combiningStartedAt: createdAtMs,
+          combiningCompletedAt: createdAtMs,
+          finalStartedAt: createdAtMs,
+          finalCompletedAt: createdAtMs + (br.synthesis_ms || 0),
         };
         return turn;
       });
@@ -211,10 +282,17 @@ export const useChat = create<ChatStore>((set, get) => ({
     }
   },
 
-  submitQuery: async (q: string) => {
+  submitQuery: async (q: string, versionGroupId?: string) => {
     if (!q.trim() || get().isStreaming) return;
     const controller = new AbortController();
-    const turn = newTurn(q.trim());
+    // If versionGroupId is set, this is a retry/edit — append as a sibling and
+    // select it (so the user sees the new run immediately).
+    let nextIdx = 0;
+    if (versionGroupId) {
+      const siblings = get().turns.filter((t) => t.versionGroupId === versionGroupId);
+      nextIdx = siblings.length;
+    }
+    const turn = newTurn(q.trim(), versionGroupId, nextIdx);
     const sessionId = get().sessionId;
     const nowIso = new Date().toISOString();
     set((s) => {
@@ -232,6 +310,9 @@ export const useChat = create<ChatStore>((set, get) => ({
         isStreaming: true,
         controller,
         sessions: [optimistic, ...others],
+        selectedVersion: versionGroupId
+          ? { ...s.selectedVersion, [versionGroupId]: nextIdx }
+          : s.selectedVersion,
       };
     });
 
@@ -261,6 +342,23 @@ export const useChat = create<ChatStore>((set, get) => ({
       // Refresh sidebar so the new session shows up
       void get().refreshSessions();
     }
+  },
+
+  retryTurn: async (turnId: string) => {
+    const t = get().turns.find((x) => x.id === turnId);
+    if (!t) return;
+    // Re-run the SAME question as a sibling of the original turn so the user
+    // can flip between attempts via the < n/N > navigator.
+    await get().submitQuery(t.question, t.versionGroupId);
+  },
+  editTurn: async (turnId: string, newQuestion: string) => {
+    const q = (newQuestion || "").trim();
+    if (!q) return;
+    const t = get().turns.find((x) => x.id === turnId);
+    if (!t) return;
+    // Edits also become siblings (different question text, same group) so the
+    // user can compare the two phrasings side by side.
+    await get().submitQuery(q, t.versionGroupId);
   },
 
   stop: () => {
@@ -297,6 +395,9 @@ export const useChat = create<ChatStore>((set, get) => ({
         case "decompose_done": {
           t.subQueries = e.data.sub_queries;
           t.pipeline = { ...t.pipeline, decomposeMs: e.data.latency_ms, decomposeMode: e.data.mode };
+          if (e.data.rewrote && e.data.rewritten_query && e.data.rewritten_query !== e.data.original_query) {
+            t.rewrittenQuery = e.data.rewritten_query;
+          }
           // Pre-create subquery states
           t.subqueries = e.data.sub_queries.map((q, idx) => newSubqueryState(idx, q));
           break;
@@ -326,57 +427,84 @@ export const useChat = create<ChatStore>((set, get) => ({
           break;
         }
         case "extract_done": {
+          // Per-sub-query slices honour the user's request that each sub-query
+          // shows numbers reflecting only its own sources. Falls back to the
+          // global counts if the backend didn't send per_subquery (older event).
           t.pipeline = { ...t.pipeline, extractMs: e.data.latency_ms, pages: e.data.pages };
-          t.subqueries = t.subqueries.map((sq) => ({
-            ...sq,
-            steps: [
-              ...sq.steps,
-              step(
-                "extract",
-                "Read pages",
-                `Read ${e.data.pages.length} page${e.data.pages.length === 1 ? "" : "s"}`,
-                "done",
-                { pages: e.data.pages },
-                e.data.latency_ms,
-              ),
-            ],
-          }));
+          const perSq = e.data.per_subquery || [];
+          t.subqueries = t.subqueries.map((sq) => {
+            const slice = perSq.find((p) => p.index === sq.index);
+            const attempted = slice ? slice.attempted : (e.data.attempted ?? e.data.pages.length);
+            const succeeded = slice ? slice.succeeded : (e.data.succeeded ?? e.data.pages.length);
+            const failures = slice ? slice.failures : (e.data.failures || []);
+            const failSummary = summariseFailures(failures);
+            const detail = failures.length > 0
+              ? `Read ${succeeded} of ${attempted} pages — ${failures.length} skipped (${failSummary})`
+              : `Read ${succeeded} page${succeeded === 1 ? "" : "s"}`;
+            // Payload for the expandable list: prefer the per-sub-query enriched
+            // page entries (with title + status chip data); fallback to global.
+            const payloadPages = slice ? slice.pages : e.data.pages;
+            return {
+              ...sq,
+              steps: [
+                ...sq.steps,
+                step(
+                  "extract",
+                  "Read pages",
+                  detail,
+                  "done",
+                  { pages: payloadPages, failures, attempted, succeeded, enriched: !!slice },
+                  e.data.latency_ms,
+                ),
+              ],
+            };
+          });
           break;
         }
         case "chunk_done": {
-          t.pipeline = { ...t.pipeline, chunkMs: e.data.latency_ms, totalChunks: e.data.count, perPageChunks: e.data.per_page };
-          t.subqueries = t.subqueries.map((sq) => ({
-            ...sq,
-            steps: [
-              ...sq.steps,
-              step(
-                "chunk",
-                "Split into passages",
-                `Built ${e.data.count} passage${e.data.count === 1 ? "" : "s"}`,
-                "done",
-                { perPage: e.data.per_page },
-                e.data.latency_ms,
-              ),
-            ],
-          }));
+          t.pipeline = { ...t.pipeline, chunkMs: e.data.latency_ms, totalChunks: e.data.count };
+          const perSq = e.data.per_subquery || [];
+          t.subqueries = t.subqueries.map((sq) => {
+            const slice = perSq.find((p) => p.index === sq.index);
+            const count = slice ? slice.count : e.data.count;
+            const stats = slice ? slice.stats : e.data.stats;
+            const dropped = stats
+              ? (stats.garbage_dropped + stats.min_body_dropped + stats.dedup_dropped)
+              : 0;
+            const detail = stats && dropped > 0
+              ? `Built ${count} passages (dropped ${dropped}: ${stats.garbage_dropped} boilerplate, ${stats.min_body_dropped} short, ${stats.dedup_dropped} duplicate)`
+              : `Built ${count} passage${count === 1 ? "" : "s"}`;
+            return {
+              ...sq,
+              steps: [
+                ...sq.steps,
+                step("chunk", "Split into passages", detail, "done", null, e.data.latency_ms),
+              ],
+            };
+          });
           break;
         }
         case "embed_done": {
           t.pipeline = { ...t.pipeline, embedMs: e.data.latency_ms, embedDevice: e.data.device };
-          t.subqueries = t.subqueries.map((sq) => ({
-            ...sq,
-            steps: [
-              ...sq.steps,
-              step(
-                "embed",
-                "Indexed passages",
-                `${e.data.candidate_count} passage${e.data.candidate_count === 1 ? "" : "s"} ready for ranking`,
-                "done",
-                null,
-                e.data.latency_ms,
-              ),
-            ],
-          }));
+          const perSq = e.data.per_subquery || [];
+          t.subqueries = t.subqueries.map((sq) => {
+            const slice = perSq.find((p) => p.index === sq.index);
+            const count = slice ? slice.candidate_count : e.data.candidate_count;
+            return {
+              ...sq,
+              steps: [
+                ...sq.steps,
+                step(
+                  "embed",
+                  "Indexed passages",
+                  `${count} passage${count === 1 ? "" : "s"} ready for ranking`,
+                  "done",
+                  null,
+                  e.data.latency_ms,
+                ),
+              ],
+            };
+          });
           break;
         }
         case "retrieve_done": {
@@ -384,12 +512,17 @@ export const useChat = create<ChatStore>((set, get) => ({
           break;
         }
         case "rerank_done": {
-          // Fold BM25 / dense / RRF / cross-encoder rerank into a single semantic step.
+          // Fold BM25 / dense / RRF / cross-encoder into a single semantic step.
+          // Detail text is intentionally simple ("Selected top N passages") — the
+          // funnel internals are misleading without explaining all four stages.
+          // Payload starts empty; sub_answer_start later attaches the actual
+          // top-N chunks so the step expands into a passage list.
           t.pipeline = { ...t.pipeline, rerankMs: e.data.latency_ms };
           const perSq = e.data.per_subquery || [];
           t.subqueries = t.subqueries.map((sq) => {
             const r = perSq.find((p) => p.index === sq.index);
             if (!r) return sq;
+            const detail = `Selected top ${r.top_k} passage${r.top_k === 1 ? "" : "s"}`;
             return {
               ...sq,
               steps: [
@@ -397,9 +530,9 @@ export const useChat = create<ChatStore>((set, get) => ({
                 step(
                   "rerank",
                   "Picked best evidence",
-                  `Selected top ${r.top_k} passage${r.top_k === 1 ? "" : "s"}`,
+                  detail,
                   "done",
-                  null,
+                  { chunks: [] },
                   e.data.latency_ms,
                 ),
               ],
@@ -420,8 +553,14 @@ export const useChat = create<ChatStore>((set, get) => ({
                   citations: e.data.citations,
                   bm25Top: e.data.bm25_top,
                   denseTop: e.data.dense_top,
+                  // Backfill chunks into the rerank step's payload so its
+                  // expandable body shows the actual top-N passages.
                   steps: [
-                    ...s.steps,
+                    ...s.steps.map((st) =>
+                      st.kind === "rerank"
+                        ? { ...st, payload: { chunks: e.data.chunks } }
+                        : st,
+                    ),
                     step("generate", "Drafted answer", "writing…", "running"),
                   ],
                 },
@@ -456,6 +595,7 @@ export const useChat = create<ChatStore>((set, get) => ({
                   cancelled: e.data.cancelled,
                   errorMsg: e.data.error,
                   latencyMs: e.data.latency_ms,
+                  completedAt: Date.now(),
                   steps: sq.steps.map((st) =>
                     st.kind === "generate" && st.status === "running"
                       ? {
@@ -472,20 +612,27 @@ export const useChat = create<ChatStore>((set, get) => ({
           // When all sub-answers are done, kick off the combining phase
           const allDone = t.subqueries.every((sq) => sq.done);
           if (allDone && !t.combiningStatus) {
+            const tNow = Date.now();
             t.combiningStatus = "running";
+            t.combiningStartedAt = tNow;
             // For single-Q there's no real synthesis call — make combining instant
             // and start finalizing. The `done` event will close it out.
             if (t.subqueries.length === 1) {
               t.combiningStatus = "done";
+              t.combiningCompletedAt = tNow;
               t.finalStatus = "running";
+              t.finalStartedAt = tNow;
             }
           }
           break;
         }
         case "synthesis_start": {
+          const tNow = Date.now();
           t.synthesizing = true;
           t.combiningStatus = "done";
+          t.combiningCompletedAt = tNow;
           t.finalStatus = "running";
+          t.finalStartedAt = tNow;
           break;
         }
         case "token": {
@@ -493,20 +640,47 @@ export const useChat = create<ChatStore>((set, get) => ({
           break;
         }
         case "done": {
+          const tNow = Date.now();
           t.totalLatencyMs = e.data.total_latency_ms;
           t.citations = e.data.citations;
+          // Build display-time renumber so [N]s start at 1 even after backend
+          // reconciliation drops never-cited entries. Keep Citation.num intact —
+          // render layers translate via citationRemap.
+          const remap: Record<number, number> = {};
+          (e.data.citations || []).forEach((c, i) => {
+            remap[c.num] = i + 1;
+          });
+          t.citationRemap = remap;
+          if (Array.isArray(e.data.followups) && e.data.followups.length > 0) {
+            t.followups = e.data.followups.slice(0, 3);
+          }
           t.status = "done";
           t.synthesizing = false;
           t.combiningStatus = "done";
           t.finalStatus = "done";
+          if (!t.combiningCompletedAt) t.combiningCompletedAt = tNow;
+          if (!t.finalStartedAt) t.finalStartedAt = tNow;
+          t.finalCompletedAt = tNow;
           if (!t.synthesisMd && t.subqueries.length === 1) {
             t.synthesisMd = t.subqueries[0].tokens;
           }
           break;
         }
         case "error": {
+          // Translate machine reason → friendly copy, then mark every still-running
+          // step / subquery as failed so spinners stop dead.
           t.status = "error";
-          t.errorMsg = e.data.message;
+          t.errorMsg = friendlyError(e.data.reason as ErrorReason | undefined, e.data.message);
+          t.synthesizing = false;
+          if (t.combiningStatus === "running") t.combiningStatus = "done";
+          if (t.finalStatus === "running") t.finalStatus = "done";
+          t.subqueries = t.subqueries.map((sq) => {
+            if (sq.done) return sq;
+            const steps = sq.steps.map((st) =>
+              st.status === "running" ? { ...st, status: "failed" as const } : st,
+            );
+            return { ...sq, steps, done: true, errorMsg: sq.errorMsg || t.errorMsg };
+          });
           break;
         }
       }
@@ -533,15 +707,113 @@ function mutateTurn(
   });
 }
 
-function rehydrateSteps(t: { urls: any[]; chunks: any[]; latency_ms: number }): ReasoningStep[] {
+/**
+ * Rebuild the full live-trace step sequence from persisted data so historical /
+ * eval turns render IDENTICALLY to a fresh streamed run. Labels and payloads
+ * mirror chatStore's SSE handlers exactly.
+ *
+ * When the persisted trace carries per-sub-query slices (`extract_stats`,
+ * `chunk_stats`, `embed_count` — added in 2026-05), the rich live trace is
+ * reconstructed: status chips on the source list, per-sub-query chunk drop
+ * breakdowns, and per-sub-query passage counts. Older traces fall back to the
+ * coarse global counts derived from `latency_breakdown`.
+ */
+function rehydrateSteps(
+  t: {
+    urls: any[];
+    chunks: any[];
+    answer?: string;
+    latency_ms: number;
+    extract_stats?: any;
+    chunk_stats?: any;
+    embed_count?: number | null;
+  },
+  br: Record<string, any>,
+): ReasoningStep[] {
   const steps: ReasoningStep[] = [];
-  if (t.urls?.length) {
-    steps.push(step("search", "Search", `${t.urls.length} URLs`, "done", { urls: t.urls }));
+  const urlCount = t.urls?.length || 0;
+  const topCount = t.chunks?.length || 0;
+  const wc = (t.answer || "").trim() ? (t.answer || "").trim().split(/\s+/).length : 0;
+
+  if (urlCount > 0) {
+    steps.push(step(
+      "search", "Searched the web",
+      `Found ${urlCount} source${urlCount === 1 ? "" : "s"}`,
+      "done", { urls: t.urls }, br?.search_ms,
+    ));
   }
-  if (t.chunks?.length) {
-    steps.push(step("rerank", "Cross-encoder rerank", `top ${t.chunks.length}`, "done", { chunks: t.chunks }));
+
+  // Extract — prefer the persisted per-sub-query slice for the rich shape.
+  const ex = t.extract_stats as
+    | { pages: any[]; succeeded: number; attempted: number; failures: any[] }
+    | null
+    | undefined;
+  if (ex && Array.isArray(ex.pages)) {
+    const failSummary = summariseFailures(ex.failures);
+    const detail = (ex.failures?.length ?? 0) > 0
+      ? `Read ${ex.succeeded} of ${ex.attempted} pages — ${ex.failures.length} skipped (${failSummary})`
+      : `Read ${ex.succeeded} page${ex.succeeded === 1 ? "" : "s"}`;
+    steps.push(step(
+      "extract", "Read pages", detail, "done",
+      { pages: ex.pages, failures: ex.failures, attempted: ex.attempted, succeeded: ex.succeeded, enriched: true },
+      br?.extract_ms,
+    ));
+  } else {
+    const pageCount = br?.pages_count ?? urlCount;
+    if (pageCount > 0) {
+      steps.push(step(
+        "extract", "Read pages",
+        `Read ${pageCount} page${pageCount === 1 ? "" : "s"}`,
+        "done", null, br?.extract_ms,
+      ));
+    }
   }
-  steps.push(step("generate", "Generate", `${ms(t.latency_ms)}`, "done", null, t.latency_ms));
+
+  // Chunk — prefer per-sub-query stats for descriptive text and counts.
+  const cs = t.chunk_stats as
+    | { count: number; pages: number; stats: { garbage_dropped: number; min_body_dropped: number; dedup_dropped: number; kept: number } }
+    | null
+    | undefined;
+  if (cs) {
+    const dropped = cs.stats.garbage_dropped + cs.stats.min_body_dropped + cs.stats.dedup_dropped;
+    const detail = dropped > 0
+      ? `Built ${cs.count} passages (dropped ${dropped}: ${cs.stats.garbage_dropped} boilerplate, ${cs.stats.min_body_dropped} short, ${cs.stats.dedup_dropped} duplicate)`
+      : `Built ${cs.count} passage${cs.count === 1 ? "" : "s"}`;
+    steps.push(step("chunk", "Split into passages", detail, "done", null, br?.chunk_ms));
+    const embedN = t.embed_count ?? cs.count;
+    steps.push(step(
+      "embed", "Indexed passages",
+      `${embedN} passage${embedN === 1 ? "" : "s"} ready for ranking`,
+      "done", null, br?.embed_ms,
+    ));
+  } else {
+    const passageCount = br?.chunks_count ?? 0;
+    if (passageCount > 0) {
+      steps.push(step(
+        "chunk", "Split into passages",
+        `Built ${passageCount} passage${passageCount === 1 ? "" : "s"}`,
+        "done", null, br?.chunk_ms,
+      ));
+      steps.push(step(
+        "embed", "Indexed passages",
+        `${passageCount} passage${passageCount === 1 ? "" : "s"} ready for ranking`,
+        "done", null, br?.embed_ms,
+      ));
+    }
+  }
+
+  if (topCount > 0) {
+    steps.push(step(
+      "rerank", "Picked best evidence",
+      `Selected top ${topCount} passage${topCount === 1 ? "" : "s"}`,
+      "done", { chunks: t.chunks }, br?.rerank_ms ?? br?.retrieve_ms,
+    ));
+  }
+  steps.push(step(
+    "generate", "Drafted answer",
+    `${wc} word${wc === 1 ? "" : "s"}`,
+    "done", null, t.latency_ms,
+  ));
   return steps;
 }
 

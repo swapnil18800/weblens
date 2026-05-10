@@ -5,15 +5,19 @@ import type { Citation } from "../lib/types";
 interface Props {
   markdown: string;
   citations: Citation[];
+  /** Original-num → display-num map. When set, [N] markers in the rendered text
+   *  use the display number; click handlers still receive the *original* num so
+   *  they can look up the citation by its stable identity. */
+  citationRemap?: Record<number, number>;
   onCiteClick: (num: number) => void;
   isStreaming?: boolean;
 }
 
-export default function Answer({ markdown, citations, onCiteClick, isStreaming = false }: Props) {
+export default function Answer({ markdown, citations, citationRemap, onCiteClick, isStreaming = false }: Props) {
   // Replace [N] markers in the markdown with click-handler links.
-  // We use react-markdown's components.a override + a regex pre-pass that converts
-  // bare [N] to [N](#cite-N) so the renderer treats them as links.
-  const cited = expandInlineCitations(markdown, citations.length);
+  // The href encodes BOTH the display number (visible label) and original number
+  // (stable identity for click handlers and panel lookup) as #cite-<orig>-<display>.
+  const cited = expandInlineCitations(markdown, citations, citationRemap);
 
   return (
     <div className={`answer-md ${isStreaming ? "streaming-cursor" : ""}`}>
@@ -21,20 +25,21 @@ export default function Answer({ markdown, citations, onCiteClick, isStreaming =
         remarkPlugins={[remarkGfm]}
         components={{
           a: ({ href, children, ...rest }) => {
-            const m = /^#cite-(\d+)$/.exec(href || "");
+            const m = /^#cite-(\d+)(?:-(\d+))?$/.exec(href || "");
             if (m) {
-              const num = parseInt(m[1], 10);
+              const origNum = parseInt(m[1], 10);
+              const displayNum = m[2] ? parseInt(m[2], 10) : origNum;
               return (
                 <a
                   className="cite"
                   onClick={(e) => {
                     e.preventDefault();
-                    onCiteClick(num);
+                    onCiteClick(origNum);
                   }}
                   href={href}
                   {...rest}
                 >
-                  {num}
+                  {displayNum}
                 </a>
               );
             }
@@ -52,14 +57,22 @@ export default function Answer({ markdown, citations, onCiteClick, isStreaming =
   );
 }
 
-function expandInlineCitations(md: string, max: number): string {
+function expandInlineCitations(
+  md: string,
+  citations: Citation[],
+  remap?: Record<number, number>,
+): string {
   if (!md) return md;
-  // Match bare [N] or [N, M] etc. Convert each N to its own link.
+  const validNums = new Set(citations.map((c) => c.num));
   return md.replace(/\[(\d+(?:\s*,\s*\d+)*)\]/g, (whole, group: string) => {
     const nums = group.split(/\s*,\s*/).map((x) => parseInt(x, 10)).filter((n) => Number.isFinite(n));
     if (nums.length === 0) return whole;
     return nums
-      .map((n) => (max > 0 && n > max ? `[${n}]` : `[${n}](#cite-${n})`))
+      .map((n) => {
+        if (validNums.size > 0 && !validNums.has(n)) return `[${n}]`;
+        const display = remap?.[n] ?? n;
+        return `[${display}](#cite-${n}-${display})`;
+      })
       .join("");
   });
 }

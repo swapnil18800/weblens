@@ -16,7 +16,9 @@ Pipeline:
 """
 import asyncio
 import logging
-from dataclasses import dataclass
+import math
+import re
+from dataclasses import dataclass, field
 from typing import List
 
 import numpy as np
@@ -27,15 +29,22 @@ from pipeline.embed import (
     build_bm25,
     embed_texts,
     get_rerank_model,
-    upsert_chunks,
 )
+
+_WS_RE = re.compile(r"\s+")
 
 logger = logging.getLogger(__name__)
 
 RRF_K       = 60   # standard constant — larger = smoother fusion
 EMBED_POOL  = 24   # BM25 candidates to embed (recall vs. latency tradeoff)
 CE_POOL     = 16   # cross-encoder input pool
-TOP_K       = 10   # final chunks returned to LLM
+TOP_K       = 8    # final chunks returned to LLM (also surfaced in UI)
+
+# Defensive dedup — see _dedupe_ranked() docstring.
+# Use a generous fingerprint window so chunks that share a heading/intro paragraph
+# but diverge later don't collapse to one entry.
+_DEDUP_FP_HEAD = 400
+_DEDUP_FP_TAIL = 100
 
 
 @dataclass
@@ -53,6 +62,23 @@ class RankedChunk:
             "score":      round(self.score, 4),
             "rank":       self.rank,
         }
+
+
+@dataclass
+class RetrievalResult:
+    """Return value of retrieve() — ranked passages plus raw embedding data for deferred upsert."""
+    ranked: List[RankedChunk]
+    candidates: List[Chunk]
+    candidate_matrix: "np.ndarray"
+    explain: dict = field(default_factory=dict)
+    # explain shape:
+    #   total_chunks: int    (input pool)
+    #   bm25_pool:    int    (post-BM25 candidates)
+    #   ce_pool:      int    (cross-encoder input)
+    #   dedup_dropped: int   (post-CE near-duplicates removed)
+    #   url_cap_dropped: int (post-CE per-URL diversity cap)
+    #   final_kept:   int
+    #   score_min, score_max: float
 
 
 # ── RRF ────────────────────────────────────────────────────────────────────────
@@ -96,16 +122,69 @@ def _cross_encoder_rerank(
         return ranked[:top_k]
 
 
+# ── Defensive dedup ────────────────────────────────────────────────────────────
+
+def _fingerprint(text: str) -> str:
+    """Normalised head+tail fingerprint. Two chunks with identical head AND tail
+    (after whitespace collapse) are treated as duplicates. The head-only window
+    used to be the only key, which collapsed many distinct chunks that shared an
+    intro paragraph — the tail check disambiguates them."""
+    norm = _WS_RE.sub(" ", text.lower()).strip()
+    head = norm[:_DEDUP_FP_HEAD]
+    tail = norm[-_DEDUP_FP_TAIL:] if len(norm) > _DEDUP_FP_HEAD else ""
+    return head + "||" + tail
+
+
+def _dedupe_ranked(ranked: List[RankedChunk]) -> tuple[List[RankedChunk], int]:
+    """Dedup by (url, chunk_index) exact key + text fingerprint (head+tail).
+    Returns (kept, dropped_count). The previous (url, heading) tuple was removed
+    — collapsing every chunk under the same H2 to one was the root cause of the
+    'Selected top 1 passage' bug."""
+    seen_fp: set[str] = set()
+    seen_exact: set[tuple] = set()
+    out: List[RankedChunk] = []
+    for rc in ranked:
+        exact = (rc.chunk.url, rc.chunk.chunk_index)
+        if exact in seen_exact:
+            continue
+        fp = _fingerprint(rc.chunk.chunk_text)
+        if fp in seen_fp:
+            continue
+        seen_exact.add(exact)
+        seen_fp.add(fp)
+        out.append(rc)
+    return out, len(ranked) - len(out)
+
+
+def _cap_per_url(ranked: List[RankedChunk], top_k: int) -> tuple[List[RankedChunk], int]:
+    """Cap per-URL chunk count at ceil(top_k/2) to prevent same-source domination.
+    Order-preserving — earlier (higher-scored) chunks stay; later ones from a
+    saturated URL are dropped. Returns (kept, dropped_count)."""
+    cap = max(1, math.ceil(top_k / 2))
+    counts: dict[str, int] = {}
+    out: List[RankedChunk] = []
+    for rc in ranked:
+        n = counts.get(rc.chunk.url, 0)
+        if n >= cap:
+            continue
+        counts[rc.chunk.url] = n + 1
+        out.append(rc)
+    return out, len(ranked) - len(out)
+
+
 # ── Public API ──────────────────────────────────────────────────────────────────
 
 async def retrieve(
     query: str,
     chunks: List[Chunk],
     top_k: int = TOP_K,
-) -> List[RankedChunk]:
-    """Full retrieval pipeline. Returns top_k RankedChunks."""
+) -> RetrievalResult:
+    """Full retrieval pipeline. Returns RetrievalResult with top_k ranked chunks and embedding data."""
     if not chunks:
-        return []
+        return RetrievalResult(
+            ranked=[], candidates=[], candidate_matrix=np.zeros((0, 0)),
+            explain={"total_chunks": 0, "final_kept": 0},
+        )
 
     loop = asyncio.get_event_loop()
 
@@ -139,27 +218,57 @@ async def retrieve(
     rrf_ranks = _rrf_merge(vec_ranks_list, bm25_local_ranks, n=len(candidates))
 
     # ── Stage 5: Cross-encoder rerank (sync, thread pool) ───────────────────────
+    # Run CE on the full pool, then apply dedup + per-URL cap, THEN trim to top_k.
+    # This lets the diversity cap actually drop saturated-URL chunks before the
+    # final cut, instead of after.
     ce_pool   = min(CE_POOL, len(candidates))
     ce_chunks = [candidates[i] for i, _ in rrf_ranks[:ce_pool]]
     ce_scores = [s            for _, s in rrf_ranks[:ce_pool]]
 
     reranked = await loop.run_in_executor(
-        None, _cross_encoder_rerank, query, ce_chunks, ce_scores, top_k
+        None, _cross_encoder_rerank, query, ce_chunks, ce_scores, ce_pool,
     )
 
-    result = [
+    pre_filter = [
         RankedChunk(chunk=chunk, score=score, rank=i)
         for i, (chunk, score) in enumerate(reranked)
     ]
 
-    # ── Stage 6: Upsert candidates to DB (non-blocking) ─────────────────────────
-    asyncio.create_task(upsert_chunks(candidates, candidate_matrix))
+    # Defensive dedup — catches overlap-window near-duplicates that survived RRF.
+    deduped, dedup_dropped = _dedupe_ranked(pre_filter)
+
+    # Per-URL diversity cap.
+    capped, url_cap_dropped = _cap_per_url(deduped, top_k)
+
+    # Final trim + re-rank.
+    result = [
+        RankedChunk(chunk=rc.chunk, score=rc.score, rank=i)
+        for i, rc in enumerate(capped[:top_k])
+    ]
+
+    scores = [r.score for r in result] or [0.0]
+    explain = {
+        "total_chunks":    len(chunks),
+        "bm25_pool":       len(candidates),
+        "ce_pool":         ce_pool,
+        "dedup_dropped":   dedup_dropped,
+        "url_cap_dropped": url_cap_dropped,
+        "final_kept":      len(result),
+        "score_min":       round(min(scores), 4),
+        "score_max":       round(max(scores), 4),
+    }
 
     logger.info(
-        "[retrieve] %d total → BM25 pool=%d → embed=%d → CE pool=%d → top=%d",
-        len(chunks), embed_pool, len(candidates), ce_pool, len(result),
+        "[retrieve] %d total → BM25 pool=%d → embed=%d → CE pool=%d → dedup-drop=%d → url-cap-drop=%d → top=%d",
+        len(chunks), embed_pool, len(candidates), ce_pool,
+        dedup_dropped, url_cap_dropped, len(result),
     )
     for r in result:
         logger.debug("  #%d score=%.4f  %s  [%s]", r.rank, r.score, r.chunk.url[:60], r.chunk.heading)
 
-    return result
+    return RetrievalResult(
+        ranked=result,
+        candidates=candidates,
+        candidate_matrix=candidate_matrix,
+        explain=explain,
+    )

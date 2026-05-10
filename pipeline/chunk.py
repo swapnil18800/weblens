@@ -164,10 +164,12 @@ def _window_split(text: str) -> List[str]:
 
 # ── Main API ───────────────────────────────────────────────────────────────────
 
-def chunk_page(page: ExtractedPage) -> List[Chunk]:
-    """Chunk a single extracted page into overlapping, heading-aware segments."""
+def chunk_page(page: ExtractedPage) -> tuple[List[Chunk], dict]:
+    """Chunk a single extracted page. Returns (chunks, stats) where stats counts
+    {min_body_dropped, garbage_dropped} for that page."""
     sections = _extract_sections(page.markdown)
     chunks: List[Chunk] = []
+    stats = {"min_body_dropped": 0, "garbage_dropped": 0}
     idx = 0
 
     for heading, body in sections:
@@ -180,6 +182,7 @@ def chunk_page(page: ExtractedPage) -> List[Chunk]:
         for para in paras:
             # Skip trivially short body content — navigation/ads residue
             if len(para) < MIN_CHUNK_BODY:
+                stats["min_body_dropped"] += 1
                 continue
 
             context_prefix = f"{heading}\n\n" if heading else ""
@@ -187,6 +190,7 @@ def chunk_page(page: ExtractedPage) -> List[Chunk]:
             if len(context_prefix) + len(para) <= MAX_CHARS:
                 chunk_text = (context_prefix + para).strip()
                 if _is_garbage_chunk(chunk_text):
+                    stats["garbage_dropped"] += 1
                     continue
                 chunks.append(Chunk(
                     url=page.url,
@@ -199,9 +203,11 @@ def chunk_page(page: ExtractedPage) -> List[Chunk]:
             else:
                 for sub in _window_split(para):
                     if len(sub) < MIN_CHUNK_BODY:
+                        stats["min_body_dropped"] += 1
                         continue
                     chunk_text = (context_prefix + sub).strip()
                     if _is_garbage_chunk(chunk_text):
+                        stats["garbage_dropped"] += 1
                         continue
                     chunks.append(Chunk(
                         url=page.url,
@@ -213,13 +219,81 @@ def chunk_page(page: ExtractedPage) -> List[Chunk]:
                     idx += 1
 
     logger.debug("[chunk] %s → %d chunks", page.url, len(chunks))
-    return chunks
+    return chunks, stats
 
 
-def chunk_pages(pages: List[ExtractedPage]) -> List[Chunk]:
-    """Chunk all extracted pages. Returns flat list of chunks."""
+_DEDUP_FINGERPRINT_CHARS = 200
+_WS_RE = re.compile(r"\s+")
+
+
+def _fingerprint(text: str) -> str:
+    """Lower-case, whitespace-collapsed prefix used to detect near-duplicate chunks
+    produced by the OVERLAP_CHARS sliding window."""
+    return _WS_RE.sub(" ", text.lower()).strip()[:_DEDUP_FINGERPRINT_CHARS]
+
+
+def _dedupe_chunks(chunks: List[Chunk]) -> List[Chunk]:
+    """Drop chunks whose first ~200 normalised chars match a chunk we've already
+    kept. Preserves first-seen ordering and original `chunk_index` values."""
+    seen: set[str] = set()
+    out: List[Chunk] = []
+    for c in chunks:
+        fp = _fingerprint(c.chunk_text)
+        if fp in seen:
+            continue
+        seen.add(fp)
+        out.append(c)
+    return out
+
+
+def chunk_pages(pages: List[ExtractedPage]) -> tuple[List[Chunk], dict, dict]:
+    """Chunk all extracted pages, then dedupe near-duplicate windows.
+
+    Returns (chunks, global_stats, per_url_stats):
+      - global_stats: {garbage_dropped, min_body_dropped, dedup_dropped, kept}
+      - per_url_stats: {url: {garbage_dropped, min_body_dropped, dedup_dropped, kept}}
+
+    Per-URL stats are needed by app.py to partition the global aggregate into
+    per-sub-query slices (each sub-query's stats reflect only its own URLs).
+
+    The sliding-window overlap (OVERLAP_CHARS=200) is great for retrieval recall
+    but produces visible duplicates in the Top Passages UI. We strip them here
+    so downstream BM25 / embedding / rerank work on a clean candidate set.
+    """
     all_chunks: List[Chunk] = []
+    per_url_stats: dict[str, dict] = {}
+    global_stats = {"garbage_dropped": 0, "min_body_dropped": 0, "dedup_dropped": 0, "kept": 0}
+
     for page in pages:
-        all_chunks.extend(chunk_page(page))
-    logger.info("[chunk] Total chunks: %d across %d pages", len(all_chunks), len(pages))
-    return all_chunks
+        page_chunks, page_stats = chunk_page(page)
+        per_url_stats[page.url] = {
+            "garbage_dropped": page_stats["garbage_dropped"],
+            "min_body_dropped": page_stats["min_body_dropped"],
+            "dedup_dropped": 0,  # populated during dedup pass below
+            "kept": len(page_chunks),
+        }
+        all_chunks.extend(page_chunks)
+        global_stats["garbage_dropped"] += page_stats["garbage_dropped"]
+        global_stats["min_body_dropped"] += page_stats["min_body_dropped"]
+
+    before = len(all_chunks)
+    # Inline dedup so we can attribute each drop back to its source URL.
+    seen: set[str] = set()
+    deduped: List[Chunk] = []
+    for c in all_chunks:
+        fp = _fingerprint(c.chunk_text)
+        if fp in seen:
+            stats = per_url_stats.setdefault(c.url, {"garbage_dropped": 0, "min_body_dropped": 0, "dedup_dropped": 0, "kept": 0})
+            stats["dedup_dropped"] += 1
+            stats["kept"] -= 1
+            continue
+        seen.add(fp)
+        deduped.append(c)
+
+    global_stats["dedup_dropped"] = before - len(deduped)
+    global_stats["kept"] = len(deduped)
+    if global_stats["dedup_dropped"]:
+        logger.info("[chunk] Dedup: %d → %d (dropped %d near-duplicates)",
+                    before, len(deduped), global_stats["dedup_dropped"])
+    logger.info("[chunk] Total chunks: %d across %d pages", len(deduped), len(pages))
+    return deduped, global_stats, per_url_stats
