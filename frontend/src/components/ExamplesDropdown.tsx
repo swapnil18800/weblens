@@ -1,17 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Sparkles } from "lucide-react";
-import { api } from "../lib/api";
 import { useChat } from "../state/chatStore";
 
 const FALLBACK_EXAMPLES = [
-  "Apple vs Microsoft operating margin FY2024",
-  "How does RAG work?",
-  "NVIDIA data center revenue trend FY2022–FY2025",
-  "What is pgvector used for?",
-  "AMD vs Intel vs NVIDIA data center revenue + risk factors FY2023–FY2026",
-  "Compare BM25 and dense retrieval",
-  "Tesla FSD progress in FY2023 10-K",
-  "AWS vs Azure vs GCP cloud market share",
+  "Why is everyone suddenly talking about AGI?",
+  "What happens if the US and China enter a tech cold war?",
+  "Why are young people feeling more mentally exhausted today?",
+  "Could AI make traditional college degrees less valuable?",
+  "Why do some people become charismatic naturally?",
+  "What would happen if NVIDIA stopped making GPUs tomorrow?",
+  "Why are billionaires building underground bunkers?",
+  "Can humans stay happy after achieving huge success?"
 ];
 
 interface Props {
@@ -25,36 +24,16 @@ export default function ExamplesDropdown({ onPick }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let alive = true;
-    api
-      .evalQuestions("v6")
+    fetch("/question_examples.json")
+      .then((res) => res.json())
       .then((data) => {
-        if (!alive) return;
-        const collected: string[] = [];
-        if (Array.isArray(data)) {
-          for (const entry of data) {
-            if (entry && typeof entry === "object" && Array.isArray(entry.questions)) {
-              for (const q of entry.questions) {
-                if (typeof q === "string") collected.push(q);
-                else if (q && typeof q.question === "string") collected.push(q.question);
-              }
-            }
-          }
-        } else if (data && typeof data === "object") {
-          // Object with category keys
-          for (const k of Object.keys(data)) {
-            const v = (data as any)[k];
-            if (Array.isArray(v?.questions)) {
-              for (const q of v.questions) if (typeof q === "string") collected.push(q);
-            } else if (Array.isArray(v)) {
-              for (const q of v) if (typeof q === "string") collected.push(q);
-            }
-          }
+        let questions: string[] = [];
+        if (data && data.examples && Array.isArray(data.examples.questions)) {
+          questions = data.examples.questions;
         }
-        if (collected.length) setItems(collected.slice(0, 12));
+        setItems(questions.length ? questions : FALLBACK_EXAMPLES);
       })
       .catch(() => {/* fallback used */});
-    return () => { alive = false; };
   }, []);
 
   useEffect(() => {

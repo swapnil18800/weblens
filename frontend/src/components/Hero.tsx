@@ -1,45 +1,41 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { api } from "../lib/api";
 import { useChat } from "../state/chatStore";
 import Logo from "./Logo";
 
 const FALLBACK_CHIPS = [
-  "Apple vs Microsoft operating margin FY2024",
-  "How does RAG work?",
-  "NVIDIA data center revenue trend FY2022–FY2025",
-  "What is pgvector used for?",
-  "AMD vs Intel vs NVIDIA data center revenue + risk factors FY2023–FY2026",
-  "AWS vs Azure vs GCP cloud market share",
-  "Compare BM25 and dense retrieval",
-  "Tesla FSD progress in FY2023 10-K",
+  "Why is everyone suddenly talking about AGI?",
+  "What happens if the US and China enter a tech cold war?",
+  "Why are young people feeling more mentally exhausted today?",
+  "Could AI make traditional college degrees less valuable?",
+  "Why do some people become charismatic naturally?",
+  "What would happen if NVIDIA stopped making GPUs tomorrow?",
+  "Why are billionaires building underground bunkers?",
+  "Can humans stay happy after achieving huge success?"
 ];
 
 export default function Hero() {
   const setPendingInput = useChat((s) => s.setPendingInput);
-  // null = still loading → render skeleton. We never show FALLBACK_CHIPS until
-  // the fetch has actually failed, so users don't see a flash of stale prompts.
   const [chips, setChips] = useState<string[] | null>(null);
 
   useEffect(() => {
-    let alive = true;
-    api.evalQuestions("v6")
+    fetch("/question_examples.json")
+      .then((res) => res.json())
       .then((data) => {
-        if (!alive) return;
-        const collected: string[] = [];
-        if (data && typeof data === "object" && !Array.isArray(data)) {
-          for (const k of Object.keys(data)) {
-            const v = (data as any)[k];
-            if (Array.isArray(v?.questions)) {
-              for (const q of v.questions) if (typeof q === "string") collected.push(q);
-            }
-          }
+        let questions: string[] = [];
+        if (data && data.examples && Array.isArray(data.examples.questions)) {
+          questions = data.examples.questions;
         }
-        setChips(collected.length ? collected.slice(0, 8) : FALLBACK_CHIPS);
+
+        if (questions.length >= 8) {
+          const shuffled = questions.slice().sort(() => Math.random() - 0.5);
+          setChips(shuffled.slice(0, 8));
+        } else {
+          setChips(FALLBACK_CHIPS);
+        }
       })
-      .catch(() => { if (alive) setChips(FALLBACK_CHIPS); });
-    return () => { alive = false; };
+      .catch(() => setChips(FALLBACK_CHIPS));
   }, []);
 
   return (

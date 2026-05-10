@@ -73,10 +73,8 @@ export default function ChatThread() {
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, [turns]);
 
-  // Session switch: position the LAST turn at the top of the viewport (not the
-  // bottom of the page). Mirrors the new-turn snap so loaded history feels
-  // identical to a fresh stream — the question is visible at the top, with the
-  // answer scrollable below. Double-rAF so child rows have laid out first.
+  // Session switch: scroll to the bottom of the last turn so the full conversation is visible.
+  // Double-rAF so child rows have laid out first.
   useEffect(() => {
     const wasLoading = prevLoadingRef.current;
     prevLoadingRef.current = loadingSessionId;
@@ -91,7 +89,8 @@ export default function ChatThread() {
             el.scrollTop = el.scrollHeight;
             return;
           }
-          el.scrollTop = Math.max(0, node.offsetTop - 8);
+          const target = node.offsetTop + node.offsetHeight;
+          el.scrollTop = Math.max(0, target - 8);
         });
       });
     }
@@ -123,14 +122,16 @@ export default function ChatThread() {
 
   const scrollToBottom = () => {
     const el = scrollRef.current;
-    if (!el || turns.length === 0) return;
+    if (!el) return;
+    if (turns.length === 0) return;
     const last = turns[turns.length - 1];
     const node = document.querySelector<HTMLElement>(`[data-turn-id="${last.id}"]`);
     if (!node) {
       el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
       return;
     }
-    el.scrollTo({ top: Math.max(0, node.offsetTop - 8), behavior: "smooth" });
+    const target = node.offsetTop + node.offsetHeight;
+    el.scrollTo({ top: target, behavior: "smooth" });
   };
 
   /* ── Loading skeleton ──────────────────────────────────────────────────── */
@@ -160,14 +161,8 @@ export default function ChatThread() {
     <div className="flex-1 relative min-h-0 flex flex-col">
       <div ref={scrollRef} className="flex-1 overflow-y-auto scroll-fat">
         {turns.map((t) => <ChatTurn key={t.id} turn={t} />)}
-        {/*
-          Tail spacer — guarantees the last turn can ALWAYS be scrolled to the
-          top of the viewport, even when the conversation is short.
-          Without this, `scrollTop = node.offsetTop - 8` clamps to
-          `scrollHeight - clientHeight` and the new question lands mid-screen.
-          Sized to viewport minus the docked composer (~200px).
-        */}
-        <div aria-hidden style={{ height: "calc(100vh - 200px)" }} />
+        {/* Minimal tail spacer for scroll breathing room */}
+        <div aria-hidden style={{ height: "4rem" }} />
       </div>
 
       {/* Floating scroll-to-bottom button */}
@@ -180,7 +175,7 @@ export default function ChatThread() {
             exit={{ opacity: 0, scale: 0.85, y: 6 }}
             transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
             onClick={scrollToBottom}
-            className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-20
                        w-10 h-10 rounded-full
                        bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md
                        border border-white/10 text-neutral-200

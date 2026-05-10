@@ -1,0 +1,29 @@
+{
+  "examples": {
+    "web_search": true,
+    "expected_behavior": "Questions should showcase the system’s strengths in multi-hop reasoning, decomposition, temporal awareness, comparison, synthesis, numerical analysis, controversy, and latest-news retrieval. They should feel highly clickable, internet-native, intellectually interesting, and difficult enough that a normal search engine struggles to answer directly.",
+    "questions": [
+      "How did NVIDIA, AMD, and Intel data center revenues change from FY2022–FY2025, and what explains the gap between them?",
+      "What did world leaders and defense analysts say after the latest Russia–Ukraine escalation, and how did markets react?",
+      "How has Taylor Swift’s Eras Tour revenue compared with the highest-grossing tours in history?",
+      "Why are some economists warning that AI could trigger white-collar job disruption faster than previous technological revolutions?",
+      "Compare how the US, China, and the EU are regulating AI in 2026 and what the biggest disagreements are.",
+      "How did Real Madrid, Manchester City, and PSG spend differently over the last 5 years, and which strategy worked best?",
+      "What are the strongest arguments for and against banning TikTok in different countries?",
+      "How did OpenAI, Google, and Anthropic each respond after the latest major AI model releases?",
+      "Why are modern movies and streaming shows increasingly criticized for feeling repetitive despite massive budgets?",
+      "How did the latest global semiconductor shortages affect NVIDIA, Apple, and Tesla differently?",
+      "What did NVIDIA’s CEO say about Blackwell production timelines across recent earnings calls?",
+      "Compare Drake, Taylor Swift, and BTS in streaming dominance, touring revenue, and cultural influence.",
+      "What happened during the latest Israel–Iran tensions, and why are global powers reacting differently?",
+      "How are football transfer fees, wages, and sponsorship revenues changing the economics of top European clubs?",
+      "What are the biggest criticisms and defenses of Elon Musk’s leadership across Tesla, SpaceX, and X?",
+      "How did inflation, layoffs, and AI hype reshape the tech industry from 2023–2026?",
+      "Why are Gen Z users increasingly moving away from traditional social media platforms?",
+      "Compare BM25, dense retrieval, reranking, and agentic RAG systems using real-world retrieval examples.",
+      "How have Spotify, YouTube, and TikTok changed the way music becomes globally viral?",
+      "What are the most important scientific and geopolitical implications of the latest Moon and Mars missions?"
+    ],
+    "ground_truth_map": {}
+  }
+}
