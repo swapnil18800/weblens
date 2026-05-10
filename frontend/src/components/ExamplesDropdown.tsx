@@ -3,14 +3,22 @@ import { ChevronDown, Sparkles } from "lucide-react";
 import { useChat } from "../state/chatStore";
 
 const FALLBACK_EXAMPLES = [
-  "Why is everyone suddenly talking about AGI?",
-  "What happens if the US and China enter a tech cold war?",
-  "Why are young people feeling more mentally exhausted today?",
-  "Could AI make traditional college degrees less valuable?",
-  "Why do some people become charismatic naturally?",
-  "What would happen if NVIDIA stopped making GPUs tomorrow?",
-  "Why are billionaires building underground bunkers?",
-  "Can humans stay happy after achieving huge success?"
+  "What would happen if the US and China entered a full-scale AI cold war?",
+  "Why are economists warning that AI could wipe out white-collar jobs faster than expected?",
+  "How did NVIDIA become one of the most powerful companies in the world almost overnight?",
+  "What are the strongest arguments for and against banning TikTok worldwide?",
+  "How did inflation, layoffs, and AI hype completely reshape Big Tech from 2023–2026?",
+  "What happened during the latest Israel–Iran tensions, and why is the world reacting differently?",
+  "How have Spotify, TikTok, and YouTube completely changed how songs become globally viral?",
+  "Why are modern movies and streaming shows increasingly criticized despite billion-dollar budgets?",
+  "How did Real Madrid, Manchester City, and PSG spend differently over the last 5 years?",
+  "Why are Gen Z users increasingly moving away from traditional social media platforms?",
+  "Compare Drake, Taylor Swift, and BTS in streaming dominance, touring revenue, and cultural influence.",
+  "How did OpenAI, Google, and Anthropic react after the latest major AI model releases?",
+  "Why are billionaires building underground bunkers and preparing for global instability?",
+  "Could AI make traditional college degrees significantly less valuable?",
+  "How are football transfer fees, wages, and sponsorships changing the economics of top clubs?",
+  "What are the biggest criticisms and defenses of Elon Musk’s leadership across Tesla, SpaceX, and X?"
 ];
 
 interface Props {

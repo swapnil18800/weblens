@@ -5,14 +5,14 @@ import { useChat } from "../state/chatStore";
 import Logo from "./Logo";
 
 const FALLBACK_CHIPS = [
-  "Why is everyone suddenly talking about AGI?",
-  "What happens if the US and China enter a tech cold war?",
-  "Why are young people feeling more mentally exhausted today?",
-  "Could AI make traditional college degrees less valuable?",
-  "Why do some people become charismatic naturally?",
-  "What would happen if NVIDIA stopped making GPUs tomorrow?",
-  "Why are billionaires building underground bunkers?",
-  "Can humans stay happy after achieving huge success?"
+  "What would happen if the US and China entered a full-scale AI cold war?",
+  "Why are economists warning that AI could wipe out white-collar jobs faster than expected?",
+  "What are the strongest arguments for and against banning TikTok worldwide?",
+  "How did inflation, layoffs, and AI hype completely reshape Big Tech from 2023–2026?",
+  "What happened during the latest Israel–Iran tensions, and why is the world reacting differently?",
+  "How have Spotify, TikTok, and YouTube completely changed how songs become globally viral?",
+  "Why are modern movies and streaming shows increasingly criticized despite billion-dollar budgets?",
+  "How did NVIDIA become one of the most powerful companies in the world almost overnight?"
 ];
 
 export default function Hero() {

@@ -61,7 +61,7 @@ export default function Header() {
         </button>
         <a
           className="icon-btn !w-9 !h-9"
-          href="https://github.com/swapnil18800/web-search-rag"
+          href="https://github.com/swapnil18800/weblens"
           target="_blank"
           rel="noreferrer"
           title="WebLens on GitHub"

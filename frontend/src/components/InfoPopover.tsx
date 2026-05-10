@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import Logo from "./Logo";
 
-const WEBLENS_URL = "https://github.com/swapnil18800/web-search-rag";
+const WEBLENS_URL = "https://github.com/swapnil18800/weblens";
 const LINKEDIN_URL = "https://www.linkedin.com/in/swapnil18800/";
 const AUTHOR_NAME = "Swapnil Padhi";
 
