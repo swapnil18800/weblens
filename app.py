@@ -36,7 +36,15 @@ from pathlib import Path
 from typing import AsyncIterator, Optional
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, Request
+
+# Load .env into os.environ FIRST — before any module imports `config` or
+# instantiates `Settings()`. `override=True` ensures the .env file wins over
+# any stale shell-exported value (TAVILY_API_KEY etc.). On hosted deploys
+# (Railway, Fly) there's no .env in the repo so this is a no-op and the
+# platform-injected env vars are honored.
+load_dotenv(Path(__file__).parent / ".env", override=True)  # noqa: E402
+
+from fastapi import FastAPI, HTTPException, Request  # noqa: E402
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
@@ -48,11 +56,6 @@ import db.sessions as sessions
 from config import settings
 from pipeline.graph import run_pipeline
 from pipeline.title import generate_title
-
-# Load .env into os.environ so the LangSmith SDK can read LANGSMITH_API_KEY etc.
-# Tracing is OFF by default (LANGSMITH_TRACING=false in .env); it is toggled
-# per-request via the X-Langsmith-Trace header sent by the eval harness.
-load_dotenv(Path(__file__).parent / ".env", override=False)
 
 logging.basicConfig(
     level=getattr(logging, settings.log_level.upper(), logging.INFO),
@@ -126,6 +129,20 @@ _FRONTEND_DIST = _FRONTEND_DIR / "dist"
 
 if _FRONTEND_DIST.exists():
     app.mount("/assets", StaticFiles(directory=str(_FRONTEND_DIST / "assets")), name="assets")
+
+
+@app.get("/question_examples.json")
+async def serve_examples_json():
+    """Serve the question bank used by the homepage chips + Examples dropdown.
+    Vite copies `frontend/public/question_examples.json` into `dist/` on build,
+    but app.py only mounts `/assets`, so this targeted route is the bridge."""
+    p = _FRONTEND_DIST / "question_examples.json"
+    if p.exists():
+        return FileResponse(p)
+    src = _FRONTEND_DIR / "public" / "question_examples.json"
+    if src.exists():
+        return FileResponse(src)
+    raise HTTPException(status_code=404, detail="question_examples.json not found")
 
 
 @app.get("/")

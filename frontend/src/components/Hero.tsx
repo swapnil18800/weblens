@@ -4,15 +4,16 @@ import { ArrowUpRight } from "lucide-react";
 import { useChat } from "../state/chatStore";
 import Logo from "./Logo";
 
+// Emergency fallback only — real chips come from /question_examples.json
 const FALLBACK_CHIPS = [
-  "What would happen if the US and China entered a full-scale AI cold war?",
-  "Why are economists warning that AI could wipe out white-collar jobs faster than expected?",
-  "What are the strongest arguments for and against banning TikTok worldwide?",
-  "How did inflation, layoffs, and AI hype completely reshape Big Tech from 2023–2026?",
-  "What happened during the latest Israel–Iran tensions, and why is the world reacting differently?",
-  "How have Spotify, TikTok, and YouTube completely changed how songs become globally viral?",
-  "Why are modern movies and streaming shows increasingly criticized despite billion-dollar budgets?",
-  "How did NVIDIA become one of the most powerful companies in the world almost overnight?"
+  "What is the current population of Brazil?",
+  "Who won the FIFA World Cup in 2022?",
+  "Compare GPT-4o, Claude Opus, and Gemini 2.5 Pro.",
+  "What are the most recent advances in mixture-of-experts models?",
+  "How have NVIDIA's data center revenues changed over the last 3 years?",
+  "What is the current status of the Russia-Ukraine conflict?",
+  "What's the latest Anthropic Claude model as of mid-2026?",
+  "How do US, EU, and China approach AI regulation?",
 ];
 
 export default function Hero() {

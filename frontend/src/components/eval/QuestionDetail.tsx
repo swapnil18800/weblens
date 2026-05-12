@@ -94,17 +94,44 @@ function QListRow({ q, idx, selected, onClick }: { q: EvalQuestion; idx: number;
   );
 }
 
+// Order + friendly labels for every metric the evaluator may emit.
+const METRIC_ORDER: { key: string; label: string; headline?: boolean }[] = [
+  { key: "m1_factual_correctness", label: "M1 Factual",      headline: true },
+  { key: "m3_retrieval_recall",    label: "M3 Retrieval",    headline: true },
+  { key: "m7_judge_score",         label: "M7 Judge",        headline: true },
+  { key: "aggregate",              label: "Aggregate",       headline: true },
+  { key: "faithfulness",           label: "Faithfulness" },
+  { key: "context_recall",         label: "Context recall" },
+  { key: "context_precision",      label: "Context precision" },
+  { key: "answer_correctness",     label: "Answer correctness" },
+  { key: "answer_relevancy",       label: "Answer relevancy" },
+  { key: "routing_decomposition",  label: "Routing/decompose" },
+];
+
+function metricChipClass(key: string, score: number): string {
+  if (key === "m7_judge_score") return m7ChipClass(score);
+  if (score >= 0.8) return "chip-good";
+  if (score >= 0.5) return "chip-warn";
+  return "chip-bad";
+}
+
 function QDetailBody({ q }: { q: EvalQuestion }) {
   const turn = useMemo(() => evalQuestionToTurn(q), [q]);
-  const m1 = q.metrics?.m1_factual_correctness;
-  const m3 = q.metrics?.m3_retrieval_recall;
-  const m7 = q.metrics?.m7_judge_score;
+  const metrics = (q.metrics || {}) as Record<string, number | undefined>;
+  const m7 = metrics.m7_judge_score;
   const totalMs = q.timing?.total_latency_ms ?? (q.timing?.pipeline_s ? Math.round(q.timing.pipeline_s * 1000) : undefined);
   const verdict = q.verdict;
   const chip =
     verdict === "pass" ? "chip-good" :
     verdict === "partial" ? "chip-warn" :
     verdict === "fail" ? "chip-bad" : "chip-info";
+
+  // Build the visible metric chip list — known metrics in canonical order, then
+  // any extras the JSON might add later.
+  const knownKeys = new Set(METRIC_ORDER.map((m) => m.key));
+  const extraKeys = Object.keys(metrics).filter(
+    (k) => !knownKeys.has(k) && typeof metrics[k] === "number",
+  );
 
   const citations = q.pipeline?.citations || [];
 
@@ -124,15 +151,52 @@ function QDetailBody({ q }: { q: EvalQuestion }) {
       <div className="text-2xs uppercase tracking-wider text-neutral-300 font-semibold mb-1">Question</div>
       <h2 className="text-base text-neutral-100 mb-4">{q.question}</h2>
 
-      <div className="flex flex-wrap gap-2 mb-5 text-2xs">
+      <div className="flex flex-wrap gap-2 mb-3 text-2xs">
         {verdict && <span className={`chip ${chip}`}>{verdict}</span>}
-        {m1 !== undefined && <span className="chip chip-info">M1 {m1.toFixed(2)}</span>}
-        {m3 !== undefined && <span className="chip chip-info">M3 {m3.toFixed(2)}</span>}
-        {m7 !== undefined && <span className={`chip ${m7ChipClass(m7)}`}>M7 {m7.toFixed(2)}</span>}
+        {METRIC_ORDER.filter((m) => m.headline && typeof metrics[m.key] === "number").map((m) => (
+          <span key={m.key} className={`chip ${metricChipClass(m.key, metrics[m.key]!)}`}>
+            {m.label} {metrics[m.key]!.toFixed(2)}
+          </span>
+        ))}
         {totalMs !== undefined && <span className="chip chip-metric">{ms(totalMs)}</span>}
         <span className="chip chip-info">{turn.subqueries.reduce((n, s) => n + s.chunks.length, 0)} chunks</span>
         <span className="chip chip-info">{(q.pipeline?.urls?.length ?? 0)} sources</span>
       </div>
+
+      {/* All metrics — component scores below the headline row */}
+      <Section title="All metrics" defaultOpen>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-2xs">
+          {METRIC_ORDER.filter((m) => typeof metrics[m.key] === "number").map((m) => (
+            <MetricCell key={m.key} label={m.label} value={metrics[m.key]!} colorKey={m.key} />
+          ))}
+          {extraKeys.map((k) => (
+            <MetricCell key={k} label={k.replace(/_/g, " ")} value={metrics[k]!} colorKey={k} />
+          ))}
+          {Object.keys(metrics).length === 0 && (
+            <div className="col-span-full text-neutral-500 italic">No metrics recorded.</div>
+          )}
+        </div>
+      </Section>
+
+      {/* Metric details — judge/faithfulness reasoning, hit/miss facts, etc. */}
+      {q.metric_details && Object.keys(q.metric_details).length > 0 && (
+        <Section title="Metric details">
+          <pre className="text-2xs text-neutral-300 whitespace-pre-wrap font-mono leading-relaxed overflow-x-auto">
+            {JSON.stringify(q.metric_details, null, 2)}
+          </pre>
+        </Section>
+      )}
+
+      {/* Latency breakdown */}
+      {q.timing?.latency_breakdown && Object.keys(q.timing.latency_breakdown).length > 0 && (
+        <Section title="Latency breakdown">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-2xs">
+            {Object.entries(q.timing.latency_breakdown).map(([k, v]) => (
+              <MetricCell key={k} label={k.replace(/_ms$|_s$/, "").replace(/_/g, " ")} value={v} suffix="ms" plain />
+            ))}
+          </div>
+        </Section>
+      )}
 
       {/* Final answer */}
       <Section title="Final answer" defaultOpen rightChip={totalMs !== undefined ? `${ms(totalMs)}` : undefined}>
@@ -228,6 +292,38 @@ function CachedRowsPanel({ rows }: { rows: CachedRow[] }) {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  );
+}
+
+function MetricCell({
+  label,
+  value,
+  colorKey,
+  suffix,
+  plain,
+}: {
+  label: string;
+  value: number;
+  colorKey?: string;
+  suffix?: string;
+  plain?: boolean;
+}) {
+  const display = suffix === "ms" ? `${Math.round(value)}` : value.toFixed(3);
+  const cls = plain
+    ? "text-neutral-300"
+    : (() => {
+        if (colorKey === "m7_judge_score") return "text-accent";
+        if (value >= 0.8) return "text-emerald-300";
+        if (value >= 0.5) return "text-amber-300";
+        return "text-rose-300";
+      })();
+  return (
+    <div className="surface rounded px-2 py-1.5 flex items-baseline gap-1.5">
+      <span className="text-neutral-500 capitalize truncate">{label}</span>
+      <span className={`ml-auto font-mono font-semibold ${cls}`}>
+        {display}{suffix ? <span className="text-neutral-500 font-normal"> {suffix}</span> : null}
+      </span>
     </div>
   );
 }

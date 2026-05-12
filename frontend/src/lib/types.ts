@@ -289,11 +289,29 @@ export interface EvalRunSummary {
 export interface EvalQuestion {
   question: string;
   category?: string;
-  metrics?: { m1_factual_correctness?: number; m3_retrieval_recall?: number; m7_judge_score?: number };
+  domain?: string;
+  expected_mode?: string;
+  expected_behavior?: string;
+  metrics?: {
+    m1_factual_correctness?: number;
+    m3_retrieval_recall?: number;
+    m7_judge_score?: number;
+    aggregate?: number;
+    faithfulness?: number;
+    context_recall?: number;
+    context_precision?: number;
+    answer_correctness?: number;
+    answer_relevancy?: number;
+    routing_decomposition?: number;
+    [k: string]: number | undefined;
+  };
+  metric_details?: Record<string, any>;
+  aggregate?: number;
   verdict?: string;
   ground_truth?: string;
   key_facts?: string[];
   judge_reasoning?: string;
+  failure_mode?: string | null;
   pipeline?: {
     answer?: string;
     citations?: Citation[];

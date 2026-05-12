@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, Plus, Trash2 } from "lucide-react";
-import { useChat } from "../state/chatStore";
+import { useChat, getMySessions } from "../state/chatStore";
+
+const IS_PUBLIC = (import.meta.env.VITE_PUBLIC_MODE ?? "false").toString() === "true";
 import { bucketTime, relativeTime } from "../lib/format";
 import type { SessionListItem } from "../lib/types";
 
@@ -74,6 +76,12 @@ export default function Sidebar() {
     document.body.style.cursor = "col-resize";
     document.body.style.userSelect = "none";
   };
+
+  const [mySessions, setMySessions] = useState<Set<string>>(() => getMySessions());
+  useEffect(() => {
+    // Re-read on session list changes so newly-created sessions get the badge
+    setMySessions(getMySessions());
+  }, [sessions]);
 
   const grouped = useMemo(() => {
     const buckets: Record<string, SessionListItem[]> = {};
@@ -170,6 +178,7 @@ export default function Sidebar() {
               setConfirming={setConfirming}
               onPick={loadSession}
               onDelete={deleteSession}
+              mySessions={mySessions}
             />
           ))}
         </div>
@@ -247,9 +256,10 @@ interface GroupProps {
   setConfirming: (id: string | null) => void;
   onPick: (id: string) => void | Promise<void>;
   onDelete: (id: string) => void | Promise<void>;
+  mySessions: Set<string>;
 }
 
-function SessionGroup({ bucket, items, activeId, confirming, setConfirming, onPick, onDelete }: GroupProps) {
+function SessionGroup({ bucket, items, activeId, confirming, setConfirming, onPick, onDelete, mySessions }: GroupProps) {
   const key = GROUP_KEY(bucket);
   const [open, setOpen] = useState<boolean>(() => {
     const v = localStorage.getItem(key);
@@ -294,8 +304,17 @@ function SessionGroup({ bucket, items, activeId, confirming, setConfirming, onPi
                   onClick={() => !isConfirming && onPick(s.session_id)}
                 >
                   <div className="flex-1 min-w-0">
-                    <div className="text-sm text-neutral-100 truncate" title={s.title || "Untitled"}>
-                      {s.title || "Untitled"}
+                    <div className="text-sm text-neutral-100 truncate flex items-center gap-1.5" title={s.title || "Untitled"}>
+                      <span className="truncate">{s.title || "Untitled"}</span>
+                      {!IS_PUBLIC && mySessions.has(s.session_id) && (
+                        <span
+                          className="shrink-0 text-[9px] uppercase tracking-wider font-mono font-semibold
+                                     px-1 py-px rounded bg-accent/20 text-accent border border-accent/30"
+                          title="Created from this browser"
+                        >
+                          you
+                        </span>
+                      )}
                     </div>
                     <div className="text-2xs text-neutral-500 mt-0.5 flex items-center gap-1.5">
                       <span>{s.message_count} msg{s.message_count !== 1 ? "s" : ""}</span>

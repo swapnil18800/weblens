@@ -2,23 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Sparkles } from "lucide-react";
 import { useChat } from "../state/chatStore";
 
+// Emergency fallback only — the real list comes from /question_examples.json
 const FALLBACK_EXAMPLES = [
-  "What would happen if the US and China entered a full-scale AI cold war?",
-  "Why are economists warning that AI could wipe out white-collar jobs faster than expected?",
-  "How did NVIDIA become one of the most powerful companies in the world almost overnight?",
-  "What are the strongest arguments for and against banning TikTok worldwide?",
-  "How did inflation, layoffs, and AI hype completely reshape Big Tech from 2023–2026?",
-  "What happened during the latest Israel–Iran tensions, and why is the world reacting differently?",
-  "How have Spotify, TikTok, and YouTube completely changed how songs become globally viral?",
-  "Why are modern movies and streaming shows increasingly criticized despite billion-dollar budgets?",
-  "How did Real Madrid, Manchester City, and PSG spend differently over the last 5 years?",
-  "Why are Gen Z users increasingly moving away from traditional social media platforms?",
-  "Compare Drake, Taylor Swift, and BTS in streaming dominance, touring revenue, and cultural influence.",
-  "How did OpenAI, Google, and Anthropic react after the latest major AI model releases?",
-  "Why are billionaires building underground bunkers and preparing for global instability?",
-  "Could AI make traditional college degrees significantly less valuable?",
-  "How are football transfer fees, wages, and sponsorships changing the economics of top clubs?",
-  "What are the biggest criticisms and defenses of Elon Musk’s leadership across Tesla, SpaceX, and X?"
+  "What is the current population of Brazil?",
+  "Compare GPT-4o, Claude Opus, and Gemini 2.5 Pro.",
+  "What are the most recent advances in mixture-of-experts models?",
+  "How have NVIDIA's data center revenues changed over the last 3 years?",
 ];
 
 interface Props {

@@ -200,8 +200,18 @@ export default function ChatTurn({ turn }: Props) {
               </div>
               <div
                 className="rounded-2xl rounded-tr-sm px-4 py-3 text-[15px] text-neutral-50 leading-relaxed
-                           break-words bg-accent/[0.10] border border-accent/30"
-                style={{ maxWidth: "min(70%, 36rem)" }}
+                           whitespace-pre-wrap bg-accent/[0.10] border border-accent/30"
+                style={{
+                  // `max-content` lets the bubble grow with content; `max-width`
+                  // caps it at the ChatInput's max-w-3xl (48rem). `break-word`
+                  // (NOT `anywhere`) keeps short words intact — `anywhere`
+                  // zeros out the flex min-content and causes "issue?" to
+                  // shatter character-by-character.
+                  width: "max-content",
+                  maxWidth: "min(75%, 48rem)",
+                  wordBreak: "normal",
+                  overflowWrap: "break-word",
+                }}
               >
                 {turn.question}
               </div>

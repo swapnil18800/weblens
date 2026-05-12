@@ -85,8 +85,8 @@ export default function ChatInput() {
           </button>
         )}
       </div>
-      <div className="text-2xs text-neutral-600 text-center mt-2 font-mono">
-        press Enter to send · Shift+Enter for newline
+      <div className="text-2xs text-neutral-500 text-center mt-2 whitespace-nowrap overflow-hidden text-ellipsis">
+        WebLens can make mistakes. Verify important info. <span className="text-neutral-600">· Built by Swapnil Padhi · MIT License · © 2026</span>
       </div>
     </div>
   );

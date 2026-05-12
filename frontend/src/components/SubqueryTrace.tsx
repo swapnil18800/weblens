@@ -9,6 +9,7 @@ interface Props {
   sq: SubqueryState;
   now: number;
   isStreaming: boolean;
+  isError?: boolean;
   defaultOpen?: boolean;
   onChunkClick?: (chunk: ChunkDict) => void;
 }
@@ -17,6 +18,7 @@ export default function SubqueryTrace({
   sq,
   now,
   isStreaming,
+  isError,
   defaultOpen = false,
   onChunkClick,
 }: Props) {
@@ -25,6 +27,7 @@ export default function SubqueryTrace({
     sq.cancelled ? "failed" :
     sq.errorMsg ? "failed" :
     sq.done ? "done" :
+    isError ? "failed" :
     "running";
 
   // Total elapsed = completedAt − startedAt (wall-clock from decompose → answer done).
@@ -61,7 +64,7 @@ export default function SubqueryTrace({
       </button>
       {open && (
         <div className="px-3 pb-3 pt-1 border-t border-white/[0.04]">
-          {sq.steps.length === 0 && status === "running" && (
+          {sq.steps.length === 0 && status === "running" && !isError && (
             <div className="step-row px-2 cursor-default">
               <Loader2 className="w-3.5 h-3.5 text-accent animate-spin" />
               <span className="text-sm text-neutral-400">Getting started…</span>

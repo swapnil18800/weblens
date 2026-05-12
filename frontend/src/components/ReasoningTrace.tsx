@@ -56,9 +56,10 @@ export default function ReasoningTrace({ turn, defaultOpen = true, onChunkClick 
   const totalSteps = turn.subqueries.reduce((acc, sq) => acc + sq.steps.length, 0);
   const now = useNow(isStreaming);
 
+  const isError = turn.status === "error";
   const elapsedMs = turn.totalLatencyMs ?? (isStreaming ? now - turn.createdAt : undefined);
   const decomposed = turn.subQueries.length > 0;
-  const analyzeStatus: "running" | "done" = decomposed ? "done" : "running";
+  const analyzeStatus: "running" | "done" = decomposed || isError ? "done" : "running";
   const analyzeElapsedMs = turn.pipeline.decomposeMs ?? (isStreaming ? now - turn.createdAt : undefined);
   const showDecomposeStep = turn.subQueries.length > 1;
 
@@ -124,6 +125,7 @@ export default function ReasoningTrace({ turn, defaultOpen = true, onChunkClick 
                 runningLabel="Analyzing question"
                 doneLabel="Analyzed question"
                 elapsedMs={analyzeElapsedMs}
+                isError={isError}
               />
 
               {/* Route — shown after analyze when mode is known. parametric vs search vs cache. */}
@@ -172,6 +174,7 @@ export default function ReasoningTrace({ turn, defaultOpen = true, onChunkClick 
                   sq={sq}
                   now={now}
                   isStreaming={isStreaming}
+                  isError={isError}
                   defaultOpen={isStreaming && turn.subqueries.length === 1}
                   onChunkClick={onChunkClick}
                 />
@@ -185,6 +188,7 @@ export default function ReasoningTrace({ turn, defaultOpen = true, onChunkClick 
                   runningLabel="Combining sub-answers"
                   doneLabel="Combined sub-answers"
                   elapsedMs={phaseElapsed(turn.combiningStartedAt, turn.combiningCompletedAt, isStreaming, now)}
+                  isError={isError}
                 />
               )}
 
@@ -207,7 +211,18 @@ export default function ReasoningTrace({ turn, defaultOpen = true, onChunkClick 
                   runningLabel="Generating final answer"
                   doneLabel="Final answer ready"
                   elapsedMs={phaseElapsed(turn.finalStartedAt, turn.finalCompletedAt, isStreaming, now)}
+                  isError={isError}
                 />
+              )}
+
+              {/* Errored */}
+              {isError && (
+                <div className="step-row px-2 cursor-default">
+                  <OctagonX className="w-4 h-4 text-bad shrink-0" />
+                  <span className="text-sm text-bad font-medium">
+                    {turn.errorMsg || "Generation failed"}
+                  </span>
+                </div>
               )}
 
               {/* Interrupted */}
@@ -265,6 +280,7 @@ interface PhaseRowProps {
   elapsedMs?: number;
   showElapsedWhileRunning?: boolean;
   rightTags?: React.ReactNode[];
+  isError?: boolean;
 }
 
 function PhaseRow({
@@ -275,16 +291,20 @@ function PhaseRow({
   elapsedMs,
   showElapsedWhileRunning,
   rightTags,
+  isError,
 }: PhaseRowProps) {
   const showTime = elapsedMs !== undefined && (status === "done" || showElapsedWhileRunning);
+  const erroredRunning = isError && status === "running";
   return (
     <div className="step-row px-2 cursor-default">
-      {status === "running" ? (
+      {erroredRunning ? (
+        <OctagonX className="w-3.5 h-3.5 text-bad shrink-0" />
+      ) : status === "running" ? (
         <Loader2 className="w-3.5 h-3.5 text-accent animate-spin shrink-0" />
       ) : (
         <Icon className="w-3.5 h-3.5 text-good shrink-0" />
       )}
-      <span className="text-sm text-neutral-100 font-medium">
+      <span className={`text-sm font-medium ${erroredRunning ? "text-bad/90" : "text-neutral-100"}`}>
         {status === "running" ? runningLabel : doneLabel}
       </span>
       <div className="ml-auto flex items-center gap-1.5 shrink-0">

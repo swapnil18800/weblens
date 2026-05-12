@@ -17,10 +17,18 @@ export default function RunList({ selected, onSelect }: Props) {
     let alive = true;
     setLoading(true);
     api.evalRuns()
-      .then((r) => alive && setRuns(r))
+      .then((r) => {
+        if (!alive) return;
+        setRuns(r);
+        // Auto-select the most recent run on first load so the detail pane
+        // shows the latest metrics immediately. Backend already returns
+        // newest-first (sorted by timestamp).
+        if (!selected && r.length > 0) onSelect(r[0].run_id);
+      })
       .catch(() => alive && setRuns([]))
       .finally(() => alive && setLoading(false));
     return () => { alive = false; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

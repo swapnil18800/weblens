@@ -8,9 +8,14 @@ export default function ChatThread() {
   const allTurns = useChat((s) => s.turns);
   const selectedVersion = useChat((s) => s.selectedVersion);
   const loadingSessionId = useChat((s) => s.loadingSessionId);
+  const isStreaming = useChat((s) => s.isStreaming);
   const scrollRef = useRef<HTMLDivElement>(null);
   const lastTurnIdRef = useRef<string | null>(null);
   const prevLoadingRef = useRef<string | null>(null);
+  // Tracks "we just finished loading a session" — the new-turn effect must
+  // skip its snap-to-top behavior on the same tick, otherwise the queued
+  // setTimeout snaps fight the session-switch scroll-to-bottom.
+  const justLoadedRef = useRef(false);
 
   // Collapse version-group siblings into a single visible turn per group.
   // Order is preserved by the FIRST appearance of each group; the displayed
@@ -55,43 +60,46 @@ export default function ChatThread() {
     if (last.id === lastTurnIdRef.current) return;
     lastTurnIdRef.current = last.id;
 
+    // We just hydrated a loaded session — the session-switch effect below
+    // owns the scroll position for this tick. Don't fight it.
+    if (justLoadedRef.current) {
+      justLoadedRef.current = false;
+      return;
+    }
+
     const snap = (smooth: boolean) => {
       const node = document.querySelector<HTMLElement>(`[data-turn-id="${last.id}"]`);
       if (!node) {
         el.scrollTo({ top: el.scrollHeight, behavior: smooth ? "smooth" : "auto" });
         return;
       }
-      const target = Math.max(0, node.offsetTop - 8);
+      const target = Math.max(0, node.offsetTop);
       el.scrollTo({ top: target, behavior: smooth ? "smooth" : "auto" });
     };
 
     requestAnimationFrame(() => snap(true));
-    // Layout settles in two waves: decompose fires fast (~50–200 ms after submit),
-    // search/extract land later. Re-snap instantly to ride out both.
+    // Layout settles in waves: decompose fires fast (~50–200 ms),
+    // search/extract land later, then synthesis mounts. Re-snap instantly to ride out all of them.
     const t1 = setTimeout(() => snap(false), 320);
     const t2 = setTimeout(() => snap(false), 800);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
+    const t3 = setTimeout(() => snap(false), 1600);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [turns]);
 
-  // Session switch: scroll to the bottom of the last turn so the full conversation is visible.
-  // Double-rAF so child rows have laid out first.
+  // Session switch: scroll straight to the bottom of the conversation, no animation,
+  // no double-paint. Pin lastTurnIdRef so the new-turn effect above doesn't re-snap
+  // the last existing turn to the top after a session load.
   useEffect(() => {
     const wasLoading = prevLoadingRef.current;
     prevLoadingRef.current = loadingSessionId;
     if (wasLoading && !loadingSessionId && turns.length > 0) {
+      // Mark the next render so the new-turn effect skips its snap.
+      justLoadedRef.current = true;
+      lastTurnIdRef.current = turns[turns.length - 1].id;
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const el = scrollRef.current;
-          if (!el) return;
-          const last = turns[turns.length - 1];
-          const node = document.querySelector<HTMLElement>(`[data-turn-id="${last.id}"]`);
-          if (!node) {
-            el.scrollTop = el.scrollHeight;
-            return;
-          }
-          const target = node.offsetTop + node.offsetHeight;
-          el.scrollTop = Math.max(0, target - 8);
-        });
+        const el = scrollRef.current;
+        if (!el) return;
+        el.scrollTop = el.scrollHeight;
       });
     }
   }, [loadingSessionId, turns.length]);
@@ -161,31 +169,40 @@ export default function ChatThread() {
     <div className="flex-1 relative min-h-0 flex flex-col">
       <div ref={scrollRef} className="flex-1 overflow-y-auto scroll-fat">
         {turns.map((t) => <ChatTurn key={t.id} turn={t} />)}
-        {/* Minimal tail spacer for scroll breathing room */}
-        <div aria-hidden style={{ height: "4rem" }} />
+        {/* Conditional tail spacer: while streaming, give enough room so the latest
+            user bubble can reach the top of the viewport. After streaming ends and
+            on loaded sessions, no extra space below the conversation. */}
+        {isStreaming && <div aria-hidden style={{ height: "60vh" }} />}
       </div>
 
-      {/* Floating scroll-to-bottom button */}
+      {/* Floating scroll-to-bottom button.
+          Centered on the SAME axis as ChatInput (max-w-3xl mx-auto, px-4 outer),
+          so the arrow visually sits dead-center over the input bar regardless
+          of scrollbar width or viewport size. No hardcoded left offset. */}
       <AnimatePresence>
         {showScrollBtn && (
-          <motion.button
-            key="scroll-btn"
-            initial={{ opacity: 0, scale: 0.85, y: 6 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.85, y: 6 }}
-            transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
-            onClick={scrollToBottom}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-20
-                       w-10 h-10 rounded-full
-                       bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md
-                       border border-white/10 text-neutral-200
-                       flex items-center justify-center
-                       transition-colors"
-            title="Scroll to bottom"
-            aria-label="Scroll to bottom"
-          >
-            <ArrowDown className="w-4 h-4" />
-          </motion.button>
+          <div className="pointer-events-none absolute inset-x-0 bottom-3 z-20 px-4">
+            <div className="max-w-3xl mx-auto flex justify-center">
+              <motion.button
+                key="scroll-btn"
+                initial={{ opacity: 0, scale: 0.85, y: 6 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.85, y: 6 }}
+                transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
+                onClick={scrollToBottom}
+                className="pointer-events-auto
+                           w-9 h-9 rounded-full
+                           bg-white/[0.06] hover:bg-white/[0.10] backdrop-blur-md
+                           border border-white/10 text-neutral-200 shadow-lg
+                           flex items-center justify-center
+                           transition-colors"
+                title="Scroll to bottom"
+                aria-label="Scroll to bottom"
+              >
+                <ArrowDown className="w-4 h-4" />
+              </motion.button>
+            </div>
+          </div>
         )}
       </AnimatePresence>
     </div>
