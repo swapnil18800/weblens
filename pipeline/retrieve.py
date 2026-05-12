@@ -15,6 +15,7 @@ Pipeline:
   6. Fire-and-forget: upsert candidates to web_chunks (pgvector cache)
 """
 import asyncio
+import contextvars
 import logging
 import math
 import re
@@ -207,6 +208,17 @@ def _traced_rerank(query: str, candidates: List[Chunk], fallback_scores: List[fl
 
 # ── Public API ──────────────────────────────────────────────────────────────────
 
+async def _run_in_ctx(fn, *args):
+    """Run `fn(*args)` in the default executor, preserving the current contextvars
+    snapshot so LangSmith's active run tree propagates into the worker thread.
+    Without this, @traceable functions called via run_in_executor lose their
+    parent span and start orphan root traces."""
+    ctx = contextvars.copy_context()
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, lambda: ctx.run(fn, *args))
+
+
+@traceable(run_type="chain", name="retrieve")
 async def retrieve(
     query: str,
     chunks: List[Chunk],
@@ -219,11 +231,9 @@ async def retrieve(
             explain={"total_chunks": 0, "final_kept": 0},
         )
 
-    loop = asyncio.get_event_loop()
-
     # ── Stage 1: BM25 pre-filter (no embedding, instant) ───────────────────────
     embed_pool = min(EMBED_POOL, len(chunks))
-    bm25_ranked = await loop.run_in_executor(None, _traced_bm25, query, chunks, embed_pool)
+    bm25_ranked = await _run_in_ctx(_traced_bm25, query, chunks, embed_pool)
     # bm25_ranked: [(global_chunk_idx, score)] sorted desc
 
     # Map to local index space for the candidate list
@@ -232,8 +242,8 @@ async def retrieve(
 
     # ── Stage 2: Embed query + BM25 candidates only + cosine score ───────────
     candidate_texts = [c.chunk_text for c in candidates]
-    query_vec, candidate_matrix, cosine_sims = await loop.run_in_executor(
-        None, _traced_dense_embed_and_score, query, candidate_texts
+    query_vec, candidate_matrix, cosine_sims = await _run_in_ctx(
+        _traced_dense_embed_and_score, query, candidate_texts
     )
 
     # ── Stage 3: Rank by cosine ─────────────────────────────────────────────
@@ -256,8 +266,8 @@ async def retrieve(
     ce_chunks = [candidates[i] for i, _ in rrf_ranks[:ce_pool]]
     ce_scores = [s            for _, s in rrf_ranks[:ce_pool]]
 
-    reranked = await loop.run_in_executor(
-        None, _traced_rerank, query, ce_chunks, ce_scores, ce_pool,
+    reranked = await _run_in_ctx(
+        _traced_rerank, query, ce_chunks, ce_scores, ce_pool,
     )
 
     pre_filter = [

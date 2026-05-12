@@ -246,7 +246,8 @@ async def _pipeline_stream(
 
 @app.post("/api/search")
 async def search_endpoint(req: SearchRequest, request: Request):
-    trace = request.headers.get("X-Langsmith-Trace", "").lower() == "true"
+    # Trace if either the env-driven setting is on OR the eval harness opts in via header.
+    trace = settings.langsmith_tracing or request.headers.get("X-Langsmith-Trace", "").lower() == "true"
     cache_hdr = request.headers.get("X-Semantic-Cache", "").lower().strip()
     cache_override: Optional[bool] = None
     if cache_hdr in ("on", "true", "1"):
