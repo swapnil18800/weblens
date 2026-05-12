@@ -1,26 +1,29 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ChevronRight, Cpu, GitMerge, Globe, Layers, ListTree,
   Search, Sparkles, Wand2, Zap,
 } from "lucide-react";
-import type { ChunkDict, ReasoningStep } from "../lib/types";
+import type { ChunkDict, ReasoningStep, StepKind } from "../lib/types";
 import { chars, ms, shortHost } from "../lib/format";
 import { Tag } from "./ReasoningTrace";
 
-const ICONS = {
-  rewrite: Wand2,
-  decompose: Sparkles,
-  search: Search,
-  extract: Globe,
-  chunk: Layers,
-  embed: Cpu,
-  bm25: ListTree,
-  dense: ListTree,
-  rrf: GitMerge,
-  rerank: Wand2,
-  generate: Zap,
-} as const;
+const ICONS: Record<StepKind, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
+  rewrite:    Wand2,
+  route:      Sparkles,
+  decompose:  Sparkles,
+  page_cache: Zap,
+  search:     Search,
+  extract:    Globe,
+  chunk:      Layers,
+  embed:      Cpu,
+  bm25:       ListTree,
+  dense:      ListTree,
+  rrf:        GitMerge,
+  rerank:     Wand2,
+  generate:   Zap,
+  cleanup:    Cpu,
+};
 
 interface Props {
   step: ReasoningStep;
@@ -29,7 +32,7 @@ interface Props {
 
 export default function PipelineStep({ step, onChunkClick }: Props) {
   const [open, setOpen] = useState(false);
-  const Icon = ICONS[step.kind] || Sparkles;
+  const Icon = ICONS[step.kind] ?? Sparkles;
   // Rerank step's payload is a `{chunks: []}` placeholder filled in later by
   // sub_answer_start; treat empty chunks as no-payload so the row isn't clickable.
   const hasPayload = !!step.payload && !(step.kind === "rerank" && (step.payload?.chunks?.length ?? 0) === 0);

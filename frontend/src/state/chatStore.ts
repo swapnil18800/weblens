@@ -49,7 +49,7 @@ const SESSION_KEY = "wsr_session_id";
 // In dev mode (default), session_id is persisted in localStorage so the
 // developer can come back to the same conversation across reloads, and the
 // sidebar lists all past sessions.
-const IS_PUBLIC = ((import.meta.env as Record<string, string>).VITE_PUBLIC_MODE ?? "false").toString() === "true";
+const IS_PUBLIC = (import.meta.env.VITE_PUBLIC_MODE ?? "false").toString() === "true";
 
 function _store(): Storage | null {
   return IS_PUBLIC ? null : localStorage;
