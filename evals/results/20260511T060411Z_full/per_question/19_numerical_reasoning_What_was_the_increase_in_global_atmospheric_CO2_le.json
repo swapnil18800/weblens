@@ -1,0 +1,287 @@
+{
+  "id": "nr3",
+  "category": "numerical_reasoning",
+  "domain": "climate",
+  "question": "What was the increase in global atmospheric CO2 levels from 2000 to 2024?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Retrieve both endpoints + compute absolute and percentage change.",
+  "key_facts": [
+    "CO2",
+    "ppm",
+    "2000",
+    "2024"
+  ],
+  "ground_truth": "Global atmospheric CO2 rose from roughly 370 ppm in 2000 to roughly 422 ppm in 2024 — an increase of about 52 ppm (14%).",
+  "session_id": "eval-20260511T060411Z-nr3",
+  "verdict": "pass",
+  "aggregate": 0.8,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 1.0,
+    "context_recall": 1.0,
+    "context_precision": 0.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.751,
+    "aggregate": 0.8
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 1.0,
+      "supported": 6,
+      "total": 6,
+      "reasoning": "All claims match source data on CO2 levels, trends, and drivers."
+    },
+    "context_precision": {
+      "score": 0.0,
+      "relevant": 0,
+      "total": 8,
+      "reasoning": "No chunk provides specific CO2 levels for both 2000 and 2024 to calculate increase."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "CO2",
+        "ppm",
+        "2000",
+        "2024"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.751,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "CO2",
+      "ppm",
+      "2000",
+      "2024"
+    ]
+  },
+  "pipeline": {
+    "answer": "## Framing\n\nBetween 2000 and 2024, global atmospheric CO₂ levels rose from roughly 369 ppm to approximately 425–430 ppm, marking an increase of about 56–61 ppm. This 24-year addition represents roughly two-thirds of the entire post-industrial rise from pre-industrial levels (~280 ppm) [5][6].\n\n## CO₂ Levels in 2000 and 2024\n\n| Year | CO₂ concentration (ppm) | Key details | Source |\n|------|------------------------|-------------|--------|\n| ~1750 (pre-industrial) | 280 | Baseline before industrial era | [5][6] |\n| 1979 | 336.85 | First reliable satellite-era measurement | [3] |\n| **2000** | **~369** | Annual average from NOAA/ESRL data | [1] |\n| 2022 | 417.06 | Preceding year for comparison | [3] |\n| **2024** | **~425–430** | Record high; ~40% above pre-industrial | [5][6] |\n| 2025 | 427.35 | Latest available data point | [1] |\n\n## The 2000–2024 Increase\n\n- **Absolute rise**: The increase from ~369 ppm (2000) to ~425–430 ppm (2024) amounts to roughly **56–61 ppm** [1][5]. This is equivalent to a ~15–17% rise in just 24 years.\n- **Annual rate acceleration**: The typical annual increase was 1–2 ppm per year for most of the 2000–2023 period, but the **2023-to-2024 jump was 3.75 ppm** — the largest single-year increase ever recorded [5]. This far exceeds the average trend [5][6].\n- **Drivers**: The sustained rise stems from continued fossil fuel combustion and land-use changes, with an additional upsurge from wildfires in 2023–2024 [6]. CO₂ is responsible for about three-quarters of planet-warming emissions [6].\n\n## Comparison to Long-Term Trends\n\n- The 2000 level of ~369 ppm already represented an increase of ~89 ppm (32%) above the pre-industrial baseline [5][6].\n- The 2000–2024 rise of ~56–61 ppm means that **about 60% of the total post-industrial CO₂ increase occurred after 1990** [6], with the 2000–2024 interval alone accounting for roughly 40% of the total rise from 280 ppm.\n- By 2025, CO₂ had reached 427.35 ppm, confirming that the upward trend continues unabated [1][3][4].\n\n## Key Takeaways\n\n- **2000–2024 net increase**: Global CO₂ rose by **~56–61 ppm**, from 369 ppm to 425–430 ppm [1][5][6].\n- **Unprecedented annual spike**: The 2023–2024 jump of 3.75 ppm is the largest single-year increase on record [5].\n- **Current levels**: 2024 concentrations are **~40% above pre-industrial** (280 ppm) [5][6].\n- **Accelerating trend**: The rise is faster in recent years than in the 2000–2019 period [5][6].\n- **Consensus**: NOAA, WMO, and ESRL data all confirm the record highs and the long-term upward trajectory [1][3][4][5][6].",
+    "mode": "search",
+    "rewritten_query": "What was the increase in global atmospheric CO2 levels from 2000 to 2024?",
+    "rewrote": false,
+    "rationale": "CO2 levels are tracked by NOAA/Scripps; measured figures needed for precision.",
+    "sub_queries": [
+      "Global atmospheric CO2 concentration in 2000",
+      "Global atmospheric CO2 concentration in 2024"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW",
+        "title": "Atmospheric CO2 ppm by year 1959-2025| Statista",
+        "snippet": "Global atmospheric carbon dioxide concentration 1959-2025\n\nPublished by\n\n[Won So](https://www.statista.com/aboutus/our-research-commitment/1816/won-so),\n\nMay 5, 2026\n\n[](https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjv"
+      },
+      {
+        "num": 2,
+        "url": "https://ourworldindata.org/grapher/global-co2-concentration",
+        "title": "Global atmospheric CO₂ concentration",
+        "snippet": "Global atmospheric CO₂ concentration\n\nAtmospheric carbon dioxide (CO₂) concentration is measured in parts per million (ppm).\n\nTable\n\nLine\n\nBar\n\nJan 15, 1979 Oct 15, 2025\n\n**Data source:** NOAA Global Monitoring Laboratory - Trends in Atmospheric Carbon Dioxide (2026) – [Learn more about this data](h"
+      },
+      {
+        "num": 3,
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S0048969724072085",
+        "title": "Long-term (2000–2020) global 0.05° continuous atmospheric carbon dioxide mapping combining OCO-2 observations and model simulations",
+        "snippet": "Introduction\n\nThe continuous increase of greenhouse gases in the atmosphere has already induced severe global climate change challenges (Hegerl and Cubasch, 1996; Wuebbles and Jain, 2001; Lioubimtseva and Adams, 2004; Lonngren and Bai, 2008; Zhang and Caldeira, 2015) and significantly impacted human"
+      },
+      {
+        "num": 4,
+        "url": "https://wmo.int/news/media-centre/carbon-dioxide-levels-increase-record-amount-new-highs-2024",
+        "title": "Carbon dioxide levels increase by record amount to new highs in 2024",
+        "snippet": "Carbon dioxide – continued emissions and less effective carbon sinks\n\nToday’s CO 2 emissions to the atmosphere not only impact global climate today, but will do so for hundreds of years because of its long lifetime in the atmosphere.\n\n![Image 4](https://wmo.int/sites/default/files/styles/prose_1x/pu"
+      },
+      {
+        "num": 5,
+        "url": "https://insideclimatenews.org/news/24042025/global-carbon-dioxide-concentration-in-atmosphere-soared-2024/",
+        "title": "A Grim Signal: Atmospheric CO2 Soared in 2024",
+        "snippet": "The latest anomaly in the climate system that can’t be fully explained by researchers is a [record annual jump](https://gml.noaa.gov/ccgg/trends/gl_gr.html) in the global mean concentration of carbon dioxide in the atmosphere measured in 2024.\n\nThe concentration, measured in parts per million, has b"
+      },
+      {
+        "num": 6,
+        "url": "https://earth.org/record-co2-levels-in-2024-commit-planet-to-more-long-term-warming-un-says/",
+        "title": "More Warming Expected Amid Record CO2 Levels in 2024: WMO",
+        "snippet": "**“Carbon dioxide (CO2) levels in the atmosphere soared by a record amount to new highs in 2024, committing the planet to more long-term temperature increase,” said the World Meterological Organization. Concentrations of **methane and nitrous oxide, two potent greenhouse gases,**also reached record "
+      }
+    ],
+    "urls": [
+      "https://ourworldindata.org/grapher/global-co2-concentration",
+      "https://www.sciencedirect.com/science/article/abs/pii/S0048969724072085",
+      "http://www.columbia.edu/~mhs119/UpdatedFigures/globalCO2.pdf",
+      "https://www.co2levels.org/atmospheric_co2_graph.php",
+      "https://sealevel.info/co2.html",
+      "https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW",
+      "https://earth.org/record-co2-levels-in-2024-commit-planet-to-more-long-term-warming-un-says/",
+      "https://insideclimatenews.org/news/24042025/global-carbon-dioxide-concentration-in-atmosphere-soared-2024/",
+      "https://wmo.int/news/media-centre/carbon-dioxide-levels-increase-record-amount-new-highs-2024",
+      "https://wwf.panda.org/es/?14906916/Carbon-dioxide-CO2-levels-in-the-atmosphere-soared-by-a-record-amount-to-new-highs-in-2024",
+      "https://www.reddit.com/r/climate/comments/1oanfe1/co2_levels_in_earths_atmosphere_jumped_by_a/",
+      "https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoqvGFkhuDPJ_Tt6DZLu4vCishjr_le37aZxlMo_gx_NUmSdxqJ7"
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW",
+        "title": "Atmospheric CO2 ppm by year 1959-2025| Statista",
+        "heading": "Global atmospheric carbon dioxide concentration 1959-2025",
+        "chunk_text": "Global atmospheric carbon dioxide concentration 1959-2025\n\nPublished by\n\n[Won So](https://www.statista.com/aboutus/our-research-commitment/1816/won-so),\n\nMay 5, 2026\n\n[](https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW#statisticContainer)\nAverage annual atmospheric levels of carbon dioxide (CO₂) reached a record high of 427.35 parts per million (ppm) in 2025. Monthly [atmospheric CO₂ concentrations](https://www.statista.com/statistics/1091999/atmospheric-concentration-of-co2-historic/) peaked that year in June, at 426.91 ppm.",
+        "score": 7.8365,
+        "rank": 0
+      },
+      {
+        "url": "https://ourworldindata.org/grapher/global-co2-concentration",
+        "title": "Global atmospheric CO₂ concentration",
+        "heading": "Global atmospheric CO₂ concentration",
+        "chunk_text": "Global atmospheric CO₂ concentration\n\nAtmospheric carbon dioxide (CO₂) concentration is measured in parts per million (ppm).\n\nTable\n\nLine\n\nBar\n\nJan 15, 1979 Oct 15, 2025\n\n**Data source:** NOAA Global Monitoring Laboratory - Trends in Atmospheric Carbon Dioxide (2026) – [Learn more about this data](https://ourworldindata.org/grapher/global-co2-concentration)\n\n[OurWorldinData.org/climate-change](https://ourworldindata.org/climate-change) | [CC BY](https://creativecommons.org/licenses/by/4.0/)\n\n*   Download \n*   Share \n*   Enter full-screen\n\n![Image 5: Global atmospheric CO₂ concentration](https://ourworldindata.org/grapher/global-co2-concentration.png)\nInteractive visualization requires JavaScript",
+        "score": 7.0827,
+        "rank": 1
+      },
+      {
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S0048969724072085",
+        "title": "Long-term (2000–2020) global 0.05° continuous atmospheric carbon dioxide mapping combining OCO-2 observations and model simulations",
+        "heading": "Introduction",
+        "chunk_text": "Introduction\n\nThe continuous increase of greenhouse gases in the atmosphere has already induced severe global climate change challenges (Hegerl and Cubasch, 1996; Wuebbles and Jain, 2001; Lioubimtseva and Adams, 2004; Lonngren and Bai, 2008; Zhang and Caldeira, 2015) and significantly impacted human well-being (Tagwi, 2022). Carbon dioxide (CO 2) is one of the main greenhouse gases, and the global average CO 2 has increased from 336.85 ppm in 1979 to 417.06 ppm in 2022, according to the National Oceanic and Atmospheric Administration (NOAA). Therefore, high-precision quantitative assessment of global CO 2 concentration is crucial for addressing the constantly changing situation.",
+        "score": 5.9511,
+        "rank": 2
+      },
+      {
+        "url": "https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW",
+        "title": "Atmospheric CO2 ppm by year 1959-2025| Statista",
+        "heading": "Other statistics on the topic",
+        "chunk_text": "Other statistics on the topic\n\n[Greenhouse gas emissions worldwide](https://www.statista.com/topics/5770/global-greenhouse-gas-emissions/)\n\n[![Image 17](https://cdn.statcdn.com/Statistic/1090000/1091999-blank-100.png) Global atmospheric concentration of carbon dioxide 1990-2026, by month](https://www.statista.com/statistics/1091999/atmospheric-concentration-of-co2-historic/)[![Image 18](https://cdn.statcdn.com/Statistic/1080000/1083210-blank-100.png)+ CO2 emissions from energy use Philippines 2012-2024](https://www.statista.com/statistics/1083210/philippines-carbon-dioxide-co2-emissions/)[![Image 19](https://cdn.statcdn.com/Statistic/1390000/1394260-blank-100.png)+ CO2 emissions from energy use in Malaysia 2015-2024](https://www.statista.com/statistics/1394260/malaysia-co2-emissions-from-energy-use/)[![Image 20](https://cdn.statcdn.com/Statistic/1445000/1447030-blank-100.png)+ South America: greenhouse gases contributions to global warming 2001-2023](https://www.statista.com/statistics/1447030/greenhouse-gases-climate-contribution-south-america/)\n\n![Image 21: Won So](https://cdn.statcdn.com/CMS/contactperson/ERI1816_1715162077.png)\n\nWon So\n\nResearch lead covering South Korea\n\n[Get in touch with us now](https://www.statista.com/contact/)\n\nAccess all statistics starting from **$2,388 USD** yearly *\n\n* For commercial use only\n\nBasic Account\n\nFor single users\n\n$0 USD\n\nAlways free\n\n[Register now](https://www.statista.com/accounts/individuals?recommendation=basic)",
+        "score": 2.9938,
+        "rank": 3
+      },
+      {
+        "url": "https://wmo.int/news/media-centre/carbon-dioxide-levels-increase-record-amount-new-highs-2024",
+        "title": "Carbon dioxide levels increase by record amount to new highs in 2024",
+        "heading": "Carbon dioxide – continued emissions and less effective carbon sinks",
+        "chunk_text": "Carbon dioxide – continued emissions and less effective carbon sinks\n\nToday’s CO 2 emissions to the atmosphere not only impact global climate today, but will do so for hundreds of years because of its long lifetime in the atmosphere.\n\n![Image 4](https://wmo.int/sites/default/files/styles/prose_1x/public/2025-10/Screenshot%202025-10-14%20at%2010.29.16.png?itok=xt4QSzjx)\n\nGlobally averaged CO2 concentration (a) and its growth rate (b) from 1984 to 2024. Increases in successive annual means are shown as the shaded columns in (b). The red line in (a) is the monthly mean with the seasonal variation removed; the blue dots and blue line in (a) depict the monthly averages. Observations from 179 stations were used for this analysis.",
+        "score": 2.0622,
+        "rank": 4
+      },
+      {
+        "url": "https://insideclimatenews.org/news/24042025/global-carbon-dioxide-concentration-in-atmosphere-soared-2024/",
+        "title": "A Grim Signal: Atmospheric CO2 Soared in 2024",
+        "heading": "",
+        "chunk_text": "The latest anomaly in the climate system that can’t be fully explained by researchers is a [record annual jump](https://gml.noaa.gov/ccgg/trends/gl_gr.html) in the global mean concentration of carbon dioxide in the atmosphere measured in 2024.\n\nThe concentration, measured in parts per million, has been increasing rapidly since human civilizations started burning coal and oil in the mid-1800s from the pre-industrial level of 280 ppm.\n\nIn recent decades, the increase has often been in annual increments of 1 to 2 ppm. But last year, the increase measured by the National Oceanic and Atmospheric Administration’s [Global Monitoring Laboratory](https://gml.noaa.gov/) was 3.75 ppm, according to the lab’s early April update of atmospheric greenhouse gas concentrations.\n\nThat brings the annual mean global concentration close to 430 ppm, about 40 percent more than the pre-industrial level, and enough to heat the planet by about 2.7 degrees Fahrenheit (1.5 degrees Celsius). Climate researchers have noted that the continuing increase of global CO2 emissions means the world will probably not be able to reach the Paris Agreement target of limiting warming to 2.7 degrees Fahrenheit above the pre-industrial level.",
+        "score": 2.0409,
+        "rank": 5
+      },
+      {
+        "url": "https://earth.org/record-co2-levels-in-2024-commit-planet-to-more-long-term-warming-un-says/",
+        "title": "More Warming Expected Amid Record CO2 Levels in 2024: WMO",
+        "heading": "",
+        "chunk_text": "**“Carbon dioxide (CO2) levels in the atmosphere soared by a record amount to new highs in 2024, committing the planet to more long-term temperature increase,” said the World Meterological Organization. Concentrations of **methane and nitrous oxide, two potent greenhouse gases,**also reached record levels.**\n\n****—****\n\nHuman activities and an upsurge from wildfires were responsible for the relentless rise in global carbon dioxide (CO2) levels in the atmosphere in 2024, the World Meteorological Organization (WMO) said on Thursday.\n\nAtmospheric concentrations of CO2, a by-product of burning fossil fuels, biomass, land-use changes, and industrial processes such as cement production, reached record levels last year, committing the planet to more long-term warming.\n\nGreenhouse gases including CO2, methane and nitrous oxide, which are naturally occurring but significantly increased by human activities, are the primary drivers of global warming. They trap heat in the atmosphere, raising Earth’s surface temperature and contributing to climate change and air pollution.\n\nCO2 is the principal greenhouse gas in the atmosphere, responsible for about [three-quarters](https://datatopics.worldbank.org/sdgatlas/goal-13-climate-action/?lang=en) of planet-warming emissions.\n\nCurrent CO2 levels are over 425 parts per million (ppm), which is 50% higher than pre-industrial levels of around 280 ppm.Much of this rise – about 60% – took place since 1990, driven by continues fossil fuel burning.",
+        "score": 2.0126,
+        "rank": 6
+      },
+      {
+        "url": "https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW",
+        "title": "Atmospheric CO2 ppm by year 1959-2025| Statista",
+        "heading": "Topics",
+        "chunk_text": "Topics\n\nNational Oceanic and Atmospheric Administration, ESRL. (2026). Average carbon dioxide (CO₂) levels in the atmosphere worldwide from 1959 to 2025 (in parts per million). Statista. Statista Inc.. Accessed: May 11, 2026. https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW\n\nNational Oceanic and Atmospheric Administration, and ESRL. \"Average Carbon Dioxide (Co₂) Levels in The Atmosphere Worldwide from 1959 to 2025 (in Parts per Million).\" Statista, Statista Inc., 5 Jan 2026, https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW\n\nNational Oceanic and Atmospheric Administration & ESRL, Average carbon dioxide (CO₂) levels in the atmosphere worldwide from 1959 to 2025 (in parts per million) Statista, https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW (last visited May 11, 2026)\n\nAverage carbon dioxide (CO₂) levels in the atmosphere worldwide from 1959 to 2025 (in parts per million) [Graph], National Oceanic and Atmospheric Administration, & ESRL, January 5, 2026. [Online]. Available: https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW\n\nAdvertisement",
+        "score": 1.7513,
+        "rank": 7
+      },
+      {
+        "url": "https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW",
+        "title": "Atmospheric CO2 ppm by year 1959-2025| Statista",
+        "heading": "Global atmospheric carbon dioxide concentration 1959-2025",
+        "chunk_text": "Global atmospheric carbon dioxide concentration 1959-2025\n\nPublished by\n\n[Won So](https://www.statista.com/aboutus/our-research-commitment/1816/won-so),\n\nMay 5, 2026\n\n[](https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW#statisticContainer)\nAverage annual atmospheric levels of carbon dioxide (CO₂) reached a record high of 427.35 parts per million (ppm) in 2025. Monthly [atmospheric CO₂ concentrations](https://www.statista.com/statistics/1091999/atmospheric-concentration-of-co2-historic/) peaked that year in June, at 426.91 ppm.",
+        "score": 10.0734,
+        "rank": 0
+      },
+      {
+        "url": "https://ourworldindata.org/grapher/global-co2-concentration",
+        "title": "Global atmospheric CO₂ concentration",
+        "heading": "Global atmospheric CO₂ concentration",
+        "chunk_text": "Global atmospheric CO₂ concentration\n\nAtmospheric carbon dioxide (CO₂) concentration is measured in parts per million (ppm).\n\nTable\n\nLine\n\nBar\n\nJan 15, 1979 Oct 15, 2025\n\n**Data source:** NOAA Global Monitoring Laboratory - Trends in Atmospheric Carbon Dioxide (2026) – [Learn more about this data](https://ourworldindata.org/grapher/global-co2-concentration)\n\n[OurWorldinData.org/climate-change](https://ourworldindata.org/climate-change) | [CC BY](https://creativecommons.org/licenses/by/4.0/)\n\n*   Download \n*   Share \n*   Enter full-screen\n\n![Image 5: Global atmospheric CO₂ concentration](https://ourworldindata.org/grapher/global-co2-concentration.png)\nInteractive visualization requires JavaScript",
+        "score": 9.093,
+        "rank": 1
+      },
+      {
+        "url": "https://insideclimatenews.org/news/24042025/global-carbon-dioxide-concentration-in-atmosphere-soared-2024/",
+        "title": "A Grim Signal: Atmospheric CO2 Soared in 2024",
+        "heading": "",
+        "chunk_text": "The latest anomaly in the climate system that can’t be fully explained by researchers is a [record annual jump](https://gml.noaa.gov/ccgg/trends/gl_gr.html) in the global mean concentration of carbon dioxide in the atmosphere measured in 2024.\n\nThe concentration, measured in parts per million, has been increasing rapidly since human civilizations started burning coal and oil in the mid-1800s from the pre-industrial level of 280 ppm.\n\nIn recent decades, the increase has often been in annual increments of 1 to 2 ppm. But last year, the increase measured by the National Oceanic and Atmospheric Administration’s [Global Monitoring Laboratory](https://gml.noaa.gov/) was 3.75 ppm, according to the lab’s early April update of atmospheric greenhouse gas concentrations.\n\nThat brings the annual mean global concentration close to 430 ppm, about 40 percent more than the pre-industrial level, and enough to heat the planet by about 2.7 degrees Fahrenheit (1.5 degrees Celsius). Climate researchers have noted that the continuing increase of global CO2 emissions means the world will probably not be able to reach the Paris Agreement target of limiting warming to 2.7 degrees Fahrenheit above the pre-industrial level.",
+        "score": 8.2941,
+        "rank": 2
+      },
+      {
+        "url": "https://wmo.int/news/media-centre/carbon-dioxide-levels-increase-record-amount-new-highs-2024",
+        "title": "Carbon dioxide levels increase by record amount to new highs in 2024",
+        "heading": "Carbon dioxide – continued emissions and less effective carbon sinks",
+        "chunk_text": "Carbon dioxide – continued emissions and less effective carbon sinks\n\nToday’s CO 2 emissions to the atmosphere not only impact global climate today, but will do so for hundreds of years because of its long lifetime in the atmosphere.\n\n![Image 4](https://wmo.int/sites/default/files/styles/prose_1x/public/2025-10/Screenshot%202025-10-14%20at%2010.29.16.png?itok=xt4QSzjx)\n\nGlobally averaged CO2 concentration (a) and its growth rate (b) from 1984 to 2024. Increases in successive annual means are shown as the shaded columns in (b). The red line in (a) is the monthly mean with the seasonal variation removed; the blue dots and blue line in (a) depict the monthly averages. Observations from 179 stations were used for this analysis.",
+        "score": 8.0551,
+        "rank": 3
+      },
+      {
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S0048969724072085",
+        "title": "Long-term (2000–2020) global 0.05° continuous atmospheric carbon dioxide mapping combining OCO-2 observations and model simulations",
+        "heading": "Introduction",
+        "chunk_text": "Introduction\n\nThe continuous increase of greenhouse gases in the atmosphere has already induced severe global climate change challenges (Hegerl and Cubasch, 1996; Wuebbles and Jain, 2001; Lioubimtseva and Adams, 2004; Lonngren and Bai, 2008; Zhang and Caldeira, 2015) and significantly impacted human well-being (Tagwi, 2022). Carbon dioxide (CO 2) is one of the main greenhouse gases, and the global average CO 2 has increased from 336.85 ppm in 1979 to 417.06 ppm in 2022, according to the National Oceanic and Atmospheric Administration (NOAA). Therefore, high-precision quantitative assessment of global CO 2 concentration is crucial for addressing the constantly changing situation.",
+        "score": 7.9521,
+        "rank": 4
+      },
+      {
+        "url": "https://earth.org/record-co2-levels-in-2024-commit-planet-to-more-long-term-warming-un-says/",
+        "title": "More Warming Expected Amid Record CO2 Levels in 2024: WMO",
+        "heading": "",
+        "chunk_text": "**“Carbon dioxide (CO2) levels in the atmosphere soared by a record amount to new highs in 2024, committing the planet to more long-term temperature increase,” said the World Meterological Organization. Concentrations of **methane and nitrous oxide, two potent greenhouse gases,**also reached record levels.**\n\n****—****\n\nHuman activities and an upsurge from wildfires were responsible for the relentless rise in global carbon dioxide (CO2) levels in the atmosphere in 2024, the World Meteorological Organization (WMO) said on Thursday.\n\nAtmospheric concentrations of CO2, a by-product of burning fossil fuels, biomass, land-use changes, and industrial processes such as cement production, reached record levels last year, committing the planet to more long-term warming.\n\nGreenhouse gases including CO2, methane and nitrous oxide, which are naturally occurring but significantly increased by human activities, are the primary drivers of global warming. They trap heat in the atmosphere, raising Earth’s surface temperature and contributing to climate change and air pollution.\n\nCO2 is the principal greenhouse gas in the atmosphere, responsible for about [three-quarters](https://datatopics.worldbank.org/sdgatlas/goal-13-climate-action/?lang=en) of planet-warming emissions.\n\nCurrent CO2 levels are over 425 parts per million (ppm), which is 50% higher than pre-industrial levels of around 280 ppm.Much of this rise – about 60% – took place since 1990, driven by continues fossil fuel burning.",
+        "score": 7.3592,
+        "rank": 5
+      },
+      {
+        "url": "https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW",
+        "title": "Atmospheric CO2 ppm by year 1959-2025| Statista",
+        "heading": "Topics",
+        "chunk_text": "Topics\n\nNational Oceanic and Atmospheric Administration, ESRL. (2026). Average carbon dioxide (CO₂) levels in the atmosphere worldwide from 1959 to 2025 (in parts per million). Statista. Statista Inc.. Accessed: May 11, 2026. https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW\n\nNational Oceanic and Atmospheric Administration, and ESRL. \"Average Carbon Dioxide (Co₂) Levels in The Atmosphere Worldwide from 1959 to 2025 (in Parts per Million).\" Statista, Statista Inc., 5 Jan 2026, https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW\n\nNational Oceanic and Atmospheric Administration & ESRL, Average carbon dioxide (CO₂) levels in the atmosphere worldwide from 1959 to 2025 (in parts per million) Statista, https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW (last visited May 11, 2026)\n\nAverage carbon dioxide (CO₂) levels in the atmosphere worldwide from 1959 to 2025 (in parts per million) [Graph], National Oceanic and Atmospheric Administration, & ESRL, January 5, 2026. [Online]. Available: https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW\n\nAdvertisement",
+        "score": 7.0088,
+        "rank": 6
+      },
+      {
+        "url": "https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoplVEmZzvw6wrOqYltMd8K2AVpRGjvLUDSs7iP_po_yM40kO5iW",
+        "title": "Atmospheric CO2 ppm by year 1959-2025| Statista",
+        "heading": "Other statistics on the topic",
+        "chunk_text": "Other statistics on the topic\n\n[Greenhouse gas emissions worldwide](https://www.statista.com/topics/5770/global-greenhouse-gas-emissions/)\n\n[![Image 17](https://cdn.statcdn.com/Statistic/1090000/1091999-blank-100.png) Global atmospheric concentration of carbon dioxide 1990-2026, by month](https://www.statista.com/statistics/1091999/atmospheric-concentration-of-co2-historic/)[![Image 18](https://cdn.statcdn.com/Statistic/1080000/1083210-blank-100.png)+ CO2 emissions from energy use Philippines 2012-2024](https://www.statista.com/statistics/1083210/philippines-carbon-dioxide-co2-emissions/)[![Image 19](https://cdn.statcdn.com/Statistic/1390000/1394260-blank-100.png)+ CO2 emissions from energy use in Malaysia 2015-2024](https://www.statista.com/statistics/1394260/malaysia-co2-emissions-from-energy-use/)[![Image 20](https://cdn.statcdn.com/Statistic/1445000/1447030-blank-100.png)+ South America: greenhouse gases contributions to global warming 2001-2023](https://www.statista.com/statistics/1447030/greenhouse-gases-climate-contribution-south-america/)\n\n![Image 21: Won So](https://cdn.statcdn.com/CMS/contactperson/ERI1816_1715162077.png)\n\nWon So\n\nResearch lead covering South Korea\n\n[Get in touch with us now](https://www.statista.com/contact/)\n\nAccess all statistics starting from **$2,388 USD** yearly *\n\n* For commercial use only\n\nBasic Account\n\nFor single users\n\n$0 USD\n\nAlways free\n\n[Register now](https://www.statista.com/accounts/individuals?recommendation=basic)",
+        "score": 6.4463,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 3578,
+      "search_ms": 3696,
+      "extract_ms": 12829,
+      "chunk_ms": 88,
+      "retrieve_ms": 12542,
+      "synthesis_ms": 15446,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 57116,
+    "elapsed_s": 60.39,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

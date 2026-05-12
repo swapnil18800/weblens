@@ -1,0 +1,76 @@
+{
+  "id": "mh2",
+  "category": "multi_hop_comparison",
+  "domain": "sports",
+  "question": "Compare Real Madrid and Manchester City Champions League performance over the last 3 seasons.",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Per-club, per-season decomposition.",
+  "key_facts": [
+    "Champions League",
+    "Real Madrid",
+    "Manchester City"
+  ],
+  "ground_truth": "Real Madrid won the 2023-24 Champions League. Manchester City won 2022-23. Both have been semifinalists or better in most recent seasons.",
+  "session_id": "eval-20260511T060411Z-mh2",
+  "verdict": "fail",
+  "aggregate": 0.3,
+  "failure_mode": "under_decomposition",
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 0.0,
+    "context_precision": 1.0,
+    "answer_correctness": 0.0,
+    "routing_decomposition": 0.5,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.3
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "empty answer"
+    },
+    "context_precision": {
+      "score": 1.0,
+      "relevant": 0,
+      "total": 0,
+      "reasoning": "no chunks"
+    },
+    "answer_correctness": {
+      "score": 0.0,
+      "hit_facts": [],
+      "missed_facts": [
+        "Champions League",
+        "Real Madrid",
+        "Manchester City"
+      ],
+      "reasoning": "empty answer"
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "pipeline": {
+    "answer": "",
+    "mode": "search",
+    "rewritten_query": "Compare Real Madrid and Manchester City Champions League performance over the last 3 seasons.",
+    "rewrote": false,
+    "rationale": "",
+    "sub_queries": [
+      "Compare Real Madrid and Manchester City Champions League performance over the last 3 seasons."
+    ],
+    "citations": [],
+    "urls": [],
+    "chunk_count": 0,
+    "chunks": [],
+    "latency_breakdown": {},
+    "total_latency_ms": 0,
+    "elapsed_s": 5.42,
+    "token_cost": {},
+    "error": ""
+  }
+}

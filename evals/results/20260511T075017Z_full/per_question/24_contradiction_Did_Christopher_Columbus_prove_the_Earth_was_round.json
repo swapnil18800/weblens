@@ -1,0 +1,117 @@
+{
+  "id": "ctr2",
+  "category": "contradiction",
+  "domain": "history",
+  "question": "Did Christopher Columbus prove the Earth was round?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Common misconception — should surface that educated people knew the Earth was round centuries before Columbus.",
+  "key_facts": [
+    "Eratosthenes",
+    "spherical",
+    "Columbus"
+  ],
+  "ground_truth": "No — the spherical shape of the Earth was established by Greek philosophers including Eratosthenes (~240 BCE), who calculated its circumference. Educated Europeans in Columbus's time knew this; the 'flat-Earth Columbus' narrative is a 19th-century invention.",
+  "session_id": "eval-20260511T075017Z-ctr2",
+  "verdict": "partial",
+  "aggregate": 0.5,
+  "failure_mode": "wrong_route",
+  "metrics": {
+    "faithfulness": 0.5,
+    "context_recall": 0.0,
+    "context_precision": 1.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.5,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 0.0,
+    "m7_judge_score": 0.5
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.5,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "no chunks"
+    },
+    "context_precision": {
+      "score": 1.0,
+      "relevant": 0,
+      "total": 0,
+      "reasoning": "no chunks"
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "Eratosthenes",
+        "spherical",
+        "Columbus"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 3470,
+      "sub_queries_count": 1,
+      "mode": "parametric",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 3476,
+    "pipeline_s": 6.26
+  },
+  "judge_reasoning": "no chunks",
+  "pipeline": {
+    "answer": "No. Educated Europeans in Columbus's time already knew Earth was spherical; that fact had been established by ancient Greeks, supported by figures like Eratosthenes. Columbus's voyages did not prove roundness — they explored a westward route to Asia. The myth that he faced a flat-Earth opposition was popularized by 19th-century writers.",
+    "mode": "parametric",
+    "rewritten_query": "Did Christopher Columbus prove the Earth was round?",
+    "rewrote": false,
+    "rationale": "Well-established historical fact, not time-sensitive.",
+    "sub_queries": [
+      "Did Christopher Columbus prove the Earth was round?"
+    ],
+    "citations": [],
+    "urls": [],
+    "chunk_count": 0,
+    "chunks": [],
+    "latency_breakdown": {
+      "decompose_ms": 3470,
+      "sub_queries_count": 1,
+      "mode": "parametric",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 3476,
+    "elapsed_s": 6.26,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

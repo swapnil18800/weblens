@@ -1,0 +1,83 @@
+{
+  "id": "tf3",
+  "category": "temporal_freshness",
+  "domain": "space",
+  "question": "What were the major findings of NASA's most recent Mars rover or lander mission?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Should surface 2025-2026 mission findings (Perseverance, sample-return updates).",
+  "key_facts": [
+    "Perseverance",
+    "Mars"
+  ],
+  "ground_truth": "Perseverance continues caching samples for future return; Mars Sample Return architecture was redesigned in 2024-2025 due to cost. New findings on organic molecules and ancient water environments.",
+  "session_id": "eval-20260511T161015Z-tf3",
+  "verdict": "partial",
+  "aggregate": 0.4,
+  "failure_mode": "retrieval_miss",
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 0.0,
+    "context_precision": 1.0,
+    "answer_correctness": 0.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.4,
+    "m1_factual_correctness": 0.0,
+    "m3_retrieval_recall": 0.0,
+    "m7_judge_score": 0.4
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "empty answer"
+    },
+    "context_precision": {
+      "score": 1.0,
+      "relevant": 0,
+      "total": 0,
+      "reasoning": "no chunks"
+    },
+    "answer_correctness": {
+      "score": 0.0,
+      "hit_facts": [],
+      "missed_facts": [
+        "Perseverance",
+        "Mars"
+      ],
+      "reasoning": "empty answer"
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {},
+    "total_latency_ms": 0,
+    "pipeline_s": 5.61
+  },
+  "judge_reasoning": "empty answer",
+  "pipeline": {
+    "answer": "",
+    "mode": "search",
+    "rewritten_query": "What were the major findings of NASA's most recent Mars rover or lander mission?",
+    "rewrote": false,
+    "rationale": "",
+    "sub_queries": [
+      "What were the major findings of NASA's most recent Mars rover or lander mission?"
+    ],
+    "citations": [],
+    "urls": [],
+    "chunk_count": 0,
+    "chunks": [],
+    "latency_breakdown": {},
+    "total_latency_ms": 0,
+    "elapsed_s": 5.61,
+    "token_cost": {},
+    "error": ""
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "id": "rs1",
+  "category": "routing_search_obvious",
+  "domain": "demographics",
+  "question": "What is the current population of Brazil?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Numbers drift — must route to search, not parametric.",
+  "key_facts": [
+    "million",
+    "Brazil"
+  ],
+  "ground_truth": "Population estimates for Brazil in 2025-2026 are around 217 million (varies by source).",
+  "session_id": "eval-20260511T161015Z-rs1",
+  "verdict": "partial",
+  "aggregate": 0.77,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.6,
+    "context_recall": 1.0,
+    "context_precision": 0.25,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.737,
+    "aggregate": 0.77,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.77
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.6,
+      "supported": 3,
+      "total": 5,
+      "reasoning": "Only 213.6M, gender split, and city data supported; IBGE 2025 and median age not in chunks."
+    },
+    "context_precision": {
+      "score": 0.25,
+      "relevant": 2,
+      "total": 8,
+      "reasoning": "Chunks 1 and 7 directly state Brazil's population; others discuss demographics or history."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "million",
+        "Brazil"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.737,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "million",
+      "Brazil"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 17,
+      "decompose_ms": 2924,
+      "search_ms": 2944,
+      "extract_ms": 5859,
+      "chunk_ms": 48,
+      "retrieve_ms": 4363,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 4,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 26064,
+    "pipeline_s": 29.45
+  },
+  "judge_reasoning": "Only 213.6M, gender split, and city data supported; IBGE 2025 and median age not in chunks.",
+  "pipeline": {
+    "answer": "**Current population of Brazil: 213.6 million** (as of the most recent data from World Population Review) [1].\n\nKey population figures from sources:\n\n- **213.6 million** – reported by World Population Review [1].\n- **213.4 million** – estimated by IBGE for 2025, cited in Wikipedia [2].\n- The Worldometers page references a continuously updated \"live\" estimate but does not give a single static number (its chart plots data from 1950–2026) [3].\n\n**Breakdown:**\n- **Gender split:** 108.6 million female (50.8%) and 105.0 million male (49.2%) [1].\n- **Adults:** 164.1 million adults, including 25.5 million seniors [1].\n- **Median age:** 36.25 years overall (male: 35.23, female: 37.25) [1].\n- **Demographic dynamics:** A birth every 12.7 seconds, a death every 20.1 seconds, and a net gain of one person every 43.8 seconds [1].\n\n**Largest cities (2026 projected):**\n- São Paulo – 12.0 million [1]\n- Rio de Janeiro – 6.8 million [1]\n- Brasília – 3.0 million [1]\n\n**Note:** All sources agree Brazil's population exceeds 213 million [1][2][3], making it the 7th most populous country globally and the 5th largest by population in the Americas [1]. The Worldometers data projects forward based on UN estimates but does not provide a single \"current\" total separate from its live counter [3].",
+    "mode": "search",
+    "rewritten_query": "What is the current population of Brazil?",
+    "rewrote": false,
+    "rationale": "Population numbers drift; need a sourced recent figure.",
+    "sub_queries": [
+      "Current population of Brazil"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://worldpopulationreview.com/countries/brazil",
+        "title": "https://worldpopulationreview.com/countries/brazil",
+        "snippet": "Brazil is a country in South America, known for the Amazon rainforest and vibrant culture. It has a population of 213.6 million, making it the 7th largest country in the world. Its capital is Brasilia. Brazil has a diverse economy with strong industrial and agricultural sectors.\nBrazil's population "
+      },
+      {
+        "num": 2,
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "snippet": "a matter of phenotype) and assimilated, westernized indigenous people.[61][62]\nThe Pardos make up 45.3% or 92.1 million people of Brazil's population.[63] They live in the entire territory of Brazil. Although, according to DNA resources, most Brazilians possess some degree of mixed-race ancestry, le"
+      },
+      {
+        "num": 3,
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "https://www.worldometers.info/world-population/brazil-population/",
+        "snippet": "22 |\n38 | Jundiaí | 465,531 |\n39 | Porto Velho | 422,943 |\n40 | Petrolina | 418,619 |\n41 | São José do Rio Preto | 414,406 |\n42 | Americana | 412,133 |\n43 | Volta Redonda | 398,107 |\n44 | Caxias do Sul | 383,774 |\n45 | Campina Grande | 369,184 |\n46 | Colina de Laranjeiras | 365,960 |\n47 | Boa Vista "
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "Brazil Population (2026) - Worldometer",
+        "snippet": "The current population of Brazil is 213.502. · Brazil 2026 population is estimated at 213,562,666 people at mid-year. · Brazil population is equivalent to 2.57%"
+      },
+      {
+        "url": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "title": "IBGE: Brazil's population reaches 212.6 million - Portal Gov.br",
+        "snippet": "The Brazilian population reached an estimated 212.6 million people on July 1, 2024, according to the Brazilian Institute of Geography and Statistics (IBGE)."
+      },
+      {
+        "url": "https://www.macrotrends.net/global-metrics/countries/bra/brazil/population",
+        "title": "Brazil Population (1950-2025) - Macrotrends",
+        "snippet": "Total current population for Brazil in 2025 was 218,803,058, a 0.54% increase from 2024. · Total population for Brazil in 2024 was 217,637,297, a 3.08% increase"
+      },
+      {
+        "url": "https://tradingeconomics.com/brazil/population",
+        "title": "Brazil Population - Trading Economics",
+        "snippet": "The total population in Brazil was estimated at 213.4 million people in 2025, according to the latest census figures and projections from Trading Economics."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "Demographics of Brazil - Wikipedia",
+        "snippet": "Brazil had an official resident population of 203 million in 2022, according to the Brazilian Institute of Geography and Statistics (IBGE)."
+      },
+      {
+        "url": "https://worldpopulationreview.com/countries/brazil",
+        "title": "Brazil Population 2026",
+        "snippet": "It has a population of 213.6 million, making it the 7th largest country in the world. Its capital is Brasilia. Brazil has a diverse economy with strong"
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://worldpopulationreview.com/countries/brazil",
+        "title": "https://worldpopulationreview.com/countries/brazil",
+        "heading": "",
+        "chunk_text": "Brazil is a country in South America, known for the Amazon rainforest and vibrant culture. It has a population of 213.6 million, making it the 7th largest country in the world. Its capital is Brasilia. Brazil has a diverse economy with strong industrial and agricultural sectors.\nBrazil's population structure shows a slightly lower male to female ratio of 0.97 to 1, with a median male age of 35.23 years old and a median female age of 37.25 years old. The highest concentration of adults under 75 years old is in the 41 and 42 year-old age groups, while the lowest concentration is in the 74 and 73 year-old age groups.\nData after 2022 is projected based on recent change\nOverall: 36.25\nMale: 35.23\nFemale: 37.25\nThere are 164,103,830 adults, (25,454,024 of whom are seniors) in Brazil.\nFemale: 108,574,905 (50.8%)\nMale: 104,987,755 (49.2%)\n* As of 5/7/2026\n1 birth\nEvery 12.7 seconds\n1 death\nEvery 20.1 seconds\n1 emigrant\nEvery 2.6 minutes\n1 person\nEvery 43.8 seconds\n909K\n1M\n2.5M\n5M\n7.5M\n10M\n12M\nCity | 2026 Pop.",
+        "score": 6.9215,
+        "rank": 0
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "heading": "",
+        "chunk_text": "a matter of phenotype) and assimilated, westernized indigenous people.[61][62]\nThe Pardos make up 45.3% or 92.1 million people of Brazil's population.[63] They live in the entire territory of Brazil. Although, according to DNA resources, most Brazilians possess some degree of mixed-race ancestry, less than 45% of the country's population classified themselves as being part of this group due to phenotype.[64]\nAfro-Brazilians\n[edit]According to the 2022 census, there are 20.7 million self-declared Black Brazilians, about 10.2% of the population.[63][64]\nAsian/Yellow Brazilians\n[edit]According to the 2022 census, self-declared Yellow Brazilians number 850,130, or 0.42% of Brazil's population. Yellow is the term used for people of East Asian (Japanese, Korean, Chinese) descent.[65] In 2022, Japan's Ministry of Foreign Affairs stated that there were 2 million Japanese descendants in Brazil.[66] Brazil has the largest population of Japanese descent outside Japan.[67] Japanese immigration to Brazil started on 18 June 1908, when the Japanese ship Kasato-Maru arrived in the Port of Santos, south of São Paulo, carrying the first 781 people to take advantage of a bilateral agreement promoting immigration.\nThere are also smaller communities of Korean people and Chinese origin.[68]\nNative Brazilians\n[edit]The Amerindians make up 0.8% of Brazil's population, or about 1.6 million people.",
+        "score": 5.0341,
+        "rank": 1
+      },
+      {
+        "url": "https://worldpopulationreview.com/countries/brazil",
+        "title": "https://worldpopulationreview.com/countries/brazil",
+        "heading": "",
+        "chunk_text": "oversial within Brazil, and IBGE has been criticized for continuing to use it.\nThe main religion in Brazil is Roman Catholic.\nAround 90% of the population is either Catholic (65%) or Protestant (22%). In fact, Brazil has the world’s largest Catholic population of 123 million people.\nAs well as Christianity, 1.3% of people reported themselves as Spiritists, 0.3% reported themselves as followers of traditional African religions and 1.3% reported themselves as followers of a diverse range of other religions. In addition, 7% of Brazilians reported themselves as being non-religious.\nThe primary and official language of Brazil is Portuguese.\nLife expectancy has also grown in Brazil to 71.6 years for men and 78.8 years for women. It’s estimated both men and women will live longer than 80 years on average by 2041, which means Brazil will also be dealing with an aging population before long, with greater demands on pensions and health care. The current median age in Brazil is approximately 32 years of age.\nInterestingly, Brazil is believed to have the biggest population of uncontacted peoples on earth, and the National Indian Foundation reported 67 uncontacted tribes in the country in 2007, up from 40 just two years prior. It’s estimated that about 900,000 Indians across 240 tribes live in Brazil, compared to 5 million when Europeans arrived on the continent.\nThroughout Brazil’s history, population growth has been rapid and Brazil is a country of young people.",
+        "score": 4.5984,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "heading": "",
+        "chunk_text": "came in significant numbers to Brazil after 1870. Most of them settled in the State of Paraná, working as small farmers.\n- Spaniards came in large numbers to Brazil, starting in the late 19th century. Most of them were attracted to work in the coffee plantations in the state of São Paulo.[59]\n- Ukrainians came mostly in the late 19th century. Currently they number approximately 980,000, most of whom live in a compact settlement in south central Paraná.[60]\nMixed-race/Pardo-Brazilians\n[edit]Brazil does not have a category for multiracial people, but a Pardo (brown) one, which may include caboclos, mulatos, cafuzos (local ethnonyms for people of noticeable mixed European and Amerindian, African and European, and Amerindian and African descent, i.e., mestizos, mulattoes and zambos, respectively), the multiracial result of their intermixing (despite most of White and Black Brazilians possessing some degree of race-mixing, since brownness in Brazil is a matter of phenotype) and assimilated, westernized indigenous people.[61][62]\nThe Pardos make up 45.3% or 92.1 million people of Brazil's population.[63] They live in the entire territory of Brazil.",
+        "score": 1.0668,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "heading": "",
+        "chunk_text": "12.23% Independents, 0.12% Orthodox, and 0.09% unaffiliated Christian.[106] Kardecist spiritism was the second-largest religion practiced in Brazil as ARDA's 2020 study, with 4.83% of the population. Of its 3.03% irreligious population, 2.59% were agnostic and 0.44% atheist.[106]\nBrazil has the largest Roman Catholic population in the world.[107]\nFollowers of Protestantism are rising in number. Until 1970, the majority of Brazilian Protestants were adherents of \"traditional churches\", mostly Lutherans, Presbyterians and Baptists. There are 120,000 Episcopalians in 9 dioceses (Anglican Episcopal Church of Brazil). Since then, numbers of Pentecostal and Neopentecostal adherents have increased significantly.\nIslam in Brazil was first practiced by African slaves.[108] The Muslim population in Brazil is made up mostly of Arab immigrants.[109]\nThe largest population of Buddhists in Latin America lives in Brazil, due greatly to Brazil's large Japanese population.\n[edit]- Race and ethnicity in Brazil\n- Demographics of Rio de Janeiro\n- List of largest cities in Brazil\n- Racial democracy\n- Brazilian Journal of Population Studies\n- Internal migration in Brazil\nReferences\n[edit]- ^ \"IBGE: Brasil tem população estimada de 213,4 milhões de habitantes em 2025\". UOL (in Brazilian Portuguese). Archived from the original on 9 October 2025. Retrieved 10 November 2025.\n- ^ a b c d \"Panorama\". Censo 2022 (in Brazilian Portuguese). IBGE.",
+        "score": 1.0546,
+        "rank": 4
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "heading": "",
+        "chunk_text": "ndigenous tribes, this part of Brazil was reached by Portuguese and Spanish colonists in the 17th century, but it started to be populated by non-Indians only in the late 19th and early 20th centuries. The exploitation of rubber used in the growing industries of automobiles, has emerged a huge migration to the region.\nMany people from the poor Northeast Brazil, mostly Ceará, moved to the Amazon area. The contact between the Indians and the northeastern rubbers created the base of the ethnic composition of the region, with its mixed-race majority.\nCentral-West\n[edit]- Mixed (52.4%)\n- White (37.0%)\n- Black (9.10%)\n- Indigenous (1.00%)\n- East Asian (0.40%)\nAccording to the 2022 census, in the Central-West Pardo (brown) make up 52.4% of the population, Whites 37%, Blacks 9.1%, Indigenous 1.2% and Yellow (East-Asian descent) 0.4%.[99] The Central-West region of Brazil was inhabited by diverse Indians when the Portuguese arrived in the early 18th century. The Portuguese came to explore the precious stones that were found there. Contact between the Portuguese and the Indians created a mixed-race population. Until the mid-20th century, Central-West Brazil had a very small population. The situation changed with the construction of Brasília, the new capital of Brazil, in 1960. Many workers were attracted to the region, mostly from northeastern Brazil.\nA new wave of settlers started arriving from the 1970s.",
+        "score": -0.9235,
+        "rank": 5
+      },
+      {
+        "url": "https://worldpopulationreview.com/countries/brazil",
+        "title": "https://worldpopulationreview.com/countries/brazil",
+        "heading": "",
+        "chunk_text": "Male: 104,987,755 (49.2%)\n* As of 5/7/2026\n1 birth\nEvery 12.7 seconds\n1 death\nEvery 20.1 seconds\n1 emigrant\nEvery 2.6 minutes\n1 person\nEvery 43.8 seconds\n909K\n1M\n2.5M\n5M\n7.5M\n10M\n12M\nCity | 2026 Pop. ↓ |\n---|---|\nSao Paulo | 12,005,878 |\nRio de Janeiro | 6,772,868 |\nBrasilia | 3,043,900 |\nFortaleza | 2,609,729 |\nSalvador | 2,593,321 |\nBelo Horizonte | 2,434,975 |\nManaus | 2,341,723 |\nCuritiba | 1,852,299 |\nRecife | 1,598,694 |\nGoiania | 1,523,855 |\nBrazil, officially the Federative Republic of Brazil, is the largest country in South America and Latin America, and the fifth largest country in terms of population and size.\nBrazil’s census addresses ethnicity and race by categorizing people mainly by skin color. It asks people to place themselves into one of a number of categories, some of which would seem unusual to an American or European. As well as ‘indigenous’ (the smallest category), Brazilians are asked to report whether they believe they are white, black, brown or yellow.\nThe results of the census indicated that 92 million (48%) Brazilians were white, 83 million (44%) were brown, 13 million (7%) were black, 1.1 million (0.50%) were yellow and 536,000 (0.25%) were indigenous. This method of classifying race is controversial within Brazil, and IBGE has been criticized for continuing to use it.\nThe main religion in Brazil is Roman Catholic.\nAround 90% of the population is either Catholic (65%) or Protestant (22%).",
+        "score": -1.1097,
+        "rank": 6
+      },
+      {
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "https://www.worldometers.info/world-population/brazil-population/",
+        "heading": "",
+        "chunk_text": "22 |\n38 | Jundiaí | 465,531 |\n39 | Porto Velho | 422,943 |\n40 | Petrolina | 418,619 |\n41 | São José do Rio Preto | 414,406 |\n42 | Americana | 412,133 |\n43 | Volta Redonda | 398,107 |\n44 | Caxias do Sul | 383,774 |\n45 | Campina Grande | 369,184 |\n46 | Colina de Laranjeiras | 365,960 |\n47 | Boa Vista | 360,361 |\n48 | Piracicaba | 357,844 |\n49 | Montes Claros | 355,651 |\n50 | Anápolis | 354,576 |\n51 | Praia Grande | 352,067 |\n52 | Bauru | 351,405 |\n53 | Francisco Morato | 346,105 |\n54 | Franca | 337,878 |\n55 | Rio Branco | 332,810 |\n56 | Gravataí | 330,969 |\n57 | Canoas | 325,022 |\n58 | Uberaba | 312,745 |\n59 | Campos dos Goytacazes | 310,590 |\n60 | Taubaté | 310,170 |\n61 | Caruaru | 299,805 |\n62 | Ponta Grossa | 296,610 |\n63 | Cascavel | 289,904 |\n64 | Limeira | 284,657 |\n65 | Pelotas | 280,551 |\n66 | Vitória da Conquista | 268,375 |\n67 | Mossoró | 259,132 |\n68 | Itajaí | 248,590 |\n69 | Ipatinga | 244,390 |\n70 | Governador Valadares | 239,060 |\nThe Brazil Population (Live) counter shows a continuously updated estimate of the current population of Brazil delivered by Worldometer's RTS algorithm, which processes data collected from the United Nations Population Division.\nThe Population of Brazil (1950 - 2026) chart plots the total population count as of July 1 of each year, from 1950 to 2026.\nThe Yearly Population Growth Rate chart plots the annual percentage changes in population registered on July 1 of each year, from 1951 to 2026.",
+        "score": -3.1568,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 17,
+      "decompose_ms": 2924,
+      "search_ms": 2944,
+      "extract_ms": 5859,
+      "chunk_ms": 48,
+      "retrieve_ms": 4363,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 4,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 26064,
+    "elapsed_s": 29.45,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

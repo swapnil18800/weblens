@@ -1,0 +1,348 @@
+{
+  "id": "tf1",
+  "category": "temporal_freshness",
+  "domain": "ai",
+  "question": "What are the most recent advances in mixture-of-experts (MoE) model training as of 2026?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Should mention 2025-2026 work, not just 2022-2023 papers.",
+  "key_facts": [
+    "mixture of experts",
+    "MoE"
+  ],
+  "ground_truth": "Recent MoE work focuses on routing stability, expert specialization, fine-grained MoE in models like DeepSeek-V3, Llama, and proprietary frontier models. Multi-trillion-parameter MoEs are now common.",
+  "session_id": "eval-20260511T060411Z-tf1",
+  "verdict": "partial",
+  "aggregate": 0.735,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.8,
+    "context_recall": 1.0,
+    "context_precision": 0.375,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.5,
+    "answer_relevancy": 0.594,
+    "aggregate": 0.735
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.8,
+      "supported": 4,
+      "total": 5,
+      "reasoning": "DeepSeek-V3, DBRX, Grok-1, Jamba, GPT-5, Kimi K2 claims supported; table row for 2026 missing."
+    },
+    "context_precision": {
+      "score": 0.375,
+      "relevant": 3,
+      "total": 8,
+      "reasoning": "Chunks 1,2,8 discuss recent MoE advances; others are references or older details."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "mixture of experts",
+        "MoE"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.594,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "mixture of experts",
+      "MoE"
+    ]
+  },
+  "pipeline": {
+    "answer": "## The Evolution of Mixture-of-Experts Training: 2024–2026\n\nMixture-of-Experts (MoE) training has undergone a dramatic transformation from 2024 to 2026, shifting from experimental architectures into the dominant paradigm for frontier AI models. The key advances span extreme scale with sparse activation, production-grade training frameworks, and fundamental stability improvements that have made trillion-parameter models practical.\n\n## 2024: Laying the Foundation\n\nThe year 2024 established critical breakthroughs in efficiency and open-source scaling:\n\n- **DeepSeek-V3 (Dec 2024)** pioneered an **auxiliary-loss-free load-balancing strategy** using bias-based routing adjustments, eliminating the traditional auxiliary loss term [4][1]. With **256 fine-grained experts**, 671B total/37B active parameters, and training on 14.8T tokens in only 2.788M H800 GPU hours, it set a new efficiency benchmark [4].\n- **DBRX** (132B total/36B active) and **Grok-1** (314B parameters, 8 experts with top-2 gating) expanded the open-source MoE landscape [4].\n- **Jamba** combined Transformer attention with Mamba state-space layers and MoE (52B total/12B active), introducing hybrid architectures [4].\n\n## 2025–2026: Production Scaling, Multimodality, and Megatron Core\n\n| Feature | 2025 Advances | 2026 Advances |\n|---------|---------------|---------------|\n| **Scale & Architecture** | GPT-5 multimodal MoE with specialized coding/conversation/math sub-models; Kimi K2 reaches trillion-parameter scale [2] | MoE becomes the dominant architecture for virtually all frontier models [2][4] |\n| **Open-Source Dominance** | All major MoE advances open-sourced, democratizing access [2] | DeepSeek-V3.2 and Qwen3-Next support in production frameworks [5] |\n| **Training Stability** | Router Z-Loss formalized; expert dropout rate increase; reduce batch size during fine-tuning [1] | Router weights initialized with std < 0.01; learning rate 2–5× lower than dense models; router logits in float32 [1] |\n| **Hybrid Architectures** | Jamba 1.5 (398B total/94B active) delivers 2.5× faster long-context inference [4] | Pipeline-aware fine-grained activation offloading [5] |\n\n**NVIDIA Megatron Core (MCore)** provides production-grade infrastructure across 2025–2026:\n- **v0.13 (Jul 2025):** Precision-aware optimizer, flexible asymmetric virtual pipeline parallelism, hybrid shard data-parallel for MoE [5].\n- **v0.14 (Sep 2025):** Batch-level EP-A2A overlap hiding, FP8 fine-grained recomputation, router fusion kernels [5].\n- **v0.15 (Nov 2025):** HybridEP backend, FSDP with expert parallelism [5].\n- **Jan 2026:** Muon and layer-wise distributed optimizer, CUDA Graph support with fine-grained scopes [5].\n\n## Key Training Practices and Stability\n\nThe central challenge remains **expert collapse**, where tokens concentrate on specific experts, creating dead experts [1][4]. Modern solutions include:\n- **Auxiliary-loss-free load balancing** (DeepSeek-V3 style bias-based routing) [4].\n- **Router Z-Loss** to prevent logit divergence [1].\n- **Capacity factor** in the 1.0–1.5 range; number of experts as a multiple of devices [1].\n- **Fine-tuning guidelines** from ST-MoE: increase expert dropout rate, reduce batch size, freeze router while fine-tuning experts [1].\n\n## Key Takeaways\n\n- **DeepSeek-V3's auxiliary-loss-free load balancing** revolutionized training efficiency, enabling 256 fine-grained experts with minimal overhead [4][1].\n- **MoE has become the dominant architecture** for frontier models by 2026, with GPT-5, Kimi K2, and Jamba 1.5 all leveraging sparse activation at trillion-parameter scale [2][4].\n- **NVIDIA Megatron Core provides production-grade infrastructure** with FP8 recomputation, EP-A2A overlap, and Muon optimizer support [5].\n- **Open-source dominance** has democratized access to state-of-the-art MoE training methods [2].\n- **Expert collapse remains the primary training stability challenge**, addressed through router Z-Loss, bias-based routing, and careful hyperparameter tuning [1][4].",
+    "mode": "search",
+    "rewritten_query": "What are the most recent advances in mixture-of-experts (MoE) model training as of 2026?",
+    "rewrote": false,
+    "rationale": "Time-sensitive ML topic; needs traced sources.",
+    "sub_queries": [
+      "Advances in mixture-of-experts model training techniques 2024 2025 2026",
+      "Recent mixture-of-experts MoE training improvements 2025 2026",
+      "State-of-the-art MoE training methods 2025 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en",
+        "title": "Mixture of Experts (MoE) Architecture Paper Review and Production Scaling 2026",
+        "snippet": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#quiz)Quiz\n\nQ5: How does Training Stability and Load Balancing work? Load Balancing Loss Implementation The most common problem in MoE training is Expert Collapse. When tokens concentrate on specific exp"
+      },
+      {
+        "num": 2,
+        "url": "https://medium.com/@gaurvi.i.vishnoi/the-rise-of-mixture-of-experts-how-moe-is-reshaping-ai-in-2026-45a47bfa4dfc",
+        "title": "The Rise of Mixture of Experts: How MoE is Reshaping AI in 2026",
+        "snippet": "The 2025–2026 Revolution\n\nThe year 2025 has been revolutionary for MoE architectures, with several groundbreaking models pushing the boundaries of what’s possible with sparse activation. Key innovations include:\n\n**GPT-5’s Multimodal MoE**: Rather than relying on a single monolithic neural network, "
+      },
+      {
+        "num": 3,
+        "url": "https://arxiv.org/html/2508.13337v1",
+        "title": "https://arxiv.org/html/2508.13337v1",
+        "snippet": "2025. DeepSeek-V3 Technical Report. arXiv:2412.19437 [cs.CL]\n- Du et al. (2024) Zhixu Du, Shiyu Li, Yuhao Wu, Xiangyu Jiang, Jingwei Sun, Qilin Zheng, Yongkai Wu, Ang Li, Hai Helen Li, and Yiran Chen. 2024. SiDA: Sparsity-Inspired Data-Aware Serving for Efficient and Scalable Large Mixture-of-Expert"
+      },
+      {
+        "num": 4,
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "snippet": "represent a trend in late 2023 where open model communities started training instruct-tuned MoEs that outperform equivalently sized dense models on benchmarks, especially in reasoning tasks [85] [99]. Databricks' DBRX introduced a fine-grained MoE (132B total, 36B active) that was the state-of-the-a"
+      },
+      {
+        "num": 5,
+        "url": "https://docs.nvidia.com/megatron-core/developer-guide/latest/user-guide/features/moe.html",
+        "title": "https://docs.nvidia.com/megatron-core/developer-guide/latest/user-guide/features/moe.html",
+        "snippet": "Mixture of Experts#\nMegatron Core MoE#\nMegatron Core MoE is a production-ready framework for training large-scale Mixture-of-Experts models, providing the foundational architecture, performance optimizations, and best practices that guide MoE framework development across the industry.\nWhat’s New#\nFo"
+      },
+      {
+        "num": 6,
+        "url": "https://www.linkedin.com/pulse/whats-new-mixture-experts-2025-upp-technology-jpw2c",
+        "title": "What's New in Mixture of Experts in 2025?",
+        "snippet": "Introduction\n\nAs the scale and complexity of AI models continue to grow in 2025, Mixture of Experts (MoE) remains at the forefront of innovation, driving performance while optimizing computational efficiency.\n\nSince our last deep dive into MoE, the landscape has changed significantly. Emerging innov"
+      }
+    ],
+    "urls": [
+      "https://www.upp-technology.com/en/news/whats-new-in-mixture-of-experts-in-2025/",
+      "https://www.linkedin.com/pulse/whats-new-mixture-experts-2025-upp-technology-jpw2c",
+      "https://medium.com/@gaurvi.i.vishnoi/the-rise-of-mixture-of-experts-how-moe-is-reshaping-ai-in-2026-45a47bfa4dfc",
+      "https://www.sciopen.com/article/10.26599/TST.2025.9010169",
+      "https://en.wikipedia.org/wiki/Mixture_of_experts",
+      "https://magazine.sebastianraschka.com/p/research-papers-in-january-2024",
+      "https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en",
+      "https://www.youtube.com/watch?v=BnWBimJWxSY",
+      "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+      "https://friendli.ai/blog/moe-models-comparison",
+      "https://www.youtube.com/watch?v=EUkOo7jWxgc",
+      "https://neurips.cc/virtual/2025/poster/116506",
+      "https://arxiv.org/html/2508.13337v1",
+      "https://docs.nvidia.com/megatron-core/developer-guide/latest/user-guide/features/moe.html"
+    ],
+    "chunk_count": 24,
+    "chunks": [
+      {
+        "url": "https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en",
+        "title": "Mixture of Experts (MoE) Architecture Paper Review and Production Scaling 2026",
+        "heading": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#overview)Overview",
+        "chunk_text": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#overview)Overview\n\nAs the parameter counts of large language models scale to trillions, the limitations of Dense models that activate all parameters for every token have become clear. Training and inference costs increase proportionally with parameter count. Mixture of Experts (MoE) has established itself as the most promising solution to this problem. MoE selectively activates only a subset of experts from the total parameters, dramatically reducing actual computation compared to Dense models while maintaining large model capacity.\n\nIn 2022, Switch Transformer opened the possibility of trillion-parameter scaling with single-expert routing, and GShard presented a distributed training pipeline for a 600B parameter model. ST-MoE improved both training stability and transfer learning quality simultaneously, while Mixtral 8x7B proved the practicality of open-source MoE models. DeepSeek-MoE and DeepSeek-V3 opened new directions with fine-grained expert segmentation and auxiliary-loss-free load balancing. In this article, we analyze the key contributions of each paper and organize strategies for operating MoE in production, covering routing mechanisms, training stability, and inference optimization.",
+        "score": 6.524,
+        "rank": 0
+      },
+      {
+        "url": "https://medium.com/@gaurvi.i.vishnoi/the-rise-of-mixture-of-experts-how-moe-is-reshaping-ai-in-2026-45a47bfa4dfc",
+        "title": "The Rise of Mixture of Experts: How MoE is Reshaping AI in 2026",
+        "heading": "The 2025–2026 Revolution",
+        "chunk_text": "The 2025–2026 Revolution\n\nThe year 2025 has been revolutionary for MoE architectures, with several groundbreaking models pushing the boundaries of what’s possible with sparse activation. Key innovations include:\n\n**GPT-5’s Multimodal MoE**: Rather than relying on a single monolithic neural network, GPT-5 employs multiple specialized expert sub-models, each trained to master specific types of tasks like coding, conversation, mathematics, or multimodal analysis.\n\n**Massive Scale**: Kimi K2’s trillion parameters prove that MoE can scale to previously unimaginable sizes while remaining practical to run.\n\n**Open Source Dominance**: All major 2025 MoE advances are open-source, democratizing access to state-of-the-art AI capabilities.",
+        "score": 6.3207,
+        "rank": 1
+      },
+      {
+        "url": "https://arxiv.org/html/2508.13337v1",
+        "title": "https://arxiv.org/html/2508.13337v1",
+        "heading": "",
+        "chunk_text": "2025. DeepSeek-V3 Technical Report. arXiv:2412.19437 [cs.CL]\n- Du et al. (2024) Zhixu Du, Shiyu Li, Yuhao Wu, Xiangyu Jiang, Jingwei Sun, Qilin Zheng, Yongkai Wu, Ang Li, Hai Helen Li, and Yiran Chen. 2024. SiDA: Sparsity-Inspired Data-Aware Serving for Efficient and Scalable Large Mixture-of-Experts Models. In Proceedings of Machine Learning and Systems (MLSys ’24), Vol. 6. 224–238.\n- Fedus et al. (2022) William Fedus, Barret Zoph, and Noam Shazeer. 2022. Switch transformers: Scaling to trillion parameter models with simple and efficient sparsity. The Journal of Machine Learning Research (JMLR ’22) 23, 1 (2022), 5232–5270.\n- Gale et al. (2023) Trevor Gale, Deepak Narayanan, Cliff Young, and Matei Zaharia. 2023. Megablocks: Efficient sparse training with mixture-of-experts. Proceedings of Machine Learning and Systems (MLSys ’23) 5 (2023).\n- He et al. (2022) Jiaao He, Jidong Zhai, Tiago Antunes, Haojie Wang, Fuwen Luo, Shangfeng Shi, and Qin Li. 2022. FasterMoE: modeling and optimizing training of large-scale dynamic pre-trained models. In Proceedings of the 27th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming (PPoPP ’22). 15 pages.\n- Hwang et al. (2023) Changho Hwang, Wei Cui, Yifan Xiong, Ziyue Yang, Ze Liu, Han Hu, Zilong Wang, Rafael Salas, Jithin Jose, Prabhat Ram, et al. 2023. Tutel: Adaptive mixture-of-experts at scale. Proceedings of Machine Learning and Systems (MLSys ’23) (2023).\n- Jiang et al.",
+        "score": 6.1398,
+        "rank": 2
+      },
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "heading": "",
+        "chunk_text": "represent a trend in late 2023 where open model communities started training instruct-tuned MoEs that outperform equivalently sized dense models on benchmarks, especially in reasoning tasks [85] [99]. Databricks' DBRX introduced a fine-grained MoE (132B total, 36B active) that was the state-of-the-art open model at the time of release in early 2024 [88] [89].\nThe pace of open MoE releases has accelerated dramatically since 2024. xAI's Grok-1 (March 2024) was open-sourced under Apache 2.0 with 314B total parameters and 8 experts (top-2 gating), making it one of the largest openly available MoE models at that time [87]. DeepSeek-V3 (December 2024) pushed the boundaries of MoE efficiency with 671B total parameters and only 37B active per token, using 256 fine-grained experts and an innovative auxiliary-loss-free load balancing strategy that eliminates the traditional auxiliary loss term in favor of bias-based routing adjustments [71]. DeepSeek-V3 was pretrained on 14.8 trillion tokens using only 2.788 million H800 GPU hours – a remarkably efficient training run for a model of its scale. AI21 Labs' Jamba (2024) introduced a novel hybrid architecture combining Transformer attention layers, Mamba state-space model layers, and MoE, with 52B total parameters and 12B active. Its successor Jamba 1.5 (2025) scaled to 398B total with 94B active, demonstrating up to 2.5× faster inference on long contexts compared to similar-sized competitors [90].",
+        "score": 6.0572,
+        "rank": 3
+      },
+      {
+        "url": "https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en",
+        "title": "Mixture of Experts (MoE) Architecture Paper Review and Production Scaling 2026",
+        "heading": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#quiz)Quiz",
+        "chunk_text": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#quiz)Quiz\n\nQ5: How does Training Stability and Load Balancing work? Load Balancing Loss Implementation The most common problem in MoE training is Expert Collapse. When tokens concentrate on specific experts, only those experts are trained, and the remaining experts go unused, effectively becoming Dead Experts.\n\n[Discuss on Twitter](https://mobile.twitter.com/search?q=https%3A%2F%2Fwww.youngju.dev%2Fblog%2Fai-papers%2F2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en) • [View on GitHub](https://github.com/fjvbn2003/yj-next-blog2/blob/main/data/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en.mdx)\n\nLoad Comments",
+        "score": 5.8856,
+        "rank": 4
+      },
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "heading": "",
+        "chunk_text": "21 Labs (2024). Jamba: A Hybrid Transformer-Mamba Language Model. arXiv:2403.19887[76].\n-\nMuennighoff, N. et al. (2024). OLMoE: Open Mixture-of-Experts Language Models. Allen AI [67].\n-\nNVIDIA (2025). Mixture of Experts Powers the Most Intelligent Frontier AI Models (Blog) [55].\n-\n(Additional references are cited inline in text above [70] [53] etc.)\nExternal Sources (119)\nNeed Expert Guidance on This Topic?\nLet's discuss how IntuitionLabs can help you navigate the challenges covered in this article.\nI'm Adrien Laurent, Founder & CEO of IntuitionLabs. With 25+ years of experience in enterprise software development, I specialize in creating custom AI solutions for the pharmaceutical and life science industries.\nDISCLAIMER\nThe information contained in this document is provided for educational and informational purposes only. We make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information contained herein. Any reliance you place on such information is strictly at your own risk. In no event will IntuitionLabs.ai or its representatives be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from the use of information presented in this document. This document may contain content generated with the assistance of artificial intelligence technologies.",
+        "score": 5.7247,
+        "rank": 5
+      },
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "heading": "",
+        "chunk_text": "on. arXiv:2207.04672. (NLLB 200, includes MoE variant) [40].\n-\nXue, F. et al. (2024). OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models. arXiv:2402.01739[81].\n-\nSanseviero, O. et al. (2023). Mixture of Experts Explained. HuggingFace Blog[42] [11].\n-\nMicrosoft DeepSpeed Team (2022). DeepSpeed-MoE: Advancing Mixture-of-Experts Inference and Training (Blog) [60] [53].\n-\nMicrosoft Research (2021). Tutel: An Efficient MoE Implementation for Large DNNs (Blog) [45] [96].\n-\nMistral AI (2024). Cheaper, Better, Faster, Stronger: Introducing Mixtral 8×22B (Blog) [99] [119].\n-\nDatabricks (2024). Introducing DBRX: A New State-of-the-Art Open LLM (Blog) [88] [89].\n-\nHuawei Noah’s Ark Lab (2023). PanGu-Σ: A Trillion-Parameter Sparse LLM (Paper & Press) [107] [108].\n-\nDeepSeek AI (2024). DeepSeek-V3 Technical Report. arXiv:2412.19437[71].\n-\nMeta AI (2025). The Llama 4 Herd: The Beginning of a New Era of Natively Multimodal AI Innovation (Blog) [91].\n-\nxAI (2024). Open Release of Grok-1 (Blog) [87].\n-\nAI21 Labs (2024). Jamba: A Hybrid Transformer-Mamba Language Model. arXiv:2403.19887[76].\n-\nMuennighoff, N. et al. (2024). OLMoE: Open Mixture-of-Experts Language Models. Allen AI [67].\n-\nNVIDIA (2025).",
+        "score": 5.6066,
+        "rank": 6
+      },
+      {
+        "url": "https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en",
+        "title": "Mixture of Experts (MoE) Architecture Paper Review and Production Scaling 2026",
+        "heading": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#training-setup)Training Setup",
+        "chunk_text": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#training-setup)Training Setup\n\n*   Router weights initialized with small standard deviation (0.01 or less)\n*   Auxiliary loss coefficient (alpha_balance) started in the 0.005-0.01 range\n*   Router Z-Loss activated\n*   Learning rate conservative compared to same-size Dense model (2-5x lower)\n*   Router logit computation maintained in float32 during bfloat16 training\n*   Number of experts is a multiple of the number of devices\n*   Capacity Factor set in the 1.0-1.5 range",
+        "score": 5.3199,
+        "rank": 7
+      },
+      {
+        "url": "https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en",
+        "title": "Mixture of Experts (MoE) Architecture Paper Review and Production Scaling 2026",
+        "heading": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#quiz)Quiz",
+        "chunk_text": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#quiz)Quiz\n\nQ5: How does Training Stability and Load Balancing work? Load Balancing Loss Implementation The most common problem in MoE training is Expert Collapse. When tokens concentrate on specific experts, only those experts are trained, and the remaining experts go unused, effectively becoming Dead Experts.\n\n[Discuss on Twitter](https://mobile.twitter.com/search?q=https%3A%2F%2Fwww.youngju.dev%2Fblog%2Fai-papers%2F2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en) • [View on GitHub](https://github.com/fjvbn2003/yj-next-blog2/blob/main/data/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en.mdx)\n\nLoad Comments",
+        "score": 7.241,
+        "rank": 0
+      },
+      {
+        "url": "https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en",
+        "title": "Mixture of Experts (MoE) Architecture Paper Review and Production Scaling 2026",
+        "heading": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#overview)Overview",
+        "chunk_text": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#overview)Overview\n\nAs the parameter counts of large language models scale to trillions, the limitations of Dense models that activate all parameters for every token have become clear. Training and inference costs increase proportionally with parameter count. Mixture of Experts (MoE) has established itself as the most promising solution to this problem. MoE selectively activates only a subset of experts from the total parameters, dramatically reducing actual computation compared to Dense models while maintaining large model capacity.\n\nIn 2022, Switch Transformer opened the possibility of trillion-parameter scaling with single-expert routing, and GShard presented a distributed training pipeline for a 600B parameter model. ST-MoE improved both training stability and transfer learning quality simultaneously, while Mixtral 8x7B proved the practicality of open-source MoE models. DeepSeek-MoE and DeepSeek-V3 opened new directions with fine-grained expert segmentation and auxiliary-loss-free load balancing. In this article, we analyze the key contributions of each paper and organize strategies for operating MoE in production, covering routing mechanisms, training stability, and inference optimization.",
+        "score": 7.1186,
+        "rank": 1
+      },
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "heading": "",
+        "chunk_text": "on. arXiv:2207.04672. (NLLB 200, includes MoE variant) [40].\n-\nXue, F. et al. (2024). OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models. arXiv:2402.01739[81].\n-\nSanseviero, O. et al. (2023). Mixture of Experts Explained. HuggingFace Blog[42] [11].\n-\nMicrosoft DeepSpeed Team (2022). DeepSpeed-MoE: Advancing Mixture-of-Experts Inference and Training (Blog) [60] [53].\n-\nMicrosoft Research (2021). Tutel: An Efficient MoE Implementation for Large DNNs (Blog) [45] [96].\n-\nMistral AI (2024). Cheaper, Better, Faster, Stronger: Introducing Mixtral 8×22B (Blog) [99] [119].\n-\nDatabricks (2024). Introducing DBRX: A New State-of-the-Art Open LLM (Blog) [88] [89].\n-\nHuawei Noah’s Ark Lab (2023). PanGu-Σ: A Trillion-Parameter Sparse LLM (Paper & Press) [107] [108].\n-\nDeepSeek AI (2024). DeepSeek-V3 Technical Report. arXiv:2412.19437[71].\n-\nMeta AI (2025). The Llama 4 Herd: The Beginning of a New Era of Natively Multimodal AI Innovation (Blog) [91].\n-\nxAI (2024). Open Release of Grok-1 (Blog) [87].\n-\nAI21 Labs (2024). Jamba: A Hybrid Transformer-Mamba Language Model. arXiv:2403.19887[76].\n-\nMuennighoff, N. et al. (2024). OLMoE: Open Mixture-of-Experts Language Models. Allen AI [67].\n-\nNVIDIA (2025).",
+        "score": 6.9692,
+        "rank": 2
+      },
+      {
+        "url": "https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en",
+        "title": "Mixture of Experts (MoE) Architecture Paper Review and Production Scaling 2026",
+        "heading": "Related Articles",
+        "chunk_text": "Related Articles\n\n*   ### [Mixture of Experts(MoE) 아키텍처 논문 리뷰와 실전 스케일링 2026 2026년 3월 4일](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026)\n*   ### [AI 논문 읽기: Agentic Reasoning 구현 가이드 2026 2026년 3월 4일](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-agentic-reasoning-implementation-guide-2026)\n*   ### [Diffusion Model 논문 서베이: DDPM에서 Stable Diffusion·DiT·SDXL까지 이미지 생성 모델의 진화 2026년 3월 12일](https://www.youngju.dev/blog/ai-papers/2026-03-12-diffusion-model-ddpm-stable-diffusion-dit-sdxl-survey)",
+        "score": 6.2217,
+        "rank": 3
+      },
+      {
+        "url": "https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en",
+        "title": "Mixture of Experts (MoE) Architecture Paper Review and Production Scaling 2026",
+        "heading": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#fine-tuning)Fine-tuning",
+        "chunk_text": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#fine-tuning)Fine-tuning\n\n*   Expert dropout rate increased compared to pre-training (ST-MoE recommendation)\n*   Batch size reduced compared to pre-training\n*   Experimented with freezing the router and fine-tuning only experts\n*   Verified that expert specialization distribution changed appropriately for the task after fine-tuning",
+        "score": 6.2215,
+        "rank": 4
+      },
+      {
+        "url": "https://docs.nvidia.com/megatron-core/developer-guide/latest/user-guide/features/moe.html",
+        "title": "https://docs.nvidia.com/megatron-core/developer-guide/latest/user-guide/features/moe.html",
+        "heading": "",
+        "chunk_text": "Mixture of Experts#\nMegatron Core MoE#\nMegatron Core MoE is a production-ready framework for training large-scale Mixture-of-Experts models, providing the foundational architecture, performance optimizations, and best practices that guide MoE framework development across the industry.\nWhat’s New#\nFor latest features and architectures, please refer to the MCore dev roadmap.\n🔥 [MCore dev] (2026/01)#\n🚀 Pipeline-aware fine-grained activation offloading\n🚀 Qwen3-Next model support\n🚀 DeepSeek-V3.2 model support\n🚀 Muon and Layer-wise distributed optimizer\n🚀 CUDA Graph support with fine-grained scopes\n🔥 [MCore v0.15] (2025/11)#\n🚀 Add HybridEP backend to Flex Dispatcher(GB200, B200, H100 supported)\n🚀 Support FSDP with EP for MoE models\n🔥 [MCore v0.14] (2025/09)#\n🚀 Batch-level overlapping to hide EP-A2A communication (–overlap-moe-expert-parallel-comm –delay-wgrad-compute)\n🚀 FP8 support for Fine-grained Recomputations\nRouter fusion kernels for MoE models (–moe-router-fusion)\nContext Parallelism (CP) support for MTP and MLA\n🔥 [MCore v0.13] (2025/07)#\nSupport bf16 dtype for optimizer states to use precision-aware optimizer in TransformerEngine (–use-precision-aware-optimizer)\nFlexible Asymmetric Virtual Pipeline Parallelism with Custom Pipeline Layout (–pipeline-model-parallel-layout)\nAdd Hybrid Shard Data-Parallel support for MoE models (–num-distributed-optimizer-instances)\nFine-grained recomputation to reduce activation memory.",
+        "score": 6.1866,
+        "rank": 5
+      },
+      {
+        "url": "https://medium.com/@gaurvi.i.vishnoi/the-rise-of-mixture-of-experts-how-moe-is-reshaping-ai-in-2026-45a47bfa4dfc",
+        "title": "The Rise of Mixture of Experts: How MoE is Reshaping AI in 2026",
+        "heading": "The 2025–2026 Revolution",
+        "chunk_text": "The 2025–2026 Revolution\n\nThe year 2025 has been revolutionary for MoE architectures, with several groundbreaking models pushing the boundaries of what’s possible with sparse activation. Key innovations include:\n\n**GPT-5’s Multimodal MoE**: Rather than relying on a single monolithic neural network, GPT-5 employs multiple specialized expert sub-models, each trained to master specific types of tasks like coding, conversation, mathematics, or multimodal analysis.\n\n**Massive Scale**: Kimi K2’s trillion parameters prove that MoE can scale to previously unimaginable sizes while remaining practical to run.\n\n**Open Source Dominance**: All major 2025 MoE advances are open-source, democratizing access to state-of-the-art AI capabilities.",
+        "score": 5.9977,
+        "rank": 6
+      },
+      {
+        "url": "https://www.linkedin.com/pulse/whats-new-mixture-experts-2025-upp-technology-jpw2c",
+        "title": "What's New in Mixture of Experts in 2025?",
+        "heading": "Introduction",
+        "chunk_text": "Introduction\n\nAs the scale and complexity of AI models continue to grow in 2025, Mixture of Experts (MoE) remains at the forefront of innovation, driving performance while optimizing computational efficiency.\n\nSince our last deep dive into MoE, the landscape has changed significantly. Emerging innovations in routing mechanisms and architectural design have enabled MoE models to redefine the capabilities of large-scale AI systems.\n\nIn this post, we'll explore the key innovations that have transformed MoE from a research concept into the production-ready architecture powering today's most advanced AI systems.\n\nRead more: [The History of Mixture of Experts](https://www.upp-technology.com/en/news/the-history-of-mixture-of-experts/?trk=article-ssr-frontend-pulse_little-text-block)",
+        "score": 5.4194,
+        "rank": 7
+      },
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "heading": "",
+        "chunk_text": "represent a trend in late 2023 where open model communities started training instruct-tuned MoEs that outperform equivalently sized dense models on benchmarks, especially in reasoning tasks [85] [99]. Databricks' DBRX introduced a fine-grained MoE (132B total, 36B active) that was the state-of-the-art open model at the time of release in early 2024 [88] [89].\nThe pace of open MoE releases has accelerated dramatically since 2024. xAI's Grok-1 (March 2024) was open-sourced under Apache 2.0 with 314B total parameters and 8 experts (top-2 gating), making it one of the largest openly available MoE models at that time [87]. DeepSeek-V3 (December 2024) pushed the boundaries of MoE efficiency with 671B total parameters and only 37B active per token, using 256 fine-grained experts and an innovative auxiliary-loss-free load balancing strategy that eliminates the traditional auxiliary loss term in favor of bias-based routing adjustments [71]. DeepSeek-V3 was pretrained on 14.8 trillion tokens using only 2.788 million H800 GPU hours – a remarkably efficient training run for a model of its scale. AI21 Labs' Jamba (2024) introduced a novel hybrid architecture combining Transformer attention layers, Mamba state-space model layers, and MoE, with 52B total parameters and 12B active. Its successor Jamba 1.5 (2025) scaled to 398B total with 94B active, demonstrating up to 2.5× faster inference on long contexts compared to similar-sized competitors [90].",
+        "score": 8.0574,
+        "rank": 0
+      },
+      {
+        "url": "https://medium.com/@gaurvi.i.vishnoi/the-rise-of-mixture-of-experts-how-moe-is-reshaping-ai-in-2026-45a47bfa4dfc",
+        "title": "The Rise of Mixture of Experts: How MoE is Reshaping AI in 2026",
+        "heading": "The 2025–2026 Revolution",
+        "chunk_text": "The 2025–2026 Revolution\n\nThe year 2025 has been revolutionary for MoE architectures, with several groundbreaking models pushing the boundaries of what’s possible with sparse activation. Key innovations include:\n\n**GPT-5’s Multimodal MoE**: Rather than relying on a single monolithic neural network, GPT-5 employs multiple specialized expert sub-models, each trained to master specific types of tasks like coding, conversation, mathematics, or multimodal analysis.\n\n**Massive Scale**: Kimi K2’s trillion parameters prove that MoE can scale to previously unimaginable sizes while remaining practical to run.\n\n**Open Source Dominance**: All major 2025 MoE advances are open-source, democratizing access to state-of-the-art AI capabilities.",
+        "score": 7.3819,
+        "rank": 1
+      },
+      {
+        "url": "https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en",
+        "title": "Mixture of Experts (MoE) Architecture Paper Review and Production Scaling 2026",
+        "heading": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#st-moe-zoph-et-al-2022)ST-MoE (Zoph et al., 2022)",
+        "chunk_text": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#st-moe-zoph-et-al-2022)ST-MoE (Zoph et al., 2022)\n\nAs the name ST-MoE implies, the core question of this paper is \"Can MoE models be trained stably (Stable) and transferred effectively (Transferable)?\" It trained a 269B parameter Sparse model (ST-MoE-32B) at the computational cost of a 32B Dense model, and achieved state-of-the-art performance for Sparse models for the first time across diverse benchmarks including SuperGLUE, ARC, and XSum.\n\nFor training stability, it introduced Router Z-Loss. This loss function controls the magnitude of router logits to prevent divergence during training. When used together with the existing auxiliary loss, training stability is significantly improved. It also systematically organized practical design recommendations: Top-2 routing, capacity factor 1.25 during training, and a maximum of 1 expert per core.\n\nFor fine-tuning, it presented experimental results showing that increasing the expert dropout rate, reducing batch size, and setting the learning rate conservatively are effective for improving transfer learning quality.",
+        "score": 7.1058,
+        "rank": 2
+      },
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "heading": "",
+        "chunk_text": "y tasks than a dense 175B model, while using half the inference FLOPs of the dense model [16] [27]. This suggests that at extreme scales, MoEs can yield a strictly better quality-efficiency trade-off. The balance has decisively shifted in favor of MoEs for large-scale AI: as of 2025–2026, nearly all frontier models (DeepSeek-V3/R1, Llama 4, Mistral Large 3, Gemini, and likely GPT-4) use MoE architectures. Ongoing research in quantization (e.g. NVFP4 formats [68] [69]), distillation, and purpose-built hardware continues to make MoEs more practical across the full spectrum of deployment scenarios.\nApplications and Domains of MoE Success\nMoE models have been applied across a range of domains, often yielding state-of-the-art results or improved efficiency:\n-\nNatural Language Processing: This is where MoEs have seen the most traction. Large language models (LLMs) with MoE layers have achieved top-tier performance on language modeling, machine translation, and multitask benchmarks. Google’s early MoE (Shazeer et al. 2017) was demonstrated on neural machine translation, where a mixture-of-experts layer dramatically improved translation quality for the same computational cost [70]. The Switch Transformer (Fedus et al. 2021) applied MoE to the T5 architecture and achieved strong results on language understanding and generation tasks, even reaching comparable performance to GPT-3 with far less training cost by scaling to 1.6T parameters [7].",
+        "score": 6.3044,
+        "rank": 3
+      },
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "heading": "",
+        "chunk_text": "on. arXiv:2207.04672. (NLLB 200, includes MoE variant) [40].\n-\nXue, F. et al. (2024). OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models. arXiv:2402.01739[81].\n-\nSanseviero, O. et al. (2023). Mixture of Experts Explained. HuggingFace Blog[42] [11].\n-\nMicrosoft DeepSpeed Team (2022). DeepSpeed-MoE: Advancing Mixture-of-Experts Inference and Training (Blog) [60] [53].\n-\nMicrosoft Research (2021). Tutel: An Efficient MoE Implementation for Large DNNs (Blog) [45] [96].\n-\nMistral AI (2024). Cheaper, Better, Faster, Stronger: Introducing Mixtral 8×22B (Blog) [99] [119].\n-\nDatabricks (2024). Introducing DBRX: A New State-of-the-Art Open LLM (Blog) [88] [89].\n-\nHuawei Noah’s Ark Lab (2023). PanGu-Σ: A Trillion-Parameter Sparse LLM (Paper & Press) [107] [108].\n-\nDeepSeek AI (2024). DeepSeek-V3 Technical Report. arXiv:2412.19437[71].\n-\nMeta AI (2025). The Llama 4 Herd: The Beginning of a New Era of Natively Multimodal AI Innovation (Blog) [91].\n-\nxAI (2024). Open Release of Grok-1 (Blog) [87].\n-\nAI21 Labs (2024). Jamba: A Hybrid Transformer-Mamba Language Model. arXiv:2403.19887[76].\n-\nMuennighoff, N. et al. (2024). OLMoE: Open Mixture-of-Experts Language Models. Allen AI [67].\n-\nNVIDIA (2025).",
+        "score": 6.0231,
+        "rank": 4
+      },
+      {
+        "url": "https://arxiv.org/html/2508.13337v1",
+        "title": "https://arxiv.org/html/2508.13337v1",
+        "heading": "",
+        "chunk_text": "del with existing methods under the same hardware budget, while maintaining high training throughput. The source code of X-MoE is available at https://github.com/Supercomputing-System-AI-Lab/X-MoE.\n1. Introduction\nLarge Language Models (LLMs) have become the backbone of modern AI applications, achieving remarkable results across domains such as dialogue systems, code generation, and scientific reasoning (Brown et al., 2020; OpenAI, 2023, 2024). However, training these models at scale remains prohibitively expensive. For example, training models at the scale of GPT-3 or GPT-4 consumes hundreds of thousands of GPU days and incurs billions of dollars in compute cost (AI, 2024; Team et al., 2023; Anthropic, 2024; XAI, 2025). As such, reducing the training cost while still achieving high model quality has become a key research challenge.\nNumerous efforts have been made to improve the training efficiency of LLMs. Among those, Mixture-of-Experts (MoE) have emerged as a promising path to enable sublinear compute with respect to the model parameters, allowing for improved model quality without increased training costs (Shazeer et al., 2017; Lepikhin et al., 2020a; Fedus et al., 2022; Jiang et al., 2024a; AI, 2025). In contrast to dense models, MoEs sparsely activate model parameters, which allows one to scale to larger model parameters while keeping per-token compute budgets relatively low.",
+        "score": 5.751,
+        "rank": 5
+      },
+      {
+        "url": "https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en",
+        "title": "Mixture of Experts (MoE) Architecture Paper Review and Production Scaling 2026",
+        "heading": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#quiz)Quiz",
+        "chunk_text": "[](https://www.youngju.dev/blog/ai-papers/2026-03-04-ai-papers-mixture-of-experts-scaling-2026.en#quiz)Quiz\n\nQ1: What is the main topic covered in \"Mixture of Experts (MoE) Architecture Paper Review and Production Scaling 2026\"?\n\nCore paper analysis of Mixture of Experts (MoE) architecture. Covering Switch Transformer, GShard, ST-MoE, and Mixtral -- routing mechanisms, expert parallelism, and load balancing strategies from a production perspective.\n\nQ2: What is MoE Core Concepts? The Principle of Sparse Activation The core idea of MoE is conditional computation. Since only a subset of experts is activated for each input token, the model's total parameter count and the parameters actually used for computation are decoupled.\n\nQ3: Explain the core concept of Key Paper Analysis. Switch Transformer (Fedus et al., 2022) The key contribution of Switch Transformer was radically simplifying MoE routing. While previous MoE used Top-2 or more expert combinations, Switch Transformer introduced Switch Routing, which assigns only a single expert to each token.\n\nQ4: What are the key aspects of Routing Mechanism Deep Dive? Top-K Routing Implementation The routing mechanism is the heart of MoE. It receives the hidden state of an input token and decides which experts to activate, and the quality of this decision determines overall model performance.",
+        "score": 4.5965,
+        "rank": 6
+      },
+      {
+        "url": "https://medium.com/@gaurvi.i.vishnoi/the-rise-of-mixture-of-experts-how-moe-is-reshaping-ai-in-2026-45a47bfa4dfc",
+        "title": "The Rise of Mixture of Experts: How MoE is Reshaping AI in 2026",
+        "heading": "Key Takeaways",
+        "chunk_text": "Key Takeaways\n\n*   **MoE is now the dominant architecture** for virtually all frontier AI models in 2026\n*   **Selective activation** allows massive models to run efficiently by using only relevant experts\n*   **Applications span** NLP, computer vision, healthcare, and recommendation systems\n*   **Trade-offs include** higher memory requirements but faster inference and training\n*   **The trend** is toward fine-grained experts (256+ experts) with sophisticated routing\n*   **Open source dominance** is democratizing access to state-of-the-art capabilities\n*   **Future developments** focus on interpretability, multimodal integration, and specialized domains.",
+        "score": 4.4765,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 8259,
+      "search_ms": 4800,
+      "extract_ms": 23465,
+      "chunk_ms": 163,
+      "retrieve_ms": 11089,
+      "synthesis_ms": 18950,
+      "sub_queries_count": 3,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 79710,
+    "elapsed_s": 85.08,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

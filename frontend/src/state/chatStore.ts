@@ -41,14 +41,31 @@ function summariseFailures(failures: ExtractFailure[] | undefined): string {
 
 const SESSION_KEY = "wsr_session_id";
 
+// In public mode (production), session_id is held in memory only — neither
+// localStorage nor sessionStorage. That means every page reload (and every
+// tab close) starts a fresh anonymous session in the UI. The DB still keeps
+// the full history scoped to that session_id, for analytics/debugging.
+//
+// In dev mode (default), session_id is persisted in localStorage so the
+// developer can come back to the same conversation across reloads, and the
+// sidebar lists all past sessions.
+const IS_PUBLIC = (import.meta.env.VITE_PUBLIC_MODE ?? "false").toString() === "true";
+
+function _store(): Storage | null {
+  return IS_PUBLIC ? null : localStorage;
+}
+
 function newSessionId(): string {
   const s = crypto.randomUUID();
-  localStorage.setItem(SESSION_KEY, s);
+  const store = _store();
+  if (store) store.setItem(SESSION_KEY, s);
   return s;
 }
 
 function readSessionId(): string {
-  return localStorage.getItem(SESSION_KEY) || newSessionId();
+  const store = _store();
+  if (!store) return newSessionId();   // public mode: fresh id per page load
+  return store.getItem(SESSION_KEY) || newSessionId();
 }
 
 function newTurn(question: string, versionGroupId?: string, versionIndex = 0): Turn {
@@ -181,7 +198,8 @@ export const useChat = create<ChatStore>((set, get) => ({
 
   loadSession: async (id: string) => {
     set({ sessionId: id, loadingSessionId: id, turns: [] });
-    localStorage.setItem(SESSION_KEY, id);
+    const store = _store();
+    if (store) store.setItem(SESSION_KEY, id);
     try {
       const data: PersistedSession = await api.getSession(id);
       const turns: Turn[] = data.messages.map((m) => {
@@ -392,6 +410,16 @@ export const useChat = create<ChatStore>((set, get) => ({
       if (t.status !== "streaming") return {};
 
       switch (e.event) {
+        case "rewrite_done": {
+          // Top-level rewrite step — capture latency and whether a rewrite occurred.
+          // The actual rewritten query is also surfaced on decompose_done; we set
+          // it early here so the trace UI can show the rewrite stage before analyze.
+          t.pipeline = { ...t.pipeline, rewriteMs: e.data.latency_ms, rewrote: e.data.rewrote };
+          if (e.data.rewrote && e.data.rewritten_query !== e.data.original_query) {
+            t.rewrittenQuery = e.data.rewritten_query;
+          }
+          break;
+        }
         case "decompose_done": {
           t.subQueries = e.data.sub_queries;
           t.pipeline = { ...t.pipeline, decomposeMs: e.data.latency_ms, decomposeMode: e.data.mode };
@@ -400,6 +428,24 @@ export const useChat = create<ChatStore>((set, get) => ({
           }
           // Pre-create subquery states
           t.subqueries = e.data.sub_queries.map((q, idx) => newSubqueryState(idx, q));
+          break;
+        }
+        case "page_cache_info": {
+          // Surface page-cache hit/miss summary at the pipeline level.
+          // Per-URL status remains in extract_done's per_subquery slices.
+          t.pipeline = {
+            ...t.pipeline,
+            pageCacheHits: e.data.hits,
+            pageCacheMisses: e.data.misses,
+          };
+          break;
+        }
+        case "embedding_cleanup_done": {
+          t.pipeline = {
+            ...t.pipeline,
+            cleanupMs: e.data.latency_ms,
+            cleanupFreedChunks: e.data.freed_chunks_count,
+          };
           break;
         }
         case "search_done": {

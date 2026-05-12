@@ -1,54 +1,49 @@
-Hello, pls load this into your context: 
+### good full eval runs to include:
+
+0.718
+C:\Users\HP\Desktop\ai-projects\web-search-rag\evals\results\20260511T060411Z_full
+
+0.732
+C:\Users\HP\Desktop\ai-projects\web-search-rag\evals\results\20260511T075017Z_full
+
+--------------------
+### what to put in chat
+
+## IMPORTANT:
+
+* do NOT push for iterative testing or additional future improvements in this session
+* do NOT expand scope beyond what is explicitly mentioned below
+* do NOT rewrite unrelated architecture
+* use only in-place editing
+* keep logging minimal to reduce token usage
+* kill running servers/processes before making changes
+* use only the existing venv Python + installed libraries for compatibility
+* avoid unnecessary refactors
+* optimize for highest leverage / lowest latency impact changes
 
 
+## IMPORTANT EXECUTION CONSTRAINTS
 
-I m putting the context in 3 parts:
+* do not perform unnecessary exploratory testing
+* do not repeatedly ask for confirmation
+* do not create excessive logs/debug output
+* do not massively restructure working systems
+* do not introduce high-latency preprocessing
+* preserve existing architecture where possible
+* optimize for stability + completion speed
+* keep changes production-practical
 
-1) the implementation summary before the overhaul of website code
+Before editing:
 
-2) what was my ask
+* stop running servers/processes
 
-3) summary of what was done later
+During implementation:
 
-4) what's been done after summary mentioned in point (2)
+* prefer surgical edits
+* preserve backward compatibility where possible
 
-5) what's the issue now
+At the end:
 
-6) what I actually want
-
-7) hard constraints
-
-----------
-
-
-
-the implementation summary before the overhaul of website code: @docs/implementation-summary.md 
-
-
-
-2) what was my ask: 
-
-@tmp/prompt_1 
-
-The analysis by claude before doing any change: @tmp/analysis_summary_from_prompt_1 
-
-
-
-3) summary of what was done later:
-
-@tmp/mid_summary_1 
-
-+ Created question_v2.txt
-
-
-
-----------
-
-4) what's the issue now:
-
-
-
-
-
-the code is so much changed tat 
+* provide concise implementation summary under docs and improvement summary under evals/docs with proper versioning
+* clearly list completed vs intentionally deferred items
 

@@ -1,0 +1,245 @@
+{
+  "id": "ref1",
+  "category": "refusal_unknown",
+  "domain": "finance",
+  "question": "What was OpenAI's exact net income in Q1 2026?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "OpenAI is privately held — exact net income is not public. Should say so.",
+  "key_facts": [
+    "private",
+    "not disclosed"
+  ],
+  "ground_truth": "OpenAI does not publicly disclose quarterly net income (private company). Reported figures are partial or leaked.",
+  "session_id": "eval-20260511T161015Z-ref1",
+  "verdict": "partial",
+  "aggregate": 0.5,
+  "failure_mode": "hallucination",
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 0.5,
+    "context_precision": 0.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.843,
+    "aggregate": 0.5,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 0.5,
+    "m7_judge_score": 0.5
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.0,
+      "relevant": 0,
+      "total": 8,
+      "reasoning": "No chunk contains OpenAI's Q1 2026 net income; all discuss other financial or operational details."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "private",
+        "not disclosed"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=0.00; LLM-assist promoted 2 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.843,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "private"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 3,
+      "decompose_ms": 1903,
+      "search_ms": 2663,
+      "extract_ms": 13410,
+      "chunk_ms": 51,
+      "retrieve_ms": 6740,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 4,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 35080,
+    "pipeline_s": 39.41
+  },
+  "judge_reasoning": "refusal",
+  "pipeline": {
+    "answer": "**OpenAI’s Q1 2026 net income figure is not reported in any of the provided sources.** All cited sources discuss OpenAI’s revenue, funding rounds, and profitability outlook, but none disclose a specific net income number for Q1 2026.\n\nKey relevant data from sources:\n- **No Q1 2026 net income:** The sources focus on OpenAI’s annualized revenue ($25B as of Feb 2026 [2]), valuation ($852B post-money in March 2026 [2]), and long-term profitability challenges (infrastructure and personnel costs still exceed revenue in some quarters [2][3]).\n- **Notable absence:** The only quarterly financial call cited (Amplitude’s Q1 2026 earnings [1]) is about a different company—not OpenAI. It provides no OpenAI-specific data.\n- **General profitability context:** OpenAI is “still not sustainably profitable” [2], and its “infrastructure and personnel costs still exceed revenue in some quarters” [2]. However, exact net income for Q1 2026 is absent from all three sources.\n\n**Conclusion:** The question cannot be answered from the given material. No source states OpenAI’s Q1 2026 net income exact figure.",
+    "mode": "search",
+    "rewritten_query": "What was OpenAI's exact net income in Q1 2026?",
+    "rewrote": false,
+    "rationale": "Time-sensitive financial figure requires sourced report.",
+    "sub_queries": [
+      "OpenAI Q1 2026 net income exact figure"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.ainvest.com/news/amplitude-2026-q1-earnings-call-openai-deal-nature-ai-margin-pressures-growth-timelines-spark-contradictions-2605/",
+        "title": "https://www.ainvest.com/news/amplitude-2026-q1-earnings-call-openai-deal-nature-ai-margin-pressures-growth-timelines-spark-contradictions-2605/",
+        "snippet": "Catch pre-market movers with AI signals.\nAmplitude’s 2026 Q1 Earnings Call: OpenAI Deal Nature, AI Margin Pressures, and Growth Timelines Spark Contradictions\nDate of Call: May 6, 2026\nFinancials Results\n- Revenue: $93.5M, up 17% YOY (vs 10% in Q1 2025)\n- EPS: Net loss per share of $0.02, compared t"
+      },
+      {
+        "num": 2,
+        "url": "https://www.gradually.ai/en/openai-statistics/",
+        "title": "https://www.gradually.ai/en/openai-statistics/",
+        "snippet": "ghly $1.4 trillion over the next 8 years. However: despite all this enthusiasm, OpenAI is still not sustainably profitable. Infrastructure and personnel costs still exceed revenue in some quarters.\n3. Valuation and Investors\nNo private technology company has ever shown a comparable valuation traject"
+      },
+      {
+        "num": 3,
+        "url": "https://futuresearch.ai/openai-revenue-forecast/",
+        "title": "OpenAI Revenue, Losses, and Profitability in 2026: Full Financial Breakdown",
+        "snippet": "The Microsoft Conundrum\n\n**Even more challenging for OpenAI's balance sheet and cashflow** is that the investment included revenue-sharing agreements. Much of OpenAI's API traffic comes from Azure, and **Microsoft gets a large portion of that, potentially as high as 80%**. OpenAI cannot move to othe"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.tradingview.com/news/urn:summary_document_report:quartr.com:3301731:0-ai-q1-2026-net-income-up-1-to-12m-eps-steady-portfolio-remains-high-quality-and-conservative/",
+        "title": "AI: Q1 2026 net income up 1% to $12M, EPS steady, portfolio remains high quality and conservative — TradingView News",
+        "snippet": "# AI: Q1 2026 net income up 1% to $12M, EPS steady, portfolio remains high quality and conservative. Less than 1 min read. Q1 2026 net income rose 1% year-over-year to $12.0 million, with EPS steady at $0.25 and a high-quality, conservative mortgage portfolio. Revenue declined 9.7%, but new Prairie market expansion and stable dividends support future growth. Original document: [Atrium Mortgage Investment Corp. [AI] Earnings Release — May. 8 2026](https://www.tradingview.com/accounts/signin? next=https%3A%2F%2Fnews-mediator.tradingview.com%2Fdoc-screener%2Fv1%2Ffiles%2Furn%3Areport%3Aquartr.com%3A3301731-f987721614cc10c6bf998682c74744ae). This is an AI-generated summary and may contain inaccuracies. Please verify any important information with the original source. © AI-generated summary is provided by Quartr. ## More news from Quartr."
+      },
+      {
+        "url": "https://www.gradually.ai/en/openai-statistics/",
+        "title": "OpenAI Statistics 2026: Key Numbers, Data & Facts",
+        "snippet": "[Skip to main content](https://www.gradually.ai/en/openai-statistics/#main-content). *   [About Us](https://www.gradually.ai/en/about-us/). [𝕏 X Share on X](https://x.com/intent/tweet?url=https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F&text=OpenAI%20Statistics%202026%3A%20Key%20Numbers%2C%20Data%20%26%20Facts)[Facebook Share on Facebook](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F)[LinkedIn Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F&title=OpenAI%20Statistics%202026%3A%20Key%20Numbers%2C%20Data%20%26%20Facts&summary=Current%20OpenAI%20statistics%20on%20revenue%2C%20valuation%2C%20employees%2C%20investors%2C%20products%2C%20and%20the%20fastest%20revenue%20growth%20in%20tech%20history.)[Pinterest Share on Pinterest](https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F&description=OpenAI%20Statistics%202026%3A%20Key%20Numbers%2C%20Data%20%26%20Facts)[Threads Share on Threads](https://threads.net/intent/post?text=OpenAI%20Statistics%202026%3A%20Key%20Numbers%2C%20Data%20%26%20Facts%20https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F)[Flipboard Share on Flipboard](https://share.flipboard.com/bookmarklet/popout?v=2&title=OpenAI%20Statistics%202026%3A%20Key%20Numbers%2C%20Data%20%26%20Facts&url=https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F)Copy link Copy link. For ChatGPT user numbers (monthly active users, growth, global reach), see: [ChatGPT Statistics](https://www.gradually.ai/en/en/chatgpt-statistics/). For ChatGPT user data (monthly active users, worldwide reach, demographic data), see: [ChatGPT Statistics](https://www.gradually.ai/en/en/chatgpt-statistics/). *   **ChatGPT:** 900M Weekly Active Users (details: [ChatGPT Statistics](https://www.gradually.ai/en/en/chatgpt-statistics/)). [𝕏 X Share on X](https://x.com/intent/tweet?url=https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F&text=OpenAI%20Statistics%202026%3A%20Key%20Numbers%2C%20Data%20%26%20Facts)[Facebook Share on Facebook](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F)[LinkedIn Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F&title=OpenAI%20Statistics%202026%3A%20Key%20Numbers%2C%20Data%20%26%20Facts&summary=Current%20OpenAI%20statistics%20on%20revenue%2C%20valuation%2C%20employees%2C%20investors%2C%20products%2C%20and%20the%20fastest%20revenue%20growth%20in%20tech%20history.)[Pinterest Share on Pinterest](https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F&description=OpenAI%20Statistics%202026%3A%20Key%20Numbers%2C%20Data%20%26%20Facts)[Threads Share on Threads](https://threads.net/intent/post?text=OpenAI%20Statistics%202026%3A%20Key%20Numbers%2C%20Data%20%26%20Facts%20https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F)[Flipboard Share on Flipboard](https://share.flipboard.com/bookmarklet/popout?v=2&title=OpenAI%20Statistics%202026%3A%20Key%20Numbers%2C%20Data%20%26%20Facts&url=https%3A%2F%2Fwww.gradually.ai%2Fen%2Fopenai-statistics%2F)Copy link Copy link. Finn shares his knowledge here on the blog in 50+ articles as well as through his[ChatGPT Course](https://www.gradually.ai/en/chatgpt-course/)and the[AI Business Club](https://www.kibc.de/). Learn more about[Finn and the team](https://www.gradually.ai/en/about-us/),follow Finn on[LinkedIn](https://www.linkedin.com/in/finnhillebrandt/),join his[Facebook group for ChatGPT, OpenAI & AI Tools](https://www.facebook.com/groups/1280695291995483)or do like 17,500+ others and subscribe to his[AI Newsletter](https://www.gradually.ai/en/ai-newsletter/)with tips, news and offers about AI tools and online business. *   [ChatGPT in German](https://www.gradually.ai/en/chatgpt-german/). *   [Prompt Link Generator](https://www.gradually.ai/en/prompt-link-generator/). *   [Company Name Generator](https://www.gradually.ai/en/company-name-generator/). *   [About Us](https://www.gradually.ai/en/about-us/)."
+      },
+      {
+        "url": "https://www.ainvest.com/news/amplitude-2026-q1-earnings-call-openai-deal-nature-ai-margin-pressures-growth-timelines-spark-contradictions-2605/",
+        "title": "Amplitude’s 2026 Q1 Earnings Call: OpenAI Deal Nature, AI Margin Pressures, and Growth Timelines Spark Contradictions",
+        "snippet": "# Amplitude’s 2026 Q1 Earnings Call: OpenAI Deal Nature, AI Margin Pressures, and Growth Timelines Spark Contradictions. - AmplitudeAMPL-- reported Q1 2026 revenue of $93.5M (+17% YoY) but posted a $0.02 net loss/share amid AI-driven margin compression. - AI integration accelerated with 90% AI-written code and new products like Agent Analytics, while Statsig partnership added $16M ARR. - Management emphasized long-term AI transformation and Statsig synergy potential, though Q2 guidance shows continued non-GAAP losses (-$3.6M to -$1.6M). Nature of the OpenAI/Statsig Deal. Contradiction on whether the deal is an acquisition or a partnership. Regarding the Statsig acquisition, was there a purchase price and is the $16M ARR incremental to the existing $40M ARR with OpenAI? 2026Q1: Short-term pressure on gross margins from inference costs (e.g., for Global Agent) is expected but is an investment for greater long-term revenue growth and margin improvement. Arjun Bhatia (William Blair) - Follow-up - Arjun Bhatia (William Blair) - Follow-up."
+      },
+      {
+        "url": "https://futuresearch.ai/openai-revenue-forecast/",
+        "title": "OpenAI Revenue, Losses, and Profitability in 2026 - FutureSearch",
+        "snippet": "Expert forecasters with expert AI research tools consider every angle, and give the most accurate forecast of OpenAI's revenue 2025 - 2027. OpenAI is experiencing the fastest revenue growth of any major technology company in history. **The company grew from $1B revenue in 2023 to $3.7B in 2024—a 270% increase**—likely the fastest growth rate ever achieved by a company at that scale. To put this in perspective, the time required to scale from $1B to $100B in revenue has been decreasing by roughly 40% per decade:. If OpenAI continues this trajectory, it will reach $10B in revenue in 2025 and potentially $100B by 2027—**faster than any company in history**. The key data points are Sam Altman's statement that ARR was $3.4B in June 2024, recent statements by the CFO indicating $3.7B in revenue for 2024, and a recent statement that they expect to reach $12.7B in revenue in 2025. We estimate ARR of $6B in December 2024 with $3.7B in revenue for all of 2024."
+      },
+      {
+        "url": "https://www.reddit.com/r/singularity/comments/1rabkos/openai_doubles_revenue_forecasts_to_over_280b/",
+        "title": "OpenAI Doubles Revenue Forecasts to over $280B, Predicts $111 Billion More Cash Burn Through 2030 : r/singularity",
+        "snippet": "[Skip to main content](https://www.reddit.com/r/singularity/comments/1rabkos/openai_doubles_revenue_forecasts_to_over_280b/#main-content)OpenAI Doubles Revenue Forecasts to over $280B, Predicts $111 Billion More Cash Burn Through 2030 : r/singularity. Open menu Open navigation[](https://www.reddit.com/)Go to Reddit Home. Get App Get the Reddit app [Log In](https://www.reddit.com/login/)Log in to Reddit. [![Image 1](https://styles.redditmedia.com/t5_2qh8m/styles/communityIcon_hmujz61wdga81.jpg?width=96&height=96&frame=1&auto=webp&crop=96%3A96%2Csmart&s=9f592f7a2ba405996ce28f084404d0873b09c2b2) Go to singularity](https://www.reddit.com/r/singularity/). [r/singularity](https://www.reddit.com/r/singularity/)•2mo ago. [AI](https://www.reddit.com/r/singularity/?f=flair_name%3A%22AI%22). ![Image 4: r/singularity - OpenAI Doubles Revenue Forecasts to over $280B, Predicts $111 Billion More Cash Burn Through 2030](https://i.redd.it/6l12yah3lqkg1.jpeg). Source: [https://www.theinformation.com/articles/openai-boost-revenue-forecasts-predicts-112-billion-cash-burn-2030](https://www.theinformation.com/articles/openai-boost-revenue-forecasts-predicts-112-billion-cash-burn-2030). By continuing, you agree to our[User Agreement](https://www.redditinc.com/policies/user-agreement)and acknowledge that you understand the[Privacy Policy](https://www.redditinc.com/policies/privacy-policy). [OpenAI cash burn rate insights](https://www.reddit.com/answers/f850f9d8-ee7a-4e13-902e-b9d1ed07b8cd/?q=OpenAI+cash+burn+rate+insights&source=PDP). [OpenAI revenue projections for 2026](https://www.reddit.com/answers/5a318dd5-dd92-4d84-87e3-53ade93b258b/?q=OpenAI+revenue+projections+for+2026&source=PDP). [Impacts of AI on future job markets](https://www.reddit.com/answers/a8fa5af4-25e4-47ff-876f-b9b7d834f0e0/?q=Impacts+of+AI+on+future+job+markets&source=PDP). [Ethical dilemmas of superintelligent AI](https://www.reddit.com/answers/3f9ac784-4676-479b-8474-c1b6ca317dd1/?q=Ethical+dilemmas+of+superintelligent+AI&source=PDP). [Predictions for AI advancements by 2045](https://www.reddit.com/answers/7e8f5f9d-d076-4e26-9e41-19d6e6c1f3fe/?q=Predictions+for+AI+advancements+by+2045&source=PDP). [Reddit Rules](https://www.redditinc.com/policies/content-policy)[Privacy Policy](https://www.reddit.com/policies/privacy-policy)[User Agreement](https://www.redditinc.com/policies/user-agreement)[Your Privacy Choices](https://support.reddithelp.com/hc/articles/43980704794004)[Accessibility](https://support.reddithelp.com/hc/sections/38303584022676-Accessibility)[Reddit, Inc. All rights reserved.](https://redditinc.com/). *   [About Reddit](https://www.redditinc.com/). *   [Advertise](https://ads.reddit.com/register?utm_source=web3x_consumer&utm_name=left_nav_cta). *   [Developer Platform](https://developers.reddit.com/?utm_source=reddit&utm_medium=left_nav_resources). *   [Reddit Pro BETA](https://www.reddit.com/reddit-pro?utm_source=reddit&utm_medium=left_nav_resources). *   [Help](https://support.reddithelp.com/hc?utm_source=reddit&utm_medium=footer&utm_campaign=evergreen). *   [Careers](https://www.redditinc.com/careers). *   [Press](https://www.redditinc.com/press). *   [Best of Reddit](https://www.reddit.com/posts/2026/global/). *   [Reddit Rules](https://www.redditinc.com/policies/content-policy). *   [Privacy Policy](https://www.reddit.com/policies/privacy-policy). *   [User Agreement](https://www.redditinc.com/policies/user-agreement)."
+      },
+      {
+        "url": "https://www.emarketer.com/content/openai-revenue-miss-colored-tech-s-biggest-earnings-day",
+        "title": "OpenAI’s revenue miss colored tech’s biggest earnings day",
+        "snippet": "Listen to our podcast, Behind the Numbers for the latest news and insights. Apr 29, 2026#### Google’s AI spending more than doubled YoY, and advertising is picking up the slack. Apr 29, 2026#### OpenAI’s revenue miss colored tech’s biggest earnings day. Learn more about our mission and how EMARKETER came to be. Speak to a member of our team to learn more about EMARKETER. **The news:** Wednesday’s Big Tech earnings blitz saw four of the largest AI spenders—Amazon, Google, Meta, and Microsoft—report Q1 figures under the specter of ballooning AI costs and news that OpenAI had missed internal user and revenue targets, increasing pressure on their advertising businesses to compensate. **Implications for marketing:** OpenAI’s ad push repeats a familiar pattern in the tech sector of companies turning to advertising to prove revenue growth or attempt to post a profit, particularly ahead of an IPO. That means the number of opportunities to advertise in AI surfaces is likely to increase at a steady pace as OpenAI and others look to prove the technology’s revenue potential."
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://www.ainvest.com/news/amplitude-2026-q1-earnings-call-openai-deal-nature-ai-margin-pressures-growth-timelines-spark-contradictions-2605/",
+        "title": "https://www.ainvest.com/news/amplitude-2026-q1-earnings-call-openai-deal-nature-ai-margin-pressures-growth-timelines-spark-contradictions-2605/",
+        "heading": "",
+        "chunk_text": "Catch pre-market movers with AI signals.\nAmplitude’s 2026 Q1 Earnings Call: OpenAI Deal Nature, AI Margin Pressures, and Growth Timelines Spark Contradictions\nDate of Call: May 6, 2026\nFinancials Results\n- Revenue: $93.5M, up 17% YOY (vs 10% in Q1 2025)\n- EPS: Net loss per share of $0.02, compared to a net loss per share of $0.00 with 129.7 million shares a year ago\n- Gross Margin: 75%, down two points from the first quarter of last year\n- Operating Margin: Operating loss of $3.1M, or 3.3% of revenue\nGuidance:\n- Q2 2026 revenue expected between $96.9M and $99.1M, representing 18% annual growth at the midpoint.\n- Q2 2026 non-GAAP operating income expected between negative $3.6M and negative $1.6M.\n- Q2 2026 non-GAAP net income per share expected between -$0.02 and -$0.01.\n- Full year 2026 revenue expected between $397M and $403M, representing 17% annual growth at the midpoint.\n- Full year 2026 non-GAAP operating income expected between $2.5M and $6.5M.\n- Full year 2026 non-GAAP net income per share expected between $0.03 and $0.06.\n- Includes assumption of Statsig business contributing $5M-$7M to revenue and incremental operating investment.\nBusiness Commentary:\nRevenue and ARR Growth:\n- Amplitude Inc. reported\nQ1 revenue\nof$94 million\n,up 17%\nyear-over-year, withannual recurring revenue\nreaching$374 million\n, alsoup 17%\nyear-over-year.",
+        "score": 6.2415,
+        "rank": 0
+      },
+      {
+        "url": "https://www.gradually.ai/en/openai-statistics/",
+        "title": "https://www.gradually.ai/en/openai-statistics/",
+        "heading": "",
+        "chunk_text": "ghly $1.4 trillion over the next 8 years. However: despite all this enthusiasm, OpenAI is still not sustainably profitable. Infrastructure and personnel costs still exceed revenue in some quarters.\n3. Valuation and Investors\nNo private technology company has ever shown a comparable valuation trajectory. From $1 billion in 2019 to $852 billion in March 2026: a 852x jump in just seven years.\nThe round was announced in February 2026 with a $730B pre-money valuation (initial $110B volume) and closed on March 31, 2026 with $122B in fresh capital at an $852B post-money valuation. It's the highest valuation ever reached by a private company.\n3.1 Funding Rounds\nDate | Investors | Amount (USD) |\n---|---|---|\n12/2015 | Elon Musk, Sam Altman, Greg Brockman, Reid Hoffman, Peter Thiel, Jessica Livingston, Amazon Web Services, Infosys, YC Research | $1B (pledge) |\n2016 | Y Combinator | Seed round |\n07/2019 | Microsoft, Matthew Brown Companies | $1B |\n2021 | Tiger Global, Andreessen Horowitz, Bedrock Capital, Sequoia Capital | ~$1B (at $14B valuation) |\n01/2023 | Microsoft | $10B |\n04/2023 | Thrive Capital, K2 Global, a16z, Founders Fund, Sequoia Capital, Tiger Global | $300M (secondary sale) |\n10/2024 | Thrive Capital (lead), Microsoft, Nvidia, SoftBank, Khosla Ventures, Altimeter, Fidelity, MGX | $6.6B |\n03/2025 | SoftBank (lead), Microsoft, Coatue, Altimeter, Thrive, Blackstone, TPG, T. Rowe Price | $40B |\n08/2025 | Dragoneer (lead, $2.8B), Blackstone, TPG, T.",
+        "score": 0.5837,
+        "rank": 1
+      },
+      {
+        "url": "https://www.gradually.ai/en/openai-statistics/",
+        "title": "https://www.gradually.ai/en/openai-statistics/",
+        "heading": "",
+        "chunk_text": "Over $20 billion in annualized revenue in 2025. An $852 billion valuation. The fastest revenue growth in the history of the technology industry. And the CEO who built all of this, Sam Altman, owns 0% of the shares and reported a salary of just $76,001 according to the 2023 IRS filing.\nThe problem: the deeper you go into OpenAI's numbers, the more unbelievable they become.\nThis article covers all current numbers, data, and facts about OpenAI as a company: revenue, valuation, investors, employees, products, and infrastructure. For ChatGPT user numbers (monthly active users, growth, global reach), see: ChatGPT Statistics.\n- OpenAI reached an annualized revenue of $20B+ at the end of 2025 (3x growth over 2024), the fastest revenue growth in the history of the technology industry\n- $852B post-money valuation after the March 2026 round with $122B in fresh capital: OpenAI is the most valuable private technology company in history\n- 92% of Fortune 500 companies use OpenAI, and CEO Sam Altman owns 0% of the equity with a reported $76,001 salary (tax year 2023)\n1. What is OpenAI?\nOpenAI was founded on December 11, 2015 as a nonprofit organization with the stated goal of \"ensuring that artificial general intelligence benefits all of humanity.\" The founding group read like a who's-who of the tech elite: Sam Altman, Elon Musk, Greg Brockman, Ilya Sutskever, Wojciech Zaremba, and John Schulman.\nIn 2019, it restructured to a \"capped-profit\" model.",
+        "score": 0.2879,
+        "rank": 2
+      },
+      {
+        "url": "https://futuresearch.ai/openai-revenue-forecast/",
+        "title": "OpenAI Revenue, Losses, and Profitability in 2026: Full Financial Breakdown",
+        "heading": "The Microsoft Conundrum",
+        "chunk_text": "The Microsoft Conundrum\n\n**Even more challenging for OpenAI's balance sheet and cashflow** is that the investment included revenue-sharing agreements. Much of OpenAI's API traffic comes from Azure, and **Microsoft gets a large portion of that, potentially as high as 80%**. OpenAI cannot move to other clouds as it has signed exclusivity – [renewed in 2025](https://www.theinformation.com/articles/microsoft-extends-exclusive-cloud-deal-with-openai-through-2030) – with Azure as the only cloud OpenAI provider (though this may have been [relaxed](https://www.theverge.com/2025/1/16/24344838/microsoft-openai-oracle-partnership-azure-stargate) in 2025 if Azure cannot scale to meet OpenAI's needs, and OpenAI can turn to Oracle). The original exclusivity agreement was [modified in Jan 2025](https://www.theverge.com/2025/1/16/24344838/microsoft-openai-oracle-partnership-azure-stargate) so that OpenAI may use other company's data centers, but Microsoft has the right of first refusal.\n\nAny investors or regulators reviewing OpenAI's books would expect to see the Microsoft Azure credits recorded as both income and expense. Microsoft is essentially paying itself – providing OpenAI prepaid access to Azure rather than handing OpenAI cash to spend elsewhere. (It treats the Azure credits as deferred payment for OpenAI's IP, aligning with how ASC 606 handles non-cash consideration.)",
+        "score": -0.9511,
+        "rank": 3
+      },
+      {
+        "url": "https://futuresearch.ai/openai-revenue-forecast/",
+        "title": "OpenAI Revenue, Losses, and Profitability in 2026: Full Financial Breakdown",
+        "heading": "API Revenue Growth",
+        "chunk_text": "API Revenue Growth\n\nEstimates suggest the API business was generating approximately **[$510 million annually](https://futuresearch.ai/openai-api-profit)** by mid-2024—around 15% of OpenAI's ARR. Despite this growth, internal projections and industry analysis suggest OpenAI expects API revenue to be outpaced by both subscription-based products (like ChatGPT Plus, Team, and Enterprise) and emerging offerings such as AI agents. By mid-2024, [subscriptions accounted for approximately 85%](https://www.reuters.com/technology/artificial-intelligence/openai-considers-taking-browser-search-google-information-reports-2024-02-16/) of OpenAI's ARR. Nevertheless, the API remains a strategically important component of OpenAI's business, offering scalable, usage-based income and enabling a wide ecosystem of applications across industries.\n\n**OpenAI's API by the numbers:**\n\n*   **June 2024 API Total Revenue**: $41.2M\n*   **Gross profit margin** (from revenue and inference costs): [75%](https://futuresearch.ai/openai-api-profit) (June 2024)\n*   **June 2024 API ARR**: [$510M](https://futuresearch.ai/openai-api-profit); 15% of total OpenAI ARR\n\nAs of late 2024, API usage reached **[1.4 billion tokens per minute](https://openai.com/index/introducing-chatgpt-search/)**, up dramatically from [200 million](https://www.theverge.com/2024/4/9/24125031/openai-gpt-4-turbo-api-spring-update) at the start of the year.",
+        "score": -0.9751,
+        "rank": 4
+      },
+      {
+        "url": "https://futuresearch.ai/openai-revenue-forecast/",
+        "title": "OpenAI Revenue, Losses, and Profitability in 2026: Full Financial Breakdown",
+        "heading": "10th Percentile Scenario ($11B ARR): What if Most Things Go Wrong?",
+        "chunk_text": "10th Percentile Scenario ($11B ARR): What if Most Things Go Wrong?\n\nWe think there is **at least a 10% chance** that OpenAI will be outpaced by the vast amount of competition and will lose its lead in terms of revenue. OpenAI seems to have a tense relationship with Microsoft, which appears to be taking actions to compete directly with OpenAI. Significant talent has already left OpenAI, and this could accelerate if staff began to think that OpenAI was on the decline.\n\nFinally, it seems plausible that OpenAI could face a constraint from data center capacity that reduces its ability to meet high demand. Already we see some potential signs of this concern. Sam Altman recently warned that users should [expect delayed releases](https://www.theinformation.com/articles/openai-delays-advanced-voice-model-due-to-capacity-constraints) due to capacity constraints.\n\nIf the above problems were to materialize it seems reasonable to imagine that OpenAI's revenue could **peak in 2026 and even potentially backslide a bit by 2027**. Accordingly, we forecast a 10% chance that OpenAI's ARR in mid-2027 is **$11B**, only slightly more than where we estimate ARR is today.",
+        "score": -1.1239,
+        "rank": 5
+      },
+      {
+        "url": "https://www.gradually.ai/en/openai-statistics/",
+        "title": "https://www.gradually.ai/en/openai-statistics/",
+        "heading": "",
+        "chunk_text": "founding group read like a who's-who of the tech elite: Sam Altman, Elon Musk, Greg Brockman, Ilya Sutskever, Wojciech Zaremba, and John Schulman.\nIn 2019, it restructured to a \"capped-profit\" model. Investor returns are capped at 100 times the initial investment. The nonprofit parent remains the formal controlling entity. In practice, OpenAI now operates like a normal profit-oriented technology company.\nKey departures:\n- Elon Musk left the board in 2018 due to a conflict of interest with Tesla. He founded xAI in 2023 as a direct competitor with the Grok chatbot.\n- Ilya Sutskever left OpenAI in 2024 and founded the safety-focused AI startup Safe Superintelligence.\n- Greg Brockman temporarily stepped down in 2024 and returned.\n2. Revenue and Growth\n- 2022: approx. $0.3B\n- 2023: approx. $2B\n- 2024: approx. $6B\n- 2025: $20B+ annualized run rate (confirmed by Sam Altman and CFO Sarah Friar)\n- Annualized Feb 2026: approx. $25B (Sacra estimate)\n- 2026 revenue target: $29.4B\n- 2027 revenue target: $100B (hinted by Altman)\n- 2030 revenue target: $280B\nGrowth rate from 2024 to 2025: approximately 3x ($6B to $20B annualized). Paying users: 50 million total (including 9 million business customers). Altman has put OpenAI's data-center commitments at roughly $1.4 trillion over the next 8 years. However: despite all this enthusiasm, OpenAI is still not sustainably profitable. Infrastructure and personnel costs still exceed revenue in some quarters.\n3.",
+        "score": -2.8624,
+        "rank": 6
+      },
+      {
+        "url": "https://futuresearch.ai/openai-revenue-forecast/",
+        "title": "OpenAI Revenue, Losses, and Profitability in 2026: Full Financial Breakdown",
+        "heading": "xAI: The Hardware Advantage",
+        "chunk_text": "xAI: The Hardware Advantage\n\nxAI is challenging OpenAI primarily in consumer ChatGPT space (Grok 3 doesn't yet have an API).\n\n**xAI is unique given its massive singular training center: [Colossus](https://x.ai/blog/colossus)**. Colossus is made up of 200,000 H100 and H200 GPUs. Elon Musk plans to grow it to at least [1,000,000 GPUs](https://x.com/elonmusk/status/1836547164253180401). They [seem on track](https://www.theverge.com/2024/9/2/24234306/elon-musk-xai-memphis-supercomputer-online) to do this by the end of 2025 or early 2026. By comparison, Stargate is set to house 64,000 Nvidia GB200 chips [by the end of 2026](https://www.theverge.com/2025/1/21/24348609/trump-stargate-project-ai-infrastructure-openai-softbank-oracle), with 16,000 by mid-2025, which would make it roughly 50% faster than Colossus is today by December 2026.\n\nOn the All-In Podcast, Chamath Palihapitiya put the dynamic of xAI well [@ 1hr](https://www.youtube.com/watch?v=example):",
+        "score": -2.9517,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 3,
+      "decompose_ms": 1903,
+      "search_ms": 2663,
+      "extract_ms": 13410,
+      "chunk_ms": 51,
+      "retrieve_ms": 6740,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 4,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 35080,
+    "elapsed_s": 39.41,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

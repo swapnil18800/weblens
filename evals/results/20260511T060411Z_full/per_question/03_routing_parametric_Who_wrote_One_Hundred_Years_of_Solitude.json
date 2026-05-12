@@ -1,0 +1,93 @@
+{
+  "id": "p3",
+  "category": "routing_parametric",
+  "domain": "literature",
+  "question": "Who wrote One Hundred Years of Solitude?",
+  "expected_mode": "parametric",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Answer Gabriel García Márquez directly.",
+  "key_facts": [
+    "Gabriel García Márquez",
+    "1967"
+  ],
+  "ground_truth": "Gabriel García Márquez wrote One Hundred Years of Solitude, published in 1967.",
+  "session_id": "eval-20260511T060411Z-p3",
+  "verdict": "pass",
+  "aggregate": 1.0,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 1.0,
+    "context_recall": 1.0,
+    "context_precision": 1.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.389,
+    "aggregate": 1.0
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 1.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "parametric (N/A)"
+    },
+    "context_precision": {
+      "score": 1.0,
+      "relevant": 0,
+      "total": 0,
+      "reasoning": "parametric (N/A)"
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "Gabriel García Márquez",
+        "1967"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.389,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "pipeline": {
+    "answer": "Gabriel García Márquez, published in 1967.",
+    "mode": "parametric",
+    "rewritten_query": "Who wrote One Hundred Years of Solitude?",
+    "rewrote": false,
+    "rationale": "Classic literature attribution, well-established.",
+    "sub_queries": [
+      "Who wrote One Hundred Years of Solitude?"
+    ],
+    "citations": [],
+    "urls": [],
+    "chunk_count": 0,
+    "chunks": [],
+    "latency_breakdown": {
+      "decompose_ms": 2047,
+      "sub_queries_count": 1,
+      "mode": "parametric",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 2062,
+    "elapsed_s": 4.65,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

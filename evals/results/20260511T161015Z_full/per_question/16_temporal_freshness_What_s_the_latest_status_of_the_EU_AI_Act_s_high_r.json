@@ -1,0 +1,264 @@
+{
+  "id": "tf4",
+  "category": "temporal_freshness",
+  "domain": "policy",
+  "question": "What's the latest status of the EU AI Act's high-risk AI provisions implementation?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Should reflect 2025-2026 phased rollout status.",
+  "key_facts": [
+    "EU AI Act",
+    "high-risk"
+  ],
+  "ground_truth": "EU AI Act entered into force in August 2024 with phased applicability. Prohibitions and AI literacy rules from Feb 2025; general-purpose AI rules from Aug 2025; high-risk obligations from Aug 2026 in stages.",
+  "session_id": "eval-20260511T161015Z-tf4",
+  "verdict": "pass",
+  "aggregate": 0.95,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 1.0,
+    "context_recall": 1.0,
+    "context_precision": 0.75,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.776,
+    "aggregate": 0.95,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.95
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 1.0,
+      "supported": 5,
+      "total": 5,
+      "reasoning": "All claims are directly supported by the provided source chunks."
+    },
+    "context_precision": {
+      "score": 0.75,
+      "relevant": 6,
+      "total": 8,
+      "reasoning": "Chunks 1-3,5-7 discuss the proposed deferral and status of high-risk AI obligations."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "EU AI Act",
+        "high-risk"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.776,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "EU AI Act",
+      "high-risk"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 3,
+      "decompose_ms": 1766,
+      "search_ms": 2347,
+      "extract_ms": 23193,
+      "chunk_ms": 28,
+      "retrieve_ms": 3654,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 3,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 42096,
+    "pipeline_s": 46.61
+  },
+  "judge_reasoning": "All claims are directly supported by the provided source chunks.",
+  "pipeline": {
+    "answer": "As of **May 2026**, the implementation status of the EU AI Act’s high-risk AI provisions is **uncertain and still under negotiation**, with the original 2 August 2026 deadline still technically in force but facing a proposed deferral.\n\n- **Original deadline unchanged (for now):** The rules for high-risk AI systems listed in Annex III are set to enter into application on **2 August 2026** under the original Act [1][5][6]. Enforcement at national and EU level is also scheduled to begin on that date [5].\n- **Proposed deferral (Omnibus package):** The European Commission published a proposal (the \"Digital Omnibus\") on **19 November 2025** to push the high-risk compliance deadline back to **2 December 2027** [1][3]. For high-risk systems that are products or safety components covered by Annex I, the proposed date is even later (August 2027 or 2028) [2][3].\n- **Trilogue deadlock:** A second political trilogue among the Parliament, Council, and Commission was held on **28 April 2026** but **ended without agreement** [1]. A further trilogue has been scheduled for **13 May 2026** to try to break the impasse [1].\n- **Fallback scenario:** If the Omnibus is not formally adopted before 2 August 2026, the original Act’s timeline will apply as written, and the high-risk obligations will take effect on that date [1]. The delay was prompted by slow progress on designating national authorities and finalising harmonised standards [1][3].\n- **Ongoing business obligation:** Organizations deploying AI in employment contexts (recruitment, performance evaluation, worker monitoring, etc.) are advised to continue preparing for the current 2 August 2026 deadline [1][4].",
+    "mode": "search",
+    "rewritten_query": "What's the latest status of the EU AI Act's high-risk AI provisions implementation?",
+    "rewrote": false,
+    "rationale": "Time-sensitive regulatory update requires sourced current status.",
+    "sub_queries": [
+      "EU AI Act high-risk AI provisions implementation status as of May 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "title": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "snippet": "The Digital AI Omnibus: Proposed deferral of high risk AI obligations under the AI Act\nAt a glance\n- The European Commission published the Digital Omnibus on AI (Omnibus) on 19 November 2025, proposing to defer the high-risk compliance deadline from 2 August 2026 to 2 December 2027.\n- The second pol"
+      },
+      {
+        "num": 2,
+        "url": "https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO",
+        "title": "https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO",
+        "snippet": "When will EU AI Act high-risk AI compliance become applicable? If you are asked “when do the compliance obligations for high-risk AI systems apply?”, your answer now has to be “it depends”. On Wednesday 19 November 2025, the European Commission announced proposed changes to the EU AI Act. This inclu"
+      },
+      {
+        "num": 3,
+        "url": "https://techpolicy.press/eus-ai-act-delays-let-highrisk-systems-dodge-oversight",
+        "title": "https://techpolicy.press/eus-ai-act-delays-let-highrisk-systems-dodge-oversight",
+        "snippet": "EU’s AI Act Delays Let High-Risk Systems Dodge Oversight\nJoana Soares / Apr 2, 2026The European Union’s plan to delay key provisions of its landmark AI Act risks doing more than buying time for industry and regulators. By pushing back rules for high-risk systems while keeping the law non-retroactive"
+      },
+      {
+        "num": 4,
+        "url": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "title": "EU AI Act 2026 Updates: Compliance Requirements and Business Risks",
+        "snippet": "The EU Artificial Intelligence Act overview\n\nAdopted on 21 May 2024, the EU Artificial Intelligence Act lays down harmonized rules on artificial intelligence and is the first-ever comprehensive legal framework on AI worldwide. It sets out risk-based rules for AI developers and deployers regarding sp"
+      },
+      {
+        "num": 5,
+        "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act",
+        "title": "AI Act Service Desk - Timeline for the Implementation of the EU AI Act",
+        "snippet": "*   Member States need to designate national competent authorities and adopt national laws on penalties\n\n*   EU-level governance (AI Board, Scientific Panel, Advisory Forum) must be set up\n\n3.   \n02 Aug 2026 The majority of rules of the AI Act come into force and enforcement starts\n\n*   Rules for hi"
+      },
+      {
+        "num": 6,
+        "url": "https://artificialintelligenceact.eu/high-level-summary/",
+        "title": "High-level summary of the AI Act",
+        "snippet": "Timelines\n\n*   After entry into force, the AI Act will apply by the following deadlines: \n    *   6 months for prohibited AI systems.\n    *   12 months for GPAI.\n    *   24 months for high risk AI systems under Annex III.\n    *   36 months for high risk AI systems under Annex I.\n\n*   Codes of practi"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act",
+        "title": "Timeline for the Implementation of the EU AI Act | AI Act Service Desk",
+        "snippet": "# Timeline for the Implementation of the EU AI Act. The EU's AI Act legislation applies progressively, with a full roll-out foreseen by 2 August 2027. General provisions (definitions & AI literacy) and prohibitions apply. Rules for general-purpose AI apply and governance must be in place. * AI Act obligations for providers of general-purpose AI models enter into application. The majority of rules of the AI Act come into force and enforcement starts. * Rules for high-risk AI systems in Annex III enter into application \\*\\*. * Transparency rules (Article 50) start to apply. * Measures in support of innovation start apply. * Enforcement of the AI Act starts at national and EU-level. Rules for high-risk AI embedded in regulated products apply \\*\\*. \\*\\* In the context of the Digital Omnibus package, the Commission has proposed linking the application of rules governing high-risk AI systems to the availability of support tools, including the necessary harmonised standards."
+      },
+      {
+        "url": "https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO",
+        "title": "EU AI Act High-Risk AI Compliance Timeline Changes | Oliver Patel, AIGP, CIPP/E, MSc posted on the topic | LinkedIn",
+        "snippet": "*   [Report this post](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=POST&_f=guest-reporting). [Like](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_like-cta)[Comment](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment-cta). *   [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=COMMENT&_f=guest-reporting). *   [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=COMMENT&_f=guest-reporting). [Like](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_like)[Reply](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_reply) 1 Reaction. *   [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=COMMENT&_f=guest-reporting). [Like](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_like)[Reply](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_reply) 1 Reaction. *   [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=COMMENT&_f=guest-reporting). [Like](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_like)[Reply](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_reply) 1 Reaction. *   [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=COMMENT&_f=guest-reporting). *   [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=COMMENT&_f=guest-reporting). [Like](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_like)[Reply](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_reply) 1 Reaction. *   [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=COMMENT&_f=guest-reporting). *   [Report this comment](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_ellipsis-menu-semaphore-sign-in-redirect&guestReportContentType=COMMENT&_f=guest-reporting). [Like](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_like)[Reply](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_comment_reply) 1 Reaction. [See more comments](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_see-more-comments). To view or add a comment, [sign in](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_feed-cta-banner-cta). [![Image 17](https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO) 2](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Fanand-swamy_a-consultative-game-changer-why-kpmg-international-activity-7405618400460292096-9lpe&trk=public_post_social-actions-reactions)[1 Comment](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Fanand-swamy_a-consultative-game-changer-why-kpmg-international-activity-7405618400460292096-9lpe&trk=public_post_social-actions-comments). [![Image 19](https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO)![Image 20](https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO) 20](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Fkartik9970_shadowai-aigovernance-riskmanagement-activity-7408710439108317184-o8Un&trk=public_post_social-actions-reactions). [![Image 29: Article 4: What the Convergence of AI, Risk, Regulatory Oversight Means for GTM](https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO) Article 4: What the Convergence of AI, Risk, Regulatory Oversight Means for GTM markstouse.substack.com](https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Fmarkstouse%2Esubstack%2Ecom%2Fp%2Farticle-4-what-the-convergence-of&urlhash=Rxyu&trk=public_post_feed-article-content). [![Image 36](https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO)![Image 37](https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO) 10](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Fschmarzo_article-4-what-the-convergence-of-ai-risk-activity-7404970931888066561-_1Mo&trk=public_post_social-actions-reactions)[2 Comments](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Fschmarzo_article-4-what-the-convergence-of-ai-risk-activity-7404970931888066561-_1Mo&trk=public_post_social-actions-comments). [![Image 44: VeritasChain Releases VAP Scorecard Explorer v1.2, Introducing Executive Mode for AI Audit Readiness](https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO) VeritasChain Releases VAP Scorecard Explorer v1.2, Introducing Executive Mode for AI Audit Readiness einpresswire.com](https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Fwww%2Eeinpresswire%2Ecom%2Farticle%2F877408506%2Fveritaschain-releases-vap-scorecard-explorer-v1-2-introducing-executive-mode-for-ai-audit-readiness&urlhash=ret6&trk=public_post_feed-article-content). [![Image 46: VeritasChain Releases VAP Scorecard Explorer v1.2, Introducing Executive Mode for AI Audit Readiness](https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO) VeritasChain Releases VAP Scorecard Explorer v1.2, Introducing Executive Mode for AI Audit Readiness einpresswire.com](https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Fwww%2Eeinpresswire%2Ecom%2Farticle%2F877408506%2Fveritaschain-releases-vap-scorecard-explorer-v1-2-introducing-executive-mode-for-ai-audit-readiness&urlhash=ret6&trk=public_post_feed-article-content). [![Image 48](https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO) 5](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Fartlinton_the-eu-ai-act-just-sent-a-quiet-but-important-activity-7411076267220885504-MSI-&trk=public_post_social-actions-reactions)[4 Comments](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fposts%2Fartlinton_the-eu-ai-act-just-sent-a-quiet-but-important-activity-7411076267220885504-MSI-&trk=public_post_social-actions-comments). [Join now](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Foliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO&trk=public_post_contextual-sign-in-modal_join-link)."
+      },
+      {
+        "url": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "title": "EU AI Act 2026 Updates: Compliance Requirements and Business ...",
+        "snippet": "[DORA Compliance](https://legalnodes.com/dora)[MiCA Compliance](https://legalnodes.com/mica)[GDPR Compliance](https://legalnodes.com/product/gdpr-packages)[EU AI Act Compliance](https://legalnodes.com/article/eu-ai-act-self-assessment). _If deployers of High-risk AI systems are required to perform a Data Protection Impact Assessment under the Regulation (EU) 2016/679 (GDPR) they should use information provided by the provider under article 13 of the AI Act._. [](https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks#)[](https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks#). [Startup Legal](https://legalnodes.com/category/startup)[How to Comply with EU AI Act August 2026 Deadline](https://legalnodes.com/article/eu-ai-act-compliance-roadmap-for-august-2026-deadline). [](https://legalnodes.com/article/eu-ai-act-compliance-roadmap-for-august-2026-deadline). [Startup Legal](https://legalnodes.com/category/startup)[AI in Recruitment Processes: Navigating High-risk Systems for AI Deployers](https://legalnodes.com/article/ai-in-recruitment-processes-navigating-high-risk-systems-for-ai-deployers). [](https://legalnodes.com/article/ai-in-recruitment-processes-navigating-high-risk-systems-for-ai-deployers). [Startup Legal](https://legalnodes.com/category/startup)[How to Comply with EU AI Act August 2026 Deadline](https://legalnodes.com/article/eu-ai-act-compliance-roadmap-for-august-2026-deadline). [](https://legalnodes.com/article/eu-ai-act-compliance-roadmap-for-august-2026-deadline). [Web3 Legal](https://legalnodes.com/category/web3)[RWA Tokenization in the EU: Most Suitable Jurisdictions and Regulatory Frameworks for 2025 and Beyond](https://legalnodes.com/article/rwa-tokenization-in-the-eu-most-suitable-jurisdictions-and-regulatory-frameworks-for-2025-and-beyond). [](https://legalnodes.com/article/startup-legal-dilemma). [](https://legalnodes.com/article/build-legal-strategy-for-token-project). [Privacy and Data Protection](https://legalnodes.com/category/privacy)[ChatGPT Privacy Risks for Business: How to Ensure GDPR Compliance of the OpenAI's API](https://legalnodes.com/article/chatgpt-privacy-risks). [](https://legalnodes.com/article/chatgpt-privacy-risks). [Web3 Legal](https://legalnodes.com/category/web3)[The EU Markets in Crypto-Assets (MiCA) Regulation Explained](https://legalnodes.com/article/mica-regulation-explained). [Taxes](https://legalnodes.com/tag/taxes)[](https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks#). [Token distribution](https://legalnodes.com/tag/token-distribution)[](https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks#). [Tokenomics](https://legalnodes.com/tag/tokenomics)[](https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks#). [Fundraising](https://legalnodes.com/tag/fundraising)[](https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks#). [](https://legalnodes.com/article/token-types-legal-status-jurisdiction). [Virtual Legal Officer](https://legalnodes.com/tag/virtual-legal-officer)[](https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks#). [Web3 Legal](https://legalnodes.com/category/web3)[Issuing Tokens: How to Choose the Best Country, Set Up Your Legal Strategy and Get It Right](https://legalnodes.com/article/how-to-choose-a-crypto-friendly-country-for-issuing-tokens). [](https://legalnodes.com/article/startup-legal-structuring). [DORA Compliance](https://legalnodes.com/dora)[MiCA Compliance](https://legalnodes.com/mica)[GDPR Compliance](https://legalnodes.com/product/gdpr-packages)[EU AI Act Compliance](https://legalnodes.com/article/eu-ai-act-self-assessment)."
+      },
+      {
+        "url": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "title": "The Digital AI Omnibus: Proposed deferral of high risk AI obligations under the AI Act - DLA Piper GENIE",
+        "snippet": "Your A to Z of employment laws for jurisdictions across EMEA, AsiaPac and the Americas. A global guide to employer obligations. A guide to implementation of the EU Whistleblower Protection Directive. A guide to employer obligations across the EU and UK. # The Digital AI Omnibus: Proposed deferral of high risk AI obligations under the AI Act. On 28 April 2026, the European Parliament, the Council of the EU, and the European Commission held their second political trilogue on the Omnibus – a proposal to amend the Act by postponing high-risk AI compliance deadlines and introducing other simplification measures. The Omnibus is a legislative proposal published by the European Commission on 19 November 2025 that seeks to amend the Act. The most significant change is the deferral of the AI Act's high-risk obligations from the original date of 2 August 2026."
+      },
+      {
+        "url": "https://techpolicy.press/eus-ai-act-delays-let-highrisk-systems-dodge-oversight",
+        "title": "EU’s AI Act Delays Let High-Risk Systems Dodge Oversight | TechPolicy.Press",
+        "snippet": "The European Union’s plan to delay key provisions of its landmark [AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) risks doing more than buying time for industry and regulators. Beyond the delay, the parliament also introduces other key [proposals](https://www.europarl.europa.eu/news/en/press-room/20260323IPR38829/artificial-intelligence-act-delayed-application-ban-on-nudifier-apps), including a ban on nudifier apps and a renewed push to address overlaps between the AI Act and sector-specific legislation, a debate that could exempt some systems, such as those used in medical devices, toys, or connected cars, from the framework. Many industry groups [argue](https://www.digitaleurope.org/news/joint-industry-statement-on-the-ai-omnibus-administrative-clean-up-or-a-boost-for-europes-ai-competitiveness/) that products already regulated under sector-specific laws (such as medical devices, machinery, toys, radio equipment, or transport) should not also have to comply with a second layer of rules under the AI Act. Irish MEP Michael McNamara, the Parliament’s lead negotiator on AI Omnibus, in an interview with Tech Policy Press, acknowledged that overlapping rules can be difficult for companies to manage. The outcome will determine whether the EU’s AI Act can still function as a comprehensive framework for high-risk systems, or whether, by the time its strictest rules apply, a significant part of the market will already sit beyond its reach."
+      },
+      {
+        "url": "https://artificialintelligenceact.eu/high-level-summary/",
+        "title": "High-level summary of the AI Act | EU Artificial Intelligence Act",
+        "snippet": "# High-level summary of the AI Act. *Updated on 30 May in accordance with the Corrigendum version of the AI Act.*. In this article we provide you with a high-level summary of the AI Act, selecting the parts which are most likely to be relevant to you regardless of who you are. *To explore the full text of the AI Act yourself, use our AI Act Explorer. Alternatively, if you want to know which parts of the text are most relevant to you, use our Compliance Checker.*. **The AI Act classifies AI according to its risk:**. **The majority of obligations fall on providers (developers) of high-risk AI systems.**. The following types of AI system are ‘Prohibited’ according to the AI Act. Some AI systems are considered ‘High risk’ under the AI Act. Providers of those systems will be subject to additional requirements. High risk AI systems are those:. High risk AI providers must:."
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "title": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "heading": "",
+        "chunk_text": "The Digital AI Omnibus: Proposed deferral of high risk AI obligations under the AI Act\nAt a glance\n- The European Commission published the Digital Omnibus on AI (Omnibus) on 19 November 2025, proposing to defer the high-risk compliance deadline from 2 August 2026 to 2 December 2027.\n- The second political trilogue between the European Parliament, the Council of the EU, and the European Commission on 28 April 2026 ended without agreement.\n- If the Omnibus is not formally adopted before 2 August 2026, the original AI Act's (Act) provisions, including the high-risk obligations and their current timeline, will apply from that date as written.\n- Organisations deploying AI in employment contexts should continue preparing for compliance against the current 2 August 2026 deadline.\nOn 28 April 2026, the European Parliament, the Council of the EU, and the European Commission held their second political trilogue on the Omnibus – a proposal to amend the Act by postponing high-risk AI compliance deadlines and introducing other simplification measures.\nThe Act classifies AI systems used in employment-related decisions as high-risk, including tools used for recruitment, candidate selection, performance evaluation, task allocation, monitoring of workers, and decisions on promotion or termination.",
+        "score": 8.6854,
+        "rank": 0
+      },
+      {
+        "url": "https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO",
+        "title": "https://www.linkedin.com/posts/oliver-patel_when-will-eu-ai-act-high-risk-ai-compliance-activity-7401984085377830912-RglO",
+        "heading": "",
+        "chunk_text": "When will EU AI Act high-risk AI compliance become applicable? If you are asked “when do the compliance obligations for high-risk AI systems apply?”, your answer now has to be “it depends”. On Wednesday 19 November 2025, the European Commission announced proposed changes to the EU AI Act. This included a delay to key provisions, such as high-risk AI system obligations and requirements. The timeline changes for high-risk AI systems are one of the most impactful proposed amendments. I wrote about how the EU AI Act could change in my latest newsletter (link in comments). As it stands, the key provisions relating to high-risk AI systems apply from 2 August 2026. For high-risk AI systems that are products or safety components of products (covered by Annex I) the applicable date is 2 August 2027. Given the nature of the proposed amendments, there are three potential scenarios for the high-risk AI compliance date: Scenario 1. If technical standards and associated support tools for high-risk AI compliance are finalised and approved by the Commission, then the applicable compliance date will be six months after this approval (for high-risk AI systems listed in Annex III) and 12 months after this approval (for high-risk AI systems covered by Annex I). Scenario 2.",
+        "score": 8.1368,
+        "rank": 1
+      },
+      {
+        "url": "https://techpolicy.press/eus-ai-act-delays-let-highrisk-systems-dodge-oversight",
+        "title": "https://techpolicy.press/eus-ai-act-delays-let-highrisk-systems-dodge-oversight",
+        "heading": "",
+        "chunk_text": "EU’s AI Act Delays Let High-Risk Systems Dodge Oversight\nJoana Soares / Apr 2, 2026The European Union’s plan to delay key provisions of its landmark AI Act risks doing more than buying time for industry and regulators. By pushing back rules for high-risk systems while keeping the law non-retroactive, the bloc could leave some of the most sensitive AI applications permanently outside its oversight.\nWith the original August 2026 deadline approaching, positions adopted by the European Parliament and Council as part of the AI Omnibus would postpone core obligations to December 2027 or even August 2028. The move is intended to give companies and regulators more time to prepare, but critics argue it risks weakening the law’s impact at a critical moment.\nBeyond the delay, the parliament also introduces other key proposals, including a ban on nudifier apps and a renewed push to address overlaps between the AI Act and sector-specific legislation, a debate that could exempt some systems, such as those used in medical devices, toys, or connected cars, from the framework.\nA structural gap in the law\nAt the center of the issue is how the AI Act applies over time.",
+        "score": 8.0036,
+        "rank": 2
+      },
+      {
+        "url": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "title": "EU AI Act 2026 Updates: Compliance Requirements and Business Risks",
+        "heading": "The EU Artificial Intelligence Act overview",
+        "chunk_text": "The EU Artificial Intelligence Act overview\n\nAdopted on 21 May 2024, the EU Artificial Intelligence Act lays down harmonized rules on artificial intelligence and is the first-ever comprehensive legal framework on AI worldwide. It sets out risk-based rules for AI developers and deployers regarding specific uses of AI. Please, find more about AI Act applicability here.\n\nThe EU’s regulatory model for artificial intelligence is founded on a graduated, risk-oriented structure. Rather than targeting specific technologies, the framework differentiates AI systems by the potential harm they may pose, imposing escalating obligations where risks increase. AI systems which significantly impact fundamental rights, are therefore either prohibited or subject to stricter requirements and human oversight.\n\nIn practice, multiple issues, arise for AI providers and deployers:\n\n*   Is their product considered High-risk or prohibited practice under the Act?\n*   Which obligations specifically apply to their product?\n*   How the EU regulator ensures enforcement and what business risks may arise as a result?\n*   What measures should be implemented to ensure regulatory compliance and mitigate the risk of fines?\n*   What are the key deadlines and optimal strategy to establish a strong AI compliance framework at this stage?\n\nWe have prepared a short update on the AI Act review to address these questions for you ahead of 2 August 2026.",
+        "score": 7.8493,
+        "rank": 3
+      },
+      {
+        "url": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "title": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "heading": "",
+        "chunk_text": "nt-related decisions as high-risk, including tools used for recruitment, candidate selection, performance evaluation, task allocation, monitoring of workers, and decisions on promotion or termination. These high-risk system obligations are scheduled to apply from 2 August 2026.\nThe Omnibus is a legislative proposal published by the European Commission on 19 November 2025 that seeks to amend the Act. The most significant change is the deferral of the AI Act's high-risk obligations from the original date of 2 August 2026. If the Omnibus is adopted as currently negotiated, the compliance deadline for these employment-related systems would move from 2 August 2026, to 2 December 2027.\nThe proposal was prompted by the fact that the Act's timely implementation has faced significant delays, particularly around the designation of national competent authorities and the finalisation of harmonised standards and compliance tools needed for high-risk AI system requirements.\nOn 28 April, the European Parliament, the Council of the EU, and the European Commission convened their second political trilogue on the Omnibus. The parties were unable to reach agreement, and a further trilogue has been scheduled for 13 May 2026.",
+        "score": 7.5764,
+        "rank": 4
+      },
+      {
+        "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act",
+        "title": "AI Act Service Desk - Timeline for the Implementation of the EU AI Act",
+        "heading": "",
+        "chunk_text": "*   Member States need to designate national competent authorities and adopt national laws on penalties\n\n*   EU-level governance (AI Board, Scientific Panel, Advisory Forum) must be set up\n\n3.   \n02 Aug 2026 The majority of rules of the AI Act come into force and enforcement starts\n\n*   Rules for high-risk AI systems in Annex III enter into application **\n\n*   Transparency rules (Article 50) start to apply\n\n*   Measures in support of innovation start apply\n\n*   Member States should have at least one AI regulatory sandbox per country established\n\n*   Enforcement of the AI Act starts at national and EU-level\n\n4.   02 Aug 2027 Rules for high-risk AI embedded in regulated products apply **\n\n** In the context of the Digital Omnibus package, the Commission has proposed linking the application of rules governing high-risk AI systems to the availability of support tools, including the necessary harmonised standards. For more information, refer to [the FAQ section under 'Digital Omnibus](https://ai-act-service-desk.ec.europa.eu/en/faq?combine=&faq_category_id=99).",
+        "score": 7.2628,
+        "rank": 5
+      },
+      {
+        "url": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "title": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "heading": "",
+        "chunk_text": "l of the EU, and the European Commission convened their second political trilogue on the Omnibus. The parties were unable to reach agreement, and a further trilogue has been scheduled for 13 May 2026. Should the trilogue negotiations remain incomplete and the Omnibus not be formally adopted prior to 2 August 2026, the provisions of the original Act, including the high-risk obligations and their initially envisaged timeline, will take effect from that date as originally drafted.\nOrganisations that deploy AI in employment-related contexts, including recruitment, performance evaluation, task allocation, worker monitoring, promotion, and termination decisions, should continue their compliance preparations in line with the existing deadline of 2 August 2026.\nFor details on obligations for employers using AI systems that are categorised as high-risk under the Act, please see our GENIE news item.",
+        "score": 6.978,
+        "rank": 6
+      },
+      {
+        "url": "https://artificialintelligenceact.eu/high-level-summary/",
+        "title": "High-level summary of the AI Act",
+        "heading": "Timelines",
+        "chunk_text": "Timelines\n\n*   After entry into force, the AI Act will apply by the following deadlines: \n    *   6 months for prohibited AI systems.\n    *   12 months for GPAI.\n    *   24 months for high risk AI systems under Annex III.\n    *   36 months for high risk AI systems under Annex I.\n\n*   Codes of practice must be ready 9 months after entry into force.\n\n_See our [full implementation timeline](https://artificialintelligenceact.eu/implementation-timeline/) for all key milestones relating to the implementation of the AI Act._\n\nThis post was published on 27 Feb, 2024",
+        "score": 6.6197,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 3,
+      "decompose_ms": 1766,
+      "search_ms": 2347,
+      "extract_ms": 23193,
+      "chunk_ms": 28,
+      "retrieve_ms": 3654,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 3,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 42096,
+    "elapsed_s": 46.61,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

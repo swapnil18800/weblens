@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "mode": "full",
+    "timestamp": "20260511T060411Z",
+    "total": 30,
+    "pass": 9,
+    "partial": 20,
+    "fail": 1,
+    "avg_latency_s": 43.58,
+    "p95_latency_s": 85.08,
+    "total_judge_cost_usd": 0,
+    "bench_version": "v7-bench-1"
+  },
+  "metrics_avg": {
+    "faithfulness": 0.606,
+    "context_recall": 0.806,
+    "context_precision": 0.542,
+    "answer_correctness": 0.911,
+    "routing_decomposition": 0.725,
+    "answer_relevancy": 0.659,
+    "aggregate": 0.718
+  },
+  "category_summary": {
+    "routing_parametric": {
+      "n": 4,
+      "avg_aggregate": 1.0,
+      "pass": 4,
+      "partial": 0,
+      "fail": 0
+    },
+    "routing_search_obvious": {
+      "n": 3,
+      "avg_aggregate": 0.744,
+      "pass": 1,
+      "partial": 2,
+      "fail": 0
+    },
+    "multi_hop_comparison": {
+      "n": 5,
+      "avg_aggregate": 0.59,
+      "pass": 0,
+      "partial": 4,
+      "fail": 1
+    },
+    "temporal_freshness": {
+      "n": 4,
+      "avg_aggregate": 0.765,
+      "pass": 2,
+      "partial": 2,
+      "fail": 0
+    },
+    "numerical_reasoning": {
+      "n": 3,
+      "avg_aggregate": 0.764,
+      "pass": 1,
+      "partial": 2,
+      "fail": 0
+    },
+    "ambiguity": {
+      "n": 3,
+      "avg_aggregate": 0.713,
+      "pass": 0,
+      "partial": 3,
+      "fail": 0
+    },
+    "contradiction": {
+      "n": 2,
+      "avg_aggregate": 0.871,
+      "pass": 1,
+      "partial": 1,
+      "fail": 0
+    },
+    "refusal_unknown": {
+      "n": 2,
+      "avg_aggregate": 0.562,
+      "pass": 0,
+      "partial": 2,
+      "fail": 0
+    },
+    "niche_long_tail": {
+      "n": 2,
+      "avg_aggregate": 0.5,
+      "pass": 0,
+      "partial": 2,
+      "fail": 0
+    },
+    "paraphrase_cache": {
+      "n": 2,
+      "avg_aggregate": 0.5,
+      "pass": 0,
+      "partial": 2,
+      "fail": 0
+    }
+  },
+  "failure_modes": {
+    "under_decomposition": 2,
+    "hallucination": 1,
+    "wrong_route": 4
+  },
+  "actual_mode_dist": {
+    "parametric": 8,
+    "search": 22
+  }
+}

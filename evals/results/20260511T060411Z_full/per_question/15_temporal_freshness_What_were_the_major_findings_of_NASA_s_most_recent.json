@@ -1,0 +1,198 @@
+{
+  "id": "tf3",
+  "category": "temporal_freshness",
+  "domain": "space",
+  "question": "What were the major findings of NASA's most recent Mars rover or lander mission?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Should surface 2025-2026 mission findings (Perseverance, sample-return updates).",
+  "key_facts": [
+    "Perseverance",
+    "Mars"
+  ],
+  "ground_truth": "Perseverance continues caching samples for future return; Mars Sample Return architecture was redesigned in 2024-2025 due to cost. New findings on organic molecules and ancient water environments.",
+  "session_id": "eval-20260511T060411Z-tf3",
+  "verdict": "pass",
+  "aggregate": 0.86,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.8,
+    "context_recall": 1.0,
+    "context_precision": 0.5,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.407,
+    "aggregate": 0.86
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.8,
+      "supported": 4,
+      "total": 5,
+      "reasoning": "4 claims supported by chunks; 'Nature published in Sep 2025' not found."
+    },
+    "context_precision": {
+      "score": 0.5,
+      "relevant": 4,
+      "total": 8,
+      "reasoning": "Chunks 1,4,7,8 discuss Perseverance findings like biosignatures, samples, ancient beach, and organic carbon."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "Perseverance",
+        "Mars"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.407,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "Perseverance",
+      "Mars"
+    ]
+  },
+  "pipeline": {
+    "answer": "**Potential Biosignature Discovery in \"Cheyava Falls\"**\n\nThe most significant finding involves the detection of potential biosignatures in a rock sample. In summer 2024, Perseverance investigated a \"most puzzling, complex, and potentially important rock\" nicknamed \"Cheyava Falls\" that showed signs of past water, organic material, and chemical clues suggesting microbial activity [1]. After a yearlong peer-review process, the journal *Nature* published validated results in September 2025 confirming that the \"Sapphire Canyon\" sample contains **potential biosignatures** — clues that suggest past life may have been present, requiring further study before any conclusions [1]. Then-acting NASA Administrator Sean Duffy called it \"the closest we have ever come to discovering life on Mars\" [1]. The rock contained organic carbon, iron phosphate, and iron sulfide specks (dubbed \"poppy seeds\" and \"leopard spots\") — chemical compounds that on Earth are byproducts of microorganisms metabolizing organic matter [3].\n\n**Ancient Shoreline and Habitability Evidence**\n\nIn 2026, researchers at Imperial College London reported that Perseverance found **first definitive traces of an ancient shoreline** and wave-formed beach deposits in Jezero Crater's \"Margin unit\" [4]. These rocks, altered by subsurface water, considerably expand the timeline for potential habitability at this site [4].\n\n**Additional Milestones and Status**\n\n- As of October 2024, the rover had driven over 30 km (18.65 miles) and collected **24 rock/regolith samples plus one air sample** [1].\n- In October 2025, Perseverance encountered a possible meteorite about 80 cm across at \"Vernodden\" on Jezero's rim [2].\n- The rover is currently trekking toward exciting new terrain after climbing over the crater rim over ~4 months [2].\n- Sample return is delayed — originally expected by early 2030s, now likely in the 2040s, with costs ballooning to $11 billion [3].",
+    "mode": "search",
+    "rewritten_query": "What were the major findings of NASA's most recent Mars rover or lander mission?",
+    "rewrote": false,
+    "rationale": "Recent mission findings; must source.",
+    "sub_queries": [
+      "NASA Mars 2020 Perseverance rover most recent major scientific findings as of May 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+        "title": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+        "snippet": "Mars 2020: Perseverance Rover\nFive years ago, the most advanced robotic explorer ever sent to the Red Planet landed, “safely on the surface of Mars, ready to begin seeking the signs of past life.”\nSee how far it’s gotten — scientifically and literally — as it rolls into the rest of the decade.\nPerse"
+      },
+      {
+        "num": 2,
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/science-updates/",
+        "title": "https://science.nasa.gov/mission/mars-2020-perseverance/science-updates/",
+        "snippet": "Perseverance Rover Updates\nThese updates are provided by self-selected Mars 2020 mission team members who love to share what Perseverance is doing with the public. Dates of planned rover activities described in these blogs are subject to change due to a variety of factors related to the Martian envi"
+      },
+      {
+        "num": 3,
+        "url": "https://www.pbs.org/newshour/science/new-findings-by-nasa-mars-rover-provide-strongest-hints-yet-of-potential-signs-of-ancient-life",
+        "title": "https://www.pbs.org/newshour/science/new-findings-by-nasa-mars-rover-provide-strongest-hints-yet-of-potential-signs-of-ancient-life",
+        "snippet": "on. When Perseverance launched in 2020, NASA expected the samples back on Earth by the early 2030s. But that date slipped into the 2040s as costs swelled to $11 billion, stalling the retrieval effort. Until the samples are transported off of Mars by robotic spacecraft or astronauts, scientists will "
+      },
+      {
+        "num": 4,
+        "url": "https://www.imperial.ac.uk/news/articles/engineering/earth-science/2026/new-clues-to-marss-habitability-in-discovery-of-ancient-beach/",
+        "title": "https://www.imperial.ac.uk/news/articles/engineering/earth-science/2026/new-clues-to-marss-habitability-in-discovery-of-ancient-beach/",
+        "snippet": "Engineering\nNew clues to Mars’s habitability in discovery of ancient beach\nby Gege Li\nNew findings from NASA’s Perseverance rover have revealed evidence of wave-formed beaches and rocks altered by subsurface water in a Martian crater that once held a vast lake – considerably expanding the timeline f"
+      }
+    ],
+    "urls": [
+      "https://en.wikipedia.org/wiki/Perseverance_(rover)",
+      "https://science.nasa.gov/mission/mars-2020-perseverance/science-highlights/",
+      "https://www.pbs.org/newshour/science/new-findings-by-nasa-mars-rover-provide-strongest-hints-yet-of-potential-signs-of-ancient-life",
+      "https://science.nasa.gov/mission/mars-2020-perseverance/science-updates/",
+      "https://www.imperial.ac.uk/news/articles/engineering/earth-science/2026/new-clues-to-marss-habitability-in-discovery-of-ancient-beach/",
+      "https://science.nasa.gov/mission/mars-2020-perseverance/"
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+        "title": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+        "heading": "",
+        "chunk_text": "Mars 2020: Perseverance Rover\nFive years ago, the most advanced robotic explorer ever sent to the Red Planet landed, “safely on the surface of Mars, ready to begin seeking the signs of past life.”\nSee how far it’s gotten — scientifically and literally — as it rolls into the rest of the decade.\nPerseverance Discovered Potential Biosignature\nIn the summer of 2024, Perseverance investigated its “most puzzling, complex, and potentially important rock yet,” according to one mission scientist. It showed signs of past water, organic material, and clues suggesting chemical reactions by microbial life. In September 2025, after a rigorous, yearlong peer-review to scrutinize the Mars 2020 team findings, the journal Nature published the validated results: Perseverance’s \"Sapphire Canyon\" sample from the rock nicknamed “Cheyava Falls” contains potential biosignatures — clues that suggest past life may have been present, but that require more data or further study before any conclusions about the absence or presence of life.\nRead About the 'Cheyava Falls' Discovery...the closest we have ever come to discovering life on Mars…\nSean Duffy\nThen-acting NASA Administrator, on Sept. 10, 2025, about the potential biosignatures in the “Sapphire Canyon” sample, taken from a rock named “Cheyava Falls”\nMars Rock Samples: The Stories They Could Tell\nNASA's Mars Perseverance rover is building a unique rock collection, which also includes samples of Mars atmosphere and loose surface material.",
+        "score": 8.2974,
+        "rank": 0
+      },
+      {
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+        "title": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+        "heading": "",
+        "chunk_text": "hat might preserve these signs.\nJezero Crater is 28 miles (45 kilometers) wide, and is located on the western edge of a flat plain called Isidis Planitia, which lies just north of the Martian equator. The landing site is about 2,300 miles (3,700 kilometers) from the Curiosity rover landing site in Gale Crater.\nPerseverance Mars Rover Drive Path Animation\nThis animated orbital-map view shows the route NASA’s Perseverance Mars rover has taken since its February 2021 landing at Jezero Crater to July 2024, when it took its “Cheyava Falls” sample. As of October 2024, the rover has driven over 30 kilometers (18.65 miles), and has collected 24 samples of rock and regolith as well as one air sample.\nLearn MoreMars Ingenuity Helicopter\nStrapped to the rover's belly for the journey to Mars was a technology demonstration — the Mars Helicopter, Ingenuity, which completed 72 historic flights. In a feat that's been called a “Wright Brothers moment,” Ingenuity became the first aircraft to achieve powered, controlled flight on another planet.\nLearn More About Ingenuity about Mars Ingenuity Helicopter‘Tango Delta.\nTouchdown confirmed!’\nFeb. 18, 2021: Watch and hear views and commentary from mission control at NASA's Jet Propulsion Laboratory, as the Mars 2020 Perseverance mission lands on Mars.",
+        "score": 6.4702,
+        "rank": 1
+      },
+      {
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/science-updates/",
+        "title": "https://science.nasa.gov/mission/mars-2020-perseverance/science-updates/",
+        "heading": "",
+        "chunk_text": "Perseverance Rover Updates\nThese updates are provided by self-selected Mars 2020 mission team members who love to share what Perseverance is doing with the public. Dates of planned rover activities described in these blogs are subject to change due to a variety of factors related to the Martian environment, communication relays and rover status.\nWritten by Noah Martin, Ph.D. student and Candice Bedford, Research Scientist at Purdue University While much of Perseverance’s work focuses on ancient rocks that record Mars’ long-lost rivers and lakes, megaripples offer a rare opportunity to examine processes that are…\nWritten by Margaret Deahn, Ph.D. student at Purdue University NASA’s Mars 2020 rover is currently trekking towards exciting new terrain. After roughly four months of climbing up and over the rim of Jezero crater, the rover is taking a charming…\nPerseverance Encounters a Possible Meteorite Written by Candice Bedford, Research Scientist at Purdue University Oct. 1, 2025 During the rover’s recent investigation of the bedrock at “Vernodden,” Perseverance encountered an unusually shaped rock about 80 centimeters across (about 31 inches)…\nWritten by Melissa Rice, Professor of Planetary Science at Western Washington University Perseverance accomplished something unusual this week: abrading two dramatically different rocks within the span of a few days. While exploring the Vernodden area along Jezero crater’s rim, the…\nWritten by By Henry Manelski, Ph.D.",
+        "score": 5.6937,
+        "rank": 2
+      },
+      {
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+        "title": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+        "heading": "",
+        "chunk_text": "va Falls”\nMars Rock Samples: The Stories They Could Tell\nNASA's Mars Perseverance rover is building a unique rock collection, which also includes samples of Mars atmosphere and loose surface material. These samples record the history of the Jezero Crater landing site, and may even preserve signs of ancient life. Learn more about these precious samples, which Mars Sample Return could deliver to Earth for detailed study in the future.\nLearn MoreMars 2020 Team Discoveries\nDuring its first five years on the Martian surface, Perseverance has collected more than two dozen geologically diverse rock samples — including one containing potential biosignatures — explored the history of geology, water, and habitable environments in Jezero crater and on the crater rim, demonstrated proof-of-concept for an off-world helicopter and onsite oxygen production, in preparation for future human exploration, and made numerous science discoveries and technical breakthroughs.",
+        "score": 5.5919,
+        "rank": 3
+      },
+      {
+        "url": "https://www.pbs.org/newshour/science/new-findings-by-nasa-mars-rover-provide-strongest-hints-yet-of-potential-signs-of-ancient-life",
+        "title": "https://www.pbs.org/newshour/science/new-findings-by-nasa-mars-rover-provide-strongest-hints-yet-of-potential-signs-of-ancient-life",
+        "heading": "",
+        "chunk_text": "on. When Perseverance launched in 2020, NASA expected the samples back on Earth by the early 2030s. But that date slipped into the 2040s as costs swelled to $11 billion, stalling the retrieval effort. Until the samples are transported off of Mars by robotic spacecraft or astronauts, scientists will have to rely on Earthly stand-ins and lab experiments to evaluate the feasibility of ancient Martian life, according to Hurowitz. On Earth, microorganisms commonly interact with minerals in Antarctic lakes. \"There is no evidence of microbes on Mars today, but if any had been present on ancient Mars, they too might have reduced sulfate minerals to form sulfides in such a lake at Jezero Crater,\" Bishop and Parente wrote in an accompanying editorial. ___ The Associated Press Health and Science Department receives support from the Howard Hughes Medical Institute's Department of Science Education and the Robert Wood Johnson Foundation. The AP is solely responsible for all content. A free press is a cornerstone of a healthy democracy. Support trusted journalism and civil dialogue. Donate now",
+        "score": 5.4409,
+        "rank": 4
+      },
+      {
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+        "title": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+        "heading": "",
+        "chunk_text": "ter‘Tango Delta.\nTouchdown confirmed!’\nFeb. 18, 2021: Watch and hear views and commentary from mission control at NASA's Jet Propulsion Laboratory, as the Mars 2020 Perseverance mission lands on Mars. Video includes actual footage from cameras on the spacecraft's entry, descent, and landing suite as it approached the Martian surface.\nWatch ‘Perseverance Rover’s Descent and Touchdown on Mars (Official NASA Video)’",
+        "score": 4.7286,
+        "rank": 5
+      },
+      {
+        "url": "https://www.imperial.ac.uk/news/articles/engineering/earth-science/2026/new-clues-to-marss-habitability-in-discovery-of-ancient-beach/",
+        "title": "https://www.imperial.ac.uk/news/articles/engineering/earth-science/2026/new-clues-to-marss-habitability-in-discovery-of-ancient-beach/",
+        "heading": "",
+        "chunk_text": "Engineering\nNew clues to Mars’s habitability in discovery of ancient beach\nby Gege Li\nNew findings from NASA’s Perseverance rover have revealed evidence of wave-formed beaches and rocks altered by subsurface water in a Martian crater that once held a vast lake – considerably expanding the timeline for potential habitability at this ancient site.\nIn an international study led by Imperial College London, researchers uncovered that the so-called ‘Margin unit’ in Mars’s Jezero crater preserves evidence of extensive underground interactions between rock and water, as well as the first definitive traces of an ancient shoreline.\nOur findings have exciting implications for Mars’s past climate and habitability, while providing new insights into a geologic unit which has long had a debated origin.",
+        "score": 2.5514,
+        "rank": 6
+      },
+      {
+        "url": "https://www.pbs.org/newshour/science/new-findings-by-nasa-mars-rover-provide-strongest-hints-yet-of-potential-signs-of-ancient-life",
+        "title": "https://www.pbs.org/newshour/science/new-findings-by-nasa-mars-rover-provide-strongest-hints-yet-of-potential-signs-of-ancient-life",
+        "heading": "",
+        "chunk_text": "channel that once carried water into Jezero Crater. This outcrop of sedimentary rock, known as the Bright Angel formation, was surveyed by Perseverance's science instruments before the drill came out. Along with organic carbon, a building block of life, Hurowitz and his team found minuscule specks, dubbed poppy seeds and leopard spots, that were enriched with iron phosphate and iron sulfide. On Earth, these chemical compounds are the byproducts when microorganisms chomp down on organic matter. The findings appeared in the journal Nature. Ten of the titanium sample tubes were placed on the Martian surface a few years ago as a backup to the rest aboard the rover, the main target in NASA's still fuzzy return mission. When Perseverance launched in 2020, NASA expected the samples back on Earth by the early 2030s. But that date slipped into the 2040s as costs swelled to $11 billion, stalling the retrieval effort. Until the samples are transported off of Mars by robotic spacecraft or astronauts, scientists will have to rely on Earthly stand-ins and lab experiments to evaluate the feasibility of ancient Martian life, according to Hurowitz. On Earth, microorganisms commonly interact with minerals in Antarctic lakes. \"There is no evidence of microbes on Mars today, but if any had been present on ancient Mars, they too might have reduced sulfate minerals to form sulfides in such a lake at Jezero Crater,\" Bishop and Parente wrote in an accompanying editorial.",
+        "score": 0.4937,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 3218,
+      "search_ms": 2675,
+      "extract_ms": 5566,
+      "chunk_ms": 13,
+      "retrieve_ms": 14550,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 40265,
+    "elapsed_s": 43.29,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "id": "rs3",
+  "category": "routing_search_obvious",
+  "domain": "ai",
+  "question": "What's the latest Anthropic Claude model as of mid-2026?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Recent product release — must search; LLM may not know cutoff.",
+  "key_facts": [
+    "Claude",
+    "Opus"
+  ],
+  "ground_truth": "As of May 2026, Anthropic's frontier Claude family includes Opus 4.7 and Sonnet 4.6, with Haiku 4.5 as the fast tier.",
+  "session_id": "eval-20260511T060411Z-rs3",
+  "verdict": "pass",
+  "aggregate": 0.85,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 1.0,
+    "context_recall": 1.0,
+    "context_precision": 0.25,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.67,
+    "aggregate": 0.85
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 1.0,
+      "supported": 6,
+      "total": 6,
+      "reasoning": "All claims match chunks: Sonnet 5 release, SWE-bench score, context window, Opus expected Q2-Q3, pricing, and four models."
+    },
+    "context_precision": {
+      "score": 0.25,
+      "relevant": 2,
+      "total": 8,
+      "reasoning": "Chunks 1-2 mention Claude 5 Opus expected in 2026; others are outdated or unrelated."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "Claude",
+        "Opus"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.67,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "Claude",
+      "Opus"
+    ]
+  },
+  "pipeline": {
+    "answer": "As of mid-2026, the most recent Anthropic Claude model is **Claude Sonnet 5 \"Fennec\"**, released on February 3, 2026 [1]. It is the first model in the Claude 5 generation [1]. Though expected later in 2026, **Claude 5 Opus has not yet been released** as of mid-2026 [1].\n\n**Key details on the model landscape mid-2026:**\n\n* **Latest released model:** Claude Sonnet 5 \"Fennec\" (Feb 3, 2026) [1]. It scores **82.1% on SWE-bench Verified**, surpassing Opus 4.6 on coding benchmarks [1]. Features include a **1M token context window** and **Dev Team** multi-agent collaboration [1].\n* **Four production models maintained as of March 2026**, but these do not yet include a Claude 5 Opus [1].\n* **Expected future model:** Claude 5 Opus is anticipated in **Q2–Q3 2026** (roughly April to August), meaning it could launch by late mid-2026 but was not yet available [1].\n* **Other active models in the lineup:** Claude Opus 4 and Claude Sonnet 4 remain in the Claude 4 family [2]. An \"Opus 4.6\" update is also noted [3].\n* **Pricing context:** Claude Opus 4 costs $5 per million input tokens and $25 per million output tokens; Claude Sonnet 4 costs $3/$15 per million [2]. Sonnet 5 pricing was still being finalized [1].\n\nIn summary, Claude Sonnet 5 \"Fennec\" is the newest model available in mid-2026, with Claude 5 Opus expected shortly thereafter.",
+    "mode": "search",
+    "rewritten_query": "What's the latest Anthropic Claude model as of mid-2026?",
+    "rewrote": false,
+    "rationale": "Time-sensitive, requires current model info.",
+    "sub_queries": [
+      "Most recent Anthropic Claude model as of mid-2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.nxcode.io/resources/news/claude-ai-complete-guide-models-pricing-features-2026",
+        "title": "Claude AI 2026: Complete Guide to Models, Pricing, Features & Use Cases",
+        "snippet": "Claude Model Family: Which One Should You Use?\n\nAnthropic maintains four production models as of March 2026, each occupying a distinct tier of the speed-cost-intelligence spectrum. A fifth, Claude 5 Opus, is expected later this year."
+      },
+      {
+        "num": 2,
+        "url": "https://www.timesofai.com/brand-insights/claude-ai-versions/",
+        "title": "Claude AI Updates 2026: Features and Models",
+        "snippet": "Claude AI in 2026: Latest Updates, Core Features, and Industry Impact\n\nClaude AI has developed into one of the most reliable business-oriented AI systems that operate in the current market. Claude serves as the perfect AI solution for enterprises because Anthropic designed it to maintain safety, dep"
+      },
+      {
+        "num": 3,
+        "url": "https://aimaker.substack.com/p/anthropic-claude-updates-q1-2026-guide",
+        "title": "The Complete Guide to Every Claude Update in Q1 2026 (Tested by Two AI Builders)",
+        "snippet": "Cowork as the foundation that makes everything else possible. Opus 4.6 and the 1 million token context window for longer, deeper working sessions. Scheduled tasks that run your morning routine before you even sit down. Connectors that let Claude talk to your existing tools. Plugins that bundle entir"
+      }
+    ],
+    "urls": [
+      "https://www.reddit.com/r/AI_Agents/comments/1qfm9a7/january_2026_latest_version_of_anthropics_system/",
+      "https://aimaker.substack.com/p/anthropic-claude-updates-q1-2026-guide",
+      "https://www.nxcode.io/resources/news/claude-ai-complete-guide-models-pricing-features-2026",
+      "https://medium.com/@sanjeevpatel3007/claude-ai-the-complete-guide-you-need-in-2026-0c818c0058c1",
+      "https://www.timesofai.com/brand-insights/claude-ai-versions/",
+      "https://www.anthropic.com/news/claude-opus-4-7"
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://www.nxcode.io/resources/news/claude-ai-complete-guide-models-pricing-features-2026",
+        "title": "Claude AI 2026: Complete Guide to Models, Pricing, Features & Use Cases",
+        "heading": "Claude Model Family: Which One Should You Use?",
+        "chunk_text": "Claude Model Family: Which One Should You Use?\n\nAnthropic maintains four production models as of March 2026, each occupying a distinct tier of the speed-cost-intelligence spectrum. A fifth, Claude 5 Opus, is expected later this year.",
+        "score": 7.3116,
+        "rank": 0
+      },
+      {
+        "url": "https://www.nxcode.io/resources/news/claude-ai-complete-guide-models-pricing-features-2026",
+        "title": "Claude AI 2026: Complete Guide to Models, Pricing, Features & Use Cases",
+        "heading": "What's Next: Claude 5 Opus and Beyond",
+        "chunk_text": "What's Next: Claude 5 Opus and Beyond\n\nThe release of Sonnet 5 \"Fennec\" in February 2026 signals that Anthropic's Claude 5 generation is underway. Historically, Opus models follow their Sonnet counterparts by 2-4 months, which places a likely **Claude 5 Opus release in Q2-Q3 2026** — roughly April to August.\n\nBased on the Sonnet 5 trajectory, [industry analysts predict](https://claude5.com/news/claude-5-release-prediction) Claude 5 Opus could push SWE-bench scores above 85% and GPQA Diamond above 93%. More significantly, Opus 5 is expected to expand Agent Teams into a fully orchestrated multi-agent framework — potentially enabling Claude to manage entire software projects from planning through deployment.\n\nThe competitive landscape is moving fast. OpenAI's GPT-5.4 and Google's Gemini 3.1 Pro are both strong competitors, and open-source models like DeepSeek V4 continue to close the gap. Claude's advantage in 2026 is clear — it leads on the benchmarks that developers care about most — but that lead is measured in single-digit percentage points, not orders of magnitude. Anthropic will need to sustain its current pace to stay ahead.\n\n* * *",
+        "score": 6.9361,
+        "rank": 1
+      },
+      {
+        "url": "https://www.nxcode.io/resources/news/claude-ai-complete-guide-models-pricing-features-2026",
+        "title": "Claude AI 2026: Complete Guide to Models, Pricing, Features & Use Cases",
+        "heading": "Claude AI 2026: Complete Guide to Models, Pricing, Features and Use Cases",
+        "chunk_text": "Claude AI 2026: Complete Guide to Models, Pricing, Features and Use Cases\n\n**March 29, 2026** — Claude is Anthropic's family of large language models, and in 2026, it has become one of the two or three AI assistants that serious developers and businesses actually rely on daily. With four production models, a $20-to-$200/month consumer tier, a developer API, and capabilities like agentic coding, computer control, and million-token context windows, Claude's product surface has expanded dramatically since its first public release in March 2023.\n\nThis guide covers everything you need to know: every model, every pricing plan, every major feature, honest limitations, and practical guidance on when Claude is — and is not — the right tool for the job.\n\n* * *",
+        "score": 6.5705,
+        "rank": 2
+      },
+      {
+        "url": "https://www.nxcode.io/resources/news/claude-ai-complete-guide-models-pricing-features-2026",
+        "title": "Claude AI 2026: Complete Guide to Models, Pricing, Features & Use Cases",
+        "heading": "Claude Sonnet 5 \"Fennec\" — The Newest Model",
+        "chunk_text": "Claude Sonnet 5 \"Fennec\" — The Newest Model\n\nReleased on February 3, 2026, Sonnet 5 is the first model in the Claude 5 generation. Its codename, \"Fennec,\" [first appeared in Google Vertex AI logs](https://dataconomy.com/2026/02/04/anthropic-fennec-leak-signals-imminent-claude-sonnet-5-launch/) before the official announcement, generating significant speculation. The model scores **82.1% on SWE-bench Verified** — surpassing even Opus 4.6 on the coding benchmark that matters most to developers.\n\nSonnet 5 introduces **Dev Team**, a multi-agent collaboration mode where the model can split a complex development task into sub-tasks, work on them in parallel, and merge the results. It also features a **1M token context window** by default.\n\n**Best for**: Cutting-edge coding tasks, large-scale codebase analysis and refactoring, and developers who want the absolute best coding performance regardless of the model generation label.\n\n**Limitations**: GPQA Diamond and computer use benchmarks for Sonnet 5 have not been published yet. Early users report that Sonnet 5 occasionally over-reasons on simple tasks, adding unnecessary complexity. Pricing details for the API are still being finalized for some tiers.",
+        "score": 6.1021,
+        "rank": 3
+      },
+      {
+        "url": "https://www.timesofai.com/brand-insights/claude-ai-versions/",
+        "title": "Claude AI Updates 2026: Features and Models",
+        "heading": "Claude AI in 2026: Latest Updates, Core Features, and Industry Impact",
+        "chunk_text": "Claude AI in 2026: Latest Updates, Core Features, and Industry Impact\n\nClaude AI has developed into one of the most reliable business-oriented AI systems that operate in the current market. Claude serves as the perfect AI solution for enterprises because Anthropic designed it to maintain safety, dependability, and deliver optimal performance. The transition from Claude 3 to Claude 4 represents a substantial improvement in reasoning, scalability, and real-world application. Enterprises now prefer Claude because it has developed capabilities to process long contexts and generate structured outputs.",
+        "score": 4.9924,
+        "rank": 4
+      },
+      {
+        "url": "https://www.timesofai.com/brand-insights/claude-ai-versions/",
+        "title": "Claude AI Updates 2026: Features and Models",
+        "heading": "1. Claude 4 Model Family",
+        "chunk_text": "1. Claude 4 Model Family\n\nThe Claude 4 model family represents Anthropic’s most advanced lineup to date, offering tiered performance based on user needs.\n\n**Claude Sonnet 4:** The Claude Sonnet 4 has the maximum performance capacity in all the models. It functions as a middle-range product that caters to developers and enterprises by delivering a context capacity of 1 million tokens and providing advanced programming features and extended cognitive abilities, which they can access for $3 per million input tokens and $15 per million output tokens. The system functions as the primary solution that developers use to create software that relies on APIs and to build automated workflows and virtual assistant programs.\n\n**Claude Opus 4:**Claude Opus 4 delivers a major improvement to [agentic coding](https://www.timesofai.com/industry-insights/agentic-coding-in-software-development/) capabilities. The system operates with a 1 million token context window, adaptive thinking support, and a 128K maximum output window to handle high-level reasoning, extensive research, and enterprise-grade autonomous AI systems. The basic service price begins at $5 for every input million tokens and $25 for every output million tokens.",
+        "score": 1.9914,
+        "rank": 5
+      },
+      {
+        "url": "https://aimaker.substack.com/p/anthropic-claude-updates-q1-2026-guide",
+        "title": "The Complete Guide to Every Claude Update in Q1 2026 (Tested by Two AI Builders)",
+        "heading": "",
+        "chunk_text": "Cowork as the foundation that makes everything else possible. Opus 4.6 and the 1 million token context window for longer, deeper working sessions. Scheduled tasks that run your morning routine before you even sit down. Connectors that let Claude talk to your existing tools. Plugins that bundle entire workflows around your specific role. And Skills 2.0, which turned Claude from a writing assistant into something that produces actual deliverables.\n\nThat’s the visual, no-code side of Claude. And for a lot of you, that might be where you spend most of your time.\n\nBut here’s why you should keep reading.\n\nA lot of you use Claude Code. I know because you followed my guides, you set up MCP servers, you started building things in the terminal that you never thought you could. And some of the most important Q1 updates happened on the Claude Code side.\n\nIlia is going to walk you through the ones that matter. And I want to be clear: this isn’t a section “for developers.” Dispatch, Remote Control, Channels... these features are about making your Claude workflows run without you being in front of your laptop. That’s relevant whether you write code for a living or you just learned what a terminal was six months ago.\n\nNow let’s go over to Ilia.\n\n[Share](https://aimaker.substack.com/p/anthropic-claude-updates-q1-2026-guide?utm_source=substack&utm_medium=email&utm_content=share&action=share)\n\nHello, Ilia here 👋🏻",
+        "score": -2.7512,
+        "rank": 6
+      },
+      {
+        "url": "https://aimaker.substack.com/p/anthropic-claude-updates-q1-2026-guide",
+        "title": "The Complete Guide to Every Claude Update in Q1 2026 (Tested by Two AI Builders)",
+        "heading": "",
+        "chunk_text": "1.   [Save Claude Tokens: 16 Tactics for Chat, Code & Cowork](https://prosperinai.substack.com/p/save-claude-tokens)\n\n2.   [Claude Chat, Cowork, and Code: The Setup Most People Never Do](https://prosperinai.substack.com/p/claude-chat-cowork-code-complete-setup-guide)\n\n3.   [Before You Use Claude, Create This File](https://artificialcorner.com/p/md-file)\n\nIn this post, Ilia is covering Claude Code features. I’m covering everything else: the Cowork features, general upgrades, and integrations that affect non-techy people like you and me.\n\n_🚨 Warning: This is going to be a long post packed with features and screenshots. If you don’t have time to read it now, you might want to click the save button and bookmark this post for weekend reading._\n\nNow, let’s get into it.\n\nBefore we go deep, here’s the full list:\n\n[![Image 2: Infographic of all 35 Anthropic Claude updates January to March 2026](https://substackcdn.com/image/fetch/$s_!0cdj!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffab8165e-e5a6-4455-872b-1022d2e24ab0_1536x2752.jpeg)](https://substackcdn.com/image/fetch/$s_!0cdj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffab8165e-e5a6-4455-872b-1022d2e24ab0_1536x2752.jpeg)\n\n*   Jan 12: Claude Cowork launched (Max, macOS), Health and fitness data on Claude Mobile",
+        "score": -4.3738,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 3562,
+      "search_ms": 2936,
+      "extract_ms": 12874,
+      "chunk_ms": 68,
+      "retrieve_ms": 3995,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 37037,
+    "elapsed_s": 42.91,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

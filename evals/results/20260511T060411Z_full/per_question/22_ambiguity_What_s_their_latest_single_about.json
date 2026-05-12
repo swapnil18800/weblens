@@ -1,0 +1,169 @@
+{
+  "id": "amb3",
+  "category": "ambiguity",
+  "domain": "music",
+  "question": "What's their latest single about?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "No subject — should refuse or scope.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T060411Z-amb3",
+  "verdict": "partial",
+  "aggregate": 0.629,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.143,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.444,
+    "aggregate": 0.629
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 5,
+      "reasoning": "Chunks lack info on President's 2026 single 'Angel Wings' or Tedeschi Trucks Band details."
+    },
+    "context_precision": {
+      "score": 0.143,
+      "relevant": 1,
+      "total": 7,
+      "reasoning": "Only chunk 7 mentions a new single 'Angel Wings' and its theme of spiritual redemption."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.444,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "pipeline": {
+    "answer": "The most recent single released by **President** in 2026 is **\"Angel Wings\"**, which dropped on February 18 [1]. The band's anonymous vocalist describes the track as reflecting \"a search for spiritual redemption and the resolve to begin again,\" and says it \"marks the opening of a new chapter\" [1]. The song speaks to \"holding close those who matter most, while remaining unmoved by detractors\" [1]. This singles is also the band's first release after signing with major label Atlantic Records [1].\n\nFor context on other 2026 singles, **Tedeschi Trucks Band** released **\"Who Am I\"** from their forthcoming album *Future Soul* (due March 20) — a romantic collaboration between Derek Trucks, Susan Tedeschi, Mike Mattison, and Gabe Dixon [2]. However, \"Angel Wings\" is the most recent single by President in 2026 based on described timelines.",
+    "mode": "search",
+    "rewritten_query": "What's their latest single about?",
+    "rewrote": false,
+    "rationale": "Time-sensitive; 'latest single' requires current sourced info.",
+    "sub_queries": [
+      "Most recent single released by [artist/band] in 2026 and its meaning or theme"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.loudersound.com/news/president-release-new-single-angel-wings-2026",
+        "title": "https://www.loudersound.com/news/president-release-new-single-angel-wings-2026",
+        "snippet": "nbox!\nNonetheless, President are currently working on their debut album, which is one of the most anticipated metal releases of 2026. The singer told Hammer: “I can’t wait to show everyone this album. It’s something I know I’m going to be really proud of, and I think my friends and family will be to"
+      },
+      {
+        "num": 2,
+        "url": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "title": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "snippet": "Songs of the Week 2026: Take 1\n- Feb 27\n- 31 min read\nUpdated: Mar 8\nNeil Morton\nFEATURED SONG OF THE WEEK\nWho Am I: Tedeschi Trucks Band\nI always love when a song can put you in between worlds – Derek Trucks\nIt remains hopeful and heartening that there are more songs about love than any other topic"
+      }
+    ],
+    "urls": [
+      "https://www.facebook.com/fabukmagazine/posts/matt-whataguy-steps-boldly-into-2026-with-his-powerful-new-single-we-werent-in-l/1372820024885911/",
+      "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+      "https://www.instagram.com/reel/DXQ8z7csddV/",
+      "https://www.loudersound.com/news/president-release-new-single-angel-wings-2026",
+      "https://www.youtube.com/watch?v=iqKKOtfC2vg",
+      "https://en.wikipedia.org/wiki/List_of_2026_albums"
+    ],
+    "chunk_count": 7,
+    "chunks": [
+      {
+        "url": "https://www.loudersound.com/news/president-release-new-single-angel-wings-2026",
+        "title": "https://www.loudersound.com/news/president-release-new-single-angel-wings-2026",
+        "heading": "",
+        "chunk_text": "nbox!\nNonetheless, President are currently working on their debut album, which is one of the most anticipated metal releases of 2026. The singer told Hammer: “I can’t wait to show everyone this album. It’s something I know I’m going to be really proud of, and I think my friends and family will be too, which is important to me.”\nLouder’s resident Gojira obsessive was still at uni when he joined the team in 2017. Since then, Matt’s become a regular in Metal Hammer and Prog, at his happiest when interviewing the most forward-thinking artists heavy music can muster. He’s got bylines in The Guardian, The Telegraph, The Independent, NME and many others, too. When he’s not writing, you’ll probably find him skydiving, scuba diving or coasteering.\nYou must confirm your public display name before commenting\nPlease logout and then login again, you will then be prompted to enter your display name.",
+        "score": 1.4925,
+        "rank": 0
+      },
+      {
+        "url": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "title": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "heading": "",
+        "chunk_text": "Songs of the Week 2026: Take 1\n- Feb 27\n- 31 min read\nUpdated: Mar 8\nNeil Morton\nFEATURED SONG OF THE WEEK\nWho Am I: Tedeschi Trucks Band\nI always love when a song can put you in between worlds – Derek Trucks\nIt remains hopeful and heartening that there are more songs about love than any other topic even if, frustratingly, the message is not always widely shared. We were reminded of the power of love, lost and found, by Courtney Marie Andrews’ wonderful show in London this week, her antidote to ‘a hard, sometimes brutal, world out there’.\nHer heart-on-sleeve songs have been regular choices on our Songs of the Week blog, including Outsider and Cons And Clowns from her new album Valentine, which she and her accomplished band played in faithful sequence at Islington Assembly Rooms, adding seven more tracks with two encores and squeezing in a couple of her poems. The next day we heard the latest single, Who Am I, from her fellow Americans Tedeschi Trucks Band and were captivated by its rolling riff and romantic theme. Love was still in the air.\nThe track, which will feature on the Jacksonville, Florida-based band’s forthcoming album Future Soul, is a collaborative creation: stellar guitarist Derek Trucks’ hypnotic hook, his wife Susan Tedeschi’s soulful vocal from the opening lines penned by her (‘You had me at hello/ Poetry and the wine flowed’), and the lyrical contributions of vocalist Mike Mattison and keyboard player Gabe Dixon.",
+        "score": 1.1332,
+        "rank": 1
+      },
+      {
+        "url": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "title": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "heading": "",
+        "chunk_text": "tell me now/ I have loved you from the beginning.’\nFuture Soul, due out on March 20, will be Tedeschi Trucks Band’s sixth studio album from which we’ve already been introduced to the jaunty I Got You. The infectious first single, written by Mattison, draws from the spirit of Derek and the Dominos and Delaney & Bonnie. Trucks describes it as ‘a breath of fresh air and pretty different for us. It feels like the band, but it doesn’t feel like anything we’ve done before’.\nThe 11-track album is the follow-up to their 2022 conceptual quadruple studio album, I Am The Moon, and last year’s live release, Tedeschi Trucks Band and Leon Russell Present: Mad Dogs & Englishmen Revisited. Co-produced by Mike Elizondo and Trucks, Future Soul reflects a full-band collaborative approach under the influence of southern rock, funk, blues and soul. It will include other recent additions to the band’s live repertoire, Crazy Cryin’ and the title track.\nTo promote album the 12-piece ensemble will perform a 10-night residency at New York City’s Beacon Theatre before launching their 35-date Future Soul 2026 US Tour on April 14.",
+        "score": 0.4193,
+        "rank": 2
+      },
+      {
+        "url": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "title": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "heading": "",
+        "chunk_text": "ns (with Esmé Patterson, Jess Williamson and Sierra Ferrell) and what he calls ‘regenerative’ music.\nGraves’ 2023 album Movie Of The Week, his most ambitious project, made the listener a collaborator. It began as a soundtrack for a film that never got off the ground. But he ploughed on and he and his band created their own imaginary soundtrack. ‘I love how the human brain applies plot to things,’ he told Under The Radar. ‘Like if you put a movie on and then play music over it, your brain will connect and recontextualise them. My intended goal is to have people apply that concept to this album.\n‘What I like is the idea that somebody’s going to make a better album out of this body of music than I can, but they’re going to do it by accident. It’s going to be titled something more interesting, arranged in a way that I had never thought about, and might even be able to pull a narrative out of it that I didn’t intend. It makes this album regenerative.’\nHe explained the interactive experience: listeners were invited to hear myriad versions of the tracks on his website where they were given space to insert a word of their choice to change the theme and the vibe and create their own soundtrack and artwork – with a little help generated by AI, it should be added.",
+        "score": -0.469,
+        "rank": 3
+      },
+      {
+        "url": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "title": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "heading": "",
+        "chunk_text": "in’ and the title track.\nTo promote album the 12-piece ensemble will perform a 10-night residency at New York City’s Beacon Theatre before launching their 35-date Future Soul 2026 US Tour on April 14. Joining them at various points are The Black Crowes, Whiskey Myers, Alabama Shakes, Jason Isbell and The 400 Unit, Sheryl Crow, Lukas Nelson, JJ Grey & Mofro, and Molly Tuttle.\nThe band, whose debut studio album, Revelator, won the 2012 Grammy for Best Blues Album, will also perform at numerous festivals including Bonnaroo, New Orleans Jazz & Heritage Festival and Telluride Bluegrass Festival as well as their own Sun, Sand & Soul extravaganza. They will also be supporting veterans The Eagles at two farewell shows in May.\nThe future of soulful rock is in safe hands. Loving hands.\nLong Distance Love: Little Feat (Featuring Amy Helm)\nLittle Feat’s remembrance of one of their most cherished songs could never be a slavish remake. What would be the point? And so their celebration of Long Distance Love, more than 50 years after the late Lowell George wrote it, springs a couple of surprises with Bill Payne’s bluesy introduction and piano-bathed coda. Beautiful bookends.\nOur Song of the Week at herecomesthesong.com and its evocative accompanying video are ‘dedicated to friends living and past, to ideals, dreams and reality, life weathered.",
+        "score": -1.5221,
+        "rank": 4
+      },
+      {
+        "url": "https://www.loudersound.com/news/president-release-new-single-angel-wings-2026",
+        "title": "https://www.loudersound.com/news/president-release-new-single-angel-wings-2026",
+        "heading": "",
+        "chunk_text": "rst seen, the band have more than 600,000 Spotify monthly listeners. In The Name Of The Father has been streamed 18 million times and their second single, Fearless, has been streamed 12 million times. They’ve played sold-out headline shows in London, New York and Los Angeles and supported Architects in arenas, and they have a European headline tour booked for the spring that’s already totally sold-out.\nNext week, President will start a tour of North America with Bad Omens and Beartooth. They’ll hit the European festival circuit from May to August.\nThe rocket ride hasn’t been completely smooth, however. With their masked presentation and genre-straddling songs – which have elements of pop, R&B and metal – some observers have accused them of being rip-offs of superstars Sleep Token. The two bands also share the same management, Future History. President’s singer lambasted the comparisons in a Metal Hammer interview earlier this year.\n“What a fucking lazy comparison,” he said. “I mean, yes, we have the same management, and we both wear masks. Those are both facts… you got me! It’s like, is that it?! That’s all you’ve got? It’s hardly a new thing, is it, wearing masks?!”\nSign up below to get the latest from Metal Hammer, plus exclusive special offers, direct to your inbox!\nNonetheless, President are currently working on their debut album, which is one of the most anticipated metal releases of 2026. The singer told Hammer: “I can’t wait to show everyone this album.",
+        "score": -2.0436,
+        "rank": 5
+      },
+      {
+        "url": "https://www.loudersound.com/news/president-release-new-single-angel-wings-2026",
+        "title": "https://www.loudersound.com/news/president-release-new-single-angel-wings-2026",
+        "heading": "",
+        "chunk_text": "“A search for spiritual redemption”: Hear new President single Angel Wings – the masked band’s first song after signing with major label Atlantic Records\nThe fast-rising alt-metalcore outfit are starting “a new chapter” with a new record deal\nMasked alt-metalcore outfit President have released a new single, Angel Wings, and signed with major label Atlantic Records.\nThe song dropped on Wednesday (February 18) and is an ostensibly standalone release. The band’s nameless vocalist says that it “reflects a search for spiritual redemption and the resolve to begin again”. He adds: “It marks the opening of a new chapter. At its core, the song speaks to holding close those who matter most, while remaining unmoved by detractors.”\nPresident are one of the fastest-rising bands in metal history, having amassed international buzz when they appeared on the poster for Download festival without having a song to their name last February. In May, they released their debut track, In The Name Of The Father, and the following month, they made their live debut playing in front of an overflowing Dogtooth tent at Download. Their first EP, King Of Terrors, dropped in September.\nAt time of publication, 12 months after President’s name was first seen, the band have more than 600,000 Spotify monthly listeners. In The Name Of The Father has been streamed 18 million times and their second single, Fearless, has been streamed 12 million times.",
+        "score": -5.9749,
+        "rank": 6
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 2257,
+      "search_ms": 2279,
+      "extract_ms": 9153,
+      "chunk_ms": 14,
+      "retrieve_ms": 9831,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 31622,
+    "elapsed_s": 34.15,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "id": "amb1",
+  "category": "ambiguity",
+  "domain": "ai",
+  "question": "What's the best model right now?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Should surface multiple interpretations (best at what?) or scope explicitly — not silently pick one answer.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T161015Z-amb1",
+  "verdict": "pass",
+  "aggregate": 0.95,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 1.0,
+    "context_recall": 1.0,
+    "context_precision": 0.75,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.95,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.95
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 1.0,
+      "supported": 8,
+      "total": 8,
+      "reasoning": "All claims match source chunks: specialization, scores, leaders, caveats, and budget info."
+    },
+    "context_precision": {
+      "score": 0.75,
+      "relevant": 6,
+      "total": 8,
+      "reasoning": "Chunks 2-7 discuss best models in 2026; chunks 1 and 8 are about benchmarks, not directly answering."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 495,
+      "decompose_ms": 3322,
+      "search_ms": 3282,
+      "extract_ms": 12482,
+      "chunk_ms": 17,
+      "retrieve_ms": 2088,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 31741,
+    "pipeline_s": 42.0
+  },
+  "judge_reasoning": "All claims match source chunks: specialization, scores, leaders, caveats, and budget info.",
+  "pipeline": {
+    "answer": "As of May 2026, no single AI model dominates all benchmarks; specialization is the defining trend of the landscape [2][3][4].\n\n**Overall Leaderboard (Provisional Rankings)**\n- **Claude Mythos Preview** leads overall with a score of **99** on BenchLM.ai’s provisional ranking, followed by **Gemini 3.1 Pro** (92) and **GPT-5.5** (91) [2]. Older benchmarks like MMLU are considered saturated above 88% and no longer differentiate frontier models [1].\n\n**Category-Specific Leaders**\n- **Coding (SWE-bench):** **Grok 4** leads raw scores at **75%**, closely followed by GPT-5.4 (74.9%) and Claude Opus 4.6 (74%+) [4]. However, **Claude** dominates the developer tooling ecosystem, powering Cursor, Windsurf, and Claude Code [3][4].\n- **Reasoning (GPQA):** **Gemini 3.1 Pro** leads at **94.3%**, with GPT-5.4 at 92.8% and Claude Opus 4.6 at 91.3% [4].\n- **Agentic Automation:** **Moonshot Kimi K2** wins for tool use, with Claude 4.5 Sonnet as runner-up [3].\n- **Scientific Discovery:** **AlphaFold 3 / GNoME** lead specialized scientific benchmarks [3].\n\n**Key Caveats**\n- Frontier models show up to a **37% gap** between lab benchmark scores and real-world deployment performance, and scores at the top are often statistically indistinguishable [1].\n- For budget-conscious users, **Gemini 3.1 Pro** offers the cheapest API ($2/$12 per 1M tokens) and **Claude Sonnet 4.6** delivers 98% of Opus quality at lower cost [4].",
+    "mode": "search",
+    "rewritten_query": "What's the best model right now?",
+    "rewrote": false,
+    "rationale": "Vague and time-sensitive, requires recent benchmarks.",
+    "sub_queries": [
+      "Best AI models as of May 2026 for general performance and benchmarks"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://kili-technology.com/blog/ai-benchmarks-guide-the-top-evaluations-in-2026-and-why-theyre-not-enough",
+        "title": "AI Benchmarks 2026: Top Evaluations and Their Limits",
+        "snippet": "What Are the Most Important AI Benchmarks in 2026?\n\nAn AI benchmark is a standardized test or suite of tasks used to measure, compare, and rank the performance of artificial intelligence systems objectively. Benchmarks provide a level playing field that lets researchers and practitioners see how a n"
+      },
+      {
+        "num": 2,
+        "url": "https://benchlm.ai/best/overall",
+        "title": "Best AI Models Overall (2026) — Ranked by Benchmark Data",
+        "snippet": "Best AI Models in 2026 — Overall Rankings\n\nBenchLM.ai now distinguishes provisional overall ranking from verified overall ranking. The provisional score is a normalized weighted average across 8 benchmark categories: agentic (22%), coding (20%), reasoning (17%), knowledge (12%), multimodal & grounde"
+      },
+      {
+        "num": 3,
+        "url": "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+        "title": "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+        "snippet": "\"substantially improved safety profile\" seen in Claude 4.5.\nConclusion, picking your model & next steps\nThe AI Race of 2026 isn't about a single winner; it's about a portfolio of specialized systems. The performance at the top is so close that the \"best\" model is no longer a simple \"who\" but a \"whic"
+      },
+      {
+        "num": 4,
+        "url": "https://gurusup.com/blog/ai-comparisons",
+        "title": "https://gurusup.com/blog/ai-comparisons",
+        "snippet": "dvanced) | $22/mo (X Premium+)\nNo single model dominates every row. That is the defining feature of 2026: specialization.\nWhich AI Model Should You Choose?\nThe answer depends on your primary use case. Here is a simplified decision tree:\nWant to see this in action?\nGuruSup automates customer support "
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://benchlm.ai/best/overall",
+        "title": "Best AI Models Overall (2026) — Ranked by Benchmark Data",
+        "snippet": "# Best AI Models in 2026 — Overall Rankings. BenchLM.ai now distinguishes provisional overall ranking from verified overall ranking. The provisional score is a normalized weighted average across 8 benchmark categories: agentic (22%), coding (20%), reasoning (17%), knowledge (12%), multimodal & grounded (12%), multilingual (7%), instruction following (5%), and math (5%), using non-generated benchmark coverage plus bounded external consensus calibration. Bottom line: Claude Mythos Preview leads overall, but GPT-5.4 and Claude Opus 4.6 are within striking distance — and significantly cheaper. According to BenchLM.ai, **Claude Mythos Preview** leads this ranking with a score of **99**, followed by **Gemini 3.1 Pro** (92) and **GPT-5.5** (91). The best open-weight option is DeepSeek V4 Pro (Max) (ranked #9 with a score of 88). This ranking is based on provisional overall weighted scores across BenchLM.ai's scoring formula tracked by BenchLM.ai. Claude Mythos Preview entered at #1 with the highest overall score on BenchLM. The top model is Claude Mythos Preview by Anthropic with a provisional score of 99."
+      },
+      {
+        "url": "https://kili-technology.com/blog/ai-benchmarks-guide-the-top-evaluations-in-2026-and-why-theyre-not-enough",
+        "title": "AI Benchmarks 2026: Top Evaluations and Their Limits",
+        "snippet": "Learn best practices for combining LLM-as-a-judge and HITL workflows for reliable AI. AI benchmarks dominate how artificial intelligence models are compared, funded, and deployed, but the gap between benchmark scores and production performance has never been wider. This guide maps every major AI benchmark category in 2026 and explains where static evaluations break down. Every frontier large language model now scores above 88% on MMLU, the benchmark that defined artificial intelligence progress for years. Humanity's Last Exam, with 2,500 questions designed by domain experts at the frontier of academic knowledge, drops the best model to 37.5%. Research on enterprise AI agents found a 37% gap between lab benchmark scores and real-world deployment performance, with consistent results dropping from 60% on a single run to 25% when measured across eight consecutive runs. 57% of organizations now have AI agents in production, and the single biggest barrier they report is quality. ## What Are the Most Important AI Benchmarks in 2026?"
+      },
+      {
+        "url": "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+        "title": "The best AI models in 2026: What model to pick for your use case",
+        "snippet": "*   [AI & Data](https://www.pluralsight.com/resources/blog/ai-and-data). [AI & Data](https://www.pluralsight.com/resources/blog/ai-and-data). 2.   [AI & Data](https://www.pluralsight.com/resources/blog/ai-and-data). [![Image 1: Obinna Amalu](https://www.pluralsight.com/content/dam/ps/images/resource-center/blog-contributor/obinna-amalu.webp) By Obinna Amalu](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list). ![Image 2: Please set an alt value for this image...](https://www.pluralsight.com/content/dam/ps/images/resource-center/blog/header-hero-images---rebrand/General%20AI_2.webp). *   [The titans of text: General intelligence & multimodal reasoning](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#the-titans-of-text:-general-intelligence-&-multimodal-reasoning). *   [The agentic workforce: AI models for code & automation](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#the-agentic-workforce:-ai-models-for-code-&-automation). *   [The creative revolution: Generative media](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#the-creative-revolution:-generative-media). *   [The specialized savants: AI in scientific discovery](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#the-specialized-savants:-ai-in-scientific-discovery). *   [Technical deep dive: The architectures you need to know](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#technical-deep-dive:-the-architectures-you-need-to-know). *   [Conclusion, picking your model & next steps](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#conclusion,-picking-your-model-&-next-steps). *   **Meta Llama 4 Scout:** While its raw reasoning scores are lower, it has a game-changing feature: an industry-leading 10 million token context window, fundamentally shaking up the market for massive-scale data processing with open-source tools, as detailed on the[Llama 4 website](https://www.llama.com/models/llama-4/). Anthropic has optimized this model specifically for[agentic coding](https://www.anthropic.com/news/claude-sonnet-4-5), allowing it to work \"autonomously for hours\" and offering an Agent SDK. Anthropic's LLM vs ChatGPT](https://www.pluralsight.com/resources/blog/ai-and-data/what-is-claude-ai). *   [AI tools and trends in 2025: What tech...](https://www.pluralsight.com/resources/blog/ai-and-data/2025-ai-tools-trends-tech-sector). *   [Large Language Models (LLM)](https://www.pluralsight.com/paths/large-language-models-llm)."
+      },
+      {
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rovfbw/i_made_a_list_of_every_ai_benchmark_that_still/",
+        "title": "I made a list of every AI benchmark that still has signal in 2025-2026 ...",
+        "snippet": "[Skip to main content](https://www.reddit.com/r/LocalLLaMA/comments/1rovfbw/i_made_a_list_of_every_ai_benchmark_that_still/#main-content)I made a list of every AI benchmark that still has signal in 2025-2026 (and the ones that are completely dead) : r/LocalLLaMA. Open menu Open navigation[](https://www.reddit.com/)Go to Reddit Home. Get App Get the Reddit app [Log In](https://www.reddit.com/login/)Log in to Reddit. [![Image 1](https://styles.redditmedia.com/t5_81eyvm/styles/communityIcon_cumnsvx9kzma1.png?width=96&height=96&frame=1&auto=webp&crop=96%3A96%2Csmart&s=0ae51826e9b99ef23f985ae5b3c6c8d76b205c79) Go to LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/). [r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/)•2mo ago. [Many-Breakfast9723](https://www.reddit.com/user/Many-Breakfast9723/). [Tutorial | Guide](https://www.reddit.com/r/LocalLLaMA/?f=flair_name%3A%22Tutorial%20%7C%20Guide%22). Curious what benchmarks you all actually pay attention to — am I missing any that still have real signal? By continuing, you agree to our[User Agreement](https://www.redditinc.com/policies/user-agreement)and acknowledge that you understand the[Privacy Policy](https://www.redditinc.com/policies/privacy-policy). [Best AI models 2026 comparison](https://www.reddit.com/answers/bfad57d8-b927-418a-8593-eb18f6b8c3e6/?q=Best+AI+models+2026+comparison&source=PDP). [AI model benchmark rankings](https://www.reddit.com/answers/862d3c52-a0ce-484c-8b07-1f9468c14141/?q=AI+model+benchmark+rankings&source=PDP). [Digital benchmarking insights](https://www.reddit.com/answers/83d66360-a2d5-4057-a007-a73db44b0f1c/?q=Digital+benchmarking+insights&source=PDP). [Best practices for hosting LLaMA locally](https://www.reddit.com/answers/68251f82-8ebc-4531-921b-061c32affa3d/?q=Best+practices+for+hosting+LLaMA+locally&source=PDP). [Unique applications of LLaMA in daily life](https://www.reddit.com/answers/2b379f47-d24c-41f2-ae8b-fad3a9d3dd54/?q=Unique+applications+of+LLaMA+in+daily+life&source=PDP). [Reddit Rules](https://www.redditinc.com/policies/content-policy)[Privacy Policy](https://www.reddit.com/policies/privacy-policy)[User Agreement](https://www.redditinc.com/policies/user-agreement)[Your Privacy Choices](https://support.reddithelp.com/hc/articles/43980704794004)[Accessibility](https://support.reddithelp.com/hc/sections/38303584022676-Accessibility)[Reddit, Inc. All rights reserved.](https://redditinc.com/). *   [About Reddit](https://www.redditinc.com/). *   [Advertise](https://ads.reddit.com/register?utm_source=web3x_consumer&utm_name=left_nav_cta). *   [Developer Platform](https://developers.reddit.com/?utm_source=reddit&utm_medium=left_nav_resources). *   [Reddit Pro BETA](https://www.reddit.com/reddit-pro?utm_source=reddit&utm_medium=left_nav_resources). *   [Help](https://support.reddithelp.com/hc?utm_source=reddit&utm_medium=footer&utm_campaign=evergreen). *   [Careers](https://www.redditinc.com/careers). *   [Press](https://www.redditinc.com/press). *   [Best of Reddit](https://www.reddit.com/posts/2026/global/). *   [Reddit Rules](https://www.redditinc.com/policies/content-policy). *   [Privacy Policy](https://www.reddit.com/policies/privacy-policy). *   [User Agreement](https://www.redditinc.com/policies/user-agreement). *   [Your Privacy Choices](https://support.reddithelp.com/hc/articles/43980704794004). *   [Accessibility](https://support.reddithelp.com/hc/sections/38303584022676-Accessibility). All rights reserved.](https://redditinc.com/)."
+      },
+      {
+        "url": "https://gurusup.com/blog/ai-comparisons",
+        "title": "AI Models in 2026: Which One Should You Actually Use? - GuruSup",
+        "snippet": "# AI Models in 2026: Which One Should You Actually Use? Four frontier models now compete across coding, reasoning, writing, and business automation — and none of them wins everything. ## AI Models at a Glance: 2026 Overview. Here is where the four frontier models stand right now:. Category | GPT-5.4 | Claude Opus 4.6 | Gemini 3.1 Pro | Grok 4. ## Which AI Model Should You Choose? ## AI Models for Business: What Actually Matters. Here is what most comparison articles get wrong: for business use, the model is the least important variable. What matters is the **system** around the model. A well-designed AI agent that routes queries, pulls from your knowledge base, and escalates to humans at the right moment will outperform a raw frontier model every time. Companies that deploy AI agents for customer service, sales, and internal support see 40-60% automation rates regardless of which underlying model they use. ### What is the best AI model in 2026? ### Which AI is best for coding?"
+      },
+      {
+        "url": "https://www.visualcapitalist.com/ranked-the-smartest-ai-models-in-2026/",
+        "title": "Ranked: The Smartest AI Models of 2026 - Visual Capitalist",
+        "snippet": "Markets in a Minute logo. The preview image for a bar chart showing the IQ scores of each AI model in 2026, using data from Tracking AI. ranking chart of the world's top 50 banks by total assets grouped by country. Ranked: The World’s 50 Largest Banks by Assets. Bubble graphic showing the entire S&P 500 index by company in 2026. Every S&P 500 Company in One Giant Chart. U.S. map of housing costs as a share of income by state in 2026. Map of Europe with countries highlighted based on the percentage of young adults who use social media actively. See how public debt levels have changed across major economies from 2005 to 2025, based on the IMF’s October 2025 World Economic Outlook. A map of U.S. life expectancy by state in 2022, ranging from 80.0 years in Hawaii to 72.2 years in West Virginia. A map of diabetes prevalence by U.S. state shows where rates are highest, led by West Virginia and several Southern states."
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://kili-technology.com/blog/ai-benchmarks-guide-the-top-evaluations-in-2026-and-why-theyre-not-enough",
+        "title": "AI Benchmarks 2026: Top Evaluations and Their Limits",
+        "heading": "What Are the Most Important AI Benchmarks in 2026?",
+        "chunk_text": "What Are the Most Important AI Benchmarks in 2026?\n\nAn AI benchmark is a standardized test or suite of tasks used to measure, compare, and rank the performance of artificial intelligence systems objectively. Benchmarks provide a level playing field that lets researchers and practitioners see how a new model stacks up against previous ones, and public leaderboards record how AI capabilities evolve over time.\n\nThe benchmark landscape has fragmented into specialized categories. No single test captures what a model can do. Here is how the major categories break down.",
+        "score": 7.6833,
+        "rank": 0
+      },
+      {
+        "url": "https://benchlm.ai/best/overall",
+        "title": "Best AI Models Overall (2026) — Ranked by Benchmark Data",
+        "heading": "Best AI Models in 2026 — Overall Rankings",
+        "chunk_text": "Best AI Models in 2026 — Overall Rankings\n\nBenchLM.ai now distinguishes provisional overall ranking from verified overall ranking. The provisional score is a normalized weighted average across 8 benchmark categories: agentic (22%), coding (20%), reasoning (17%), knowledge (12%), multimodal & grounded (12%), multilingual (7%), instruction following (5%), and math (5%), using non-generated benchmark coverage plus bounded external consensus calibration. The verified leaderboard is stricter and only counts sourced benchmark rows. Each score includes a confidence indicator (1-4 dots) based on how much sourced coverage supports it. Display-only benchmarks — including MMLU, OpenBookQA, HumanEval, FLTEval, BBH, LisanBench, and older AIME/HMMT variants — remain visible for context but do not affect ranking.\n\nUnless noted otherwise, ranking surfaces on this page use BenchLM&apos;s provisional leaderboard lane rather than the stricter sourced-only verified leaderboard.\n\nBottom line: Claude Mythos Preview leads overall, but GPT-5.4 and Claude Opus 4.6 are within striking distance — and significantly cheaper.\n\nAccording to BenchLM.ai, **Claude Mythos Preview** leads this ranking with a score of**99**, followed by**Gemini 3.1 Pro** (92) and**GPT-5.5** (91). There is meaningful separation between the top models, suggesting genuine performance differences.",
+        "score": 7.6057,
+        "rank": 1
+      },
+      {
+        "url": "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+        "title": "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+        "heading": "",
+        "chunk_text": "\"substantially improved safety profile\" seen in Claude 4.5.\nConclusion, picking your model & next steps\nThe AI Race of 2026 isn't about a single winner; it's about a portfolio of specialized systems. The performance at the top is so close that the \"best\" model is no longer a simple \"who\" but a \"which\"—which model is purpose-built for your specific task?\nThe analysis reveals a clear set of winners for each event:\nTask / \"Race Event\" |\nWinner (Best Overall Performance) |\nRunner-Up (Best Value / Open-Source) |\nGeneral Chat & Human Preference |\nGoogle Gemini 2.5 Pro |\nOpenAI GPT-5 |\nAgentic Coding (Bug Fixes) |\nClaude 4.5 Sonnet |\nGPT-5 mini (Best Value) |\nAgentic Automation (Tool Use) |\nMoonshot Kimi K2 |\nClaude 4.5 Sonnet |\nLong-Context Data Processing |\nMeta Llama 4 Scout (10M) |\nGemini 2.5 / Claude 4.5 (1M) |\nImage (Artistic & Style) |\nMidjourney v7 |\n- |\nImage (Composition & Prompt-Fidelity) |\nQwen-Image |\nFLUX.1 |\nVideo (Cinematic & Audio-Sync) |\nGoogle Veo 3 |\nOpenAI Sora 2 |\nVideo (Creator/Editing Speed) |\nRunway Gen-3 |\n- |\nScientific Discovery |\nAlphaFold 3 / GNoME |\n- |\nFor the modern developer and data practitioner, the key skill is no longer just using a model; it is system architecture.",
+        "score": 7.2229,
+        "rank": 2
+      },
+      {
+        "url": "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+        "title": "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+        "heading": "",
+        "chunk_text": "The best AI models in 2026: What model to pick for your use case\nThe AI race isn't about a single winner, but about picking the right model for your specific task. Here's a list of the top contenders in 2026.\nFeb 20, 2026 • 12 Minute Read\n- The titans of text: General intelligence & multimodal reasoning\n- The agentic workforce: AI models for code & automation\n- The creative revolution: Generative media\n- The specialized savants: AI in scientific discovery\n- Technical deep dive: The architectures you need to know\n- Conclusion, picking your model & next steps\nForget the idea of a single, all-conquering Artificial General Intelligence (AGI). In 2026, the AI landscape isn't one marathon; it's a multi-event Olympics. The \"best\" AI is no longer a single model. Success and market dominance now come down to excelling at one specific, practical function.\nThis competition has become incredibly intense. The performance gap that once existed between US-based labs and the rest of the world has nearly vanished, with labs in China, France, and others emerging as major competitors, even leaders in some key areas, as noted in the State of AI Report 2025. For anyone in tech—developers, data practitioners, and leaders—a solid understanding of these foundational AI systems is no longer a luxury, but a core skill for survival.\nThe definition of a competitor has also changed. We used to talk about individual \"models\" like GPT-4.",
+        "score": 7.1942,
+        "rank": 3
+      },
+      {
+        "url": "https://gurusup.com/blog/ai-comparisons",
+        "title": "https://gurusup.com/blog/ai-comparisons",
+        "heading": "",
+        "chunk_text": "dvanced) | $22/mo (X Premium+)\nNo single model dominates every row. That is the defining feature of 2026: specialization.\nWhich AI Model Should You Choose?\nThe answer depends on your primary use case. Here is a simplified decision tree:\nWant to see this in action?\nGuruSup automates customer support with AI agents — try it free.\n- You write code most of the day — Claude or Grok lead SWE-bench. Claude powers the two most popular AI coding editors (Cursor, Windsurf). Grok leads raw benchmarks. Read our Best AI for Coding guide for the full breakdown.\n- You need research and deep reasoning — Gemini 3.1 Pro leads pure benchmarks. Claude catches up when tools are involved. Both are excellent for academic and scientific work.\n- You write content or long documents — Claude produces the most natural prose and can output 128K tokens in a single pass. GPT-5.4's Canvas is the best editing environment.\n- You want real-time information — Grok 4 with live X/Twitter data. Perplexity also excels here with its search-native approach.\n- You are budget-conscious — Gemini 3.1 Pro offers the cheapest API output. Claude Sonnet 4.6 gives 98% of Opus quality at a fraction of the cost.\n- You run a business — The model matters less than the system around it. AI agents that orchestrate multiple models outperform any single chatbot.\nRead the Full Comparisons\nWe tested each matchup in depth.",
+        "score": 7.127,
+        "rank": 4
+      },
+      {
+        "url": "https://gurusup.com/blog/ai-comparisons",
+        "title": "https://gurusup.com/blog/ai-comparisons",
+        "heading": "",
+        "chunk_text": "for customer service?\nYes. Frontier models in 2026 handle complex, multi-turn customer conversations with high accuracy. The key is deploying them as part of an AI agent system — not as a raw chatbot. AI agents add routing, knowledge retrieval, and human escalation, which makes the underlying model's limitations irrelevant for most support scenarios.\nWhich AI is best for coding?\nGrok 4 leads raw SWE-bench scores (75%), followed closely by GPT-5.4 (74.9%) and Claude Opus 4.6 (74%+). In practice, Claude dominates the developer tooling ecosystem — it powers Cursor, Windsurf, and Claude Code. Read our complete coding AI guide for detailed benchmarks and tool recommendations.\nReady to automate your support?\nJoin thousands of teams using GuruSup to resolve customer queries with AI — without scaling headcount.\nNo credit card required",
+        "score": 6.4131,
+        "rank": 5
+      },
+      {
+        "url": "https://gurusup.com/blog/ai-comparisons",
+        "title": "https://gurusup.com/blog/ai-comparisons",
+        "heading": "",
+        "chunk_text": "AI Models in 2026: Which One Should You Actually Use?\nUpdated: May 4, 2026\nThe AI landscape in 2026 looks nothing like it did two years ago. Four frontier models now compete across coding, reasoning, writing, and business automation — and none of them wins everything.\nThis page gives you the high-level picture. For the deep dives, we wrote dedicated head-to-head comparisons you can read below.\nAI Models at a Glance: 2026 Overview\nHere is where the four frontier models stand right now:\nCategory | GPT-5.4 | Claude Opus 4.6 | Gemini 3.1 Pro | Grok 4\nCoding | Strong (74.9% SWE-bench) | Strong (74%+, powers Cursor) | Good (63.8%, 1M context) | Leader (75%)\nReasoning | 92.8% GPQA | 91.3% GPQA | Leader (94.3% GPQA) | Competitive\nWriting | Good (Canvas editor) | Leader (128K output, natural prose) | Good (Docs integration) | Uncensored style\nMultimodal | Vision + audio + computer use | Vision + tool use | Leader (video, audio, 1M context) | Vision + real-time X data\nAPI Price (in/out per 1M) | $2.50/$15 | $15/$75 (Opus), $3/$15 (Sonnet) | $2/$12 | $2/$15\nConsumer Plan | $20/mo (Plus) | $20/mo (Pro) | $19.99/mo (Advanced) | $22/mo (X Premium+)\nNo single model dominates every row. That is the defining feature of 2026: specialization.\nWhich AI Model Should You Choose?\nThe answer depends on your primary use case.",
+        "score": 5.923,
+        "rank": 6
+      },
+      {
+        "url": "https://kili-technology.com/blog/ai-benchmarks-guide-the-top-evaluations-in-2026-and-why-theyre-not-enough",
+        "title": "AI Benchmarks 2026: Top Evaluations and Their Limits",
+        "heading": "AI Summary",
+        "chunk_text": "AI Summary\n\n*   MMLU and MMLU-Pro are functionally saturated above 88% for frontier AI models, making score differences at the top statistically meaningless.\n*   Humanity's Last Exam holds the best AI models to ~35% accuracy while human domain experts average ~90%, exposing a 50+ point gap no older benchmark reveals.\n*   Enterprise agentic AI systems show a 37% gap between lab benchmark scores and real-world deployment performance, with 50x cost variation for similar accuracy.\n*   Data contamination, benchmark gaming, and annotation error rates above 50% undermine the reliability of AI evaluation based on static benchmarks alone.\n*   OpenAI's GDPval validates human evaluation AI by using domain experts with 14+ years of experience as the final judges of model quality.\n*   Production-ready AI evaluation requires a layered approach: automated metrics for coverage, LLM-as-a-judge for screening, and human expert review for domain-specific correctness.\n*   Kili Technology provides the expert human evaluation layer for production AI, with 2,000+ verified domain specialists and audit-ready traceability.\n\nAI benchmarks dominate how artificial intelligence models are compared, funded, and deployed, but the gap between benchmark scores and production performance has never been wider. This guide maps every major AI benchmark category in 2026 and explains where static evaluations break down.",
+        "score": 5.8524,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 495,
+      "decompose_ms": 3322,
+      "search_ms": 3282,
+      "extract_ms": 12482,
+      "chunk_ms": 17,
+      "retrieve_ms": 2088,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 31741,
+    "elapsed_s": 42.0,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

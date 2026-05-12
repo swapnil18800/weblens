@@ -1,0 +1,81 @@
+Ultimate Web-RAG Benchmark Questions (Top 20)
+
+1. AI + Tech Intelligence
+
+1. Compare OpenAI, Anthropic, and Google DeepMind strategy evolution since ChatGPT launched.
+   Tests: temporal reasoning, synthesis, multi-source comparison
+
+2. Which companies benefit most if AI inference becomes dramatically cheaper than training?
+   Tests: second-order reasoning, economic analysis
+
+3. Compare NVIDIA, AMD, and Intel AI revenue growth, margins, and market positioning over the last 5 years.
+   Tests: financial retrieval, numerical reasoning, trend analysis
+
+4. Which AI startups raised the most funding recently, and what infrastructure bets are investors making?
+   Tests: latest-news retrieval, aggregation
+
+
+2. Finance + Economics
+
+5. Why are analysts comparing the current AI boom to the dot-com bubble, and where does the analogy fail?
+   Tests: contradiction synthesis, historical comparison
+
+6. Compare inflation recovery trends across the US, India, and Europe after COVID-era peaks.
+   Tests: numerical reasoning, macroeconomic synthesis
+
+7. Which countries are investing most aggressively in AI infrastructure right now?
+   Tests: government policy retrieval, global aggregation
+
+8. Which streaming platform has the best revenue-per-subscriber economics today?
+   Tests: business metrics comparison
+
+
+3. Sports + Data
+
+9. Which football clubs spent the most on transfers over the last 10 years, and did it translate into trophies?
+   Tests: long-range aggregation, statistical reasoning
+
+10. Compare Messi, Ronaldo, and Mbappé in terms of social media influence versus on-field performance.
+    Tests: heterogeneous data fusion
+
+11. Which IPL team had the best win-to-spending efficiency in recent seasons?
+    Tests: math + retrieval + ranking
+
+
+4. Media + Internet Culture
+
+12. Which YouTubers scaled into billion-dollar businesses, and what monetization patterns do they share?
+    Tests: multi-source synthesis, business analysis
+
+13. Compare Taylor Swift’s Eras Tour economics with major global sports events.
+    Tests: numerical comparison, cross-domain retrieval
+
+14. Which celebrity controversies caused the largest measurable follower decline online?
+    Tests: temporal analysis, social metrics
+
+
+5. Society + Future
+
+15. What are the strongest arguments that AGI is close, and what are the strongest counterarguments?
+    Tests: contradiction handling, balanced synthesis
+
+16. Which industries are most vulnerable to autonomous AI agents in the next 5 years?
+    Tests: forecasting, reasoning, synthesis
+
+17. What are the second-order effects of AI-generated code on junior developer hiring?
+    Tests: abstract reasoning, economic impact analysis
+
+
+6. Geopolitics + Current Affairs
+
+18. How has drone warfare changed military strategy in recent global conflicts?
+    Tests: latest developments, multi-source synthesis
+
+19. Compare China, the US, and Europe in semiconductor independence efforts.
+    Tests: geopolitical comparison, policy aggregation
+
+
+7. Retrieval + Citation Stress Tests
+
+20. Which sources explicitly disagree on whether remote work improves productivity, and what evidence does each side cite?
+    Tests: contradiction retrieval, citation precision, evidence clustering

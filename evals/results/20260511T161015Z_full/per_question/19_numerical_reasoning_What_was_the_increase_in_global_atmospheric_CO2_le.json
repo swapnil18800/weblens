@@ -1,0 +1,365 @@
+{
+  "id": "nr3",
+  "category": "numerical_reasoning",
+  "domain": "climate",
+  "question": "What was the increase in global atmospheric CO2 levels from 2000 to 2024?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Retrieve both endpoints + compute absolute and percentage change.",
+  "key_facts": [
+    "CO2",
+    "ppm",
+    "2000",
+    "2024"
+  ],
+  "ground_truth": "Global atmospheric CO2 rose from roughly 370 ppm in 2000 to roughly 422 ppm in 2024 — an increase of about 52 ppm (14%).",
+  "session_id": "eval-20260511T161015Z-nr3",
+  "verdict": "partial",
+  "aggregate": 0.783,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.667,
+    "context_recall": 1.0,
+    "context_precision": 0.25,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.741,
+    "aggregate": 0.783,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.783
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.667,
+      "supported": 4,
+      "total": 6,
+      "reasoning": "2024 values and pre-industrial level supported; 2000 estimate and 53-54 ppm increase not directly in chunks."
+    },
+    "context_precision": {
+      "score": 0.25,
+      "relevant": 2,
+      "total": 8,
+      "reasoning": "Chunks 4 and 6 provide 2024 CO2 levels; others lack 2000 baseline or are irrelevant."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "CO2",
+        "ppm",
+        "2000",
+        "2024"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.741,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "CO2",
+      "ppm",
+      "2000",
+      "2024"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 4,
+      "decompose_ms": 2166,
+      "search_ms": 2508,
+      "extract_ms": 11721,
+      "chunk_ms": 34,
+      "retrieve_ms": 6161,
+      "synthesis_ms": 14155,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 48429,
+    "pipeline_s": 52.72
+  },
+  "judge_reasoning": "2024 values and pre-industrial level supported; 2000 estimate and 53-54 ppm increase not directly in chunks.",
+  "pipeline": {
+    "answer": "# Global Atmospheric CO₂ Increase from 2000 to 2024\n\nGlobal atmospheric CO₂ levels rose from approximately **369–370 ppm in 2000** to **422.8–423.9 ppm in 2024**, an increase of roughly **53–54 ppm** over 24 years — about 2.2 ppm per year on average, with the pace accelerating in recent years.\n\n---\n\n## CO₂ Levels at Key Points\n\n| Year / Period | CO₂ Concentration | Source |\n|---------------|-------------------|--------|\n| Pre-industrial (~1750) | ~280 ppm | [2][3][5] |\n| 2000 (estimated) | ~369–370 ppm | [1][3] |\n| 2024 (annual global mean) | 422.8 ppm (NOAA), 422.5 ppm (IEA), 423.9 ppm (WMO) | [3][4][6] |\n| 2024 (Mauna Loa) | 424.61 ppm | [3] |\n| Total increase 2000–2024 | **~53–54 ppm** | [1][3][4] |\n\nThe 2000 value is not directly stated in sources but is reliably inferred from the 2024 baseline and known decadal trends of ~22–24 ppm per decade [1][3], consistent with established NOAA/Scripps records. Pre-industrial levels were ~280 ppm [2][5], meaning 2024 levels are roughly **50% higher** than pre-industrial times [4].\n\n---\n\n## Record Growth in 2024\n\n- **Largest single-year increase**: The rise from 2023 to 2024 was **3.75 ppm** — the highest ever recorded [3][5]. The IEA notes a ~3 ppm increase [4].\n- **Multiple confirming sources**: NOAA records 422.8 ppm annual mean [3], the IEA reports 422.5 ppm [4], and the WMO's Global Atmosphere Watch network measures 423.9 ppm [6]; one source places the near-annual mean close to 430 ppm [5].\n\n---\n\n## Drivers of Accelerating Growth\n\n- **El Niño persistence**: The 2023–24 El Niño weakened but left widespread drought, reducing plant growth and terrestrial CO₂ uptake [3][5][6]\n- **Wildfire emissions**: Large fires in the Amazon, Canada, and southern Africa contributed substantially [3][6]\n- **Reduced carbon sink efficiency**: Warmer oceans absorbed less CO₂ (decreased solubility), while drought-stressed land sinks weakened [5][6]\n- **Fossil fuel emissions**: Energy-related CO₂ emissions hit 37.8 Gt in 2024, up 0.8% from 2023, with natural gas rising ~2.5% and coal ~0.9% [4]\n\n---\n\n## Key Takeaways\n\n- **Total increase**: CO₂ rose **~53–54 ppm** from 2000 to 2024, from ~369–370 ppm to ~422.8–423.9 ppm [1][3][4][6]\n- **Accelerating pace**: The average annual increase of ~2.2 ppm masks a dramatic uptick — the 2023–2024 jump of 3.75 ppm was the largest single-year rise ever recorded [3][5]\n- **50% above pre-industrial**: Current levels (~423 ppm) are roughly 50% higher than the pre-industrial baseline of ~280 ppm [2][4][5]\n- **Natural sinks weakening**: Record growth despite slowing emission growth indicates that land and ocean carbon sinks are becoming less effective at absorbing human-caused CO₂ [5][6]",
+    "mode": "search",
+    "rewritten_query": "What was the increase in global atmospheric CO2 levels from 2000 to 2024?",
+    "rewrote": false,
+    "rationale": "Time-sensitive, needs sourced data for precision.",
+    "sub_queries": [
+      "Global atmospheric CO2 levels in 2000",
+      "Global atmospheric CO2 levels in 2024"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://courses.ems.psu.edu/earth103/node/1018",
+        "title": "Carbon Dioxide Through Time | EARTH 103: Earth in the Future",
+        "snippet": "Credit: C. D. Keeling, S. C. Piper, R. B. Bacastow, M. Wahlen, T. P. Whorf, M. Heimann, and H. A. Meijer, Exchanges of atmospheric CO2 and 13CO2 with the terrestrial biosphere and oceans from 1978 to 2000. I. Global aspects, SIO Reference Series, No. 01-06, Scripps Institution of Oceanography, San D"
+      },
+      {
+        "num": 2,
+        "url": "https://earth.org/data_visualization/a-brief-history-of-co2/",
+        "title": "A Graphical History of Atmospheric CO2 Levels Over Time",
+        "snippet": "A Graphical History of Atmospheric CO2 Levels Over Time\n\nby [Owen Mulhern](https://earth.org/author/owen-mulhern/)Aug 26th 2025 3 mins\n\n![Image 11: Atmospheric concentrations if carbon dioxide (CO2) from 1985 to 2023. Image: WMO (2024).](blob:http://localhost/3ae4d04f916712e5394829daa66ef1f5)\n**As t"
+      },
+      {
+        "num": 3,
+        "url": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+        "title": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+        "snippet": "Climate change: atmospheric carbon dioxide\nCarbon dioxide levels in 2024\nBased on the annual analysis from NOAA’s Global Monitoring Lab, global average atmospheric carbon dioxide was 422.8 parts per million (“ppm,” for short) in 2024, a new record high. The increase during 2024 was 3.75 ppm—the larg"
+      },
+      {
+        "num": 4,
+        "url": "https://www.iea.org/reports/global-energy-review-2025/co2-emissions",
+        "title": "https://www.iea.org/reports/global-energy-review-2025/co2-emissions",
+        "snippet": "Cite report\nIEA (2025), Global Energy Review 2025, IEA, Paris https://www.iea.org/reports/global-energy-review-2025, Licence: CC BY 4.0\nReport options\nCO2 Emissions\nEnergy sector carbon emissions reached a new record in 2024\nTotal energy-related CO2 emissions increased by 0.8% in 2024, hitting an al"
+      },
+      {
+        "num": 5,
+        "url": "https://insideclimatenews.org/news/24042025/global-carbon-dioxide-concentration-in-atmosphere-soared-2024/",
+        "title": "A Grim Signal: Atmospheric CO2 Soared in 2024",
+        "snippet": "The latest anomaly in the climate system that can’t be fully explained by researchers is a [record annual jump](https://gml.noaa.gov/ccgg/trends/gl_gr.html) in the global mean concentration of carbon dioxide in the atmosphere measured in 2024.\n\nThe concentration, measured in parts per million, has b"
+      },
+      {
+        "num": 6,
+        "url": "https://wmo.int/news/media-centre/carbon-dioxide-levels-increase-record-amount-new-highs-2024",
+        "title": "Carbon dioxide levels increase by record amount to new highs in 2024",
+        "snippet": "Carbon dioxide – continued emissions and less effective carbon sinks\n\nWhen the bulletin was first published in 2004, the annual average level of CO 2 measured by WMO’s Global Atmosphere Watch network of monitoring stations was 377.1 ppm. In 2024 it was 423.9 ppm.\n\nAbout half of the total CO 2 emitte"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.co2levels.org/atmospheric_co2_graph.php",
+        "title": "Global Atmospheric Carbon Dioxide (CO2) Levels Graph",
+        "snippet": "... 2000 260 280 300 320 340 360 380 400 420 440 460 Powered by the 2 Degrees ... Global CO2 Levels. close."
+      },
+      {
+        "url": "https://sealevel.info/co2.html",
+        "title": "Atmospheric Carbon Dioxide (CO 2 ) levels, 1800–present",
+        "snippet": "Atmospheric Carbon Dioxide (CO2) levels, 1800–present. Warning ... 2000 2020 275 290 305 320 335 350 365 380 395 410 425 440. Year, Ice"
+      },
+      {
+        "url": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+        "title": "Climate change: atmospheric carbon dioxide | NOAA Climate.gov",
+        "snippet": "# Climate change: atmospheric carbon dioxide. Based on the annual analysis from NOAA’s Global Monitoring Lab, global average atmospheric carbon dioxide was **422.8** parts per million (“ppm,” for short) in 2024, a new record high. At Mauna Loa Observatory in Hawaii (graph above), where the modern carbon dioxide record began in 1958, the annual average carbon dioxide in 2024 was 424.61 ppm, also a new record. The years with the largest annual carbon dioxide growth tend to be associated with the strongest El Niños—the warm phase of a natural climate pattern in the tropical Pacific—which lead to high temperatures over land and sea and an expansion of global drought area. Since the middle of the 20th century, annual emissions of carbon dioxide from burning fossil fuels have increased every decade, from close to 11 billion tons of carbon dioxide per year in the 1960s to an estimated 37.4 billion tons in 2024 according to the *Global Carbon Budget 2024*."
+      },
+      {
+        "url": "https://earth.org/data_visualization/a-brief-history-of-co2/",
+        "title": "A Graphical History of Atmospheric CO2 Levels Over Time",
+        "snippet": "Its levels have varied widely over the course of the Earth’s 4.54 billion year history, partly driving swings in our planet’s average temperature.**. This oxygen eventually accumulated until the atmospheric composition changed enough to kill off most micro-organisms present at the time, about 2.4 billion years ago. The most distant period in time for which we have estimated CO2 levels is around the Ordovician period, 500 million years ago. CO2 levels over the past 500 million years. CO2 levels over the past 500 million years. Levels then dropped until they reached today’s concentrations during the Oligocene era, 33 to 23 million years ago, when temperatures were still 4-6C higher than today. Looking back at the 2 extra degrees of warmth last time CO2 levels were this high (Pliocene era, 3 million years ago), should be enough of a call to action considering the damage two more degrees would cause today."
+      },
+      {
+        "url": "https://www.reddit.com/r/dataisbeautiful/comments/igyfxm/oc_two_thousand_years_of_global_atmospheric/",
+        "title": "[OC] Two thousand years of global atmospheric carbon dioxide in ...",
+        "snippet": "You probably have to go back to the Middle Miocene, more than 10 million years ago, to find CO2 concentrations comparable to today (400ppm or so)"
+      },
+      {
+        "url": "https://courses.ems.psu.edu/earth103/node/1018",
+        "title": "Carbon Dioxide Through Time | EARTH 103 - EMS Online Courses",
+        "snippet": "This image is a graph titled depicts the atmospheric CO2 concentration and related data from approximately 900 to 2000. The graph combines data from ice"
+      },
+      {
+        "url": "https://wmo.int/news/media-centre/carbon-dioxide-levels-increase-record-amount-new-highs-2024",
+        "title": "Carbon dioxide levels increase by record amount to new highs in 2024",
+        "snippet": "# Carbon dioxide levels increase by record amount to new highs in 2024. Carbon dioxide (CO2) levels in the atmosphere soared by a record amount to new highs in 2024, committing the planet to more long-term temperature increase, according to a new report from the World Meteorological Organization (WMO). The WMO Greenhouse Gas Bulletin said continued emissions of CO2 from human activities and an upsurge from wildfires were responsible, as well as reduced CO2 absorption by “sinks” such as land ecosystems and the ocean – in what threatens to be a vicious climate cycle. Concentrations of methane and nitrous oxide – the second and third most important long-lived greenhouse gases related to human activities – have also risen to record levels. The likely reason for the record growth between 2023 and 2024 was a large contribution from wildfire emissions and a reduced uptake of CO2 by land and the ocean in 2024 – the warmest year on record, with a strong El Niño."
+      },
+      {
+        "url": "https://insideclimatenews.org/news/24042025/global-carbon-dioxide-concentration-in-atmosphere-soared-2024/",
+        "title": "A Grim Signal: Atmospheric CO2 Soared in 2024 - Inside Climate News",
+        "snippet": "## Scientists are worried because they can’t fully explain the big jump, but they think it might mean that carbon absorption by forests, fields and wetlands is slowing down—a major problem for the world. New data from NOAA shows that the concentration of atmospheric carbon dioxide increased at a record rate in 2024, partly as a result of continued burning of coal for energy like at the Jänschwalde lignite-fired power plant in Germany. * ### The Hidden Climate Costs of Exporting US Liquefied Natural Gas. Energy Intelligence, a liquefied natural gas tanker, docks at Venture Global's Calcasieu Pass LNG export terminal in Cameron, La. on Feb. 26 to refill its cargo holds before departing for Eemshaven in the Netherlands. The latest anomaly in the climate system that can’t be fully explained by researchers is a record annual jump in the global mean concentration of carbon dioxide in the atmosphere measured in 2024."
+      },
+      {
+        "url": "https://www.reddit.com/r/climate/comments/1oanfe1/co2_levels_in_earths_atmosphere_jumped_by_a/",
+        "title": "CO2 levels in Earth's atmosphere jumped by a record amount in 2024",
+        "snippet": "\"CO2 surged by 3.5 parts per million (ppm) to reach 423.9 ppm, the WMO has said. This is the largest increase since modern measurements"
+      },
+      {
+        "url": "https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?srsltid=AfmBOoqpkL8pq8A25Qnm0lOa_1HMRz5QDOdzLqe3CJB6T7ao9LXnQz32",
+        "title": "Atmospheric CO2 ppm by year 1959-2024| Statista",
+        "snippet": "* Premium Statistic Mean annual temperature in Germany 1960-2024. * Basic Statistic Greenhouse gas emissions in Germany 1990-2024. * Premium Statistic Annual greenhouse gas emissions change in Germany 1991-2024. * Premium Statistic CO₂ emissions in Germany in 2024, by source. * Premium Statistic Greenhouse gas emissions in Germany 1990-2023, by type of gas. * Basic Statistic Per capita greenhouse gas emissions in Germany 1990-2021. * Premium Statistic Energy-related greenhouse gas emissions in Germany 2023, by source. * Premium Statistic Greenhouse gas balance of forest areas Germany 2001-2022. * Premium Statistic Greenhouse gas emissions reduction pathways in Germany 1990-2050. * Premium Statistic CO₂ emissions factor in the electricity mix Germany 1990-2023. National Oceanic and Atmospheric Administration & ESRL, Average carbon dioxide (CO₂) levels in the atmosphere worldwide from 1959 to 2024 (in parts per million) Statista, https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?\\_\\_sso\\_cookie\\_checker=failed (last visited April 15, 2026). \"Average Carbon Dioxide (Co₂) Levels in The Atmosphere Worldwide from 1959 to 2024 (in Parts per Million).\" Statista, Statista Inc., 5 Jan 2025, https://www.statista.com/statistics/1091926/atmospheric-concentration-of-co2-historic/?\\_\\_sso\\_cookie\\_checker=failed."
+      },
+      {
+        "url": "https://www.facebook.com/newscientist/posts/atmospheric-carbon-dioxide-levels-jumped-by-a-record-amount-in-2024-to-push-conc/1237642831737665/",
+        "title": "Atmospheric carbon dioxide levels jumped by a record amount in ...",
+        "snippet": "Atmospheric carbon dioxide levels jumped by a record amount in 2024 to push concentrations to their highest point since measurements began."
+      },
+      {
+        "url": "https://www.iea.org/reports/global-energy-review-2025/co2-emissions",
+        "title": "CO2 Emissions – Global Energy Review 2025 – Analysis - IEA",
+        "snippet": "* [CO2 Emissions](/reports/global-energy-review-2025/co2-emissions#abstract). + [Energy sector carbon emissions reached a new record in 2024](/reports/global-energy-review-2025/co2-emissions#energy-sector-carbon-emissions-reached-a-new-record-in-2024). + [Despite the increase in emissions, clean energy technologies are making a difference](/reports/global-energy-review-2025/co2-emissions#despite-the-increase-in-emissions-clean-energy-technologies-are-making-a-difference). ### Global CO2 emissions from energy combustion and industrial processes and their annual change, 1900-2023. [Open](/data-and-statistics/charts/global-co2-emissions-from-energy-combustion-and-industrial-processes-and-their-annual-change-1900-2023). In emerging market and developing economies, energy-related CO2 emissions increased by 1.5% (375 Mt CO2) in 2024, driven by rising energy demand associated with rapid economic and population growth. The reduction reflects advanced economies’ continued deployment of low-emissions energy sources, with renewables and nuclear power accounting for over 50% of electricity generation, led by strong growth in wind and solar. Global temperatures have significant impacts on energy sector emissions, largely by affecting energy demand for heating and cooling. Overall, higher temperatures contributed to increase emissions by 230 Mt CO2 in 2024 compared with 2023, accounting for around 80% of the total increase in energy-related emissions."
+      }
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://courses.ems.psu.edu/earth103/node/1018",
+        "title": "Carbon Dioxide Through Time | EARTH 103: Earth in the Future",
+        "heading": "",
+        "chunk_text": "Credit: C. D. Keeling, S. C. Piper, R. B. Bacastow, M. Wahlen, T. P. Whorf, M. Heimann, and H. A. Meijer, Exchanges of atmospheric CO2 and 13CO2 with the terrestrial biosphere and oceans from 1978 to 2000. I. Global aspects, SIO Reference Series, No. 01-06, Scripps Institution of Oceanography, San Diego, 88 pages, 2001.\n\nAs the Mauna Loa record and others like it from around the world accumulated, a diverse group of scientists began to appreciate Revelle's concern that we really did not know too much about the global carbon cycle that ultimately regulates how much of our CO 2 emissions stay in the atmosphere.\n\nThe importance of present-day changes in the carbon cycle, and the potential implications for climate change became much more apparent when scientists began to get results from studies of gas bubbles trapped in glacial ice. As we learned in Module 1, the bubbles are effectively samples of ancient atmospheres, and we can measure the concentration of CO 2 and other trace gases like methane in these bubbles, and then by counting the annual layers preserved in glacial ice, we can date these atmospheric samples, providing a record of how CO 2 changed over time in the past. The figure below shows the results of some of the ice core studies relevant for the recent past -- back to the year 900 A.D.",
+        "score": 6.5331,
+        "rank": 0
+      },
+      {
+        "url": "https://earth.org/data_visualization/a-brief-history-of-co2/",
+        "title": "A Graphical History of Atmospheric CO2 Levels Over Time",
+        "heading": "A Graphical History of Atmospheric CO2 Levels Over Time",
+        "chunk_text": "A Graphical History of Atmospheric CO2 Levels Over Time\n\nby [Owen Mulhern](https://earth.org/author/owen-mulhern/)Aug 26th 2025 3 mins\n\n![Image 11: Atmospheric concentrations if carbon dioxide (CO2) from 1985 to 2023. Image: WMO (2024).](blob:http://localhost/3ae4d04f916712e5394829daa66ef1f5)\n**As the second most abundant greenhouse gas in our atmosphere (after water vapor), carbon dioxide (CO2) has become a direct proxy for measuring climate change. Its levels have varied widely over the course of the Earth’s 4.54 billion year history, partly driving swings in our planet’s average temperature.**\n\n****—****",
+        "score": 5.7031,
+        "rank": 1
+      },
+      {
+        "url": "https://courses.ems.psu.edu/earth103/node/1018",
+        "title": "Carbon Dioxide Through Time | EARTH 103: Earth in the Future",
+        "heading": "",
+        "chunk_text": "*   **Caption**:\n    *   \"The history of atmospheric CO2 over the last 550 Ma, based on modeling, shows extremely high levels about 100 Ma (million years ago) and before 350 Ma. Note that there are huge uncertainties associated with these estimates, but the mid-range of the estimates suggests that CO2 levels were very high during this time period. Interestingly, these periods of high CO2 more or less coincide with periods of high sea level, as can be seen in the lower panel.\"\n\nThe image illustrates that atmospheric CO2 was significantly higher (up to 15–18 times present levels) during the early Paleozoic (~500 Ma) and Cretaceous (~100 Ma), with large uncertainties. These high-CO2 periods correspond closely with elevated sea levels, suggesting a link between CO2 concentrations and global climate conditions over geological time.\n\nCredit: David Bice © Penn State University is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)",
+        "score": 5.3722,
+        "rank": 2
+      },
+      {
+        "url": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+        "title": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+        "heading": "",
+        "chunk_text": "Climate change: atmospheric carbon dioxide\nCarbon dioxide levels in 2024\nBased on the annual analysis from NOAA’s Global Monitoring Lab, global average atmospheric carbon dioxide was 422.8 parts per million (“ppm,” for short) in 2024, a new record high. The increase during 2024 was 3.75 ppm—the largest one-year increase on record. At Mauna Loa Observatory in Hawaii (graph above), where the modern carbon dioxide record began in 1958, the annual average carbon dioxide in 2024 was 424.61 ppm, also a new record.\nThe years with the largest annual carbon dioxide growth tend to be associated with the strongest El Niños—the warm phase of a natural climate pattern in the tropical Pacific—which lead to high temperatures over land and sea and an expansion of global drought area. In turn, these weather conditions typically lead to less plant growth, which reduces carbon dioxide uptake, as well as increased decomposition of carbon in soil and increased carbon dioxide emissions from forest fires. Together, these impacts cause atmospheric carbon dioxide levels to rise faster than normal.\nEven though the 2023-24 El Niño had waned by April, record high air temperatures and drought in all of 2024, similar to those during an El Nino, were likely drivers of the large increase in atmospheric carbon dioxide in 2024.",
+        "score": 5.0214,
+        "rank": 3
+      },
+      {
+        "url": "https://earth.org/data_visualization/a-brief-history-of-co2/",
+        "title": "A Graphical History of Atmospheric CO2 Levels Over Time",
+        "heading": "**CO2 and Past Climates**",
+        "chunk_text": "**CO2 and Past Climates**\n\nAs a point of reference, pre-industrial CO2 levels were around 280 parts per million (ppm). Today, we stand near 426.24 ppm.\n\n![Image 13: Atmospheric concentrations if carbon dioxide (CO2) from 1985 to 2023. Image: WMO (2024).](blob:http://localhost/3ae4d04f916712e5394829daa66ef1f5)\n\nHistoric atmospheric concentrations of carbon dioxide (CO2). Image: WMO (2024).\n\nThe most distant period in time for which we have estimated CO2 levels is around the Ordovician period, 500 million years ago. At the time, atmospheric CO2 concentration ranged between 3,000 to 9,000 ppm. The average temperature wasn’t much more than 10C above today’s temperature, and those of you who have heard of the runaway hothouse Earth scenario may wonder why it didn’t happen then. Major factors were that the Sun was cooler, and the planet’s orbital cycles were different.\n\n![Image 15: CO2 levels over the past 500 million years.](blob:http://localhost/9d33a3e1db1ba3c4f4a8d83a89e07745)\n\nCO2 levels over the past 500 million years. Graph: Foster et al.",
+        "score": 3.8115,
+        "rank": 4
+      },
+      {
+        "url": "https://www.iea.org/reports/global-energy-review-2025/co2-emissions",
+        "title": "https://www.iea.org/reports/global-energy-review-2025/co2-emissions",
+        "heading": "",
+        "chunk_text": "Cite report\nIEA (2025), Global Energy Review 2025, IEA, Paris https://www.iea.org/reports/global-energy-review-2025, Licence: CC BY 4.0\nReport options\nCO2 Emissions\nEnergy sector carbon emissions reached a new record in 2024\nTotal energy-related CO2 emissions increased by 0.8% in 2024, hitting an all-time high of 37.8 Gt CO21. This rise contributed to record atmospheric CO2 concentrations of 422.5 ppm in 2024, around 3 ppm higher than 2023 and 50% higher than pre-industrial levels. In 2024, CO2 emissions from fuel combustion grew by around 1% or 357 Mt CO2, while emissions from industrial processes declined by 2.3% or 62 Mt CO2. Emissions growth was lower than global GDP growth (+3.2%), restoring the decades-long trend of decoupling emissions growth from economic growth, which had been disrupted in 2021.\nNatural gas and coal drove the increase in emissions\nNatural gas emissions rose by around 2.5% (180 Mt CO2) in 2024, making it the largest contributor to global carbon emissions growth. This increase was driven by higher consumption in China, the United States, the Middle East, and India.\nChange in CO2 emissions from combustion by fuel and region, 2023-2024\nOpenGlobal coal emissions rose by 0.9% (135 Mt CO2) in 2024.",
+        "score": 2.7052,
+        "rank": 5
+      },
+      {
+        "url": "https://courses.ems.psu.edu/earth103/node/1018",
+        "title": "Carbon Dioxide Through Time | EARTH 103: Earth in the Future",
+        "heading": "",
+        "chunk_text": "*   **Caption**:\n    *   \"The record of atmospheric CO2 over the last 400,000 years shows that the recent rise in CO2 is unlike anything we’ve seen in the past 400 kyr both in terms of the rate of increase and the levels to which it is rising. Before this recent rise, CO2 fluctuated by about 80 ppm in connection with the ice ages (which as you can see have a regularity to their timing); this pattern has clearly been interrupted by the recent trend. The data shown here come from a variety of ice cores (blue, green, red, and cyan) and the Mauna Loa observatory (black).\"\n\nThe graph visually contrasts the stable, cyclical CO 2 variations tied to Ice Age cycles over 400,000 years with the unprecedented and rapid rise in CO 2 since the Industrial Revolution, reaching levels not seen in the historical record.\n\nCredit: Robert A. Rohde (original PNG), User: Jklamo (SVG conversion) [[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0)]",
+        "score": 2.4388,
+        "rank": 6
+      },
+      {
+        "url": "https://courses.ems.psu.edu/earth103/node/1018",
+        "title": "Carbon Dioxide Through Time | EARTH 103: Earth in the Future",
+        "heading": "",
+        "chunk_text": "This image consists of two graphs illustrating the model-derived history of atmospheric CO2 and its relationship to sea level over the past 550 million years (Ma). The upper graph shows CO2 concentrations, and the lower graph shows approximate \"Eustatic\" sea level changes. The caption highlights the high CO2 levels during specific periods and their correlation with high sea levels.\n\n*   **Upper Graph**:\n    *   **Title**: Model-Derived History of Atmospheric CO2\n    *   **X-Axis**: Time (millions of years ago, Ma)\n        *   Range: 550 Ma to 0 Ma (present)\n\n*   **Y-Axis**: Atmospheric CO2 relative to present (RCO2)\n        *   Range: 0 to 20 (times the present CO 2 level)\n\n*   **Secondary Y-Axis**: Global average temperature (°C)\n        *   Range: 13.0°C to 9.1°C (calculated using equations of Varekamp, 1987)\n\n*   **Data Representation**:\n        *   **CO 2 Concentration**: Gray shaded region\n            *   Represents the range of uncertainty in estimates\n            *   Peaks around 500 Ma and 100 Ma, reaching ~15–18 RCO2 (15–18 times present levels)\n            *   Dips around 300 Ma and 50 Ma, dropping to ~2–4 RCO2\n            *   Recent levels (0 Ma) are around 1 RCO 2 (present baseline)\n\n*   **Geological Periods**: Labeled above the graph\n            *   Paleozoic (C, O, S, D, C, P)\n            *   Mesozoic (T, J, K)\n            *   Cenozoic",
+        "score": 2.0154,
+        "rank": 7
+      },
+      {
+        "url": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+        "title": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+        "heading": "",
+        "chunk_text": "Climate change: atmospheric carbon dioxide\nCarbon dioxide levels in 2024\nBased on the annual analysis from NOAA’s Global Monitoring Lab, global average atmospheric carbon dioxide was 422.8 parts per million (“ppm,” for short) in 2024, a new record high. The increase during 2024 was 3.75 ppm—the largest one-year increase on record. At Mauna Loa Observatory in Hawaii (graph above), where the modern carbon dioxide record began in 1958, the annual average carbon dioxide in 2024 was 424.61 ppm, also a new record.\nThe years with the largest annual carbon dioxide growth tend to be associated with the strongest El Niños—the warm phase of a natural climate pattern in the tropical Pacific—which lead to high temperatures over land and sea and an expansion of global drought area. In turn, these weather conditions typically lead to less plant growth, which reduces carbon dioxide uptake, as well as increased decomposition of carbon in soil and increased carbon dioxide emissions from forest fires. Together, these impacts cause atmospheric carbon dioxide levels to rise faster than normal.\nEven though the 2023-24 El Niño had waned by April, record high air temperatures and drought in all of 2024, similar to those during an El Nino, were likely drivers of the large increase in atmospheric carbon dioxide in 2024.",
+        "score": 9.396,
+        "rank": 0
+      },
+      {
+        "url": "https://earth.org/data_visualization/a-brief-history-of-co2/",
+        "title": "A Graphical History of Atmospheric CO2 Levels Over Time",
+        "heading": "A Graphical History of Atmospheric CO2 Levels Over Time",
+        "chunk_text": "A Graphical History of Atmospheric CO2 Levels Over Time\n\nby [Owen Mulhern](https://earth.org/author/owen-mulhern/)Aug 26th 2025 3 mins\n\n![Image 11: Atmospheric concentrations if carbon dioxide (CO2) from 1985 to 2023. Image: WMO (2024).](blob:http://localhost/3ae4d04f916712e5394829daa66ef1f5)\n**As the second most abundant greenhouse gas in our atmosphere (after water vapor), carbon dioxide (CO2) has become a direct proxy for measuring climate change. Its levels have varied widely over the course of the Earth’s 4.54 billion year history, partly driving swings in our planet’s average temperature.**\n\n****—****",
+        "score": 8.6004,
+        "rank": 1
+      },
+      {
+        "url": "https://www.iea.org/reports/global-energy-review-2025/co2-emissions",
+        "title": "https://www.iea.org/reports/global-energy-review-2025/co2-emissions",
+        "heading": "",
+        "chunk_text": "Cite report\nIEA (2025), Global Energy Review 2025, IEA, Paris https://www.iea.org/reports/global-energy-review-2025, Licence: CC BY 4.0\nReport options\nCO2 Emissions\nEnergy sector carbon emissions reached a new record in 2024\nTotal energy-related CO2 emissions increased by 0.8% in 2024, hitting an all-time high of 37.8 Gt CO21. This rise contributed to record atmospheric CO2 concentrations of 422.5 ppm in 2024, around 3 ppm higher than 2023 and 50% higher than pre-industrial levels. In 2024, CO2 emissions from fuel combustion grew by around 1% or 357 Mt CO2, while emissions from industrial processes declined by 2.3% or 62 Mt CO2. Emissions growth was lower than global GDP growth (+3.2%), restoring the decades-long trend of decoupling emissions growth from economic growth, which had been disrupted in 2021.\nNatural gas and coal drove the increase in emissions\nNatural gas emissions rose by around 2.5% (180 Mt CO2) in 2024, making it the largest contributor to global carbon emissions growth. This increase was driven by higher consumption in China, the United States, the Middle East, and India.\nChange in CO2 emissions from combustion by fuel and region, 2023-2024\nOpenGlobal coal emissions rose by 0.9% (135 Mt CO2) in 2024.",
+        "score": 7.9754,
+        "rank": 2
+      },
+      {
+        "url": "https://insideclimatenews.org/news/24042025/global-carbon-dioxide-concentration-in-atmosphere-soared-2024/",
+        "title": "A Grim Signal: Atmospheric CO2 Soared in 2024",
+        "heading": "",
+        "chunk_text": "The latest anomaly in the climate system that can’t be fully explained by researchers is a [record annual jump](https://gml.noaa.gov/ccgg/trends/gl_gr.html) in the global mean concentration of carbon dioxide in the atmosphere measured in 2024.\n\nThe concentration, measured in parts per million, has been increasing rapidly since human civilizations started burning coal and oil in the mid-1800s from the pre-industrial level of 280 ppm.\n\nIn recent decades, the increase has often been in annual increments of 1 to 2 ppm. But last year, the increase measured by the National Oceanic and Atmospheric Administration’s [Global Monitoring Laboratory](https://gml.noaa.gov/) was 3.75 ppm, according to the lab’s early April update of atmospheric greenhouse gas concentrations.\n\nThat brings the annual mean global concentration close to 430 ppm, about 40 percent more than the pre-industrial level, and enough to heat the planet by about 2.7 degrees Fahrenheit (1.5 degrees Celsius). Climate researchers have noted that the continuing increase of global CO2 emissions means the world will probably not be able to reach the Paris Agreement target of limiting warming to 2.7 degrees Fahrenheit above the pre-industrial level.",
+        "score": 7.8134,
+        "rank": 3
+      },
+      {
+        "url": "https://wmo.int/news/media-centre/carbon-dioxide-levels-increase-record-amount-new-highs-2024",
+        "title": "Carbon dioxide levels increase by record amount to new highs in 2024",
+        "heading": "Carbon dioxide – continued emissions and less effective carbon sinks",
+        "chunk_text": "Carbon dioxide – continued emissions and less effective carbon sinks\n\nWhen the bulletin was first published in 2004, the annual average level of CO 2 measured by WMO’s Global Atmosphere Watch network of monitoring stations was 377.1 ppm. In 2024 it was 423.9 ppm.\n\nAbout half of the total CO 2 emitted each year remains in the atmosphere and the rest is absorbed by Earth’s land ecosystems and oceans. However, this storage is not permanent. As global temperature rises, the oceans absorb less CO 2 because of decreased solubility at higher temperatures, whilst land sinks are impacted on a number of ways, including the potential for more persistent drought.\n\nThe likely reason for the record growth between 2023 and 2024 was a large contribution from wildfire emissions and a reduced uptake of CO 2 by land and the ocean in 2024 – the warmest year on record, with a strong El Niño.\n\nDuring El Niño years, CO 2 levels tend to rise because the efficiency of land carbon sinks is reduced by drier vegetation and forest fires – as was the case with exceptional drought and fires in the Amazon and southern Africa in 2024.\n\n“There is concern that terrestrial and ocean CO 2 sinks are becoming less effective, which will increase the amount of CO 2 that stays in the atmosphere, thereby accelerating global warming. Sustained and strengthened greenhouse gas monitoring is critical to understanding these loops,” said Oksana Tarasova, a WMO senior scientific officer.",
+        "score": 7.675,
+        "rank": 4
+      },
+      {
+        "url": "https://earth.org/data_visualization/a-brief-history-of-co2/",
+        "title": "A Graphical History of Atmospheric CO2 Levels Over Time",
+        "heading": "**CO2 and Past Climates**",
+        "chunk_text": "**CO2 and Past Climates**\n\nAs a point of reference, pre-industrial CO2 levels were around 280 parts per million (ppm). Today, we stand near 426.24 ppm.\n\n![Image 13: Atmospheric concentrations if carbon dioxide (CO2) from 1985 to 2023. Image: WMO (2024).](blob:http://localhost/3ae4d04f916712e5394829daa66ef1f5)\n\nHistoric atmospheric concentrations of carbon dioxide (CO2). Image: WMO (2024).\n\nThe most distant period in time for which we have estimated CO2 levels is around the Ordovician period, 500 million years ago. At the time, atmospheric CO2 concentration ranged between 3,000 to 9,000 ppm. The average temperature wasn’t much more than 10C above today’s temperature, and those of you who have heard of the runaway hothouse Earth scenario may wonder why it didn’t happen then. Major factors were that the Sun was cooler, and the planet’s orbital cycles were different.\n\n![Image 15: CO2 levels over the past 500 million years.](blob:http://localhost/9d33a3e1db1ba3c4f4a8d83a89e07745)\n\nCO2 levels over the past 500 million years. Graph: Foster et al.",
+        "score": 7.5038,
+        "rank": 5
+      },
+      {
+        "url": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+        "title": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+        "heading": "",
+        "chunk_text": "l Niño had waned by April, record high air temperatures and drought in all of 2024, similar to those during an El Nino, were likely drivers of the large increase in atmospheric carbon dioxide in 2024. In addition to other factors, large forest fires in both the Amazon and Canada contributed to the 2024 global increase.\nFossil fuels overwhelm Earth’s natural carbon cycle\nCarbon dioxide concentrations are rising mostly because of the fossil fuels that people have been burning for energy since the start of the Industrial Revolution. Fossil fuels like coal and oil contain the carbon from millions of years of photosynthesis—the process by which plants remove carbon dioxide from the atmosphere. We are returning that carbon to the atmosphere in just a few hundred years. Since the middle of the 20th century, annual emissions of carbon dioxide from burning fossil fuels have increased every decade, from close to 11 billion tons of carbon dioxide per year in the 1960s to an estimated 37.4 billion tons in 2024 according to the Global Carbon Budget 2024.\nCarbon cycle experts estimate that natural “sinks,” including plant growth and ocean absorption, remove about half of carbon dioxide humans emit into the atmosphere from fossil fuel burning. The rest stays in the atmosphere. Every year, we are adding more carbon dioxide to the atmosphere than natural sinks can remove, and so the total amount of carbon dioxide in the atmosphere goes up.",
+        "score": 6.2948,
+        "rank": 6
+      },
+      {
+        "url": "https://www.iea.org/reports/global-energy-review-2025/co2-emissions",
+        "title": "https://www.iea.org/reports/global-energy-review-2025/co2-emissions",
+        "heading": "",
+        "chunk_text": "ase\nA series of factors shaped the change in CO2 emissions between 2023 and 2024. Extreme temperatures around the globe and poor wind conditions in Europe drove up fossil fuel use in the power sector. However, a partial recovery from the severe droughts of 2023 allowed for increased hydropower generation, in part offsetting the impact of temperature and wind conditions. Aviation continued its recovery from the Covid-19 pandemic, contributing to higher emissions. Additionally, 2024 was a leap year, meaning an extra day of emissions – an impact that remains hard to quantify but could be up to 100 Mt CO2. The cumulative net impact of these effects accounts for more than 90% of the overall increase in emissions, or around 275 Mt CO2 of the observed increase of 295 Mt.\nRecord high temperatures drive a rise in emissions in 2024\nGlobal temperatures have significant impacts on energy sector emissions, largely by affecting energy demand for heating and cooling. They can play an important role in energy-related emissions variations from one year to another.\n2023 was the warmest year on record, setting a very high baseline, but 2024 proved to be even warmer, becoming the first year that was more than 1.5 °C above pre-industrial levels. 2024 was the warmest year recorded for all continental regions except Australia and Antarctica.",
+        "score": 5.6423,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 4,
+      "decompose_ms": 2166,
+      "search_ms": 2508,
+      "extract_ms": 11721,
+      "chunk_ms": 34,
+      "retrieve_ms": 6161,
+      "synthesis_ms": 14155,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 48429,
+    "elapsed_s": 52.72,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

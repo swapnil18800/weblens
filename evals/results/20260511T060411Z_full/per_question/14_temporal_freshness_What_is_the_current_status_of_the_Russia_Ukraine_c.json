@@ -1,0 +1,177 @@
+{
+  "id": "tf2",
+  "category": "temporal_freshness",
+  "domain": "geopolitics",
+  "question": "What is the current status of the Russia-Ukraine conflict as of May 2026?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Must reflect May 2026 reality; no key_facts (rapidly evolving).",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T060411Z-tf2",
+  "verdict": "pass",
+  "aggregate": 0.867,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.833,
+    "context_recall": 1.0,
+    "context_precision": 0.5,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.636,
+    "aggregate": 0.867
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.833,
+      "supported": 5,
+      "total": 6,
+      "reasoning": "Most claims match chunks; diplomatic obstacles not in sources."
+    },
+    "context_precision": {
+      "score": 0.5,
+      "relevant": 4,
+      "total": 8,
+      "reasoning": "Chunks 1,2,4,7 provide current status info for May 2026; others are outdated or irrelevant."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.636,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "pipeline": {
+    "answer": "**As of early May 2026, the Russia-Ukraine conflict is in a period of shifting momentum**, with Russia suffering its first net territorial loss since August 2024 while diplomatic efforts face major obstacles.\n\n**Territorial control & Russian advances:**\n- Russian forces **lost a net 116 square kilometers** of controlled territory in April 2026, the first net loss since Ukraine's Kursk incursion in August 2024 [1].\n- The pace of Russian advances has slowed sharply: in the first four months of 2026, Russia seized **2.9 square kilometers per day**, down from **9.76 sq km/day** in the same period of 2025 [1].\n- Over the past six months (Nov 2025–Apr 2026), Russian forces seized **1,443 sq km** (including infiltrated areas), compared to **2,368 sq km** in the same period a year prior [1].\n- However, Russia still occupies **roughly 20 percent of Ukraine**, having gained almost 5,000 sq km in 2025 [2].\n\n**Causes of slowing Russian momentum:**\n- Seasonal weather — the spring *rasputitsa* (mud season) has historically slowed mechanized advances, and Winter 2025–2026 was both **colder (~3°F)** and **wetter** than the previous winter [1].\n- Ukrainian ground counterattacks, mid-range strikes, a **February 2026 block on Russia's use of Starlink**, and Kremlin throttling of Telegram have exacerbated Russian military problems [1].\n- Russia is increasingly relying on **infiltration tactics** rather than overt seizure of territory, making control harder to assess [1].\n\n**Diplomatic situation:**\n- The **Trump administration** is seeking a settlement, offering a **20-point draft peace deal with a June deadline**; Ukraine accepted but with unclear territorial/security terms [2].\n- Russia has refused to accept any amended deal, insisting on the \"spirit and letter\" of Putin's **August summit with Trump in Alaska** [2].\n- A June deadline looms, but no breakthrough is reported as of May 2 [1][2].\n\n**Broader impact:**\n- Over **56,000 civilian casualties** have been recorded since January 2022; **3.7 million** are internally displaced and **5.9 million** registered as refugees [2].\n- Ukraine has received **$188 billion from the U.S.** and **$197 billion from the EU** since January 2022 [2].\n- Russia continues to bombard Ukrainian cities while Ukraine strikes Russian oil infrastructure and military sites [2].",
+    "mode": "search",
+    "rewritten_query": "What is the current status of the Russia-Ukraine conflict as of May 2026?",
+    "rewrote": false,
+    "rationale": "Time-sensitive geopolitical question; requires current sources.",
+    "sub_queries": [
+      "Current status of the Russia-Ukraine conflict as of May 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "snippet": "Toplines\nRussian forces in April 2026 suffered a net loss of territory controlled in the Ukrainian theater for the first time since Ukraine’s August 2024 incursion into Kursk Oblast. ISW has observed evidence to assess that Russian forces lost control of 116 square kilometers in April 2026, not coun"
+      },
+      {
+        "num": 2,
+        "url": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "title": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "snippet": "Four years since Russia’s February 2022 full-scale invasion of Ukraine, Russia still occupies roughly 20 percent of the country after gaining almost five thousand square kilometers of territory in 2025. Russia continues to bombard Ukrainian cities, while Ukraine maintains drone attacks on Russian oi"
+      }
+    ],
+    "urls": [
+      "https://www.aljazeera.com/tag/ukraine-russia-crisis/",
+      "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+      "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+      "https://www.youtube.com/watch?v=ri2jEzL6k6s&vl=en",
+      "https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-may-6-2026",
+      "https://www.youtube.com/watch?v=DBcVP99Glh0"
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "heading": "",
+        "chunk_text": "Toplines\nRussian forces in April 2026 suffered a net loss of territory controlled in the Ukrainian theater for the first time since Ukraine’s August 2024 incursion into Kursk Oblast. ISW has observed evidence to assess that Russian forces lost control of 116 square kilometers in April 2026, not counting areas into which Russian troops may have infiltrated. The Russian rate of advance across the battlefield has been steadily declining since November 2025 as continued Ukrainian ground counterattacks, Ukrainian mid-range strikes, the February 2026 block on Russia’s use of Starlink terminals in Ukraine, and the Kremlin’s throttling of Telegram have exacerbated existing problems within the Russian military.\nThe relative decline in the rate of Russian advances may be related in part to annual seasonal patterns.",
+        "score": 7.9083,
+        "rank": 0
+      },
+      {
+        "url": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "title": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "heading": "",
+        "chunk_text": "Four years since Russia’s February 2022 full-scale invasion of Ukraine, Russia still occupies roughly 20 percent of the country after gaining almost five thousand square kilometers of territory in 2025. Russia continues to bombard Ukrainian cities, while Ukraine maintains drone attacks on Russian oil infrastructure and military sites. Since January 2022, Ukraine has received about $188 billion in aid from the United States and $197 billion from the European Union. Fighting and air strikes have inflicted nearly 56,000 civilian casualties [PDF], while 3.7 million people are internally displaced, and 5.9 million are registered as refugees. 10.8 million people need humanitarian assistance.\nThe Trump administration pledged to seek a settlement to end the war, setting out a twenty-point draft peace deal and a June deadline. Although Ukraine accepted the proposal after discussions, many terms of the deal—including territorial concessions and security guarantees—remain unclear. Russia, meanwhile, has stated that it will not agree to an amended deal that departs from the “spirit and letter” of President Putin’s August summit with President Trump in Alaska.\nBackground\nArmed conflict in eastern Ukraine erupted in early 2014 following Russia’s annexation of Crimea.",
+        "score": 7.4806,
+        "rank": 1
+      },
+      {
+        "url": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "title": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "heading": "",
+        "chunk_text": "while, Russian forces relentlessly seek to weaken the Ukrainian frontline. In May 2024, Russia launched an offensive on the Kharkiv region, which, despite making territorial gains, ultimately stalled. However, Russia’s fall and winter campaigns pushed deeper into Ukraine’s east and southeast, particularly in Donetsk, seizing over 4,000 square kilometers of Ukrainian territory. Despite some doubts among international scholars and critics, Russia remains confident in its wartime economy.\nPutin’s veiled threats throughout the war to use nuclear weapons continue to raise fears of escalation. In June 2023, Russia announced the move of tactical nuclear weapons into Belarus, with Belarus confirming receipt in December 2023. In June 2024, both parties conducted nuclear weapons exercises. In November 2024, Putin modified Russia’s nuclear doctrine, stating that Russia would treat a conventional attack by an ally of a nuclear state as grounds for Moscow to launch a nuclear strike.\nUkraine has received consistent aid from the United States, and NATO member states continue to support its war effort. However, following the election of U.S. President Trump, many believe the war may end this year. Trump vowed to end the war upon taking office and has sought to broker a peace deal between Russia and Ukraine.",
+        "score": 7.1156,
+        "rank": 2
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "heading": "",
+        "chunk_text": "remlin’s throttling of Telegram have exacerbated existing problems within the Russian military.\nThe relative decline in the rate of Russian advances may be related in part to annual seasonal patterns. Weather data indicates that average temperatures in eastern Ukraine were about three degrees Fahrenheit colder in Winter 2025 to 2026 (December to February) than in Winter 2024 to 2025, and that Winter 2025 to 2026 was significantly wetter than Winter 2024 to 2025.[1] ISW has previously observed relative declines in the rate of Russian advances during March and April due to seasonal weather effects, namely the muddy rasputitsa season, the period in which melting frozen winter ground and spring rains degrade conditions for mechanized movement.[2] Russian forces have previously increased their advances in May and June as ground dries, and it remains to be seen whether such trends will repeat in 2026.[3] ISW has observed less commentary in 2026 than in previous years regarding the effects of weather conditions on Russian advances, however.\nThe rate of Russian advances has slowed in 2026 compared to 2025, but the changing character of the war, particularly Russia’s increased use of infiltration tactics over the course of 2025, makes year-on-year comparisons difficult.",
+        "score": 6.1135,
+        "rank": 3
+      },
+      {
+        "url": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "title": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "heading": "",
+        "chunk_text": "cks on Ukraine’s power grids could increase the risk of nuclear disaster.\nIn September 2022, Ukrainian forces made strong advances in the northeast and mounted a revitalized southern counteroffensive. Ukraine retook significant territory in the Kharkiv region, surprising Russian forces and cutting off important supply lines at Lyman before stalling and settling into a new front line. In southern Ukraine, Ukrainian forces retook the city of Kherson and forced a Russian withdrawal from all territory west of the Dnipro River.\nRussia then redeployed forces eastward to Donetsk, in addition to sending tens of thousands of reinforcements to the area in advance of a February 2023 offensive. Later that month, Putin moved to illegally annex four occupied territories: Luhansk, Donetsk, Kherson, and Zaporizhzhia. In his accompanying speech, Putin suggested the potential for nuclear escalation, referencing the United States’ use of nuclear weapons against Japan during World War II.\nFollowing a winter stalemate, Putin announced plans in February to take all of Donbas by March 2023 in an offensive surge. However, the attack made little progress and devolved into a months-long siege of Bakhmut, a town of limited strategic—but substantial symbolic—value. By late May, Russia claimed control of the city, and Ukrainian attempts to recapture the area were unsuccessful.",
+        "score": 5.3431,
+        "rank": 4
+      },
+      {
+        "url": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "title": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "heading": "",
+        "chunk_text": "nd bombing attacks. Later that month, Russia announced a “reduction in military activity” near Kyiv and Chernihiv, followed by a full withdrawal of all troops from Ukraine’s capital region by April 6. In Kyiv’s surrounding areas, civilians described apparent war crimes committed by Russian forces, including accounts of summary executions, torture, and rape.\nOn April 18, Russia launched a new major offensivein eastern Ukraine following its failed attemptto seize the capital. By May, Russian forces took control of Mariupol, a major and highly strategic southeastern port city. Indiscriminate and targeted attacks against civiliansin the city amplified allegations against Russian forces for international humanitarian law violations. Since the summer of 2022, fighting has largely been confined to Ukraine’s east and south.\nThe Russian seizure of several Ukrainian ports and subsequent blockade of Ukrainian food exports compounded an already acute global food crisis. Before the conflict, Ukraine was the largest supplier of commodities to the World Food Program (WFP), which provides food assistance to vulnerable populations. In July 2022, Russia and Ukraine signed an agreement to free more than twenty million tons of grain from Russian-controlled Ukrainian ports. In October, Russia suspended the grain deal in response to an alleged Ukrainian attack on Russian naval forces.",
+        "score": 4.3482,
+        "rank": 5
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "heading": "",
+        "chunk_text": "s slowed in 2026 compared to 2025, but the changing character of the war, particularly Russia’s increased use of infiltration tactics over the course of 2025, makes year-on-year comparisons difficult. ISW has observed evidence to assess that Russian forces seized 1,443.35 square kilometers in the past six months (November 2025 to April 2026) compared with 2,368.38 square kilometers seized during the same time period in 2024-2025. Russian forces seized an average of 2.9 square kilometers per day in the first four months of 2026 compared to 9.76 square kilometers per day in the first four months of 2025. Russian forces have been increasingly using infiltration tactics since Fall 2025, however, and ISW created its assessed Russian infiltration layer to depict these infiltration areas as distinct from areas in which Russian forces have advanced and seized territory. Comparisons of Russian gains this year with those of previous years when infiltration tactics were rarer thus are not straightforward, as Russian forces exert a significantly lower degree of control over infiltration areas than they do over seized areas.\nThe Kremlin uses Russian infiltration tactics in part to exaggerate Russian control of terrain. ISW has observed evidence to assess that Russian forces seized or infiltrated into a net of 28.28 square kilometers in April 2026 and a total of 1716.42 square kilometers from November 2025 to April 2026.",
+        "score": 1.5071,
+        "rank": 6
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "heading": "",
+        "chunk_text": "aining. The milblogger also claimed that Russian authorities have mismanaged the deployment of maintenance personnel including by sending engineers to infantry units and using them to guard airfields. A Kremlin-affiliated Russian milblogger argued that Russian forces will struggle to take advantage of this additional bombing capability because they are not effectively prioritizing strikes and are wasting munitions on lower-value targets such as basements housing single infantrymen.[8] The milblogger complained that Russian forces are also frequently switching target sets without accomplishing their initial objectives.\nKey Takeaways\n- Russian forces in April 2026 suffered a net loss of territory controlled in the Ukrainian theater for the first time since Ukraine’s August 2024 incursion into Kursk Oblast.\n- The relative decline in the rate of Russian advances may be related in part to annual seasonal patterns.\n- The rate of Russian advances has slowed in 2026 compared to 2025, but the changing character of the war, particularly Russia’s increased use of infiltration tactics over the course of 2025, makes year-on-year comparisons difficult.\n- The Kremlin uses Russian infiltration tactics in part to exaggerate Russian control of terrain.\n- ISW has reviewed and refined its mapping data and methodology, identifying and rectifying some data artifacts that did not affect the visible map geometry but did affect some calculations of area.",
+        "score": 1.115,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 1968,
+      "search_ms": 1978,
+      "extract_ms": 9835,
+      "chunk_ms": 59,
+      "retrieve_ms": 10427,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 40104,
+    "elapsed_s": 43.33,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

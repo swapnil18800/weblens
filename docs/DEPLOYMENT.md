@@ -78,6 +78,30 @@ railway open
 | `ENVIRONMENT` | `production` or `development` | `development` |
 | `LOG_LEVEL` | `DEBUG`, `INFO`, `WARNING`, `ERROR` | `INFO` |
 | `PORT` | Server port (Railway sets automatically) | `8000` |
+| `PUBLIC_MODE` | Anon-session mode for production (see below) | `false` |
+| `SEMANTIC_CACHE_ENABLED` | Enable pgvector semantic cache | `false` |
+
+### Public mode (production anon-session pattern)
+
+In production we want chat history hidden from end-users (and from devs/admins
+visiting the public site) — but still persisted in the DB for analytics.
+
+| Mode | Sidebar lists past sessions | session_id persistence | DB persistence |
+|---|---|---|---|
+| dev (`PUBLIC_MODE=false`) | Yes, full list | `localStorage` (survives reload) | Always |
+| prod (`PUBLIC_MODE=true`) | No (returns `[]`) | In-memory only (lost on reload or tab close) | Always |
+
+To enable:
+- **Backend**: set `PUBLIC_MODE=true` in Railway env vars
+- **Frontend build**: set `VITE_PUBLIC_MODE=true` in the build step (the value is baked into the JS bundle at build time, not read at runtime)
+
+Verify post-deploy:
+```bash
+curl https://<your-app>.railway.app/api/sessions
+# Should return: []
+```
+
+Sessions are still in Postgres; query Supabase directly to inspect.
 
 ### Supabase Setup
 

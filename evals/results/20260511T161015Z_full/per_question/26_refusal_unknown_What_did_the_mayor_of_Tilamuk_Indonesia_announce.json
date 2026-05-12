@@ -1,0 +1,221 @@
+{
+  "id": "ref2",
+  "category": "refusal_unknown",
+  "domain": "obscure",
+  "question": "What did the mayor of Tilamuk, Indonesia announce on Tuesday?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Likely no English-language source — should admit not found cleanly.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T161015Z-ref2",
+  "verdict": "partial",
+  "aggregate": 0.6,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.732,
+    "aggregate": 0.6,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.6
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.0,
+      "relevant": 0,
+      "total": 6,
+      "reasoning": "No chunk mentions Tilamuk, Indonesia, or any mayor's announcement on Tuesday."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.732,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 495,
+      "decompose_ms": 3323,
+      "search_ms": 3637,
+      "extract_ms": 28526,
+      "chunk_ms": 69,
+      "retrieve_ms": 4692,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 5,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 47015,
+    "pipeline_s": 53.91
+  },
+  "judge_reasoning": "refusal",
+  "pipeline": {
+    "answer": "No information found in the provided sources about a \"Mayor of Tilamuk Indonesia\" making any announcement on Tuesday, 2026-05-11.\n\n- The sources only refer to **Tillamook, Oregon**, USA — not \"Tilamuk, Indonesia\" [1][2][3].\n- The Tillamook City Council meets on the first and third Monday of each month; the mayor presides but votes only in tie situations [3].\n- The only date mentioned near May 2026 is a public hearing on **January 16, 2026** about a fire protection district [1], and a **February 23, 2026** deadline for a Community Support Grant [1].\n- No announcement or activity from any Indonesian mayor is recorded in these documents [1][2][3].\n\nThe query likely confuses the U.S. town of Tillamook, Oregon, with a similarly spelled location in Indonesia. No such mayor or announcement exists in the supplied evidence.",
+    "mode": "search",
+    "rewritten_query": "What did the mayor of Tilamuk, Indonesia announce on Tuesday?",
+    "rewrote": false,
+    "rationale": "Time-sensitive local news, needs sourcing.",
+    "sub_queries": [
+      "Mayor of Tilamuk Indonesia announcement Tuesday 2026-05-11"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://bloximages.chicago2.vip.townnews.com/tillamookheadlightherald.com/content/tncms/assets/v3/editorial/d/06/d06dc829-060c-484b-a16e-ada98eb4ea03/695cb0e319491.pdf.pdf",
+        "title": "695cb0e319491.pdf.pdf",
+        "snippet": "2026 COMMUNITY SUPPORT GRANT PROGRAM\n\nPO Box 433 1115 Pacific Ave Tillamook, OR 97141 www.tpud.org 503-842-2535\n\nThe 2026 Community Support Grant program is currently open and accepting applications until 5:30 p.m. on Monday, February 23, 2026. Local not-for-profit organizations with community proje"
+      },
+      {
+        "num": 2,
+        "url": "https://www.tillamookcountypioneer.net/tillamook-county-dairy-ambassador-mackenzie-mitchell-crowned-oregon-dairy-princess-ambassador-for-2024-25/",
+        "title": "https://www.tillamookcountypioneer.net/tillamook-county-dairy-ambassador-mackenzie-mitchell-crowned-oregon-dairy-princess-ambassador-for-2024-25/",
+        "snippet": "(Salem, Ore. – March 5, 2024) – The Oregon Dairy Women are proud to introduce the 2024-2025 Oregon Dairy Princess Ambassadors. Mackenzie Mitchell, representing Tillamook County was crowned the 2024-2025 Oregon Dairy Princess Ambassador and Rebecca Noordam, representing Marion County was crowned Alte"
+      },
+      {
+        "num": 3,
+        "url": "https://www.tillamookor.gov/council",
+        "title": "City Council",
+        "snippet": "City Council Information\n\nUnder the Tillamook City Charter, the city government is led the Mayor and six City Councilors, who together form the City Council. A quorum of at least four council members is required to conduct city business. The six council seats are filled by election to four-year term"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://oregonafscme.org/news/tillamook-county-workers-ratify-contract",
+        "title": "Tillamook County Workers Ratify Long-Awaited Contract with Major ...",
+        "snippet": "Due to the extensive class/comp study, nearly 50% of the bargaining unit will receive one or more range increases beginning January 1, 2026."
+      },
+      {
+        "url": "https://www.tillamookheadlightherald.com/community/tillamook-hall-of-fame-nominations-sought/article_684c98a0-4ca1-46e6-a9ea-6d111406ccd6.html",
+        "title": "Tillamook Hall of Fame nominations sought | Community",
+        "snippet": "We are asking for nominations from anyone in the greater Tillamook community under four separate categories: individual athletes, coaches, teams"
+      },
+      {
+        "url": "https://www.tillamookor.gov/council",
+        "title": "City Council | Tillamook, Oregon",
+        "snippet": "Under the Tillamook City Charter, the city government is led the Mayor and six City Councilors, who together form the City Council."
+      },
+      {
+        "url": "https://www.tillamookor.gov/council/directory-listing/aaron-burris",
+        "title": "Aaron Burris - Tillamook, Oregon",
+        "snippet": "Aaron Burris ; Contact Hope Bouchard, Position Ward 2 City Councilor ; Contact Aaron Burris, Position Mayor ; Contact Dean Crist, Position Ward 5 City Councilor."
+      },
+      {
+        "url": "https://bloximages.chicago2.vip.townnews.com/tillamookheadlightherald.com/content/tncms/assets/v3/editorial/d/06/d06dc829-060c-484b-a16e-ada98eb4ea03/695cb0e319491.pdf.pdf",
+        "title": "[PDF] Projects completed across Tillamook County in 2025 - BLOX Digital",
+        "snippet": "CCB - OR-226639 H23264 FLOORING Lvp, Lvt, Carpet, Vinyl, Marmoleum Ceramic and Porcelain Tile, Cork, Bamboo, Solid Wood and Engineered Wood, Mohawk, Tas, Hallmark, Shaw CABINETS Canyon Creek, Durasupreme, Starmark, Bertch, Articraft BLINDS Celular, Roller, Wood, Vinyl, Shutters, Drapes, Lightfiltering to Blackout COUNTERTOPS Silestone, Dekton, Caesarstone, MSI, Stratus, Pental, Cambria, Viatera YOUR LOCAL LANDSCAPE EXPERTS MAINTENANCE LOT CLEARING INSTALLATION IRRIGATION (503) 398-5586 CB#8710 CCB#183477 FREE ESTIMATES | SERVING THE COAST 20+ YEARS H25705 Landscaping H43646 • Barkdust (Fir & Hemlock) • Bark Nuggets • Red Rock • Compost • Potting Soils • Flagstone U-Haul or Delivered 5755 Alderbrook Loop Road 503-801-1214 or 457-6023 Engineering H40844 20 Years Experience in Tillamook County 503-801-6016 Recycling and Auto Facility Don Averill Recycling Auto Facility H40973 Certified Dismantler Serving Tillamook County 503-457-6023 503-842-4588 Flooring Astro & Odie FREE ESTIMATES MARMOLEUM • LAMINATE FLOORS CORK FLOORING • BAMBOO RECYCLED (Polyethylene) CARPETS WOOL CARPETS • CERAMIC/PORCELAIN TILE NATURAL STONE TILE Open Tuesday - Friday 10-5 • Saturday 10-4 653 Manzanita Avenue • Manzanita CCB# 128946 N20571 503-368-5572 H64713 36180 HW Y 101, Manzanita • CCB#128946 MARMOLEUM • LAMINA TE FLOORS CORK FLOORING • BAMBOO RECYCLED (Polyethylene) CARPETS WOOL CARPETS • CERAMIC/PORCELAIN TILE LUXURY VINYL FLOORING Computers H26289 H26288 Insurance Roofing Auto/Home/FArm CommerCiAl/WAterCrAFt reCreAtionAl VeHiCle Safeco Insurance Company Liberty Mutual Progressive • Foremost Locally owned and operated since 1953 1700 FourtH Street • P.o. Box 298, tillAmook 503-842-4407 TONY VELTRI INSURANCE SERVICES H22800 ProteCt Your Future Rick Lofton General Contractor Certified Master Roofer / Consultant Direct: 503-544-2716 Office: 503-801-0769 P.O. Box 121, Netarts OR 97143 Email: lofton.rick@gmail.com H22606 CCB#:232796 Electrician Heating & Sheet Metal H25395 Haltiner Heating Tillamook Fireplace 503-842-9315 503-842-5653 1709 1st Street • Tillamook • www.haltinerinc.com Open Mon-Fri 8am - 4:30pm • Smokin Brothers Pellet Grills • Custom Flashing • Continuous Gutters • Trane Heating Systems • Mitsubishi Ductless Systems • Wood, Pellet and Gas Stoves • Energy Logs and Pellets • Full Service Department"
+      },
+      {
+        "url": "https://www.tillamookcountypioneer.net/tillamook-county-dairy-ambassador-mackenzie-mitchell-crowned-oregon-dairy-princess-ambassador-for-2024-25/",
+        "title": "Tillamook County Dairy Ambassador Mackenzie Mitchell Crowned ...",
+        "snippet": "Mackenzie Mitchell, representing Tillamook County was crowned the 2024-2025 Oregon Dairy Princess Ambassador and Rebecca Noordam, representing Marion County"
+      }
+    ],
+    "chunk_count": 6,
+    "chunks": [
+      {
+        "url": "https://bloximages.chicago2.vip.townnews.com/tillamookheadlightherald.com/content/tncms/assets/v3/editorial/d/06/d06dc829-060c-484b-a16e-ada98eb4ea03/695cb0e319491.pdf.pdf",
+        "title": "695cb0e319491.pdf.pdf",
+        "heading": "2026 COMMUNITY SUPPORT GRANT PROGRAM",
+        "chunk_text": "2026 COMMUNITY SUPPORT GRANT PROGRAM\n\nPO Box 433 1115 Pacific Ave Tillamook, OR 97141 www.tpud.org 503-842-2535\n\nThe 2026 Community Support Grant program is currently open and accepting applications until 5:30 p.m. on Monday, February 23, 2026. Local not-for-profit organizations with community projects that promote community livability and economic development are eligible to apply. Application forms, procedures, and additional information are available now at www.tpud.org/news-community/community-support-grants/.\n\nMembers of the Tillamook County Board of Elections counting ballots in the race for Measure 29-183 on\n\nJune 12, with Tillamook County Clerk Christy Nyseth overseeing.  Ben Salo won 2025’s championship Pig n’ Ford race thanks to three perfect cranks and two smooth pig\n\nexchanges.\n\nTillamook County Commissioner Erin Skaar (right center) and CARE Interim Executive Director Marie Miller (left center) cut a ribbon to celebrate\n\nthe opening of CARE’s new shelters flanked by CARE staff and board members.\n\nLeft to Right: Adventist Tillamook President Eric Swanson, Tillamook County Commissioner Paul Fournier,\n\nState Senator Suzanne Weber, DCI Senior Operations Director Sharon Marti, State Representative Cyrus\n\nJavadi, Tillamook County Commissioners Mary Faith Bell and Erin Skaar, and Dialysis Nurse Molly Lust\n\ncelebrate the reopening of Tillamook’s dialysis clinic. The Tillamook Headlight Herald  | January 6, 2026  A3",
+        "score": -4.7436,
+        "rank": 0
+      },
+      {
+        "url": "https://bloximages.chicago2.vip.townnews.com/tillamookheadlightherald.com/content/tncms/assets/v3/editorial/d/06/d06dc829-060c-484b-a16e-ada98eb4ea03/695cb0e319491.pdf.pdf",
+        "title": "695cb0e319491.pdf.pdf",
+        "heading": "Headlight Herald The Tillamook Headlight Herald  | January 6, 2026  B5 CLASSIFIEDS",
+        "chunk_text": "Headlight Herald The Tillamook Headlight Herald  | January 6, 2026  B5 CLASSIFIEDS\n\nPublic Noti ces\n\n999  Public Noti ces\n\n999  Public Noti ces\n\n999  Public Noti ces\n\n999\n\nPublic Noti ces\n\n999  Public Noti ces\n\n999\n\nCLEAR RECON CORP 1915 NE\n\nStucki Avenue, Suite 400 Hill -\n\nsboro, OR 97006 Phone: 858-\n\n750-7777 866-931-0036 Jessica\n\nLopez, Authorized Signatory of\n\nTrustee\n\n1/6/26 1/13/26, 1/20/26, 1/27/26\n\nHH26-003 COMPENSATION\n\nBOARD MEETING NOTICE.\n\nTillamook County’s Compensa -\n\ntion Board will meet on Tuesday,\n\nJanuary 13, 2026, at 3:00 p.m.\n\nin the Board of Commissioners’\n\nMeeting Room 106 at the Tilla -\n\nmook County Courthouse, 201\n\nLaurel Avenue, Tillamook. The\n\nteleconference number is 1-971-\n\n254-3149, Conference ID: 866\n\n914 607#. The Compensation\n\nBoard, as required by State law\n\nORS 204.112, will discuss the\n\nprocess to determine compensa -\n\ntion for the salaries of the Coun -\n\nty’s elected officials. If you have\n\nquestions, please contact Rachel\n\nHagerty, Chief Administrative\n\nOfficer, at rachel.hagerty@tilla -\n\nmookcounty.gov.\n\n1/6/26\n\nHH26-004 IN THE CIRCUIT\n\nCOURT OF THE STATE OF\n\nOREGON FOR THE COUNTY\n\nOF TILLAMOOK PROBATE DE -\n\nPARTMENT. In the Matter of the\n\nEstate of: TOM R. CHAMBERS,\n\nDeceased. No. 25PB09499.\n\nNOTICE TO INTERESTED PER -\n\nSONS. NOTICE IS HEREBY\n\nGIVEN that the party stated be -\n\nlow has been appointed and\n\nhas qualified as the personal\n\nrepresentative of the estate. All\n\npersons having claims against\n\nthe estate are hereby required\n\nto present the same, with proper\n\nvouchers, within four months af -",
+        "score": -5.1733,
+        "rank": 1
+      },
+      {
+        "url": "https://bloximages.chicago2.vip.townnews.com/tillamookheadlightherald.com/content/tncms/assets/v3/editorial/d/06/d06dc829-060c-484b-a16e-ada98eb4ea03/695cb0e319491.pdf.pdf",
+        "title": "695cb0e319491.pdf.pdf",
+        "heading": "AHillsboro appoint -",
+        "chunk_text": "AHillsboro appoint -\n\nat Pacific City Beach Walk\n\nsharing news that they\n\nare serving homemade\n\nsmash burgers from 11\n\na.m. through 3 p.m. on the\n\ndays that the regular menu\n\nis closed (Wednesdays\n\nand Thursdays weekly).\n\nOptions include, single\n\nburgers, double, triple or\n\nquadruple burgers, and any\n\nof those with gluten free\n\nbuns. The address is 6320\n\nPacific Avenue in Pacific\n\nCity.\n\nRemember that Adven -\n\ntist Health has announced\n\na call to artists for their\n\n“Art for the Heart” event\n\nin February. Artists of any\n\nage are invited to submit up\n\nto five entries (which must\n\nbe wall-ready). If items\n\nare offered for sale, North\n\nCounty Recreation District\n\n(NCRD) will keep a 20\n\npercent commission for\n\nsold pieces.\n\nThe theme is “Art for\n\nthe Heart” and we should\n\nMark our 2026 calendars\n\nfor submission dates which\n\nare 9 am. through 7 p.m.\n\non Thursday, January 29,\n\nand 9 a.m. through 3p.m.\n\non Friday, January 30, at\n\nNCRD, 36155 9th Street, in\n\nNehalem.\n\nHappy Birthday  this\n\nweek to- Rachel Adkins,\n\nRick Anderson, Dale\n\nCaspell, B.J. Chatelain,\n\nColton Craven, Nau -\n\ndia Eckhardt, Francine\n\nHagerty, Noah Hancock,\n\nJesse Heathershaw, Berta\n\nLimbaugh, Maloree Mal -\n\ncom,  Hannah Faire-Scott,\n\nLinda Shiels, Knol Simnitt,\n\nSophie Jo Slavens and Nash\n\nWhiteman.\n\nMELONIE FERGUSON SOUTH COUNTY 503-812-4242 mossroses@yahoo.com\n\nSee  LINDA,  Page A6 A6  The Tillamook Headlight Herald  | January 6, 2026\n\nRESOLUTIONS VS\n\nEVOLUTIONS",
+        "score": -5.8242,
+        "rank": 2
+      },
+      {
+        "url": "https://bloximages.chicago2.vip.townnews.com/tillamookheadlightherald.com/content/tncms/assets/v3/editorial/d/06/d06dc829-060c-484b-a16e-ada98eb4ea03/695cb0e319491.pdf.pdf",
+        "title": "695cb0e319491.pdf.pdf",
+        "heading": "Wednesdays 4 p.m.",
+        "chunk_text": "Wednesdays 4 p.m.\n\n2026 at 9:45 a.m. in the Board of\n\nCommissioners’ Meeting Room\n\n106 in the Tillamook County\n\nCourthouse, 201 Laurel Avenue,\n\nTillamook, Oregon. The purpose\n\nof the hearing is to consider the\n\nformation of a rural fire protec -\n\ntion district with a permanent tax\n\nrate of $1.49 per $1,000 of as -\n\nsessed valuation under Chapter\n\n478 of the Oregon Revised Stat -\n\nutes. The boundaries of the pro -\n\nposed district would be located\n\nentirely within Tillamook County.\n\nThe complete legal descrip -\n\ntion is available at the Tillamook\n\nCounty Board of Commission -\n\ners’ Office, 201 Laurel Avenue,\n\nTillamook, Oregon. The name\n\nof the proposed district shall be\n\nthe Tillamook Bay Fire & Rescue\n\nRFPD. Interested persons can\n\nobtain more information by con -\n\ntacting the Board of Commission -\n\ners’ Office at 503-842-3403. All\n\ninterested persons are welcome\n\nto submit written testimony to the\n\nTillamook County Board of Com -\n\nmissioners’ Office, 201 Laurel Av -\n\nenue, Tillamook, Oregon 97141,\n\nelectronic testimony via pub -\n\nliccomments@tillamookcounty.\n\ngov, or appear and testify at the\n\nPublic Hearing. The Tillamook\n\nCounty Board of Commissioners\n\nhas entered an order declaring\n\nits intention to initiate formation of\n\nsaid district.\n\n12/30/25 1/6/26\n\nHH26-001 NOTICE OF SHER -\n\nIFF’S SALE. On 02-05-2026 at\n\nthe hour of 10:30 AM at the Til -\n\nlamook County Sheriff’s Office,\n\n5995 Long Prairie Road, in the\n\nCity of Tillamook, Oregon, the\n\ndefendant’s interest will be sold,",
+        "score": -6.1551,
+        "rank": 3
+      },
+      {
+        "url": "https://www.tillamookcountypioneer.net/tillamook-county-dairy-ambassador-mackenzie-mitchell-crowned-oregon-dairy-princess-ambassador-for-2024-25/",
+        "title": "https://www.tillamookcountypioneer.net/tillamook-county-dairy-ambassador-mackenzie-mitchell-crowned-oregon-dairy-princess-ambassador-for-2024-25/",
+        "heading": "",
+        "chunk_text": "(Salem, Ore. – March 5, 2024) – The Oregon Dairy Women are proud to introduce the 2024-2025 Oregon Dairy Princess Ambassadors. Mackenzie Mitchell, representing Tillamook County was crowned the 2024-2025 Oregon Dairy Princess Ambassador and Rebecca Noordam, representing Marion County was crowned Alternate Oregon Dairy Princess Ambassador during a ceremony Tuesday March 5, 2024.\nMitchell, 22, is a 2020 graduate of Tillamook High School and is completing her sophomore year at Tillamook Bay Community College, where she is studying political science. Mitchell grew up watching her father work closely with local dairy farmers to convert byproducts of dairy cattle to renewable energy. She was active in FFA and exhibited dairy heifers at the Tillamook County Fair. Mitchell aspires to become an agricultural lawyer after completing her education.\nNoordam, 19, is a 2023 graduate of Silverton High School and she is studying Agriculture Science and Business at Corban University in Salem. Noordam grew up on a dairy and works on the dairy feeding calves. While in high school, Noordam competed at the National FFA Convention in the Milk Quality and Products Contest, where her team received a silver award.\nBoth young women look forward to a busy year informing and educating the public about the dairy industry. They will spend the next twelve months traveling statewide attending fairs, town meetings and public events as a representative of Oregon’s dairy farmers.",
+        "score": -6.7993,
+        "rank": 4
+      },
+      {
+        "url": "https://www.tillamookor.gov/council",
+        "title": "City Council",
+        "heading": "City Council Information",
+        "chunk_text": "City Council Information\n\nUnder the Tillamook City Charter, the city government is led the Mayor and six City Councilors, who together form the City Council. A quorum of at least four council members is required to conduct city business. The six council seats are filled by election to four-year terms and represent the ward in which the elector resides.\n\nElected at large for a four-year term is the mayor, whose duties include:\n\n*   Presiding over City Council meetings.\n*   Preserving order.\n*   Enforcing council rules. (Council Rules - ORD 1256A)\n*   Determining the order of business.\n*   Voting _only_ in the case of a tie-vote.\n\nAt the first meeting of each year, the council elects a Council President from among its members. The Council President will preside over meetings in the absence or incapacity of the mayor, however they will retain their vote as a council member, even while acting as mayor.\n\nThe City Council meets on the first and third Monday of each month at City Hall. In the event of a holiday, the meeting shall take place the following day or on a day agreed upon by the Council. A special meeting of the Council may be properly called by giving 24 hours' advance notice.\n\nTo view the City Council meetings please click [here](https://www.youtube.com/@CityofTillamook \"(opens in a new window)\").\n\nFor the City Boundary/Ward map click [here](https://www.tillamookor.gov/media/3831).",
+        "score": -8.9462,
+        "rank": 5
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 495,
+      "decompose_ms": 3323,
+      "search_ms": 3637,
+      "extract_ms": 28526,
+      "chunk_ms": 69,
+      "retrieve_ms": 4692,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 5,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 47015,
+    "elapsed_s": 53.91,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

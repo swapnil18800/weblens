@@ -198,11 +198,16 @@ async def delete_session(session_id: str) -> bool:
         return False
 
 
-async def list_sessions(limit: int = 50) -> List[dict]:
-    """List recent sessions with title, message count, and last_active."""
+async def list_sessions(limit: int = 50, include_eval: bool = False) -> List[dict]:
+    """List recent sessions with title, message count, and last_active.
+
+    By default, eval sessions (session_id starting with 'eval-') are EXCLUDED.
+    Pass include_eval=True to retrieve them — used by /api/eval/sessions.
+    """
     try:
+        eval_filter = "" if include_eval else "WHERE s.session_id NOT LIKE 'eval-%'"
         rows = await db.fetch(
-            """
+            f"""
             SELECT
                 s.session_id,
                 COALESCE(
@@ -217,6 +222,7 @@ async def list_sessions(limit: int = 50) -> List[dict]:
                 s.created_at
             FROM rag_sessions s
             LEFT JOIN rag_session_messages m ON m.session_id = s.session_id
+            {eval_filter}
             GROUP BY s.session_id, s.title, s.created_at
             ORDER BY last_active DESC NULLS LAST, s.created_at DESC
             LIMIT $1
@@ -236,3 +242,61 @@ async def list_sessions(limit: int = 50) -> List[dict]:
     except Exception as exc:
         logger.warning("[session] list_sessions failed: %s", exc)
         return []
+
+
+async def list_eval_sessions(limit: int = 200) -> List[dict]:
+    """Sessions created by the eval harness (session_id starting with 'eval-')."""
+    try:
+        rows = await db.fetch(
+            """
+            SELECT
+                s.session_id,
+                COALESCE(s.title,
+                    (SELECT question FROM rag_session_messages
+                     WHERE session_id = s.session_id
+                     ORDER BY created_at ASC LIMIT 1),
+                    'Untitled') AS title,
+                COUNT(m.id) AS message_count,
+                MAX(m.created_at) AS last_active,
+                s.created_at
+            FROM rag_sessions s
+            LEFT JOIN rag_session_messages m ON m.session_id = s.session_id
+            WHERE s.session_id LIKE 'eval-%'
+            GROUP BY s.session_id, s.title, s.created_at
+            ORDER BY last_active DESC NULLS LAST, s.created_at DESC
+            LIMIT $1
+            """,
+            limit,
+        )
+        return [
+            {
+                "session_id": r["session_id"],
+                "title": r["title"],
+                "message_count": r["message_count"] or 0,
+                "last_active": r["last_active"].isoformat() if r["last_active"] else None,
+                "created_at": r["created_at"].isoformat(),
+            }
+            for r in rows
+        ]
+    except Exception as exc:
+        logger.warning("[session] list_eval_sessions failed: %s", exc)
+        return []
+
+
+async def delete_eval_sessions() -> int:
+    """Delete all eval sessions (those whose session_id starts with 'eval-').
+
+    Used to clean up after an eval run so the chat sidebar stays uncluttered AND
+    so subsequent eval runs don't see leaked prior-turn context from old runs.
+    Returns the number of sessions deleted.
+    """
+    try:
+        result = await db.execute(
+            "DELETE FROM rag_sessions WHERE session_id LIKE 'eval-%'",
+        )
+        if isinstance(result, str) and result.startswith("DELETE "):
+            return int(result.split()[-1])
+        return 0
+    except Exception as exc:
+        logger.warning("[session] delete_eval_sessions failed: %s", exc)
+        return 0

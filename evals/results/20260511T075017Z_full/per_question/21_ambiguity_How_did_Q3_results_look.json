@@ -1,0 +1,190 @@
+{
+  "id": "amb2",
+  "category": "ambiguity",
+  "domain": "finance",
+  "question": "How did Q3 results look?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Underspecified — which company / which Q3. Should ask or note ambiguity.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T075017Z-amb2",
+  "verdict": "partial",
+  "aggregate": 0.7,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.5,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.7,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.7
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.5,
+      "relevant": 2,
+      "total": 4,
+      "reasoning": "Chunks 1 and 4 directly report Q3 financial results; chunks 2 and 3 are about unrelated topics."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 2187,
+      "search_ms": 1987,
+      "extract_ms": 21550,
+      "chunk_ms": 3,
+      "retrieve_ms": 1315,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 36289,
+    "pipeline_s": 39.25
+  },
+  "judge_reasoning": "refusal",
+  "pipeline": {
+    "answer": "Salesforce's most recent Q3 earnings were for **fiscal Q3 2026**, ended October 31, 2025, reported on December 3, 2025 [1]. Key financial highlights:\n\n**Revenue & Growth**\n- **Q3 revenue** of **$10.3 billion**, up **9%** year-over-year (Y/Y), 8% in constant currency [1].\n- **Subscription & support revenue** of **$9.7 billion**, up 10% Y/Y [1].\n- **Current RPO** (cRPO) of **$29.4 billion**, up **11%** Y/Y; total RPO of **$59.5 billion**, up **12%** [1].\n\n**Profitability & Cash Flow**\n- GAAP operating margin of **21.3%**; non-GAAP operating margin of **35.5%** [1].\n- Operating cash flow of **$2.3 billion** (up 17% Y/Y); free cash flow of **$2.2 billion** (up **22%** Y/Y) [1].\n\n**Shareholder Returns**\n- Returned **$4.2 billion** to shareholders: **$3.8 billion** in share repurchases, **$395 million** in dividends [1].\n\n**Raised Full-Year FY26 Guidance**\n- Revenue guidance raised to **$41.45B–$41.55B** (9%–10% Y/Y growth) [1].\n- GAAP operating margin guidance updated to **20.3%**; non-GAAP guidance maintained at **34.1%** [1].\n- Operating cash flow growth guidance raised to ~13%–14% Y/Y [1].\n\nKey drivers include Agentforce (surpassing **3.2 trillion tokens** used) and Data 360 [1].",
+    "mode": "search",
+    "rewritten_query": "How did Q3 results look?",
+    "rewrote": false,
+    "rationale": "Time-sensitive earnings query; needs recent source.",
+    "sub_queries": [
+      "Most recent Q3 earnings results 2025 2026 financial performance"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.salesforce.com/news/press-releases/2025/12/03/fy26-q3-earnings/",
+        "title": "https://www.salesforce.com/news/press-releases/2025/12/03/fy26-q3-earnings/",
+        "snippet": "n tokens\nSAN FRANCISCO, Calif. – December 3, 2025 – Salesforce (NYSE: CRM), the world’s #1 AI CRM, today announced results for its third quarter fiscal 2026 ended October 31, 2025.\nFinancial Highlights\n- Current remaining performance obligation of $29.4 billion, up 11% year-over-year (“Y/Y”) and in "
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://ir.firstcitizens.com/financial-information/quarterly-results/default.aspx",
+        "title": "Financial Information - Quarterly Results | First Citizens BancShares",
+        "snippet": "Liquidity position remains strong as liquid assets were $60.72 billion at March 31, 2026, compared to $56.01 billion at December 31, 2025. The increase of $4.72"
+      },
+      {
+        "url": "https://www.salesforce.com/news/press-releases/2025/12/03/fy26-q3-earnings/",
+        "title": "Salesforce Delivers Record Third Quarter Fiscal 2026 Results ...",
+        "snippet": "“We are raising fiscal year 2026 revenue guidance to $41.45 billion to $41.55 billion, and Q3 cRPO was exceptional, up 11% year-over-year at"
+      },
+      {
+        "url": "https://finance.yahoo.com/quote/GOLD/earnings/GOLD-Q3-2026-earnings_call-552692.html",
+        "title": "EARNINGS_CALL_TRANSCRIP...",
+        "snippet": "Gross profits for Q3 2026 increased 331% to $176 million or 1.7% of revenue from $41 million or 3.6% of revenue in Q3 of last year. The increase"
+      },
+      {
+        "url": "https://investor.oracle.com/investor-news/news-details/2026/Oracle-Announces-Fiscal-Year-2026-Third-Quarter-Financial-Results/default.aspx",
+        "title": "Oracle Announces Fiscal Year 2026 Third Quarter Financial Results",
+        "snippet": "Q3 Remaining Performance Obligations $553 billion, up 325% year-over-year in USD · Q3 GAAP Earnings per Share up 24% to $1.27, Non-GAAP Earnings"
+      },
+      {
+        "url": "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2026/default.aspx",
+        "title": "NVIDIA Announces Financial Results for Third Quarter Fiscal 2026",
+        "snippet": "Revenue is expected to be $65.0 billion, plus or minus 2%. · Third-quarter revenue was a record $51.2 billion, up 25% from the previous quarter"
+      },
+      {
+        "url": "https://www.factset.com/earningsinsight",
+        "title": "[PDF] FactSet Earnings Insight",
+        "snippet": "Earnings: S&P 500 Expected to Report Earnings Growth of 21% for CY 2026 ... For Q3 2026, analysts are projecting earnings growth of 23.2"
+      }
+    ],
+    "chunk_count": 4,
+    "chunks": [
+      {
+        "url": "https://www.salesforce.com/news/press-releases/2025/12/03/fy26-q3-earnings/",
+        "title": "https://www.salesforce.com/news/press-releases/2025/12/03/fy26-q3-earnings/",
+        "heading": "",
+        "chunk_text": "n tokens\nSAN FRANCISCO, Calif. – December 3, 2025 – Salesforce (NYSE: CRM), the world’s #1 AI CRM, today announced results for its third quarter fiscal 2026 ended October 31, 2025.\nFinancial Highlights\n- Current remaining performance obligation of $29.4 billion, up 11% year-over-year (“Y/Y”) and in constant currency (“CC”)\n- Remaining performance obligation of $59.5 billion, up 12% Y/Y\n- Third quarter subscription & support revenue of $9.7 billion, up 10% Y/Y and 9% in CC\n- Third quarter revenue of $10.3 billion, up 9% Y/Y and 8% in CC\n- Third quarter GAAP operating margin of 21.3% and non-GAAP operating margin of 35.5%\n- Third quarter operating cash flow of $2.3 billion, up 17% Y/Y, and free cash flow of $2.2 billion, up 22% Y/Y\n- Returned $4.2 billion to shareholders, including $3.8 billion in share repurchases and $395 million in dividends\n- Raises full year FY26 revenue guidance to $41.45 billion to $41.55 billion, up 9% – 10% Y/Y and approximately 9% in CC, including approximately 80bps Informatica contribution\n- Updates full year FY26 GAAP operating margin guidance to 20.3%, and maintains non-GAAP operating margin guidance of 34.1%\n- Raises full year FY26 operating cash flow growth guidance to approximately 13% to 14% Y/Y\n“We are raising fiscal year 2026 revenue guidance to $41.45 billion to $41.55 billion, and Q3 cRPO was exceptional, up 11% year-over-year at $29.4 billion, signaling a powerful pipeline of future revenue,” said Marc Benioff, Chair and CEO, Salesforce.",
+        "score": 7.1973,
+        "rank": 0
+      },
+      {
+        "url": "https://www.salesforce.com/news/press-releases/2025/12/03/fy26-q3-earnings/",
+        "title": "https://www.salesforce.com/news/press-releases/2025/12/03/fy26-q3-earnings/",
+        "heading": "",
+        "chunk_text": "rmatica’s rich data catalog, integration, governance, quality and privacy, metadata management, and Master Data Management services to the Salesforce platform\nGuidance\nSalesforce’s guidance includes GAAP and non-GAAP financial measures. The following tables summarize Salesforce’s guidance for the fourth quarter fiscal 2026 and full-year fiscal 2026:\nThe following is a reconciliation of GAAP operating margin guidance to non-GAAP operating margin guidance for the full year:\nFor additional information regarding non-GAAP financial measures see the reconciliation of results and related explanations below.\nManagement will provide further commentary around these guidance assumptions on its earnings call.\nProduct Releases and Enhancements\nSalesforce releases major updates for our core platform and apps three times a year, with additional updates happening regularly across our portfolio. These releases are a result of significant research and development investments made over multiple years, and are designed to help customers drive cost savings, boost efficiency, and build trust.\nSalesforce leaders will participate in a Q3 FY26 Customer Momentum & Customer Success Update webinar on Thursday, December 4, 2025, at 11:00 AM PT / 2:00 PM ET.",
+        "score": 2.8,
+        "rank": 1
+      },
+      {
+        "url": "https://www.salesforce.com/news/press-releases/2025/12/03/fy26-q3-earnings/",
+        "title": "https://www.salesforce.com/news/press-releases/2025/12/03/fy26-q3-earnings/",
+        "heading": "",
+        "chunk_text": "ngs, boost efficiency, and build trust.\nSalesforce leaders will participate in a Q3 FY26 Customer Momentum & Customer Success Update webinar on Thursday, December 4, 2025, at 11:00 AM PT / 2:00 PM ET. A live webcast and replay details of the event will be available on the Salesforce Investor Relations website at www.salesforce.com/investor.\nTo learn more about our newest innovations and product release highlights, including our latest Winter 2026 Product Release, see FY26 Q3 Product Releases and Announcements at https://www.salesforce.com/news/stories/fy26-q3-highlights/ and see our latest major release at www.salesforce.com/releases.\nEnvironmental, Social, and Governance (ESG) Strategy\nTo learn more about our latest initiatives and priorities, review our Stakeholder Impact Report at https://salesforce.com/stakeholder-impact-report.\nQuarterly Conference Call\nSalesforce plans to host a conference call at 2:00 p.m. (PT) / 5:00 p.m. (ET) to discuss its financial results with the investment community. A live webcast and replay details of the event will be available on the Salesforce Investor Relations website at www.salesforce.com/investor.\nAbout Salesforce\nSalesforce helps organizations of any size become agentic enterprises - integrating humans, agents, apps, and data on a trusted, unified platform to unlock unprecedented growth and innovation.\nVisit www.salesforce.com for more information.",
+        "score": -1.3683,
+        "rank": 2
+      },
+      {
+        "url": "https://www.salesforce.com/news/press-releases/2025/12/03/fy26-q3-earnings/",
+        "title": "https://www.salesforce.com/news/press-releases/2025/12/03/fy26-q3-earnings/",
+        "heading": "",
+        "chunk_text": "2026 Results Driven by Agentforce & Data 360\ncRPO up 11% Y/Y; RPO climbs 12% to nearly $60B; Agentforce surpasses 3.2 trillion tokens\nSAN FRANCISCO, Calif.",
+        "score": -4.491,
+        "rank": 3
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 2187,
+      "search_ms": 1987,
+      "extract_ms": 21550,
+      "chunk_ms": 3,
+      "retrieve_ms": 1315,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 36289,
+    "elapsed_s": 39.25,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

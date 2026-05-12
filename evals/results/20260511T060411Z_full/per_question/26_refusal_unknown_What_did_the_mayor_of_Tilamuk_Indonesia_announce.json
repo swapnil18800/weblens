@@ -1,0 +1,163 @@
+{
+  "id": "ref2",
+  "category": "refusal_unknown",
+  "domain": "obscure",
+  "question": "What did the mayor of Tilamuk, Indonesia announce on Tuesday?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Likely no English-language source — should admit not found cleanly.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T060411Z-ref2",
+  "verdict": "partial",
+  "aggregate": 0.6,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.826,
+    "aggregate": 0.6
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.0,
+      "relevant": 0,
+      "total": 7,
+      "reasoning": "All chunks are about US Senator Wyden or Instagram, not Indonesia's mayor."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.826,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "pipeline": {
+    "answer": "No information about a \"Mayor of Tilamuk Indonesia\" making an announcement on Tuesday 2026 is found in these sources. The sources contain only login pages for Instagram and Facebook, plus a single substantive post by U.S. Senator Ron Wyden about a town hall in Tillamook **County, Oregon** (not Indonesia) [1].",
+    "mode": "search",
+    "rewritten_query": "What did the mayor of Tilamuk, Indonesia announce on Tuesday?",
+    "rewrote": false,
+    "rationale": "Recent specific event, must be sourced.",
+    "sub_queries": [
+      "Mayor of Tilamuk Indonesia announcement Tuesday 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.facebook.com/senatorronwyden/posts/heard-at-last-nights-2026townhall-in-tillamook-county-about-the-urgent-need-to-r/1438465170969234/",
+        "title": "Senator Ron Wyden",
+        "snippet": "Heard at last night’s #2026townhall in... - Senator Ron Wyden | Facebook\n\n[Log In](https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&next=https%3A%2F%2Fwww.facebook.com%2Fsenatorronwyden%2Fposts%2Fheard-at-last-nights-2026townhall-in-tillamook-county-about-the-urgent-need-to"
+      }
+    ],
+    "urls": [
+      "https://www.tillamookheadlightherald.com/news_paid/the-oath-mayor-brajcich-to-take-office-jan-4/article_60ad4de1-60fc-5a22-8af7-462450d476ba.html",
+      "https://www.facebook.com/senatorronwyden/posts/heard-at-last-nights-2026townhall-in-tillamook-county-about-the-urgent-need-to-r/1438465170969234/",
+      "https://www.instagram.com/reel/DVzL5NEgLIF/",
+      "https://www.instagram.com/p/DXSY8QEDSL1/?img_index=3",
+      "https://www.instagram.com/reel/DXJ4kCggOQ0/",
+      "https://www.instagram.com/p/DXhjrjHiZ3M/?__d=1%2Fhttps%3A%2F%2Fwww.instagram.com%2Ficonicgym__%2F%3F__d%3D1%2F"
+    ],
+    "chunk_count": 7,
+    "chunks": [
+      {
+        "url": "https://www.facebook.com/senatorronwyden/posts/heard-at-last-nights-2026townhall-in-tillamook-county-about-the-urgent-need-to-r/1438465170969234/",
+        "title": "Senator Ron Wyden",
+        "heading": "Heard at last night’s #2026townhall in... - Senator Ron Wyden | Facebook",
+        "chunk_text": "Heard at last night’s #2026townhall in... - Senator Ron Wyden | Facebook\n\n[Log In](https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&next=https%3A%2F%2Fwww.facebook.com%2Fsenatorronwyden%2Fposts%2Fheard-at-last-nights-2026townhall-in-tillamook-county-about-the-urgent-need-to-r%2F1438465170969234%2F)\n\nLog In\n\n[Forgot Account?](https://www.facebook.com/recover/initiate?ars=royal_blue_bar)",
+        "score": -7.7912,
+        "rank": 0
+      },
+      {
+        "url": "https://www.facebook.com/senatorronwyden/posts/heard-at-last-nights-2026townhall-in-tillamook-county-about-the-urgent-need-to-r/1438465170969234/",
+        "title": "Senator Ron Wyden",
+        "heading": "[**Senator Ron Wyden**](https://www.facebook.com/senatorronwyden?__cft__[0]=AZYCfytGufg8Pcrslt-aeQ5H1C0pF_cF_RKNbDjBrAwDW_2T1L_oVubBG_XGT-kwdC4tmcm3nGAPdoyx0UtwIlutbrA8zld27RzeV4x9sDSoK9s4BgKm-V3cdEAXxHLkvMi40dleEKM21gWvI3rRpjvY_L71Ypra01-tSHNJz0AkOg&__tn__=-UC%2CP-R)",
+        "chunk_text": "[**Senator Ron Wyden**](https://www.facebook.com/senatorronwyden?__cft__[0]=AZYCfytGufg8Pcrslt-aeQ5H1C0pF_cF_RKNbDjBrAwDW_2T1L_oVubBG_XGT-kwdC4tmcm3nGAPdoyx0UtwIlutbrA8zld27RzeV4x9sDSoK9s4BgKm-V3cdEAXxHLkvMi40dleEKM21gWvI3rRpjvY_L71Ypra01-tSHNJz0AkOg&__tn__=-UC%2CP-R)\n\n[January 23](https://www.facebook.com/senatorronwyden/posts/pfbid0FrfjvWstG5qMpNspRtZuPnn1f7dd1oLEzGGZfyaLrB9q4X7a9Z3WtbwVqAjk2zR7l?__cft__[0]=AZYCfytGufg8Pcrslt-aeQ5H1C0pF_cF_RKNbDjBrAwDW_2T1L_oVubBG_XGT-kwdC4tmcm3nGAPdoyx0UtwIlutbrA8zld27RzeV4x9sDSoK9s4BgKm-V3cdEAXxHLkvMi40dleEKM21gWvI3rRpjvY_L71Ypra01-tSHNJz0AkOg&__tn__=%2CO%2CP-R) ·\n\nHeard at last night’s [#2026townhall](https://www.facebook.com/hashtag/2026townhall?__eep__=6&__cft__[0]=AZYCfytGufg8Pcrslt-aeQ5H1C0pF_cF_RKNbDjBrAwDW_2T1L_oVubBG_XGT-kwdC4tmcm3nGAPdoyx0UtwIlutbrA8zld27RzeV4x9sDSoK9s4BgKm-V3cdEAXxHLkvMi40dleEKM21gWvI3rRpjvY_L71Ypra01-tSHNJz0AkOg&__tn__=*NK-R) in Tillamook County about the urgent need to rein in ICE abuses, reverse devastating health care cuts made by Donald Trump & congressional Republicans, halt Trump’s foreign escapades, follow the money in the Epstein investigation & more.",
+        "score": -8.8759,
+        "rank": 1
+      },
+      {
+        "url": "https://www.instagram.com/p/DXSY8QEDSL1/?img_index=3",
+        "title": "Instagram",
+        "heading": "Instagram",
+        "chunk_text": "Instagram\n\n![Image 1](blob:http://localhost/a2c4acc86ce977bdb7718eba199dd413)![Image 2](blob:http://localhost/a7d152ce433b443153f919ae47dd7fc4)\n\nSee everyday moments from your close friends.\n\n![Image 3](https://static.cdninstagram.com/rsrc.php/yR/r/92ZsVHNkyvf.webp)\n\nLog into Instagram\n\nMobile number, username or email\n\nPassword\n\n- [x]\n\nLog in\n\n[Forgot password?](https://www.instagram.com/accounts/password/reset/?next=https%3A%2F%2Fwww.instagram.com%2Fp%2FDXSY8QEDSL1%2F%3Fimg_index%3D3)\n\nLog in with Facebook\n\n[Create new account](https://www.instagram.com/accounts/emailsignup/?next=https%3A%2F%2Fwww.instagram.com%2Fp%2FDXSY8QEDSL1%2F%3Fimg_index%3D3)\n\n* * *\n\n[Meta](https://about.meta.com/)\n\n[About](https://about.instagram.com/)\n\n[Blog](https://about.instagram.com/blog/)\n\n[Jobs](https://about.instagram.com/about-us/careers)\n\n[Help](https://help.instagram.com/)\n\n[API](https://developers.facebook.com/docs/instagram)\n\n[Privacy](https://www.instagram.com/legal/privacy/?next=https%3A%2F%2Fwww.instagram.com%2Fp%2FDXSY8QEDSL1%2F%3Fimg_index%3D3)\n\n[Terms](https://www.instagram.com/legal/terms/?next=https%3A%2F%2Fwww.instagram.com%2Fp%2FDXSY8QEDSL1%2F%3Fimg_index%3D3)\n\n[Locations](https://www.instagram.com/explore/locations/?next=https%3A%2F%2Fwww.instagram.com%2Fp%2FDXSY8QEDSL1%2F%3Fimg_index%3D3)\n\n[Popular](https://www.instagram.com/popular/?next=https%3A%2F%2Fwww.instagram.com%2Fp%2FDXSY8QEDSL1%2F%3Fimg_index%3D3)",
+        "score": -10.8105,
+        "rank": 2
+      },
+      {
+        "url": "https://www.facebook.com/senatorronwyden/posts/heard-at-last-nights-2026townhall-in-tillamook-county-about-the-urgent-need-to-r/1438465170969234/",
+        "title": "Senator Ron Wyden",
+        "heading": "Senator Ron Wyden's Post",
+        "chunk_text": "Senator Ron Wyden's Post\n\n* * *\n\n[](https://www.facebook.com/senatorronwyden?__cft__[0]=AZYCfytGufg8Pcrslt-aeQ5H1C0pF_cF_RKNbDjBrAwDW_2T1L_oVubBG_XGT-kwdC4tmcm3nGAPdoyx0UtwIlutbrA8zld27RzeV4x9sDSoK9s4BgKm-V3cdEAXxHLkvMi40dleEKM21gWvI3rRpjvY_L71Ypra01-tSHNJz0AkOg&__tn__=%3C%3C%2CP-R)",
+        "score": -10.913,
+        "rank": 3
+      },
+      {
+        "url": "https://www.instagram.com/reel/DXJ4kCggOQ0/",
+        "title": "Instagram",
+        "heading": "Instagram",
+        "chunk_text": "Instagram\n\n[Meta AI](https://www.meta.ai/?utm_source=foa_web_footer)\n\n[Threads](https://www.threads.com/)\n\n[Contact Uploading & Non-Users](https://www.facebook.com/help/instagram/261704639352628)\n\n[Meta Verified](https://www.instagram.com/accounts/meta_verified/?entrypoint=web_footer&next=https%3A%2F%2Fwww.instagram.com%2Freel%2FDXJ4kCggOQ0%2F)\n\nEnglish",
+        "score": -11.2993,
+        "rank": 4
+      },
+      {
+        "url": "https://www.instagram.com/p/DXhjrjHiZ3M/?__d=1%2Fhttps%3A%2F%2Fwww.instagram.com%2Ficonicgym__%2F%3F__d%3D1%2F",
+        "title": "Instagram",
+        "heading": "Instagram",
+        "chunk_text": "Instagram\n\n[Threads](https://www.threads.com/)\n\n[Contact Uploading & Non-Users](https://www.facebook.com/help/instagram/261704639352628)\n\n[Meta Verified](https://www.instagram.com/accounts/meta_verified/?entrypoint=web_footer&next=https%3A%2F%2Fwww.instagram.com%2Fp%2FDXhjrjHiZ3M%2F)\n\nEnglish",
+        "score": -11.3049,
+        "rank": 5
+      },
+      {
+        "url": "https://www.instagram.com/p/DXSY8QEDSL1/?img_index=3",
+        "title": "Instagram",
+        "heading": "Instagram",
+        "chunk_text": "Instagram\n\n[Instagram Lite](https://www.instagram.com/web/lite/?next=https%3A%2F%2Fwww.instagram.com%2Fp%2FDXSY8QEDSL1%2F%3Fimg_index%3D3)\n\n[Meta AI](https://www.meta.ai/?utm_source=foa_web_footer)\n\n[Threads](https://www.threads.com/)\n\n[Contact Uploading & Non-Users](https://www.facebook.com/help/instagram/261704639352628)\n\n[Meta Verified](https://www.instagram.com/accounts/meta_verified/?entrypoint=web_footer&next=https%3A%2F%2Fwww.instagram.com%2Fp%2FDXSY8QEDSL1%2F%3Fimg_index%3D3)\n\nEnglish",
+        "score": -11.3441,
+        "rank": 6
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 2403,
+      "search_ms": 5116,
+      "extract_ms": 13074,
+      "chunk_ms": 23,
+      "retrieve_ms": 970,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 24816,
+    "elapsed_s": 28.27,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

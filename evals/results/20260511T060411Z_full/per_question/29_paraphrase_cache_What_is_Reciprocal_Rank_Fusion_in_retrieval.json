@@ -1,0 +1,95 @@
+{
+  "id": "pc1",
+  "category": "paraphrase_cache",
+  "domain": "computer-science",
+  "question": "What is Reciprocal Rank Fusion in retrieval?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Standard RAG concept — first query primes the cache.",
+  "key_facts": [
+    "RRF",
+    "rank",
+    "1/(k+rank)"
+  ],
+  "ground_truth": "Reciprocal Rank Fusion (RRF) combines rankings from multiple retrievers by summing 1/(k + rank) for each document across rankers; k is typically 60.",
+  "session_id": "eval-20260511T060411Z-pc1",
+  "verdict": "partial",
+  "aggregate": 0.5,
+  "failure_mode": "wrong_route",
+  "metrics": {
+    "faithfulness": 0.5,
+    "context_recall": 0.0,
+    "context_precision": 1.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.0,
+    "answer_relevancy": 0.674,
+    "aggregate": 0.5
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.5,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "no chunks"
+    },
+    "context_precision": {
+      "score": 1.0,
+      "relevant": 0,
+      "total": 0,
+      "reasoning": "no chunks"
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "RRF",
+        "rank",
+        "1/(k+rank)"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.674,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "pipeline": {
+    "answer": "Reciprocal Rank Fusion (RRF) is a method for combining multiple ranked result lists into a single ranking. Each document gets a score by summing 1/(k + rank) across all lists, where k is a constant (often 60). RRF is simple, effective, and does not require training or relevance scores.",
+    "mode": "parametric",
+    "rewritten_query": "What is Reciprocal Rank Fusion in retrieval?",
+    "rewrote": false,
+    "rationale": "Well-defined CS/IR concept, textbook knowledge.",
+    "sub_queries": [
+      "What is Reciprocal Rank Fusion in retrieval?"
+    ],
+    "citations": [],
+    "urls": [],
+    "chunk_count": 0,
+    "chunks": [],
+    "latency_breakdown": {
+      "decompose_ms": 4441,
+      "sub_queries_count": 1,
+      "mode": "parametric",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 4703,
+    "elapsed_s": 10.0,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

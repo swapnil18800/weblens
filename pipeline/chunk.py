@@ -24,6 +24,7 @@ MAX_CHARS = 1_500    # target max chunk size
 OVERLAP_CHARS = 200  # overlap between windowed sub-chunks (more context)
 MIN_PARA_CHARS = 120 # merge paragraphs shorter than this with the next
 MIN_CHUNK_BODY = 150 # skip chunk if body (excluding heading prefix) is shorter
+MIN_CHUNK_WORDS = 8  # skip chunk if word count below this (catches "Read more"-style fragments)
 
 # ── Garbage chunk detection ────────────────────────────────────────────────────
 
@@ -32,13 +33,32 @@ _SOCIAL_KEYWORDS = frozenset([
     "share on facebook", "tweet this",
 ])
 
+# Markdown link pattern — counts `[text](url)` occurrences
+_MD_LINK_RE = re.compile(r"\[[^\]]+\]\([^)]+\)")
+_WORD_RE = re.compile(r"\b\w+\b")
+
+# Short navigation-only patterns: lines that are JUST a nav keyword
+_NAV_ONLY_LINE_RE = re.compile(
+    r"^\s*(home|menu|search|login|sign\s*(in|up)|register|"
+    r"about( us)?|contact( us)?|previous|next|back to top|"
+    r"all rights reserved|terms( of (use|service))?|privacy( policy)?)\s*$",
+    re.IGNORECASE,
+)
+
+
 def _is_garbage_chunk(text: str) -> bool:
     """
-    Return True if the chunk is navigation, social share, or image-only content.
+    Return True if the chunk is navigation, social share, image-only,
+    a sub-MIN_CHUNK_WORDS fragment, or has too-high link density.
     These patterns come from Jina Reader scraping page chrome instead of body.
     """
     lines = [l.strip() for l in text.split("\n") if l.strip()]
     if not lines:
+        return True
+
+    # Word count floor — catches "Read more", "Share", short link lists
+    word_count = len(_WORD_RE.findall(text))
+    if word_count < MIN_CHUNK_WORDS:
         return True
 
     # Accessibility nav header
@@ -55,9 +75,23 @@ def _is_garbage_chunk(text: str) -> bool:
     if len(lines) >= 4 and bullet_links / len(lines) > 0.45:
         return True
 
+    # Markdown link density across the whole chunk
+    # If links account for >40% of words, this is mostly a list of links (navigation)
+    link_matches = _MD_LINK_RE.findall(text)
+    if link_matches and word_count > 0:
+        # Approximate "link words" = sum of words in link anchor text
+        link_word_count = sum(len(_WORD_RE.findall(m)) for m in link_matches)
+        if link_word_count / word_count > 0.40 and len(link_matches) >= 3:
+            return True
+
     # Mostly markdown image lines
     img_lines = sum(1 for l in lines if re.match(r"^!?\[!\[", l) or re.match(r"^\[!\[", l))
     if len(lines) >= 2 and img_lines / len(lines) > 0.55:
+        return True
+
+    # Lines that are JUST navigation keywords (case >50% of body lines)
+    nav_only_lines = sum(1 for l in lines if _NAV_ONLY_LINE_RE.match(l))
+    if len(lines) >= 3 and nav_only_lines / len(lines) > 0.50:
         return True
 
     return False

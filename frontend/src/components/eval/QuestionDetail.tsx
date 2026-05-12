@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Database } from "lucide-react";
 import { api } from "../../lib/api";
 import { evalQuestionToTurn, m7ChipClass } from "../../lib/eval-adapter";
 import { ms } from "../../lib/format";
-import type { Citation, EvalQuestion, EvalRunDetail } from "../../lib/types";
+import type { CachedRow, Citation, EvalQuestion, EvalRunDetail } from "../../lib/types";
 import Answer from "../Answer";
 import CitationList from "../CitationList";
 import CitationPreview from "../CitationPreview";
@@ -54,6 +54,9 @@ export default function QuestionDetail({ runId }: Props) {
             <QListRow key={i} q={qq} idx={i} selected={i === selectedIdx} onClick={() => setSelectedIdx(i)} />
           ))}
         </ul>
+        {detail.cached_rows && detail.cached_rows.length > 0 && (
+          <CachedRowsPanel rows={detail.cached_rows} />
+        )}
       </div>
       <div className="flex-1 overflow-y-auto scroll-thin">
         {q && <QDetailBody q={q} />}
@@ -183,6 +186,48 @@ function QDetailBody({ q }: { q: EvalQuestion }) {
           <div className="text-sm text-neutral-300 whitespace-pre-wrap">{q.judge_reasoning}</div>
         </Section>
       )}
+    </div>
+  );
+}
+
+function CachedRowsPanel({ rows }: { rows: CachedRow[] }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-t hairline mt-2">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center gap-2 px-3 py-2 hover:bg-white/[0.02]"
+      >
+        <Database className="w-3 h-3 text-accent shrink-0" />
+        <span className="text-2xs text-neutral-400 font-semibold">
+          {rows.length} row{rows.length !== 1 ? "s" : ""} cached this run
+        </span>
+        <ChevronRight className={`w-3 h-3 text-neutral-600 ml-auto transition-transform ${open ? "rotate-90" : ""}`} />
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            className="overflow-hidden"
+          >
+            <ul className="px-3 pb-3 space-y-2">
+              {rows.map((r) => (
+                <li key={r.query_hash} className="text-2xs space-y-0.5">
+                  <div className="text-neutral-300 line-clamp-2">{r.query_text}</div>
+                  <div className="text-neutral-600 font-mono flex gap-2">
+                    <span className="chip chip-info">{r.mode}</span>
+                    {r.hit_count > 0 && <span className="chip chip-good">{r.hit_count} hit{r.hit_count !== 1 ? "s" : ""}</span>}
+                    {r.inserted_at && <span>{new Date(r.inserted_at).toLocaleTimeString()}</span>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

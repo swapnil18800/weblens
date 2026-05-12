@@ -1,0 +1,284 @@
+{
+  "id": "amb1",
+  "category": "ambiguity",
+  "domain": "ai",
+  "question": "What's the best model right now?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Should surface multiple interpretations (best at what?) or scope explicitly — not silently pick one answer.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T060411Z-amb1",
+  "verdict": "partial",
+  "aggregate": 0.792,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.833,
+    "context_recall": 1.0,
+    "context_precision": 0.625,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.5,
+    "answer_relevancy": 0.46,
+    "aggregate": 0.792
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.833,
+      "supported": 5,
+      "total": 6,
+      "reasoning": "Most claims match chunks; Grok 4.20 name unsupported, Grok 4 is correct."
+    },
+    "context_precision": {
+      "score": 0.625,
+      "relevant": 5,
+      "total": 8,
+      "reasoning": "Chunks 1,4,6,7,8 rank or describe top models; others are irrelevant boilerplate."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.46,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "pipeline": {
+    "answer": "# What's the Best AI Model Right Now? (May 2026)\n\nThe question of the \"best\" model in May 2026 has no single answer — the field has diversified into specialized strengths, and the optimal choice depends on your use case, budget, and deployment constraints [3][5][8]. Benchmark saturation has made single scores like MMLU largely meaningless, with evaluation now focusing on real-world capabilities [5].\n\n## Top Contenders by Category\n\n### Frontier Models (Arena Elo Scores)\nThe LMSYS Chatbot Arena provides holistic quality rankings, with frontier models scoring between 1,450–1,561 Elo: GPT-5, Claude Opus 4.6, Gemini 3.1 Pro, Grok 4, and DeepSeek V3.2 [5]. These represent the proprietary leaders across general reasoning and conversation.\n\n### Specialized Strengths Comparison\n\n| Model | Parameters | Context Window | Key Strengths | Source |\n|-------|-----------|----------------|---------------|--------|\n| **GLM-5** (Z.ai) | 744B MoE | 128K | Open-weight, reasoning, agentic workflows | [4] |\n| **Kimi K2.5** (Moonshot AI) | 1T MoE | 256K | Open-weight, tool use, agentic tasks | [4] |\n| **Claude Opus 4.6** | Proprietary | 128K | Long-context, natural prose, coding tools (Cursor) | [7] |\n| **Gemini 3.1 Pro** | Proprietary | Unknown | Balancing quality/price/speed | [1][6] |\n| **Grok 4.20** | Proprietary | Unknown | Cost-efficient option | [1] |\n\n### Benchmark Ecosystem (May 2026)\nKey evaluations beyond single scores:\n\n- **GPQA Diamond** – graduate-level reasoning [5]\n- **SWE-Bench Verified** – real-world software engineering [5]\n- **Humanity's Last Exam** – ultra-difficult frontier tasks [5]\n- **Real agentic tasks** – autonomous workflow performance [5]\n- **LM Council** – 18 independently-verified benchmarks (including SimpleBench), curated by AI Explained, run by Epoch and Scale [2]\n\n### Production Considerations\nThe \"best\" model depends on your constraints — benchmark scores are only for shortlisting; real testing on your specific prompts is essential [6][8]. Key trade-offs include:\n\n- **Quality vs. speed/latency** – balanced by platforms like Artificial Analysis [6]\n- **Price vs. performance** – Design for Online ranks 551 models with cost breakdowns [1]\n- **Open-weight advantage** – GLM-5 and Kimi K2.5 are competitive with proprietary leaders, especially for agentic use cases [4]\n- **Coding focus** – Claude Opus 4.6 dominates tools like Cursor [7]\n\n## Key Takeaways\n\n- **No universal \"best\"** – choose based on your use case: coding (Claude Opus 4.6), agentic tasks (GLM-5/Kimi K2.5), or general reasoning (GPT-5/Gemini 3.1 Pro) [3][5][7]\n- **Open-weight models are now competitive** – GLM-5 (744B) and Kimi K2.5 (1T) rival proprietary leaders for specialized tasks [4]\n- **Benchmark saturation is real** – focus on GPQA Diamond, SWE-Bench, and real agentic tasks, not MMLU [5]\n- **Test before you commit** – leaderboards guide shortlisting; actual performance varies by task [6][8]\n- **Rankings update frequently** – the Design for Online leaderboard refreshes weekly (last update: May 9, 2026) [1]",
+    "mode": "search",
+    "rewritten_query": "What's the best model right now?",
+    "rewrote": false,
+    "rationale": "Time-sensitive; 'right now' and 'best' requires current rankings.",
+    "sub_queries": [
+      "Top performing AI models as of May 2026",
+      "Best large language model benchmarks May 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://designforonline.com/ai-models/",
+        "title": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "snippet": "AI Models\n\nTop 551 AI models ranked by score. Compare providers, pricing, speed and capabilities.\n\nUpdated May 9, 2026\n\n[Compare Models](https://designforonline.com/ai-business-automation/ai-leaderboards/compare-ai-models/)[Price Calculator](https://designforonline.com/ai-business-automation/ai-lead"
+      },
+      {
+        "num": 2,
+        "url": "https://lmcouncil.ai/benchmarks",
+        "title": "AI Model Benchmarks May 2026 | Compare GPT-5, Claude 4.5, Gemini 2.5, Grok 4 | LM Council",
+        "snippet": "AI Model Benchmarks May 2026\n\n18 benchmarks - the world's most-followed benchmarks, curated by [AI Explained](https://www.youtube.com/@aiexplained-official), author of [SimpleBench](https://simple-bench.com/)\n\nIndependently-run benchmarks by Epoch, Scale and others, so may not match self-reported sc"
+      },
+      {
+        "num": 3,
+        "url": "https://blog.stackademic.com/the-top-10-ai-models-of-2026-the-new-era-of-specialized-intelligence-6547f7742dd4",
+        "title": "The Top 10 AI Models of 2026: The New Era of Specialized Intelligence",
+        "snippet": "The Top 10 AI Models of 2026: The New Era of Specialized Intelligence | by Abhishek Jha | May, 2026 | Stackademic\n\n[Sitemap](https://blog.stackademic.com/sitemap/sitemap.xml)\n\n[Open in app](https://play.google.com/store/apps/details?id=com.medium.reader&referrer=utm_source%3DmobileNavBar&source=post"
+      },
+      {
+        "num": 4,
+        "url": "https://zapier.com/blog/best-llm/",
+        "title": "The best large language models (LLMs) in 2026",
+        "snippet": "[GLM-5](https://z.ai/blog/glm-5)\n\n*   **Developer:** Z.ai\n\n*   **Parameters:** 744 billion (as mixtures-of-experts)\n\n*   **Context window:**128,000\n\n*   **Access:** Open, API, chatbot\n\nGLM-5 (and before that, GLM-4.5 and GLM-4.5-Air) is Chinese AI developer [Z.ai](http://z.ai/)'s flagship models. Th"
+      },
+      {
+        "num": 5,
+        "url": "https://www.clickrank.ai/llm-leaderboard/",
+        "title": "LLM Leaderboard 2026: Best AI Models Benchmark & Ranking",
+        "snippet": "The LLM Leaderboard in 2026 tracks and compares large language models across three core dimensions: benchmark performance, inference speed, and cost per million tokens. GPT-5, Claude Opus 4.6, Gemini 3.1 Pro, Grok 4, and DeepSeek V3.2 currently sit at the frontier range, with Arena Elo scores betwee"
+      },
+      {
+        "num": 6,
+        "url": "https://customgpt.ai/best-large-language-models/",
+        "title": "https://customgpt.ai/best-large-language-models/",
+        "snippet": "The best Large Language Models in 2026 depends on your job. Use leaderboards to shortlist, then run a small eval on real tasks. Avoid lock-in by running multiple models side by side and keeping failover. Current top contenders include Claude Opus 4.6, Gemini 3.x, and GPT-5.2 variants.\nIf you are cho"
+      },
+      {
+        "num": 7,
+        "url": "https://aizolo.com/blog/top-5-ai-models-2026/",
+        "title": "Top 5 AI Models 2026: The Complete Guide",
+        "snippet": "2. Claude Opus 4.6 (Anthropic) — The Writer, Coder & Long-Document Champion\n\n![Image 5: top large language models 2026](https://aizolo.com/blog/wp-content/uploads/2026/04/top-large-language-models-2026-1024x683.png)\n\ntop large language models 2026\n\nAsk any professional writer, legal analyst, or ente"
+      },
+      {
+        "num": 8,
+        "url": "https://futureagi.substack.com/p/best-llms-in-may-2026-what-actually",
+        "title": "Best LLMs in May 2026, What Actually Matters in Production",
+        "snippet": "The full benchmark-by-benchmark breakdown lives in our monthly **[Best LLMs series](https://futureagi.com/blog/best-llms-may-2026/?utm_source=substack&utm_medium=article&utm_campaign=best_llms_may_2026)**, and the point of that work is simple, better production decisions come from tested tradeoffs, "
+      }
+    ],
+    "urls": [
+      "https://designforonline.com/ai-models/",
+      "https://lmcouncil.ai/benchmarks",
+      "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+      "https://blog.stackademic.com/the-top-10-ai-models-of-2026-the-new-era-of-specialized-intelligence-6547f7742dd4",
+      "https://www.visualcapitalist.com/ranked-the-smartest-ai-models-in-2026/",
+      "https://aizolo.com/blog/top-5-ai-models-2026/",
+      "https://www.clickrank.ai/llm-leaderboard/",
+      "https://onyx.app/llm-leaderboard",
+      "https://futureagi.substack.com/p/best-llms-in-may-2026-what-actually",
+      "https://customgpt.ai/best-large-language-models/",
+      "https://zapier.com/blog/best-llm/",
+      "https://pricepertoken.com/leaderboards/benchmark"
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://designforonline.com/ai-models/",
+        "title": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "heading": "AI Models",
+        "chunk_text": "AI Models\n\nTop 551 AI models ranked by score. Compare providers, pricing, speed and capabilities.\n\nUpdated May 9, 2026\n\n[Compare Models](https://designforonline.com/ai-business-automation/ai-leaderboards/compare-ai-models/)[Price Calculator](https://designforonline.com/ai-business-automation/ai-leaderboards/ai-model-price-calculator/)\n\nRank Name Provider Context Price AI Index Coding Agentic Newest",
+        "score": 7.502,
+        "rank": 0
+      },
+      {
+        "url": "https://designforonline.com/ai-models/",
+        "title": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "heading": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "chunk_text": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online\n\nstead of rigid plans, we offer adaptable frameworks that scale as you grow and ...              [Professional Photo & Video Commercial videography and photo services.",
+        "score": 7.3699,
+        "rank": 1
+      },
+      {
+        "url": "https://designforonline.com/ai-models/",
+        "title": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "heading": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "chunk_text": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online\n\nd of rigid plans, we offer adaptable frameworks that scale as you grow and ...              [Professional Photo & Video Commercial videography and photo services.",
+        "score": 7.2835,
+        "rank": 2
+      },
+      {
+        "url": "https://lmcouncil.ai/benchmarks",
+        "title": "AI Model Benchmarks May 2026 | Compare GPT-5, Claude 4.5, Gemini 2.5, Grok 4 | LM Council",
+        "heading": "AI Model Benchmarks May 2026",
+        "chunk_text": "AI Model Benchmarks May 2026\n\n18 benchmarks - the world's most-followed benchmarks, curated by [AI Explained](https://www.youtube.com/@aiexplained-official), author of [SimpleBench](https://simple-bench.com/)\n\nIndependently-run benchmarks by Epoch, Scale and others, so may not match self-reported scores by AI orgs.",
+        "score": 7.2783,
+        "rank": 3
+      },
+      {
+        "url": "https://designforonline.com/ai-models/",
+        "title": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "heading": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "chunk_text": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online\n\n. Instead of rigid plans, we offer adaptable frameworks that scale as you grow and ...              [Professional Photo & Video Commercial videography and photo services.",
+        "score": 7.2589,
+        "rank": 4
+      },
+      {
+        "url": "https://blog.stackademic.com/the-top-10-ai-models-of-2026-the-new-era-of-specialized-intelligence-6547f7742dd4",
+        "title": "The Top 10 AI Models of 2026: The New Era of Specialized Intelligence",
+        "heading": "The Top 10 AI Models of 2026: The New Era of Specialized Intelligence | by Abhishek Jha | May, 2026 | Stackademic",
+        "chunk_text": "The Top 10 AI Models of 2026: The New Era of Specialized Intelligence | by Abhishek Jha | May, 2026 | Stackademic\n\n[Sitemap](https://blog.stackademic.com/sitemap/sitemap.xml)\n\n[Open in app](https://play.google.com/store/apps/details?id=com.medium.reader&referrer=utm_source%3DmobileNavBar&source=post_page---top_nav_layout_nav-----------------------------------------)\n\nSign up\n\n[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fblog.stackademic.com%2Fthe-top-10-ai-models-of-2026-the-new-era-of-specialized-intelligence-6547f7742dd4&source=post_page---top_nav_layout_nav-----------------------global_nav------------------)\n\n[](https://medium.com/?source=post_page---top_nav_layout_nav-----------------------------------------)\n\nGet app\n\n[Write](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Fmedium.com%2Fnew-story&source=---top_nav_layout_nav-----------------------new_post_topnav------------------)\n\n[Search](https://medium.com/search?source=post_page---top_nav_layout_nav-----------------------------------------)\n\nSign up\n\n[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fblog.stackademic.com%2Fthe-top-10-ai-models-of-2026-the-new-era-of-specialized-intelligence-6547f7742dd4&source=post_page---top_nav_layout_nav-----------------------global_nav------------------)\n\n![Image 3](https://miro.medium.com/v2/resize:fill:64:64/1*dmbNkD5D-u45r44go_cf0g.png)",
+        "score": 6.3303,
+        "rank": 5
+      },
+      {
+        "url": "https://zapier.com/blog/best-llm/",
+        "title": "The best large language models (LLMs) in 2026",
+        "heading": "[GLM-5](https://z.ai/blog/glm-5)",
+        "chunk_text": "[GLM-5](https://z.ai/blog/glm-5)\n\n*   **Developer:** Z.ai\n\n*   **Parameters:** 744 billion (as mixtures-of-experts)\n\n*   **Context window:**128,000\n\n*   **Access:** Open, API, chatbot\n\nGLM-5 (and before that, GLM-4.5 and GLM-4.5-Air) is Chinese AI developer [Z.ai](http://z.ai/)'s flagship models. They all use a mixture-of-experts architecture, support reasoning, and are designed for agentic workflows. They're among the top performing open models.",
+        "score": -1.3958,
+        "rank": 6
+      },
+      {
+        "url": "https://zapier.com/blog/best-llm/",
+        "title": "The best large language models (LLMs) in 2026",
+        "heading": "[Kimi K2.5](https://www.kimi.com/ai-models/kimi-k2-5)",
+        "chunk_text": "[Kimi K2.5](https://www.kimi.com/ai-models/kimi-k2-5)\n\n*   **Developer:** Moonshot AI\n\n*   **Parameters:** 1 trillion (as a mixture-of-experts)\n\n*   **Context window:**Up to 256,000\n\n*   **Access:** Open, API, chatbot\n\nKimi K2.5 is Chinese AI developer Moonshot AI's flagship model. It uses a mixture-of-experts architecture, supports reasoning, and is designed for tool use and other agentic tasks. It is among the highest performing open models.",
+        "score": -2.3287,
+        "rank": 7
+      },
+      {
+        "url": "https://www.clickrank.ai/llm-leaderboard/",
+        "title": "LLM Leaderboard 2026: Best AI Models Benchmark & Ranking",
+        "heading": "",
+        "chunk_text": "The LLM Leaderboard in 2026 tracks and compares large language models across three core dimensions: benchmark performance, inference speed, and cost per million tokens. GPT-5, Claude Opus 4.6, Gemini 3.1 Pro, Grok 4, and DeepSeek V3.2 currently sit at the frontier range, with Arena Elo scores between 1,450 and 1,561.\n\nThis is not 2023 anymore. The benchmark saturation era changed how we evaluate models. A single score on MMLU means almost nothing now. What actually matters is how a model performs on GPQA Diamond, SWE-Bench Verified, Humanity’s Last Exam, and real agentic tasks. Platforms like LMSYS Chatbot Arena and Artificial Analysis give you that full picture, and that is exactly what this guide covers.",
+        "score": 7.5298,
+        "rank": 0
+      },
+      {
+        "url": "https://customgpt.ai/best-large-language-models/",
+        "title": "https://customgpt.ai/best-large-language-models/",
+        "heading": "",
+        "chunk_text": "The best Large Language Models in 2026 depends on your job. Use leaderboards to shortlist, then run a small eval on real tasks. Avoid lock-in by running multiple models side by side and keeping failover. Current top contenders include Claude Opus 4.6, Gemini 3.x, and GPT-5.2 variants.\nIf you are choosing an LLM for production, “best” is not a single winner. It is the model that hits your quality bar at the latency and cost your workflow can tolerate, with a backup plan when providers shift.\nTL;DR\nThe “best” LLM in 2026 depends on your job and constraints, not a universal winner. Use leaderboards only to shortlist, then test models on your own real prompts before choosing a default.\nDon’t lock into one provider: route simple work to faster/cheaper models, use stronger models only when needed, and keep failover ready. Open-weight models are better for control and cost predictability; closed APIs often win on top-end quality and ease of use.\nThe Best LLM Depends on The Job, Not The Logo\nMost teams pick a model by hype. Production model choice is closer to choosing a database. You are picking tradeoffs you will live with: response quality, speed, cost, and what happens when the provider changes something. Artificial Analysis frames this as a tradeoff problem across quality, price, speed, latency, and context.\nThe 2-Minute Selection Framework\nSupport and CX: Optimize grounded accuracy and cost.",
+        "score": 7.4261,
+        "rank": 1
+      },
+      {
+        "url": "https://aizolo.com/blog/top-5-ai-models-2026/",
+        "title": "Top 5 AI Models 2026: The Complete Guide",
+        "heading": "2. Claude Opus 4.6 (Anthropic) — The Writer, Coder & Long-Document Champion",
+        "chunk_text": "2. Claude Opus 4.6 (Anthropic) — The Writer, Coder & Long-Document Champion\n\n![Image 5: top large language models 2026](https://aizolo.com/blog/wp-content/uploads/2026/04/top-large-language-models-2026-1024x683.png)\n\ntop large language models 2026\n\nAsk any professional writer, legal analyst, or enterprise developer which of the **top 5 AI models 2026** produces the most natural, nuanced prose — and Claude Opus 4.6 wins that conversation almost every time.\n\nClaude produces the [most natural prose and can output 128K tokens](https://aizolo.com/blog/best-text-to-image-ai-models-2026-comparison/) in a single pass. For coding, Claude dominates the [developer tooling ecosystem](https://aizolo.com/blog/best-ai-model-comparison-sites-2026/) — it powers Cursor, Windsurf, and Claude Code.\n\nClaude Opus 4.6 is built as a “hybrid reasoning model” with extended thinking mode, which dedicates more computation to difficult prompts, and supports a massive context window for processing large documents—making it a strong contender among the **top 5 ai models 2026** for tasks that demand deep reasoning and long-context understanding.\n\n**Best for:**\n\n*   Developers building agentic coding systems and AI-powered software tools\n*   Freelance writers and content creators who need high-quality [long-form output](https://aizolo.com/blog/smartest-ai-model-2026-comparison/)\n*   Legal, financial, and research professionals working with dense documents\n*   SaaS builders integrating AI into products that require safe, aligned responses",
+        "score": 7.1447,
+        "rank": 2
+      },
+      {
+        "url": "https://lmcouncil.ai/benchmarks",
+        "title": "AI Model Benchmarks May 2026 | Compare GPT-5, Claude 4.5, Gemini 2.5, Grok 4 | LM Council",
+        "heading": "AI Model Benchmarks May 2026",
+        "chunk_text": "AI Model Benchmarks May 2026\n\n18 benchmarks - the world's most-followed benchmarks, curated by [AI Explained](https://www.youtube.com/@aiexplained-official), author of [SimpleBench](https://simple-bench.com/)\n\nIndependently-run benchmarks by Epoch, Scale and others, so may not match self-reported scores by AI orgs.",
+        "score": 6.8358,
+        "rank": 3
+      },
+      {
+        "url": "https://futureagi.substack.com/p/best-llms-in-may-2026-what-actually",
+        "title": "Best LLMs in May 2026, What Actually Matters in Production",
+        "heading": "",
+        "chunk_text": "The full benchmark-by-benchmark breakdown lives in our monthly **[Best LLMs series](https://futureagi.com/blog/best-llms-may-2026/?utm_source=substack&utm_medium=article&utm_campaign=best_llms_may_2026)**, and the point of that work is simple, better production decisions come from tested tradeoffs, not from chasing whichever model had the loudest week.",
+        "score": 5.5615,
+        "rank": 4
+      },
+      {
+        "url": "https://designforonline.com/ai-models/",
+        "title": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "heading": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "chunk_text": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online\n\nl-inteligence/)   Gemini 3.1 Pro, Claude Sonnet 4.6, Grok 4.20 and more dropped in February 2026. We rank the best AI models, benchmarks & break down costs.",
+        "score": 5.1428,
+        "rank": 5
+      },
+      {
+        "url": "https://designforonline.com/ai-models/",
+        "title": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "heading": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "chunk_text": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online\n\n-inteligence/)   Gemini 3.1 Pro, Claude Sonnet 4.6, Grok 4.20 and more dropped in February 2026. We rank the best AI models, benchmarks & break down costs.",
+        "score": 4.8971,
+        "rank": 6
+      },
+      {
+        "url": "https://designforonline.com/ai-models/",
+        "title": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "heading": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online",
+        "chunk_text": "AI Model Leaderboard | Compare Top AI Models (2026) | Design for Online\n\nNEWS](https://designforonline.com/latest-news/)   [![Image 20: The Best AI Models So Far in 2026 | Design for Online Gemini 3.1 Pro, Claude Sonnet 4.6, Grok 4.20 and more all dropped in February 2026. We rank the best AI models, compare benchmarks and break down real costs.](https://cdn.designforonline.com/wp-content/uploads/2026/02/The-Best-AI-Models-of-2026-Februarys-Landmark-Releases-Ranked-scaled.jpg)](https://designforonline.com/the-best-ai-models-so-far-in-2026/ \"The Best AI Models so far in 2026\")  February 21, 2026 [Artificial Inteligence](https://designforonline.com/category/blog/artificial-inteligence/)   Gemini 3.1 Pro, Claude Sonnet 4.6, Grok 4.20 and more dropped in February 2026. We rank the best AI models, benchmarks & break down costs.                       \n*   [Pricing](https://designforonline.com/ai-models/#) [Website Management Pricing Plans for all businesses, with support for large scale sites.](https://designforonline.com/website-design-agency/website-management-suffolk-pricing/)[Website Hosting cPanel, VPS & Kubernetes stacks, customisable options available.](https://designforonline.com/website-hosting-pricing/)[Wordpress Plugins Purchase our stand alone AI Optimised plugins for WordPress.",
+        "score": 4.7704,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 3165,
+      "search_ms": 7187,
+      "extract_ms": 12273,
+      "chunk_ms": 72,
+      "retrieve_ms": 5272,
+      "synthesis_ms": 15394,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 53291,
+    "elapsed_s": 59.0,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

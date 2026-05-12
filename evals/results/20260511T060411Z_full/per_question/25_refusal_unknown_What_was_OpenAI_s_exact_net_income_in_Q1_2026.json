@@ -1,0 +1,187 @@
+{
+  "id": "ref1",
+  "category": "refusal_unknown",
+  "domain": "finance",
+  "question": "What was OpenAI's exact net income in Q1 2026?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "OpenAI is privately held — exact net income is not public. Should say so.",
+  "key_facts": [
+    "private",
+    "not disclosed"
+  ],
+  "ground_truth": "OpenAI does not publicly disclose quarterly net income (private company). Reported figures are partial or leaked.",
+  "session_id": "eval-20260511T060411Z-ref1",
+  "verdict": "partial",
+  "aggregate": 0.525,
+  "failure_mode": "hallucination",
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.125,
+    "answer_correctness": 0.5,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.79,
+    "aggregate": 0.525
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.125,
+      "relevant": 1,
+      "total": 8,
+      "reasoning": "Only chunk 5 states OpenAI has not disclosed actual Q1 2026 net income, directly addressing the question."
+    },
+    "answer_correctness": {
+      "score": 0.5,
+      "hit_facts": [
+        "not disclosed"
+      ],
+      "missed_facts": [
+        "private"
+      ],
+      "reasoning": "heuristic=0.50; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.79,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "private",
+      "not disclosed"
+    ]
+  },
+  "pipeline": {
+    "answer": "**No Q1 2026 net income data available in sources.** OpenAI has not yet disclosed actual Q1 2026 net income figures in any of the provided materials [1][2]. The company remains unprofitable despite rapid revenue growth — it **does not yet generate a profit** [2].\n\n**What is known about OpenAI’s Q1 2026 financial position:**\n\n- **Revenue trajectory**: OpenAI projects **$29.4 billion total revenue for full-year 2026**, up from ~$13 billion in 2025 and $3.7 billion in 2024 [2]. Monthly recurring revenue crossed $1 billion in October 2025 [2].\n- **Q1 2026 revenue (estimated, not confirmed)**: Analysts speculate Q1 revenue could be **above $4–5 billion at run rate**, but the company has not released official figures [1].\n- **Cost structure**: Daily operating costs are approximately **$700,000** [2], and OpenAI has committed **over $1 trillion** in financial obligations to infrastructure providers [2].\n- **Credibility crisis**: A **WSJ report on April 28, 2026** claimed OpenAI missed internal monthly sales targets for early 2026 and fell short of a 1 billion weekly active user goal [1]. CEO Sam Altman and CFO Sarah Friar called the report “ridiculous” but have not released actual Q1 numbers [1].\n- **Profitability status**: Despite revenue growth, OpenAI is **not yet profitable** [2]. The company has raised $57.9 billion in total funding but still posts net losses [2].\n\n**Predicted disclosure timeline**: OpenAI is expected to publicly disclose Q1 2026 revenue and user figures **within two weeks** of the WSJ report (i.e., by mid-May 2026) [1]. Net income data has not been forecast or leaked.",
+    "mode": "search",
+    "rewritten_query": "What was OpenAI's exact net income in Q1 2026?",
+    "rewrote": false,
+    "rationale": "Exact recent financial figure, must be sourced.",
+    "sub_queries": [
+      "OpenAI net income Q1 2026 financial results"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+        "title": "OpenAI Misses 2026 Revenue: WSJ Hits $1.4T Stargate Bet",
+        "snippet": "Q1 2026 Hyperscaler Capex: The Numbers Behind the Pressure\n\n| Company | 2026 Capex Guidance | YoY Change | OpenAI Exposure | Reports |\n| --- | --- | --- | --- | --- |\n| Amazon | ~$200 billion | +~50% | $38B AWS Bedrock + $100B Anthropic | April 29, after close |\n| Alphabet (Google) | Up to $185 bill"
+      },
+      {
+        "num": 2,
+        "url": "https://aibusinessweekly.net/p/openai-statistics",
+        "title": "OpenAI Statistics 2026: Users, Revenue, Funding & Market Share Data",
+        "snippet": "Frequently Asked Questions\n\n**How many people use ChatGPT in 2026?** ChatGPT has over 800 million weekly active users as of early 2026, making it the most widely used AI application in the world. Monthly active users are estimated between 355 million and 1.5 billion depending on how usage is counted"
+      }
+    ],
+    "urls": [
+      "https://sacra.com/c/openai/",
+      "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+      "https://aibusinessweekly.net/p/openai-statistics",
+      "https://www.reddit.com/r/technology/comments/1qjhopz/openais_internal_documents_predict_14_billion/",
+      "https://www.wsj.com/tech/ai/openai-misses-key-revenue-user-targets-in-high-stakes-sprint-toward-ipo-94a95273",
+      "https://www.cnbc.com/2026/04/28/openais-revenue-growth-estimates-fall-short-report.html"
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+        "title": "OpenAI Misses 2026 Revenue: WSJ Hits $1.4T Stargate Bet",
+        "heading": "Q1 2026 Hyperscaler Capex: The Numbers Behind the Pressure",
+        "chunk_text": "Q1 2026 Hyperscaler Capex: The Numbers Behind the Pressure\n\n| Company | 2026 Capex Guidance | YoY Change | OpenAI Exposure | Reports |\n| --- | --- | --- | --- | --- |\n| Amazon | ~$200 billion | +~50% | $38B AWS Bedrock + $100B Anthropic | April 29, after close |\n| Alphabet (Google) | Up to $185 billion | ~2x 2025 | $40B Anthropic stake; no direct OpenAI | April 29, after close |\n| Microsoft | ~$140 billion | +~35% | Largest single OpenAI customer | April 29, after close |\n| Meta Platforms | $115–135 billion | ~2x 2025 | None direct; Llama 4 internal | April 29, after close |\n| Oracle | ~$35 billion | +~70% | $300B OpenAI commitment is core | Reported earlier |\n| CoreWeave | ~$25 billion | +~80% | Anchor tenant: OpenAI / Stargate | Reported earlier |\n\nThe asymmetry is plain. Microsoft, which once enjoyed full exclusivity on OpenAI workloads, is now competing with Oracle, AWS, Google Cloud and CoreWeave for the same compute dollars. Meanwhile, Oracle and CoreWeave have effectively bet their growth narratives on the OpenAI contract, leaving them more exposed than Microsoft to a sustained miss. The message from tonight’s earnings will not be in the Q1 numbers — it will be in the management commentary about whether AI revenue is keeping pace with AI capex.",
+        "score": 6.4677,
+        "rank": 0
+      },
+      {
+        "url": "https://aibusinessweekly.net/p/openai-statistics",
+        "title": "OpenAI Statistics 2026: Users, Revenue, Funding & Market Share Data",
+        "heading": "Frequently Asked Questions",
+        "chunk_text": "Frequently Asked Questions\n\n**How many people use ChatGPT in 2026?** ChatGPT has over 800 million weekly active users as of early 2026, making it the most widely used AI application in the world. Monthly active users are estimated between 355 million and 1.5 billion depending on how usage is counted, including embedded API applications.\n\n**What is OpenAI's revenue in 2026?** OpenAI projects $29.4 billion in total revenue for 2026, up from approximately $13 billion in 2025 and $3.7 billion in 2024. Monthly recurring revenue crossed $1 billion in October 2025. The company is not yet profitable despite this growth.\n\n**What is OpenAI's valuation in 2026?** OpenAI is valued at approximately $500 billion following its $40 billion Series F funding round led by SoftBank in March 2025. This makes it one of the most valuable private companies in the world.\n\n**How much has OpenAI raised in funding?** OpenAI has raised $57.9 billion in total funding across eleven rounds. Major investors include Microsoft, SoftBank, Apple, Nvidia, and several sovereign wealth funds. The company has committed over $1 trillion in financial obligations to infrastructure providers.\n\n**What percentage of Fortune 500 companies use ChatGPT?** 92% of Fortune 500 companies use ChatGPT as of 2026. OpenAI has approximately 3 million paying business users across Enterprise, Team, and educational plans.",
+        "score": 6.2875,
+        "rank": 1
+      },
+      {
+        "url": "https://aibusinessweekly.net/p/openai-statistics",
+        "title": "OpenAI Statistics 2026: Users, Revenue, Funding & Market Share Data",
+        "heading": "OpenAI Statistics 2026: Users, Revenue, Funding & Market Share Data",
+        "chunk_text": "OpenAI Statistics 2026: Users, Revenue, Funding & Market Share Data\n\nThe most important OpenAI statistics for 2026 - covering ChatGPT users, revenue growth, enterprise adoption, funding, and market position - all sourced and organized for business leaders\n\n![Image 2: Sameer Khan](https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,format=auto,onerror=redirect/uploads/user/profile_picture/cdcf50a8-6277-4f1b-a82f-c8d32fd28afa/ai_logo_2__2___1_.jpg)\n\n[Sameer Khan](https://aibusinessweekly.net/authors/sameer-khan)\n\nMar 24, 2026\n\n**Last Updated: March 23, 2026**\n\n![Image 3](https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,format=auto,onerror=redirect/uploads/asset/file/325fceef-123a-4faf-9025-5f6188442467/image.png)",
+        "score": 6.004,
+        "rank": 2
+      },
+      {
+        "url": "https://aibusinessweekly.net/p/openai-statistics",
+        "title": "OpenAI Statistics 2026: Users, Revenue, Funding & Market Share Data",
+        "heading": "OpenAI Funding and Valuation",
+        "chunk_text": "OpenAI Funding and Valuation\n\nOpenAI's funding history is one of the most dramatic capital-raising stories in technology.\n\n**Current Valuation**\n\nOpenAI is valued at approximately $500 billion as of early 2026, following a $40 billion Series F funding round led by SoftBank in March 2025. That valuation places it among the most valuable private companies in the world - ahead of SpaceX's consumer valuation at time of comparison.\n\n**Total Funding Raised**\n\nOpenAI has raised $57.9 billion in total funding across eleven rounds. Key investors include Microsoft (which has committed approximately $13 billion), SoftBank ($40 billion Series F), Apple, Nvidia, and sovereign wealth funds from the Middle East.\n\n**Financial Commitments**\n\nOpenAI has committed more than $1 trillion in financial obligations to cloud computing providers and chipmakers to power its infrastructure. The company reportedly spends approximately $700,000 per day on operational costs. Despite the revenue growth, OpenAI does not yet generate a profit.\n\n| Funding Metric | Data Point |\n| --- | --- |\n| Current valuation | ~$500 billion |\n| Total funding raised | $57.9 billion |\n| Largest single round | $40B Series F (SoftBank, 2025) |\n| Key investors | Microsoft, SoftBank, Apple, Nvidia |\n| Daily operating cost | ~$700,000 |\n| Revenue target 2026 | $29.4 billion |",
+        "score": 5.7458,
+        "rank": 3
+      },
+      {
+        "url": "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+        "title": "OpenAI Misses 2026 Revenue: WSJ Hits $1.4T Stargate Bet",
+        "heading": "How did OpenAI respond to the WSJ report?",
+        "chunk_text": "How did OpenAI respond to the WSJ report?\n\nCEO Sam Altman and CFO Sarah Friar issued a joint statement on April 28, 2026 calling the WSJ report “ridiculous” and pointing to OpenAI’s $122 billion in cumulative funding as evidence the business is on plan. The company has not yet disclosed actual Q1 2026 revenue or current weekly active user figures.",
+        "score": 5.6826,
+        "rank": 4
+      },
+      {
+        "url": "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+        "title": "OpenAI Misses 2026 Revenue: WSJ Hits $1.4T Stargate Bet",
+        "heading": "Five Predictions for the Next 90 Days",
+        "chunk_text": "Five Predictions for the Next 90 Days\n\nCombining the WSJ story, tonight’s hyperscaler earnings, and the broader competitive picture, five things are likely to happen in the next 90 days. First, OpenAI will publicly disclose Q1 2026 revenue and weekly active user figures earlier than originally planned, almost certainly within the next two weeks, in an effort to reset the narrative. The figures will be high — likely above $4–5 billion in Q1 revenue at run rate — but the question for investors will be whether they match or undershoot the internal plan that the WSJ said was missed. A clean print does not erase the leak; it just reframes it.\n\nSecond, OpenAI’s IPO timeline will quietly slip from late 2026 to early 2027. The company will not formally announce a delay — that would itself confirm the underlying problem — but the bankers will quietly stop showing the company at scheduled investor meetings and the S-1 iteration will pause. The market will read the absence of news as the news. Third, Oracle and CoreWeave will face escalating pressure from analysts to disclose specific OpenAI revenue contribution figures in their next earnings cycles. Both companies have so far avoided naming OpenAI as a customer concentration; that posture is no longer tenable.",
+        "score": 5.5334,
+        "rank": 5
+      },
+      {
+        "url": "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+        "title": "OpenAI Misses 2026 Revenue: WSJ Hits $1.4T Stargate Bet",
+        "heading": "OpenAI Misses 2026 Revenue: WSJ Bombshell Hits .4T Stargate Bet",
+        "chunk_text": "OpenAI Misses 2026 Revenue: WSJ Bombshell Hits .4T Stargate Bet\n\n*   [![Image 4: Nadia Dubois](https://tech-insider.org/wp-content/plugins/one-user-avatar/assets/images/wpua-64x64.png)](https://tech-insider.org/author/nadia-dubois/)[Nadia Dubois](https://tech-insider.org/author/nadia-dubois/ \"Posts by Nadia Dubois\")\n*   April 29, 2026\n*   [AI & Machine Learning](https://tech-insider.org/category/ai-machine-learning/)\n\n[Nadia Dubois](https://tech-insider.org/author/nadia-dubois/)\n\nStockholm, Sweden\n\nApril 29, 2026\n\n20 min read\n\nOpenAI is staring down its first credibility crisis of the year. On April 28, 2026, the _Wall Street Journal_ reported that the company missed its own internal monthly sales targets for early 2026, fell short of an internal goal of 1 billion ChatGPT weekly active users by year-end 2025, and is now navigating an internal rift between CEO Sam Altman and CFO Sarah Friar over whether OpenAI’s revenue can support the more than $1.4 trillion in AI infrastructure commitments it has signed with Oracle, Microsoft, Amazon, Google, CoreWeave, and the Stargate consortium. The story, picked up almost instantly by Bloomberg, Fortune, CNBC and Investing.com, sent OpenAI-linked equities sliding before the closing bell on April 28 and threw a long shadow over the Big Tech earnings parade landing today, April 29, 2026, when Alphabet, Microsoft, Meta and Amazon all report Q1 results into a Federal Reserve decision.",
+        "score": 4.2192,
+        "rank": 6
+      },
+      {
+        "url": "https://aibusinessweekly.net/p/openai-statistics",
+        "title": "OpenAI Statistics 2026: Users, Revenue, Funding & Market Share Data",
+        "heading": "Related Articles",
+        "chunk_text": "Related Articles\n\n[**What is OpenAI? Complete Company Guide 2026**](https://aibusinessweekly.net/p/what-is-openai) Everything you need to know about OpenAI's history, leadership, products, and business model.\n\n[**ChatGPT Statistics 2026: 50 Stats on Users, Revenue & Growth**](https://aibusinessweekly.net/p/chatgpt-statistics) Deeper dive into ChatGPT-specific data including traffic breakdowns, demographics, and usage patterns.\n\n[**Claude AI Statistics 2026: Users & Revenue Data**](https://aibusinessweekly.net/p/claude-ai-statistics) How Anthropic's numbers compare to OpenAI across users, revenue, and enterprise adoption.\n\n[**ChatGPT vs Claude: Which AI Is Better for Business in 2026?**](https://aibusinessweekly.net/p/chatgpt-vs-claude) Side-by-side comparison of the two leading AI platforms for business use cases.\n\n[**Best AI Tools 2026: Complete Guide**](https://aibusinessweekly.net/p/best-ai-tools-2025) How ChatGPT fits into the broader AI tools landscape alongside competitors.\n\n![Image 4](https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,format=auto,onerror=redirect/uploads/asset/file/3619f92a-012b-458a-a165-b5a28e3edd42/image.png)",
+        "score": 3.7499,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 2945,
+      "search_ms": 3127,
+      "extract_ms": 12828,
+      "chunk_ms": 18,
+      "retrieve_ms": 4351,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 32514,
+    "elapsed_s": 35.4,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

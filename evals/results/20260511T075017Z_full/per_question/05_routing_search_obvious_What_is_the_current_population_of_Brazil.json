@@ -1,0 +1,249 @@
+{
+  "id": "rs1",
+  "category": "routing_search_obvious",
+  "domain": "demographics",
+  "question": "What is the current population of Brazil?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Numbers drift — must route to search, not parametric.",
+  "key_facts": [
+    "million",
+    "Brazil"
+  ],
+  "ground_truth": "Population estimates for Brazil in 2025-2026 are around 217 million (varies by source).",
+  "session_id": "eval-20260511T075017Z-rs1",
+  "verdict": "partial",
+  "aggregate": 0.75,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.5,
+    "context_recall": 1.0,
+    "context_precision": 0.25,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.75,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.75
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.5,
+      "supported": 2,
+      "total": 4,
+      "reasoning": "Only 203M in 2022 and 214.2M in 2026 are supported; 212.6M and Worldometer not in chunks."
+    },
+    "context_precision": {
+      "score": 0.25,
+      "relevant": 2,
+      "total": 8,
+      "reasoning": "Chunks 1 and 5 provide current or projected population figures for Brazil."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "million",
+        "Brazil"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": [
+      "million",
+      "Brazil"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 2296,
+      "search_ms": 2003,
+      "extract_ms": 2341,
+      "chunk_ms": 33,
+      "retrieve_ms": 1312,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 12308,
+    "pipeline_s": 15.53
+  },
+  "judge_reasoning": "Only 203M in 2022 and 214.2M in 2026 are supported; 212.6M and Worldometer not in chunks.",
+  "pipeline": {
+    "answer": "The most recent official figure for Brazil's population is **212.6 million** as of August 2024, according to the Brazilian Institute of Geography and Statistics (IBGE) [2]. This is up from 203 million recorded in the 2022 census [3]. A continuously updated estimate from Worldometer lists the current live population at a similar level, derived from UN data [4].\n\nLooking ahead, Trading Economics projects the population reaching **214.2 million** by the end of 2026, with further growth to 215.0 million in 2027 and 215.7 million in 2028 [1].",
+    "mode": "search",
+    "rewritten_query": "What is the current population of Brazil?",
+    "rewrote": false,
+    "rationale": "Population numbers drift; need a sourced recent figure.",
+    "sub_queries": [
+      "Current population of Brazil"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://tradingeconomics.com/brazil/population",
+        "title": "Brazil Population",
+        "snippet": "Population in Brazil is expected to reach 214.20 Million by the end of 2026, according to Trading Economics global macro models and analysts expectations. In the long-term, the Brazil Population is projected to trend around 215.00 Million in 2027 and 215.70 Million in 2028, according to our economet"
+      },
+      {
+        "num": 2,
+        "url": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "title": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "snippet": "of population size. Altogether, 65.7 million people, or 30.9% of the total, are distributed across 48 municipalities with a population greater than 500,000 people, or 0.9% of Brazilian municipalities. Another considerable portion of the population, around 27.3% (58 million), is in the 339 municipali"
+      },
+      {
+        "num": 3,
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "Demographics of Brazil",
+        "snippet": "White Brazilians\n\nAccording to the 2022 census, there were 88,2 million white Brazilians, comprising 43.5% of Brazil's population.[[3]](https://en.wikipedia.org/wiki/Demographics_of_Brazil#cite_note-G1-3) Descendants of Europeans are found in the entire territory of Brazil, although they are most co"
+      },
+      {
+        "num": 4,
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "https://www.worldometers.info/world-population/brazil-population/",
+        "snippet": "5 | Juiz de Fora | 518,218 |\n| 36 | Maringá | 473,708 |\n| 37 | Macapá | 471,922 |\n| 38 | Jundiaí | 465,531 |\n| 39 | Porto Velho | 422,943 |\n| 40 | Petrolina | 418,619 |\n| 41 | São José do Rio Preto | 414,406 |\n| 42 | Americana | 412,133 |\n| 43 | Volta Redonda | 398,107 |\n| 44 | Caxias do Sul | 383,7"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "Brazil Population (2026) - Worldometer",
+        "snippet": "The current population of Brazil is 213.502. · Brazil 2026 population is estimated at 213,562,666 people at mid-year. · Brazil population is equivalent to 2.57%"
+      },
+      {
+        "url": "https://www.macrotrends.net/global-metrics/countries/bra/brazil/population",
+        "title": "Brazil Population (1950-2025) - Macrotrends",
+        "snippet": "Total current population for Brazil in 2025 was 218,803,058, a 0.54% increase from 2024. · Total population for Brazil in 2024 was 217,637,297, a 3.08% increase"
+      },
+      {
+        "url": "https://tradingeconomics.com/brazil/population",
+        "title": "Brazil Population - Trading Economics",
+        "snippet": "The total population in Brazil was estimated at 213.4 million people in 2025, according to the latest census figures and projections from Trading Economics."
+      },
+      {
+        "url": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "title": "IBGE: Brazil's population reaches 212.6 million - Portal Gov.br",
+        "snippet": "The Brazilian population reached an estimated 212.6 million people on July 1, 2024, according to the Brazilian Institute of Geography and Statistics (IBGE)."
+      },
+      {
+        "url": "https://www.unfpa.org/data/world-population/BR",
+        "title": "Brazil Population 2025 - United Nations Population Fund",
+        "snippet": "Brazil Population 2025 - United Nations Population Fund. Total Population (2025): 212,800,000. Brazil - Overview. Population. Population, by age group,"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "Demographics of Brazil - Wikipedia",
+        "snippet": "Brazil had an official resident population of 203 million in 2022, according to the Brazilian Institute of Geography and Statistics (IBGE)."
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://tradingeconomics.com/brazil/population",
+        "title": "Brazil Population",
+        "heading": "Population in Brazil is expected to reach 214.20 Million by the end of 2026, according to Trading Economics global macro models and analysts expectations. In the long-term, the Brazil Population is projected to trend around 215.00 Million in 2027 and 215.70 Million in 2028, according to our econometric models.",
+        "chunk_text": "Population in Brazil is expected to reach 214.20 Million by the end of 2026, according to Trading Economics global macro models and analysts expectations. In the long-term, the Brazil Population is projected to trend around 215.00 Million in 2027 and 215.70 Million in 2028, according to our econometric models.\n\nMillion\n\n[5Y](https://tradingeconomics.com/brazil/population#)[10Y](https://tradingeconomics.com/brazil/population#)[25Y](https://tradingeconomics.com/brazil/population#)[MAX](https://tradingeconomics.com/brazil/population#)\n\nExport API\n\nOK\n\n*\n\n*\n\n*\n\n*\n\n*\n\n*\n\nLoading...\n\n2014 2018 2022\n\nBrazilian Institute of Geography and Statistics (IBGE)\n\nValue Chg Chg%",
+        "score": 8.1138,
+        "rank": 0
+      },
+      {
+        "url": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "title": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "heading": "",
+        "chunk_text": "of population size. Altogether, 65.7 million people, or 30.9% of the total, are distributed across 48 municipalities with a population greater than 500,000 people, or 0.9% of Brazilian municipalities. Another considerable portion of the population, around 27.3% (58 million), is in the 339 municipalities with a population between 100,000 and 500,000, which corresponds to 6.1% of the total number of municipalities.\n“Although the largest urban centers are no longer experiencing the great growth they once did, they still have the demographic weight that comes from a process of concentration that lasted for several decades — and, over the years, several municipalities have ended up surpassing the 500,000 inhabitants mark,” explained Marcio Minamiguchi, the manager of Population Projections and Estimates at IBGE.\nAt the other end, the least populated municipalities, with up to 5 thousand inhabitants, are 23.1% of the total (1,288) and account for only 2% of the population (4.3 million).\nMETHOD — The estimates of the resident population in the municipalities were calculated based on the Population Projections for Brazil and Federation Units, 2024 Revision [Projeções da População do Brasil e Unidades da Federação, Revisão 2024] and on the total population of the municipalities listed by the 2010 and 2022 Demographic Censuses.",
+        "score": 6.9049,
+        "rank": 1
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "Demographics of Brazil",
+        "heading": "White Brazilians",
+        "chunk_text": "White Brazilians\n\nAccording to the 2022 census, there were 88,2 million white Brazilians, comprising 43.5% of Brazil's population.[[3]](https://en.wikipedia.org/wiki/Demographics_of_Brazil#cite_note-G1-3) Descendants of Europeans are found in the entire territory of Brazil, although they are most concentrated in the south and southeastern parts of the country.[[46]](https://en.wikipedia.org/wiki/Demographics_of_Brazil#cite_note-46)[[47]](https://en.wikipedia.org/wiki/Demographics_of_Brazil#cite_note-47) A survey conducted in 1998 by the Minas Gerais sociologist Simon Schwartzman interviewed about 34 million Brazilians, of whom nearly 20 million declared themselves white. Asked the ethnic origin of the participants of white race, a plurality pointed only Brazilian origin (53%).",
+        "score": 6.6184,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "Demographics of Brazil",
+        "heading": "Mixed-race/Pardo-Brazilians",
+        "chunk_text": "Mixed-race/Pardo-Brazilians\n\nThe Pardos make up 45.3% or 92.1 million people of Brazil's population.[[63]](https://en.wikipedia.org/wiki/Demographics_of_Brazil#cite_note-census2022-63) They live in the entire territory of Brazil. Although, according to DNA resources, most Brazilians possess some degree of mixed-race ancestry, less than 45% of the country's population classified themselves as being part of this group due to phenotype.[[64]](https://en.wikipedia.org/wiki/Demographics_of_Brazil#cite_note-pmid21359226-64)",
+        "score": 6.1666,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "Demographics of Brazil",
+        "heading": "Demographics of Brazil",
+        "chunk_text": "Demographics of Brazil\n\n[Brazil](https://en.wikipedia.org/wiki/Brazil \"Brazil\") had an official resident population of 203 million in 2022, according to the [Brazilian Institute of Geography and Statistics](https://en.wikipedia.org/wiki/Brazilian_Institute_of_Geography_and_Statistics \"Brazilian Institute of Geography and Statistics\") (IBGE).[[4]](https://en.wikipedia.org/wiki/Demographics_of_Brazil#cite_note-IBGE-4) Brazil is the [seventh most populous country](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population \"List of countries and dependencies by population\") in the world and the second most populous in the [Americas](https://en.wikipedia.org/wiki/List_of_countries_in_the_Americas_by_population \"List of countries in the Americas by population\") and [Western Hemisphere](https://en.wikipedia.org/wiki/Western_Hemisphere \"Western Hemisphere\").",
+        "score": 4.4718,
+        "rank": 4
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Demographics_of_Brazil",
+        "title": "Demographics of Brazil",
+        "heading": "Religion",
+        "chunk_text": "Religion\n\n106]](https://en.wikipedia.org/wiki/Demographics_of_Brazil#cite_note-:1-106) Kardecist spiritism was the second-largest religion practiced in Brazil as ARDA's 2020 study, with 4.83% of the population. Of its 3.03% irreligious population, 2.59% were agnostic and 0.44% atheist.[[106]](https://en.wikipedia.org/wiki/Demographics_of_Brazil#cite_note-:1-106)",
+        "score": 3.4164,
+        "rank": 5
+      },
+      {
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "https://www.worldometers.info/world-population/brazil-population/",
+        "heading": "",
+        "chunk_text": "5 | Juiz de Fora | 518,218 |\n| 36 | Maringá | 473,708 |\n| 37 | Macapá | 471,922 |\n| 38 | Jundiaí | 465,531 |\n| 39 | Porto Velho | 422,943 |\n| 40 | Petrolina | 418,619 |\n| 41 | São José do Rio Preto | 414,406 |\n| 42 | Americana | 412,133 |\n| 43 | Volta Redonda | 398,107 |\n| 44 | Caxias do Sul | 383,774 |\n| 45 | Campina Grande | 369,184 |\n| 46 | Colina de Laranjeiras | 365,960 |\n| 47 | Boa Vista | 360,361 |\n| 48 | Piracicaba | 357,844 |\n| 49 | Montes Claros | 355,651 |\n| 50 | Anápolis | 354,576 |\n| 51 | Praia Grande | 352,067 |\n| 52 | Bauru | 351,405 |\n| 53 | Francisco Morato | 346,105 |\n| 54 | Franca | 337,878 |\n| 55 | Rio Branco | 332,810 |\n| 56 | Gravataí | 330,969 |\n| 57 | Canoas | 325,022 |\n| 58 | Uberaba | 312,745 |\n| 59 | Campos dos Goytacazes | 310,590 |\n| 60 | Taubaté | 310,170 |\n| 61 | Caruaru | 299,805 |\n| 62 | Ponta Grossa | 296,610 |\n| 63 | Cascavel | 289,904 |\n| 64 | Limeira | 284,657 |\n| 65 | Pelotas | 280,551 |\n| 66 | Vitória da Conquista | 268,375 |\n| 67 | Mossoró | 259,132 |\n| 68 | Itajaí | 248,590 |\n| 69 | Ipatinga | 244,390 |\n| 70 | Governador Valadares | 239,060 |\nThe Brazil Population (Live) counter shows a continuously updated estimate of the current population of Brazil delivered by Worldometer's RTS algorithm, which processes data collected from the United Nations Population Division.\nThe Population of Brazil (1950 - 2026) chart plots the total population count as of July 1 of each year, from 1950 to 2026.\nThe Yearly Population Growth Rate chart plots t",
+        "score": -3.521,
+        "rank": 6
+      },
+      {
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "https://www.worldometers.info/world-population/brazil-population/",
+        "heading": "",
+        "chunk_text": "er than the median age indicated and half are younger. This parameter provides an indication of age distribution.\nFertility Rate: (Total Fertility Rate, or TFR), it is expressed as children per woman. It is calculated as the average number of children an average woman will have during her reproductive period (15 to 49 years old) based on the current fertility rates of every age group in the country, and assuming she is not subject to mortality.\nDensity (P/Km²): (Population Density) Population per square Kilometer (Km²).\nUrban Pop % : Urban population as a percentage of total population.\nUrban Population: Population living in areas classified as urban according to the criteria used by each country.\nCountry's Share of World Pop: Total population in the country as a percentage of total World Population as of July 1 of the year indicated.\nWorld Population: Total World Population as of July 1 of the year indicated.\nGlobal Rank: Position held by Brazil in the list of all countries worldwide ranked by population (from the highest population to the lowest population) as of July 1 of the year indicated.",
+        "score": -4.1673,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 2296,
+      "search_ms": 2003,
+      "extract_ms": 2341,
+      "chunk_ms": 33,
+      "retrieve_ms": 1312,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 12308,
+    "elapsed_s": 15.53,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

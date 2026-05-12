@@ -1,0 +1,337 @@
+{
+  "id": "ctr2",
+  "category": "contradiction",
+  "domain": "history",
+  "question": "Did Christopher Columbus prove the Earth was round?",
+  "expected_mode": "either",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Common misconception — should surface that educated people knew the Earth was round centuries before Columbus. Both parametric and search routes are defensible.",
+  "key_facts": [
+    "spherical",
+    "Columbus"
+  ],
+  "ground_truth": "No — the spherical shape of the Earth was established by Greek philosophers including Eratosthenes (~240 BCE), who calculated its circumference. Educated Europeans in Columbus's time knew this; the 'flat-Earth Columbus' narrative is a 19th-century invention.",
+  "session_id": "eval-20260511T161015Z-ctr2",
+  "verdict": "pass",
+  "aggregate": 0.8,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 1.0,
+    "context_recall": 1.0,
+    "context_precision": 0.5,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.5,
+    "answer_relevancy": 0.798,
+    "aggregate": 0.8,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.8
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 1.0,
+      "supported": 4,
+      "total": 4,
+      "reasoning": "All claims are supported by chunks 1-4, 6, 9-10."
+    },
+    "context_precision": {
+      "score": 0.5,
+      "relevant": 4,
+      "total": 8,
+      "reasoning": "Chunks 2,3,4,6 directly address Columbus and the Earth being round, others are off-topic."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "spherical",
+        "Columbus"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.798,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "spherical",
+      "Columbus"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 1,
+      "decompose_ms": 2088,
+      "search_ms": 4495,
+      "extract_ms": 5118,
+      "chunk_ms": 15,
+      "retrieve_ms": 15225,
+      "synthesis_ms": 12117,
+      "embedding_cleanup_ms": 1,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 52793,
+    "pipeline_s": 55.72
+  },
+  "judge_reasoning": "All claims are supported by chunks 1-4, 6, 9-10.",
+  "pipeline": {
+    "answer": "# Did Christopher Columbus prove the Earth was round?\n\n**No — Christopher Columbus did not prove the Earth is spherical. This is a persistent historical myth.** Educated people had known the Earth was round for over 2,000 years before his voyage [1][2], and Columbus himself never set out to prove something already widely accepted [3][4].\n\n## The ancient understanding of a spherical Earth\n\n- Greek scientists recognized the Earth was spherical as early as the 5th century BCE [1]. After that point, few Greek writers thought otherwise [1].\n- By the 3rd century BCE, Aristotle's studies had confirmed the spherical shape through observations of lunar eclipses and changing star positions [3].\n- As historian Jeffrey Burton Russell states, \"No educated person in the history of Western Civilization from the third century B.C. onward believed that the Earth was flat\" [2][3].\n\n## What Columbus actually believed and debated\n\nColumbus knew the Earth was round when he proposed sailing west to Asia [3][4]. The controversy surrounding his voyage was never about flat versus round — it was about **his incorrect calculations**:\n\n| Claim | Historical Reality |\n|-------|-------------------|\n| Columbus proved Earth is round | False — already established knowledge [1][4] |\n| Columbus faced flat-Earth opposition | False — opponents cited distance, not shape [2][4] |\n| Columbus's miscalculation | He underestimated Earth's circumference by ~25% and overestimated Asia's size [2][3] |\n| What his critics actually said | The westward distance was too great, not that the Earth was flat [4][2] |\n\n## Origin of the flat-Earth myth\n\nThe myth was a **19th-century invention**, not a medieval belief:\n\n- **Washington Irving's fictionalized biography**: In his 1828 book *The Life and Voyages of Christopher Columbus*, Irving invented a dramatic narrative of Columbus as an Enlightenment hero battling medieval superstition [2][3]. He found the historical documents \"rather dull\" and embellished them for sales [2].\n- **19th-century ideological battles**: After the 1860s, the \"Flat Error\" became a rhetorical weapon during the Darwinist controversy [1]. Both positivists and anti-Darwinists used it to discredit opponents by comparing resistance to evolution with resistance to a spherical Earth [1].\n- **Portraying the Middle Ages as ignorant**: The myth cemented the false trope of medieval scientific darkness in popular education [1][2].\n\n## Key Takeaways\n\n- **Columbus did not prove the Earth round** — that knowledge was already over 2,000 years old by 1492 [1][3].\n- **Columbus's real error was miscalculating distance**, not challenging spherical Earth theory [2][4].\n- **The flat-Earth myth originated with Washington Irving's 1828 fictional biography**, not from any 15th-century source [2][3].\n- **19th-century culture wars** popularized the myth as a rhetorical weapon against perceived scientific ignorance [1].\n- **No educated person in Western Civilization from the 3rd century BCE onward believed the Earth was flat** [2][3].",
+    "mode": "search",
+    "rewritten_query": "Did Christopher Columbus prove the Earth was round?",
+    "rewrote": false,
+    "rationale": "Historical myth debunking benefits from sourced evidence.",
+    "sub_queries": [
+      "Did Christopher Columbus prove Earth is spherical? Historical accuracy",
+      "Myth that Columbus proved Earth round origin"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "title": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "snippet": "BC very few Greek writers thought of the earth as anything but round.” In the Greek and Roman worlds in the last few centuries BCE, maps showing a round earth as well as “three dimensional globes ... were used publicly as educational tools.” After that and all through the Middle Ages, the roundness "
+      },
+      {
+        "num": 2,
+        "url": "https://www.ripleys.com/stories/columbus-earth",
+        "title": "https://www.ripleys.com/stories/columbus-earth",
+        "snippet": "reality, though, Columbus never feared sailing off the edge of the world.\nAs historian Jeffrey Burton has noted, “No educated person in the history of Western Civilization from the third century B.C. onward believed that the Earth was flat.”\nHistory tells us that as early as 600 B.C., the Ancient Gr"
+      },
+      {
+        "num": 3,
+        "url": "https://www.csmonitor.com/USA/2011/1010/Christopher-Columbus-Five-things-you-thought-you-knew-about-the-explorer/MYTH-Columbus-set-out-to-prove-the-earth-was-round",
+        "title": "https://www.csmonitor.com/USA/2011/1010/Christopher-Columbus-Five-things-you-thought-you-knew-about-the-explorer/MYTH-Columbus-set-out-to-prove-the-earth-was-round",
+        "snippet": "FACT: Columbus (and most everyone else) already knew the Earth was round.\nColumbus Day is often an occasion for schoolchildren to repeat the notion that the explorer set out on his renegade voyage to defy the flat-Earth believers who warned he would sail off the face of the planet.\nThis myth entered"
+      },
+      {
+        "num": 4,
+        "url": "https://pwg.gsfc.nasa.gov/stargaze/Scolumb.htm",
+        "title": "https://pwg.gsfc.nasa.gov/stargaze/Scolumb.htm",
+        "snippet": "|\nIndex 5c. Coordinates 6. The Calendar 6a. Jewish Calendar 7.Precession 8. The Round Earth 8a. The Horizon 8b. Parallax 8c. Moon dist. (1) 8d. Moon dist. (2) 9a. Earth orbits Sun? 9b. The Planets 9c. Copernicus to Galileo |\nToday it is generally known that the Earth is a sphere, or very close to on"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.facebook.com/CitizenKamran/posts/did-columbus-really-prove-the-earth-was-round-nopeand-thats-one-of-historys-bigg/1130836175757415/",
+        "title": "Did Columbus Really Prove the Earth Was Round? Nope—and ...",
+        "snippet": "Historians agree: Columbus didn't prove the Earth was round. He proved something else: how myths can outlive truth."
+      },
+      {
+        "url": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "title": "Did Columbus Prove the Earth Is Round? | A. Roy King",
+        "snippet": "While it's beneficial to point this out, sometimes I hear folks add that the shape of the earth was not known until Columbus proved it in 1492."
+      },
+      {
+        "url": "https://x.com/histories_arch/status/2015065008015811039",
+        "title": "Contrary to popular belief, Christopher Columbus did not prove the ...",
+        "snippet": "Contrary to popular belief, Christopher Columbus did not prove the Earth was round when he sailed west in 1492. Ancient Greek scholars like"
+      },
+      {
+        "url": "https://pwg.gsfc.nasa.gov/stargaze/Scolumb.htm",
+        "title": "The Round Earth and Christopher Columbus",
+        "snippet": "# *(8) The Round Earth and Christopher Columbus*. |       Today it is generally known that the Earth is a sphere, or very close to one (its equator bulges out a bit because of the Earth's rotation). Christopher Columbus too knew that the Earth was round, when he proposed to reach India by sailing west from Spain, he too knew that the Earth was round. On a round globe, however, it should also be possible to reach India by sailing west, and this Columbus proposed to do (and he wasn't the first one to suggest it--see below). Even in ancient times sailors knew that the Earth was round and scientists not only suspected it was a sphere, but even estimated its size. It is as if the ship was dropping behind a hill, which in a way is **exactly** the case, the \"hill\" being the curve of the Earth's surface."
+      },
+      {
+        "url": "https://www.reddit.com/r/AskHistory/comments/1i969uh/did_the_average_person_pre_columbus_believe_the/",
+        "title": "Did the average person pre Columbus believe the Earth was round?",
+        "snippet": "Columbus didn't prove the Earth was round; if anything Magellan did by making the first truly global voyage. Columbus also convinced Queen"
+      },
+      {
+        "url": "https://www.ripleys.com/stories/columbus-earth",
+        "title": "How Columbus Failed to Prove the Earth Was Round | Ripley's Believe It or Not! | Aquariums, Attractions, Museums",
+        "snippet": "# How Columbus Failed to Prove the Earth Was Round. ### We can blame Flat Earth theories on the writer, Washington Irving. On  August 3, 1492 , Christopher Columbus set sail from the port of Palos de la Frontera, Spain, in command of 90 men and three ships: the  *Niña* , the  *Pinta* , and the  *Santa Maria* . He also discovered a “New World” in the process. Here’s the full scoop on what Columbus was really after and why it had nothing to do with disproving Flat Earthers or finding new continents. What’s more, he overcalculated the size of Asia so that  Cipangu (a.k.a. Japan) lay just over 8,000 miles from Spain. At the time, it represented the gateway to Asia, which Europeans referred to as “the Indies.” As Columbus and his crew attempted to interact with the indigenous people of San Salvador and other islands, he became more and more frustrated."
+      },
+      {
+        "url": "https://www.csmonitor.com/USA/2011/1010/Christopher-Columbus-Five-things-you-thought-you-knew-about-the-explorer/MYTH-Columbus-set-out-to-prove-the-earth-was-round",
+        "title": "MYTH: Columbus set out to prove the earth was round.",
+        "snippet": "Columbus did not embark on his journey hoping to prove the Earth was round. Almost everyone already knew that already."
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=F_Tbw5q219w",
+        "title": "Columbus Knew the Earth Was Round (and so did everyone else)",
+        "snippet": "Did Christopher Columbus prove the world was round? Or are we guilty ... The Medieval Flat Earth Myth. History for Atheists•6K views · 13"
+      },
+      {
+        "url": "https://www.facebook.com/groups/ancient10/posts/779754801456529/",
+        "title": "Columbus did not prove earth was round - Facebook",
+        "snippet": "Columbus Didn't Prove the Earth Was Round The story goes that in 1492, Columbus sailed west to prove the Earth wasn't flat. But that's a myth—"
+      },
+      {
+        "url": "https://www.reddit.com/r/history/comments/ejunmj/when_did_the_majority_of_people_know_the_earth_is/",
+        "title": "When did the majority of people know the Earth is round? Was it that ...",
+        "snippet": "A myth was started in the 1800's that said before Columbus people thought the earth was flat. But it was a made up rumor (real fake news). But"
+      }
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "title": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "heading": "",
+        "chunk_text": "re human, so there is nothing wrong with their use of literary devices. The Bible is not a science textbook, but we like to point out that when it touches on matters of proven science, it is accurate. There’s a lot to say about that topic, but one point we sometimes bring up is that the Bible as early as the 8th century BCE described the shape of the earth as round. Isaiah 40:22 describes that shape as a “circle” or “sphere” — chug in Hebrew.\nWhile it’s beneficial to point this out, sometimes I hear folks add that the shape of the earth was not known until Columbus proved it in 1492. This is not accurate. In fact, the spherical shape of the earth was known by Greek scientists as early as the 5th century BCE. Here are a couple of articles that discuss this question briefly:\n- “Christopher Columbus: 3 things you think he did that he didn’t,” by Valerie Strauss in the Washington Post\n- “The Round Earth and Christopher Columbus,” by David P. Stern, NASA\nThe best article I’ve seen on this topic, though, is “Inventing the Flat Earth,” by historian Jeffrey Russell, in History Today. Unfortunately, that article is not available online outside of a paywall. However, following are a few points of interest from Russell’s piece.\nRussell writes that “after the fifth century BC very few Greek writers thought of the earth as anything but round.” In the Greek and Roman worlds in the last few centuries BCE, maps showing a round earth as well as “three dimensional globes ...",
+        "score": 4.698,
+        "rank": 0
+      },
+      {
+        "url": "https://www.ripleys.com/stories/columbus-earth",
+        "title": "https://www.ripleys.com/stories/columbus-earth",
+        "heading": "",
+        "chunk_text": "reality, though, Columbus never feared sailing off the edge of the world.\nAs historian Jeffrey Burton has noted, “No educated person in the history of Western Civilization from the third century B.C. onward believed that the Earth was flat.”\nHistory tells us that as early as 600 B.C., the Ancient Greeks made observations consistent with a spherical Earth. How? From Pythagoras to Aristotle, they used calculations based on the rising and setting of the sun as well as shadows and other physical properties of the globe.\nDespite the loss of this knowledge to most Europeans during the Dark Ages, by Columbus’s time, wealthy Spaniards had once again immersed themselves in these ancient texts. Educated people knew the Earth was round, which begs two questions. Why was Columbus’s voyage considered so controversial in Europe? And what was he really after?\nColumbus’s Crazy Circumference Calculations\nWhat kept many wealthy individuals in Portugal and Spain from wanting to fund Columbus’s trip? In a nutshell, his crazy circumference calculations. While Columbus knew the Earth was round, he calculated its circumference 25 percent smaller than it actually is. What’s more, he overcalculated the size of Asia so that Cipangu (a.k.a. Japan) lay just over 8,000 miles from Spain. Many of Columbus’s contemporaries disagreed with these calculations, saying he’d vastly underestimated the numbers.",
+        "score": 4.4713,
+        "rank": 1
+      },
+      {
+        "url": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "title": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "heading": "",
+        "chunk_text": "I know it’s a bit after Columbus Day, but this question came up recently when I heard yet another speaker say that Columbus proved the earth is round when he sailed across the Atlantic and didn’t fall off the edge of the world. The story goes that in the Middle Ages everyone believed the earth was flat, and that the courageous Christopher Columbus (Cristoforo Colombo in Italian) went to Queen Isabella of Spain and got her to finance his voyage across the ocean to prove everybody was wrong.\nThis question about the shape of the earth and Columbus’s voyage sometimes comes up in discussions of the authenticity of the Bible, which is why I bring it up here. Critics of the Bible often claim that the Bible is unscientific. They might point to statements in the Bible that supposedly prove that its writers believed in a flat earth, as if using figurative language such as “the four corners of the earth” (Rev 7:1) or ‘the rising and setting of the sun’ (Ps 113:3) were somehow verboten.\nMany of us who are students of the Bible accept it as an inspired expression of a divine Author. At the same time, it is literature and its individual writers were human, so there is nothing wrong with their use of literary devices. The Bible is not a science textbook, but we like to point out that when it touches on matters of proven science, it is accurate.",
+        "score": 3.8078,
+        "rank": 2
+      },
+      {
+        "url": "https://www.csmonitor.com/USA/2011/1010/Christopher-Columbus-Five-things-you-thought-you-knew-about-the-explorer/MYTH-Columbus-set-out-to-prove-the-earth-was-round",
+        "title": "https://www.csmonitor.com/USA/2011/1010/Christopher-Columbus-Five-things-you-thought-you-knew-about-the-explorer/MYTH-Columbus-set-out-to-prove-the-earth-was-round",
+        "heading": "",
+        "chunk_text": "FACT: Columbus (and most everyone else) already knew the Earth was round.\nColumbus Day is often an occasion for schoolchildren to repeat the notion that the explorer set out on his renegade voyage to defy the flat-Earth believers who warned he would sail off the face of the planet.\nThis myth entered popular imagination some 500 years after Columbus’s voyage, thanks mainly to American author Washington Irving’s 1828 chronicle “The Life and Voyages of Christopher Columbus.”\nIn reality, most educated people living at the end of the 15th century knew the Earth was a sphere. In fact, the Flat Earth model began to phase out of popular thinking after Aristotle's studies proved the spherical shape of the Earth during the 3rd century BC. Columbus actually thought the planet was pear-shaped.\nWhat was in question, however, was the Earth's circumference. Upon mapping his route, Columbus underestimated the distance to Asia by thousands of miles because he used obsolete Greek data to make his calculations.",
+        "score": 3.7405,
+        "rank": 3
+      },
+      {
+        "url": "https://www.ripleys.com/stories/columbus-earth",
+        "title": "https://www.ripleys.com/stories/columbus-earth",
+        "heading": "",
+        "chunk_text": "ver got closer to Japan than the east coast of Central America. But he went to his grave insisting he’d reached Asia. This insistence puts to rest the myth that Columbus wanted to find new continents. What’s more, considering the fact the Americas, the Caribbean, and Cuba teemed with people, the idea Columbus discovered anything depends on your cultural perspective.\nAmerican Myth-Making\nHow did the Columbus story become synonymous with a flat Earth? We can blame that on Washington Irving’s work, The Life and Voyages of Christopher Columbus (1828). While in Spain, Irving had the chance to search through a massive archive chronicling the explorer.\nBut Irving found the historical documents at his fingertips rather dull. So, he embellished the story, transforming Columbus into a heroic Enlightenment figure on a scientific quest to slay medieval superstition—namely, the flat Earth theory. Irving’s story had zilch to do with reality, but it sold books.\nToday, Irving’s take on Columbus remains a myth deeply embedded in American pop culture and even our education system. And in one of those ironic twists of fate, more educated people probably now believe in a flat Earth than during Columbus’s time!",
+        "score": -0.4979,
+        "rank": 4
+      },
+      {
+        "url": "https://pwg.gsfc.nasa.gov/stargaze/Scolumb.htm",
+        "title": "https://pwg.gsfc.nasa.gov/stargaze/Scolumb.htm",
+        "heading": "",
+        "chunk_text": "|\nIndex 5c. Coordinates 6. The Calendar 6a. Jewish Calendar 7.Precession 8. The Round Earth 8a. The Horizon 8b. Parallax 8c. Moon dist. (1) 8d. Moon dist. (2) 9a. Earth orbits Sun? 9b. The Planets 9c. Copernicus to Galileo |\nToday it is generally known that the Earth is a sphere, or very close to one (its equator bulges out a bit because of the Earth's rotation). Christopher Columbus too knew that the Earth was round, when he proposed to reach India by sailing west from Spain, he too knew that the Earth was round. India was the source of precious spices and other rare goods, but reaching it by sailing east was difficult, because Africa blocked the way. On a round globe, however, it should also be possible to reach India by sailing west, and this Columbus proposed to do (and he wasn't the first one to suggest it--see below). Sometimes the claim is made that those who opposed Columbus thought the Earth was flat, but that wasn't the case at all. Even in ancient times sailors knew that the Earth was round and scientists not only suspected it was a sphere, but even estimated its size. |\nIf you stand on the seashore and watch a ship sailing away, it will gradually disappear from view. But the reason cannot be the distance: if a hill or tower are nearby, and you climb to the top after the ship has completely disappeared, it becomes visible again.",
+        "score": -5.3914,
+        "rank": 5
+      },
+      {
+        "url": "https://pwg.gsfc.nasa.gov/stargaze/Scolumb.htm",
+        "title": "https://pwg.gsfc.nasa.gov/stargaze/Scolumb.htm",
+        "heading": "",
+        "chunk_text": "n, because using the original value by Eratosthenes, they calculated how far India was to the west of Spain, and concluded that the distance was far too great. |\n| Columbus had an estimate of his own. Some historians have proposed that he used an argument like Strabo's, but Dr. Fischer found his claim to be based on incorrect units of distance. Columbus used an erroneous estimate by Ptolemy (whom we meet again), who based it on a later definition of the stadium, and in estimating the size of the settled world he confused the Arab mile, used by El Ma'mun, with the Roman mile on which our own mile is based. All the same, his final estimate of the distance to India was close to Strabo's. |\nIn the end Queen Isabella overruled the experts, and the rest is history. We may never know whether Columbus knowingly fudged his values to justify an expedition to seek unknown lands, or actually believed India was not too far to the west of Spain. He certainly did call the inhabitants of the lands he discovered \"Indians,\" a mislabeling which still persists. But we do know that if the American continent had not existed, the experts would have been vindicated: Coumbus with his tiny ships could never have crossed an ocean as wide as the Atlantic and Pacific combined.",
+        "score": -5.6619,
+        "rank": 6
+      },
+      {
+        "url": "https://www.ripleys.com/stories/columbus-earth",
+        "title": "https://www.ripleys.com/stories/columbus-earth",
+        "heading": "",
+        "chunk_text": "On August 3, 1492 , Christopher Columbus set sail from the port of Palos de la Frontera, Spain, in command of 90 men and three ships: the Niña , the Pinta , and the Santa Maria . His crew sailed west leaving behind the comforts of the known world at the Canary Islands.\nBy October 10th, Columbus’s men had grown restless with no land in sight. They demanded Columbus turn back for Spain, which forced a quick negotiation. They’d head home in three days unless they discovered land. On October 12th, just two hours past midnight, Juan Rodriguez—a.k.a. Rodrigo de Triana—a sailor on the Pinta , caught sight of a shoreline.\nVindicated, Columbus set foot on San Salvador—literally “ Holy Savior “—the next morning, forever laying to rest the medieval belief that the world was flat. He also discovered a “New World” in the process. Or, so we’ve been told.\nHere’s the full scoop on what Columbus was really after and why it had nothing to do with disproving Flat Earthers or finding new continents.\nIn 1492\n“In 1492, Columbus sailed the ocean blue...” We’re all familiar with this poem and the Portuguese captain who swaggered into history as the result of an intrepid voyage of scientific discovery. In reality, though, Columbus never feared sailing off the edge of the world.\nAs historian Jeffrey Burton has noted, “No educated person in the history of Western Civilization from the third century B.C.",
+        "score": -5.9701,
+        "rank": 7
+      },
+      {
+        "url": "https://www.csmonitor.com/USA/2011/1010/Christopher-Columbus-Five-things-you-thought-you-knew-about-the-explorer/MYTH-Columbus-set-out-to-prove-the-earth-was-round",
+        "title": "https://www.csmonitor.com/USA/2011/1010/Christopher-Columbus-Five-things-you-thought-you-knew-about-the-explorer/MYTH-Columbus-set-out-to-prove-the-earth-was-round",
+        "heading": "",
+        "chunk_text": "FACT: Columbus (and most everyone else) already knew the Earth was round.\nColumbus Day is often an occasion for schoolchildren to repeat the notion that the explorer set out on his renegade voyage to defy the flat-Earth believers who warned he would sail off the face of the planet.\nThis myth entered popular imagination some 500 years after Columbus’s voyage, thanks mainly to American author Washington Irving’s 1828 chronicle “The Life and Voyages of Christopher Columbus.”\nIn reality, most educated people living at the end of the 15th century knew the Earth was a sphere. In fact, the Flat Earth model began to phase out of popular thinking after Aristotle's studies proved the spherical shape of the Earth during the 3rd century BC. Columbus actually thought the planet was pear-shaped.\nWhat was in question, however, was the Earth's circumference. Upon mapping his route, Columbus underestimated the distance to Asia by thousands of miles because he used obsolete Greek data to make his calculations.",
+        "score": 7.5266,
+        "rank": 0
+      },
+      {
+        "url": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "title": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "heading": "",
+        "chunk_text": "BC very few Greek writers thought of the earth as anything but round.” In the Greek and Roman worlds in the last few centuries BCE, maps showing a round earth as well as “three dimensional globes ... were used publicly as educational tools.” After that and all through the Middle Ages, the roundness of the earth was generally known among educated people, with flat-earthers few and far between and little-respected.\nRussell says that the “Flat Error” or “Myth of the Flat Earth,” that is, the misconception that people in the Middle Ages thought the earth was flat, was not widely disseminated until the early 19th century, when the American writer Washington Irving popularized the idea in his partly fictional writings about Columbus. After that time, it became common to portray the Middle Ages as a time of scientific ignorance, with belief in a flat earth as an important trope.\nInterestingly, Russell writes, the Flat Error became a rhetorical tool in perhaps the most important ideological battle of the 19th century:\nThe Flat Error became an article of almost unquestioned faith for historians from the 1860s onward, and for a very deliberate reason. The Darwinist controversy was underway, and Positivists wanted to discredit the anti-Darwinists as foolish bumpkins. To do this they wanted both to compare resistance against evolution with resistance against sphericity and to incorporate it as part of a historical pattern of religious resistance to science.",
+        "score": 5.527,
+        "rank": 1
+      },
+      {
+        "url": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "title": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "heading": "",
+        "chunk_text": "I know it’s a bit after Columbus Day, but this question came up recently when I heard yet another speaker say that Columbus proved the earth is round when he sailed across the Atlantic and didn’t fall off the edge of the world. The story goes that in the Middle Ages everyone believed the earth was flat, and that the courageous Christopher Columbus (Cristoforo Colombo in Italian) went to Queen Isabella of Spain and got her to finance his voyage across the ocean to prove everybody was wrong.\nThis question about the shape of the earth and Columbus’s voyage sometimes comes up in discussions of the authenticity of the Bible, which is why I bring it up here. Critics of the Bible often claim that the Bible is unscientific. They might point to statements in the Bible that supposedly prove that its writers believed in a flat earth, as if using figurative language such as “the four corners of the earth” (Rev 7:1) or ‘the rising and setting of the sun’ (Ps 113:3) were somehow verboten.\nMany of us who are students of the Bible accept it as an inspired expression of a divine Author. At the same time, it is literature and its individual writers were human, so there is nothing wrong with their use of literary devices. The Bible is not a science textbook, but we like to point out that when it touches on matters of proven science, it is accurate.",
+        "score": 4.0441,
+        "rank": 2
+      },
+      {
+        "url": "https://www.ripleys.com/stories/columbus-earth",
+        "title": "https://www.ripleys.com/stories/columbus-earth",
+        "heading": "",
+        "chunk_text": "reality, though, Columbus never feared sailing off the edge of the world.\nAs historian Jeffrey Burton has noted, “No educated person in the history of Western Civilization from the third century B.C. onward believed that the Earth was flat.”\nHistory tells us that as early as 600 B.C., the Ancient Greeks made observations consistent with a spherical Earth. How? From Pythagoras to Aristotle, they used calculations based on the rising and setting of the sun as well as shadows and other physical properties of the globe.\nDespite the loss of this knowledge to most Europeans during the Dark Ages, by Columbus’s time, wealthy Spaniards had once again immersed themselves in these ancient texts. Educated people knew the Earth was round, which begs two questions. Why was Columbus’s voyage considered so controversial in Europe? And what was he really after?\nColumbus’s Crazy Circumference Calculations\nWhat kept many wealthy individuals in Portugal and Spain from wanting to fund Columbus’s trip? In a nutshell, his crazy circumference calculations. While Columbus knew the Earth was round, he calculated its circumference 25 percent smaller than it actually is. What’s more, he overcalculated the size of Asia so that Cipangu (a.k.a. Japan) lay just over 8,000 miles from Spain. Many of Columbus’s contemporaries disagreed with these calculations, saying he’d vastly underestimated the numbers.",
+        "score": 3.4407,
+        "rank": 3
+      },
+      {
+        "url": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "title": "https://aroyking.wordpress.com/2014/10/21/did-columbus-prove-the-earth-is-round/",
+        "heading": "",
+        "chunk_text": "re human, so there is nothing wrong with their use of literary devices. The Bible is not a science textbook, but we like to point out that when it touches on matters of proven science, it is accurate. There’s a lot to say about that topic, but one point we sometimes bring up is that the Bible as early as the 8th century BCE described the shape of the earth as round. Isaiah 40:22 describes that shape as a “circle” or “sphere” — chug in Hebrew.\nWhile it’s beneficial to point this out, sometimes I hear folks add that the shape of the earth was not known until Columbus proved it in 1492. This is not accurate. In fact, the spherical shape of the earth was known by Greek scientists as early as the 5th century BCE. Here are a couple of articles that discuss this question briefly:\n- “Christopher Columbus: 3 things you think he did that he didn’t,” by Valerie Strauss in the Washington Post\n- “The Round Earth and Christopher Columbus,” by David P. Stern, NASA\nThe best article I’ve seen on this topic, though, is “Inventing the Flat Earth,” by historian Jeffrey Russell, in History Today. Unfortunately, that article is not available online outside of a paywall. However, following are a few points of interest from Russell’s piece.\nRussell writes that “after the fifth century BC very few Greek writers thought of the earth as anything but round.” In the Greek and Roman worlds in the last few centuries BCE, maps showing a round earth as well as “three dimensional globes ...",
+        "score": 2.6757,
+        "rank": 4
+      },
+      {
+        "url": "https://www.ripleys.com/stories/columbus-earth",
+        "title": "https://www.ripleys.com/stories/columbus-earth",
+        "heading": "",
+        "chunk_text": "ver got closer to Japan than the east coast of Central America. But he went to his grave insisting he’d reached Asia. This insistence puts to rest the myth that Columbus wanted to find new continents. What’s more, considering the fact the Americas, the Caribbean, and Cuba teemed with people, the idea Columbus discovered anything depends on your cultural perspective.\nAmerican Myth-Making\nHow did the Columbus story become synonymous with a flat Earth? We can blame that on Washington Irving’s work, The Life and Voyages of Christopher Columbus (1828). While in Spain, Irving had the chance to search through a massive archive chronicling the explorer.\nBut Irving found the historical documents at his fingertips rather dull. So, he embellished the story, transforming Columbus into a heroic Enlightenment figure on a scientific quest to slay medieval superstition—namely, the flat Earth theory. Irving’s story had zilch to do with reality, but it sold books.\nToday, Irving’s take on Columbus remains a myth deeply embedded in American pop culture and even our education system. And in one of those ironic twists of fate, more educated people probably now believe in a flat Earth than during Columbus’s time!",
+        "score": 1.0186,
+        "rank": 5
+      },
+      {
+        "url": "https://pwg.gsfc.nasa.gov/stargaze/Scolumb.htm",
+        "title": "https://pwg.gsfc.nasa.gov/stargaze/Scolumb.htm",
+        "heading": "",
+        "chunk_text": "|\nIndex 5c. Coordinates 6. The Calendar 6a. Jewish Calendar 7.Precession 8. The Round Earth 8a. The Horizon 8b. Parallax 8c. Moon dist. (1) 8d. Moon dist. (2) 9a. Earth orbits Sun? 9b. The Planets 9c. Copernicus to Galileo |\nToday it is generally known that the Earth is a sphere, or very close to one (its equator bulges out a bit because of the Earth's rotation). Christopher Columbus too knew that the Earth was round, when he proposed to reach India by sailing west from Spain, he too knew that the Earth was round. India was the source of precious spices and other rare goods, but reaching it by sailing east was difficult, because Africa blocked the way. On a round globe, however, it should also be possible to reach India by sailing west, and this Columbus proposed to do (and he wasn't the first one to suggest it--see below). Sometimes the claim is made that those who opposed Columbus thought the Earth was flat, but that wasn't the case at all. Even in ancient times sailors knew that the Earth was round and scientists not only suspected it was a sphere, but even estimated its size. |\nIf you stand on the seashore and watch a ship sailing away, it will gradually disappear from view. But the reason cannot be the distance: if a hill or tower are nearby, and you climb to the top after the ship has completely disappeared, it becomes visible again.",
+        "score": -3.364,
+        "rank": 6
+      },
+      {
+        "url": "https://www.ripleys.com/stories/columbus-earth",
+        "title": "https://www.ripleys.com/stories/columbus-earth",
+        "heading": "",
+        "chunk_text": "he size of Asia so that Cipangu (a.k.a. Japan) lay just over 8,000 miles from Spain. Many of Columbus’s contemporaries disagreed with these calculations, saying he’d vastly underestimated the numbers. As Columbus’s first voyage showed, these critics were right.\nWhy was Columbus interested in Japan? At the time, it represented the gateway to Asia, which Europeans referred to as “the Indies.” As Columbus and his crew attempted to interact with the indigenous people of San Salvador and other islands, he became more and more frustrated. After all, the explorer thought he’d made landfall in Japan. But why didn’t he see any signs of the perfumes, silks, jewels, gold, and spices detailed by Rustichello da Pisa in The Travels of Marco Polo ?\nMarco Polo, who da Pisa had interviewed for the 13th-century book, never visited Japan, but he had heard about it from Muslim traders in China. These traders, in turn, had never been either. But that didn’t stop them from weaving fabulous tales about a nation overflowing with pearls and precious stones where temples and palaces lay covered in tremendous quantities of gold, including floors paved in the yellow stuff up to two fingers thick.\nOf course, as we all know, Columbus never got closer to Japan than the east coast of Central America. But he went to his grave insisting he’d reached Asia. This insistence puts to rest the myth that Columbus wanted to find new continents.",
+        "score": -4.5266,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 1,
+      "decompose_ms": 2088,
+      "search_ms": 4495,
+      "extract_ms": 5118,
+      "chunk_ms": 15,
+      "retrieve_ms": 15225,
+      "synthesis_ms": 12117,
+      "embedding_cleanup_ms": 1,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 52793,
+    "elapsed_s": 55.72,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

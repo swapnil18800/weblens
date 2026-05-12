@@ -1,0 +1,475 @@
+{
+  "id": "mh1",
+  "category": "multi_hop_comparison",
+  "domain": "ai",
+  "question": "Compare GPT-4o, Claude Opus 4.7, and Gemini 2.5 Pro on long-context handling and agentic tool use.",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Should decompose into per-model or per-dimension sub-queries.",
+  "key_facts": [
+    "context window",
+    "tool use",
+    "GPT-4o",
+    "Claude",
+    "Gemini"
+  ],
+  "ground_truth": "All three offer large context windows (≥128k tokens). Claude Opus 4.7 emphasizes extended tool-use and agentic workflows; GPT-4o has multimodal+tool capabilities; Gemini 2.5 Pro has very large context and code/agent reasoning.",
+  "session_id": "eval-20260511T161015Z-mh1",
+  "verdict": "partial",
+  "aggregate": 0.625,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.125,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.841,
+    "aggregate": 0.625,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.625
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.125,
+      "relevant": 1,
+      "total": 8,
+      "reasoning": "Only chunk 5 mentions Claude Opus 4.7 and agentic tool use; others lack comparison of specified models."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "context window",
+        "tool use",
+        "GPT-4o",
+        "Claude",
+        "Gemini"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.841,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "context window",
+      "tool use",
+      "GPT-4o",
+      "Claude",
+      "Gemini"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 1,
+      "decompose_ms": 2421,
+      "search_ms": 2319,
+      "extract_ms": 14816,
+      "chunk_ms": 105,
+      "retrieve_ms": 6853,
+      "synthesis_ms": 13789,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 3,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 51375,
+    "pipeline_s": 53.86
+  },
+  "judge_reasoning": "refusal",
+  "pipeline": {
+    "answer": "# Comparing GPT-4o, Claude Opus 4.7, and Gemini 2.5 Pro on Long-Context Handling and Agentic Tool Use\n\nThese three models represent different tiers of capability in 2025, with Claude Opus 4.7 leading in agentic tool use and Gemini 2.5 Pro excelling in long-context handling, while GPT-4o serves primarily as a baseline for newer models.\n\n## Long-Context Handling\n\n| Model | Context Window | Key Benchmark Performance | Source |\n|-------|---------------|--------------------------|--------|\n| GPT-4o | 128K tokens | No direct benchmark reported; GPT-4.1 achieved 100% on needle-in-haystack | [1] |\n| Claude Opus 4.7 | Not specified | Designed for \"long stretches\" of context with improved memory across sessions | [4][5] |\n| Gemini 2.5 Pro | 1M tokens (2M planned) | **94.5% accuracy** on MRCR benchmark at 128k context | [6][7][8] |\n\n- Gemini 2.5 Pro offers the **largest native context window** and top-tier benchmark performance [6][8]\n- Claude Opus 4.7 emphasizes **practical long-context continuity** for multi-session workflows, reducing re-priming needs [4]\n- GPT-4o's 128K window is standard, but no comparable 2025 benchmark data exists; its successor (GPT-4.1) dominates this area [1]\n\n## Agentic Tool Use\n\n| Model | MCP-Atlas (Production Agents) | SWE-bench Verified (Coding) | Finance Agent v1.1 | Source |\n|-------|-------------------------------|-----------------------------|-------------------|--------|\n| GPT-4o | **Not listed** | **33.2%** | Not reported | [1][2][3] |\n| Claude Opus 4.7 | **77.3%** (leader) | Not directly reported | **64.4%** (leader) | [3][4] |\n| Gemini 2.5 Pro | **73.9%** | **63.8%** | Not reported | [3][6][8] |\n\n- **Claude Opus 4.7** leads agentic tool use across multiple benchmarks: MCP-Atlas (77.3%), Finance Agent v1.1 (64.4%), and BigLaw Bench (90.9% at high effort) [3][4]\n- **Gemini 2.5 Pro** performs well in agentic coding (SWE-bench: 63.8%, Aider Polyglot: 74.0%) but trails Claude on production agent benchmarks [6][8]\n- **GPT-4o** shows no direct agentic tool-use benchmark scores; its SWE-bench score (33.2%) is far below both competitors [1][2][3]\n\n## Additional Capabilities\n\n- **Reasoning strength:** Gemini 2.5 Pro leads on Humanity's Last Exam (18.8%) and AIME 2024 (92.0%) [6][7]\n- **Production focus:** Claude Opus 4.7 is characterized as \"built for long-running agentic execution\" with a new **xhigh** effort level balancing reasoning depth and latency [4][5]\n- **Multimodal input:** Gemini 2.5 Pro supports text, images, audio, and video natively [7][8], while Claude Opus 4.7 emphasizes code + image reasoning [4]\n\n## Key Takeaways\n\n- **Claude Opus 4.7** is the clear leader for production agentic tool use, with best-in-class MCP-Atlas and finance benchmark scores [3][4]\n- **Gemini 2.5 Pro** excels in raw long-context capacity (1M tokens) and reasoning benchmarks, making it ideal for full-codebase analysis and complex problem-solving [6][8]\n- **GPT-4o** serves as a baseline; its successor models (GPT-4.1, GPT-5) substantially outperform it in both long-context and tool-use categories [1][2][3]\n- For agentic workflows, Claude Opus 4.7 is the strongest choice; for long-document comprehension and math reasoning, Gemini 2.5 Pro leads [3][6]\n- Direct GPT-4o agentic tool-use benchmarks are absent from 2025 sources, limiting direct comparison [1][3]",
+    "mode": "search",
+    "rewritten_query": "Compare GPT-4o, Claude Opus 4.7, and Gemini 2.5 Pro on long-context handling and agentic tool use.",
+    "rewrote": false,
+    "rationale": "Comparison of current LLM capabilities requires recent benchmarks and reviews.",
+    "sub_queries": [
+      "GPT-4o long-context handling benchmark performance agentic tool use 2025",
+      "Claude Opus 4.7 long-context handling benchmark performance agentic tool use 2025",
+      "Gemini 2.5 Pro long-context handling benchmark performance agentic tool use 2025"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+        "title": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+        "snippet": ". GPT-4.5 will be turned off on July 14, 2025.\nGPT-4.1 Performance Benchmarks & Code Generation\nCoding Performance\nThe coding improvements are substantial:\n- SWE-bench Verified: One test measuring ability to solve real GitHub issues in actual codebases, GPT-4.1 scored 54.6%, far outperforming GPT-4o"
+      },
+      {
+        "num": 2,
+        "url": "https://www.getpassionfruit.com/blog/chatgpt-5-vs-gpt-5-pro-vs-gpt-4o-vs-o3-performance-benchmark-comparison-recommendation-of-openai-s-2025-models",
+        "title": "https://www.getpassionfruit.com/blog/chatgpt-5-vs-gpt-5-pro-vs-gpt-4o-vs-o3-performance-benchmark-comparison-recommendation-of-openai-s-2025-models",
+        "snippet": "AI\nJoin 500+ brands growing with Passionfruit!\nTL;DR - Best model by job:\n• Coding & complex reasoning: GPT-5 / GPT-5 Pro\n• General chat at lower cost: 4o\n• Math/logic with tools: o3\n• Docs/data analysis & long context: GPT-5\n• Lowest cost at scale: GPT-5 mini / API mix\n• Automation & workflows: Cha"
+      },
+      {
+        "num": 3,
+        "url": "https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained",
+        "title": "Claude Opus 4.7 Benchmarks Explained",
+        "snippet": "MCP-Atlas (Scaled tool use)\n\nMCP-Atlas measures performance across complex, multi-turn tool-calling scenarios. It's the closest thing to a real production agent benchmark.\n\n| Model | MCP-Atlas |\n| --- | --- |\n| Claude Opus 4.7 | 77.3% |\n| Claude Opus 4.6 | 75.8% |\n| Gemini 3.1 Pro | 73.9% |\n| GPT-5."
+      },
+      {
+        "num": 4,
+        "url": "https://almcorp.com/blog/claude-opus-4-7/",
+        "title": "https://almcorp.com/blog/claude-opus-4-7/",
+        "snippet": "dels as impressive responders to AI models as dependable work systems.\nDetailed FAQ about Claude Opus 4.7\nWhat is Claude Opus 4.7?\nClaude Opus 4.7 is Anthropic’s latest generally available Opus model. It is positioned as a premium model for advanced coding, long-running agentic tasks, document-heavy"
+      },
+      {
+        "num": 5,
+        "url": "https://caylent.com/blog/claude-opus-4-7-deep-dive-capabilities-migration-and-the-new-economics-of-long-running-agents",
+        "title": "Claude Opus 4.7 Deep Dive: Capabilities, Migration, and the New Economics of Long-Running Agents",
+        "snippet": "Conclusion\n\nClaude Opus 4.7 looks like Anthropic’s strongest statement yet about what the premium tier is actually for. This is not just a smarter chatbot. It is a model meant to hold context over long stretches, reason across code and images, operate more autonomously, and do higher-quality profess"
+      },
+      {
+        "num": 6,
+        "url": "https://futureagi.com/blog/gemini-2-5-pro-2025/",
+        "title": "Gemini 2.5 Pro: Benchmarks & Guide for Developers",
+        "snippet": "Side-by-Side Coding Performance: How Gemini 2.5 Pro and Claude 3.7 Sonnet Compare on Key Benchmarks\n\n![Image 1: Gemini 2.5 Pro benchmarks table: SWE-bench, LiveCodeBench v5, AIME 2024, GPQA scores vs Claude 3.7 Sonnet for pricing context](https://framerusercontent.com/images/yjjuBPJiPqQKa5np2v2YTVZp"
+      },
+      {
+        "num": 7,
+        "url": "https://futureagi.substack.com/p/benchmarking-gemini-25-pro-vs-top",
+        "title": "Benchmarking Gemini 2.5 Pro vs Top LLMs: A Detailed Analysis",
+        "snippet": "*   Humanity's Final Exam: Gemini 2.5 Pro obtained a score of 18.8% on this rigorous criterion, surpassing GPT-4.5's 6.4% and Claude 3.7 Sonnet's 8.9%. This result suggests that Gemini 2.5 Pro holds superior unaided reasoning and knowledge recall.\n\n*   GPQA Diamond: The model attained an 84.0% pass@"
+      },
+      {
+        "num": 8,
+        "url": "https://dirox.com/post/gemini-2-5-pro-a-comparative-analysis-against-its-ai-rivals-2025-landscape",
+        "title": "https://dirox.com/post/gemini-2-5-pro-a-comparative-analysis-against-its-ai-rivals-2025-landscape",
+        "snippet": "Code CLI: Anthropic offers a preview of Claude Code, a command-line interface tool.\nThe focus is clearly on empowering developers and integrating tightly within the software development lifecycle.\nIV. Grok 3 - The Real-Time Maverick\nOverview\nLaunched in February 2025, Grok 3 is the flagship large la"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.getpassionfruit.com/blog/chatgpt-5-vs-gpt-5-pro-vs-gpt-4o-vs-o3-performance-benchmark-comparison-recommendation-of-openai-s-2025-models",
+        "title": "GPT-5 vs o3 vs 4o vs GPT-5 Pro — 2025 Benchmarks & Best Uses",
+        "snippet": "# ChatGPT-5 vs GPT-5 Pro vs o3 vs 4o: 2025 Benchmarks, Costs, Best Uses. GPT-5 vs o3 vs 4o 2025 benchmarks. • **Coding & complex reasoning:** **GPT-5 / GPT-5 Pro**. We'll benchmark the standard ChatGPT 5, the powerhouse GPT-5 Pro, the new ChatGPT Agent capabilities, and the specialized Deep Research mode against their predecessors, OpenAI o3 and GPT-4o, to help you choose the perfect tool. ## Which OpenAI Model Delivers the Best Performance, and How Does ChatGPT 5 Redefine the Lineup? The key innovation lies in what OpenAI calls the \"real-time router\" - an intelligent system that analyzes conversation type, complexity, tool needs, and user intent to determine whether to use the quick-response model or engage the deeper \"GPT-5 thinking\" mode. | **Area** | **GPT-4o / o3** | **GPT-5 / GPT-5 Pro** | **What it means** |. | **Science (GPQA Diamond)** | o3: 83.3%, 4o: 70.1% | GPT-5: 87.3%, GPT-5 Pro: 89.4% | Fewer logic errors on PhD-level questions |."
+      },
+      {
+        "url": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+        "title": "GPT-4.1 Released: Benchmarks, Performance, and How to Safely ...",
+        "snippet": "# GPT-4.1 Released: Benchmarks, Performance, and How to Safely Migrate to Production. Just when we thought we were finally moving to GPT-5, they've surprised us with GPT-4.1—a model that is in many ways an upgrade from GPT-4.5. GPT-4.1 introduces a family of three models designed specifically for developers, featuring major improvements in coding, instruction following, and long context handling. GPT-4.1 in the API. ## What's New in GPT-4.1? OpenAI is deprecating GPT-4.5, their second most expensive model, in the API as GPT-4.1 offers similar or better performance at lower cost and latency. When asked to generate an SVG butterfly, GPT-4.1's output shows impressive detail and execution compared to other leading models like Gemini 2.5 and Claude 3.7 Sonnet. | **GPT-4.1** | Coding, instruction following, long context | 1M tokens | $2.00 / $8.00 | Production developer workflows, complex coding |. | **GPT-4.1** | Coding, instruction following, long context | 1M tokens | $2.00 / $8.00 | Production developer workflows |. Use the model string `gpt-4.1`, `gpt-4.1-mini`, or `gpt-4.1-nano` in your requests."
+      },
+      {
+        "url": "https://www.whistlerbillboards.com/friday-feature/ranking-the-top-7-llms-in-2025/",
+        "title": "Top 7 LLMs Ranked in 2025: GPT-4o, Gemini, Claude & More",
+        "snippet": "# Ranking the Top 7 LLMs in 2025: Performance, Features, and Use Cases. ## Large language models (LLMs) are at the heart of AI-powered tools. In 2025, the LLM space is more competitive than ever, with models like GPT-4o, Gemini 1.5, Claude 3, and Grok battling for dominance across personal, enterprise, and developer use cases. This guide ranks the top 7 LLMs based on real-world performance, capabilities, and integration. Let’s dive into what makes these models stand out, what they excel at, and how they compare across benchmarks such as reasoning, speed, context length, real-time access, and multimodal support. Google’s Gemini 1.5 Pro redefined context length in 2024 with a groundbreaking 1-million-token context window, allowing complete ingestion of long documents, PDFs, or even codebases. Gemini is the first model to directly compete with GPT-4 on both reasoning and context depth, particularly in legal and scientific domains."
+      },
+      {
+        "url": "https://medium.com/@leucopsis/how-gpt-4-1-compares-to-gpt-4o-5e7d9a52d113",
+        "title": "How GPT-4.1 compares to GPT-4o. Updated: Septemebr 3rd, 2025",
+        "snippet": "GPT-4.1 exhibits an absolute increase of 10.5% from GPT-4o with better retention of previous context during conversation and cleaner following of instruction."
+      },
+      {
+        "url": "https://openai.com/index/gpt-4-1/",
+        "title": "Introducing GPT-4.1 in the API - OpenAI",
+        "snippet": "*   **Coding**: GPT‑4.1 scores 54.6% on [SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/), improving by 21.4%abs over GPT‑4o and 26.6%abs over GPT‑4.5—making it a leading model for coding. *   **Instruction following:**On [Scale’s MultiChallenge⁠(opens in a new window)](https://scale.com/leaderboard/multichallenge) benchmark, a measure of instruction following ability, GPT‑4.1 scores 38.3%, a 10.5%abs increase over GPT‑4o. When combined with primitives like the [Responses API⁠(opens in a new window)](https://platform.openai.com/docs/api-reference/responses), developers can now build agents that are more useful and reliable at real-world software engineering, extracting insights from large documents, resolving customer requests with minimal hand-holding, and other complex tasks. In ChatGPT, many of the improvements in instruction following, coding, and intelligence have been gradually incorporated into the [latest version⁠(opens in a new window)](https://help.openai.com/en/articles/6825453-chatgpt-release-notes) of GPT‑4o, and we will continue to incorporate more with future releases. GPT‑4.5 was [introduced](https://openai.com/index/introducing-gpt-4-5/) as a research preview to explore and experiment with a large, compute-intensive model, and we’ve learned a lot from developer feedback. To aid in reproducing and contextualizing our results, we describe our setup for GPT‑4.1_[_here_⁠(opens in a new window)](https://cookbook.openai.com/examples/gpt4-1_prompting_guide)_."
+      },
+      {
+        "url": "https://arxiv.org/html/2505.19662v3",
+        "title": "FieldWorkArena: Agentic AI Benchmark for Real Field Work Tasks",
+        "snippet": "# FieldWorkArena: Agentic AI Benchmark for Real Field Work Tasks. This paper introduces FieldWorkArena, a benchmark for agentic AI targeting real-world field work. With the recent increase in demand for agentic AI, they are built to detect and document safety hazards, procedural violations, and other critical incidents across real-world manufacturing and retail environments. Whereas most agentic AI benchmarks focus on performance in simulated or digital environments, our work addresses the fundamental challenge of evaluating agents in the real-world. In this paper, we improve the evaluation function from previous methods to assess the performance of agentic AI in diverse real-world tasks. Evaluation results confirmed that performance evaluation considering the characteristics of Multimodal LLM (MLLM) such as GPT-4o is feasible. The introduction of agentic AI in the workplace is expected to enable functions such as extracting necessary knowledge from documents, analyzing real time on-site conditions using sensors like cameras, and notifying relevant members of required information."
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=QVJcdfkRpH8",
+        "title": "Claude Opus 4.7 - A New Frontier, in Performance … and Drama",
+        "snippet": "Claude Opus 4.7 just dropped, but behind every headline lies a deeper story. From a bonanza of benchmarks, to seeing the fruits of one of"
+      },
+      {
+        "url": "https://caylent.com/blog/claude-opus-4-7-deep-dive-capabilities-migration-and-the-new-economics-of-long-running-agents",
+        "title": "Claude Opus 4.7 Deep Dive: Capabilities, Migration, and the New ...",
+        "snippet": "Explore Claude Opus 4.7, Anthropic’s most capable generally available model, with stronger agentic coding, high-resolution vision, 1M context, and a migration story that matters almost as much as the benchmark scores. That’s the real story behind Claude Opus 4.7. Pricing stays where Opus 4.6 pricing was, but the model is positioned as meaningfully better at agentic coding, long-horizon autonomy, multimodal reasoning, memory, and enterprise knowledge work. It’s that the same price card is now supposed to buy more sustained autonomy and better execution on the kinds of workflows that matter in production. At a spec level, Opus 4.7 is positioned as Anthropic’s most capable generally available model for coding, enterprise workflows, multimodal reasoning, financial analysis, life sciences, cybersecurity, and long-running agentic work. At a high level, Opus 4.7 looks like Anthropic’s attempt to make the top tier more operationally useful, not just more impressive in a benchmark table."
+      },
+      {
+        "url": "https://www.reddit.com/r/BetterOffline/comments/1snrb48/claude_opus_47_shows_a_significant_regression_on/",
+        "title": "Claude Opus 4.7 shows a significant regression on long context tasks",
+        "snippet": "All you have to do as someone who uses it is watch the process in Claude Code, especially. The retries, external tool calling, and MCP"
+      },
+      {
+        "url": "https://www.facebook.com/globaltechcouncil/posts/claude-opus-47-showcases-a-new-level-of-ai-capability-from-high-resolution-reaso/1433834972107170/",
+        "title": "Claude Opus 4.7 showcases a new level of AI capability ... - Facebook",
+        "snippet": "• The AI achieves SOTA performance on real-world coding benchmarks and agentic tool use, surpassing competitors like o1, o3-mini, and DeepSeek"
+      },
+      {
+        "url": "https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained",
+        "title": "Claude Opus 4.7 Benchmarks Explained - Vellum",
+        "snippet": "*   [Key observations of reported benchmarks](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#key-observations-of-reported-benchmarks). *   [Coding capabilities](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#coding-capabilities). *   [SWE-bench Verified](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#swe-bench-verified). *   [SWE-bench Pro](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#swe-bench-pro). *   [Terminal-Bench 2.0](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#terminal-bench-20). *   [Agentic capabilities](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#agentic-capabilities). *   [MCP-Atlas (Scaled tool use)](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#mcp-atlas-scaled-tool-use). *   [Finance Agent v1.1](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#finance-agent-v11). *   [OSWorld-Verified (Computer use)](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#osworld-verified-computer-use). *   [BrowseComp (Agentic search)](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#browsecomp-agentic-search). *   [Reasoning capabilities](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#reasoning-capabilities). *   [GPQA Diamond (Graduate-level science)](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#gpqa-diamond-graduate-level-science). *   [Humanity's Last Exam](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#humanitys-last-exam). *   [Multimodal and vision capabilities](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#multimodal-and-vision-capabilities). *   [CharXiv Reasoning (Visual reasoning)](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#charxiv-reasoning-visual-reasoning). *   [Multilingual Q&A (MMMLU)](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#multilingual-q-and-a-mmmlu). *   [Safety and alignment](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#safety-and-alignment). *   [What these benchmarks really mean for your agents](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#what-these-benchmarks-really-mean-for-your-agents). *   [When to use Opus 4.6 vs Opus 4.7](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#when-to-use-opus-46-vs-opus-47). *   [Use Opus 4.7 with your Vellum assistant](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#use-opus-47-with-your-vellum-assistant). *   [Frequently asked questions](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#frequently-asked-questions). *   [Extra resources](https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained#extra-resources). Opus 4.7 leads among currently available (non-preview) models on: SWE-bench Verified (87.6%), SWE-bench Pro (64.3%), MCP-Atlas scaled tool use (77.3%), OSWorld-Verified computer use (78.0%), Finance Agent v1.1 financial analysis (64.4%), and CharXiv visual reasoning (82.1% without tools, 91.0% with tools). [Claude Opus 4.6 vs 4.5 benchmarks explained →](https://www.vellum.ai/blog/claude-opus-4-6-benchmarks). [Claude Opus 4.5 benchmarks explained →](https://www.vellum.ai/blog/claude-opus-4-5-benchmarks)."
+      },
+      {
+        "url": "https://almcorp.com/blog/claude-opus-4-7/",
+        "title": "Claude Opus 4.7: Pricing, Benchmarks & Context Window",
+        "snippet": "Get in Touch With Us. Home » Blog » Claude Opus 4.7 Explained: Benchmarks, Pricing, Context Window, and What Changed for Coding, Vision, and Enterprise AI. # Claude Opus 4.7 Explained: Benchmarks, Pricing, Context Window, and What Changed for Coding, Vision, and Enterprise AI. Claude Opus 4.7 is Anthropic’s latest generally available Opus model, and the release matters for a simple reason: it is not just another benchmark update. It changes how teams should think about long-running AI work, multimodal tasks, prompt design, and the real cost of production deployment. Opus 4.7 keeps the same list price as Opus 4.6, adds stronger performance on hard coding and agentic workflows, improves high-resolution vision, introduces a new `xhigh` effort level, and uses an updated tokenizer that can increase token counts for the same input. ## What Claude Opus 4.7 actually is. Claude Opus 4.7 is Anthropic’s most capable generally available Opus model at the time of release."
+      },
+      {
+        "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_v2_5_report.pdf",
+        "title": "[PDF] Gemini 2.5: Pushing the Frontier with Advanced Reasoning ...",
+        "snippet": "As can be seen, Gemini 2.5 Pro achieves state-of-the-art performance on key video understanding benchmarks, surpassing recent models like GPT 4.1 under comparable testing conditions (same prompt and video Capability Benchmark Pro Gemini 2.5 high o3 high o4-mini Sonnet Claude 4 Opus Claude 4 Extended Thinking Grok 3 Beta 0528 DeepSeek R1 Code LiveCodeBench 74.2% 72.0% 75.8% 48.9% 51.1% – 70.5% Aider Polyglot 82.2% 79.6% 72.0% 61.3% 72.0% 53.3% 71.6% Verified SWE-bench attempt single 59.6% 69.1% 68.1% 72.7% 72.5% --attempts multiple 67.2% --80.2% 79.4% -57.6% Reasoning (diamond) GPQA attempt single 86.4% 83.3% 81.4% 75.4% 79.6% 80.2% 81.0% Last Exam Humanity’s tools no 21.6% 20.3% 18.1% 7.8% 10.7% -14.0% ⋄ Factuality SimpleQA 54.0% 48.6% 19.3% --43.6% 27.8% Grounding FACTS 87.8% 69.9% 62.1% 79.1% 77.7% 74.8% 82.4% Math AIME 2025 attempt single 88.0% 88.9% 92.7% 70.5% 75.5% 77.3% 87.5% Long-context retrieval) LOFT (hard ≤128K 87.0% 77.0% 60.5% 81.6% -73.1% -1M 69.8% ------(8-needle) MRCR-V2 ≤128K 58.0% 57.1% 36.3% 39.1% 16.1%* 34.0% -1M 16.4% ------Understanding Image MMMU attempt single 82.0% 82.9% 81.6% 74.4% 76.5% 76.0% No MM support Table 4 | Performance comparison of Gemini 2.5 Pro with other large language models on different capabilities."
+      },
+      {
+        "url": "https://www.linkedin.com/pulse/21-google-previews-gemini-25-pro-io2025-dominant-dev-llm-dino-cajic-7pxoc",
+        "title": "21). Google Previews Gemini 2.5 Pro at I/O 2025 - LinkedIn",
+        "snippet": "On long-context and reasoning benchmarks 2.5 Pro lands near the top. You see numbers like: High 80s and 90s on math and scientific reasoning"
+      },
+      {
+        "url": "https://futureagi.substack.com/p/benchmarking-gemini-25-pro-vs-top",
+        "title": "Benchmarking Gemini 2.5 Pro vs Top LLMs: A Detailed Analysis",
+        "snippet": "# Future AGI. # Benchmarking Gemini 2.5 Pro vs Top LLMs: A Detailed Analysis. In 2025, we are seeing new startups and organizations joining the race of building powerful LLMs. But what about the giants, Google? AI models are currently being developed to enhance their reasoning capabilities. * Integrated Reasoning Architecture: The Built-in \"thinking\" mechanism included in the Gemini 2.5 Pro model enables it to complete tasks step-by-step. ## **Detailed Benchmark Analysis**. ## **Gemini 2.5 Pro vs. Claude 3.7 Sonnet provides transparent reasoning through its \"extended thinking\" mode, while Gemini 2.5 Pro offers a larger context window and multimodal support. *Table 2: Gemini 2.5 pro vs. ## **Gemini 2.5 Pro Pricing & Cost Analysis**. Developers can use this model in a way that suits their needs. * The Gemini 2.5 Pro's built-in \"thinking\" capabilities allow it to process tasks step by step, making it highly effective for complex reasoning challenges. © 2026 Future AGI · Privacy ∙ Terms ∙ Collection notice."
+      },
+      {
+        "url": "https://futureagi.com/blog/gemini-2-5-pro-2025/",
+        "title": "Gemini 2.5 Pro: Benchmarks & Guide for Developers | Future AGI Blog",
+        "snippet": "Gemini 2.5 Pro benchmarks and pricing analysis plus Claude 3.7 comparison. Master Gemini 2.5 Pro API, context window and developer tips in this guide."
+      },
+      {
+        "url": "https://www.reddit.com/r/singularity/comments/1jl1eti/man_the_new_gemini_25_pro_0325_is_a_breakthrough/",
+        "title": "Man, the new Gemini 2.5 Pro 03-25 is a breakthrough and people ...",
+        "snippet": "No other model can come close to its long context performance. That is memory. That is longterm planning. That is that DOOM game which"
+      },
+      {
+        "url": "https://dirox.com/post/gemini-2-5-pro-a-comparative-analysis-against-its-ai-rivals-2025-landscape",
+        "title": "Gemini 2.5 Pro: A Comparative Analysis Against Its AI Rivals (2025 ...",
+        "snippet": "# Gemini 2.5 Pro: A Comparative Analysis Against Its AI Rivals (2025 Landscape). In this article, Dirox will provide a systematic, in-depth comparison of five key AI models defining the 2025 landscape: Google DeepMind's **Gemini 2.5 Pro**, OpenAI's **GPT-4.5**, Anthropic's **Claude 3.7 Sonnet**, xAI's **Grok 3**, and DeepSeek AI's **R1**. > Google DeepMind's Gemini 2.5 Pro, emerging from Google's extensive AI research, emphasizes **complex reasoning, coding prowess**, and n**ative multimodality** **integrated within the Google ecosystem**. > Anthropic's **Claude 3.7 Sonnet** distinguishes itself with a **hybrid reasoning approach**, combining **rapid responses** with an optional**\"Extended Thinking\"** mode for structured logic and excelling in coding and high-quality writing. > xAI's **Grok 3**, developed by Elon Musk's venture, aims to be a \"maverick\" with **real-time information access** via **X integration**, distinct **reasoning modes** (Think, Big Brain, DeepSearch), and a unique, sometimes controversial, **personality**. Access is provided through Google AI Studio, the Gemini app (for Gemini Advanced subscribers via the Google One AI Premium plan), and Vertex AI, indicating its integration into Google's broader cloud and consumer ecosystem."
+      }
+    ],
+    "chunk_count": 24,
+    "chunks": [
+      {
+        "url": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+        "title": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+        "heading": "",
+        "chunk_text": ". GPT-4.5 will be turned off on July 14, 2025.\nGPT-4.1 Performance Benchmarks & Code Generation\nCoding Performance\nThe coding improvements are substantial:\n- SWE-bench Verified: One test measuring ability to solve real GitHub issues in actual codebases, GPT-4.1 scored 54.6%, far outperforming GPT-4o (33.2%) and GPT-4.5 (28%).\n- Code Diff Accuracy: When asked to modify only specific parts of code instead of rewriting entire files, GPT-4.1 achieved 52.9% accuracy compared to GPT-4o's 18.3%.\n- Extraneous Edits: GPT-4.1 rarely touches files it shouldn't, with unnecessary edits dropping from 9% (with GPT-4o) to just 2%.\n- Real-world Testing: Windsurf, a popular coding tool, reports that GPT-4.1 scored 60% higher on their internal benchmarks and was 30% more efficient at using programming tools.\nInstruction Following\n- Complex Instructions: When given difficult multi-step instructions with specific formatting requirements, GPT-4.1 correctly followed them 49% of the time compared to GPT-4o's 29%.\n- Multi-turn Conversations: On the MultiChallenge benchmark testing how well models maintain context through conversation, GPT-4.1 scored 38.3%, a 10.5% improvement over GPT-4o.\n- Following Constraints: When explicitly told what not to do, GPT-4.1 achieved 87.4% compliance on the IFEval benchmark versus 81.0% for GPT-4o.\nLong Context Performance\n- Context Window: All three GPT-4.1 models can process up to 1 million tokens at once—8 times more than GPT-4o's 128K limit.\n- Finding Specific Inf",
+        "score": 7.0392,
+        "rank": 0
+      },
+      {
+        "url": "https://www.getpassionfruit.com/blog/chatgpt-5-vs-gpt-5-pro-vs-gpt-4o-vs-o3-performance-benchmark-comparison-recommendation-of-openai-s-2025-models",
+        "title": "https://www.getpassionfruit.com/blog/chatgpt-5-vs-gpt-5-pro-vs-gpt-4o-vs-o3-performance-benchmark-comparison-recommendation-of-openai-s-2025-models",
+        "heading": "",
+        "chunk_text": "AI\nJoin 500+ brands growing with Passionfruit!\nTL;DR - Best model by job:\n• Coding & complex reasoning: GPT-5 / GPT-5 Pro\n• General chat at lower cost: 4o\n• Math/logic with tools: o3\n• Docs/data analysis & long context: GPT-5\n• Lowest cost at scale: GPT-5 mini / API mix\n• Automation & workflows: ChatGPT Agent\n(Benchmarks, pricing, and step-by-step picks below.)\nOn August 7, 2025, OpenAI has released ChatGPT 5. With legacy models like GPT-4o being officially retired and new specialized versions like GPT-5 Pro emerging, how do you navigate this new landscape?\nThis article provides the definitive guide to OpenAI's 2025 lineup. We'll benchmark the standard ChatGPT 5, the powerhouse GPT-5 Pro, the new ChatGPT Agent capabilities, and the specialized Deep Research mode against their predecessors, OpenAI o3 and GPT-4o, to help you choose the perfect tool.\nWhich OpenAI Model Delivers the Best Performance, and How Does ChatGPT 5 Redefine the Lineup?\nChatGPT 5 represents a fundamental shift in how OpenAI structures its AI offerings.",
+        "score": 6.4001,
+        "rank": 1
+      },
+      {
+        "url": "https://www.getpassionfruit.com/blog/chatgpt-5-vs-gpt-5-pro-vs-gpt-4o-vs-o3-performance-benchmark-comparison-recommendation-of-openai-s-2025-models",
+        "title": "https://www.getpassionfruit.com/blog/chatgpt-5-vs-gpt-5-pro-vs-gpt-4o-vs-o3-performance-benchmark-comparison-recommendation-of-openai-s-2025-models",
+        "heading": "",
+        "chunk_text": "cial OpenAI Resources:\nDeveloper Resources:\nGoogle and Technical Resources:\nBenchmark Resources:\nThis comprehensive analysis represents the current state of OpenAI's model ecosystem as of August 2025. As the field of artificial intelligence continues to evolve rapidly, we recommend checking OpenAI's official blog and release notes for the latest updates and improvements to the ChatGPT platform.\nFAQs - GPT-5 vs o3 vs 4o (2025)\nIs GPT-5 better than o3?\nOn OpenAI’s own real-world coding benchmark (SWE-bench Verified), GPT-5 scores 74.9% vs 69.1% for o3, while also improving math and multimodal benchmarks. Use GPT-5 when you need the best end-to-end coding and agentic outcomes; use o3 when you want deliberate, reasoning-heavy steps with strong visual analysis.\nGPT-5 vs GPT-4o: which one should I pick?\nGPT-5 leads on reasoning and coding SOTA; third-party roundups and OpenAI data show large gains (e.g., SWE-bench Verified 74.9% for GPT-5, with 4o far lower in external tests). Pick GPT-5 for complex work; pick 4o for general chat and creative, low-latency experiences.\nWhat’s the GPT-5 context window and output limit?\n400K token context with up to 128K output tokens, with text+vision support. That makes GPT-5 suitable for long PDFs, spreadsheets, and multimodal analysis without chunking in many cases.\nHow much does GPT-5 cost in the API?\nList prices: $1.25 / 1M input tokens, $10.00 / 1M output tokens. “Cached input” is $0.125 / 1M when you reuse identical prompts for efficiency.",
+        "score": 5.8322,
+        "rank": 2
+      },
+      {
+        "url": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+        "title": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+        "heading": "",
+        "chunk_text": ".1 available in ChatGPT?\nYes, GPT-4.1 is now available in ChatGPT.\nWill GPT-4.5 be available alongside GPT-4.1?\nNo. OpenAI is deprecating GPT-4.5 in the API, with it being turned off on July 14, 2025. This is because GPT-4.1 offers similar or better performance at a lower cost and latency.\nWhat are the main improvements in GPT-4.1 over GPT-4o?\nThe key improvements include a massive context window (1M tokens), better code generation (especially diff format handling), more reliable instruction following, and improved long-context comprehension at a lower price point.\nDoes GPT-4.1 support vision capabilities?\nYes, GPT-4.1 maintains strong vision capabilities, with the family scoring well on vision benchmarks like MMMU, MathVista, and ChartQA. GPT-4.1 Mini shows particularly strong performance on multimodal tasks relative to its size and price.\nQuestions or feedback?\nAre the information out of date? Please raise an issue or contact us, we'd love to hear from you!",
+        "score": 5.5429,
+        "rank": 3
+      },
+      {
+        "url": "https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained",
+        "title": "Claude Opus 4.7 Benchmarks Explained",
+        "heading": "MCP-Atlas (Scaled tool use)",
+        "chunk_text": "MCP-Atlas (Scaled tool use)\n\nMCP-Atlas measures performance across complex, multi-turn tool-calling scenarios. It's the closest thing to a real production agent benchmark.\n\n| Model | MCP-Atlas |\n| --- | --- |\n| Claude Opus 4.7 | 77.3% |\n| Claude Opus 4.6 | 75.8% |\n| Gemini 3.1 Pro | 73.9% |\n| GPT-5.4 | 68.1% |\n\n</div>\n\nThis is Opus 4.7's strongest competitive result in the full table. Best-in-class tool use is exactly what you want if you're building orchestration agents that route to multiple tools in a single workflow.",
+        "score": 3.7715,
+        "rank": 4
+      },
+      {
+        "url": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+        "title": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+        "heading": "",
+        "chunk_text": "rk versus 81.0% for GPT-4o.\nLong Context Performance\n- Context Window: All three GPT-4.1 models can process up to 1 million tokens at once—8 times more than GPT-4o's 128K limit.\n- Finding Specific Information: When challenged to locate particular information in massive documents (the \"needle-in-haystack\" test), GPT-4.1 achieved 100% accuracy across all context lengths.\n- Video Understanding: On tests analyzing 30-60 minute videos without subtitles, GPT-4.1 scored 72.0%, improving 6.7% over GPT-4o.\nDeveloper Reactions & Real-World Examples\nThe developer community's response has been enthusiastic.",
+        "score": 3.6402,
+        "rank": 5
+      },
+      {
+        "url": "https://www.getpassionfruit.com/blog/chatgpt-5-vs-gpt-5-pro-vs-gpt-4o-vs-o3-performance-benchmark-comparison-recommendation-of-openai-s-2025-models",
+        "title": "https://www.getpassionfruit.com/blog/chatgpt-5-vs-gpt-5-pro-vs-gpt-4o-vs-o3-performance-benchmark-comparison-recommendation-of-openai-s-2025-models",
+        "heading": "",
+        "chunk_text": "us/Pro/Team | Agentic capabilities with tool coordination |\nThe unified approach means that when you type a query into ChatGPT, the system automatically determines whether to provide a quick response or engage deeper reasoning. This eliminates the cognitive load of model selection while ensuring optimal performance for each query type.\nHow Does the New ChatGPT 5 Perform on Academic Science Benchmarks?\nChatGPT 5 GPQA Science Performance\nThe Graduate-Level Science Questions (GPQA) benchmark tests PhD-level understanding across multiple scientific disciplines. This evaluation reveals the dramatic improvements in ChatGPT 5's scientific reasoning capabilities.\nChatGPT 5 demonstrates remarkable performance on the GPQA Diamond benchmark, achieving:\nGPT-5 Pro (with Python): 89.4% accuracy\nGPT-5 (with Python): 87.3% accuracy\nOpenAI o3: 83.3% accuracy\nGPT-4o: 70.1% accuracy\nThe introduction of thinking mode provides a substantial boost, with GPT-5's accuracy jumping from 77.8% to 85.7% when reasoning is engaged. This represents a fundamental improvement in the model's ability to tackle complex scientific problems that require multi-step reasoning and deep domain knowledge.\nLiveCodeBench Competitive Programming with ChatGPT 5\nGPT-5 leads SWE-bench Verified at 74.9%, ahead of o3 69.1%, 4o 30.8%.",
+        "score": 2.6565,
+        "rank": 6
+      },
+      {
+        "url": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+        "title": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+        "heading": "",
+        "chunk_text": "GPT-4.1 Released: Benchmarks, Performance, and How to Safely Migrate to Production\nOpenAI has just released GPT-4.1, and in typical OpenAI fashion, they've baffled everyone with their naming scheme again.\nJust when we thought we were finally moving to GPT-5, they've surprised us with GPT-4.1—a model that is in many ways an upgrade from GPT-4.5.\nBut naming conventions aside, this release is significant. GPT-4.1 introduces a family of three models designed specifically for developers, featuring major improvements in coding, instruction following, and long context handling.\nTable Of Contents\n- What's New in GPT-4.1?\n- GPT-4.1 Performance Benchmarks & Code Generation\n- Developer Reactions & Real-World Examples\n- Comparing GPT-4.1 Models\n- GPT-4.1 vs. Gemini 2.5 vs Claude 3.7 Sonnet\n- How to Access GPT-4.1\n- Effective Prompting Techniques for GPT-4.1\n- How to Safely Test GPT-4.1 in Production\n- Final Thoughts\nWhat's New in GPT-4.1?\n- A family of three non-thinking models: GPT-4.1 (full-size), GPT-4.1 Mini (balanced), and GPT-4.1 Nano (small and fast), each targeting different use cases and price points.\n- Massive context window: All three models support up to 1 million tokens of context, 8x more than GPT-4o's 128K limit. Perfect for processing entire codebases or lengthy documents.\n- API-only release: Unlike previous models, GPT-4.1 is exclusively available through the API, not in ChatGPT's interface.",
+        "score": 2.6292,
+        "rank": 7
+      },
+      {
+        "url": "https://almcorp.com/blog/claude-opus-4-7/",
+        "title": "https://almcorp.com/blog/claude-opus-4-7/",
+        "heading": "",
+        "chunk_text": "dels as impressive responders to AI models as dependable work systems.\nDetailed FAQ about Claude Opus 4.7\nWhat is Claude Opus 4.7?\nClaude Opus 4.7 is Anthropic’s latest generally available Opus model. It is positioned as a premium model for advanced coding, long-running agentic tasks, document-heavy reasoning, high-resolution visual understanding, and professional workflows that need better instruction fidelity and more reliable execution than earlier versions.\nIs Claude Opus 4.7 better than Claude Opus 4.6?\nBased on Anthropic’s release information and supporting ecosystem coverage, yes, especially in coding, tool-using workflows, long-horizon reasoning, visual detail handling, and exact instruction following. The upgrade is not only about raw score increases. It is about stronger execution on difficult tasks and fewer failure modes in production-style workflows.\nWhat are the main benchmark improvements for Claude Opus 4.7?\nThe most cited improvements include stronger results on SWE-bench Pro, SWE-bench Verified, Terminal-Bench 2.0, CursorBench, finance-oriented evaluations, document reasoning benchmarks, and legal analysis tasks.",
+        "score": 6.2546,
+        "rank": 0
+      },
+      {
+        "url": "https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained",
+        "title": "Claude Opus 4.7 Benchmarks Explained",
+        "heading": "MCP-Atlas (Scaled tool use)",
+        "chunk_text": "MCP-Atlas (Scaled tool use)\n\nMCP-Atlas measures performance across complex, multi-turn tool-calling scenarios. It's the closest thing to a real production agent benchmark.\n\n| Model | MCP-Atlas |\n| --- | --- |\n| Claude Opus 4.7 | 77.3% |\n| Claude Opus 4.6 | 75.8% |\n| Gemini 3.1 Pro | 73.9% |\n| GPT-5.4 | 68.1% |\n\n</div>\n\nThis is Opus 4.7's strongest competitive result in the full table. Best-in-class tool use is exactly what you want if you're building orchestration agents that route to multiple tools in a single workflow.",
+        "score": 5.8759,
+        "rank": 1
+      },
+      {
+        "url": "https://caylent.com/blog/claude-opus-4-7-deep-dive-capabilities-migration-and-the-new-economics-of-long-running-agents",
+        "title": "Claude Opus 4.7 Deep Dive: Capabilities, Migration, and the New Economics of Long-Running Agents",
+        "heading": "Conclusion",
+        "chunk_text": "Conclusion\n\nClaude Opus 4.7 looks like Anthropic’s strongest statement yet about what the premium tier is actually for. This is not just a smarter chatbot. It is a model meant to hold context over long stretches, reason across code and images, operate more autonomously, and do higher-quality professional work across documents, slides, charts, and codebases.\n\nThe most important thing about Opus 4.7 is not the list price or even the benchmark table. It’s that Anthropic appears to be making runtime control part of the product story. Effort levels matter more. Task budgets matter. Prompt precision matters. Tool instructions matter.\n\nThat is good news for teams building serious agentic systems, because those are exactly the knobs you need in production.\n\nOpus 4.7 should be attractive to any organization that has already discovered the limits of “just give the model a prompt and hope for the best.” It offers a higher capability ceiling, but it also rewards teams that treat model behavior, cost controls, and agent architecture as part of the same design problem.\n\nThat’s the real upgrade.",
+        "score": 5.831,
+        "rank": 2
+      },
+      {
+        "url": "https://almcorp.com/blog/claude-opus-4-7/",
+        "title": "https://almcorp.com/blog/claude-opus-4-7/",
+        "heading": "",
+        "chunk_text": "tency or cost. The best approach is to route by task difficulty rather than use one effort level universally.\nIs Claude Opus 4.7 mainly a coding model?\nNo, but coding is one of its clearest strengths. The release also emphasizes finance, legal reasoning, enterprise document analysis, visual understanding, and long-running autonomous work. It is better understood as a premium execution model with especially strong engineering performance.\nIs Claude Opus 4.7 good for enterprise agents?\nThat appears to be one of its core use cases. Anthropic, AWS, and several early-access partners all describe improvements in long-running agentic execution, tool use, and multi-step workflows. For organizations building agents that must stay coherent over time, this is one of the most relevant aspects of the release.\nDoes Claude Opus 4.7 have better memory?\nAnthropic says Opus 4.7 is better at using file system-based memory and at carrying forward useful notes across long, multi-session work. That does not mean it replaces good system design, but it does suggest better continuity in longer workflows.\nIs Claude Opus 4.7 safer than previous versions?\nAnthropic says the overall safety profile is similar to Opus 4.6, with improvements in some areas such as honesty and resistance to prompt injection, and modest weakness in at least one area of harm-reduction behavior.",
+        "score": 4.8761,
+        "rank": 3
+      },
+      {
+        "url": "https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained",
+        "title": "Claude Opus 4.7 Benchmarks Explained",
+        "heading": "Finance Agent v1.1",
+        "chunk_text": "Finance Agent v1.1\n\nFinance Agent measures multi-step financial analysis: planning, tool use, and coherent output across tasks like building financial models and professional presentations.\n\n| Model | Finance Agent v1.1 |\n| --- | --- |\n| Claude Opus 4.7 | 64.4% |\n| GPT-5.4 Pro | 61.5% |\n| Claude Opus 4.6 | 60.1% |\n| Gemini 3.1 Pro | 59.7% |\n\n</div>\n\nOpus 4.7 leads this benchmark. Anthropic also calls out state-of-the-art performance on GDPval-AA, a third-party evaluation of knowledge work across finance, legal, and professional domains.",
+        "score": 4.2696,
+        "rank": 4
+      },
+      {
+        "url": "https://almcorp.com/blog/claude-opus-4-7/",
+        "title": "https://almcorp.com/blog/claude-opus-4-7/",
+        "heading": "",
+        "chunk_text": ". A model that handles persistent task context more effectively can reduce the amount of re-priming required between sessions and improve continuity in long-lived workstreams.\nQuick comparison: Claude Opus 4.7 at a glance\nArea | What changed in Opus 4.7 | Why it matters |\n---|---|---|\nCoding | Stronger performance on hard engineering, agentic coding, and long-running workflows | Better fit for debugging, autonomous execution, CI/CD-adjacent work, and multi-step development tasks |\nVision | Supports images up to 2,576 px on the long edge | Better on dense UIs, diagrams, screenshots, charts, and screen-based agents |\nReasoning control | New xhigh effort level between high and max |\nMore practical balance between latency and depth |\nPricing | Same list price as Opus 4.6 | Easy headline comparison, but not the whole story |\nTokenization | Updated tokenizer can produce roughly 1.0–1.35x more tokens | Real task cost may rise even if posted price does not |\nInstruction following | More literal and precise | Better compliance, but prompts may need retuning |\nMemory | Improved file system-based memory use | Better continuity in long-running or multi-session workflows |\nSafety | Similar overall safety profile with some targeted improvements and some modest tradeoffs | Important for enterprise rollout and controlled deployment |\nClaude Opus 4.7 pricing: same list price, different cost conversation\nThe pricing headline is easy to remember: $5 per million input tokens and $25 per million",
+        "score": 3.9761,
+        "rank": 5
+      },
+      {
+        "url": "https://www.vellum.ai/blog/claude-opus-4-7-benchmarks-explained",
+        "title": "Claude Opus 4.7 Benchmarks Explained",
+        "heading": "SWE-bench Verified",
+        "chunk_text": "SWE-bench Verified\n\nSWE-bench Verified is 500 human-validated GitHub issues that the model must resolve end-to-end. It's the standard benchmark for agentic software engineering.\n\n| Model | SWE-bench Verified |\n| --- | --- |\n| Claude Opus 4.7 | 87.6% |\n| Claude Mythos Preview | 93.9% |\n| Claude Opus 4.6 | 80.8% |\n| Gemini 3.1 Pro | 80.6% |\n\n</div>\n\nA 6.8-point gain over Opus 4.6 puts Opus 4.7 in a clear lead among generally available models. Early-access partners confirmed this in their own internal evals. Cursor reported a jump from 58% to 70% on CursorBench, and one partner saw 13% higher resolution on a 93-task coding benchmark, including four tasks neither Opus 4.6 nor Sonnet 4.6 could solve at all.",
+        "score": 3.9,
+        "rank": 6
+      },
+      {
+        "url": "https://almcorp.com/blog/claude-opus-4-7/",
+        "title": "https://almcorp.com/blog/claude-opus-4-7/",
+        "heading": "",
+        "chunk_text": "lightweight code generation.\nFor professional knowledge work, the release points to state-of-the-art performance on Finance Agent evaluations and strong results in legal and document-intensive tasks. Anthropic cites a 0.813 score versus 0.767 for Opus 4.6 on a General Finance module, a 90.9% score on BigLaw Bench at high effort, and 21% fewer errors on Databricks OfficeQA Pro. The common thread is not a single domain. It is structured reasoning over source material.\nFor multimodal reasoning, one of the more dramatic jumps appears in visual acuity. Anthropic cites a 98.5% score versus 54.5% for Opus 4.6 in one partner benchmark related to computer-use style perception. Even if that specific number should be read in context, the practical takeaway is obvious: higher-resolution input plus better visual handling opens up more reliable use on dashboards, screenshots, technical visuals, and screen-based agents.\nA balanced reading of the benchmark landscape also means recognizing that not every workload improved equally. One benchmark-focused analysis emphasizes that Opus 4.7 looks especially strong in coding, tool orchestration, and visually dense workflows, while research-heavy browsing should still be tested carefully on a case-by-case basis. That is the right mindset overall.",
+        "score": 3.8911,
+        "rank": 7
+      },
+      {
+        "url": "https://futureagi.com/blog/gemini-2-5-pro-2025/",
+        "title": "Gemini 2.5 Pro: Benchmarks & Guide for Developers",
+        "heading": "Side-by-Side Coding Performance: How Gemini 2.5 Pro and Claude 3.7 Sonnet Compare on Key Benchmarks",
+        "chunk_text": "Side-by-Side Coding Performance: How Gemini 2.5 Pro and Claude 3.7 Sonnet Compare on Key Benchmarks\n\n![Image 1: Gemini 2.5 Pro benchmarks table: SWE-bench, LiveCodeBench v5, AIME 2024, GPQA scores vs Claude 3.7 Sonnet for pricing context](https://framerusercontent.com/images/yjjuBPJiPqQKa5np2v2YTVZpjs.png)\n\nTable 2: Gemini 2.5 pro vs. Claude 3.7 benchmarks: [Source](https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/#gemini-2-5-thinking)",
+        "score": 6.7797,
+        "rank": 0
+      },
+      {
+        "url": "https://futureagi.substack.com/p/benchmarking-gemini-25-pro-vs-top",
+        "title": "Benchmarking Gemini 2.5 Pro vs Top LLMs: A Detailed Analysis",
+        "heading": "",
+        "chunk_text": "*   Humanity's Final Exam: Gemini 2.5 Pro obtained a score of 18.8% on this rigorous criterion, surpassing GPT-4.5's 6.4% and Claude 3.7 Sonnet's 8.9%. This result suggests that Gemini 2.5 Pro holds superior unaided reasoning and knowledge recall.\n\n*   GPQA Diamond: The model attained an 84.0% pass@1 performance on this graduate-level physics assessment, showing its ability to effectively address complex STEM questions.\n\n*   AIME 2024 and 2025 Benchmarks: Gemini 2.5 Pro demonstrated strong logical thinking and mathematical problem-solving skills, scoring 92.0% and 86.7% on the AIME 2024 and 2025 benchmarks, respectively.\n\n*   LiveCodeBench v5: The model scored 70.4%, demonstrating reliable and superior code generation capabilities.\n\n*   Aider Polyglot & SWE-Bench Verified: With 74.0% on Aider Polyglot for multi-language code editing and 63.8% on SWE-Bench Verified, Gemini 2.5 Pro outperformed GPT-4.5 (38.0%) and came very close to matching Claude 3.7 Sonnet's 70.3%.\n\n*   MRCR Benchmark: The model showed exceptional comprehension of extensive documents, achieving 94.5% accuracy at a 128k context length. This capability has the potential to be expanded to a full 1-million-token context window.\n\n*   MMMU Benchmark: Gemini 2.5 Pro showed a high level of multimodal awareness throughout text, images, and diagrams, which enhanced its performance in complex visual and textual tasks, achieving a\n\nscore of 81.7%.",
+        "score": 6.2487,
+        "rank": 1
+      },
+      {
+        "url": "https://futureagi.substack.com/p/benchmarking-gemini-25-pro-vs-top",
+        "title": "Benchmarking Gemini 2.5 Pro vs Top LLMs: A Detailed Analysis",
+        "heading": "",
+        "chunk_text": "Let’s look at what Gemini 2.5 Pro got; we will also be looking at its benchmarks, comparing it with Gemini 2.5 Pro vs. Claude 3.7 Sonnet, and much more.\n\n*   Integrated Reasoning Architecture: The Built-in \"thinking\" mechanism included in the [Gemini 2.5 Pro](https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/#gemini-2-5-thinking) model enables it to complete tasks step-by-step. This approach increases its capacity to generate logical conclusions, improving its accuracy and lowering errors in difficult problem-solving situations.\n\n*   Massive Context Window: Gemini 2.5 Pro can manage large inputs like detailed papers or big codebases since it features a context window with 1 million tokens. Its capacity to 2 million tokens will rise with an upgrade, so enhancing its multi-turn interaction handling.\n\n*   Enhanced Coding Capabilities: In Gemini 2.5 Pro, code creation and debugging have improved significantly. It generates better error handling, cleaner code, and fewer pointless imports. The model enables JSON formatting and function calling for structured outputs, making development workflows easier.\n\n*   Native Multimodal Input Handling: The model is capable of simultaneously processing text, images, audio, and video, which enables a comprehensive analysis of various data types. This functionality is important for error snapshot troubleshooting, diagram interpretation, and video walkthrough analysis.",
+        "score": 6.1331,
+        "rank": 2
+      },
+      {
+        "url": "https://futureagi.com/blog/gemini-2-5-pro-2025/",
+        "title": "Gemini 2.5 Pro: Benchmarks & Guide for Developers",
+        "heading": "Detailed Gemini 2.5 Pro Benchmark Analysis: Reasoning, Math, Coding, and Long Context Performance",
+        "chunk_text": "Detailed Gemini 2.5 Pro Benchmark Analysis: Reasoning, Math, Coding, and Long Context Performance\n\nGemini 2.5 Pro has some outstanding benchmark results, especially on tasks that require a lot of reasoning:\n\n|  |  |  |  |  |  |  |\n| --- | --- | --- | --- | --- | --- | --- |\n| Benchmarks | Gemini 2.5 Pro | OpenAI o3-mini | OpenAI GPT-4.5 | Claude 3.7 Sonnet | Grok 3 Beta | DeepSeek R1 |\n| **Humanity’s Last Exam** (no tools) | 18.8% | 14.0% | 6.4% | 8.9% | - | 8.6% |\n| **GPQA Diamond** (single attempt) | 84.0% | 79.7% | 71.4% | 78.2% | 80.2% | 71.5% |\n| **AIME 2025** (single attempt) | 86.7% | 86.5% | - | 49.5% | 77.3% | 70.0% |\n| **AIME 2024** (single attempt) | 92.0% | 87.3% | 36.7% | 61.3% | 83.9% | 79.8% |\n| **LiveCodeBench v5** (single attempt) | 70.4% | 74.1% | - | - | 70.6% | 64.3% |\n| **Aider Polyglot** (whole file) | 74.0% | 60.4% (diff) | 44.9% (diff) | 64.9% (diff) | - | 56.9% (diff) |\n| **SWE-bench Verified** | 63.8% | 49.3% | 38.0% | 70.3% | - | 49.2% |\n| **SimpleQA** | 52.9% | 13.8% | 62.5% | - | 43.6% | 30.1% |\n| **MMMU** (single attempt) | 81.7% | no MM support | 74.4% | 75.0% | 76.0% | no MM support |\n| **MRCR** (128k context) | 94.5% | 61.4% | 64.0% | - | - | - |\n| **Global MMLU (Lite)** | 89.8% | - | - | - | - | - |\n\n**Table 1: Gemini 2.5 pro benchmarks:**[**Source**](https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/#gemini-2-5-thinking)",
+        "score": 5.9835,
+        "rank": 3
+      },
+      {
+        "url": "https://futureagi.com/blog/gemini-2-5-pro-2025/",
+        "title": "Gemini 2.5 Pro: Benchmarks & Guide for Developers",
+        "heading": "How Gemini 2.5 Pro Compares to GPT-4.5 and Claude 3.7 Sonnet on Reasoning and Coding Benchmarks",
+        "chunk_text": "How Gemini 2.5 Pro Compares to GPT-4.5 and Claude 3.7 Sonnet on Reasoning and Coding Benchmarks\n\nIn 2025, we are seeing new startups and organizations joining the race of building powerful LLMs. However, what about the giants, Google? Yes, it’s [**Gemini 2.5 Pro**](https://deepmind.google/models/gemini/pro/).\n\nThis model has done better than rivals like the GPT-4.5 and the Claude 3.7 Sonnet on a number of tests, such as the GPQA and AIME 2025 math and science tests.\n\nMeanwhile, AI models are currently being developed to enhance their reasoning capabilities. Some models, like OpenAI’s o3 and DeepSeek’s R1, are trained to self-correct before responding, which makes them better at handling complicated tasks.\n\nMoreover, Google’s Gemini 2.5 Pro model supports text, images, music, and video with a 1 million-token context window.\n\nConsequently, a context window with 1 million tokens lets the system handle large amounts of data-like whole codebases or long documents-which improves its speed and understanding.\n\nTherefore, let’s look at what this model offers; we will also be examining its benchmarks, comparing it with **Gemini 2.5 Pro vs Claude 3.7 Sonnet**, and much more.",
+        "score": 5.9783,
+        "rank": 4
+      },
+      {
+        "url": "https://dirox.com/post/gemini-2-5-pro-a-comparative-analysis-against-its-ai-rivals-2025-landscape",
+        "title": "https://dirox.com/post/gemini-2-5-pro-a-comparative-analysis-against-its-ai-rivals-2025-landscape",
+        "heading": "",
+        "chunk_text": "Code CLI: Anthropic offers a preview of Claude Code, a command-line interface tool.\nThe focus is clearly on empowering developers and integrating tightly within the software development lifecycle.\nIV. Grok 3 - The Real-Time Maverick\nOverview\nLaunched in February 2025, Grok 3 is the flagship large language model from xAI, the artificial intelligence venture founded by Elon Musk.\nPositioned as a direct competitor to leading models like GPT-4.5 and Gemini 2.5 Pro, Grok 3 aims to differentiate itself through several key characteristics.\nIt boasts advanced reasoning capabilities, accessible via distinct operational modes (\"Think\" and \"Big Brain\").\nTrained on xAI's powerful \"Colossus\" supercomputer, Grok 3 achieved high benchmark scores and topped the Chatbot Arena leaderboard upon its release.\nContext Window\nGrok 3 was announced with a massive 1-million-token context window, stated to be eight times larger than previous Grok models.\nxAI highlighted its performance on the LOFT (128k) benchmark, which targets long-context Retrieval-Augmented Generation (RAG) use cases, claiming state-of-the-art accuracy and showcasing its potential for information retrieval from large datasets.\nA 1M token window would make Grok 3 highly suitable for RAG tasks, enabling the ingestion and analysis of very large documents or knowledge bases in a single prompt.\nMultimodality\nGrok 3 possesses multimodal capabilities, primarily focused on text and image processing.",
+        "score": 5.9013,
+        "rank": 5
+      },
+      {
+        "url": "https://www.whistlerbillboards.com/friday-feature/ranking-the-top-7-llms-in-2025/",
+        "title": "https://www.whistlerbillboards.com/friday-feature/ranking-the-top-7-llms-in-2025/",
+        "heading": "",
+        "chunk_text": "content, data analysis, education, and real-time collaboration.\nLimitations:\nLacks web access unless used through ChatGPT Pro with browsing enabled. Voice mode rollout is still in limited testing.\n2. Gemini 1.5 Pro (Google DeepMind)\nWhy it ranks #2\nGoogle’s Gemini 1.5 Pro redefined context length in 2024 with a groundbreaking 1-million-token context window, allowing complete ingestion of long documents, PDFs, or even codebases.\nKey strengths:\n- Massive context length (up to 1M tokens)\n- Deep integration with Google Workspace and Android\n- Strong math, logic, and science performance\n- Native integration with Google Search and YouTube via SGE\nBest for:\nDeep research, educational tools, enterprise knowledge bases, and document understanding.\nLimitations:\nOccasional latency in long-context queries. Limited availability outside Google’s ecosystem.\nExpert Insight:\nGemini is the first model to directly compete with GPT-4 on both reasoning and context depth, particularly in legal and scientific domains.\n3. Claude 3 Opus (Anthropic)\nWhy it ranks #3\nClaude 3 Opus excels in safety, alignment, and language fluency.",
+        "score": 5.8056,
+        "rank": 6
+      },
+      {
+        "url": "https://dirox.com/post/gemini-2-5-pro-a-comparative-analysis-against-its-ai-rivals-2025-landscape",
+        "title": "https://dirox.com/post/gemini-2-5-pro-a-comparative-analysis-against-its-ai-rivals-2025-landscape",
+        "heading": "",
+        "chunk_text": "e presents a competitive picture:\nSWE-Bench Verified (Agentic Coding): Gemini 2.5 Pro scores 63.8% using a custom agent setup. This benchmark evaluates the ability to resolve real-world GitHub issues. This score places it competitively, slightly ahead of OpenAI's o3-mini (61.0%) but behind Claude 3.7 Sonnet (70.3%).\nLiveCodeBench v5 (Code Generation): Gemini 2.5 Pro achieves a 70.4% pass rate (single attempt). This score lags slightly behind OpenAI's o3-mini (74.1%) and Grok 3 Beta (70.6%) on this specific benchmark, which focuses on generating correct code for competitive programming-style problems.\nAider Polyglot (Whole File Editing): Scores 74.0%, indicating solid capability in code editing across multiple languages.\nThe model's large context window is a distinct advantage for coding, allowing it to ingest and reason about entire codebases (e.g., >30,000 lines or 50,000 lines) to understand dependencies, suggest modifications, or generate documentation.\nWhile not leading every single benchmark, Gemini 2.5 Pro’s overall profile suggests state-of-the-art capabilities, especially when leveraging its unique strengths like the large context window and reasoning-first approach.\nReasoning & Problem Solving\nReasoning is presented as a core strength and defining characteristic of Gemini 2.5 Pro, described as a \"thinking model\" designed to reason through steps before responding.",
+        "score": 5.3165,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 1,
+      "decompose_ms": 2421,
+      "search_ms": 2319,
+      "extract_ms": 14816,
+      "chunk_ms": 105,
+      "retrieve_ms": 6853,
+      "synthesis_ms": 13789,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 3,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 51375,
+    "elapsed_s": 53.86,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

@@ -1,0 +1,365 @@
+{
+  "id": "mh4",
+  "category": "multi_hop_comparison",
+  "domain": "science",
+  "question": "Compare CRISPR-Cas9 and base editing in precision, off-target rates, and therapeutic applications.",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Decompose by dimension (precision / off-target / therapeutic).",
+  "key_facts": [
+    "CRISPR-Cas9",
+    "base editing",
+    "off-target"
+  ],
+  "ground_truth": "CRISPR-Cas9 makes double-strand breaks; base editors (cytosine/adenine) modify single bases without DSBs, generally lower off-target effects. Both have therapeutic applications in sickle-cell, beta-thalassemia, etc.",
+  "session_id": "eval-20260511T075017Z-mh4",
+  "verdict": "pass",
+  "aggregate": 0.867,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.833,
+    "context_recall": 1.0,
+    "context_precision": 0.5,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.867,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.867
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.833,
+      "supported": 5,
+      "total": 6,
+      "reasoning": "Most claims supported; off-target rates for Cas9 not explicitly in chunks."
+    },
+    "context_precision": {
+      "score": 0.5,
+      "relevant": 4,
+      "total": 8,
+      "reasoning": "Chunks 1,4,5,6 directly compare precision, off-target rates, or therapeutic applications of CRISPR-Cas9 and base editing."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "CRISPR-Cas9",
+        "base editing",
+        "off-target"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": [
+      "CRISPR-Cas9",
+      "base editing",
+      "off-target"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 1808,
+      "search_ms": 2351,
+      "extract_ms": 9643,
+      "chunk_ms": 118,
+      "retrieve_ms": 2417,
+      "synthesis_ms": 16749,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 68403,
+    "pipeline_s": 70.66
+  },
+  "judge_reasoning": "Most claims supported; off-target rates for Cas9 not explicitly in chunks.",
+  "pipeline": {
+    "answer": "# Comparing CRISPR-Cas9 and Base Editing: Precision, Off-Target Rates, and Therapeutic Applications\n\nBoth CRISPR-Cas9 nucleases and base editors are powerful genome editing tools, but they differ fundamentally in their precision and safety profiles. While CRISPR-Cas9 relies on creating double-strand breaks (DSBs), base editors achieve single-nucleotide changes without cutting DNA, resulting in distinct trade-offs for therapeutic use.\n\n## Precision and Mechanism\n\n- **CRISPR-Cas9** creates DSBs that are repaired via error-prone NHEJ or homology-directed repair (HDR). This inherently produces unwanted indels and translocations, particularly in post-mitotic cells where HDR rates are low [2][4].\n- **Base editors** fuse a catalytically impaired Cas9 (dCas9 or nCas9) with a deaminase enzyme, chemically converting one base to another without DSBs [1][5]. High-accuracy variants like ABE8e restrict editing to a narrow window, achieving single-nucleotide precision [7].\n- **Prime editors** offer even higher precision by combining nCas9 with reverse transcriptase and a pegRNA, avoiding DSBs entirely through multiple binding steps [1].\n\n| Tool | Mechanism | Precision | Indel risk |\n|------|-----------|-----------|------------|\n| Standard Cas9 nuclease | DSB + NHEJ/HDR [2] | Moderate | High [4] |\n| Base editors | dCas9/nCas9 + deaminase [1][5] | High (single-nucleotide) | Low [5] |\n| Prime editors | nCas9 + RT + pegRNA [1] | Very high | Minimal [1] |\n\n## Off-Target Effects\n\n**CRISPR-Cas9** has substantial off-target risks because DSBs can disrupt gene regulatory networks, activate oncogenes, or inhibit tumor suppressor genes, increasing carcinogenesis risk [3]. In germline editing, off-target changes become heritable [3].\n\n**Base editors** show lower off-target rates than Cas9 nuclease due to the absence of DSBs and minimal indel formation [1][5]. However, limitations persist:\n- Both adenine and cytosine base editors (ABE, CBE) can cause unintended DSBs, deletions, and translocations at targeted loci, though at lower frequencies [5].\n- Earlier BEs exhibited gRNA-independent off-target DNA editing and RNA off-target editing. Engineered variants (YE1, YE2, YFE-BE4) greatly reduce these effects [6].\n- Bystander editing (editing of nearby nontarget bases) remains a challenge that requires careful editor selection [5][6].\n- Off-target mutations risk disrupting tumor suppressor genes or activating oncogenes [3].\n\n**Prime editors** also show low off-target activity (\"lower than Cas9 nuclease\") because multiple binding steps precede editing. Indel rates remain low, though minimal pegRNA-related off-targets may occur [1].\n\n## Therapeutic Applications\n\nRegulatory agencies like the FDA and EMA require comprehensive off-target risk reports before approving CRISPR-based therapies [3]. **Base editors** are particularly suited for diseases caused by single-base mutations (e.g., sickle cell disease, some inherited metabolic disorders), but bystander editing must be minimized through careful editor selection and delivery timing [5][6]. For edits not achievable by base editors, prime editing offers higher precision but lower efficiency and more complex design [1].\n\n## Key Takeaways\n\n- **Base editors achieve higher precision** than standard CRISPR-Cas9 by avoiding DSBs and reducing indels, but bystander editing remains a concern.\n- **Off-target rates are lower** for base editors compared to Cas9 nuclease, though DNA and RNA off-target effects require engineered variants to minimize.\n- **Therapeutic use demands rigorous off-target risk assessment**, especially for germline applications, as required by regulatory agencies.\n- **Choice depends on the specific edit**: single-base changes favor base editors; insertions/deletions favor Cas9; complex edits may benefit from prime editing.\n- **Machine learning models** now optimize guide RNA design, reducing empirical screening for base editing applications [7].",
+    "mode": "search",
+    "rewritten_query": "Compare CRISPR-Cas9 and base editing in precision, off-target rates, and therapeutic applications.",
+    "rewrote": false,
+    "rationale": "Detailed technical comparison benefits from sourced evidence.",
+    "sub_queries": [
+      "CRISPR-Cas9 precision off-target rates therapeutic applications comparison",
+      "Base editing precision off-target rates therapeutic applications comparison"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/",
+        "title": "Advances in CRISPR Base Editing: From Molecular Evolution to Therapeutic Applications in Genomic Medicine",
+        "snippet": "The Dawn of Precision Genome Editing\n\n[Open in a new tab](https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/table/jcmm71159-tbl-0001/)\n\n_Note:_ This table provides a detailed comparison of five major genome editing technologies: Zinc Finger Nucleases (ZFNs), Transcription Activator‐Like Effector Nuc"
+      },
+      {
+        "num": 2,
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10034092/",
+        "title": "Off-target effects in CRISPR/Cas9 gene editing",
+        "snippet": "[](https://pmc.ncbi.nlm.nih.gov/articles/PMC10034092/)Abstract\n\nGene editing stands for the methods to precisely make changes to a specific nucleic acid sequence. With the recent development of the clustered regularly interspaced short palindromic repeats (CRISPR)/Cas9 system, gene editing has becom"
+      },
+      {
+        "num": 3,
+        "url": "https://lifesciences.danaher.com/us/en/library/crispr-off-target-effects.html",
+        "title": "CRISPR Off-Target Effects: Mechanisms and Solutions | Danaher Life Sciences",
+        "snippet": "Introduction to CRISPR gene editing and off-target effects\n\nCRISPR is diligently investigated as a gene editing tool in various research and clinical applications. It is based on the CRISPR-Cas9 system, which has been repurposed from an adaptive immune response mechanism in bacteria. The system comp"
+      },
+      {
+        "num": 4,
+        "url": "https://www.cell.com/molecular-therapy-family/nucleic-acids/fulltext/S2162-2531(25)00190-8",
+        "title": "Off-target effects in CRISPR-Cas genome editing for human therapeutics: Progress and challenges",
+        "snippet": "Enhancing genome-editing precision and efficiency using small molecules\n\nGene-editing technologies, especially CRISPR-Cas9, have significantly advanced our ability to manipulate genomes with high precision. However, achieving efficient and precise editing remains a challenge, particularly due to OT "
+      },
+      {
+        "num": 5,
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11662623/",
+        "title": "From bench to bedside: cutting-edge applications of base editing and prime editing in precision medicine",
+        "snippet": "Considerations in therapeutic gene editing\n\nThe specificity of genome editing describes the ratio of targeted to off-target genetic changes, some of which can be predicted and tested using various methods [[318](https://pmc.ncbi.nlm.nih.gov/articles/PMC11662623/#CR318)]. Associated with editing effi"
+      },
+      {
+        "num": 6,
+        "url": "https://yeolab.github.io/papers/2020/Porto_NatRevDD.pdf",
+        "title": "Base editing: advances and therapeutic opportunities",
+        "snippet": "R e v i e w s important for balancing high on-target editing with low bystander editing (discussed below) to identify the most appropriate combination for therapeutic applications of base editing.\n\nand E = glutamic acid), which collectively display comparable (YE1) or slightly decreased (YE2, EE and"
+      },
+      {
+        "num": 7,
+        "url": "https://www.patsnap.com/resources/blog/rd-blog/crispr-base-editing-therapeutics-2026-patsnap-eureka/",
+        "title": "https://www.patsnap.com/resources/blog/rd-blog/crispr-base-editing-therapeutics-2026-patsnap-eureka/",
+        "snippet": "ants (ABE8e)\nThe Broad Institute and David Liu have filed patents on TadA deaminase variants — including ABE8e — with mutations that reduce off-target RNA editing and improve precision of DNA editing. These high-accuracy ABEs achieve single-nucleotide precision by restricting deaminase activity to t"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.sciencedirect.com/science/article/pii/S2162253125001908",
+        "title": "Off-target effects in CRISPR-Cas genome editing for human therapeutics: Progress and challenges - ScienceDirect",
+        "snippet": "[My account](/user/login?targetURL=%2Fscience%2Farticle%2Fpii%2FS2162253125001908&from=globalheader). [Sign in](/user/institution/login?targetURL=%2Fscience%2Farticle%2Fpii%2FS2162253125001908). [![Molecular Therapy Nucleic Acids](https://ars.els-cdn.com/content/image/B21622531.svg). [Volume 36, Issue 3](/journal/molecular-therapy-nucleic-acids/vol/36/issue/3 \"Go to table of contents for this volume/issue\"), 9 September 2025, 102636. [![Society Logo](https://ars.els-cdn.com/content/image/Dcellpress.gif)](/journal/molecular-therapy-nucleic-acids/vol/36/issue/3). # Review Off-target effects in CRISPR-Cas genome editing for human therapeutics: Progress and challenges. [https://doi.org/10.1016/j.omtn.2025.102636](https://doi.org/10.1016/j.omtn.2025.102636 \"Persistent link using digital object identifier\")[Get rights and content](https://s100.copyright.com/AppDispatchServlet?publisherName=ELS&contentID=S2162253125001908&orderBeanReset=true). Targeted nucleases, primarily CRISPR-Cas-based systems, have revolutionized genome editing by enabling precise modification of target genes or transcripts. Many pre-clinical and clinical studies leverage this technology to develop treatments for human diseases; however, substantial off-target genotoxicity concerns delay its clinical translation. Despite the development of a wide array of tools, assays, and technologies aimed at identifying and quantifying off-target effects, the absence of standardized guidelines leads to inconsistent practices across studies. This review highlights the key challenges and potential solutions in ensuring the safety of gene editing studies for therapeutic applications, focusing on gRNA design, off-target sites prediction, and off-target activity measurement. ![](https://ars.els-cdn.com/content/image/1-s2.0-S2162253125001908-fx1.jpg). 1. [Download: Download high-res image (155KB)](https://ars.els-cdn.com/content/image/1-s2.0-S2162253125001908-fx1_lrg.jpg \"Download high-res image (155KB)\"). 2. [Download: Download full-size image](https://ars.els-cdn.com/content/image/1-s2.0-S2162253125001908-fx1.jpg \"Download full-size image\")."
+      },
+      {
+        "url": "https://academic.oup.com/nar/article/53/D1/D914/7889256",
+        "title": "CRISPRoffT: comprehensive database of CRISPR/Cas off-targets",
+        "snippet": "CRISPRoffT is a unique resource providing valuable insights that facilitate the safety-driven design of CRISPR-based therapeutics."
+      },
+      {
+        "url": "https://www.cd-genomics.com/biomedical-ngs/resource/crispr-cas9-off-target-effect.html",
+        "title": "The CRISPR Paradox: Understanding On-Target and Off-Target Effects - CD Genomics",
+        "snippet": "The CRISPR Paradox: Understanding On-Target and Off-Target Effects. Off-target effect means that the CRISPR system cuts at unexpected sites in the genome, which may lead to unpredictable gene mutation, thus posing a fundamental threat to the reliability of basic research, the safety of agricultural applications, and the success or failure of clinical treatment. This paper aims to deeply discuss the core paradox of on-target and off-target effects in CRISPR technology, and systematically expound its definition, molecular mechanism, influence, and coping strategies, in order to provide a comprehensive and profound understanding framework for researchers and promote the development of this technology in a safer and more reliable direction. The so-called on-target editing refers to the process that Cas9 nuclease recognizes and binds to a preset genome target site (target site) under the precise guidance of single-stranded guide RNA (sgRNA), and produces a double-strand break (DSB) of DNA at this site. ### Recognition of PAM Sequence: The Key for CRISPR-cas9."
+      },
+      {
+        "url": "https://www.cell.com/molecular-therapy-family/nucleic-acids/fulltext/S2162-2531(25)00190-8",
+        "title": "Off-target effects in CRISPR-Cas genome editing for human ...",
+        "snippet": "This review highlights the key challenges and potential solutions in ensuring the safety of gene editing studies for therapeutic applications,"
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10034092/",
+        "title": "Off-target effects in CRISPR/Cas9 gene editing - PMC",
+        "snippet": "The off-target sites are often sgRNA-dependent, since Cas9 is known to tolerate up to 3 mismatches between sgRNA and genomic DNA (Fu et al., 2013; Hsu et al., 2013; Wang et al., 2016a). Some of these detection methods for off-targets prediction is applicable for other family of Cas nucleases, such as Cas12a (Cpf1), which also create DSBs on off-target sites (Kim et al., 2019). Another more popular method to detect off-target sites in cells is called GUIDE-seq (Tsai et al., 2015). Although CBE and ABE greatly reduce the classic off-target effects of CRISPR/Cas9 systems, they create new formats of off-target effects such as RNA editing and sgRNA-independent DNA editing (Grünewald et al., 2019; Jin et al., 2019; Zhou et al., 2019; Zuo et al., 2019). Therefore, methods to deliver Cas9/sgRNA into the target cells profoundly influence its off-target effect (Lohia et al., 2022; Taha et al., 2022)."
+      },
+      {
+        "url": "https://lifesciences.danaher.com/us/en/library/crispr-off-target-effects.html",
+        "title": "CRISPR Off-Target Effects: Mechanisms and Solutions | Danaher Life Sciences",
+        "snippet": "The system comprises a single-guide RNA (sgRNA) targeting a specific DNA sequence and the Cas9 nuclease that cuts the DNA at the target site. ## Mechanisms behind off-target activity in CRISPR-Cas9. When introduced into the host cell, the sgRNA binds the target sequence by complementary base pairing and activates Cas9, which cuts both DNA strands to create a double-stranded break. ### Causes of off-target cleavage by CRISPR-Cas nucleases. 3. **PAM-dependent and PAM-independent off-target events**: The PAM sequence is specific to the Cas used in the CRISPR application. ### What are off-target effects in CRISPR-Cas9 editing? Off-target effects refer to unintended changes in the genome caused by the Cas9 enzyme cutting DNA sequences similar to the intended target site. 6. Zhang W, Yin J, Zhang-Ding Z, Xin C, Liu M, Wang Y, et al. Improved gRNA secondary structures allow editing of target sites resistant to CRISPR-Cas9 cleavage. # Off-Target Effects in CRISPR Gene Editing. Off-Target Effects in CRISPR Gene Editing."
+      },
+      {
+        "url": "https://academic.oup.com/proteincell/advance-article/doi/10.1093/procel/pwag006/8466020",
+        "title": "Therapeutic adenine base editor with minimized off-target effects",
+        "snippet": "Among all eight ABEs tested, ABE9 showed the lowest overall editing activity, with A4 or A5 editing efficiencies below 9%, which was"
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11662623/",
+        "title": "From bench to bedside: cutting-edge applications of base editing ...",
+        "snippet": "This article reviews the current progress of base editors and prime editors, elaborating on specific examples of their applications in the therapeutic field."
+      },
+      {
+        "url": "https://yeolab.github.io/papers/2020/Porto_NatRevDD.pdf",
+        "title": "[PDF] Base editing: advances and therapeutic opportunities - Yeo Lab",
+        "snippet": "The new BE3 construct demonstrated an Table 2 | overview of base editor delivery strategies class Delivery vehicle/ method summary of technical aspects Benefits challenges refs Nucleic acid (plasmid DNA or mRNA) Cationic lipid Encapsulation of DNA or mRNA in lipid spheres Relies on endocytosis and endosomal escape Relatively easy production Many possible formulations Immunogenic Mostly ends up in the liver 142,183,184 Lipid nanoparticles Encapsulation of DNA or mRNA in lipid nanoparticles Relies on endocytosis and endosomal escape Relatively easy production Many possible formulations Immunogenic Mostly ends up in the liver 141,230 Electroporation Direct delivery to the cytoplasm via membrane disruption Very efficient Minimal size restriction Low throughput Only practical for ex vivo therapeutics Requires specialized equipment 143,144 Direct administration Systemic delivery of naked DNA or RNA Simple administration Only works for targeting hepatocytes Immunogenic 139–141 Cell injection Direct injection into the cell nucleus or cytoplasm Effective Extremely low throughput and viability 91,146–149 Viral (cell surface receptor mediated entry by viruses) Adenovirus Double-stranded DNA virus Non-enveloped ~8–10-kb maximum packaging limit Large cargo size Immunogenic 152,164,165 Adeno-associated virus Single-stranded DNA virus Non-enveloped 4.7-kb maximum payload size Comes in many engineered serotypes Immunogenic, cargo size limited Requires inteins for base editor delivery 129,150, 151,153 Retrovirus Broad class that includes lentivirus Large cargo size Broad targeting and pseudo-typing Non-specific DNA integration creates an oncogenic risk, immunogenic 129,163 Lentivirus Retrovirus Enveloped 9.4-kb packing limit Large cargo size Broad targeting and pseudo-typing Non-specific DNA integration creates an oncogenic risk, immunogenic 129,163 Sendai Minus-strand RNA virus Unclear packaging limit ~5 kb RNA virus removes risk of DNA insertion New viral vector requires more validation and characterization 129,163 Protein (base editor protein pre-complexed with guide RNA) Lipid nanoparticles Encapsulation of protein and RNA in lipid nanoparticles Controlled dose and timing of base editor minimizes off-targets Immunogenic 129,141,196 Cationic lipids Encapsulation of protein and RNA in cationic lipids Controlled dose and timing of base editor minimizes off-targets Immunogenic"
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/",
+        "title": "Advances in CRISPR Base Editing: From Molecular Evolution to ...",
+        "snippet": "The comparison covers the following key aspects: Molecular mechanism, target recognition method, ease of design and use, editing precision and"
+      },
+      {
+        "url": "https://www.cd-genomics.com/biomedical-ngs/resource/off-target-effects-single-base-editors-predictive-tools.html",
+        "title": "Off-Target Effects of Single-Base Editors and Predictive Tools - CD Genomics",
+        "snippet": "Off-Target Effects of Single-Base Editors and Predictive Tools. The CRISPR-Cas system achieves genomic editing by introducing double-strand DNA breaks (DSBs) at target sites within the cell. However, the DSBs induced by the CRISPR-Cas system can adversely affect genomic stability, necessitating the development of more reliable genomic editing technologies for precise DNA or RNA modifications. The process of CRISPR-Cas9 genome editing. Single-base editors are capable of precise correction of specific single nucleotide variants (SNVs) without introducing DSBs at the editing site, distinguishing them from Cas9, which generates DSBs. This characteristic renders BEs a safer genomic editing tool and provides promising solutions for the treatment of genetic disorders. Based on the type of base substitution achieved by the deaminase, BEs are categorized into adenine base editors (ABEs) and cytosine base editors (CBEs). In addition to sgRNA-dependent off-target editing, there is another form known as \"sgRNA-independent off-targeting,\" which is introduced by the deaminase domain of BEs binding to DNA."
+      },
+      {
+        "url": "https://www.patsnap.com/resources/blog/rd-blog/crispr-base-editing-therapeutics-2026-patsnap-eureka/",
+        "title": "CRISPR Base Editing Therapeutics 2026 — PatSnap Eureka | PatSnap",
+        "snippet": "To start using PatSnap Eureka, click the verification button in the email we sent to . # CRISPR Base Editing Therapeutics 2026 — PatSnap Eureka. From adenine and cytosine deaminase chemistry to LNP-delivered cardiovascular programmes, the base editing patent landscape is one of the fastest-moving in genomic medicine. The technology was pioneered at the Broad Institute and Harvard, with David Liu's laboratory developing the first ABEs using TadA deaminase variants — including the landmark ABE8e variant with improved editing efficiency. Beam Therapeutics — the leading commercial filer in this space — has built a broad portfolio spanning multiplexed editing, LNP delivery, T cell engineering, metabolic disease, and haemoglobin disorders. Prime Medicine has filed on prime editing and base editing systems for correcting mutations associated with Huntington's disease, Parkinson's disease, Alzheimer's disease, and other neurodegenerative disorders. The Broad Institute and Editas Medicine have both filed on delivering base editors via AAV or LNPs to the retina or other ocular tissues to correct mutations associated with Leber's congenital amaurosis, Stargardt disease, and other retinal dystrophies."
+      }
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/",
+        "title": "Advances in CRISPR Base Editing: From Molecular Evolution to Therapeutic Applications in Genomic Medicine",
+        "heading": "The Dawn of Precision Genome Editing",
+        "chunk_text": "The Dawn of Precision Genome Editing\n\nite (PBS) and RT template sequence. RNA–DNA interaction. | More complex design than CRISPR/BEs due to pegRNA structure (spacer, scaffold, PBS, RT template). Often requires Optimisation for efficiency. | Highly versatile: all 12 base conversions, small insertions and deletions (~< 100 bp). High precision for intended edits. Efficiency varies greatly, often lower than BEs but improving. Avoids DSBs & indels. | Lower than Cas9 nuclease (no DSBs, multiple binding steps). Low indel rates. Potential for off‐target RT activity or pegRNA‐related off‐targets exists but often minimal. Requires validation. | Viral vectors (AAV), plasmids, mRNA, RNP, LNPs, eVLPs. Larger system size is a challenge for viral delivery. | Research: precise mutation modelling, correcting diverse mutations. Potential therapy for genetic diseases (point mutations, indels) not fixable by BEs (pre‐clinical). |",
+        "score": 5.2844,
+        "rank": 0
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10034092/",
+        "title": "Off-target effects in CRISPR/Cas9 gene editing",
+        "heading": "[](https://pmc.ncbi.nlm.nih.gov/articles/PMC10034092/)Abstract",
+        "chunk_text": "[](https://pmc.ncbi.nlm.nih.gov/articles/PMC10034092/)Abstract\n\nGene editing stands for the methods to precisely make changes to a specific nucleic acid sequence. With the recent development of the clustered regularly interspaced short palindromic repeats (CRISPR)/Cas9 system, gene editing has become efficient, convenient and programmable, leading to promising translational studies and clinical trials for both genetic and non-genetic diseases. A major concern in the applications of the CRISPR/Cas9 system is about its off-target effects, namely the deposition of unexpected, unwanted, or even adverse alterations to the genome. To date, many methods have been developed to nominate or detect the off-target sites of CRISPR/Cas9, which laid the basis for the successful upgrades of CRISPR/Cas9 derivatives with enhanced precision. In this review, we summarize these technological advancements and discuss about the current challenges in the management of off-target effects for future gene therapy.\n\n**Keywords:**off-target effects, gene editing, CRISPR/Cas9, gene therapy, Cas9/sgRNA complex",
+        "score": 5.242,
+        "rank": 1
+      },
+      {
+        "url": "https://lifesciences.danaher.com/us/en/library/crispr-off-target-effects.html",
+        "title": "CRISPR Off-Target Effects: Mechanisms and Solutions | Danaher Life Sciences",
+        "heading": "Introduction to CRISPR gene editing and off-target effects",
+        "chunk_text": "Introduction to CRISPR gene editing and off-target effects\n\nCRISPR is diligently investigated as a gene editing tool in various research and clinical applications. It is based on the CRISPR-Cas9 system, which has been repurposed from an adaptive immune response mechanism in bacteria. The system comprises a single-guide RNA (sgRNA) targeting a specific DNA sequence and the [Cas9 nuclease](https://lifesciences.danaher.com/us/en/library/cas9-nuclease.html \"Cas9 nuclease\") that cuts the DNA at the target site. Thus, [CRISPR-Cas9 gene knockouts](https://lifesciences.danaher.com/us/en/library/crispr-knockout.html \"CRISPR-Cas9 gene knockouts\"), insertions, or corrections pave the way for studying the genetic causes of diseases and administering gene editing to treat cancer, cardiovascular diseases, autoimmune disorders, and rare genetic deficiencies. While the potential of CRISPR is promising, a key concern poses severe limitations in clinical applications: off-target effects. More specifically, unintended CRISPR editing can result in mutations and genomic instability that may put patients' lives at risk. That is why improving the on-target precision of CRISPR-Cas9 constructs is crucial to ensure their safety and accuracy.",
+        "score": 5.134,
+        "rank": 2
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/",
+        "title": "Advances in CRISPR Base Editing: From Molecular Evolution to Therapeutic Applications in Genomic Medicine",
+        "heading": "The Dawn of Precision Genome Editing",
+        "chunk_text": "The Dawn of Precision Genome Editing\n\n[Open in a new tab](https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/table/jcmm71159-tbl-0001/)\n\n_Note:_ This table provides a detailed comparison of five major genome editing technologies: Zinc Finger Nucleases (ZFNs), Transcription Activator‐Like Effector Nucleases (TALENs), CRISPR‐Cas9, Base and Prime Editors. The comparison covers the following key aspects: Molecular mechanism, target recognition method, ease of design and use, editing precision and efficiency, off‐target activity, common delivery methods and clinical or research applications. The main purpose is to highlight the strengths, weaknesses and use cases of each technology in the context of genome editing applications.",
+        "score": 5.1106,
+        "rank": 3
+      },
+      {
+        "url": "https://lifesciences.danaher.com/us/en/library/crispr-off-target-effects.html",
+        "title": "CRISPR Off-Target Effects: Mechanisms and Solutions | Danaher Life Sciences",
+        "heading": "Implications for therapeutic applications",
+        "chunk_text": "Implications for therapeutic applications\n\nOff-target mutations and their accumulation have negative implications in therapeutic applications. Unprecedented mutations in the genome can disrupt gene regulatory and signal transduction networks, producing adverse immunogenicity or oncogenesis. For example, unintended mutations increase the risk of carcinogenesis by inadvertently activating oncogenes and inhibiting tumor suppressor genes.\n\nWhile unintended CRISPR editing is a critical bottleneck in somatic gene therapy, a new set of issues arises for embryonic and germline editing. Off-target germline mutations may cause heritable changes that disrupt cellular functions in future generations. This risk lies at the heart of ethical and legal concerns around CRISPR-Cas9 editing, such as the lack of consent from future generations.\n\nRegulatory agencies, such as the FDA and EMA, account for these implications and implement stringent criteria for evaluating CRISPR-based therapies. Therefore, companies must present them with a comprehensive report that addresses precision and off-target risks.",
+        "score": 5.0776,
+        "rank": 4
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/",
+        "title": "Advances in CRISPR Base Editing: From Molecular Evolution to Therapeutic Applications in Genomic Medicine",
+        "heading": "Base Editing: Precision Genome Modification Without DSBs",
+        "chunk_text": "Base Editing: Precision Genome Modification Without DSBs\n\n2.1\nBase editing was developed to circumvent the challenges associated with conventional CRISPR‐Cas9 editing, particularly for applications requiring precise single‐base corrections. The key innovation enabling base editing was to utilize the targeting function of CRISPR‐Cas9 without inducing DSBs or relying on HDR. This was achieved by transforming Cas9 from a nuclease into a precise DNA‐binding module. A catalytically impaired Cas9 (dCas9) or a nickase version (nCas9) was fused to a deaminase enzyme [[23](https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/#jcmm71159-bib-0023)]. Upon guidance to the target locus by a gRNA, this engineered protein binds to the DNA, creating a localized region of single‐stranded DNA accessible to the fused deaminase, which then executes the intended base change chemically.",
+        "score": 4.5418,
+        "rank": 5
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/",
+        "title": "Advances in CRISPR Base Editing: From Molecular Evolution to Therapeutic Applications in Genomic Medicine",
+        "heading": "The Dawn of Precision Genome Editing",
+        "chunk_text": "The Dawn of Precision Genome Editing\n\npplication of the bacterial CRISPR‐Cas system, especially the Cas9 nuclease derived from _Streptococcus pyogenes_ (SpCas9) [[8](https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/#jcmm71159-bib-0008)]. By employing a customizable guide RNA (gRNA) for DNA targeting, the CRISPR‐Cas9 system offered unprecedented simplicity, efficiency and versatility, which rapidly accelerated its adoption in a vast array of research and therapeutic settings (Figure[1C](https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/#jcmm71159-fig-0001)) [[9](https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/#jcmm71159-bib-0009)].",
+        "score": 4.0387,
+        "rank": 6
+      },
+      {
+        "url": "https://www.cell.com/molecular-therapy-family/nucleic-acids/fulltext/S2162-2531(25)00190-8",
+        "title": "Off-target effects in CRISPR-Cas genome editing for human therapeutics: Progress and challenges",
+        "heading": "Enhancing genome-editing precision and efficiency using small molecules",
+        "chunk_text": "Enhancing genome-editing precision and efficiency using small molecules\n\nGene-editing technologies, especially CRISPR-Cas9, have significantly advanced our ability to manipulate genomes with high precision. However, achieving efficient and precise editing remains a challenge, particularly due to OT effects and low rates of HDR, especially in post-mitotic and non-dividing cells. To address the limitations associated with HDR in these contexts, alternative strategies have been developed that harness NHEJ–mediated mechanisms, such as homology-independent targeted integration[178](https://www.cell.com/molecular-therapy-family/nucleic-acids/fulltext/S2162-2531(25)00190-8#bib178) and obligate ligation-gated recombination.[179](https://www.cell.com/molecular-therapy-family/nucleic-acids/fulltext/S2162-2531(25)00190-8#bib179) While these NHEJ-based methods are effective in achieving targeted insertion, they may not always result in the seamless integration of donor sequences as seen with HDR; instead, they enable efficient cassette incorporation at the desired locus, broadening the range of genomic modifications possible in HDR-refractory tissues.",
+        "score": 3.9886,
+        "rank": 7
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11662623/",
+        "title": "From bench to bedside: cutting-edge applications of base editing and prime editing in precision medicine",
+        "heading": "Considerations in therapeutic gene editing",
+        "chunk_text": "Considerations in therapeutic gene editing\n\nThe specificity of genome editing describes the ratio of targeted to off-target genetic changes, some of which can be predicted and tested using various methods [[318](https://pmc.ncbi.nlm.nih.gov/articles/PMC11662623/#CR318)]. Associated with editing efficiency is precision, which enumerates how many modifications are perfect and how many are undesired. The precision of base editors (BEs) makes them suitable for treating diseases caused by single-base mutations. Although BEs can more precisely control editing outcomes, they also have certain limitations. These limitations include limited efficiency, bystander editing, wide editing windows, and significant off-target activity [[319](https://pmc.ncbi.nlm.nih.gov/articles/PMC11662623/#CR319)–[321](https://pmc.ncbi.nlm.nih.gov/articles/PMC11662623/#CR321)]. Furthermore, both adenine base editors (ABE) and cytosine base editors (CBE) may cause undesirable genomic toxic side effects by generating double-strand breaks (DSBs), deletions, and translocations at the target loci, although the frequency is lower than that of typical nuclease-based Cas9 editing. These issues can currently be partially mitigated by adjusting delivery timing and the expression levels of the editors [[319](https://pmc.ncbi.nlm.nih.gov/articles/PMC11662623/#CR319)].",
+        "score": 7.0471,
+        "rank": 0
+      },
+      {
+        "url": "https://yeolab.github.io/papers/2020/Porto_NatRevDD.pdf",
+        "title": "Base editing: advances and therapeutic opportunities",
+        "heading": "R e v i e w s important for balancing high on-target editing with low bystander editing (discussed below) to identify the most appropriate combination for therapeutic applications of base editing.",
+        "chunk_text": "R e v i e w s important for balancing high on-target editing with low bystander editing (discussed below) to identify the most appropriate combination for therapeutic applications of base editing.\n\nand E = glutamic acid), which collectively display comparable (YE1) or slightly decreased (YE2, EE and YEE) on-target activity to BE3 but with varying levels of decreased bystander editing activities. These variants were later demonstrated to have greatly reduced (and, in some cases, undetectable) levels of both gRNA-independent off-target DNA editing and RNA off-target editing 76 . The YE1 variant was further engineered in a later study to produce YFE-BE4, which maintains high editing efficiency only at positions 4–6",
+        "score": 6.71,
+        "rank": 1
+      },
+      {
+        "url": "https://yeolab.github.io/papers/2020/Porto_NatRevDD.pdf",
+        "title": "Base editing: advances and therapeutic opportunities",
+        "heading": "R e v i e w s important for balancing high on-target editing with low bystander editing (discussed below) to identify the most appropriate combination for therapeutic applications of base editing.",
+        "chunk_text": "R e v i e w s important for balancing high on-target editing with low bystander editing (discussed below) to identify the most appropriate combination for therapeutic applications of base editing.\n\n> (Ref. 113 )\n\n. It is important to note that the incorporation of these mutations can impart a sequence specificity on the deaminase domain that can affect which position within the editing window is edited with the highest effi-ciency. This was later employed as a strategy to generate sequence-specific base editors for improved precision 101 .During the initial characterization of BE1, the nat-ural sequence preference of rAPOBEC1 for YC (where Y = thymine/cytosine) motifs was observed to be relaxed; the increased local concentration of rAPOBEC1 relative to the ssDNA of the R-loop as afforded by dCas9 resulted in editing at non-YC motifs, but with relative efficiencies in\n\nthe order of TC > CC ≥ AC > GC 25 . Subsequent stud-ies on CBEs with different cytidine deaminases (such as CDA1, AID, APOBEC3A, APOBEC3B, APOBEC3H\n\nand APOBEC3G) revealed similar trends among their",
+        "score": 6.2923,
+        "rank": 2
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/",
+        "title": "Advances in CRISPR Base Editing: From Molecular Evolution to Therapeutic Applications in Genomic Medicine",
+        "heading": "The Dawn of Precision Genome Editing",
+        "chunk_text": "The Dawn of Precision Genome Editing\n\n[Open in a new tab](https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/table/jcmm71159-tbl-0001/)\n\n_Note:_ This table provides a detailed comparison of five major genome editing technologies: Zinc Finger Nucleases (ZFNs), Transcription Activator‐Like Effector Nucleases (TALENs), CRISPR‐Cas9, Base and Prime Editors. The comparison covers the following key aspects: Molecular mechanism, target recognition method, ease of design and use, editing precision and efficiency, off‐target activity, common delivery methods and clinical or research applications. The main purpose is to highlight the strengths, weaknesses and use cases of each technology in the context of genome editing applications.",
+        "score": 5.8574,
+        "rank": 3
+      },
+      {
+        "url": "https://www.patsnap.com/resources/blog/rd-blog/crispr-base-editing-therapeutics-2026-patsnap-eureka/",
+        "title": "https://www.patsnap.com/resources/blog/rd-blog/crispr-base-editing-therapeutics-2026-patsnap-eureka/",
+        "heading": "",
+        "chunk_text": "ants (ABE8e)\nThe Broad Institute and David Liu have filed patents on TadA deaminase variants — including ABE8e — with mutations that reduce off-target RNA editing and improve precision of DNA editing. These high-accuracy ABEs achieve single-nucleotide precision by restricting deaminase activity to the intended DNA base within the editing window.\nNarrowed Editing Windows\nHigh-fidelity base editors with reduced bystander editing effects comprise deaminase variants with narrowed editing windows, including variants of TadA and APOBEC deaminases engineered to have restricted activity windows. Optimised guide RNAs are also used to promote selective deamination in the desired editing window and reduce bystander edits.\nMachine Learning-Guided gRNA Optimisation\nThe Broad Institute has filed on using machine learning models trained on large datasets of base editing outcomes to predict the efficiency and specificity of base editing at different genomic loci, and to optimise guide RNA design and base editor selection for therapeutic applications. This computational approach reduces empirical screening burden.\nPAM Compatibility Expansion (SpRY)\nWild-type SpCas9 requires an NGG PAM sequence, limiting accessible genomic locations.",
+        "score": 5.5298,
+        "rank": 4
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/",
+        "title": "Advances in CRISPR Base Editing: From Molecular Evolution to Therapeutic Applications in Genomic Medicine",
+        "heading": "The Dawn of Precision Genome Editing",
+        "chunk_text": "The Dawn of Precision Genome Editing\n\nite (PBS) and RT template sequence. RNA–DNA interaction. | More complex design than CRISPR/BEs due to pegRNA structure (spacer, scaffold, PBS, RT template). Often requires Optimisation for efficiency. | Highly versatile: all 12 base conversions, small insertions and deletions (~< 100 bp). High precision for intended edits. Efficiency varies greatly, often lower than BEs but improving. Avoids DSBs & indels. | Lower than Cas9 nuclease (no DSBs, multiple binding steps). Low indel rates. Potential for off‐target RT activity or pegRNA‐related off‐targets exists but often minimal. Requires validation. | Viral vectors (AAV), plasmids, mRNA, RNP, LNPs, eVLPs. Larger system size is a challenge for viral delivery. | Research: precise mutation modelling, correcting diverse mutations. Potential therapy for genetic diseases (point mutations, indels) not fixable by BEs (pre‐clinical). |",
+        "score": 4.6208,
+        "rank": 5
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109818/",
+        "title": "Advances in CRISPR Base Editing: From Molecular Evolution to Therapeutic Applications in Genomic Medicine",
+        "heading": "Comparison With Prime Editing (PE)",
+        "chunk_text": "Comparison With Prime Editing (PE)\n\nThe choice between base editing and prime editing depends on the specific application, balancing efficiency, precision and delivery constraints against the type of edit required and the genomic context. Base editing technology is characterized by its remarkable modularity and continuous development. By rationally designing or evolving components such as Cas9, deaminase, linkers and repair pathway elements (e.g., UGI), scientists have steadily improved base editor performance in terms of accuracy, targeting scope and customization. This adaptability has driven major innovations, including transversion and dual base editing, as well as extending the technology to edit DNA within organelles and modify RNA. Such progress demonstrates that base editing is a flexible platform, now capable of addressing mitochondrial mutations and exploring temporary RNA‐based therapies. Key frontiers for ongoing research include overcoming delivery hurdles for these advanced systems and gaining a deeper understanding of the biological consequences of RNA editing.",
+        "score": 4.3234,
+        "rank": 6
+      },
+      {
+        "url": "https://lifesciences.danaher.com/us/en/library/crispr-off-target-effects.html",
+        "title": "CRISPR Off-Target Effects: Mechanisms and Solutions | Danaher Life Sciences",
+        "heading": "Implications for therapeutic applications",
+        "chunk_text": "Implications for therapeutic applications\n\nOff-target mutations and their accumulation have negative implications in therapeutic applications. Unprecedented mutations in the genome can disrupt gene regulatory and signal transduction networks, producing adverse immunogenicity or oncogenesis. For example, unintended mutations increase the risk of carcinogenesis by inadvertently activating oncogenes and inhibiting tumor suppressor genes.\n\nWhile unintended CRISPR editing is a critical bottleneck in somatic gene therapy, a new set of issues arises for embryonic and germline editing. Off-target germline mutations may cause heritable changes that disrupt cellular functions in future generations. This risk lies at the heart of ethical and legal concerns around CRISPR-Cas9 editing, such as the lack of consent from future generations.\n\nRegulatory agencies, such as the FDA and EMA, account for these implications and implement stringent criteria for evaluating CRISPR-based therapies. Therefore, companies must present them with a comprehensive report that addresses precision and off-target risks.",
+        "score": 3.951,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 1808,
+      "search_ms": 2351,
+      "extract_ms": 9643,
+      "chunk_ms": 118,
+      "retrieve_ms": 2417,
+      "synthesis_ms": 16749,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 68403,
+    "elapsed_s": 70.66,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

@@ -1,0 +1,345 @@
+{
+  "id": "nr2",
+  "category": "numerical_reasoning",
+  "domain": "demographics",
+  "question": "How has India's GDP per capita changed from 2015 to 2024?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Retrieve both endpoints + compute change.",
+  "key_facts": [
+    "India",
+    "GDP per capita",
+    "2015",
+    "2024"
+  ],
+  "ground_truth": "India's nominal GDP per capita rose from approximately $1,600 in 2015 to about $2,700 in 2024 — roughly a 70% increase.",
+  "session_id": "eval-20260511T075017Z-nr2",
+  "verdict": "partial",
+  "aggregate": 0.792,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.833,
+    "context_recall": 1.0,
+    "context_precision": 0.125,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.792,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.792
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.833,
+      "supported": 5,
+      "total": 6,
+      "reasoning": "2015 figure and 2024 range not in chunks; rest supported."
+    },
+    "context_precision": {
+      "score": 0.125,
+      "relevant": 1,
+      "total": 8,
+      "reasoning": "Only chunk 1 provides specific GDP per capita data for years within 2015-2024."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "India",
+        "GDP per capita",
+        "2015",
+        "2024"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": [
+      "India",
+      "GDP per capita",
+      "2015",
+      "2024"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 2585,
+      "search_ms": 2014,
+      "extract_ms": 9654,
+      "chunk_ms": 77,
+      "retrieve_ms": 2758,
+      "synthesis_ms": 18562,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 46649,
+    "pipeline_s": 53.02
+  },
+  "judge_reasoning": "2015 figure and 2024 range not in chunks; rest supported.",
+  "pipeline": {
+    "answer": "# How Has India's GDP per Capita Changed from 2015 to 2024?\n\nIndia's GDP per capita has grown substantially from approximately **$1,606 in 2015 to between $2,310 and $2,697 in 2024**—a nominal increase of roughly 44–68% over the decade. However, the precise 2024 figure varies by source due to differing methodologies and timing of estimates.\n\n## Nominal Growth Trajectory\n\n| Year | GDP per Capita (current US$) | Annual Change | Source |\n|------|------------------------------|---------------|--------|\n| 2015 | $1,606 | — | World Bank via Macrotrends [1] |\n| 2020 | $1,907 | –6.58% | World Bank [1] |\n| 2021 | $2,240 | +17.44% | World Bank [1] |\n| 2022 | $2,353 | +5.05% | World Bank [1] |\n| 2023 | $2,481 | +5.45% | World Bank [1] |\n| 2024 | $2,310 – $2,697 | varies | Forbes India [2] / World Bank [4] |\n\n## Key Dimensions of Change\n\n### Steady Recovery After COVID Contraction\n- The pandemic caused a sharp **–6.58% decline in 2020** to $1,907 [1], erasing several years of gains.\n- A robust rebound followed: **+17.44% growth in 2021** pushed GDP per capita to $2,240 [1], surpassing pre-pandemic levels.\n- Growth has moderated since, averaging about **5.2% annually from 2022–2023** [1].\n\n### Discrepancy in 2024 Estimates\nTwo widely cited 2024 figures exist, differing by approximately **$387**:\n- **World Bank estimate:** **$2,697**—the higher figure, based on officially compiled data [4].\n- **Forbes India estimate:** **over $2,310**—likely a mid-year or preliminary projection, noted as roughly 18% of the world average [2].\n\n### Context from Earlier Years\n- The 2015 figure of **$1,606** was part of a broader historical rise from $306 in 1960 [1].\n- The nominal increase from 2015 to 2024 represents roughly **$700–$1,100** in absolute terms, depending on which 2024 estimate is used.\n\n## Key Takeaways\n\n- **Nearly 50% nominal growth over a decade:** India's GDP per capita rose from $1,606 in 2015 to an estimated $2,310–$2,697 in 2024.\n- **Pandemic disruption was temporary:** The 2020 contraction was followed by the strongest single-year rebound (+17.44%) in the series.\n- **2024 figures vary by ~$387:** The World Bank's $2,697 and Forbes India's $2,310 represent different calculation timings and methodologies.\n- **Growth pace has slowed post-rebound:** From 5–5.5% annual growth in 2022–2023, compared to 17% in the recovery year.\n- **Relative to global average:** At ~18% of the world's average GDP per capita, India remains in the lower-middle-income bracket despite significant progress [2].",
+    "mode": "search",
+    "rewritten_query": "How has India's GDP per capita changed from 2015 to 2024?",
+    "rewrote": false,
+    "rationale": "Historical GDP figures need sourced data.",
+    "sub_queries": [
+      "India GDP per capita 2015",
+      "India GDP per capita 2024"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.macrotrends.net/global-metrics/countries/ind/india/gdp-per-capita",
+        "title": "https://www.macrotrends.net/global-metrics/countries/ind/india/gdp-per-capita",
+        "snippet": "India GDP per capita for 2023 was $2,481, a 5.45% increase from 2022.\nIndia GDP per capita for 2022 was $2,353, a 5.05% increase from 2021.\nIndia GDP per capita for 2021 was $2,240, a 17.44% increase from 2020.\nIndia GDP per capita for 2020 was $1,907, a 6.58% decline from 2019.\nGDP per capita is gr"
+      },
+      {
+        "num": 2,
+        "url": "https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1",
+        "title": "GDP per capita of India: Current & historical data (2015 to 2025)",
+        "snippet": "GDP per capita of India: Current & historical data (2015 to 2025)\n\n[Photo Galleries](https://www.forbesindia.com/photogallery)\nPhoto Features \n*   [More](https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1# \"More\")[Newsletters](https://www.forbesindia.com/news"
+      },
+      {
+        "num": 3,
+        "url": "https://en.wikipedia.org/wiki/Economy_of_India",
+        "title": "Economy of India",
+        "snippet": "Economy of India\n\nGDP (nominal) per capita\") and [119th by PPP-adjusted GDP](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_per_capita_(PPP) \"List of countries by GDP per capita (PPP)\") as 2026."
+      },
+      {
+        "num": 4,
+        "url": "https://tradingeconomics.com/india/gdp-per-capita-us-dollar-wb-data.html",
+        "title": "India - GDP Per Capita",
+        "snippet": "GDP per capita (current US$) in India was reported at 2697 USD in 2024, according to the World Bank collection of development indicators, compiled from officially recognized sources. India - GDP per capita - actual values, historical data, forecasts and projections were sourced from the [World Bank]"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1",
+        "title": "GDP per capita of India: Current & historical data (2015 to 2025)",
+        "snippet": "India's GDP per capita this year is estimated to be $2,940 and is expected to grow to nearly $4,195 by 2029. The country's economic trajectory"
+      },
+      {
+        "url": "https://www.ceicdata.com/en/india/gdp-per-capita-forecast-non-oecd-member-annual/in-ref-year--2015-real-gross-domestic-product-per-capita-ppp-usd",
+        "title": "India IN: Ref. Year = 2015: Real Gross Domestic Product (GDP): Per Capita: PPP: USD | Economic Indicators | CEIC",
+        "snippet": "We use this information in order to improve and customize your browsing experience and for analytics and metrics about our visitors both on this website and other media. # India IN: Ref. Year = 2015: Real Gross Domestic Product (GDP): Per Capita: PPP: USD. India IN: Ref. Year = 2015: Real Gross Domestic Product (GDP): Per Capita: PPP: USD data was reported at 0.000 USD bn in 2025. This records an increase from the previous number of 0.000 USD bn for 2024. India IN: Ref. Year = 2015: Real Gross Domestic Product (GDP): Per Capita: PPP: USD data is updated yearly, averaging 0.000 USD bn from Dec 1995 (Median) to 2025, with 31 observations. The data reached an all-time high of 0.000 USD bn in 2025 and a record low of 0.000 USD bn in 1995. India IN: Ref. Year = 2015: Real Gross Domestic Product (GDP): Per Capita: PPP: USD data remains active status in CEIC and is reported by Organisation for Economic Co-operation and Development."
+      },
+      {
+        "url": "https://www.reddit.com/r/IndiaPulse_/comments/1qmog1v/indias_per_capita_income_over_the_years_2015_1600/",
+        "title": "r/IndiaPulse_ on Reddit: India's per capita income over the years. 2015",
+        "snippet": "India's per capita income over the years. 2015 ~ $1,600 2020 ~ $1,907 2025 ~ $2,818 2030 ~ $4000 (expected). News."
+      },
+      {
+        "url": "https://fred.stlouisfed.org/data/PCAGDPINA646NWDB",
+        "title": "Table Data - Gross Domestic Product Per Capita for India - FRED",
+        "snippet": "Gross Domestic Product Per Capita for India ... 1429.3219952003200. 2013-01-01, 1432.8439751219500. 2014-01-01, 1553.8839607511800. 2015-01-01"
+      },
+      {
+        "url": "https://www.researchgate.net/figure/ndias-per-capita-GDP-from-1820-to-2015-Sources-Tables-of-Angus-Maddison-2003-The-per_fig1_331529831",
+        "title": "India's per capita GDP from 1820 to 2015 Sources: Tables of Angus...",
+        "snippet": "India's per capita GDP from 1820 to 2015 Sources: Tables of Angus Maddison (2003). The per capita GDP over various years and estimate is retrieved from the IMF"
+      },
+      {
+        "url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.KD?locations=IN",
+        "title": "GDP per capita (constant 2015 US$) - India - World Bank Open Data",
+        "snippet": "GDP per capita (constant 2015 US$) - India from The World Bank: Data."
+      },
+      {
+        "url": "https://www.worldeconomics.com/GDP-Per-Capita/India.aspx",
+        "title": "India GDP per Capita | 2025 | 2026 | Data - World Economics",
+        "snippet": "Nigieria's GDP per capita (PPP) is estimated to be $12,945 for 2025. This figure is derived from a GDP (PPP) of $18,894 billion, which accounts for the"
+      },
+      {
+        "url": "https://www.instagram.com/p/C9C1AiUBD7E/",
+        "title": "GDP per capita of Indian states in 2024. - Instagram",
+        "snippet": "GDP per capita of Indian states in 2024. · India's 2026 GDP Shift: A Brief Overview · India slips to 6th place in the latest GDP rankings."
+      },
+      {
+        "url": "https://www.macrotrends.net/global-metrics/countries/ind/india/gdp-per-capita",
+        "title": "India GDP Per Capita | Historical Chart & Data",
+        "snippet": "## India GDP Per Capita. GDP GDP Growth Rate GDP Per Capita Debt to GDP Inflation Rate Manufacturing GNI GNI Per Capita GNP. ##### India GDP per capita for 2023 was **$2,481**, a **5.45% increase** from 2022. * India GDP per capita for 2020 was **$1,907**, a **6.58% decline** from 2019. GDP per capita is gross domestic product divided by midyear population. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. The full historical dataset is available for download here: India GDP Per Capita | Historical Data | 1960 - 2023. ## GDP Per Capita (US $). | St. Vincent and the Grenadines | $10520.444153 |. | Republic of Congo | $2477.978455 |. | Democratic Republic of Congo | $627.502182 |."
+      },
+      {
+        "url": "https://tradingeconomics.com/india/gdp-per-capita-us-dollar-wb-data.html",
+        "title": "India - GDP Per Capita - 2026 Data  2027 Forecast 1960-2024 Historical",
+        "snippet": "##### **Members**. # India - GDP Per Capita2026 Data 2027 Forecast 1960-2024 Historical. ## GDP per capita (current US$) in India was reported at 2697 USD in 2024, according to the World Bank collection of development indicators, compiled from officially recognized sources. India - GDP per capita - actual values, historical data, forecasts and projections were sourced from the World Bank on May of 2026. ## Markets. ## GDP. ## Labour. ## Prices. ## Money. ## Government. ## Business. ## Consumer. ## Health. ## Climate. Android app on Google Play."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Economy_of_India",
+        "title": "Economy of India - Wikipedia",
+        "snippet": "*   [(Top)](https://en.wikipedia.org/wiki/Economy_of_India#). *   [1.1.3 Silk Route](https://en.wikipedia.org/wiki/Economy_of_India#Silk_Route). *   [1.8 2026](https://en.wikipedia.org/wiki/Economy_of_India#2026). *   [3.18 Services](https://en.wikipedia.org/wiki/Economy_of_India#Services). *   [12 See also](https://en.wikipedia.org/wiki/Economy_of_India#See_also). *   [Article](https://en.wikipedia.org/wiki/Economy_of_India \"View the content page [c]\"). *   [Read](https://en.wikipedia.org/wiki/Economy_of_India). *   [Read](https://en.wikipedia.org/wiki/Economy_of_India). *   ![Image 10: Decrease](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Decrease2.svg/20px-Decrease2.svg.png) 6.5%(2026f)[[6]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-ID-6). *   ![Image 11: Steady](https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Steady2.svg/20px-Steady2.svg.png) 6.5%(2027f)[[6]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-ID-6). GDP per capita*   ![Image 12: Increase](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Increase2.svg/20px-Increase2.svg.png) $2,813 (nominal; 2026f)[[7]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-IMF24-7). *   ![Image 13: Increase](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Increase2.svg/20px-Increase2.svg.png) $12,964 (PPP; 2026f)[[7]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-IMF24-7). *   (FY 2023–24)[[8]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-SI-8). *   (FY 2024–25)[[9]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-GDP_mospi-9). Labour force*   ![Image 20: Increase](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Increase2.svg/20px-Increase2.svg.png) ~610 million (2025)[[15]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-15). Unemployment*   ![Image 22: Positive decrease](https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Decrease_Positive.svg/20px-Decrease_Positive.svg.png) 4.9% (March 2025)[[6]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-ID-6). Final [consumption expenditure](https://en.wikipedia.org/wiki/Consumption_(economics) \"Consumption (economics)\")![Image 23: Decrease](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Decrease2.svg/20px-Decrease2.svg.png) 70.7% of GDP (2023)[[22]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-22). *   ![Image 26: Decrease](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Decrease2.svg/20px-Decrease2.svg.png) 57.5 Services (March 2026)[[28]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-28). Exports![Image 27: Increase](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Increase2.svg/20px-Increase2.svg.png) $860.09 billion (FY 2025–26)[[29]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-29). *   Others 0.5%[[30]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-wto_stat-30) (2022). *   (2023–24)[[31]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-EI-31). Imports![Image 39: Increase](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Increase2.svg/20px-Increase2.svg.png) $979.40 billion (FY 2025–26)[[32]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-auto3-32). *   Other 7.7%[[30]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-wto_stat-30) (2022). *   (2023–24)[[31]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-EI-31). *   ![Image 53: Negative increase](https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Increase_Negative.svg/20px-Increase_Negative.svg.png) –1.146% of GDP (2024)[[24]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-imf-go-24). *   ![Image 58: Positive decrease](https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Decrease_Positive.svg/20px-Decrease_Positive.svg.png) 80.4% of GDP (2025)[[24]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-imf-go-24). *   (2025–26)[[40]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-auto1-40). *   (2025–26)[[40]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-auto1-40). ![Image 60: Increase](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Increase2.svg/20px-Increase2.svg.png) $4.234 billion (2021) ($30.59 billions Line of Credit in total)[[41]](https://en.wikipedia.org/wiki/Economy_of_India#cite_note-Line_of_Credit_for_Development_Project-41)."
+      }
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://www.macrotrends.net/global-metrics/countries/ind/india/gdp-per-capita",
+        "title": "https://www.macrotrends.net/global-metrics/countries/ind/india/gdp-per-capita",
+        "heading": "",
+        "chunk_text": "India GDP per capita for 2023 was $2,481, a 5.45% increase from 2022.\nIndia GDP per capita for 2022 was $2,353, a 5.05% increase from 2021.\nIndia GDP per capita for 2021 was $2,240, a 17.44% increase from 2020.\nIndia GDP per capita for 2020 was $1,907, a 6.58% decline from 2019.\nGDP per capita is gross domestic product divided by midyear population. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in current U.S. dollars. The full historical dataset is available for download here: India GDP Per Capita | Historical Data | 1960 - 2023.",
+        "score": 10.0197,
+        "rank": 0
+      },
+      {
+        "url": "https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1",
+        "title": "GDP per capita of India: Current & historical data (2015 to 2025)",
+        "heading": "GDP per capita of India: Current & historical data (2015 to 2025)",
+        "chunk_text": "GDP per capita of India: Current & historical data (2015 to 2025)\n\n[Photo Galleries](https://www.forbesindia.com/photogallery)\nPhoto Features \n*   [More](https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1# \"More\")[Newsletters](https://www.forbesindia.com/newsletters)[Magazine](https://www.forbesindia.com/magazine)[Cover Stories](https://www.forbesindia.com/cover-stories)[Life](https://www.forbesindia.com/life)[Thought Leadership](https://www.forbesindia.com/thought-leadership)[Blogs](https://www.forbesindia.com/blog)\n\nAsk AI",
+        "score": 9.5212,
+        "rank": 1
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Economy_of_India",
+        "title": "Economy of India",
+        "heading": "Economy of India",
+        "chunk_text": "Economy of India\n\nGDP (nominal) per capita\") and [119th by PPP-adjusted GDP](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_per_capita_(PPP) \"List of countries by GDP per capita (PPP)\") as 2026.",
+        "score": 7.2881,
+        "rank": 2
+      },
+      {
+        "url": "https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1",
+        "title": "GDP per capita of India: Current & historical data (2015 to 2025)",
+        "heading": "Find out the past and current GDP per capita of India. Know why it's essential and where India ranks in the global economy",
+        "chunk_text": "Find out the past and current GDP per capita of India. Know why it's essential and where India ranks in the global economy\n\nBy[Forbes India](https://www.forbesindia.com/author/forbes-india/452)\n\nLast Updated: Apr 24, 2025, 17:24 IST 3 min\n\n[Prefer us on Google](https://www.google.com/preferences/source?q=forbesindia.com)\n\n[](http://www.facebook.com/sharer/sharer.php?u=https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1&title=GDP%20per%20capita%20of%20India:%20Current%20&%20historical%20data%20(2015%20to%202025))[](http://x.com/intent/tweet/?text=GDP%20per%20capita%20of%20India:%20Current%20&%20historical%20data%20(2015%20to%202025)&url=https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1)[](https://www.linkedin.com/shareArticle?mini=true&url=https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1&title=GDP%20per%20capita%20of%20India:%20Current%20&%20historical%20data%20(2015%20to%202025))[](https://api.whatsapp.com/send?text=https%3A%2F%2Fwww.forbesindia.com%2Farticle%2Fexplainers%2Fgdp-per-capita-india-current-history%2F95857%2F1)\n\nintent\n\nNew\n\nJoin Us\n\n![Image 2: Sonal Desai, Chief Investment Officer, Franklin Templeton Fixed Income\nImaging: Kapil Kashyap](https://images.forbesindia.com/blog/wp-content/uploads/media/images/2025/Apr/img_244849_gdppercapita.jpg?im=Resize,width=600,aspect=fit,type=normal)\n\nSonal Desai, Chief Investment Officer, Franklin Templeton Fixed Income Imaging: Kapil Kashyap\n\nAdvertisement",
+        "score": 7.2632,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Economy_of_India",
+        "title": "Economy of India",
+        "heading": "Economy of India",
+        "chunk_text": "Economy of India\n\nby GDP (nominal) per capita\") and [119th by PPP-adjusted GDP](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_per_capita_(PPP) \"List of countries by GDP per capita (PPP)\") as 2026.",
+        "score": 7.1357,
+        "rank": 4
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Economy_of_India",
+        "title": "Economy of India",
+        "heading": "Economy of India",
+        "chunk_text": "Economy of India\n\ns by GDP (nominal) per capita\") and [119th by PPP-adjusted GDP](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_per_capita_(PPP) \"List of countries by GDP per capita (PPP)\") as 2026.",
+        "score": 7.054,
+        "rank": 5
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Economy_of_India",
+        "title": "Economy of India",
+        "heading": "Economy of India",
+        "chunk_text": "Economy of India\n\ny GDP (nominal) per capita\") and [119th by PPP-adjusted GDP](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_per_capita_(PPP) \"List of countries by GDP per capita (PPP)\") as 2026.",
+        "score": 6.9273,
+        "rank": 6
+      },
+      {
+        "url": "https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1",
+        "title": "GDP per capita of India: Current & historical data (2015 to 2025)",
+        "heading": "Past GDP per capita in India",
+        "chunk_text": "Past GDP per capita in India\n\nHere’s a glimpse of the last decade\"s data on the Indian economy, sourced from the [World Bank](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=IN)&[International Monetary Fund](https://www.imf.org/external/datamapper/NGDPDPC@WEO/IND?zoom=IND&highlight=IND)\n\nFirst Published: Apr 24, 2025, 17:24\n\n[International Monetary Fund](https://www.forbesindia.com/tag/international-monetary-fund)[Maharashtra](https://www.forbesindia.com/tag/maharashtra)\n\n[](http://www.facebook.com/sharer/sharer.php?u=https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1&title=GDP%20per%20capita%20of%20India:%20Current%20&%20historical%20data%20(2015%20to%202025))[](http://x.com/intent/tweet/?text=GDP%20per%20capita%20of%20India:%20Current%20&%20historical%20data%20(2015%20to%202025)&url=https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1)[](https://www.linkedin.com/shareArticle?mini=true&url=https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1&title=GDP%20per%20capita%20of%20India:%20Current%20&%20historical%20data%20(2015%20to%202025))[](https://api.whatsapp.com/send?text=https%3A%2F%2Fwww.forbesindia.com%2Farticle%2Fexplainers%2Fgdp-per-capita-india-current-history%2F95857%2F1)\n\n[Explainers](https://www.forbesindia.com/explainers)[Nifty 50 History: Index movement and PE ratio from 1990 to 2026](https://www.forbesindia.com/article/explainers/nifty-50-history/93195/1)",
+        "score": 5.9444,
+        "rank": 7
+      },
+      {
+        "url": "https://www.macrotrends.net/global-metrics/countries/ind/india/gdp-per-capita",
+        "title": "https://www.macrotrends.net/global-metrics/countries/ind/india/gdp-per-capita",
+        "heading": "",
+        "chunk_text": "India GDP per capita for 2023 was $2,481, a 5.45% increase from 2022.\nIndia GDP per capita for 2022 was $2,353, a 5.05% increase from 2021.\nIndia GDP per capita for 2021 was $2,240, a 17.44% increase from 2020.\nIndia GDP per capita for 2020 was $1,907, a 6.58% decline from 2019.\nGDP per capita is gross domestic product divided by midyear population. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in current U.S. dollars. The full historical dataset is available for download here: India GDP Per Capita | Historical Data | 1960 - 2023.",
+        "score": 11.0919,
+        "rank": 0
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Economy_of_India",
+        "title": "Economy of India",
+        "heading": "Economy of India",
+        "chunk_text": "Economy of India\n\nGDP (nominal) per capita\") and [119th by PPP-adjusted GDP](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_per_capita_(PPP) \"List of countries by GDP per capita (PPP)\") as 2026.",
+        "score": 9.5469,
+        "rank": 1
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Economy_of_India",
+        "title": "Economy of India",
+        "heading": "Economy of India",
+        "chunk_text": "Economy of India\n\nby GDP (nominal) per capita\") and [119th by PPP-adjusted GDP](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_per_capita_(PPP) \"List of countries by GDP per capita (PPP)\") as 2026.",
+        "score": 9.3574,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Economy_of_India",
+        "title": "Economy of India",
+        "heading": "Economy of India",
+        "chunk_text": "Economy of India\n\ns by GDP (nominal) per capita\") and [119th by PPP-adjusted GDP](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_per_capita_(PPP) \"List of countries by GDP per capita (PPP)\") as 2026.",
+        "score": 9.222,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Economy_of_India",
+        "title": "Economy of India",
+        "heading": "Economy of India",
+        "chunk_text": "Economy of India\n\ny GDP (nominal) per capita\") and [119th by PPP-adjusted GDP](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_per_capita_(PPP) \"List of countries by GDP per capita (PPP)\") as 2026.",
+        "score": 9.1653,
+        "rank": 4
+      },
+      {
+        "url": "https://www.forbesindia.com/article/explainers/gdp-per-capita-india-current-history/95857/1",
+        "title": "GDP per capita of India: Current & historical data (2015 to 2025)",
+        "heading": "Find out the past and current GDP per capita of India. Know why it's essential and where India ranks in the global economy",
+        "chunk_text": "Find out the past and current GDP per capita of India. Know why it's essential and where India ranks in the global economy\n\nT he Indian economy has seen it all - from moments of uncertainty in the early 90s to slowdowns and promising surges over the last few years. From an agriculture-driven economy to a global hub for services and manufacturing, India has seen tremendous growth across sectors. But how do we measure the impact of this progress on individual success?\n\nRelated stories\n\n*   [The top 10 largest economies in the world in 2025 Forbes India](https://www.forbesindia.com/article/explainers/top-10-largest-economies-in-the-world/86159/1 \"The top 10 largest economies in the world in 2025\")\n*   [Top 10 richest countries in the world by GDP per capita in 2025 Forbes India](https://www.forbesindia.com/article/explainers/top-10-richest-countries-in-the-world/87305/1 \"Top 10 richest countries in the world by GDP per capita in 2025\")\n*   [GDP of India: Current and historical growth rate, India's rank in the world Forbes India](https://www.forbesindia.com/article/explainers/gdp-india/85337/1 \"GDP of India: Current and historical growth rate, India's rank in the world\")\n\nThis is where Gross Domestic Product (GDP) per capita acts as a key indicator of overall economic growth. India\"s GDP per capita has shown significant growth in recent years, reaching over $2,310 in 2024. This figure represents approximately 18 percent of the world\"s average, indicating that while India has made progress, there is still room for improvement compared to global standards.",
+        "score": 9.0132,
+        "rank": 5
+      },
+      {
+        "url": "https://tradingeconomics.com/india/gdp-per-capita-us-dollar-wb-data.html",
+        "title": "India - GDP Per Capita",
+        "heading": "GDP per capita (current US$) in India was reported at 2697 USD in 2024, according to the World Bank collection of development indicators, compiled from officially recognized sources. India - GDP per capita - actual values, historical data, forecasts and projections were sourced from the [World Bank](https://data.worldbank.org/) on May of 2026.",
+        "chunk_text": "GDP per capita (current US$) in India was reported at 2697 USD in 2024, according to the World Bank collection of development indicators, compiled from officially recognized sources. India - GDP per capita - actual values, historical data, forecasts and projections were sourced from the [World Bank](https://data.worldbank.org/) on May of 2026.\n\nUSD\n\n[5Y](https://tradingeconomics.com/india/gdp-per-capita-us-dollar-wb-data.html#)[10Y](https://tradingeconomics.com/india/gdp-per-capita-us-dollar-wb-data.html#)[25Y](https://tradingeconomics.com/india/gdp-per-capita-us-dollar-wb-data.html#)[MAX](https://tradingeconomics.com/india/gdp-per-capita-us-dollar-wb-data.html#)\n\nExport API\n\nOK\n\n*\n\n*\n\n*\n\n*\n\n*\n\n*\n\nLoading...\n\n2013 2017 2021\n\nWorld Bank\n\nValue Chg Chg%\n\nIndia - GDP Per Capita\n\nGDP per capita is gross domestic product divided by midyear population. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in current U.S. dollars.\n\nIndia | World Bank Development Indicators\n\n*   [[+] Agriculture & Rural Development](https://tradingeconomics.com/india/indicators-wb-data.html?g=agriculture+%26+rural+development)\n\n*   [[+] Aid Effectiveness](https://tradingeconomics.com/india/indicators-wb-data.html?g=aid+effectiveness)\n\n*   [[+] Development](https://tradingeconomics.com/india/indicators-wb-data.html?g=development)\n\n*   [[+] Economy & Growth](https://tradingeconomics.com/india/indicators-wb-data.html?g=economy+%26+growth)\n\n*   [[+] Education](https://tradingeconomics.com/india/indicators-wb-data.html?g=education)",
+        "score": 8.4962,
+        "rank": 6
+      },
+      {
+        "url": "https://www.worldeconomics.com/GDP-Per-Capita/India.aspx",
+        "title": "India GDP per Capita | 2025 | 2026 | Data",
+        "heading": "India GDP per Capita | 2025 | 2026 | Data",
+        "chunk_text": "India GDP per Capita | 2025 | 2026 | Data\n\n[GDP Data Quality Ratings](https://www.worldeconomics.com/Rankings/GDP-Data-Quality-Ratings.aspx \"GDP Data Quality Ratings\")\n\n[Population Data Quality Ratings](https://www.worldeconomics.com/Rankings/Population-Data-Quality-Ratings.aspx \"Population Data Quality Ratings\")\n\n[GDP Per Capita Data Quality Ratings](https://www.worldeconomics.com/Rankings/Wealth-Data-Quality-Ratings.aspx \"Wealth Data Quality Ratings\")\n\n#### Methodologies\n\n[GDP Data Quality Ratings](https://www.worldeconomics.com/Concepts/GDP-Data-Quality-Ratings/ \"GDP Data Quality Methodology\")\n\n[Population Data Quality Ratings](https://www.worldeconomics.com/Concepts/Population-Data-Quality-Ratings/ \"Population Data Quality Methodology\")\n\n[GDP Per Capita Data Quality Ratings](https://www.worldeconomics.com/Concepts/GDP-Per-Capita/ \"Wealth Data Quality Methodology\")\n\n[](https://www.worldeconomics.com/Subscriptions/ \"Register\")\n\n[LOG-IN](javascript:__doPostBack('ctl00$lbMasterLogIn',''))\n\n[](https://www.worldeconomics.com/Subscriptions/ \"Prices & Access\")\n\n*\n\n[Homepage](https://www.worldeconomics.com/)>[Countries](https://www.worldeconomics.com/Country-Data/)>[India](https://www.worldeconomics.com/Country-Data/India.aspx)>[GDP per Capita](https://www.worldeconomics.com/GDP-Per-Capita/India.aspx)",
+        "score": 6.5257,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 2585,
+      "search_ms": 2014,
+      "extract_ms": 9654,
+      "chunk_ms": 77,
+      "retrieve_ms": 2758,
+      "synthesis_ms": 18562,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 46649,
+    "elapsed_s": 53.02,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

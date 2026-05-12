@@ -1,0 +1,156 @@
+{
+  "id": "rs2",
+  "category": "routing_search_obvious",
+  "domain": "sports",
+  "question": "Who won the FIFA World Cup in 2022?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Specific recent result, must cite source even if LLM knows.",
+  "key_facts": [
+    "Argentina",
+    "Messi"
+  ],
+  "ground_truth": "Argentina won the 2022 FIFA World Cup in Qatar, beating France on penalties. Messi captained the team.",
+  "session_id": "eval-20260511T060411Z-rs2",
+  "verdict": "partial",
+  "aggregate": 0.6,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.8,
+    "context_recall": 0.5,
+    "context_precision": 0.2,
+    "answer_correctness": 0.5,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.726,
+    "aggregate": 0.6
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.8,
+      "supported": 4,
+      "total": 5,
+      "reasoning": "Chunks support winner, final, host, and dates; not the favorites claim."
+    },
+    "context_precision": {
+      "score": 0.2,
+      "relevant": 1,
+      "total": 5,
+      "reasoning": "Only chunk 1 mentions the 2022 World Cup outcome, but does not explicitly state the winner."
+    },
+    "answer_correctness": {
+      "score": 0.5,
+      "hit_facts": [
+        "Argentina"
+      ],
+      "missed_facts": [
+        "Messi"
+      ],
+      "reasoning": "heuristic=0.50; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.726,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "Argentina"
+    ]
+  },
+  "pipeline": {
+    "answer": "The winner of the **2022 FIFA World Cup** was **Argentina**. Argentina defeated France in the final match, securing its third World Cup victory [1]. The tournament was held in Qatar from November 20 to December 18, 2022, and was contested by 32 national teams [1]. This was the first World Cup hosted in the Middle East, with Qatar awarded the hosting rights in 2010 [1]. Argentina entered the tournament among the favorites, alongside other past winners such as Brazil, England, and France [1].",
+    "mode": "search",
+    "rewritten_query": "Who won the FIFA World Cup in 2022?",
+    "rewrote": false,
+    "rationale": "Recent sports result needs sourced confirmation.",
+    "sub_queries": [
+      "FIFA World Cup 2022 winner"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.britannica.com/sports/2022-FIFA-World-Cup",
+        "title": "https://www.britannica.com/sports/2022-FIFA-World-Cup",
+        "snippet": "2022 FIFA World Cup\n-\nWhat is the FIFA World Cup?\n-\nWhere was the 2022 FIFA World Cup held?\n-\nWhich teams competed in the 2022 FIFA World Cup final?\n-\nWhat was unique about the 2022 FIFA World Cup compared to previous tournaments?\n-\nWho were some standout players in the 2022 FIFA World Cup?\n-\nHow di"
+      }
+    ],
+    "urls": [
+      "https://www.britannica.com/sports/2022-FIFA-World-Cup",
+      "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup",
+      "https://www.facebook.com/sozooentertainmentmedia/posts/on-18-december-2022-argentina-lifted-the-fifa-world-cup-trophy-after-an-unforget/1316629200268317/",
+      "https://sports.yahoo.com/articles/2022-world-cup-full-list-040136314.html",
+      "https://www.reddit.com/r/soccer/comments/zp43wc/argentina_have_won_their_third_world_cup_title_at/",
+      "https://www.youtube.com/watch?v=EROb-E23ZVs"
+    ],
+    "chunk_count": 5,
+    "chunks": [
+      {
+        "url": "https://www.britannica.com/sports/2022-FIFA-World-Cup",
+        "title": "https://www.britannica.com/sports/2022-FIFA-World-Cup",
+        "heading": "",
+        "chunk_text": "2022 FIFA World Cup\n-\nWhat is the FIFA World Cup?\n-\nWhere was the 2022 FIFA World Cup held?\n-\nWhich teams competed in the 2022 FIFA World Cup final?\n-\nWhat was unique about the 2022 FIFA World Cup compared to previous tournaments?\n-\nWho were some standout players in the 2022 FIFA World Cup?\n-\nHow did the outcome of the 2022 FIFA World Cup affect the winning team’s history?\n2022 FIFA World Cup, international football (soccer) tournament that took place in Qatar from November 20 to December 18, 2022, and was contested by the men’s national teams of 32 countries. Argentina won its third World Cup victory in the tournament after defeating France in the final match.\nThe 2022 World Cup was the first to take place in the Middle East after the Fédération Internationale de Football Association (FIFA) awarded Qatar the right to host in 2010. Qatar’s national team was also the only one new to the tournament, although Canada’s team made its first appearance in nearly four decades and Wales’ team qualified for the first time since 1958. Only eight countries had won any of the 21 previous World Cup tournaments, and several of them, including Argentina, Brazil, England, and France, entered the tournament among the favourites to win again.",
+        "score": 9.437,
+        "rank": 0
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup",
+        "title": "2022 FIFA World Cup",
+        "heading": "Qualification",
+        "chunk_text": "Qualification\n\nMain article: [2022 FIFA World Cup qualification](https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_qualification \"2022 FIFA World Cup qualification\")",
+        "score": 8.8715,
+        "rank": 1
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup",
+        "title": "2022 FIFA World Cup",
+        "heading": "Opening ceremony",
+        "chunk_text": "Opening ceremony\n\nMain article: [2022 FIFA World Cup opening ceremony](https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_opening_ceremony \"2022 FIFA World Cup opening ceremony\")",
+        "score": 8.8192,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup",
+        "title": "2022 FIFA World Cup",
+        "heading": "Music",
+        "chunk_text": "Music\n\nSee also: [FIFA World Cup Qatar 2022 Official Soundtrack](https://en.wikipedia.org/wiki/FIFA_World_Cup_Qatar_2022_Official_Soundtrack \"FIFA World Cup Qatar 2022 Official Soundtrack\") and [List of FIFA World Cup songs and anthems](https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_songs_and_anthems \"List of FIFA World Cup songs and anthems\")",
+        "score": 7.9467,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup",
+        "title": "2022 FIFA World Cup",
+        "heading": "Host selection",
+        "chunk_text": "Host selection\n\nMain articles: [2018 and 2022 FIFA World Cup bids](https://en.wikipedia.org/wiki/2018_and_2022_FIFA_World_Cup_bids \"2018 and 2022 FIFA World Cup bids\") and [Qatar 2022 FIFA World Cup bid](https://en.wikipedia.org/wiki/Qatar_2022_FIFA_World_Cup_bid \"Qatar 2022 FIFA World Cup bid\")\n\n[![Image 16](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Rusia_entreg%C3%B3_el_relevo_de_la_antorcha_de_la_Copa_del_Mundo_a_Qatar.jpg/250px-Rusia_entreg%C3%B3_el_relevo_de_la_antorcha_de_la_Copa_del_Mundo_a_Qatar.jpg)](https://en.wikipedia.org/wiki/File:Rusia_entreg%C3%B3_el_relevo_de_la_antorcha_de_la_Copa_del_Mundo_a_Qatar.jpg)\n\nRussian President [Vladimir Putin](https://en.wikipedia.org/wiki/Vladimir_Putin \"Vladimir Putin\") handing over the symbolic relay baton for the hosting rights of the 2022 FIFA World Cup to Qatar's Emir [Tamim bin Hamad Al Thani](https://en.wikipedia.org/wiki/Tamim_bin_Hamad_Al_Thani \"Tamim bin Hamad Al Thani\") in June 2018.",
+        "score": 7.9186,
+        "rank": 4
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 3363,
+      "search_ms": 4160,
+      "extract_ms": 11566,
+      "chunk_ms": 222,
+      "retrieve_ms": 4323,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 29046,
+    "elapsed_s": 33.28,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

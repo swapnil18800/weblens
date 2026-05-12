@@ -1,0 +1,319 @@
+{
+  "id": "nr1",
+  "category": "numerical_reasoning",
+  "domain": "finance",
+  "question": "By what percentage did Apple's R&D spending change from FY2022 to FY2024?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Should retrieve both years' R&D + compute the delta.",
+  "key_facts": [
+    "Apple",
+    "R&D",
+    "FY2022",
+    "FY2024"
+  ],
+  "ground_truth": "Apple's R&D was about $26.3B in FY2022 and $31.4B in FY2024 — roughly a 19% increase over two years.",
+  "session_id": "eval-20260511T075017Z-nr1",
+  "verdict": "partial",
+  "aggregate": 0.6,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.6,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.6
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.0,
+      "relevant": 0,
+      "total": 8,
+      "reasoning": "No chunk provides R&D spending for FY2022 or FY2024 to calculate percentage change."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "Apple",
+        "R&D",
+        "FY2022",
+        "FY2024"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": [
+      "Apple",
+      "R&D",
+      "FY2022",
+      "FY2024"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 2574,
+      "search_ms": 1972,
+      "extract_ms": 12007,
+      "chunk_ms": 5,
+      "retrieve_ms": 2018,
+      "synthesis_ms": 9588,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 57888,
+    "pipeline_s": 60.36
+  },
+  "judge_reasoning": "refusal",
+  "pipeline": {
+    "answer": "Based solely on the provided sources, the percentage change in Apple's R&D spending from FY2022 to FY2024 **cannot be calculated**. The sources do not report exact figures for either fiscal year.\n\n## Missing Data\n\n- **FY2022 Spending:** Not directly reported. Sources only mention that spending \"steadily climbed from roughly the $6 billion range in 2022\" [1], which is a vague quarterly reference, not a precise fiscal-year figure.\n- **FY2024 Spending:** Not reported in any source. All available data points to **fiscal Q2 2026** (e.g., $11.4 billion quarterly spend) [1][2][3], not FY2024.\n\n## Key Fiscal Q2 2026 Data (for context)\nWhile irrelevant to the FY2022–FY2024 calculation, the sources provide the following recent figures:\n- **Quarterly R&D spend:** $11.4 billion (record high) [1][2][3]\n- **Year-over-year increase:** 34% from Q2 2025 [1][2][3]\n- **R&D as % of revenue:** 10.3% (up from 7.6% prior quarter and 9% a year earlier) [2][3]\n\n| Metric | Value | Period | Source |\n|--------|-------|--------|--------|\n| R&D spending | ~$6 billion range | 2022 (calendar, not fiscal) | [1] |\n| R&D spending | Not reported | FY2024 | — |\n| R&D spending | $11.4 billion | Q2 2026 | [1][2][3] |\n\n## Key Takeaways\n- **No valid percentage change** can be derived because no precise FY2022 or FY2024 figures exist in the sources.\n- The only backward-looking reference is a vague \"$6 billion range\" for 2022 [1], which cannot be matched to any FY2024 data.\n- All detailed data (spending, percentages, year-over-year comparisons) pertains to fiscal Q2 2026, not FY2024.\n- To answer the question, you would need additional financial reports for Apple's fiscal years 2022 and 2024.",
+    "mode": "search",
+    "rewritten_query": "By what percentage did Apple's R&D spending change from FY2022 to FY2024?",
+    "rewrote": false,
+    "rationale": "Requires precise financial figures from filings.",
+    "sub_queries": [
+      "Apple R&D spending for fiscal year 2022",
+      "Apple R&D spending for fiscal year 2024"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://9to5mac.com/2026/04/30/apples-rd-spending-hits-new-record-as-ai-investment-ramps-up/",
+        "title": "https://9to5mac.com/2026/04/30/apples-rd-spending-hits-new-record-as-ai-investment-ramps-up/",
+        "snippet": "Apple’s spending on research and development hit an all-time high in the company’s latest quarterly results, reflecting an industry-wide continued push into AI development. Here are the details.\nApple’s R&D spending hits $11.4 billion\nAs part of its fiscal Q2 2026 results, Apple reported $11.4 billi"
+      },
+      {
+        "num": 2,
+        "url": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "title": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "snippet": "Apple's R&D Spending Surpasses 10% of Revenue for First Time in 30 Years, Fueled by AI Push\nApple Inc. has reached a historic milestone in its corporate strategy, with research and development spending exceeding 10% of its quarterly revenue for the first time in at least three decades. The surge, dr"
+      },
+      {
+        "num": 3,
+        "url": "https://tickernews.co/apples-rd-spending-exceeds-10-of-revenue/",
+        "title": "Apple’s R&D spending exceeds 10% of revenue",
+        "snippet": "AI investments\n\nCEO Tim Cook is increasing AI efforts before his upcoming departure, aligning with investor expectations ignited by the generative AI surge since late 2022.\n\nAnalyst Gene Munster stated that Apple is now competitive with major tech firms, as their average R&D increase for this quarte"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://9to5mac.com/2026/04/30/apples-rd-spending-hits-new-record-as-ai-investment-ramps-up/",
+        "title": "Apple’s R&D spending hits new record as AI investment ramps up - 9to5Mac",
+        "snippet": "# Apple’s R&D spending hits new record as AI investment ramps up. ## Apple’s R&D spending hits $11.4 billion. As part of its fiscal Q2 2026 results, Apple reported $11.4 billion in R&D expenses, up 34% from Q2 2025, making it the highest quarterly figure in the company’s history. Over the past several quarters, Apple’s R&D spending has steadily climbed from roughly the $6 billion range in 2022 to more than $11 billion today. This increase didn’t go unmentioned during today’s conference call following the release of the earnings report for Q2 2026. Despite Apple’s increase in R&D spending, it still trails some of the largest companies in the tech industry, particularly those that have been investing more aggressively in AI. For reference, in their latest earnings reports, Alphabet reported $17 billion in R&D spending, up from $13.5 billion in the year-ago quarter, Meta reported $17.6 billion, up from $12.1 billion, and Microsoft reported $8.9 billion, up from $8.1 billion."
+      },
+      {
+        "url": "https://www.facebook.com/9to5mac/posts/apples-rd-bill-just-hit-a-record-114-billion-in-one-quarter/1542983297195029/",
+        "title": "Apple's R&D bill just hit a record $11.4 billion in one quarter",
+        "snippet": "Apple's research and development spending also hit $22.61 billion for the fiscal year ... financial results for its fiscal 2022 first"
+      },
+      {
+        "url": "https://finbox.com/NASDAQGS:AAPL/explorer/rd_exp/",
+        "title": "R&D Expenses For Apple Inc (AAPL) - Finbox",
+        "snippet": "Apple's latest twelve months r&d expenses is 40.038 billion; Apple's r&d expenses for fiscal years ending September 2021 to 2025 averaged 28.8 billion."
+      },
+      {
+        "url": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "title": "Apple's R&D Spending Surpasses 10% of Revenue for First Time in ...",
+        "snippet": "# Apple's R&D Spending Surpasses 10% of Revenue for First Time in 30 Years, Fueled by AI Push. Apple Inc. has reached a historic milestone in its corporate strategy, with research and development spending exceeding 10% of its quarterly revenue for the first time in at least three decades. The figure, which hit 10.3% in the fiscal second quarter of 2026, represents a sharp jump from 7.6% in the prior quarter and 9% in the same period last year. While Apple's revenue grew an impressive 17% year-over-year—its fastest pace since 2021—R&D spending rose at nearly double that rate, clocking in at a 34% increase. | R&D as % of Revenue | 10.3% |. | Year-over-Year R&D Growth | ~34% |. In 2001, as the company emerged from the dot-com bust and the aftermath of the 9/11 attacks in the United States, Apple raised its R&D spending from 5% to 8% of revenue."
+      },
+      {
+        "url": "https://tickernews.co/apples-rd-spending-exceeds-10-of-revenue/",
+        "title": "Apple's R&D spending exceeds 10% of revenue - Ticker News",
+        "snippet": "# Apple’s R&D spending exceeds 10% of revenue. Apple boosts R&D spending to over 10% of sales amid AI urgency, signalling significant shift in strategy and market focus. – Apple is investing over 10% of sales in R&D, particularly in AI, reflecting a strong commitment. – R&D spending grew to 10.3% of revenue, driven by rising demand for iPhones and Macs. Apple is investing over 10% of its sales into research and development (R&D), marking a significant commitment to artificial intelligence (AI).In the March quarter, R&D spending reached 10.3% of revenue, a significant increase from 7.6% in the previous quarter and 9% a year earlier. “Apple is catching up to other mega-tech companies for AI,” Munster noted, attributing this increase to a growing urgency for new AI products. Analysts from Bernstein recognized the R&D increase as a sign of Apple pursuing new AI opportunities, hinting at updates for Siri and Apple Intelligence later this year."
+      },
+      {
+        "url": "https://www.instagram.com/p/DYDFCzPiQfk/",
+        "title": "Apple's R&D spending just crossed a historic line ... - Instagram",
+        "snippet": "Apple just hit a 30-year high in R&D spending — 10.3% of revenue in the March quarter, up from 7.6% last quarter. That's a nearly 34"
+      },
+      {
+        "url": "https://www.facebook.com/9to5mac/posts/apples-rd-spending-hits-new-record-as-ai-investment-ramps-upapples-spending-on-r/1540850357408323/",
+        "title": "Apple's R&D spending hits new record as AI investment ramps up ...",
+        "snippet": "Apple's research and development spending also hit $22.61 billion for the fiscal year ... year's Apple Worldwide Developers Conference (WWDC) 2024"
+      }
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://9to5mac.com/2026/04/30/apples-rd-spending-hits-new-record-as-ai-investment-ramps-up/",
+        "title": "https://9to5mac.com/2026/04/30/apples-rd-spending-hits-new-record-as-ai-investment-ramps-up/",
+        "heading": "",
+        "chunk_text": "Apple’s spending on research and development hit an all-time high in the company’s latest quarterly results, reflecting an industry-wide continued push into AI development. Here are the details.\nApple’s R&D spending hits $11.4 billion\nAs part of its fiscal Q2 2026 results, Apple reported $11.4 billion in R&D expenses, up 34% from Q2 2025, making it the highest quarterly figure in the company’s history.\nOver the past several quarters, Apple’s R&D spending has steadily climbed from roughly the $6 billion range in 2022 to more than $11 billion today. Notably, the company sharply ramped up investment between Q4 2025 and Q1 2026, when spending crossed the $10 billion mark for the first time.\nThis increase didn’t go unmentioned during today’s conference call following the release of the earnings report for Q2 2026.\nWhen asked by Bank of America analyst Wamsi Mohan how Apple is thinking about investing across the AI stack, including what it builds internally versus what it relies on partners for, Apple CEO Tim Cook said:\n“We are clearly investing more. You can see that in the OPEX (Operating expenses) numbers, and if you click down on those, a step deeper, and look at the R&D areas separate (from) SG&A (Selling, General and Administrative), you’ll find that R&D is even accelerating much higher than the company is.",
+        "score": 8.882,
+        "rank": 0
+      },
+      {
+        "url": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "title": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "heading": "",
+        "chunk_text": "Apple's R&D Spending Surpasses 10% of Revenue for First Time in 30 Years, Fueled by AI Push\nApple Inc. has reached a historic milestone in its corporate strategy, with research and development spending exceeding 10% of its quarterly revenue for the first time in at least three decades. The surge, driven almost entirely by the company's aggressive pivot into artificial intelligence, marks a significant shift in how the world's most valuable technology company is allocating its resources.\nThe figure, which hit 10.3% in the fiscal second quarter of 2026, represents a sharp jump from 7.6% in the prior quarter and 9% in the same period last year. While Apple's revenue grew an impressive 17% year-over-year—its fastest pace since 2021—R&D spending rose at nearly double that rate, clocking in at a 34% increase. For every dollar Apple earned, more than 10 cents is now being funneled back into its labs and engineering teams.\nApple R&D Spending vs. Revenue (Q2 2026)\n| Metric | Value |\n|---|---|\n| R&D as % of Revenue | 10.3% |\n| Previous Quarter | 7.6% |\n| Year-over-Year Revenue Growth | 17% |\n| Year-over-Year R&D Growth | ~34% |\n| Quarterly Capital Expenditure | $4.3 billion |\nThe AI imperative and a changing of the guard\nThe timing of this spending surge is no coincidence. CEO Tim Cook, who is set to hand over the reins to hardware chief John Ternus this September, appears determined to leave a legacy defined by AI ambition.",
+        "score": 7.5609,
+        "rank": 1
+      },
+      {
+        "url": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "title": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "heading": "",
+        "chunk_text": "magnitude larger.\" He pointed out that in fiscal 2003, Apple's total revenue was just $6.21 billion, with R&D spending of $471 million. Today, the company generates that much revenue in a single week. \"Committing 10% of revenue to R&D at this scale means Apple is betting on products that can sell hundreds of millions of units—think smart glasses or AI wearables, not just millions of iPods.\"\nHistorical Apple R&D Spending Milestones\n| Period | R&D as % of Revenue | Key Product Catalyst |\n|---|---|---|\n| Pre-2001 | ~5% | Pre-iPod era |\n| 2001 | 8% | Launch of first iPod |\n| 2003 | ~8% | Launch of iTunes Music Store |\n| Q2 2026 | 10.3% | AI push (Siri update, Apple Intelligence) |\nWhere the money is going: AI wearables and system-level intelligence\nApple has not officially detailed its future hardware roadmap, but reports indicate the company is accelerating work on three AI-powered wearable devices: smart glasses, a pendant-style device, and AirPods equipped with cameras. All three are expected to rely heavily on Siri for interaction.\nOppenheimer analysts noted that Apple's R&D dollars are flowing into on-device AI, private cloud computing, agentic AI running on custom chips, and privacy-focused technologies. These are long-term bets that require sustained engineering effort, with monetization likely to follow later.",
+        "score": 7.2236,
+        "rank": 2
+      },
+      {
+        "url": "https://tickernews.co/apples-rd-spending-exceeds-10-of-revenue/",
+        "title": "Apple’s R&D spending exceeds 10% of revenue",
+        "heading": "AI investments",
+        "chunk_text": "AI investments\n\nCEO Tim Cook is increasing AI efforts before his upcoming departure, aligning with investor expectations ignited by the generative AI surge since late 2022.\n\nAnalyst Gene Munster stated that Apple is now competitive with major tech firms, as their average R&D increase for this quarter was 29%.\n\n“Apple is catching up to other mega-tech companies for AI,” Munster noted, attributing this increase to a growing urgency for new AI products.\n\nApple’s earnings report exceeded expectations, highlighting rising demand for iPhones and Macs and concerns about global AI infrastructure needs.\n\nCook acknowledged the R&D growth, emphasizing that investments in products and services are essential for future development.\n\nAnalysts from Bernstein recognized the R&D increase as a sign of Apple pursuing new AI opportunities, hinting at updates for Siri and Apple Intelligence later this year.\n\nBank of America analysts anticipate R&D spending to remain above 10% for the June quarter before tapering off later in the fiscal year.\n\nMorgan Stanley projects a significant rise in R&D investments going into fiscal 2026.\n\n![Image 18](https://tickernews.co/wp-content/uploads/2026/05/Screenshot-2026-05-07-092334.png)\n\nHistorically, R&D spending hovered in the low- to mid-single digits over the past two decades but began rising recently.\n\nThe increase echoes trends from the early 2000s when Apple recovered from economic downturns, eventually releasing successful products like the iPod.",
+        "score": 6.4842,
+        "rank": 3
+      },
+      {
+        "url": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "title": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "heading": "",
+        "chunk_text": "ing of this spending surge is no coincidence. CEO Tim Cook, who is set to hand over the reins to hardware chief John Ternus this September, appears determined to leave a legacy defined by AI ambition. For years, investors have urged Apple to move faster in the generative AI race that began in late 2022, and the latest numbers suggest the company is finally listening.\nDeepwater Asset Management managing partner Gene Munster noted that Apple is closing the gap with other tech titans. Google, Microsoft, Meta, and Amazon posted an average R&D spending increase of 29% this quarter, but Apple's 34% growth now places it firmly in their league. \"Apple is feeling the urgency to launch new AI products,\" Munster said, adding that the company's accelerated pace signals a genuine shift in internal priorities.\nDuring the earnings call, Cook himself highlighted the trend, stating that R&D spending is \"growing much faster than the overall business\" and that funds are being directed toward both products and services. The company has confirmed it will unveil a significantly updated Siri and debut \"Apple Intelligence\" features later this year.\nHistorical echoes: The iPod moment for AI\nFor analysts, the current moment echoes a pivotal era in Apple's past. In 2001, as the company emerged from the dot-com bust and the aftermath of the 9/11 attacks in the United States, Apple raised its R&D spending from 5% to 8% of revenue.",
+        "score": 6.0071,
+        "rank": 4
+      },
+      {
+        "url": "https://tickernews.co/apples-rd-spending-exceeds-10-of-revenue/",
+        "title": "Apple’s R&D spending exceeds 10% of revenue",
+        "heading": "Apple boosts R&D spending to over 10% of sales amid AI urgency, signalling significant shift in strategy and market focus",
+        "chunk_text": "Apple boosts R&D spending to over 10% of sales amid AI urgency, signalling significant shift in strategy and market focus\n\n![Image 14: video](https://tickernews.co/wp-content/uploads/2026/03/1.png)\n\n[Why you can trust Ticker News ›](https://tickernews.co/ticker-editorial-policies/)\n\n**In Short:**\n\n– Apple is investing over 10% of sales in R&D, particularly in AI, reflecting a strong commitment.\n\n– R&D spending grew to 10.3% of revenue, driven by rising demand for iPhones and Macs.\n\nApple is investing over 10% of its sales into research and development (R&D), marking a significant commitment to artificial intelligence (AI).In the March quarter, R&D spending reached 10.3% of revenue, a significant increase from 7.6% in the previous quarter and 9% a year earlier. Revenue grew by 17%, the fastest quarterly growth since 2021, while R&D rose nearly 34% year-on-year.\n[![Image 16: Download the Ticker app](https://tickernews.co/wp-content/uploads/2025/11/TICKER-WEB-BANNERS-11-1.jpg)](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://apps.apple.com/au/app/ticker-app/id1483869120&ved=2ahUKEwj3xOaQ9teQAxVmklYBHRFdAhsQFnoECBcQAQ&usg=AOvVaw08Dl-zhjofm88L0YjQRkeH)",
+        "score": 5.6221,
+        "rank": 5
+      },
+      {
+        "url": "https://9to5mac.com/2026/04/30/apples-rd-spending-hits-new-record-as-ai-investment-ramps-up/",
+        "title": "https://9to5mac.com/2026/04/30/apples-rd-spending-hits-new-record-as-ai-investment-ramps-up/",
+        "heading": "",
+        "chunk_text": "you click down on those, a step deeper, and look at the R&D areas separate (from) SG&A (Selling, General and Administrative), you’ll find that R&D is even accelerating much higher than the company is. So we’re clearly investing, we’re investing in products and services.\nInterestingly, this was the only time R&D expenses were explicitly mentioned during the call, and it was Cook who brought it up when asked specifically about AI.\nDespite Apple’s increase in R&D spending, it still trails some of the largest companies in the tech industry, particularly those that have been investing more aggressively in AI.\nFor reference, in their latest earnings reports, Alphabet reported $17 billion in R&D spending, up from $13.5 billion in the year-ago quarter, Meta reported $17.6 billion, up from $12.1 billion, and Microsoft reported $8.9 billion, up from $8.1 billion.\nEarlier today, Apple released its earnings report for the second fiscal quarter of 2026. The company reported $111.2 billion in revenue, a 17% increase year-over-year.\nFor the full breakdown of Apple’s earnings results, follow this link.\nWorth checking out on Amazon\n- David Pogue – ’Apple: The First 50 Years’\n- MacBook Neo\n- Logitech MX Master 4\n- AirPods Pro 3\n- AirTag (2nd Generation) – 4 Pack\n- Apple Watch Series 11\n- Wireless CarPlay adapter\nFTC: We use income earning auto affiliate links. More.",
+        "score": 5.0346,
+        "rank": 6
+      },
+      {
+        "url": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "title": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "heading": "",
+        "chunk_text": "a pivotal era in Apple's past. In 2001, as the company emerged from the dot-com bust and the aftermath of the 9/11 attacks in the United States, Apple raised its R&D spending from 5% to 8% of revenue. That investment yielded the first iPod, a device that revolutionized the music industry and set Apple on its path to becoming a global consumer electronics leader.\nD.A. Davidson analyst Gil Luria sees a direct parallel. \"Back then, Apple created a new hardware platform that reshaped an entire product category,\" Luria said. \"The opportunity today in AI is orders of magnitude larger.\" He pointed out that in fiscal 2003, Apple's total revenue was just $6.21 billion, with R&D spending of $471 million. Today, the company generates that much revenue in a single week.",
+        "score": 4.18,
+        "rank": 7
+      },
+      {
+        "url": "https://9to5mac.com/2026/04/30/apples-rd-spending-hits-new-record-as-ai-investment-ramps-up/",
+        "title": "https://9to5mac.com/2026/04/30/apples-rd-spending-hits-new-record-as-ai-investment-ramps-up/",
+        "heading": "",
+        "chunk_text": "Apple’s spending on research and development hit an all-time high in the company’s latest quarterly results, reflecting an industry-wide continued push into AI development. Here are the details.\nApple’s R&D spending hits $11.4 billion\nAs part of its fiscal Q2 2026 results, Apple reported $11.4 billion in R&D expenses, up 34% from Q2 2025, making it the highest quarterly figure in the company’s history.\nOver the past several quarters, Apple’s R&D spending has steadily climbed from roughly the $6 billion range in 2022 to more than $11 billion today. Notably, the company sharply ramped up investment between Q4 2025 and Q1 2026, when spending crossed the $10 billion mark for the first time.\nThis increase didn’t go unmentioned during today’s conference call following the release of the earnings report for Q2 2026.\nWhen asked by Bank of America analyst Wamsi Mohan how Apple is thinking about investing across the AI stack, including what it builds internally versus what it relies on partners for, Apple CEO Tim Cook said:\n“We are clearly investing more. You can see that in the OPEX (Operating expenses) numbers, and if you click down on those, a step deeper, and look at the R&D areas separate (from) SG&A (Selling, General and Administrative), you’ll find that R&D is even accelerating much higher than the company is.",
+        "score": 8.672,
+        "rank": 0
+      },
+      {
+        "url": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "title": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "heading": "",
+        "chunk_text": "Apple's R&D Spending Surpasses 10% of Revenue for First Time in 30 Years, Fueled by AI Push\nApple Inc. has reached a historic milestone in its corporate strategy, with research and development spending exceeding 10% of its quarterly revenue for the first time in at least three decades. The surge, driven almost entirely by the company's aggressive pivot into artificial intelligence, marks a significant shift in how the world's most valuable technology company is allocating its resources.\nThe figure, which hit 10.3% in the fiscal second quarter of 2026, represents a sharp jump from 7.6% in the prior quarter and 9% in the same period last year. While Apple's revenue grew an impressive 17% year-over-year—its fastest pace since 2021—R&D spending rose at nearly double that rate, clocking in at a 34% increase. For every dollar Apple earned, more than 10 cents is now being funneled back into its labs and engineering teams.\nApple R&D Spending vs. Revenue (Q2 2026)\n| Metric | Value |\n|---|---|\n| R&D as % of Revenue | 10.3% |\n| Previous Quarter | 7.6% |\n| Year-over-Year Revenue Growth | 17% |\n| Year-over-Year R&D Growth | ~34% |\n| Quarterly Capital Expenditure | $4.3 billion |\nThe AI imperative and a changing of the guard\nThe timing of this spending surge is no coincidence. CEO Tim Cook, who is set to hand over the reins to hardware chief John Ternus this September, appears determined to leave a legacy defined by AI ambition.",
+        "score": 7.3262,
+        "rank": 1
+      },
+      {
+        "url": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "title": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "heading": "",
+        "chunk_text": "magnitude larger.\" He pointed out that in fiscal 2003, Apple's total revenue was just $6.21 billion, with R&D spending of $471 million. Today, the company generates that much revenue in a single week. \"Committing 10% of revenue to R&D at this scale means Apple is betting on products that can sell hundreds of millions of units—think smart glasses or AI wearables, not just millions of iPods.\"\nHistorical Apple R&D Spending Milestones\n| Period | R&D as % of Revenue | Key Product Catalyst |\n|---|---|---|\n| Pre-2001 | ~5% | Pre-iPod era |\n| 2001 | 8% | Launch of first iPod |\n| 2003 | ~8% | Launch of iTunes Music Store |\n| Q2 2026 | 10.3% | AI push (Siri update, Apple Intelligence) |\nWhere the money is going: AI wearables and system-level intelligence\nApple has not officially detailed its future hardware roadmap, but reports indicate the company is accelerating work on three AI-powered wearable devices: smart glasses, a pendant-style device, and AirPods equipped with cameras. All three are expected to rely heavily on Siri for interaction.\nOppenheimer analysts noted that Apple's R&D dollars are flowing into on-device AI, private cloud computing, agentic AI running on custom chips, and privacy-focused technologies. These are long-term bets that require sustained engineering effort, with monetization likely to follow later.",
+        "score": 7.0241,
+        "rank": 2
+      },
+      {
+        "url": "https://tickernews.co/apples-rd-spending-exceeds-10-of-revenue/",
+        "title": "Apple’s R&D spending exceeds 10% of revenue",
+        "heading": "AI investments",
+        "chunk_text": "AI investments\n\nCEO Tim Cook is increasing AI efforts before his upcoming departure, aligning with investor expectations ignited by the generative AI surge since late 2022.\n\nAnalyst Gene Munster stated that Apple is now competitive with major tech firms, as their average R&D increase for this quarter was 29%.\n\n“Apple is catching up to other mega-tech companies for AI,” Munster noted, attributing this increase to a growing urgency for new AI products.\n\nApple’s earnings report exceeded expectations, highlighting rising demand for iPhones and Macs and concerns about global AI infrastructure needs.\n\nCook acknowledged the R&D growth, emphasizing that investments in products and services are essential for future development.\n\nAnalysts from Bernstein recognized the R&D increase as a sign of Apple pursuing new AI opportunities, hinting at updates for Siri and Apple Intelligence later this year.\n\nBank of America analysts anticipate R&D spending to remain above 10% for the June quarter before tapering off later in the fiscal year.\n\nMorgan Stanley projects a significant rise in R&D investments going into fiscal 2026.\n\n![Image 18](https://tickernews.co/wp-content/uploads/2026/05/Screenshot-2026-05-07-092334.png)\n\nHistorically, R&D spending hovered in the low- to mid-single digits over the past two decades but began rising recently.\n\nThe increase echoes trends from the early 2000s when Apple recovered from economic downturns, eventually releasing successful products like the iPod.",
+        "score": 5.8352,
+        "rank": 3
+      },
+      {
+        "url": "https://tickernews.co/apples-rd-spending-exceeds-10-of-revenue/",
+        "title": "Apple’s R&D spending exceeds 10% of revenue",
+        "heading": "Apple boosts R&D spending to over 10% of sales amid AI urgency, signalling significant shift in strategy and market focus",
+        "chunk_text": "Apple boosts R&D spending to over 10% of sales amid AI urgency, signalling significant shift in strategy and market focus\n\n![Image 14: video](https://tickernews.co/wp-content/uploads/2026/03/1.png)\n\n[Why you can trust Ticker News ›](https://tickernews.co/ticker-editorial-policies/)\n\n**In Short:**\n\n– Apple is investing over 10% of sales in R&D, particularly in AI, reflecting a strong commitment.\n\n– R&D spending grew to 10.3% of revenue, driven by rising demand for iPhones and Macs.\n\nApple is investing over 10% of its sales into research and development (R&D), marking a significant commitment to artificial intelligence (AI).In the March quarter, R&D spending reached 10.3% of revenue, a significant increase from 7.6% in the previous quarter and 9% a year earlier. Revenue grew by 17%, the fastest quarterly growth since 2021, while R&D rose nearly 34% year-on-year.\n[![Image 16: Download the Ticker app](https://tickernews.co/wp-content/uploads/2025/11/TICKER-WEB-BANNERS-11-1.jpg)](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://apps.apple.com/au/app/ticker-app/id1483869120&ved=2ahUKEwj3xOaQ9teQAxVmklYBHRFdAhsQFnoECBcQAQ&usg=AOvVaw08Dl-zhjofm88L0YjQRkeH)",
+        "score": 5.6261,
+        "rank": 4
+      },
+      {
+        "url": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "title": "https://finance.biggo.com/news/202605090120_Apple_RD_spending_hits_30-year_high_above_10_of_revenue",
+        "heading": "",
+        "chunk_text": "ing of this spending surge is no coincidence. CEO Tim Cook, who is set to hand over the reins to hardware chief John Ternus this September, appears determined to leave a legacy defined by AI ambition. For years, investors have urged Apple to move faster in the generative AI race that began in late 2022, and the latest numbers suggest the company is finally listening.\nDeepwater Asset Management managing partner Gene Munster noted that Apple is closing the gap with other tech titans. Google, Microsoft, Meta, and Amazon posted an average R&D spending increase of 29% this quarter, but Apple's 34% growth now places it firmly in their league. \"Apple is feeling the urgency to launch new AI products,\" Munster said, adding that the company's accelerated pace signals a genuine shift in internal priorities.\nDuring the earnings call, Cook himself highlighted the trend, stating that R&D spending is \"growing much faster than the overall business\" and that funds are being directed toward both products and services. The company has confirmed it will unveil a significantly updated Siri and debut \"Apple Intelligence\" features later this year.\nHistorical echoes: The iPod moment for AI\nFor analysts, the current moment echoes a pivotal era in Apple's past. In 2001, as the company emerged from the dot-com bust and the aftermath of the 9/11 attacks in the United States, Apple raised its R&D spending from 5% to 8% of revenue.",
+        "score": 5.2234,
+        "rank": 5
+      },
+      {
+        "url": "https://9to5mac.com/2026/04/30/apples-rd-spending-hits-new-record-as-ai-investment-ramps-up/",
+        "title": "https://9to5mac.com/2026/04/30/apples-rd-spending-hits-new-record-as-ai-investment-ramps-up/",
+        "heading": "",
+        "chunk_text": "you click down on those, a step deeper, and look at the R&D areas separate (from) SG&A (Selling, General and Administrative), you’ll find that R&D is even accelerating much higher than the company is. So we’re clearly investing, we’re investing in products and services.\nInterestingly, this was the only time R&D expenses were explicitly mentioned during the call, and it was Cook who brought it up when asked specifically about AI.\nDespite Apple’s increase in R&D spending, it still trails some of the largest companies in the tech industry, particularly those that have been investing more aggressively in AI.\nFor reference, in their latest earnings reports, Alphabet reported $17 billion in R&D spending, up from $13.5 billion in the year-ago quarter, Meta reported $17.6 billion, up from $12.1 billion, and Microsoft reported $8.9 billion, up from $8.1 billion.\nEarlier today, Apple released its earnings report for the second fiscal quarter of 2026. The company reported $111.2 billion in revenue, a 17% increase year-over-year.\nFor the full breakdown of Apple’s earnings results, follow this link.\nWorth checking out on Amazon\n- David Pogue – ’Apple: The First 50 Years’\n- MacBook Neo\n- Logitech MX Master 4\n- AirPods Pro 3\n- AirTag (2nd Generation) – 4 Pack\n- Apple Watch Series 11\n- Wireless CarPlay adapter\nFTC: We use income earning auto affiliate links. More.",
+        "score": 4.7855,
+        "rank": 6
+      },
+      {
+        "url": "https://tickernews.co/apples-rd-spending-exceeds-10-of-revenue/",
+        "title": "Apple’s R&D spending exceeds 10% of revenue",
+        "heading": "Apple’s R&D spending exceeds 10% of revenue",
+        "chunk_text": "Apple’s R&D spending exceeds 10% of revenue\n\nApple boosts R&D spending to over 10% of sales amid AI urgency, signalling significant shift in strategy and market focus\n\n![Image 12](https://tickernews.co/wp-content/uploads/2026/03/IMG_20260206_133655.jpg)\n\nPublished\n\n4 days ago\non\n\nMay 7, 2026\n\nBy\n\n[Harvey Vargas](https://tickernews.co/author/harvey-vargas/ \"Posts by Harvey Vargas\")\n\n[HV](https://tickernews.co/author/harvey-vargas/)\n\n[Harvey Vargas](https://tickernews.co/author/harvey-vargas/)May 7, 2026 · 2 min read\n\nShare\n\n×\n\nCopy link[Email](mailto:?subject=Apple's%20R%26D%20spending%20exceeds%2010%25%20of%20revenue&body=https%3A%2F%2Ftickernews.co%2Fapples-rd-spending-exceeds-10-of-revenue%2F)[LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftickernews.co%2Fapples-rd-spending-exceeds-10-of-revenue%2F)[Twitter](https://twitter.com/intent/tweet?url=https%3A%2F%2Ftickernews.co%2Fapples-rd-spending-exceeds-10-of-revenue%2F&text=Apple%27s%20R%26D%20spending%20exceeds%2010%25%20of%20revenue)[Facebook](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftickernews.co%2Fapples-rd-spending-exceeds-10-of-revenue%2F)[WhatsApp](https://api.whatsapp.com/send?text=Apple%27s%20R%26D%20spending%20exceeds%2010%25%20of%20revenue%20https%3A%2F%2Ftickernews.co%2Fapples-rd-spending-exceeds-10-of-revenue%2F)",
+        "score": 4.2951,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 2574,
+      "search_ms": 1972,
+      "extract_ms": 12007,
+      "chunk_ms": 5,
+      "retrieve_ms": 2018,
+      "synthesis_ms": 9588,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 57888,
+    "elapsed_s": 60.36,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

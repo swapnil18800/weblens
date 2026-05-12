@@ -1,0 +1,115 @@
+{
+  "id": "niche1",
+  "category": "niche_long_tail",
+  "domain": "literature",
+  "question": "Who is Faramir's older brother in J.R.R. Tolkien's The Lord of the Rings?",
+  "expected_mode": "either",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Specific lore. Stable textbook fact — both parametric and search are defensible. Must answer Boromir.",
+  "key_facts": [
+    "Boromir"
+  ],
+  "ground_truth": "Faramir's older brother is Boromir; both are sons of Denethor II, Steward of Gondor. Boromir dies in The Fellowship of the Ring.",
+  "session_id": "eval-20260511T161015Z-niche1",
+  "verdict": "pass",
+  "aggregate": 1.0,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 1.0,
+    "context_recall": 1.0,
+    "context_precision": 1.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 1.0,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 1.0
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 1.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "parametric (N/A)"
+    },
+    "context_precision": {
+      "score": 1.0,
+      "relevant": 0,
+      "total": 0,
+      "reasoning": "parametric (N/A)"
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "Boromir"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 2512,
+      "decompose_ms": 6540,
+      "sub_queries_count": 1,
+      "mode": "parametric",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 10815,
+    "pipeline_s": 14.17
+  },
+  "judge_reasoning": "parametric (N/A)",
+  "pipeline": {
+    "answer": "Boromir.",
+    "mode": "parametric",
+    "rewritten_query": "Who is Faramir's older brother in J.R.R. Tolkien's The Lord of the Rings?",
+    "rewrote": false,
+    "rationale": "Stable literary fact from well-known novel.",
+    "sub_queries": [
+      "Who is Faramir's older brother in J.R.R. Tolkien's The Lord of the Rings?"
+    ],
+    "citations": [],
+    "urls": [],
+    "chunk_count": 0,
+    "chunks": [],
+    "latency_breakdown": {
+      "rewrite_ms": 2512,
+      "decompose_ms": 6540,
+      "sub_queries_count": 1,
+      "mode": "parametric",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 10815,
+    "elapsed_s": 14.17,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

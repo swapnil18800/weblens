@@ -1,0 +1,234 @@
+{
+  "id": "amb1",
+  "category": "ambiguity",
+  "domain": "ai",
+  "question": "What's the best model right now?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Should surface multiple interpretations (best at what?) or scope explicitly — not silently pick one answer.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T075017Z-amb1",
+  "verdict": "pass",
+  "aggregate": 0.818,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.714,
+    "context_recall": 1.0,
+    "context_precision": 0.375,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.818,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.818
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.714,
+      "supported": 5,
+      "total": 7,
+      "reasoning": "Most claims match chunks; 'GPT-5.5 score 91' and 'ecosystem shift' unsupported."
+    },
+    "context_precision": {
+      "score": 0.375,
+      "relevant": 3,
+      "total": 8,
+      "reasoning": "Chunks 2-4 directly list top models in 2026; others discuss general advice or background."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 3034,
+      "search_ms": 2750,
+      "extract_ms": 776,
+      "chunk_ms": 16,
+      "retrieve_ms": 1511,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 19683,
+    "pipeline_s": 135.41
+  },
+  "judge_reasoning": "Most claims match chunks; 'GPT-5.5 score 91' and 'ecosystem shift' unsupported.",
+  "pipeline": {
+    "answer": "Based on aggregate benchmark data and expert reviews from May 2026, **Claude Mythos Preview (by Anthropic) is the highest-ranked AI language model overall.**\n\n**Overall Leaderboard (BenchLM.ai provisional scores) [3]:**\n| Rank | Model | Score |\n|------|-------|-------|\n| 1 | **Claude Mythos Preview** (Anthropic) | **99** |\n| 2 | Gemini 3.1 Pro (Google) | 92 |\n| 3 | GPT-5.5 (OpenAI) | 91 |\n| 4 | GPT-5.4 | – |\n| 5 | Claude Opus 4.6 (Anthropic) | – |\n\n- **Strengths:** Claude Mythos Preview leads in agentic tasks and coding benchmarks [3], but Grok 4 actually tops raw SWE-bench at 75% [4]. Claude Opus 4.6 scores above 74% on SWE-bench and dominates the developer tooling ecosystem (powering Cursor, Windsurf, Claude Code) [4].\n- **Cost trade-off:** GPT-5.4 and Claude Opus 4.6 are \"significantly cheaper\" than the top-ranked Mythos Preview while staying close in performance [3].\n- **Open-weight alternative:** DeepSeek V4 Pro (Max) ranks #9 with a score of 88 — the best open-weight option for teams prioritizing full model control over top raw scores [3].\n- **Ecosystem shift:** In 2026, models are now \"complex, multi-part systems\" rather than single architectures — e.g., GPT-5 uses an internal router for dynamic model selection [2].\n\n**Bottom line:** Claude Mythos Preview leads on raw benchmark score (99), but for cost-sensitive or open-weight deployments, GPT-5.4, Claude Opus 4.6, or DeepSeek V4 Pro are strong alternatives [3][4].",
+    "mode": "search",
+    "rewritten_query": "What's the best model right now?",
+    "rewrote": false,
+    "rationale": "Vague + time-sensitive; need current sources.",
+    "sub_queries": [
+      "Best AI language model as of May 2026 based on benchmarks and reviews"
+    ],
+    "citations": [
+      {
+        "num": 2,
+        "url": "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+        "title": "The best AI models in 2026: What model to pick for your use case",
+        "snippet": "The best AI models in 2026: What model to pick for your use case\n\nThe AI race isn't about a single winner, but about picking the right model for your specific task. Here's a list of the top contenders in 2026.\n\n[![Image 1: Obinna Amalu](https://www.pluralsight.com/content/dam/ps/images/resource-cent"
+      },
+      {
+        "num": 3,
+        "url": "https://benchlm.ai/best/overall",
+        "title": "Best AI Models Overall (2026) — Ranked by Benchmark Data",
+        "snippet": "Best AI Models in 2026 — Overall Rankings\n\nBenchLM.ai now distinguishes provisional overall ranking from verified overall ranking. The provisional score is a normalized weighted average across 8 benchmark categories: agentic (22%), coding (20%), reasoning (17%), knowledge (12%), multimodal & grounde"
+      },
+      {
+        "num": 4,
+        "url": "https://gurusup.com/blog/ai-comparisons",
+        "title": "https://gurusup.com/blog/ai-comparisons",
+        "snippet": "for customer service?\nYes. Frontier models in 2026 handle complex, multi-turn customer conversations with high accuracy. The key is deploying them as part of an AI agent system — not as a raw chatbot. AI agents add routing, knowledge retrieval, and human escalation, which makes the underlying model'"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://benchlm.ai/best/overall",
+        "title": "Best AI Models Overall (2026) — Ranked by Benchmark Data",
+        "snippet": "# Best AI Models in 2026 — Overall Rankings. BenchLM.ai now distinguishes provisional overall ranking from verified overall ranking. The provisional score is a normalized weighted average across 8 benchmark categories: agentic (22%), coding (20%), reasoning (17%), knowledge (12%), multimodal & grounded (12%), multilingual (7%), instruction following (5%), and math (5%), using non-generated benchmark coverage plus bounded external consensus calibration. Bottom line: Claude Mythos Preview leads overall, but GPT-5.4 and Claude Opus 4.6 are within striking distance — and significantly cheaper. According to BenchLM.ai, **Claude Mythos Preview** leads this ranking with a score of **99**, followed by **Gemini 3.1 Pro** (92) and **GPT-5.5** (91). The best open-weight option is DeepSeek V4 Pro (Max) (ranked #9 with a score of 88). This ranking is based on provisional overall weighted scores across BenchLM.ai's scoring formula tracked by BenchLM.ai. Claude Mythos Preview entered at #1 with the highest overall score on BenchLM. The top model is Claude Mythos Preview by Anthropic with a provisional score of 99."
+      },
+      {
+        "url": "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+        "title": "The best AI models in 2026: What model to pick for your use case",
+        "snippet": "*   [AI & Data](https://www.pluralsight.com/resources/blog/ai-and-data). [AI & Data](https://www.pluralsight.com/resources/blog/ai-and-data). 2.   [AI & Data](https://www.pluralsight.com/resources/blog/ai-and-data). [![Image 1: Obinna Amalu](https://www.pluralsight.com/content/dam/ps/images/resource-center/blog-contributor/obinna-amalu.webp) By Obinna Amalu](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list). ![Image 2: Please set an alt value for this image...](https://www.pluralsight.com/content/dam/ps/images/resource-center/blog/header-hero-images---rebrand/General%20AI_2.webp). *   [The titans of text: General intelligence & multimodal reasoning](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#the-titans-of-text:-general-intelligence-&-multimodal-reasoning). *   [The agentic workforce: AI models for code & automation](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#the-agentic-workforce:-ai-models-for-code-&-automation). *   [The creative revolution: Generative media](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#the-creative-revolution:-generative-media). *   [The specialized savants: AI in scientific discovery](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#the-specialized-savants:-ai-in-scientific-discovery). *   [Technical deep dive: The architectures you need to know](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#technical-deep-dive:-the-architectures-you-need-to-know). *   [Conclusion, picking your model & next steps](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list#conclusion,-picking-your-model-&-next-steps). *   **Meta Llama 4 Scout:** While its raw reasoning scores are lower, it has a game-changing feature: an industry-leading 10 million token context window, fundamentally shaking up the market for massive-scale data processing with open-source tools, as detailed on the[Llama 4 website](https://www.llama.com/models/llama-4/). Anthropic has optimized this model specifically for[agentic coding](https://www.anthropic.com/news/claude-sonnet-4-5), allowing it to work \"autonomously for hours\" and offering an Agent SDK. Anthropic's LLM vs ChatGPT](https://www.pluralsight.com/resources/blog/ai-and-data/what-is-claude-ai). *   [AI tools and trends in 2025: What tech...](https://www.pluralsight.com/resources/blog/ai-and-data/2025-ai-tools-trends-tech-sector). *   [Large Language Models (LLM)](https://www.pluralsight.com/paths/large-language-models-llm)."
+      },
+      {
+        "url": "https://yourgpt.ai/blog/general/best-llms",
+        "title": "The best large language models (LLMs) in 2026 - YourGPT Blog",
+        "snippet": "The best large language models (LLMs) in 2026 - YourGPT Blog. # The best large language models (LLMs) in 2026. In 2026, one of the most common mistakes businesses make is assuming all AI models are the same. In this blog, we cover the best ai model, our top 5 recommended language models in 2026 where they actually perform well, when to use them, and what to avoid so your AI choices hold up in real workflows, not just presentations. ## What Are Large Language Models (LLMs)? Large Language Models (LLMs) are AI systems trained on large volumes of text to process and generate language. In 2026, leading models like Models such as **OpenAI**, **Claude**, **Gemini**, **LLaMA**, and **DeepSeek** differ in their performance across areas like reasoning, speed, context length, and input support (text, code, images, etc.). When choosing the best Large Language Model (LLM), it’s not just about picking the most powerful one. ## The Best AI Models in 2026."
+      },
+      {
+        "url": "https://zapier.com/blog/best-llm/",
+        "title": "The best large language models (LLMs) in 2026 - Zapier",
+        "snippet": "[Reasoning models](https://zapier.com/blog/ai-reasoning/) that take extra time to work through hard problems and [large multimodal models (LMMs)](https://zapier.com/blog/multimodal-ai/), which are able to handle other input and output modalities, like images, audio, and video, as well as text, are two of the biggest developments. *   [How do LLMs work?](https://zapier.com/blog/best-llm/#how). *   [What are reasoning models?](https://zapier.com/blog/best-llm/#reasoning). *   [What can LLMs be used for?](https://zapier.com/blog/best-llm/#uses). | [GLM-5](https://zapier.com/blog/best-llm/#glm) | Z.ai | No | Yes | Open, API, Chatbot |. Reasoning models are LLMs that are trained to generate a response using [Chain-of-Thought (CoT) reasoning](https://zapier.com/blog/chain-of-thought-prompting). You can pull the power of GPT-5.5 and other OpenAI models into your work by [connecting them to Zapie r](https://zapier.com/apps/chatgpt/integrations), making AI a core part of complex, multi-step workflows across your enterprise tech stack. [Google Gemini](https://zapier.com/blog/google-gemini/) is a family of AI models from Google. The latest models also power [AI features throughout Google's apps](https://zapier.com/blog/gemini-for-workspace/), like Docs and Gmail, as well as Google's chatbot, which is confusingly also called [Gemini](https://zapier.com/blog/how-to-use-google-gemini/). [Details](https://zapier.com/apps/gmail/integrations/gmail/1716358/generate-draft-responses-to-new-gmail-emails-with-google-ai-studio-gemini)[Try it](https://zapier.com/webintent/create-zap?template=1716358). [* Google AI Studio](https://zapier.com/blog/apps/google-ai-studio)."
+      },
+      {
+        "url": "https://llm-stats.com/",
+        "title": "LLM Leaderboard 2026: Compare 300+ Top AI Models by ...",
+        "snippet": "# LLM Leaderboard — Compare 300+ Top AI Models by Intelligence, Speed & Price. Independent ranking of GPT, Claude, Gemini, Llama, DeepSeek and 300+ AI models — composite LLM Stats Score, updated continuously from public benchmarks and live API metrics. | 2 | OpenAI GPT-5.5 OpenAI | 64.2 | 62.9 | 53.1 | 44.1 | 1,599 | 1.1M | 37c/s | $7.78 | Proprietary |. | 5 | OpenAI GPT-5.2 Pro OpenAI | 61.2 | 56.3 | — | 29.9 | — | — | — | — | Proprietary |. | 7 | Google Gemini 3.1 Pro Google | 58.2 | 59.3 | 44.1 | 33.9 | 2,093 | 1.0M | — | $3.89 | Proprietary |. | 14 | OpenAI GPT-5.1 Thinking OpenAI | 54.1 | 48.0 | 30.8 | — | 1,024 | 400K | 32c/s | $2.22 | Proprietary |. | 17 | OpenAI GPT-5.1 Instant OpenAI | 52.1 | 49.2 | 31.3 | — | 805 | 400K | 403c/s | $2.22 | Proprietary |."
+      },
+      {
+        "url": "https://gurusup.com/blog/ai-comparisons",
+        "title": "AI Models in 2026: Which One Should You Actually Use? - GuruSup",
+        "snippet": "# AI Models in 2026: Which One Should You Actually Use? Four frontier models now compete across coding, reasoning, writing, and business automation — and none of them wins everything. ## AI Models at a Glance: 2026 Overview. Here is where the four frontier models stand right now:. Category | GPT-5.4 | Claude Opus 4.6 | Gemini 3.1 Pro | Grok 4. ## Which AI Model Should You Choose? ## AI Models for Business: What Actually Matters. Here is what most comparison articles get wrong: for business use, the model is the least important variable. What matters is the **system** around the model. A well-designed AI agent that routes queries, pulls from your knowledge base, and escalates to humans at the right moment will outperform a raw frontier model every time. Companies that deploy AI agents for customer service, sales, and internal support see 40-60% automation rates regardless of which underlying model they use. ### What is the best AI model in 2026? ### Which AI is best for coding?"
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://yourgpt.ai/blog/general/best-llms",
+        "title": "The best large language models (LLMs) in 2026 - YourGPT Blog",
+        "heading": "",
+        "chunk_text": "In 2026, one of the most common mistakes businesses make is assuming all AI models are the same. Relying on surface-level benchmarks without context can lead to bad choices. The wrong model can result in delays, cost overruns, or systems that don’t hold up in production.\n\nWhat separates high-performing teams isn’t just adopting AI it’s selecting the right model for the task. The most effective deployments are based on technical fit and business need, not general claims.\n\nIn this blog, we cover the best ai model, our top 5 recommended language models in 2026 where they actually perform well, when to use them, and what to avoid so your AI choices hold up in real workflows, not just presentations.\n\n* * *",
+        "score": 7.5379,
+        "rank": 0
+      },
+      {
+        "url": "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+        "title": "The best AI models in 2026: What model to pick for your use case",
+        "heading": "The best AI models in 2026: What model to pick for your use case",
+        "chunk_text": "The best AI models in 2026: What model to pick for your use case\n\nThe AI race isn't about a single winner, but about picking the right model for your specific task. Here's a list of the top contenders in 2026.\n\n[![Image 1: Obinna Amalu](https://www.pluralsight.com/content/dam/ps/images/resource-center/blog-contributor/obinna-amalu.webp) By Obinna Amalu](https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list)\n\nFeb 20, 2026 • 12 Minute Read\n\n![Image 2: Please set an alt value for this image...](https://www.pluralsight.com/content/dam/ps/images/resource-center/blog/header-hero-images---rebrand/General%20AI_2.webp)\n\n*   AI & Data\n\n* * *\n\n[Subscribe to the newsletter](https://www.pluralsight.com/subscribe)\n\nTable of Contents",
+        "score": 7.0098,
+        "rank": 1
+      },
+      {
+        "url": "https://benchlm.ai/best/overall",
+        "title": "Best AI Models Overall (2026) — Ranked by Benchmark Data",
+        "heading": "Best AI Models in 2026 — Overall Rankings",
+        "chunk_text": "Best AI Models in 2026 — Overall Rankings\n\nBenchLM.ai now distinguishes provisional overall ranking from verified overall ranking. The provisional score is a normalized weighted average across 8 benchmark categories: agentic (22%), coding (20%), reasoning (17%), knowledge (12%), multimodal & grounded (12%), multilingual (7%), instruction following (5%), and math (5%), using non-generated benchmark coverage plus bounded external consensus calibration. The verified leaderboard is stricter and only counts sourced benchmark rows. Each score includes a confidence indicator (1-4 dots) based on how much sourced coverage supports it. Display-only benchmarks — including MMLU, OpenBookQA, HumanEval, FLTEval, BBH, LisanBench, and older AIME/HMMT variants — remain visible for context but do not affect ranking.\n\nUnless noted otherwise, ranking surfaces on this page use BenchLM&apos;s provisional leaderboard lane rather than the stricter sourced-only verified leaderboard.\n\nBottom line: Claude Mythos Preview leads overall, but GPT-5.4 and Claude Opus 4.6 are within striking distance — and significantly cheaper.\n\nAccording to BenchLM.ai, **Claude Mythos Preview** leads this ranking with a score of**99**, followed by**Gemini 3.1 Pro** (92) and**GPT-5.5** (91). There is meaningful separation between the top models, suggesting genuine performance differences.",
+        "score": 6.8889,
+        "rank": 2
+      },
+      {
+        "url": "https://benchlm.ai/best/overall",
+        "title": "Best AI Models Overall (2026) — Ranked by Benchmark Data",
+        "heading": "Best AI Models in 2026 — Overall Rankings",
+        "chunk_text": "Best AI Models in 2026 — Overall Rankings\n\nThe best open-weight option is DeepSeek V4 Pro (Max) (ranked #9 with a score of 88). While proprietary models lead, open-weight options are within striking distance for teams willing to trade a few points of performance for full model control.\n\nThis ranking is based on provisional overall weighted scores across BenchLM.ai's scoring formula tracked by BenchLM.ai.For detailed model profiles, click any model name below. To compare two specific models head-to-head, use the \"vs #\" links.\n\n[1 Closed Claude Mythos Preview Anthropic · 1M 99 prov. overall Highest overall score. Leads agentic and coding. Premium-priced.](https://benchlm.ai/models/claude-mythos-preview)[2 Closed Gemini 3.1 Pro Google · 1M 92 prov. overall](https://benchlm.ai/models/gemini-3-1-pro)[3 Closed GPT-5.5 OpenAI · 1M 91 prov. overall](https://benchlm.ai/models/gpt-5-5)",
+        "score": 6.7326,
+        "rank": 3
+      },
+      {
+        "url": "https://gurusup.com/blog/ai-comparisons",
+        "title": "https://gurusup.com/blog/ai-comparisons",
+        "heading": "",
+        "chunk_text": "for customer service?\nYes. Frontier models in 2026 handle complex, multi-turn customer conversations with high accuracy. The key is deploying them as part of an AI agent system — not as a raw chatbot. AI agents add routing, knowledge retrieval, and human escalation, which makes the underlying model's limitations irrelevant for most support scenarios.\nWhich AI is best for coding?\nGrok 4 leads raw SWE-bench scores (75%), followed closely by GPT-5.4 (74.9%) and Claude Opus 4.6 (74%+). In practice, Claude dominates the developer tooling ecosystem — it powers Cursor, Windsurf, and Claude Code. Read our complete coding AI guide for detailed benchmarks and tool recommendations.\nReady to automate your support?\nJoin thousands of teams using GuruSup to resolve customer queries with AI — without scaling headcount.\nNo credit card required",
+        "score": 5.6356,
+        "rank": 4
+      },
+      {
+        "url": "https://yourgpt.ai/blog/general/best-llms",
+        "title": "The best large language models (LLMs) in 2026 - YourGPT Blog",
+        "heading": "What Makes a Good LLM in 2026?",
+        "chunk_text": "What Makes a Good LLM in 2026?\n\nWhen choosing the best Large Language Model (LLM), it’s not just about picking the most powerful one. It’s about what fits your use case. Here are the key factors to look at:\n\n#### 1. Instructions Following\n\nThe model should reliably follow user prompts especially for structured outputs, content generation, or task completion. It should understand both direct and complex instructions without drifting off-topic.\n\n#### 2. Efficiency (Speed + Cost)\n\nHigh performance matters, but not at any cost.\n\n*   A good LLM should give fast responses without burning through your budget.\n\n*   Check how well the model balances performance and price, especially if you’re planning to use it at scale.\n\n#### 3. Accuracy\n\nThe model must return relevant, factual, and context-aware responses especially when the output is tied to decision-making or [customer support](https://yourgpt.ai/chatbot).\n\n*   Test how well it avoids hallucinations and stays aligned with your expected tone and logic.\n\n#### 4. Context Handling\n\nGood models can remember and reference previous parts of a conversation.\n\n*   This is important for longer interactions, customer queries, or any use case where the conversation builds over time.\n\n#### 5. Data Retention\n\nIf you’re working with sensitive data, choose models that respect data privacy and ethical standards and may should give option for self deployment or ZDR (Zero Data Retention).\n\n#### 6. Multilingual Support",
+        "score": 5.0213,
+        "rank": 5
+      },
+      {
+        "url": "https://yourgpt.ai/blog/general/best-llms",
+        "title": "The best large language models (LLMs) in 2026 - YourGPT Blog",
+        "heading": "What Are Large Language Models (LLMs)?",
+        "chunk_text": "What Are Large Language Models (LLMs)?\n\nLarge Language Models (LLMs) are AI systems trained on large volumes of text to process and generate language. They’re used in tasks like answering questions, writing content, assisting with code, and retrieving information.\n\nIn 2026, leading models like Models such as **OpenAI**, **Claude**, **Gemini**, **LLaMA**, and **DeepSeek** differ in their performance across areas like reasoning, speed, context length, and input support (text, code, images, etc.). Each is optimised for specific strengths, which makes direct comparisons dependent on use case.",
+        "score": 4.6406,
+        "rank": 6
+      },
+      {
+        "url": "https://www.pluralsight.com/resources/blog/ai-and-data/best-ai-models-2026-list",
+        "title": "The best AI models in 2026: What model to pick for your use case",
+        "heading": "The best AI models in 2026: What model to pick for your use case",
+        "chunk_text": "The best AI models in 2026: What model to pick for your use case\n\nThis competition has become incredibly intense. The performance gap that once existed between US-based labs and the rest of the world has nearly vanished, with labs in China, France, and others emerging as major competitors, even leaders in some key areas, as noted in the[State of AI Report 2025](https://www.stateof.ai/). For anyone in tech—developers, data practitioners, and leaders—a solid understanding of these foundational AI systems is no longer a luxury, but a core skill for survival.\n\nThe definition of a competitor has also changed. We used to talk about individual \"models\" like GPT-4. Now, we analyze entire \"systems.\" The new frontier is built on complex, multi-part architectures. For instance, OpenAI’s GPT-5 is a \"unified system\" that uses an internal router to pick the right model for your request in real-time. Anthropic’s Claude 4.5 is an agentic system designed to work \"autonomously for hours.\" And Google’s Gemini 2.5 is a \"thinking model\" that dynamically allocates compute to reason through its thoughts before giving you an answer.\n\nThis report offers a technical breakdown of the 2026 AI \"Olympics,\" analyzing the top contenders based on measurable performance, not marketing hype.",
+        "score": 4.6322,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 3034,
+      "search_ms": 2750,
+      "extract_ms": 776,
+      "chunk_ms": 16,
+      "retrieve_ms": 1511,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 19683,
+    "elapsed_s": 135.41,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

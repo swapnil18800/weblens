@@ -1,0 +1,344 @@
+{
+  "id": "amb2",
+  "category": "ambiguity",
+  "domain": "finance",
+  "question": "How did Q3 results look?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Underspecified — which company / which Q3. Should ask or note ambiguity.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T161015Z-amb2",
+  "verdict": "partial",
+  "aggregate": 0.75,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 1.0,
+    "context_recall": 1.0,
+    "context_precision": 0.25,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.5,
+    "answer_relevancy": 0.533,
+    "aggregate": 0.75,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.75
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 1.0,
+      "supported": 8,
+      "total": 8,
+      "reasoning": "All claims are directly supported by the provided source chunks."
+    },
+    "context_precision": {
+      "score": 0.25,
+      "relevant": 2,
+      "total": 8,
+      "reasoning": "Chunks 1 and 8 directly report Q3 financial results; others are general earnings context or unrelated."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.533,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 12,
+      "decompose_ms": 9740,
+      "search_ms": 4300,
+      "extract_ms": 7613,
+      "chunk_ms": 33,
+      "retrieve_ms": 5051,
+      "synthesis_ms": 10766,
+      "embedding_cleanup_ms": 2,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 49139,
+    "pipeline_s": 54.34
+  },
+  "judge_reasoning": "All claims are directly supported by the provided source chunks.",
+  "pipeline": {
+    "answer": "# Q3 Results: Strong Earnings Growth Driven by Technology Sector\n\nThe Q3 2025 earnings season showed robust performance, with the S&P 500 on pace for **14% earnings growth**—the fourth consecutive quarter of double-digit expansion, well above the 7% estimate from September 30 [3]. While most data covers Q3 2025, some company-specific results (e.g., Viridien) provide concrete figures, and one source references a Q3 FY2026 Procter & Gamble release without detailed data [4].\n\n## Market-Level Performance\n\n- **85% of S&P 500 companies** beat EPS estimates in Q3 2025 [3], though the market's price reward for beats was smaller and punishment for misses larger than historical norms [3].\n- The **Technology sector dominated**, with the Nasdaq reaching all-time highs and outperforming the S&P 500 and Dow [5]. Information Technology led all S&P sectors with a **+14% gain** in Q3 [5].\n- The **Magnificent 7** grew EPS **21%** versus **13%** for the other 493 stocks [3].\n\n## Key Company Results\n\n### Technology Sector Beats (Q3 2025)\n| Company | EPS Surprise | Actual vs. Estimate | Source |\n|---------|-------------|-------------------|--------|\n| Amazon | +25.4% | $1.43 vs $1.14 | [2] |\n| Alphabet | +23.7% | Not specified | [2] |\n| Meta | +8.7% | Not specified | [2] |\n| Apple | +5.1% | $1.85 vs $1.76 | [2] |\n| Microsoft | +1.6% | Not specified | [2] |\n\nTesla was the **only major miss** among 10 reported tech companies [2].\n\n### Viridien (Q3 2025)\n- **Segment revenue**: **$313m**, up **+27% YoY** [1]\n- **Adjusted EBITDAs**: **$167m**, up **+70% YoY**, with a **53% margin** [1]\n- **IFRS revenue**: **$266m**, up **+22% YoY**, with net income of **$41m** [1]\n- **Net Cash Flow**: **$53m** in Q3, **$62m** year-to-date [1]\n\n### Procter & Gamble (Q3 FY2026)\nA Q3 FY2026 earnings release is dated **April 24, 2026**, but no financial results data are provided in the source—it only directs to the full press release [4].\n\n## Sector Rotation & Leadership\n\n- Growth sectors like **Communication Services, Consumer Discretionary, and Utilities** posted positive returns [5].\n- **Consumer Staples** lagged at **-4.3%** as investors rotated out of defensives [5].\n- **Materials** declined less than 1% [5].\n- Markets reacted more strongly to forward guidance than backward results, especially around AI spending and consumer trends [2].\n\n## Key Takeaways\n\n- **Broad strength**: The S&P 500 delivered 14% earnings growth, with 85% of companies beating estimates and double-digit growth for four straight quarters [3].\n- **Tech-led market**: The Nasdaq hit all-time highs, Information Technology led with +14% gains, and the Magnificent 7 outpaced the rest by 8 percentage points [3][5].\n- **Company-specific highlights**: Viridien reported exceptional Q3 2025 results (70% EBITDAs growth, 53% margin), while Apple, Amazon, Alphabet, and Meta all posted positive EPS surprises [1][2].\n- **Sector rotation**: Growth and technology sectors outperformed, while Consumer Staples and Materials lagged as investors pivoted away from defensives [5].\n- **Guidance focus**: Markets penalized misses more than they rewarded beats, with particular attention on AI capital expenditure and consumer spending trends [2][3].",
+    "mode": "search",
+    "rewritten_query": "How did Q3 results look?",
+    "rewrote": false,
+    "rationale": "No company specified; recent earnings require source.",
+    "sub_queries": [
+      "Most recent quarterly earnings results for Q3 2025 or Q3 2026",
+      "Q3 2025 earnings highlights and performance"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "title": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "snippet": "Paris (France), October 30, 2025\n2025 third-quarter results\nStrong performance driving Net Cash Flow generation\n-\nSegment revenue of $313m in Q3 2025, up +27% year-on-year, with all business lines contributing positively\n-\nSegment adjusted EBITDAs of $167m in Q3 2025, up a massive +70% year-on-year,"
+      },
+      {
+        "num": 2,
+        "url": "https://get.ycharts.com/resources/blog/q3-2025-earnings-tracker/",
+        "title": "https://get.ycharts.com/resources/blog/q3-2025-earnings-tracker/",
+        "snippet": "Q3 2025 Earnings Season Tracker: Live Updates & Analysis by Sector\nEarnings Data Updated as of: Wednesday, October 29 @ 9:30AM EST\nTable of Contents\nTechnology Sector Earnings\nThe Technology sector dominated Q3 2025 earnings with exceptional results across major players. Yesterday’s highlights inclu"
+      },
+      {
+        "num": 3,
+        "url": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "title": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "snippet": "This article has additional related content\nU.S. stocks, as measured by the S&P 500 Index, are on pace for 14% growth in earnings for Q3 2025. This marks the fourth consecutive quarter of double-digit growth and comes in well ahead of analysts’ Sept. 30 estimates of 7%.\nThe “Magnificent 7” stocks we"
+      },
+      {
+        "num": 4,
+        "url": "https://us.pg.com/blogs/pg-earnings-third-quarter-2026/",
+        "title": "https://us.pg.com/blogs/pg-earnings-third-quarter-2026/",
+        "snippet": "ccountable organization that is inclusive and diverse — enabling us to better serve an increasingly diverse set of consumers.\nFor a deeper dive into the results announced today read our press release. Slides and the webcast replay of earnings results are available at www.pginvestor.com/event.\nSee th"
+      },
+      {
+        "num": 5,
+        "url": "https://spartancapital.com/q3-overview-2025/",
+        "title": "https://spartancapital.com/q3-overview-2025/",
+        "snippet": "t all-time highs, driven primarily by the technology sector. The Nasdaq's performance led in comparison to its peers, outpacing both the broader S&P 500 and the blue-chip Dow Jones Industrial Average. Breaching through the previous all-time high of 20,200 in early July, provided a key psychological "
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://investor.oracle.com/investor-news/news-details/2026/Oracle-Announces-Fiscal-Year-2026-Third-Quarter-Financial-Results/default.aspx",
+        "title": "Oracle Announces Fiscal Year 2026 Third Quarter Financial Results",
+        "snippet": "Q3 Remaining Performance Obligations $553 billion, up 325% year-over-year in USD; Q3 GAAP Earnings per Share up 24% to $1.27,"
+      },
+      {
+        "url": "https://us.pg.com/blogs/pg-earnings-third-quarter-2026/",
+        "title": "P&G Announces Results for the Third Quarter of Fiscal Year 2026",
+        "snippet": "See the Q3 FY26 earnings release issued April 24, 2026, the associated webcast presentation, definitions of non-GAAP measures and reconciliation"
+      },
+      {
+        "url": "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2026/default.aspx",
+        "title": "NVIDIA Announces Financial Results for Third Quarter Fiscal 2026",
+        "snippet": "Revenue is expected to be $65.0 billion, plus or minus 2%. · Third-quarter revenue was a record $51.2 billion, up 25% from the previous quarter"
+      },
+      {
+        "url": "https://investor.apple.com/investor-relations/default.aspx",
+        "title": "Investor Relations - Apple",
+        "snippet": "FY 26 Second Quarter Results. Apple announced results and business updates for the quarter ended March 28, 2026. View the press release · Listen to the Replay"
+      },
+      {
+        "url": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "title": "Q3 2025 U.S. earnings highlights - BlackRock",
+        "snippet": "U.S. stocks, as measured by the S&P 500 Index, are on pace for 14% growth in earnings for Q3 2025. This marks the fourth consecutive quarter of"
+      },
+      {
+        "url": "https://www.goldmansachs.com/investor-relations/financials/quarterly-earnings-releases",
+        "title": "Quarterly Earnings Releases | Goldman Sachs",
+        "snippet": "Goldman Sachs Reports 2026 First Quarter Earnings Per Common Share of $17.55 and Annualized Return on Common Equity of 19.8%. View Press Release."
+      },
+      {
+        "url": "https://get.ycharts.com/resources/blog/q3-2025-earnings-tracker/",
+        "title": "Q3 2025 Earnings Tracker: Live Results by Sector",
+        "snippet": "Technology sector dominates with 6 of 10 companies beating estimates, while Financials maintain a perfect 100% beat rate across all 10 reported companies. | **Apple** | AAPL | Oct 30, 2025 | $1.85 | $1.76 | $94.9B | +6.1% | Beat |. | **Alphabet** | GOOGL | Oct 29, 2025 | $2.87 | $2.32 | $88.3B | +15.1% | Beat |. | **Amazon** | AMZN | Oct 30, 2025 | $1.43 | $1.14 | $158.9B | +11.0% | Beat |. | **Visa** | V | Oct 28, 2025 | $2.98 | $2.97 | $9.6B | +12.0% | Beat |. | **Mastercard** | MA | Oct 30, 2025 | $4.38 | $4.31 | $7.4B | +13.0% | Beat |. | **Merck** | MRK | Oct 30, 2025 | $2.58 | $2.37 | $16.7B | +5.0% | Beat |. | **Valero Energy** | VLO | Oct 24, 2025 | $2.30 | $2.14 | $31.2B | -8.3% | Beat |."
+      },
+      {
+        "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/2025/12/q3-2025-earnings-review",
+        "title": "Q3 2025 Earnings Review: Performance, Market Revisions, Sentiment",
+        "snippet": "The Q3 earnings season ultimately delivered, with 81% beating expectations. Leadership was again concentrated in Information Technology and"
+      },
+      {
+        "url": "https://insight.factset.com/earnings-insight-infographic-q3-2025-by-the-numbers",
+        "title": "Earnings Insight Infographic: Q3 2025 By the Numbers",
+        "snippet": "# Earnings Insight Infographic: Q3 2025 By the Numbers. ###### Earnings. By John Butters  |  December 4, 2025. Each week, Earnings Insight offers analysis of critical trends in the S&P 500. The information contained in this blog post is not legal, tax, or investment advice. Mr. John Butters is Vice President and Senior Earnings Analyst at FactSet. His weekly research report, “Earnings Insight,” provides analysis and commentary on trends in corporate earnings data for the S&P 500 including revisions to estimates, year-over-year growth, performance relative to expectations, and valuations. Explore the latest FactSet earnings analysis for the S&P 500. FactSet earnings report: The blended net profit margin for the S&P 500 for Q1 2026 is 13.4%. S&P 500 Earnings Season Update: April 24, 2026. Explore Q1 S&P 500 earnings results in this quantitative earnings analysis from FactSet, including EPS overall and by sector plus... FactSet earnings report: For Q1 2026, the estimated (year-over-year) earnings growth rate for the “Magnificent 7” companies is..."
+      },
+      {
+        "url": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "title": "2025 third-quarter results Strong performance driving Net Cash Flow ...",
+        "snippet": "Segment revenue at $244 m in Q3 2025, up +31% year-on-year, with strong Earth Data late sales. Geoscience (GEO). Revenue at $108 m (+5%)."
+      },
+      {
+        "url": "https://am.jpmorgan.com/us/en/asset-management/liq/insights/market-insights/market-updates/bulletins/3q25-earnings-tech-boom-or-bust/",
+        "title": "3Q25 Earnings: Tech boom or bust?\n        \n        \n         | J.P. Morgan Asset Management",
+        "snippet": "## Liquidity Insights. ## Market Insights. ## Portfolio Insights. The 3Q25 earnings season is once again exceeding expectations, tracking for a fourth consecutive quarter of double-digit growth. expectations of 7.3% at the end of the quarter. At the sector level, most of the index’s earnings growth is coming from technology and financials, while health care and consumer companies look softer. Five of the Magnificent 7 reported last week and the biggest names in tech are driving 38% of the index’s profit growth, sporting margins of 22%. Its defensive properties have been inconsistent: the Mag 7 had a less pronounced drawdown than the index as a whole in 2020, but a deeper correction in 2022 and in spring of 2025. Four of the Mag 7 are underperforming the index this year, and only two are in the top 50 performing S&P 500 stocks this year."
+      },
+      {
+        "url": "https://spartancapital.com/q3-overview-2025/",
+        "title": "Q3 OVERVIEW 2025 - Spartan Capital Securities",
+        "snippet": "Skyline delivers strategic assistance for companies in the financial markets and investment community by helping them effectively communicate their corporate message and competitive advantages while assisting its clients to build their investor relations efforts into industry leading platforms. NANO Nuclear believes it is the first portable nuclear microreactor company to be listed publicly in the U.S. Led by a world-class nuclear engineering team, NANO Nuclear’s reactor products in development include its lead project, the patented KRONOS MMR™ Energy System, a stationary high-temperature gas-cooled reactor that is in construction permit pre-application engagement with the U.S. Nuclear Regulatory Commission (NRC) in collaboration with University of Illinois Urbana-Champaign, ZEUS™, a solid core battery reactor, and the space focused, portable LOKI MMR™, each representing advanced developments in clean energy solutions that are modular, on-demand capable, advanced nuclear microreactors."
+      }
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "title": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "heading": "",
+        "chunk_text": "Paris (France), October 30, 2025\n2025 third-quarter results\nStrong performance driving Net Cash Flow generation\n-\nSegment revenue of $313m in Q3 2025, up +27% year-on-year, with all business lines contributing positively\n-\nSegment adjusted EBITDAs of $167m in Q3 2025, up a massive +70% year-on-year, representing a 53% margin (vs 40% in Q3 2024), supported by strong Earth Data contribution and solid Geoscience profitability\n-\nNet Cash Flow generation of $53m in the quarter, $62m year-to-date at end-September\n-\nActive liability management with partial bond redemptions in early October ($25m on the USD tranche,$23m on the EUR one)\n-\nFull-year 2025 Net Cash Flow target of $100m reiterated\nSophie Zurquiyah, Chair and CEO of Viridien: “Viridien delivered a strong third quarter, contributing to solid Net Cash Flow generation. Our main focus on major offshore projects and close collaboration with leading energy companies continue to drive our performance. More than ever, Viridien offers unique, high-value solutions for exploration and production, making us a strategic partner, less affected by market fluctuations.",
+        "score": 6.6914,
+        "rank": 0
+      },
+      {
+        "url": "https://get.ycharts.com/resources/blog/q3-2025-earnings-tracker/",
+        "title": "https://get.ycharts.com/resources/blog/q3-2025-earnings-tracker/",
+        "heading": "",
+        "chunk_text": "Q3 2025 Earnings Season Tracker: Live Updates & Analysis by Sector\nEarnings Data Updated as of: Wednesday, October 29 @ 9:30AM EST\nTable of Contents\nTechnology Sector Earnings\nThe Technology sector dominated Q3 2025 earnings with exceptional results across major players. Yesterday’s highlights included Apple’s impressive +5.1% surprise ($1.85 vs $1.76) and Amazon’s blockbuster +25.4% beat ($1.43 vs $1.14). Earlier in the week, Alphabet delivered a stunning +23.7% surprise, Meta beat by +8.7%, and Microsoft exceeded estimates by +1.6%. 6 of 10 reported tech companies beat estimates, with only Tesla missing.",
+        "score": 6.2851,
+        "rank": 1
+      },
+      {
+        "url": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "title": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "heading": "",
+        "chunk_text": "This article has additional related content\nU.S. stocks, as measured by the S&P 500 Index, are on pace for 14% growth in earnings for Q3 2025. This marks the fourth consecutive quarter of double-digit growth and comes in well ahead of analysts’ Sept. 30 estimates of 7%.\nThe “Magnificent 7” stocks were standouts once again, growing earnings per share (EPS) 21% in the quarter compared to 13% for the “other 493.” Our data shows 85% of companies beating their EPS estimates, though market reaction showed a smaller price reward for beats and greater punishment for misses than historically has been the case. This is likely a reflection of the market’s high expectations after what’s shaping up to be a third consecutive year of healthy gains.\nAgainst this backdrop ― and amid recent whiffs of AI consternation ― we offer three reflections anchored in the most recent quarter’s earnings:\nWithin the context of an exceptional quarter at the index level, there were clearly leaders and laggards. Even in those sectors that wowed, we saw notable differentiation.\nOf the four S&P 500 sectors that have driven performance year-to-date (utilities, communication services, IT and industrials), all but one notched Q3 earnings growth above the Mag 7. Communication services was the exception, weighed down by disappointing results from a Mag 7 constituent.\nThe upshot: Even the top tier features differentiation.",
+        "score": 5.5732,
+        "rank": 2
+      },
+      {
+        "url": "https://get.ycharts.com/resources/blog/q3-2025-earnings-tracker/",
+        "title": "https://get.ycharts.com/resources/blog/q3-2025-earnings-tracker/",
+        "heading": "",
+        "chunk_text": "mmodity price normalization.\n- Guidance Matters More: Markets are reacting more strongly to forward guidance than backward-looking results, particularly around AI investments and consumer spending trends.\n- Week Ahead Critical: With major names like Amazon, Exxon, and Chevron reporting, next week could set the tone for Q4 2025 market direction.\n- Portfolio Implications: Consider rebalancing toward sectors showing sustained earnings momentum while monitoring guidance revisions for early warning signals.\nMethodology & Updates\nThis earnings tracker focuses on the largest companies by market capitalization within each sector, providing a representative sample of Q3 2025 earnings season performance. Data is updated daily as companies report, with preliminary results subject to revision. EPS estimates represent consensus analyst expectations as of the day before earnings release.\nFor comprehensive earnings analysis, historical comparisons, and detailed financial metrics, YCharts’ Fundamental Data tools provide institutional-grade analytics for over 40,000 securities globally. Financial advisors can access real-time earnings data, estimate revisions, and surprise history to make informed portfolio decisions.\nReady to Move On From Your Investment Research and Analytics Platform?\nFollow YCharts Social Media to Unlock More Content!\nNext Article\nNavigating the 2025 Government Shutdown with YChartsRead More →",
+        "score": 4.8254,
+        "rank": 3
+      },
+      {
+        "url": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "title": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "heading": "",
+        "chunk_text": "depreciation of the U.S. dollar negatively impacted performance by approximately $3 million, as SMO bears most of its cost base in euros.\nSegment adjusted operating income at -$2 m vs -$7m in Q3 2024. At constant exchange rates versus last year, operating income would have reached $1m, consistent with the objective of the past 24-month restructuring plan to reduce SMO’s break-even point to a run-rate of around $270m in annual revenue.\nCONSOLIDATED IFRS FIGURES3\nProfit & Loss\nConsolidated IFRS revenue for Q3 2025 came in at $266m, up +22% year-on-year. EBITDAs stood at $120m, up +70%.\nIFRS Net Income reached $41m, vs -$10m in Q3 2024, after accounting notably for -$43 m of leases and D&A,\n-$27m net cost of financial debt, and -$9m of income taxes.\n(in millions of $) | Q3 2025 | Q3 2024 | Change (%) | 9M 2025 | 9M 2024 | Change (%) |\n€/$ exchange rate | 1.16 | 1.09 | +7% | 1.11 | 1.09 | +2% |\nRevenue | 266 | 219 | +22% | 758 | 785 | -3% |\nEBITDAs | 120 | 71 | +70% | 287 | 301 | -5% |\nOperating income | 77 | 23 | +236% | 149 | 95 | +57% |\nEquity from investment | 0 | 1 | n.s. | -1 | 1 | n.a. |\nNet cost of financial debt | -27 | -24 | +12% | -79 | -74 | +8% |\nOther financial income (loss) | -1 | 0 | n.a. | -35 | -1 | n.s. |\nIncome taxes | -9 | -9 | +4% | -16 | -14 | +15% |\nNet Income (loss) from continuing operations | 41 | -9 | n.a. | 17 | 7 | +145% |\nNet Income (loss) from discontinued operations | 1 | -1 | n.a.",
+        "score": 4.5981,
+        "rank": 4
+      },
+      {
+        "url": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "title": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "heading": "",
+        "chunk_text": "ies continue to drive our performance. More than ever, Viridien offers unique, high-value solutions for exploration and production, making us a strategic partner, less affected by market fluctuations. With a Net Cash Flow of $62 million at the end of September, we are confidently progressing toward our full-year target of $100 million and have initiated approximately $50 million in bond buybacks.”\n(in millions of $)1 | Q3 2025 | Q3 2024 | Change (%) | 9M 2025 | 9M 2024 | Change (%) |\nSegment figures |\n|\n|\n|\n|\n|\n|\nRevenue | 313 | 246 | +27% | 888 | 778 | +14% |\nAdjusted EBITDAs | 167 | 98 | +70% | 417 | 298 | +40% |\nIFRS figures |\n|\n|\n|\n|\n|\n|\nRevenue | 266 | 219 | +22% | 758 | 785 | -3% |\nEBITDAs | 120 | 71 | +70% | 287 | 301 | -5% |\nOperating Income | 77 | 23 | +236% | 149 | 95 | +57% |\nNet Income | 41 | -10 | n.a. | 19 | 22 | -10% |\nNet Cash Flow | 53 | 10 | +426% | 62 | 34 | +83% |\nNet Debt (incl. IFRS16) | 977 | 1 003 | -3% | 977 | 1 003 | -3% |\nKEY HIGHLIGHTS PER BUSINESS LINE2\nData, Digital and Energy Transition (DDE)\nSegment revenue at $244 m in Q3 2025, up +31% year-on-year, with strong Earth Data late sales.\nGeoscience (GEO)\n-\nRevenue at $108 m (+5%)\n-\nActivity remains strong, fueled by large OBN projects offshore Brazil and in the US Gulf, with additional support from the Middle East\nEarth Data (EDA)\n-\nRevenue at $136 m (+63%), fueled by market appetite for high-end data and recent M&A transactions\n-\nGood progress on the Megabar Extension Phase 1 project in Brazil.",
+        "score": 4.5244,
+        "rank": 5
+      },
+      {
+        "url": "https://us.pg.com/blogs/pg-earnings-third-quarter-2026/",
+        "title": "https://us.pg.com/blogs/pg-earnings-third-quarter-2026/",
+        "heading": "",
+        "chunk_text": "ccountable organization that is inclusive and diverse — enabling us to better serve an increasingly diverse set of consumers.\nFor a deeper dive into the results announced today read our press release. Slides and the webcast replay of earnings results are available at www.pginvestor.com/event.\nSee the Q3 FY26 earnings release issued April 24, 2026, the associated webcast presentation, definitions of non-GAAP measures and reconciliation to the most closely related GAAP measure, as well as cautionary information on forward-looking statements, which are based on current assumptions and subject to risks and uncertainties that may cause actual results to differ materially.",
+        "score": 4.2118,
+        "rank": 6
+      },
+      {
+        "url": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "title": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "heading": "",
+        "chunk_text": "the Middle East\nEarth Data (EDA)\n-\nRevenue at $136 m (+63%), fueled by market appetite for high-end data and recent M&A transactions\n-\nGood progress on the Megabar Extension Phase 1 project in Brazil. Overall EDA capex reduced thanks to a higher share of projects developed in partnership\nSegment adjusted EBITDAs at $167 m, up +70% year-on-year, with a margin lifted to 70% vs 58% in Q3 2024 given the massive flow through of EDA’s late sales. EDA Cash EBITDA at $73 m vs -$13 m in Q3 2024.\nSensing and Monitoring (SMO)\nSegment revenue at $69 m in Q3 2025, +16% increase year-on-year. Activity remains largely driven by the Land segment, with a mix of flagship high-productivity surveys ongoing in North America and medium-to-small crews ensuring business resilience across South America, the Middle East, and Asia.\nSegment adjusted EBITDAs at $4 m, compared to $1 m in Q3 2024. Profitability benefited from the higher level of activity and a more streamlined cost structure resulting from the restructuring plan. Note that adverse foreign exchange effects from the depreciation of the U.S. dollar negatively impacted performance by approximately $3 million, as SMO bears most of its cost base in euros.\nSegment adjusted operating income at -$2 m vs -$7m in Q3 2024.",
+        "score": 3.484,
+        "rank": 7
+      },
+      {
+        "url": "https://get.ycharts.com/resources/blog/q3-2025-earnings-tracker/",
+        "title": "https://get.ycharts.com/resources/blog/q3-2025-earnings-tracker/",
+        "heading": "",
+        "chunk_text": "Q3 2025 Earnings Season Tracker: Live Updates & Analysis by Sector\nEarnings Data Updated as of: Wednesday, October 29 @ 9:30AM EST\nTable of Contents\nTechnology Sector Earnings\nThe Technology sector dominated Q3 2025 earnings with exceptional results across major players. Yesterday’s highlights included Apple’s impressive +5.1% surprise ($1.85 vs $1.76) and Amazon’s blockbuster +25.4% beat ($1.43 vs $1.14). Earlier in the week, Alphabet delivered a stunning +23.7% surprise, Meta beat by +8.7%, and Microsoft exceeded estimates by +1.6%. 6 of 10 reported tech companies beat estimates, with only Tesla missing.",
+        "score": 7.3661,
+        "rank": 0
+      },
+      {
+        "url": "https://spartancapital.com/q3-overview-2025/",
+        "title": "https://spartancapital.com/q3-overview-2025/",
+        "heading": "",
+        "chunk_text": "t all-time highs, driven primarily by the technology sector. The Nasdaq's performance led in comparison to its peers, outpacing both the broader S&P 500 and the blue-chip Dow Jones Industrial Average. Breaching through the previous all-time high of 20,200 in early July, provided a key psychological and technical confirmation of the market's resilience.\nThe graph above includes S&P Indexes by Sector and their quarterly performance for Q3 2025 ...\nSimilar to the broader market outlook, we expect the Nasdaq to continue follow the strong trend as well as weigh upcoming corporate earnings. Market internals show that underlying relative strength remains healthy and although at elevated levels, they are non-extreme, suggesting there is room for further upward movement as equities can remain in \"overbought\" conditions for prolonged periods.\nWe attribute the Nasdaq's persistent strength with the market focusing on Technology and Communication sectors, in combination with enthusiasm for Artificial Intelligence related equities. Monetary policy regarding rate cuts, as well as investor sentiment, induced positive outlooks for high-growth, high valuation technology stocks.\nFrom a technical perspective, key areas for the index beginning with support are near the 50-Day moving average of 19,560, next the 20,200 area which is the previous all-time high level, and 21,800, a key retracement level.",
+        "score": 6.2163,
+        "rank": 1
+      },
+      {
+        "url": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "title": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "heading": "",
+        "chunk_text": "This article has additional related content\nU.S. stocks, as measured by the S&P 500 Index, are on pace for 14% growth in earnings for Q3 2025. This marks the fourth consecutive quarter of double-digit growth and comes in well ahead of analysts’ Sept. 30 estimates of 7%.\nThe “Magnificent 7” stocks were standouts once again, growing earnings per share (EPS) 21% in the quarter compared to 13% for the “other 493.” Our data shows 85% of companies beating their EPS estimates, though market reaction showed a smaller price reward for beats and greater punishment for misses than historically has been the case. This is likely a reflection of the market’s high expectations after what’s shaping up to be a third consecutive year of healthy gains.\nAgainst this backdrop ― and amid recent whiffs of AI consternation ― we offer three reflections anchored in the most recent quarter’s earnings:\nWithin the context of an exceptional quarter at the index level, there were clearly leaders and laggards. Even in those sectors that wowed, we saw notable differentiation.\nOf the four S&P 500 sectors that have driven performance year-to-date (utilities, communication services, IT and industrials), all but one notched Q3 earnings growth above the Mag 7. Communication services was the exception, weighed down by disappointing results from a Mag 7 constituent.\nThe upshot: Even the top tier features differentiation.",
+        "score": 6.1155,
+        "rank": 2
+      },
+      {
+        "url": "https://get.ycharts.com/resources/blog/q3-2025-earnings-tracker/",
+        "title": "https://get.ycharts.com/resources/blog/q3-2025-earnings-tracker/",
+        "heading": "",
+        "chunk_text": "mmodity price normalization.\n- Guidance Matters More: Markets are reacting more strongly to forward guidance than backward-looking results, particularly around AI investments and consumer spending trends.\n- Week Ahead Critical: With major names like Amazon, Exxon, and Chevron reporting, next week could set the tone for Q4 2025 market direction.\n- Portfolio Implications: Consider rebalancing toward sectors showing sustained earnings momentum while monitoring guidance revisions for early warning signals.\nMethodology & Updates\nThis earnings tracker focuses on the largest companies by market capitalization within each sector, providing a representative sample of Q3 2025 earnings season performance. Data is updated daily as companies report, with preliminary results subject to revision. EPS estimates represent consensus analyst expectations as of the day before earnings release.\nFor comprehensive earnings analysis, historical comparisons, and detailed financial metrics, YCharts’ Fundamental Data tools provide institutional-grade analytics for over 40,000 securities globally. Financial advisors can access real-time earnings data, estimate revisions, and surprise history to make informed portfolio decisions.\nReady to Move On From Your Investment Research and Analytics Platform?\nFollow YCharts Social Media to Unlock More Content!\nNext Article\nNavigating the 2025 Government Shutdown with YChartsRead More →",
+        "score": 6.0007,
+        "rank": 3
+      },
+      {
+        "url": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "title": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "heading": "",
+        "chunk_text": "Paris (France), October 30, 2025\n2025 third-quarter results\nStrong performance driving Net Cash Flow generation\n-\nSegment revenue of $313m in Q3 2025, up +27% year-on-year, with all business lines contributing positively\n-\nSegment adjusted EBITDAs of $167m in Q3 2025, up a massive +70% year-on-year, representing a 53% margin (vs 40% in Q3 2024), supported by strong Earth Data contribution and solid Geoscience profitability\n-\nNet Cash Flow generation of $53m in the quarter, $62m year-to-date at end-September\n-\nActive liability management with partial bond redemptions in early October ($25m on the USD tranche,$23m on the EUR one)\n-\nFull-year 2025 Net Cash Flow target of $100m reiterated\nSophie Zurquiyah, Chair and CEO of Viridien: “Viridien delivered a strong third quarter, contributing to solid Net Cash Flow generation. Our main focus on major offshore projects and close collaboration with leading energy companies continue to drive our performance. More than ever, Viridien offers unique, high-value solutions for exploration and production, making us a strategic partner, less affected by market fluctuations.",
+        "score": 5.9279,
+        "rank": 4
+      },
+      {
+        "url": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "title": "https://finance.yahoo.com/news/2025-third-quarter-results-strong-164500376.html",
+        "heading": "",
+        "chunk_text": "ies continue to drive our performance. More than ever, Viridien offers unique, high-value solutions for exploration and production, making us a strategic partner, less affected by market fluctuations. With a Net Cash Flow of $62 million at the end of September, we are confidently progressing toward our full-year target of $100 million and have initiated approximately $50 million in bond buybacks.”\n(in millions of $)1 | Q3 2025 | Q3 2024 | Change (%) | 9M 2025 | 9M 2024 | Change (%) |\nSegment figures |\n|\n|\n|\n|\n|\n|\nRevenue | 313 | 246 | +27% | 888 | 778 | +14% |\nAdjusted EBITDAs | 167 | 98 | +70% | 417 | 298 | +40% |\nIFRS figures |\n|\n|\n|\n|\n|\n|\nRevenue | 266 | 219 | +22% | 758 | 785 | -3% |\nEBITDAs | 120 | 71 | +70% | 287 | 301 | -5% |\nOperating Income | 77 | 23 | +236% | 149 | 95 | +57% |\nNet Income | 41 | -10 | n.a. | 19 | 22 | -10% |\nNet Cash Flow | 53 | 10 | +426% | 62 | 34 | +83% |\nNet Debt (incl. IFRS16) | 977 | 1 003 | -3% | 977 | 1 003 | -3% |\nKEY HIGHLIGHTS PER BUSINESS LINE2\nData, Digital and Energy Transition (DDE)\nSegment revenue at $244 m in Q3 2025, up +31% year-on-year, with strong Earth Data late sales.\nGeoscience (GEO)\n-\nRevenue at $108 m (+5%)\n-\nActivity remains strong, fueled by large OBN projects offshore Brazil and in the US Gulf, with additional support from the Middle East\nEarth Data (EDA)\n-\nRevenue at $136 m (+63%), fueled by market appetite for high-end data and recent M&A transactions\n-\nGood progress on the Megabar Extension Phase 1 project in Brazil.",
+        "score": 5.1924,
+        "rank": 5
+      },
+      {
+        "url": "https://spartancapital.com/q3-overview-2025/",
+        "title": "https://spartancapital.com/q3-overview-2025/",
+        "heading": "",
+        "chunk_text": "rmance\nIn this section, we'll break down the market's third-quarter performance by sector. The third quarter delivered broadbased gains, with a majority of S&P sectors finishing in positive territory. Growth-oriented sectors like Information Technology and Communication Services continued to lead the market higher.\nThe graph above includes S&P Indexes by Sector and their quarterly performance for Q3 2025 ...\n• The leading sector for the quarter was Information Technology, up 14% for Q3. This sector was also leading in performance for Q2. Other sectors with noteworthy performance include Communication Services, Consumer Discretionary, and Utilities respectively.\n• Additional sectors posting positive returns, though more modest, include Energy, Industrials, Health Care, Financials, and Real Estate.\n• Lagging sectors included Materials with minimal percentage decline of less than 1 %, and Consumer Staples as the laggard for Q3 with -4.3% performance. This significant underperformance suggests investors were actively rotating out of defensive sectors into more growth-based equities.\nSector Performance (Q2 Comparison)\nThis section provides a comparative look at sector performance between the second and third quarters. While the market's upward trend continued, these shifts indicate a clear rotation in sector leadership between the quarters.\nInformation Technology cooled from a 20.9% gain in Q2 to 14.00Jo in Q3, it remained the top performer.",
+        "score": 4.5077,
+        "rank": 6
+      },
+      {
+        "url": "https://us.pg.com/blogs/pg-earnings-third-quarter-2026/",
+        "title": "https://us.pg.com/blogs/pg-earnings-third-quarter-2026/",
+        "heading": "",
+        "chunk_text": "ccountable organization that is inclusive and diverse — enabling us to better serve an increasingly diverse set of consumers.\nFor a deeper dive into the results announced today read our press release. Slides and the webcast replay of earnings results are available at www.pginvestor.com/event.\nSee the Q3 FY26 earnings release issued April 24, 2026, the associated webcast presentation, definitions of non-GAAP measures and reconciliation to the most closely related GAAP measure, as well as cautionary information on forward-looking statements, which are based on current assumptions and subject to risks and uncertainties that may cause actual results to differ materially.",
+        "score": 4.0025,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 12,
+      "decompose_ms": 9740,
+      "search_ms": 4300,
+      "extract_ms": 7613,
+      "chunk_ms": 33,
+      "retrieve_ms": 5051,
+      "synthesis_ms": 10766,
+      "embedding_cleanup_ms": 2,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 49139,
+    "elapsed_s": 54.34,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

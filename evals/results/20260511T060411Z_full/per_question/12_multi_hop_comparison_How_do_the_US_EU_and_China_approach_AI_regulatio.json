@@ -1,0 +1,564 @@
+{
+  "id": "mh5",
+  "category": "multi_hop_comparison",
+  "domain": "geopolitics",
+  "question": "How do the US, EU, and China approach AI regulation in 2025-2026, and where do they disagree most?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Decompose by jurisdiction; identify points of divergence.",
+  "key_facts": [
+    "EU AI Act",
+    "China",
+    "United States"
+  ],
+  "ground_truth": "EU AI Act (in force) is the most prescriptive, with risk tiers. US relies on sectoral regulation + executive orders. China has model registration and content rules. Biggest divergence: pre-market approval (EU) vs ex post enforcement (US).",
+  "session_id": "eval-20260511T060411Z-mh5",
+  "verdict": "partial",
+  "aggregate": 0.533,
+  "failure_mode": "under_decomposition",
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.75,
+    "answer_correctness": 0.667,
+    "routing_decomposition": 0.25,
+    "answer_relevancy": 0.823,
+    "aggregate": 0.533
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.75,
+      "relevant": 6,
+      "total": 8,
+      "reasoning": "Chunks cover US AI regulation in 2025-2026; missing EU and China for full comparison."
+    },
+    "answer_correctness": {
+      "score": 0.667,
+      "hit_facts": [
+        "EU AI Act",
+        "China"
+      ],
+      "missed_facts": [
+        "United States"
+      ],
+      "reasoning": "heuristic=0.67; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.823,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "EU AI Act",
+      "China",
+      "United States"
+    ]
+  },
+  "pipeline": {
+    "answer": "# How Do the US, EU, and China Approach AI Regulation in 2025–2026, and Where Do They Disagree Most?\n\nBy 2025–2026, the US, EU, and China have each institutionalized divergent AI regulatory models—reflecting fundamentally different philosophies on risk, rights, and state control. Their sharpest disagreements center on **regulatory scope, enforcement approach, and the balance between innovation and oversight**.\n\n## EU: Rights-Oriented, Horizontal Risk-Based Framework\n\nThe **EU AI Act**—the world’s first comprehensive horizontal AI law—enters full force during this period through a phased rollout [1][15]. Key milestones include prohibitions on unacceptable-risk AI (February 2025), governance rules for general-purpose AI (August 2025), and full enforcement by August 2026 [1][7][8]. The regime is **precautionary and rights-centered**, anchored in the Charter of Fundamental Rights, with steep penalties (up to €35 million or 7% of global turnover) [1][8][10]. The European Commission has also issued targeted guidance, including a draft Code of Practice on AI-generated content (March 2026) and an AI Act Service Desk to support business compliance [9][10].\n\n## US: Market-Driven, Decentralized, and Voluntary\n\nThe US maintains a **fragmented, sector-specific model** with no comprehensive federal AI law [1][14][16]. Regulation occurs at both state and federal levels: nearly 40 states pursued AI legislation in 2025, while federal action focuses on **executive orders and policy frameworks** rather than binding legislation [1][16]. Key 2025–2026 moves include Executive Order 14365 (December 2025) directing a review of state AI laws and creation of an AI Litigation Task Force, and the March 2026 National Policy Framework that centrally calls for **federal preemption of state AI laws** on model development and developer liability [1][6]. However, bipartisan resistance to broad preemption persists—the Senate voted 99–1 against a moratorium on state regulations [1].\n\n## China: State-Led, Targeted, and Content-Focused\n\nChina continues a **pragmatic, incremental approach** using targeted regulations rather than a single omnibus law [1][13][14]. The October 2025 Cybersecurity Law amendment (effective January 2026) brings AI into national law for the first time, mandating ethical guidelines and risk assessments [1][11]. By early 2026, China has formulated **over 50 AI sector standards**, including on AI-generated content labeling (March 2025) and embodied AI [1][12]. Enforcement is active: a December 2025 directive requires companies to complete minor-protection compliance audits by January 2026 [11]. Governance remains **state-led and multi-departmental** (CAC, MIIT, NDA), prioritizing social stability, data sovereignty, and content control [1][3][13].\n\n## Where They Disagree Most\n\nThe deepest divisions emerge across three dimensions:\n\n| Dimension | EU | US | China |\n|-----------|----|----|-------|\n| **Philosophy** | Rights-oriented, precautionary [1][15][16] | Market-driven, voluntary [1][16] | State-led, control-oriented [1][3] |\n| **Regulatory scope** | Horizontal (covers all AI) [14][15] | Sector-specific, fragmented [16] | Vertical, use-case-specific [3][14] |\n| **Binding vs. voluntary** | Binding rules with penalties [8] | Largely voluntary frameworks, limited binding law [16] | Binding targeted rules, state enforcement [14] |\n| **Key 2025–2026 feature** | AI Act full enforcement [1][8] | Preemption push via National Policy Framework [5][6] | 50+ sector standards; CSL amendment [1][11] |\n\nThe **most contentious disagreements** are over:\n- **Scope of regulation**: The EU's comprehensive, mandatory approach clashes with the US's preference for voluntary, narrow rules and China's targeted-state model [1][14][16].\n- **State vs. private authority**: The EU empowers national regulators and a European AI Board, while the US relies on market actors and China centralizes power in agencies like the CAC [1][8][13].\n- **Content governance**: China actively mandates algorithmic filing and AI labeling, while the US emphasizes free speech and anti-censorship pillars, and the EU balances transparency with copyright protection [1][6][9][12][14].\n\n## Key Takeaways\n\n- **Philosophical divide**: The EU prioritizes fundamental rights; the US privileges innovation and free markets; China stresses state control and social stability.\n- **Regulatory tool choice**: EU uses a binding, horizontal law; US issues non-binding frameworks and executive orders; China deploys targeted sectoral rules and standards.\n- **Core disagreement**: Whether AI should be regulated comprehensively (EU), minimally and voluntarily (US), or pragmatically with state oversight (China)—with preemption and data sovereignty as flashpoints.",
+    "mode": "search",
+    "rewritten_query": "How do the US, EU, and China approach AI regulation in 2025-2026, and where do they disagree most?",
+    "rewrote": false,
+    "rationale": "Time-sensitive geopolitical comparison requiring current sources.",
+    "sub_queries": [
+      "US AI regulation policy 2025-2026 executive actions and federal framework",
+      "EU AI Act implementation 2025-2026 and regulatory approach",
+      "China AI regulation policy 2025-2026 governance and data rules",
+      "Key disagreements between US EU and China AI regulation",
+      "Recent US vs EU vs China AI policy differences 2025 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "title": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "snippet": "een enacted. However, the period from late 2025 through early 2026 has seen a significant escalation of the federal–state regulatory dynamic.\nExecutive Order 14365 and the Push for Federal Preemption. In December 2025, President Trump signed Executive Order 14365, directing the Secretary of Commerce"
+      },
+      {
+        "num": 2,
+        "url": "https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial",
+        "title": "White House Releases a National Policy Framework for Artificial Intelligence | Insights | Holland & Knight",
+        "snippet": "Executive Order (EO) 14365: Removing Barriers to American Leadership in AI\n\nThe Trump Administration issued \"[Removing Barriers to American Leadership in Artificial Intelligence](https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intellig"
+      },
+      {
+        "num": 3,
+        "url": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "title": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "snippet": "approach to AI regulation: rather than enacting a single comprehensive law, it relies on existing federal agencies, voluntary frameworks, and an increasingly active state-level legislative landscape. The underlying philosophy prioritises innovation and economic competitiveness, with regulation targe"
+      },
+      {
+        "num": 4,
+        "url": "https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States",
+        "title": "Regulation of artificial intelligence in the United States",
+        "snippet": "Biden administration (2021–2025)\n\nThe Biden administration, in October 2023 signaled that they would release an executive order leveraging the federal government's purchasing power to shape AI regulations, hinting at a proactive governmental stance in regulating AI technologies.[[35]](https://en.wik"
+      },
+      {
+        "num": 5,
+        "url": "https://www.nga.org/updates/in-summary-the-white-house-national-legislative-policy-framework-for-artificial-intelligence/",
+        "title": "https://www.nga.org/updates/in-summary-the-white-house-national-legislative-policy-framework-for-artificial-intelligence/",
+        "snippet": "Last July, the White House released “Winning the Race: America’s AI Action Plan,” which framed AI as a matter of national competitiveness and emphasized innovation, infrastructure, and international engagement. That direction was reinforced in a December 2025 executive order “Ensuring a National Pol"
+      },
+      {
+        "num": 6,
+        "url": "https://www.mofo.com/resources/insights/260402-trump-administration-releases-national-ai-policy-framework",
+        "title": "https://www.mofo.com/resources/insights/260402-trump-administration-releases-national-ai-policy-framework",
+        "snippet": "Trump Administration Releases National AI Policy Framework\nThe Trump administration released its National Policy Framework for Artificial Intelligence on March 20, 2026, outlining recommendations intended to establish a nationally uniform approach to AI regulation (the “Framework”). The recommendati"
+      },
+      {
+        "num": 7,
+        "url": "https://artificialintelligenceact.eu/",
+        "title": "EU Artificial Intelligence Act | Up-to-date developments and analyses of the EU AI Act",
+        "snippet": "[AI Regulatory Sandbox Approaches: EU Member State Overview](https://artificialintelligenceact.eu/ai-regulatory-sandbox-approaches-eu-member-state-overview/)\n\nMay 2, 2025\n\nAI regulatory sandboxes are an important part of the implementation of the EU AI Act. According to Article 57 of the AI Act, eac"
+      },
+      {
+        "num": 8,
+        "url": "https://digital.nemko.com/regulations/eu-ai-act",
+        "title": "EU AI Act 2025: Key Rules & Compliance Guide | Nemko Digital",
+        "snippet": "Implementation Timeline and Enforcement\n\nAfter years of negotiation since its proposal in April 2021, the EU AI Act has established a phased implementation schedule:\n\n*   **July 2024**: Official publication\n*   **August 2024**: Entry into force\n*   **February 2025**: Prohibitions on unacceptable-ris"
+      },
+      {
+        "num": 9,
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "title": "AI Act",
+        "snippet": "Policy and legislation\n\n*   07-05-2026 [Draft of the guidelines on the implementation of the transparency obligations for certain AI systems under Article 50 of the AI Act](https://digital-strategy.ec.europa.eu/en/library/draft-guidelines-implementation-transparency-obligations-certain-ai-systems-un"
+      },
+      {
+        "num": 10,
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence",
+        "title": "European approach to artificial intelligence",
+        "snippet": "The AI Act\n\nThe [AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) introduces a clear, easy-to-understand approach, based on four different levels of risk, giving AI developers, deployers, and users clarity about how to address risks generated by specific AI uses. Th"
+      },
+      {
+        "num": 11,
+        "url": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "title": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "snippet": "Notes from the Asia-Pacific region: Strong start to 2026 for China's data, AI governance landscape\nContributors:\nBarbara Li\nCIPP/E\nPartner\nReed Smith\nEditor's note: The IAPP is policy neutral. We publish contributed opinion and analysis pieces to enable our members to hear a broad spectrum of views "
+      },
+      {
+        "num": 12,
+        "url": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "title": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "snippet": "ander, ‘China is leaving the west behind in regulating deepfakes’ (2022) https://www.chinatalk.nl/europe-is-falling-behind-china-in-regulating-deepfakes/ accessed 15 January 2026.\n[16] Ben Hu and Adam Au, ‘China resets the path to comprehensive AI governance’ (East Asia Forum, 25 December 2025)<http"
+      },
+      {
+        "num": 13,
+        "url": "https://digidai.github.io/2026/03/13/ai-regulation-2026-global-policy-map-enterprise-compliance-guide/",
+        "title": "https://digidai.github.io/2026/03/13/ai-regulation-2026-global-policy-map-enterprise-compliance-guide/",
+        "snippet": ".\nChina and Asia Show a Different Governance Logic: Targeted Rules, Fast Administrative Movement\nChina’s approach has often been caricatured abroad as either blanket restriction or unrestricted scale. Neither is accurate.\nWhat matters for operators is that China has already implemented binding rules"
+      },
+      {
+        "num": 14,
+        "url": "https://www.linkedin.com/pulse/divergent-paths-comparing-ai-regulation-us-eu-china-yannick-mah%C3%A9-ztlre",
+        "title": "https://www.linkedin.com/pulse/divergent-paths-comparing-ai-regulation-us-eu-china-yannick-mah%C3%A9-ztlre",
+        "snippet": "Divergent Paths: Comparing AI Regulation in the US, EU, and China\nDivergent Paths: Comparing AI Regulation in the US, EU, and China\nIn a world propelled by rapid technological advancement, the rise of artificial intelligence (AI) presents both promise and potential risks. While professionals, like S"
+      },
+      {
+        "num": 15,
+        "url": "https://iapp.org/news/a/preparing-for-compliance-key-differences-between-eu-chinese-ai-regulations",
+        "title": "https://iapp.org/news/a/preparing-for-compliance-key-differences-between-eu-chinese-ai-regulations",
+        "snippet": "rative Artificial Intelligence Services, which have been fully applicable since their adoptions in 2022 and 2023.\nThe evolution of AI governance frameworks in the EU and China share many similarities. For example, the European Commission's High-level Expert Group on AI published its Ethics Guideline"
+      },
+      {
+        "num": 16,
+        "url": "https://pernot-leplay.com/ai-regulation-china-eu-us-comparison/",
+        "title": "https://pernot-leplay.com/ai-regulation-china-eu-us-comparison/",
+        "snippet": "s for automated decision-making technology. Florida may strengthen transparency over AI-generated content for political ads.\nCalifornia’s recent AI bill (SB 1047) offered a new perspective on the U.S. approach, emphasizing stringent safety standards specifically for high-cost AI models. However, Gov"
+      },
+      {
+        "num": 17,
+        "url": "https://cross-border-magazine.com/ai-regulation-eu-vs-usa-vs-china/",
+        "title": "https://cross-border-magazine.com/ai-regulation-eu-vs-usa-vs-china/",
+        "snippet": "alized, state-controlled, and strategically coordinated model.\nIn the EU, innovation is slower but safer and more structured. In the United States, innovation is fast but comes with legal uncertainty. In China, innovation is both rapid and coordinated under government direction.\nThe EU emphasizes tr"
+      }
+    ],
+    "urls": [
+      "https://www.mofo.com/resources/insights/260402-trump-administration-releases-national-ai-policy-framework",
+      "https://www.nga.org/updates/in-summary-the-white-house-national-legislative-policy-framework-for-artificial-intelligence/",
+      "https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf",
+      "https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial",
+      "https://www.lw.com/en/insights/trump-administration-takes-major-steps-toward-comprehensive-federal-ai-regulation",
+      "https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States",
+      "https://lawflex.com/navigating-the-eu-ai-act-in-2026-a-general-counsels-guide-to-cross-border-compliance-and-ai-governance/",
+      "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+      "https://digital.nemko.com/regulations/eu-ai-act",
+      "https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence",
+      "https://artificialintelligenceact.eu/implementation-timeline/",
+      "https://artificialintelligenceact.eu/",
+      "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+      "https://digidai.github.io/2026/03/13/ai-regulation-2026-global-policy-map-enterprise-compliance-guide/",
+      "https://www.mayerbrown.com/en/insights/publications/2026/04/china-issues-draft-rules-on-interactive-ai-services",
+      "https://cms.law/en/int/expert-guides/ai-regulation-scanner/china",
+      "https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/",
+      "https://digital.nemko.com/regulations/china-ai-regulations",
+      "https://iapp.org/news/a/preparing-for-compliance-key-differences-between-eu-chinese-ai-regulations",
+      "https://pernot-leplay.com/ai-regulation-china-eu-us-comparison/",
+      "https://www.linkedin.com/pulse/divergent-paths-comparing-ai-regulation-us-eu-china-yannick-mah%C3%A9-ztlre",
+      "https://www.researchgate.net/publication/389910152_Comparative_Global_AI_Regulation_Policy_Perspectives_from_the_EU_China_and_the_US",
+      "https://www.forbes.com/sites/forbeseq/2023/07/18/how-does-chinas-approach-to-ai-regulation-differ-from-the-us-and-eu/",
+      "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+      "https://cross-border-magazine.com/ai-regulation-eu-vs-usa-vs-china/",
+      "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+      "https://www.youtube.com/watch?v=ceg4iHBWsok",
+      "https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more",
+      "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+      "https://cacm.acm.org/news/three-rulebooks-one-race-ai-regulation-in-the-u-s-eu-and-china/"
+    ],
+    "chunk_count": 40,
+    "chunks": [
+      {
+        "url": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "title": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "heading": "",
+        "chunk_text": "een enacted. However, the period from late 2025 through early 2026 has seen a significant escalation of the federal–state regulatory dynamic.\nExecutive Order 14365 and the Push for Federal Preemption. In December 2025, President Trump signed Executive Order 14365, directing the Secretary of Commerce to identify “onerous” state AI laws and the Attorney General to establish an AI Litigation Task Force to challenge them. The order came after the Senate had voted 99–1 to strip a proposed ten-year moratorium on state AI regulations from the Republican budget reconciliation bill, demonstrating strong bipartisan resistance. Senator Markey countered with the States’ Right to Regulate AI Act, highlighting a fundamental tension in the US federal system.\nNational Policy Framework for Artificial Intelligence. On March 20, 2026, the White House released the National Policy Framework for Artificial Intelligence, outlining seven policy pillars and calling on Congress to legislate. The Framework places federal preemption at its centre. States would retain authority over consumer protection and procurement but would not be permitted to regulate AI model development or impose liability on developers for third-party misuse. This represents a significant encroachment, given that nearly 40 states pursued AI-related legislation in 2025.",
+        "score": 9.7055,
+        "rank": 0
+      },
+      {
+        "url": "https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial",
+        "title": "White House Releases a National Policy Framework for Artificial Intelligence | Insights | Holland & Knight",
+        "heading": "Executive Order (EO) 14365: Removing Barriers to American Leadership in AI",
+        "chunk_text": "Executive Order (EO) 14365: Removing Barriers to American Leadership in AI\n\nThe Trump Administration issued \"[Removing Barriers to American Leadership in Artificial Intelligence](https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/)\" (EO 14365) on December 11, 2025, which initiated a coordinated federal review of state-level AI laws and directed agencies to develop policy recommendations, standards and legislative proposals to inform a national approach.\n\nNotably, EO 14365 required the U.S. Department of Commerce Secretary to submit, within 90 days, an evaluation identifying \"onerous\" state AI laws and recommend potential referrals to a newly established AI Litigation Task Force tasked with challenging unconstitutional or preempted state measures.\n\nThough the Task Force was announced on January 9, 2026, within the required 30-day timeframe, the Commerce Department has not yet publicly released its required evaluation, which had been due by March 11, 2026. This delay introduces some uncertainty regarding the Trump Administration's near-term posture on state preemption enforcement, even as the Framework reinforces a clear preference for national uniformity. Further, the Framework's endorsement of federal preemption is particularly notable when viewed against the current state-led approach to AI regulation.",
+        "score": 9.055,
+        "rank": 1
+      },
+      {
+        "url": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "title": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "heading": "",
+        "chunk_text": "approach to AI regulation: rather than enacting a single comprehensive law, it relies on existing federal agencies, voluntary frameworks, and an increasingly active state-level legislative landscape. The underlying philosophy prioritises innovation and economic competitiveness, with regulation targeted at specific harms rather than AI as a technology category.\nNo comprehensive federal AI law\nAs of April 2026, the United States has no binding, horizontal federal AI statute comparable to the EU AI Act. Federal AI governance is shaped by:\n- Executive Orders: Executive Order 14110 (October 2023) established reporting requirements for developers of powerful AI models and directed agencies to address AI risks in their respective domains. Subsequent executive actions have refined the scope, though executive orders can be modified or rescinded by subsequent administrations.\n- NIST AI Risk Management Framework (AI RMF 1.0): Published in January 2023, the AI RMF provides a voluntary, structured approach to managing AI risks across the lifecycle.",
+        "score": 8.5594,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States",
+        "title": "Regulation of artificial intelligence in the United States",
+        "heading": "Biden administration (2021–2025)",
+        "chunk_text": "Biden administration (2021–2025)\n\nThe Biden administration, in October 2023 signaled that they would release an executive order leveraging the federal government's purchasing power to shape AI regulations, hinting at a proactive governmental stance in regulating AI technologies.[[35]](https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States#cite_note-35) On October 30, 2023, President Biden released [Executive Order 14110](https://en.wikipedia.org/wiki/Executive_Order_14110 \"Executive Order 14110\") on Safe, Secure, and Trustworthy Artificial Intelligence. The Executive Order includes directives on standards for critical infrastructure, AI-enhanced cybersecurity, and federally funded biological synthesis projects.[[36]](https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States#cite_note-36) The Executive Order provides the authority to various agencies and departments of the US government, including the Energy and Defense departments, to apply existing consumer protection laws to AI development.[[37]](https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States#cite_note-37) The Executive Order builds on the Administration's earlier agreements with AI companies to instate new initiatives to \"red-team\" or stress-test AI dual-use foundation models, especially those that have the potential to pose security risks, with data and results shared with the federal government.",
+        "score": 8.191,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States",
+        "title": "Regulation of artificial intelligence in the United States",
+        "heading": "Second Trump administration (2025–present)",
+        "chunk_text": "Second Trump administration (2025–present)\n\nIn December 2025, Trump signed [Executive Order 14365](https://en.wikipedia.org/wiki/Executive_Order_14365 \"Executive Order 14365\"), \"Ensuring a National Policy Framework for Artificial Intelligence\", which seeks to [preempt](https://en.wikipedia.org/wiki/Federal_preemption \"Federal preemption\") state regulation.[[60]](https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States#cite_note-60)[[61]](https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States#cite_note-61)[[62]](https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States#cite_note-62) The White House published a National Legislative Policy Framework for Artificial Intelligence in March 2026, a set of recommendations to Congress for federal legislation.[[63]](https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States#cite_note-63)",
+        "score": 7.9826,
+        "rank": 4
+      },
+      {
+        "url": "https://www.nga.org/updates/in-summary-the-white-house-national-legislative-policy-framework-for-artificial-intelligence/",
+        "title": "https://www.nga.org/updates/in-summary-the-white-house-national-legislative-policy-framework-for-artificial-intelligence/",
+        "heading": "",
+        "chunk_text": "Last July, the White House released “Winning the Race: America’s AI Action Plan,” which framed AI as a matter of national competitiveness and emphasized innovation, infrastructure, and international engagement. That direction was reinforced in a December 2025 executive order “Ensuring a National Policy Framework for Artificial Intelligence,” which stated that the United States should pursue a minimally burdensome national AI framework, expressed concern that a patchwork of state laws could create compliance burdens, affect interstate commerce, and slow innovation, and directed White House officials to prepare legislative recommendations establishing a uniform federal policy framework for AI that would preempt conflicting state AI laws.\nThese White House recommendations were released last Friday as a National Policy Framework for Artificial Intelligence. It recommends federal legislative action across seven areas: child protection, community and infrastructure impacts, intellectual property, free speech, innovation, workforce development, and preemption of certain state AI laws. It also states that the Administration looks forward to working with Congress to turn the proposal into legislation.",
+        "score": 7.5923,
+        "rank": 5
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States",
+        "title": "Regulation of artificial intelligence in the United States",
+        "heading": "Regulation of artificial intelligence in the United States",
+        "chunk_text": "Regulation of artificial intelligence in the United States\n\nAt the federal level, the [Biden administration](https://en.wikipedia.org/wiki/Presidency_of_Joe_Biden \"Presidency of Joe Biden\") released an October 2023 executive order about AI safety and security, [Executive Order 14110](https://en.wikipedia.org/wiki/Executive_Order_14110 \"Executive Order 14110\"), with directives related to AI development and deployment.[[2]](https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States#cite_note-New_York_Times-2) President Trump revoked that executive order in January 2025 and issued [Executive Order 14179](https://en.wikipedia.org/wiki/Executive_Order_14179 \"Executive Order 14179\"). In December 2025, President Trump signed [Executive Order 14365](https://en.wikipedia.org/wiki/Executive_Order_14365 \"Executive Order 14365\"), an executive order directing federal agencies to develop a unified national approach to AI policy, evaluate state AI laws for potential conflicts, challenge them through legal action, and condition certain federal funding on state compliance, while exempting state laws related to child safety, data center infrastructure, and state government procurement.[[3]](https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence_in_the_United_States#cite_note-3) In 2025, Congress passed legislation targeting AI-generated [deepfakes](https://en.wikipedia.org/wiki/Deepfake \"Deepfake\"), the [TAKE IT DOWN Act](https://en.wikipedia.org/wiki/TAKE_IT_DOWN_Act \"TAKE IT DOWN Act\").",
+        "score": 7.3255,
+        "rank": 6
+      },
+      {
+        "url": "https://www.mofo.com/resources/insights/260402-trump-administration-releases-national-ai-policy-framework",
+        "title": "https://www.mofo.com/resources/insights/260402-trump-administration-releases-national-ai-policy-framework",
+        "heading": "",
+        "chunk_text": "Trump Administration Releases National AI Policy Framework\nThe Trump administration released its National Policy Framework for Artificial Intelligence on March 20, 2026, outlining recommendations intended to establish a nationally uniform approach to AI regulation (the “Framework”). The recommendations to Congress span seven pillars, including (1) child protection, (2) AI infrastructure and small business support, (3) intellectual property, (4) censorship and free speech, (5) enabling innovation, (6) workforce preparation, and (7) preemption of state AI laws. The Framework reflects a policy preference for a sector-specific, federally led regulatory model with significant preemption of state AI laws. It builds on the December 2025 Executive Order (EO) on AI, which directed the administration to develop legislative recommendations for Congress while deploying executive tools, including an AI Litigation Task Force, to identify and, where appropriate, challenge state AI laws viewed as inconsistent with federal policy in the interim.\nThe Framework calls on Congress to preempt state AI laws that “impose undue burdens,” while preserving state authority in certain areas, including traditional police powers to protect children and prevent fraud, state zoning authority over AI infrastructure, and requirements governing a state’s own use of AI in procurement and public services.",
+        "score": 7.2174,
+        "rank": 7
+      },
+      {
+        "url": "https://artificialintelligenceact.eu/",
+        "title": "EU Artificial Intelligence Act | Up-to-date developments and analyses of the EU AI Act",
+        "heading": "[AI Regulatory Sandbox Approaches: EU Member State Overview](https://artificialintelligenceact.eu/ai-regulatory-sandbox-approaches-eu-member-state-overview/)",
+        "chunk_text": "[AI Regulatory Sandbox Approaches: EU Member State Overview](https://artificialintelligenceact.eu/ai-regulatory-sandbox-approaches-eu-member-state-overview/)\n\nMay 2, 2025\n\nAI regulatory sandboxes are an important part of the implementation of the EU AI Act. According to Article 57 of the AI Act, each Member State must establish at least one AI regulatory sandbox at the national level by 2 August 2026. This post provides an overview of...",
+        "score": 9.3776,
+        "rank": 0
+      },
+      {
+        "url": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "title": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "heading": "",
+        "chunk_text": "ting the tension between competing domestic stakeholders, the gap between formal texts and on-the-ground enforcement, and the reciprocal interplay between regulatory design and industrial development. The period from 2025 through early 2026 illustrates both insights: each regime has continued along the broad lines Bradford identifies, while exhibiting the adaptive dynamics Li emphasises.\nI. Three Distinct Regulatory Paths\n1. The EU: Rights-Centered Fundamentals with Adaptive Adjustments\nThe EU’s commitment to fundamental rights remains firmly anchored in the Charter of Fundamental Rights of the European Union (CFREU) and the Artificial Intelligence Act (AIA). What has evolved dramatically during 2025 and into early 2026 is the EU’s approach to operationalizing these rights, marked by implementation milestones, institutional capacity-building, and a significant simplification initiative.\nPhased Implementation and the GPAI Code of Practice. The AIA’s phased rollout has begun to give concrete shape to the EU’s regulatory ambitions. Prohibited AI practices entered into application from February 2, 2025. Governance rules and obligations for general-purpose AI (GPAI) models became applicable on August 2, 2025. The final GPAI Code of Practice was published on July 10, 2025, developed through a multistakeholder process involving nearly 1,000 participants and covering transparency, copyright, and safety and security.",
+        "score": 8.9051,
+        "rank": 1
+      },
+      {
+        "url": "https://digital.nemko.com/regulations/eu-ai-act",
+        "title": "EU AI Act 2025: Key Rules & Compliance Guide | Nemko Digital",
+        "heading": "Implementation Timeline and Enforcement",
+        "chunk_text": "Implementation Timeline and Enforcement\n\nAfter years of negotiation since its proposal in April 2021, the EU AI Act has established a phased implementation schedule:\n\n*   **July 2024**: Official publication\n*   **August 2024**: Entry into force\n*   **February 2025**: Prohibitions on unacceptable-risk AI systems begin\n*   **August 2025**: GPAI model provisions activate\n*   **August 2026**: Most rules enforced\n*   **February 2027**: Remaining rules for Annex I high-risk systems take effect\n\nThis graduated timeline gives organizations time to adapt their AI strategies. However, the relatively short adaptation period—especially for prohibited systems—highlights the urgency with which the EU views certain AI risks.\n\nEnforcement will combine national authorities and a new European Artificial Intelligence Board. Penalties for non-compliance can reach €35 million or 7% of global annual turnover, making compliance a major business priority.",
+        "score": 7.2641,
+        "rank": 2
+      },
+      {
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "title": "AI Act",
+        "heading": "Policy and legislation",
+        "chunk_text": "Policy and legislation\n\n*   07-05-2026 [Draft of the guidelines on the implementation of the transparency obligations for certain AI systems under Article 50 of the AI Act](https://digital-strategy.ec.europa.eu/en/library/draft-guidelines-implementation-transparency-obligations-certain-ai-systems-under-article-50-ai-act)\n*   05-03-2026 [Commission publishes second draft of Code of Practice on Marking and Labelling of AI-generated content](https://digital-strategy.ec.europa.eu/en/library/commission-publishes-second-draft-code-practice-marking-and-labelling-ai-generated-content)\n*   20-02-2026 [Leaders’ Declaration at AI Impact Summit in India](https://digital-strategy.ec.europa.eu/en/library/leaders-declaration-ai-impact-summit-india)\n\n[More](https://digital-strategy.ec.europa.eu/en/related-content?topic=119&type=25)",
+        "score": 6.9134,
+        "rank": 3
+      },
+      {
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence",
+        "title": "European approach to artificial intelligence",
+        "heading": "The AI Act",
+        "chunk_text": "The AI Act\n\nThe [AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) introduces a clear, easy-to-understand approach, based on four different levels of risk, giving AI developers, deployers, and users clarity about how to address risks generated by specific AI uses. The act strikes the balance between promoting AI research and innovation while ensuring Europeans can benefit from safe and trustworthy AI.\n\nThe Commission is committed to a clear, simple and innovation-friendly implementation of the AI Act, as outlined in the AI Continent Action Plan and the Apply AI Strategy. On 19 November 2025, the European Commission proposed targeted amendments to the AI Act as part of the [Digital Simplification Package](https://digital-strategy.ec.europa.eu/en/policies/digital-rulebook). These efforts complement the actions already underway by the Commission and its AI Office to provide clarity for businesses and national authorities — for example through guidelines, codes of practice and the [AI Act Service Desk](https://ai-act-service-desk.ec.europa.eu/en).",
+        "score": 6.7225,
+        "rank": 4
+      },
+      {
+        "url": "https://digital.nemko.com/regulations/eu-ai-act",
+        "title": "EU AI Act 2025: Key Rules & Compliance Guide | Nemko Digital",
+        "heading": "Strategic Implementation Roadmap",
+        "chunk_text": "Strategic Implementation Roadmap\n\nThe EU AI Act represents a watershed moment in technology regulation that will shape AI development globally. Organizations should consider these actions to prepare:\n\n1.   **Conduct a Thorough AI Inventory**: Identify systems under the Act's scope, particularly high-risk ones.\n2.   **Develop Compliance Roadmaps**: Establish clear timelines aligned to the phased implementation.\n3.   **Invest in Governance Structures**: Support ongoing compliance with requirements.\n4.   **Engage with Industry Associations**: Stay informed about evolving interpretations.\n5.   **View the Act as an Opportunity**: Strengthen trust through enhanced transparency and risk management.\n\nNemko Digital offers comprehensive support for organizations navigating the EU AI Act requirements. With expertise in testing, inspection, and certification services, Nemko Digital provides gap analysis, advisory services, and training to help businesses implement the Act's requirements effectively and develop [ethical, responsible AI systems](https://digital.nemko.com/insights/navigating-the-eu-ai-act-in-2025) that meet regulatory standards while delivering business value.\n\nBy approaching compliance strategically, organizations can transform regulatory requirements into competitive advantages. As a result, they demonstrate commitment to responsible AI, building trust with customers, partners, and regulators in an increasingly AI-driven world.",
+        "score": 6.3025,
+        "rank": 5
+      },
+      {
+        "url": "https://artificialintelligenceact.eu/",
+        "title": "EU Artificial Intelligence Act | Up-to-date developments and analyses of the EU AI Act",
+        "heading": "[AI Literacy Programs in Europe – Supporting Article 4 of the EU AI Act](https://artificialintelligenceact.eu/ai-literacy-programs/)",
+        "chunk_text": "[AI Literacy Programs in Europe – Supporting Article 4 of the EU AI Act](https://artificialintelligenceact.eu/ai-literacy-programs/)\n\nMay 23, 2025\n\nAs organisations across Europe navigate the implementation of the EU AI Act — including Article 4, which addresses the importance of AI literacy — there is growing interest in accessible and practical training resources. This document presents a non-exhaustive...",
+        "score": 6.2875,
+        "rank": 6
+      },
+      {
+        "url": "https://artificialintelligenceact.eu/",
+        "title": "EU Artificial Intelligence Act | Up-to-date developments and analyses of the EU AI Act",
+        "heading": "[Overview of all AI Act National Implementation Plans](https://artificialintelligenceact.eu/national-implementation-plans/)",
+        "chunk_text": "[Overview of all AI Act National Implementation Plans](https://artificialintelligenceact.eu/national-implementation-plans/)\n\nNov 8, 2024\n\nThis post gives an overview of the national authorities to be designated under the AI Act and what we know about the national implementation plans.",
+        "score": 5.9448,
+        "rank": 7
+      },
+      {
+        "url": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "title": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "heading": "",
+        "chunk_text": "Notes from the Asia-Pacific region: Strong start to 2026 for China's data, AI governance landscape\nContributors:\nBarbara Li\nCIPP/E\nPartner\nReed Smith\nEditor's note: The IAPP is policy neutral. We publish contributed opinion and analysis pieces to enable our members to hear a broad spectrum of views in our domains.\nFor privacy and cybersecurity professionals, 2026 begins on a strong note with the implementation of several important laws and regulations in greater China.\n1 Jan. marks the formal entry into force of significant amendments to China's Cybersecurity Law. For those following developments in China's data and cybersecurity landscape, the CSL will be familiar. Together with the Data Security Law and the Personal Information Protection Law, it forms the cornerstone of China's data and cybersecurity legal framework.\nAs China's first national law governing data and cybersecurity, issued in 2016, the CSL has played a foundational role. However, rapid technological advancements and the emergence of the digital economy have created an urgent need to modernize the law.",
+        "score": 8.3207,
+        "rank": 0
+      },
+      {
+        "url": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "title": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "heading": "",
+        "chunk_text": "or platform rules for unfair competitive practices and introducing extraterritorial jurisdiction provisions. On standardization, China had formulated over 50 standards for the AI sector by early 2026. MIIT established a dedicated AI Standardization Technical Committee, facilitating synergy between national safety baselines and agile industry standards, including a recent standard for embodied AI that provides timely governance guidance ahead of formal legislation.\nPart II of this post will examine the underlying drivers of this regulatory divergence, identify shared characteristics and emerging tensions across the three jurisdictions, and consider the prospects for cross-border coordination amid intensifying geopolitical competition.\nAbout the Author\nXiaotong Sun is a PhD researcher in AI governance and law at the University of Turku and a Marie Skłodowska-Curie Fellow under the EU Horizon Europe programme. Her research focuses on the legal and governance challenges of AI, particularly regarding human oversight. Prior to her doctoral studies, she gained practical experience working for three years as a policy researcher at a Beijing-based think tank, specializing in China’s AI regulatory landscape.\nHeading image: AI-generated image (created with ChatGPT image generator, 2026).",
+        "score": 8.3027,
+        "rank": 1
+      },
+      {
+        "url": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "title": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "heading": "",
+        "chunk_text": "ander, ‘China is leaving the west behind in regulating deepfakes’ (2022) https://www.chinatalk.nl/europe-is-falling-behind-china-in-regulating-deepfakes/ accessed 15 January 2026.\n[16] Ben Hu and Adam Au, ‘China resets the path to comprehensive AI governance’ (East Asia Forum, 25 December 2025)<https://eastasiaforum.org/2025/12/25/china-resets-the-path-to-comprehensive-ai-governance/#:~:text=In%20Brief,China%27s%20path%20to%20AI%20governance> accessed 28 December 2025.\n[17] Ibid\n[18] Filippo Lancieri, Laura Edelson and Stefan Bechtold, ‘AI Regulation: The Politics of Fragmentation and Regulatory Capture’ (2025) https://blogs.law.ox.ac.uk/oblb/blog-post/2025/06/ai-regulation-politics-fragmentation-and-regulatory-capture accessed 15 January 2026.\n[19] Irina A. Filipova, ‘Legal Regulation of Artificial Intelligence: Experience of China’ (2024) 2(1) Journal of Digital Technologies and Law <https://doi.org/10.21202/jdtl.2024.4> accessed 28 December 2026.",
+        "score": 8.0897,
+        "rank": 2
+      },
+      {
+        "url": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "title": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "heading": "",
+        "chunk_text": "ral preemption remains a consequential open question, especially considering Democrats raising concerns regarding accountability in a deeply divided Congress where Republicans hold thin majorities.\n3. China: State-Led Coordination with Multilayered Adaptive Governance\nChina’s AI regulatory trajectory follows a pragmatic, incremental approach, characterized by “small steps and targeted cuts.” From 2025 into early 2026, this approach has matured considerably through legislative upgrades, evolving enforcement, and standardization.\nLegislative Foundation: The Cybersecurity Law Amendment. The October 2025 amendment to the Cybersecurity Law, effective January 1, 2026, brings AI into national law for the first time, affirming state support for AI R&D while mandating AI ethical guidelines and strengthened risk assessment.\nIncremental Regulatory Expansion through Multi-Departmental Coordination. China leverages a collaborative approach led by the Cyberspace Administration of China (CAC). The core foundation was established between 2022 and 2023 with the Algorithm Recommendation Provisions, the Deep Synthesis Provisions, and the Interim Measures for Generative AI Services (jointly formulated by seven departments). This inter-agency synergy has continued into 2025–2026 with several targeted rules.",
+        "score": 7.9436,
+        "rank": 3
+      },
+      {
+        "url": "https://digidai.github.io/2026/03/13/ai-regulation-2026-global-policy-map-enterprise-compliance-guide/",
+        "title": "https://digidai.github.io/2026/03/13/ai-regulation-2026-global-policy-map-enterprise-compliance-guide/",
+        "heading": "",
+        "chunk_text": ".\nChina and Asia Show a Different Governance Logic: Targeted Rules, Fast Administrative Movement\nChina’s approach has often been caricatured abroad as either blanket restriction or unrestricted scale. Neither is accurate.\nWhat matters for operators is that China has already implemented binding rules for specific AI service categories.\nThe Cyberspace Administration of China’s publication of the Interim Measures for Generative AI Services states they were promulgated in July 2023 and effective August 15, 2023. The same text anchors these requirements in existing national legal frameworks including cybersecurity, data security, and personal information protection law.\nThat legal anchoring is the key operational signal.\nInstead of one grand AI law that waits for complete technical consensus, China has used scoped instruments tied to content governance, data obligations, and platform responsibility. For firms serving users in China, the impact is practical:\n- service scope definitions matter,\n- content controls are not optional,\n- filing and governance pathways are part of launch planning.\nThis differs from the EU’s fully unified risk-law architecture, but it is not weaker in day-to-day operational effect.\nJapan offers a different Asian model.\nMETI and MIC announced the AI Guidelines for Business Ver 1.0 on April 19, 2024, integrating prior guideline families into a more coherent governance reference for businesses.",
+        "score": 7.6584,
+        "rank": 4
+      },
+      {
+        "url": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "title": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "heading": "",
+        "chunk_text": "ion with data security, privacy protection and intellectual property rights.\nIn recent months, regulators have released draft rules and industry standards addressing AI security and agentic AI issues. The National Data Administration has said more than 30 new standards relating to public data, data infrastructure, AI agents, high-quality datasets, full-scale urban digital transformation, important data catalogs for telecommunications, agriculture, aviation, aerospace and more are expected to be issued in 2026.\nAccording to the Chinese zodiac, 2026 is the Year of the Horse — a symbol of leadership, pioneering spirit and swift progress, tempered by the need to balance freedom with responsibility and to build experience over time. These qualities aptly reflect what lies ahead for China's digital economy and its evolving data and AI governance landscape.\nBarbara Li, CIPP/E, is a partner at Reed Smith.\nThis article originally appeared in the Asia-Pacific Dashboard Digest, a free weekly IAPP newsletter. Subscriptions to this and other IAPP newsletters can be found here.\nThis content is eligible for Continuing Professional Education credits. Please self-submit according to CPE policy guidelines.\nSubmit for CPEsContributors:\nBarbara Li\nCIPP/E\nPartner\nReed Smith\nTags:",
+        "score": 7.6273,
+        "rank": 5
+      },
+      {
+        "url": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "title": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "heading": "",
+        "chunk_text": "expected to take an active enforcement approach throughout 2026.\nBeyond cybersecurity, the protection of minors' personal information is also expected to be a key compliance focus in 2026. On 28 Dec. 2025, the Cyberspace Administration of China issued a directive requiring companies that collect minors' personal information to complete compliance audits and submit filings to their local CAC offices by 31 Jan. 2026.\nThe filing must include information such as the nature, categories and volume of minors' personal information collected, an impact assessment report, a signed letter of undertaking and any additional materials required by the CAC on a case-by-case basis. Given the extremely tight deadline, companies that have not yet taken action should do so immediately.\nLooking ahead, 2026 is poised to be a dynamic year for AI deployment and the continued development of China's digital economy. China is expected to maintain an agile approach to AI governance, seeking to balance technological innovation with data security, privacy protection and intellectual property rights.\nIn recent months, regulators have released draft rules and industry standards addressing AI security and agentic AI issues.",
+        "score": 7.5282,
+        "rank": 6
+      },
+      {
+        "url": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "title": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "heading": "",
+        "chunk_text": "ews.com/next/2024/03/16/eu-ai-act-reaction-tech-experts-say-the-worlds-first-ai-law-is-historic-but-bittersweet accessed 20 January 2026.\n[9] Ministry of Economic Affairs, ‘AI Act Guide’ (2025) <https://www.government.nl/documents/publications/2025/09/04/ai-act-guide> accessed 25 December 2025.\n[10] European Parliament, ‘EU AI Act: first regulation on artificial intelligence’ (2023)<https://www.europarl.europa.eu/topics/en/article/20230601STO93804/eu-ai-act-first-regulation-on-artificial-intelligence#ai-act-different-rules-for-different-risk-levels-6> accessed 25 December 2025.\n[11] Software Improvement Group, ‘A comprehensive EU AI Act Summary [Aug 2025 update]’(2025) https://www.softwareimprovementgroup.com/blog/eu-ai-act-summary/#:~:text=The%20EU%20AI%20Act%20risk,regulatory%20implications%20on%20each%20system accessed 15 January 2026.\n[12] Barbara Li, ‘China releases ‘AI Plus’ plan, rolls out AI labeling law’ (iapp, 5 September 2025) <https://iapp.org/news/a/china-releases-ai-plus-plan-rolls-out-ai-labeling-law> accessed 27 December 2025.\n[13] Ibid\n[14] Cyberspace Administration of China, ‘Notice on issuing the “Measures for Identifying Artificial Intelligence-Generated and Synthetic Content”’ (14 March 2025 <https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm>\n[15] Ed Sander, ‘China is leaving the west behind in regulating deepfakes’ (2022) https://www.chinatalk.nl/europe-is-falling-behind-china-in-regulating-deepfakes/ accessed 15 January 2026.\n[16] Ben Hu and Adam",
+        "score": 6.5549,
+        "rank": 7
+      },
+      {
+        "url": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "title": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "heading": "",
+        "chunk_text": "EU's more precautionary stance. Key differences include:\nThe UK approach has advantages in flexibility and speed of adaptation, but creates uncertainty for companies that prefer clear, codified rules. It also creates potential for regulatory fragmentation if different sector regulators interpret the five principles inconsistently.\nChina: State-controlled and content-focused\nChina has taken the most targeted and rapid approach to AI regulation, enacting a series of binding regulations that focus on specific AI applications — particularly those with implications for content control, social stability, and data sovereignty. Unlike the EU's comprehensive model or the US's fragmented approach, China's strategy is to regulate specific AI use cases quickly and iteratively.\nThree binding AI regulations\nChina has enacted three major AI-specific regulations in rapid succession:\nEach regulation is administered by the Cyberspace Administration of China (CAC), often jointly with the Ministry of Science and Technology and the Ministry of Industry and Information Technology.\nKey regulatory requirements\nChina's AI regulations share several distinctive characteristics:\n- Mandatory algorithmic filing: Organisations deploying algorithmic recommendation systems or generative AI services in China must register their algorithms with the CAC through the Algorithm Filing System.",
+        "score": 5.9867,
+        "rank": 0
+      },
+      {
+        "url": "https://www.linkedin.com/pulse/divergent-paths-comparing-ai-regulation-us-eu-china-yannick-mah%C3%A9-ztlre",
+        "title": "https://www.linkedin.com/pulse/divergent-paths-comparing-ai-regulation-us-eu-china-yannick-mah%C3%A9-ztlre",
+        "heading": "",
+        "chunk_text": "Divergent Paths: Comparing AI Regulation in the US, EU, and China\nDivergent Paths: Comparing AI Regulation in the US, EU, and China\nIn a world propelled by rapid technological advancement, the rise of artificial intelligence (AI) presents both promise and potential risks. While professionals, like Sam Altman (OpenAI’s CEO), caution against the potential risks, others, like Yann LeCun (VP & Chief AI Scientist at Meta), adopt a more nuanced perspective. As AI becomes increasingly entrenched in our lives, it's crucial to recognize that it's here to stay, and we're merely scratching the surface of its capabilities. The recent AI talks between the US and China in Geneva underscore the pressing need for governance frameworks to guide this journey. Yet, the question persists: how do we strike a balance between regulation and over-regulation?\nThe US, China and the EU represent the bulk of AI research and startups in the world today. This blog post delves into the varying approaches to AI governance and legislation they adopt, examining the benefits and risks associated with each perspective. Join us as we dissect these divergent viewpoints and explore the path forward in shaping the AI landscape.\nUS\nIn the landscape of AI regulations in the United States, a distinct approach emerges when compared to counterparts in China and the EU. The US tends to adopt a more market-driven, decentralized stance with comparatively looser regulations.",
+        "score": 5.5334,
+        "rank": 1
+      },
+      {
+        "url": "https://iapp.org/news/a/preparing-for-compliance-key-differences-between-eu-chinese-ai-regulations",
+        "title": "https://iapp.org/news/a/preparing-for-compliance-key-differences-between-eu-chinese-ai-regulations",
+        "heading": "",
+        "chunk_text": "Preparing for compliance: Key differences between EU, Chinese AI regulations\nContributors:\nHunter Dorwart\nAssociate\nBird & Bird\nHarry Qu\nTobias Bräutigam\nCIPP/E, CIPM, FIP\nPartner, Head of Data Protection\nBird & Bird Finland\nJames Gong\nCIPP/CN, CIPP/E, CIPP/US, CIPM\nPartner\nBird & Bird\nOn 12 July 2024, the Official Journal of the European Union published the EU Artificial Intelligence Act, which aims to comprehensively regulate the design, deployment and use of AI systems in the EU.\nKey provisions of the act will become applicable to organizations over the course of the next three years, depending on their roles and the risks and capabilities of their services, with the first provisions and restrictions taking effect 2 Feb.\nIn parallel, regulatory authorities in China have also turned their attention to AI, issuing regulations and technical standards to bring service providers into compliance. The three most important are the Regulations on the Management of Algorithm Recommendations for Internet Information Services, Regulations on Deep Integration Management of Internet Information Services and Interim Measures for the Management of Generative Artificial Intelligence Services, which have been fully applicable since their adoptions in 2022 and 2023.\nThe evolution of AI governance frameworks in the EU and China share many similarities.",
+        "score": 5.4864,
+        "rank": 2
+      },
+      {
+        "url": "https://www.linkedin.com/pulse/divergent-paths-comparing-ai-regulation-us-eu-china-yannick-mah%C3%A9-ztlre",
+        "title": "https://www.linkedin.com/pulse/divergent-paths-comparing-ai-regulation-us-eu-china-yannick-mah%C3%A9-ztlre",
+        "heading": "",
+        "chunk_text": "y off or require further revision.\nIn addition to this, China’s AI regulation encompasses a range of issues, including algorithmic recommendation and deep synthesis tools used in creating “deepfakes”. While China adopts a vertical approach that uses laws to tackle specific issues with focused legislation, the EU takes a horizontal approach that aims to regulate AI comprehensively across different sectors.\nWhile China focuses on balancing innovation and regulatory control, it will be interesting to see how they pivot as the US continues to innovate and propel forward.\nEuropean Union\nEven though it is lagging behind the US and China in AI innovation, the EU has taken proactive measures to address the risks associated with AI deployment and is the first international body to pass robust legislation to regulate AI.\nThe EU's ‘AI Act’ establishes a risk-based framework categorizing systems into four risk categories: from “minima” to “unacceptable”. This classification system enables tailored regulations based on the potential harm posed by AI applications. For instance, under the AI Act, the use of AI for detecting emotions in workplaces and schools would be banned due to the potential for manipulation or discrimination. Similarly, AI usage in high-stakes decision-making processes, such as sorting job applications, would be subject to stringent limitations to mitigate biases and ensure fairness.",
+        "score": 5.431,
+        "rank": 3
+      },
+      {
+        "url": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "title": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "heading": "",
+        "chunk_text": "By Sophia Kramer\nEdited by Sina Olfermann, final editing by Lara Lamie\nFor the PDF version, click here.\nAbstract\nThis blog provides an overview of the current major developments in AI regulation, including an analysis of the EU’s recently adopted AI Act, as well as developments within one of the world's most dominant players in the realm of AI: China. In a global race for innovation, countries struggle to balance regulation with innovation. This blog explores the types of regulatory approaches to AI, their strengths and weaknesses, and how they relate to one another. The relevance of this blog is underlined by the understanding that analyzing different legal frameworks helps us assess and improve our own.\nKey words: Artificial Intelligence (AI), European Union (EU), AI Act, China, AI regulation, AI labelling\nIntroduction\nAI development has accelerated rapidly in recent years, especially in the United States (US), China, and the EU. Although the US is a major driver of AI innovation, this blog focuses on the EU and China, as recent regulatory developments in the US provide less material for comparative legal analysis at present. Growing awareness of the risks associated with this new technology has led to a demand for regulation. In response, legislative authorities have begun drafting and implementing their own regulatory mechanisms. Each legislative system embraces a different approach to regulating AI.",
+        "score": 5.0648,
+        "rank": 4
+      },
+      {
+        "url": "https://pernot-leplay.com/ai-regulation-china-eu-us-comparison/",
+        "title": "https://pernot-leplay.com/ai-regulation-china-eu-us-comparison/",
+        "heading": "",
+        "chunk_text": "l model, influencing practices worldwide—even though its formal scope is the EU internal market. The Act’s risk-based approach requires companies to identify and mitigate AI-related risks proactively. While the AI Act doesn’t directly grant individual rights as the GDPR does, its ultimate goal is to protect fundamental rights, a core driver that distinguishes the EU’s approach from those of China and the U.S.\nThe EU has prioritized swift action on AI regulation, a point that European Commissioner Thierry Breton has proudly emphasized. A key ambition of the AI Act is to set a global standard for AI regulation.\nThe U.S.: Guidelines and Narrow Bills\nThe U.S. approach to AI regulation is more piecemeal and sector-specific, with a strong emphasis on voluntary compliance – quite different from the EU’s comprehensive strategy. The underlying rationale is that AI technology still needs space to grow and develop before sweeping, binding regulations are put in place. Both government and private organizations have published various AI ethical principles and guidelines, and there are bills proposed at both federal and state levels. However, nothing as broad or centralized as the EU AI Act is currently on the horizon. This lightweight, sectoral approach is similar to the U.S. stance on data privacy regulation.\nAt the federal level, the U.S. Executive Order on AI has garnered significant attention.",
+        "score": 4.6772,
+        "rank": 5
+      },
+      {
+        "url": "https://cross-border-magazine.com/ai-regulation-eu-vs-usa-vs-china/",
+        "title": "https://cross-border-magazine.com/ai-regulation-eu-vs-usa-vs-china/",
+        "heading": "",
+        "chunk_text": "alized, state-controlled, and strategically coordinated model.\nIn the EU, innovation is slower but safer and more structured. In the United States, innovation is fast but comes with legal uncertainty. In China, innovation is both rapid and coordinated under government direction.\nThe EU emphasizes trust and compliance but lags in AI deployment speed. The United States leads in AI innovation and platform development. China leads in execution and large-scale AI-driven commerce models.\nThe EU enforces strict data protection rules. The United States maintains moderate regulation, varying by sector and state. China allows extensive data use under state supervision.\nThe global regulatory landscape remains fragmented. The EU is setting compliance benchmarks, the United States is driving innovation, and China is building a state-driven AI economy.\nThis divergence requires companies to adapt their AI strategies to the markets in which they operate.\nOrganizations must design AI systems that can be adapted to different regulatory environments. Internal AI governance frameworks are becoming essential. Businesses must carefully balance innovation with compliance and risk management.\nMany global companies are beginning to use EU standards as a baseline for compliance while deploying more advanced AI capabilities in less restrictive markets.\nAI regulation has become a central factor in e-commerce strategy. The European Union leads in regulation and ethical standards.",
+        "score": 4.6125,
+        "rank": 6
+      },
+      {
+        "url": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "title": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "heading": "",
+        "chunk_text": "One Technology, Three Regulatory Paths: How the EU, the US, and China Govern AI (2025–Early 2026) – Part I\nAs artificial intelligence (AI) reshapes economies, societies, and individual rights worldwide, the question of how to govern it has moved to the centre of policy agendas. Different jurisdictions face different technological realities, political traditions, and societal expectations, and no universal model has emerged. Instead, three distinct regulatory paths have taken shape. This post examines those paths by focusing on the European Union (EU), the United States (US), and China. All three share the goal of balancing AI’s innovation potential with its risks, but their regulatory philosophies, institutional designs, and priority areas diverge in ways that reflect deep differences in political values, economic structures, and societal priorities.\nAnu Bradford (2024) offers a useful starting point, framing the US as a market-driven regime, the EU as a rights-oriented regime, and China as a state-led regime. Wenlong Li (2026) argues that these typologies, while valuable, do not fully capture the internal complexity and dynamic evolution of each regime, highlighting the tension between competing domestic stakeholders, the gap between formal texts and on-the-ground enforcement, and the reciprocal interplay between regulatory design and industrial development.",
+        "score": 4.5824,
+        "rank": 7
+      },
+      {
+        "url": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "title": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "heading": "",
+        "chunk_text": "One Technology, Three Regulatory Paths: How the EU, the US, and China Govern AI (2025–Early 2026) – Part I\nAs artificial intelligence (AI) reshapes economies, societies, and individual rights worldwide, the question of how to govern it has moved to the centre of policy agendas. Different jurisdictions face different technological realities, political traditions, and societal expectations, and no universal model has emerged. Instead, three distinct regulatory paths have taken shape. This post examines those paths by focusing on the European Union (EU), the United States (US), and China. All three share the goal of balancing AI’s innovation potential with its risks, but their regulatory philosophies, institutional designs, and priority areas diverge in ways that reflect deep differences in political values, economic structures, and societal priorities.\nAnu Bradford (2024) offers a useful starting point, framing the US as a market-driven regime, the EU as a rights-oriented regime, and China as a state-led regime. Wenlong Li (2026) argues that these typologies, while valuable, do not fully capture the internal complexity and dynamic evolution of each regime, highlighting the tension between competing domestic stakeholders, the gap between formal texts and on-the-ground enforcement, and the reciprocal interplay between regulatory design and industrial development.",
+        "score": 8.3086,
+        "rank": 0
+      },
+      {
+        "url": "https://iapp.org/news/a/preparing-for-compliance-key-differences-between-eu-chinese-ai-regulations",
+        "title": "https://iapp.org/news/a/preparing-for-compliance-key-differences-between-eu-chinese-ai-regulations",
+        "heading": "",
+        "chunk_text": "rative Artificial Intelligence Services, which have been fully applicable since their adoptions in 2022 and 2023.\nThe evolution of AI governance frameworks in the EU and China share many similarities. For example, the European Commission's High-level Expert Group on AI published its Ethics Guidelines for Trustworthy AI in 2019, around the same time Chinese government bodies first made commitments to supervise AI.\nPolicymakers in the EU and China have likewise expressed similar goals of regulation, implicating topics such as ethics, data protection, safety and security. Additionally, AI regulation in Brussels and Beijing have been built off preexisting legal frameworks, including those regulating the processing of personal data.\nDespite these similarities, however, there are notable differences between the two approaches. Exploring those differences can help organizations comprehend the scope of requirements in both markets and prepare for compliance.\nEU opts for comprehensive law, China chooses targeted regulations — for now\nContributors:\nHunter Dorwart\nAssociate\nBird & Bird\nHarry Qu\nTobias Bräutigam\nCIPP/E, CIPM, FIP\nPartner, Head of Data Protection\nBird & Bird Finland\nJames Gong\nCIPP/CN, CIPP/E, CIPP/US, CIPM\nPartner\nBird & Bird",
+        "score": 7.0617,
+        "rank": 1
+      },
+      {
+        "url": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "title": "https://insights.utu.fi/one-technology-three-regulatory-paths-how-the-eu-the-us-and-china-govern-ai-2025-early-2026-part-i/",
+        "heading": "",
+        "chunk_text": "or platform rules for unfair competitive practices and introducing extraterritorial jurisdiction provisions. On standardization, China had formulated over 50 standards for the AI sector by early 2026. MIIT established a dedicated AI Standardization Technical Committee, facilitating synergy between national safety baselines and agile industry standards, including a recent standard for embodied AI that provides timely governance guidance ahead of formal legislation.\nPart II of this post will examine the underlying drivers of this regulatory divergence, identify shared characteristics and emerging tensions across the three jurisdictions, and consider the prospects for cross-border coordination amid intensifying geopolitical competition.\nAbout the Author\nXiaotong Sun is a PhD researcher in AI governance and law at the University of Turku and a Marie Skłodowska-Curie Fellow under the EU Horizon Europe programme. Her research focuses on the legal and governance challenges of AI, particularly regarding human oversight. Prior to her doctoral studies, she gained practical experience working for three years as a policy researcher at a Beijing-based think tank, specializing in China’s AI regulatory landscape.\nHeading image: AI-generated image (created with ChatGPT image generator, 2026).",
+        "score": 6.3203,
+        "rank": 2
+      },
+      {
+        "url": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "title": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "heading": "",
+        "chunk_text": ". Filipova, ‘Legal Regulation of Artificial Intelligence: Experience of China’ (2024) 2(1) Journal of Digital Technologies and Law <https://doi.org/10.21202/jdtl.2024.4> accessed 28 December 2026.\nMinistry of Economic Affairs, ‘AI Act Guide’ (2025) <https://www.government.nl/documents/publications/2025/09/04/ai-act-guide> accessed 25 December 2025.\nMinistry of Economic Affairs, ‘Europese set regels over AI treedt in werking’ (2024) https://www.rijksoverheid.nl/actueel/nieuws/2024/08/02/europese-set-regels-over-ai-treedt-in-werking accessed 20 January 2026.\nPascale Davies, ‘EU AI Act reaction: Tech experts say the world’s first AI law is ‘historic’ but ‘bittersweet’’ (2024) https://www.euronews.com/next/2024/03/16/eu-ai-act-reaction-tech-experts-say-the-worlds-first-ai-law-is-historic-but-bittersweet accessed 20 January 2026.\nSoftware Improvement Group, ‘A comprehensive EU AI Act Summary [Aug 2025 update]’(2025) https://www.softwareimprovementgroup.com/blog/eu-ai-act-summary/#:~:text=The%20EU%20AI%20Act%20risk,regulatory%20implications%20on%20each%20system accessed 15 January 2026.\n[1] Emma Strubell, Ananya Ganesh and Andrew McCallum, ‘Energy and Policy Considerations for Deep learning in NLP’ (2019)<https://aclanthology.org/P19-1355.pdf> accessed 28 December 2025.\n[2] Alex de Vries-Gao, ‘Artificial intelligence: Supply chain constraints and energy implications’ (2025) 9(6) Joule <https://www.cell.com/joule/abstract/S2542-4351(25)00142-4?_returnURL=https%3A%2F%2Flinkinghub.e s",
+        "score": 5.5499,
+        "rank": 3
+      },
+      {
+        "url": "https://www.linkedin.com/pulse/divergent-paths-comparing-ai-regulation-us-eu-china-yannick-mah%C3%A9-ztlre",
+        "title": "https://www.linkedin.com/pulse/divergent-paths-comparing-ai-regulation-us-eu-china-yannick-mah%C3%A9-ztlre",
+        "heading": "",
+        "chunk_text": "s.\nThe US-China tech race is another significant factor shaping AI regulations. As both countries vie for AI supremacy, each pursue distinct divergent avenues in research, development, and regulation. Moreover, it's essential to recognize that AI regulations in the US occur at multiple levels of government. In 2023 alone, 25 US states considered AI-related legislation, with 15 of them passing laws or resolutions, according to the National Conference of State Legislatures. States like California and New York, known for their tech prowess, are at the forefront of AI regulation, implementing laws to address various AI applications and their potential impacts on society and the economy.\nChina\nChina’s approach to AI regulation reflects a dual emphasis on promoting innovation while ensuring control over development and deployment. In recent years, China has implemented a series of policies aimed at harnessing AI to achieve economic and geopolitical goals while addressing potential risks and challenges associated with its widespread adoption.\nOne significant aspect of China’s AI policy is its focus on facial recognition technology. Unlike many other countries, China has enacted laws that govern the use of facial recognition tools by non-governmental agencies. These laws stipulate that facial recognition may only be used for specific purposes and when other tools are inadequate, and must be limited for the purpose of public safety in public places.",
+        "score": 5.533,
+        "rank": 4
+      },
+      {
+        "url": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "title": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "heading": "",
+        "chunk_text": "ander, ‘China is leaving the west behind in regulating deepfakes’ (2022) https://www.chinatalk.nl/europe-is-falling-behind-china-in-regulating-deepfakes/ accessed 15 January 2026.\n[16] Ben Hu and Adam Au, ‘China resets the path to comprehensive AI governance’ (East Asia Forum, 25 December 2025)<https://eastasiaforum.org/2025/12/25/china-resets-the-path-to-comprehensive-ai-governance/#:~:text=In%20Brief,China%27s%20path%20to%20AI%20governance> accessed 28 December 2025.\n[17] Ibid\n[18] Filippo Lancieri, Laura Edelson and Stefan Bechtold, ‘AI Regulation: The Politics of Fragmentation and Regulatory Capture’ (2025) https://blogs.law.ox.ac.uk/oblb/blog-post/2025/06/ai-regulation-politics-fragmentation-and-regulatory-capture accessed 15 January 2026.\n[19] Irina A. Filipova, ‘Legal Regulation of Artificial Intelligence: Experience of China’ (2024) 2(1) Journal of Digital Technologies and Law <https://doi.org/10.21202/jdtl.2024.4> accessed 28 December 2026.",
+        "score": 5.3408,
+        "rank": 5
+      },
+      {
+        "url": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "title": "https://vu.nl/en/news/2026/tackling-regulatory-gaps-in-ai-the-european-and-chinese-approach",
+        "heading": "",
+        "chunk_text": "ews.com/next/2024/03/16/eu-ai-act-reaction-tech-experts-say-the-worlds-first-ai-law-is-historic-but-bittersweet accessed 20 January 2026.\n[9] Ministry of Economic Affairs, ‘AI Act Guide’ (2025) <https://www.government.nl/documents/publications/2025/09/04/ai-act-guide> accessed 25 December 2025.\n[10] European Parliament, ‘EU AI Act: first regulation on artificial intelligence’ (2023)<https://www.europarl.europa.eu/topics/en/article/20230601STO93804/eu-ai-act-first-regulation-on-artificial-intelligence#ai-act-different-rules-for-different-risk-levels-6> accessed 25 December 2025.\n[11] Software Improvement Group, ‘A comprehensive EU AI Act Summary [Aug 2025 update]’(2025) https://www.softwareimprovementgroup.com/blog/eu-ai-act-summary/#:~:text=The%20EU%20AI%20Act%20risk,regulatory%20implications%20on%20each%20system accessed 15 January 2026.\n[12] Barbara Li, ‘China releases ‘AI Plus’ plan, rolls out AI labeling law’ (iapp, 5 September 2025) <https://iapp.org/news/a/china-releases-ai-plus-plan-rolls-out-ai-labeling-law> accessed 27 December 2025.\n[13] Ibid\n[14] Cyberspace Administration of China, ‘Notice on issuing the “Measures for Identifying Artificial Intelligence-Generated and Synthetic Content”’ (14 March 2025 <https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm>\n[15] Ed Sander, ‘China is leaving the west behind in regulating deepfakes’ (2022) https://www.chinatalk.nl/europe-is-falling-behind-china-in-regulating-deepfakes/ accessed 15 January 2026.\n[16] Ben Hu and Adam",
+        "score": 5.2083,
+        "rank": 6
+      },
+      {
+        "url": "https://pernot-leplay.com/ai-regulation-china-eu-us-comparison/",
+        "title": "https://pernot-leplay.com/ai-regulation-china-eu-us-comparison/",
+        "heading": "",
+        "chunk_text": "s for automated decision-making technology. Florida may strengthen transparency over AI-generated content for political ads.\nCalifornia’s recent AI bill (SB 1047) offered a new perspective on the U.S. approach, emphasizing stringent safety standards specifically for high-cost AI models. However, Governor Newsom vetoed it in September 2024, citing its potential to stifle innovation and advocating instead for a balanced, risk-based regulation model similar to the EU’s approach. This development underscores the evolving debate within the U.S. on regulating AI without hindering its progress. For further details on California’s AI bill SB 1047, see my comments here.\nThe risk of the U.S.’s wait-and-see approach is that it may diminish its influence in the global regulatory debate. U.S. laws – and company practices – may ultimately be shaped by the so-called “Brussels Effect,” where companies adapt to comply with the EU AI Act, which will, in effect, set the standard for many U.S. requirements as well.\nChina AI Regulation: Balancing Development and State control\nAgainst this backdrop, China does support its AI sector through various policy tools (see below). One could say this support is part of a broader Chinese policy encouraging domestic development and Chinese actors. We can see it in China’s broader legal framework on tech, such as China data privacy law or the restrictions on cross-border data transfers in PIPL.",
+        "score": 5.0105,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 4188,
+      "search_ms": 5736,
+      "extract_ms": 21819,
+      "chunk_ms": 226,
+      "retrieve_ms": 9669,
+      "synthesis_ms": 18742,
+      "sub_queries_count": 5,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 73635,
+    "elapsed_s": 76.29,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

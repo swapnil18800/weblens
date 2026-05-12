@@ -1,0 +1,243 @@
+{
+  "id": "tf1",
+  "category": "temporal_freshness",
+  "domain": "ai",
+  "question": "What are the most recent advances in mixture-of-experts (MoE) model training as of 2026?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Should mention 2025-2026 work, not just 2022-2023 papers.",
+  "key_facts": [
+    "mixture of experts",
+    "MoE"
+  ],
+  "ground_truth": "Recent MoE work focuses on routing stability, expert specialization, fine-grained MoE in models like DeepSeek-V3, Llama, and proprietary frontier models. Multi-trillion-parameter MoEs are now common.",
+  "session_id": "eval-20260511T075017Z-tf1",
+  "verdict": "pass",
+  "aggregate": 0.917,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.833,
+    "context_recall": 1.0,
+    "context_precision": 0.75,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.917,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.917
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.833,
+      "supported": 5,
+      "total": 6,
+      "reasoning": "Most claims match chunks; RMoE pipeline detail not found in sources."
+    },
+    "context_precision": {
+      "score": 0.75,
+      "relevant": 6,
+      "total": 8,
+      "reasoning": "Chunks 1-6 discuss MoE advances up to 2026; 7-8 are references or older methods."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "mixture of experts",
+        "MoE"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=0.50; LLM-assist promoted 1 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": [
+      "mixture of experts",
+      "MoE"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 2385,
+      "search_ms": 1782,
+      "extract_ms": 4286,
+      "chunk_ms": 34,
+      "retrieve_ms": 1990,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 21579,
+    "pipeline_s": 24.72
+  },
+  "judge_reasoning": "Most claims match chunks; RMoE pipeline detail not found in sources.",
+  "pipeline": {
+    "answer": "**Latest Advances in MoE Training (up to 2026)**\n\n**Scale and Efficiency Achievements**\n- DeepSeek-V3 (Dec 2024) set efficiency records: 671B total parameters with only **37B active per token**, using 256 fine-grained experts and a novel **auxiliary-loss-free load balancing** strategy that replaces traditional auxiliary loss with bias-based routing adjustments [1]. It was pretrained on 14.8 trillion tokens using just **2.788 million H800 GPU hours** — a remarkably efficient run [1].\n- Alibaba's M6 demonstrated **1% of GPT-3's energy cost** at comparable scale [1].\n- NVIDIA's Blackwell GB200 NVL72 platform (2025) delivers a **10× reduction in cost per token** for MoE reasoning models versus the prior Hopper generation, with 1,800 GB/s bidirectional NVLink bandwidth optimized for MoE's communication patterns [1].\n\n**Novel Architectures and Training Pipelines**\n- **AI21 Labs' Jamba** (2024) introduced a hybrid combining Transformer attention layers, Mamba state-space model layers, and MoE (52B total, 12B active). Its successor **Jamba 1.5** (2025) scaled to 398B total with 94B active, achieving up to **2.5× faster inference** on long contexts [1].\n- **RMoE** designs a pipeline where expert weights are decomposed into core and residual weights — core weights inherit knowledge from pre-trained non-MoE models, and only residual weights are finetuned, significantly shortening training time [3].\n- **BPR** achieves sparsity reuse by prioritizing important samples for processing, improving resource utilization [3].\n\n**Hardware and Software Co-Optimization**\n- NVIDIA's Blackwell architecture is explicitly optimized for MoE, and frameworks like **vLLM and TensorRT-LLM** have improved MoE inference throughput by up to **2.8×** through multi-token prediction, disaggregated serving, and NVFP4 quantization [1].\n\n**Dominant Adoption**\n- As of early 2026, virtually all leading frontier models — DeepSeek-V3/R1, Llama 4, Mistral Large 3, and Google's Gemini family — use MoE architectures [1][2].",
+    "mode": "search",
+    "rewritten_query": "What are the most recent advances in mixture-of-experts (MoE) model training as of 2026?",
+    "rewrote": false,
+    "rationale": "Time-sensitive research topic requiring up-to-date sources.",
+    "sub_queries": [
+      "Latest advances in mixture-of-experts MoE model training up to 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "snippet": "Understanding Mixture of Experts (MoE) Neural Networks\n[Revised February 18, 2026]\nMixture of Experts (MoE) Models: A Comprehensive Overview\nIntroduction and Theoretical Foundation\nMixture of Experts (MoE) models are a class of neural networks that divide computation across multiple specialized sub-"
+      },
+      {
+        "num": 2,
+        "url": "https://medium.com/@gaurvi.i.vishnoi/the-rise-of-mixture-of-experts-how-moe-is-reshaping-ai-in-2026-45a47bfa4dfc",
+        "title": "The Rise of Mixture of Experts: How MoE is Reshaping AI in 2026",
+        "snippet": "The Bottom Line\n\nMixture of Experts has evolved from an experimental technique to the foundational architecture of modern AI. MoE has transitioned from a research curiosity to the dominant architecture for frontier AI models as of early 2026, with virtually all leading frontier models using MoE arch"
+      },
+      {
+        "num": 3,
+        "url": "https://arxiv.org/html/2503.07137v1",
+        "title": "https://arxiv.org/html/2503.07137v1",
+        "snippet": ", 2024.\n- [193] W. Gan, Z. Ning, Z. Qi, and P. S. Yu, “Mixture of experts (moe): A big data perspective,” arXiv preprint arXiv:2501.16352, 2025.\n- [194] J. Liu, P. Tang, W. Wang, Y. Ren, X. Hou, P.-A. Heng, M. Guo, and C. Li, “A survey on inference optimization techniques for mixture of experts mode"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://medium.com/@gaurvi.i.vishnoi/the-rise-of-mixture-of-experts-how-moe-is-reshaping-ai-in-2026-45a47bfa4dfc",
+        "title": "The Rise of Mixture of Experts: How MoE is Reshaping AI in 2026",
+        "snippet": "MoE is now the dominant architecture for virtually all frontier AI models in 2026 · Selective activation allows massive models to run efficiently"
+      },
+      {
+        "url": "https://www.linkedin.com/pulse/whats-new-mixture-experts-2025-upp-technology-jpw2c",
+        "title": "What's New in Mixture of Experts in 2025? - LinkedIn",
+        "snippet": "Uncover the latest advances in Mixture of Experts powering top AI models like DeepSeek and Qwen3 for scalable performance in 2025."
+      },
+      {
+        "url": "https://arxiv.org/html/2503.07137v1",
+        "title": "A Comprehensive Survey of Mixture-of-Experts: Algorithms, Theory ...",
+        "snippet": "It has been shown that MoEs can significantly improve model performance and efficiency with fewer resources, particularly excelling in handling"
+      },
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "Understanding Mixture of Experts (MoE) Neural Networks",
+        "snippet": "Comprehensive guide to Mixture of Experts (MoE) models, covering architecture, training, and real-world implementations including"
+      },
+      {
+        "url": "https://developer.nvidia.com/blog/applying-mixture-of-experts-in-llm-architectures/",
+        "title": "Applying Mixture of Experts in LLM Architectures - NVIDIA Developer",
+        "snippet": "Mixture of experts (MoE) large language model (LLM) architectures have recently emerged, both in proprietary LLMs such as GPT-4, as well as"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=6Qj2esKFvdw",
+        "title": "Mixture of Experts Explained - The Next Evolution in AI Architecture",
+        "snippet": "In this video, we dive into the Mixture of Experts (MoE) concept, a powerful and cutting-edge approach to artificial intelligence and"
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "heading": "",
+        "chunk_text": "Understanding Mixture of Experts (MoE) Neural Networks\n[Revised February 18, 2026]\nMixture of Experts (MoE) Models: A Comprehensive Overview\nIntroduction and Theoretical Foundation\nMixture of Experts (MoE) models are a class of neural networks that divide computation across multiple specialized sub-models (“experts”) and use a gating mechanism to choose which expert(s) to invoke for a given input [1]. The concept was originally introduced in the early 1990s by Jacobs, Jordan, and colleagues as adaptive mixtures of local experts, where a trainable gating network would learn to softly assign different input patterns to different expert networks [2]. This provided a form of “divide-and-conquer” learning: each expert could specialize on a subset of the problem space, while the gating network learned which expert’s output to trust for each input. Hierarchical MoE variants were also explored (e.g. Jordan & Jacobs, 1994), establishing the theoretical basis that combining expert predictions via a learned gate can universalize function approximation while promoting specialization.\nAfter substantial exploration in the 1990s, MoEs saw a resurgence decades later in the context of deep learning. A key motivation is the scaling problem of modern models: simply increasing model size (parameters) tends to improve performance, but doing so densely (activating all parameters for every input) leads to prohibitively large computational costs [3] [4].",
+        "score": 6.2245,
+        "rank": 0
+      },
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "heading": "",
+        "chunk_text": "represent a trend in late 2023 where open model communities started training instruct-tuned MoEs that outperform equivalently sized dense models on benchmarks, especially in reasoning tasks [85] [99]. Databricks' DBRX introduced a fine-grained MoE (132B total, 36B active) that was the state-of-the-art open model at the time of release in early 2024 [88] [89].\nThe pace of open MoE releases has accelerated dramatically since 2024. xAI's Grok-1 (March 2024) was open-sourced under Apache 2.0 with 314B total parameters and 8 experts (top-2 gating), making it one of the largest openly available MoE models at that time [87]. DeepSeek-V3 (December 2024) pushed the boundaries of MoE efficiency with 671B total parameters and only 37B active per token, using 256 fine-grained experts and an innovative auxiliary-loss-free load balancing strategy that eliminates the traditional auxiliary loss term in favor of bias-based routing adjustments [71]. DeepSeek-V3 was pretrained on 14.8 trillion tokens using only 2.788 million H800 GPU hours – a remarkably efficient training run for a model of its scale. AI21 Labs' Jamba (2024) introduced a novel hybrid architecture combining Transformer attention layers, Mamba state-space model layers, and MoE, with 52B total parameters and 12B active. Its successor Jamba 1.5 (2025) scaled to 398B total with 94B active, demonstrating up to 2.5× faster inference on long contexts compared to similar-sized competitors [90].",
+        "score": 6.1331,
+        "rank": 1
+      },
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "heading": "",
+        "chunk_text": "t architecture for frontier AI models. As of early 2026, virtually all leading frontier models – including DeepSeek-V3/R1, Llama 4, Mistral Large 3, and Google's Gemini family – use MoE architectures. The efficiency gains are now well-established: Alibaba's M6 demonstrated 1% of GPT-3's energy cost at comparable scale [114], DeepSeek-V3 achieved frontier performance for under $6 million in training compute [71], and NVIDIA's Blackwell GB200 NVL72 platform delivers a 10× reduction in cost per token for MoE reasoning models compared to previous-generation hardware [55]. Hardware infrastructure has caught up: NVIDIA's Blackwell architecture is explicitly optimized for MoE's all-to-all communication patterns, with 1,800 GB/s of bidirectional NVLink bandwidth across 72 GPUs. The question is no longer whether to use MoE, but how to optimize routing, load balancing, and inference serving for production at scale. As one survey put it, \"with the convergence of model architecture design in industrial products, system design has emerged as pivotal\" [117] – meaning the burden is now on making these MoE systems efficient and robust for real-world use. MoE models have become the staple technique for building advanced AI that is both powerful and efficient.\nReferences and Further Reading\n-\nJacobs, R. et al. (1991). Adaptive Mixtures of Local Experts. Neural Computation, 3(1): 79–87. (Foundational MoE concept)\n-\nJordan, M. & Jacobs, R. (1994).",
+        "score": 5.9565,
+        "rank": 2
+      },
+      {
+        "url": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "title": "https://intuitionlabs.ai/articles/mixture-of-experts-moe-models",
+        "heading": "",
+        "chunk_text": "till a sparsely-activated MoE into a dense model for deployment, retaining the quality but simplifying the model – recent work on MoE distillation shows promise in compressing MoEs post-training [54]. Notably, hardware is now catching up to MoE's demands: NVIDIA's Blackwell GB200 NVL72 platform (2025) connects 72 GPUs with 1,800 GB/s bidirectional NVLink bandwidth, specifically optimized for the all-to-all communication patterns that MoE requires. NVIDIA reports a 10× reduction in cost per token for MoE reasoning models compared to the previous Hopper generation [55]. Software optimizations in frameworks like vLLM and TensorRT-LLM – including multi-token prediction, disaggregated serving, and NVFP4 quantization – have further improved MoE inference throughput by up to 2.8× in recent months. These advances are rapidly closing the deployment gap between MoE and dense models.\n-\nExpert Collapse and Training Instability: Without proper regularization, MoE training can suffer expert collapse – many inputs collapse onto a subset of experts while others “die out” (receiving almost no gradient). We discussed how auxiliary loss and capacity constraints address this, and indeed in most published results these measures have been effective. However, training instabilities still occur, especially as the number of experts or the model depth increases [56].",
+        "score": 5.9353,
+        "rank": 3
+      },
+      {
+        "url": "https://medium.com/@gaurvi.i.vishnoi/the-rise-of-mixture-of-experts-how-moe-is-reshaping-ai-in-2026-45a47bfa4dfc",
+        "title": "The Rise of Mixture of Experts: How MoE is Reshaping AI in 2026",
+        "heading": "The Bottom Line",
+        "chunk_text": "The Bottom Line\n\nMixture of Experts has evolved from an experimental technique to the foundational architecture of modern AI. MoE has transitioned from a research curiosity to the dominant architecture for frontier AI models as of early 2026, with virtually all leading frontier models using MoE architectures.\n\nThe efficiency gains are undeniable: Unlike dense models where all parameters are active at inference, MoE models route inputs through only a subset of their experts, dramatically reducing compute requirements while enabling massive parameter growth.\n\nAs we move deeper into 2026, the question is no longer whether to use MoE, but how to optimize it for specific use cases. Whether you’re building language models, vision systems, or multimodal AI, understanding MoE architecture is essential for developing next-generation AI systems that are both powerful and practical.\n\nThe revolution in AI isn’t just about making models bigger — it’s about making them smarter in how they allocate computational resources. And that’s exactly what Mixture of Experts delivers.",
+        "score": 5.8802,
+        "rank": 4
+      },
+      {
+        "url": "https://medium.com/@gaurvi.i.vishnoi/the-rise-of-mixture-of-experts-how-moe-is-reshaping-ai-in-2026-45a47bfa4dfc",
+        "title": "The Rise of Mixture of Experts: How MoE is Reshaping AI in 2026",
+        "heading": "The Architecture Behind Today’s Most Powerful AI Models",
+        "chunk_text": "The Architecture Behind Today’s Most Powerful AI Models\n\n_Understanding the technology that powers GPT-5, DeepSeek-V3, and the next generation of artificial intelligence_\n\nIf you’ve wondered how cutting-edge AI models in 2026 can have hundreds of billions or even trillions of parameters while still being practical to run, Mixture of Experts (MoE) is the secret sauce behind their efficiency. What was once an experimental technique has evolved into the dominant architecture powering virtually every frontier AI model today.",
+        "score": 4.3446,
+        "rank": 5
+      },
+      {
+        "url": "https://arxiv.org/html/2503.07137v1",
+        "title": "https://arxiv.org/html/2503.07137v1",
+        "heading": "",
+        "chunk_text": ", 2024.\n- [193] W. Gan, Z. Ning, Z. Qi, and P. S. Yu, “Mixture of experts (moe): A big data perspective,” arXiv preprint arXiv:2501.16352, 2025.\n- [194] J. Liu, P. Tang, W. Wang, Y. Ren, X. Hou, P.-A. Heng, M. Guo, and C. Li, “A survey on inference optimization techniques for mixture of experts models,” arXiv preprint arXiv:2412.14219, 2024.\n- [195] A. Vats, R. Raja, V. Jain, and A. Chadha, “The evolution of mixture of experts: A survey from basics to breakthroughs,” Preprints (August 2024), 2024.\n- [196] V. Dimitri, B. Regina, and M. Alfonz, “A survey on mixture of experts: Advancements, challenges, and future directions,” Authorea Preprints, 2025.\n- [197] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N. Gomez, Ł. Kaiser, and I. Polosukhin, “Attention is all you need,” Advances in neural information processing systems, vol. 30, 2017.\n- [198] S. Ingrassia, S. C. Minotti, and G. Vittadini, “Local statistical modeling via a cluster-weighted approach with elliptical distributions,” Journal of classification, vol. 29, pp. 363–401, 2012.\n- [199] J. Geweke, M. Keane, and D. Runkle, “Alternative computational approaches to inference in the multinomial probit model,” The review of economics and statistics, pp. 609–632, 1994.\n- [200] M. P. Keane, “A note on identification in the multinomial probit model,” Journal of Business & Economic Statistics, vol. 10, no. 2, pp. 193–200, 1992.\n- [201] W. Peebles and S.",
+        "score": 3.5562,
+        "rank": 6
+      },
+      {
+        "url": "https://arxiv.org/html/2503.07137v1",
+        "title": "https://arxiv.org/html/2503.07137v1",
+        "heading": "",
+        "chunk_text": "egularization method tailored for the tree structure of Hierarchical Mixture of Experts (HMoE) [47], which randomly drops expert networks of different branches according to the hierarchical structure. Experimental results demonstrate that this method enhances model performance, providing smoother fitting outcomes, better generalization, and lower validation error rates compared to models without dropout.\n3) Pipeline Design. Given the sparsity nature and need of dynamic data allocation in MoE architectures, a well-designed pipeline plays a crucial role in the training of MoE models, in order to maximize the utilization of computational resources, reduce time and costs, and ensure stable convergence of the model. In general, the pipeline design for MoE seeks to optimize resource allocation and efficiently distribute data among experts.\nAs mentioned before, BPR [17] achieves sparsity reuse by prioritizing important samples for processing. The advantages of BPR lie in its efficient resource utilization and reduction of unnecessary computations.\nRMoE [18] designs a pipeline particularly for downstream tasks such as segmentation and detection. More specifically, RMoE decomposes the weights of MoE experts into core and residual weights, where the core weights inherit knowledge from pre-trained non-MoE models and only the residual weights will be finetuned. This will significantly shorten the training time and reduce the training costs.",
+        "score": 1.74,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 2385,
+      "search_ms": 1782,
+      "extract_ms": 4286,
+      "chunk_ms": 34,
+      "retrieve_ms": 1990,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 21579,
+    "elapsed_s": 24.72,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

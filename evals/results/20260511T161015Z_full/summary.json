@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "mode": "full",
+    "timestamp": "20260511T161015Z",
+    "total": 30,
+    "pass": 15,
+    "partial": 15,
+    "fail": 0,
+    "avg_latency_s": 38.1,
+    "p95_latency_s": 73.03,
+    "total_judge_cost_usd": 0,
+    "bench_version": "v7-bench-1"
+  },
+  "metrics_avg": {
+    "faithfulness": 0.649,
+    "context_recall": 0.867,
+    "context_precision": 0.654,
+    "answer_correctness": 0.95,
+    "routing_decomposition": 0.825,
+    "answer_relevancy": 0.594,
+    "aggregate": 0.789
+  },
+  "category_summary": {
+    "routing_parametric": {
+      "n": 4,
+      "avg_aggregate": 1.0,
+      "pass": 4,
+      "partial": 0,
+      "fail": 0
+    },
+    "routing_search_obvious": {
+      "n": 3,
+      "avg_aggregate": 0.652,
+      "pass": 0,
+      "partial": 3,
+      "fail": 0
+    },
+    "multi_hop_comparison": {
+      "n": 5,
+      "avg_aggregate": 0.77,
+      "pass": 3,
+      "partial": 2,
+      "fail": 0
+    },
+    "temporal_freshness": {
+      "n": 4,
+      "avg_aggregate": 0.721,
+      "pass": 1,
+      "partial": 3,
+      "fail": 0
+    },
+    "numerical_reasoning": {
+      "n": 3,
+      "avg_aggregate": 0.755,
+      "pass": 1,
+      "partial": 2,
+      "fail": 0
+    },
+    "ambiguity": {
+      "n": 3,
+      "avg_aggregate": 0.858,
+      "pass": 2,
+      "partial": 1,
+      "fail": 0
+    },
+    "contradiction": {
+      "n": 2,
+      "avg_aggregate": 0.771,
+      "pass": 1,
+      "partial": 1,
+      "fail": 0
+    },
+    "refusal_unknown": {
+      "n": 2,
+      "avg_aggregate": 0.55,
+      "pass": 0,
+      "partial": 2,
+      "fail": 0
+    },
+    "niche_long_tail": {
+      "n": 2,
+      "avg_aggregate": 1.0,
+      "pass": 2,
+      "partial": 0,
+      "fail": 0
+    },
+    "paraphrase_cache": {
+      "n": 2,
+      "avg_aggregate": 0.75,
+      "pass": 1,
+      "partial": 1,
+      "fail": 0
+    }
+  },
+  "failure_modes": {
+    "wrong_route": 2,
+    "retrieval_miss": 1,
+    "hallucination": 1
+  },
+  "actual_mode_dist": {
+    "parametric": 9,
+    "search": 21
+  }
+}

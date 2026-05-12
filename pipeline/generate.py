@@ -74,10 +74,40 @@ forward honestly."""
 
 # ── Prompt builder ──────────────────────────────────────────────────────────
 
+def _format_history_block(history: List[dict]) -> str:
+    """Format prior turns as a 'Recent conversation context' block.
+
+    Used by both generate_stream and synthesize_stream so the LLM can resolve
+    references the rewriter couldn't fully bake into the rewritten query. The
+    block is explicitly labeled 'do NOT cite — only sources' so history can
+    never accidentally produce citations.
+    """
+    if not history:
+        return ""
+    lines: List[str] = []
+    for t in history[-4:]:
+        q = (t.get("question") or "").strip()
+        a = (t.get("answer") or "").strip()
+        if len(a) > 360:
+            a = a[:360].rstrip() + " …"
+        if q:
+            lines.append(f"User: {q}")
+        if a:
+            lines.append(f"Assistant: {a}")
+    if not lines:
+        return ""
+    block = "\n".join(lines)
+    return (
+        "Recent conversation context (do NOT cite this, only the numbered sources below):\n"
+        f"{block}\n\n"
+    )
+
+
 def _build_prompt(
     query: str,
     ranked_chunks: List[RankedChunk],
     global_citation_map: "dict[str, int] | None" = None,
+    history: "List[dict] | None" = None,
 ) -> str:
     """Format retrieved chunks as numbered per-chunk source blocks.
 
@@ -131,7 +161,10 @@ def _build_prompt(
         if any(rc.chunk.url == url for rc in ranked_chunks)
     )
 
+    history_block = _format_history_block(history or [])
+
     return (
+        f"{history_block}"
         f"Question: {query}\n\n"
         f"Sources:\n{sources_text}\n\n"
         f"Answer the question using the sources above. "
@@ -147,13 +180,14 @@ async def generate_stream(
     ranked_chunks: List[RankedChunk],
     global_citation_map: "dict[str, int] | None" = None,
     max_tokens: int = 900,
+    history: "List[dict] | None" = None,
 ) -> AsyncIterator[str]:
     """Stream answer tokens for a single sub-query (concise mode)."""
     if not ranked_chunks:
         yield "No relevant sources found for this question."
         return
 
-    prompt = _build_prompt(query, ranked_chunks, global_citation_map)
+    prompt = _build_prompt(query, ranked_chunks, global_citation_map, history=history)
     llm = get_llm()
     logger.debug("[generate] chunks=%d prompt_chars=%d", len(ranked_chunks), len(prompt))
 
@@ -165,6 +199,7 @@ async def synthesize_stream(
     original_query: str,
     sub_answers: List[dict],
     max_tokens: int = 1600,
+    history: "List[dict] | None" = None,
 ) -> AsyncIterator[str]:
     """
     Synthesize N sub-answers into one final answer.
@@ -184,7 +219,10 @@ async def synthesize_stream(
     ]
     sub_text = "\n\n---\n\n".join(parts)
 
+    history_block = _format_history_block(history or [])
+
     prompt = (
+        f"{history_block}"
         f"Original question: {original_query}\n\n"
         f"You have {len(sub_answers)} sub-answers. "
         f"Synthesize into one concise final answer.\n\n"

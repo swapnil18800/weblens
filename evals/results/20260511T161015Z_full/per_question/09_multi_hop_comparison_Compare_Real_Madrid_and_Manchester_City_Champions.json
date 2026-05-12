@@ -1,0 +1,753 @@
+{
+  "id": "mh2",
+  "category": "multi_hop_comparison",
+  "domain": "sports",
+  "question": "Compare Real Madrid and Manchester City Champions League performance over the last 3 seasons.",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Per-club, per-season decomposition.",
+  "key_facts": [
+    "Champions League",
+    "Real Madrid",
+    "Manchester City"
+  ],
+  "ground_truth": "Real Madrid won the 2023-24 Champions League. Manchester City won 2022-23. Both have been semifinalists or better in most recent seasons.",
+  "session_id": "eval-20260511T161015Z-mh2",
+  "verdict": "partial",
+  "aggregate": 0.6,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.75,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.25,
+    "answer_relevancy": 0.763,
+    "aggregate": 0.6,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.6
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.75,
+      "relevant": 6,
+      "total": 8,
+      "reasoning": "Chunks show match results and stats for both teams over recent seasons, enabling comparison."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "Champions League",
+        "Real Madrid",
+        "Manchester City"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.763,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "Champions League",
+      "Real Madrid",
+      "Manchester City"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 4,
+      "decompose_ms": 3833,
+      "search_ms": 4918,
+      "extract_ms": 35605,
+      "chunk_ms": 572,
+      "retrieve_ms": 15757,
+      "synthesis_ms": 18208,
+      "embedding_cleanup_ms": 1,
+      "sub_queries_count": 6,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 93476,
+    "pipeline_s": 96.64
+  },
+  "judge_reasoning": "refusal",
+  "pipeline": {
+    "answer": "# Real Madrid vs Manchester City: Champions League Performance Over the Last 3 Seasons\n\nOver the past three seasons (2023–24 to 2025–26), Real Madrid and Manchester City have followed sharply divergent trajectories in the UEFA Champions League. Real Madrid won the tournament in 2023–24, while Manchester City's deepest run was the quarter-finals that same season, with both clubs experiencing earlier exits in subsequent campaigns.\n\n## Season-by-Season Progression\n\n### 2023–24 Season\n| Club | Final Position | Group Stage | Knockout Highlights |\n|------|---------------|-------------|-------------------|\n| Real Madrid | **Champions** [2] | 6 wins, 0 losses (18 pts) [2] | Beat RB Leipzig 2-1 agg. (R16); drew Man City 3-3 away (QF) [1][2] |\n| Manchester City | **Quarter-finals** [8] | 6 wins, 0 losses (18 pts) [9] | Beat Copenhagen 6-2 agg. (R16); eliminated by Real Madrid [8] |\n\n- **Real Madrid** achieved a perfect group stage with wins including 4-2 vs Napoli and 3-0 vs Braga [1][2].\n- **Manchester City** also swept their group, with wins over Red Star Belgrade, RB Leipzig, and Young Boys [8][9].\n\n### 2024–25 Season\n| Club | Final Position | League Phase Record | Key Results |\n|------|---------------|-------------------|-------------|\n| Real Madrid | **Quarter-finals** [7] | 5-0-3 (11th place) [4] | Beat Man City 6-3 agg. (play-off) [4] |\n| Manchester City | **Knockout phase play-offs** [11] | 2-1-4 (22nd place) [11] | Lost to Real Madrid in play-offs; drew Inter 0-0 [12] |\n\n- **Real Madrid** finished 11th in the new league phase format with wins over Dortmund (5-2) and Atalanta (3-2), but losses to Lille, AC Milan, and Liverpool [4][3].\n- **Manchester City** struggled, losing 4-1 to Sporting CP and 2-0 to Juventus, and drawing with Inter and Feyenoord [12]. Their 22nd-place finish marked a dramatic decline [11].\n\n### 2025–26 Season\n| Club | Final Position | League Phase Results | Knockout Outcome |\n|------|---------------|-------------------|-----------------|\n| Real Madrid | **Advanced past Round of 32** (further round ongoing) | 4-0-2 (partial) [5] | Beat AS Monaco 6-1 (R32 1st leg); beat Benfica 3-1 agg. [5] |\n| Manchester City | **Round of 16** [14] | 4-1-1 (partial) [13] | Lost 0-3 away to Real Madrid (R16 2nd leg) [14] |\n\n- **Real Madrid** recorded notable wins over Juventus (1-0) and Marseille (2-1), but lost 1-2 to Manchester City at home [5].\n- **Manchester City** had a strong league phase including a 2-1 win away at Real Madrid [13], but their campaign ended with their biggest defeat of the season (0-3 at Real Madrid) [14].\n\n## Head-to-Head Encounters\n\nOver these three seasons, the clubs met four times in the Champions League:\n\n| Date | Stage | Result |\n|------|-------|--------|\n| Apr 2024 | QF 1st leg | Real Madrid 3-3 Manchester City [1] |\n| Feb 2025 | Play-off 2nd leg | Manchester City 2-3 Real Madrid [4] |\n| Feb 2025 | Play-off 1st leg | Real Madrid 3-1 Manchester City [4] |\n| Dec 2025 | League phase | Real Madrid 1-2 Manchester City [5][13] |\n| Mar 2026 | R16 2nd leg | Real Madrid 3-0 Manchester City [14] |\n\nOverall, **Real Madrid won 3 of the 5 meetings**, with 1 draw and 1 Manchester City win.\n\n## Key Takeaways\n\n- **Real Madrid won the Champions League in 2023–24** and reached at least the quarter-finals in all three seasons, showing consistent elite performance [2][7].\n- **Manchester City regressed sharply**, from quarter-finals (2023–24) to play-off elimination (2024–25) to Round of 16 exit (2025–26) [8][11][14].\n- **Head-to-head dominance:** Real Madrid eliminated Manchester City in two of three seasons (2023–24 and 2024–25) and defeated them heavily in 2025–26 [1][4][5][14].\n- **Manchester City's worst defeat in a season** came against Real Madrid (0-3 away in 2025–26), underscoring the gap in high-stakes matches [14].\n- **Both clubs experienced the new league-phase format** (2024–25 onward), but Real Madrid adapted better, qualifying comfortably while City barely scraped into the play-offs [4][11].",
+    "mode": "search",
+    "rewritten_query": "Compare Real Madrid and Manchester City Champions League performance over the last 3 seasons.",
+    "rewrote": false,
+    "rationale": "Time-sensitive performance comparison needs sourced data for each recent season.",
+    "sub_queries": [
+      "Real Madrid Champions League results 2023-24 season",
+      "Real Madrid Champions League results 2024-25 season",
+      "Real Madrid Champions League results 2025-26 season",
+      "Manchester City Champions League results 2023-24 season",
+      "Manchester City Champions League results 2024-25 season",
+      "Manchester City Champions League results 2025-26 season"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2023",
+        "title": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2023",
+        "snippet": "e\nTue, Apr 9\nReal Madrid\n3 - 3\n1st Leg\nManchester City\nFT\nUEFA Champions League\nMarch, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Mar 6\nReal Madrid\n1 - 1\n2nd Leg · Real Madrid wins 2-1 on aggregate\nRB Leipzig\nFT\nUEFA Champions League\nFebruary, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Feb 13\nRB Leipzig\n0"
+      },
+      {
+        "num": 2,
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Real_Madrid_CF_season",
+        "title": "2023–24 Real Madrid CF season",
+        "snippet": "Madrid entered the tournament in the round of 32, as they had qualified for the 2024 Supercopa de España.\n\n6 January 2024\nRound of 32\tArandina\t1–3\tReal Madrid\tAranda de Duero\n18 January 2024\nRound of 16\tAtlético Madrid\t4–2 (a.e.t.)\tReal Madrid\tMadrid\nSupercopa de España[edit]\nMain articles: 2024 Sup"
+      },
+      {
+        "num": 3,
+        "url": "https://www.soccerpunter.com/team/all/23619/3468/Real-Madrid-in-Europe-Champions-League-2024-2025",
+        "title": "https://www.soccerpunter.com/team/all/23619/3468/Real-Madrid-in-Europe-Champions-League-2024-2025",
+        "snippet": "al of 14 matches in Europe Champions League. Their current statistics is 8 win and 6 lose.\nReal Madrid did not win their last three matches in the competition.\nThe overall results is shown by default. You can also analyze Real Madrid results for their home or away matches in Champions League 2024/20"
+      },
+      {
+        "num": 4,
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2024",
+        "title": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2024",
+        "snippet": "d, Feb 19\nReal Madrid\n3 - 1\n2nd Leg · Real Madrid wins 6-3 on aggregate\nManchester City\nFT\nUEFA Champions League\nTue, Feb 11\nManchester City\n2 - 3\n1st Leg\nReal Madrid\nFT\nUEFA Champions League\nJanuary, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Jan 29\nBrest\n0 - 3\nReal Madrid\nFT\nUEFA Champions League\nWed"
+      },
+      {
+        "num": 5,
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS",
+        "title": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS",
+        "snippet": "Madrid\n2 - 1\n2nd Leg · Real Madrid wins 3-1 on aggregate\nBenfica\nFT\nUEFA Champions League\nTue, Feb 17\nBenfica\n0 - 1\n1st Leg\nReal Madrid\nFT\nUEFA Champions League\nJanuary, 2026\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Jan 28\nBenfica\n4 - 2\nReal Madrid\nFT\nUEFA Champions League\nTue, Jan 20\nReal Madrid\n6 - 1\nAS"
+      },
+      {
+        "num": 6,
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "snippet": "26. |\nThe 2025–26 season is Real Madrid Club de Fútbol's 122nd season in existence and the club's 95th consecutive season in the top flight of Spanish football."
+      },
+      {
+        "num": 7,
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season",
+        "title": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season",
+        "snippet": "2024–25 Real Madrid CF season\n2024–25 season | ||||\n---|---|---|---|---|\nPresident | Florentino Pérez | |||\nHead coach | Carlo Ancelotti (until 25 May) Xabi Alonso (from 1 June) | |||\nStadium | Santiago Bernabéu | |||\nLa Liga | 2nd | |||\nCopa del Rey | Runners-up | |||\nSupercopa de España | Runners-"
+      },
+      {
+        "num": 8,
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "snippet": "2023–24 Manchester City F.C. season\n2023–24 season | ||||\n---|---|---|---|---|\nOwner | City Football Group | |||\nChairman | Khaldoon Al Mubarak | |||\nManager | Pep Guardiola | |||\nStadium | City of Manchester Stadium | |||\nPremier League | 1st | |||\nFA Cup | Runners-up | |||\nEFL Cup | Third round | "
+      },
+      {
+        "num": 9,
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2023",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2023",
+        "snippet": "ESULT\nCOMPETITION\nWed, Mar 6\nManchester City\n3 - 1\n2nd Leg · Manchester City wins 6-2 on aggregate\nF.C. København\nFT\nUEFA Champions League\nFebruary, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Feb 13\nF.C. København\n1 - 3\n1st Leg\nManchester City\nFT\nUEFA Champions League\nDecember, 2023\nDATE\nMATCH\nRESULT\nC"
+      },
+      {
+        "num": 11,
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "snippet": "2024–25 Manchester City F.C. season\n2024–25 season | ||||\n---|---|---|---|---|\nOwner | City Football Group | |||\nChairman | Khaldoon Al Mubarak | |||\nManager | Pep Guardiola | |||\nStadium | City of Manchester Stadium | |||\nPremier League | 3rd | |||\nFA Cup | Runners-up | |||\nEFL Cup | Fourth round |"
+      },
+      {
+        "num": 12,
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2024",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2024",
+        "snippet": "ITION\nWed, Dec 11\nJuventus\n2 - 0\nManchester City\nFT\nUEFA Champions League\nNovember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Nov 26\nManchester City\n3 - 3\nFeyenoord Rotterdam\nFT\nUEFA Champions League\nTue, Nov 5\nSporting CP\n4 - 1\nManchester City\nFT\nUEFA Champions League\nOctober, 2024\nDATE\nMATCH\nRESULT\n"
+      },
+      {
+        "num": 13,
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "snippet": "ec 10\nReal Madrid\n1 - 2\nManchester City\nFT\nUEFA Champions League\nNovember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Nov 25\nManchester City\n0 - 2\nBayer Leverkusen\nFT\nUEFA Champions League\nWed, Nov 5\nManchester City\n4 - 1\nBorussia Dortmund\nFT\nUEFA Champions League\nOctober, 2025\nDATE\nMATCH\nRESULT\nCOMPET"
+      },
+      {
+        "num": 14,
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "snippet": "2025–26 Manchester City F.C. season\n2025–26 season | ||||\n---|---|---|---|---|\nOwner | City Football Group | |||\nChairman | Khaldoon Al Mubarak | |||\nManager | Pep Guardiola | |||\nStadium | City of Manchester Stadium | |||\nPremier League | 2nd | |||\nFA Cup | Final | |||\nEFL Cup | Winners | |||\nUEFA "
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://fbref.com/en/squads/53a2f082/2023-2024/matchlogs/c8/schedule/Real-Madrid-Scores-and-Fixtures-Champions-League",
+        "title": "2023-2024 Real Madrid Scores and Fixtures, Champions League",
+        "snippet": "2023-2024 Real Madrid Scores and Fixtures (Champions League) ; Record: 29-8-1, 95 points (2.50 per game), 1st in La Liga (1st Tier) ; Home Record: 16-3-0, 51"
+      },
+      {
+        "url": "https://fbref.com/en/squads/53a2f082/2023-2024/c8/Real-Madrid-Stats-Champions-League",
+        "title": "2023-2024 Real Madrid Stats, Champions League | FBref.com",
+        "snippet": "2023-2024 Real Madrid Stats (Champions League) ; Record: 29-8-1, 95 points (2.50 per game), 1st in La Liga (1st Tier) ; Home Record: 16-3-0, 51 points Away Record"
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2023",
+        "title": "Real Madrid 2023 UEFA Champions League Results - ESPN",
+        "snippet": "# Real Madrid. | Wed, May 8 | Real Madrid | 2 - 12nd Leg · Real Madrid wins 4-3 on aggregate | Bayern Munich | FT | UEFA Champions League |. | Wed, Apr 17 | Manchester City | 1 - 12nd Leg · Tied 4-4 on aggregate · Real Madrid wins 4-3 on Penalty Kicks | Real Madrid | FT-Pens | UEFA Champions League |. | Tue, Apr 9 | Real Madrid | 3 - 31st Leg | Manchester City | FT | UEFA Champions League |. | Wed, Mar 6 | Real Madrid | 1 - 12nd Leg · Real Madrid wins 2-1 on aggregate | RB Leipzig | FT | UEFA Champions League |. FC Union Berlin | 2 - 3 | Real Madrid | FT | UEFA Champions League |. | Tue, Oct 3 | Napoli | 2 - 3 | Real Madrid | FT | UEFA Champions League |."
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2024",
+        "title": "Real Madrid 2024 UEFA Champions League Results - ESPN",
+        "snippet": "Real Madrid Results ; Wed, Mar 12. ATM · 1 - 0 2nd Leg · Tied 2-2 on aggregate · Real Madrid wins 4-2 on Penalty Kicks ; Tue, Mar 4. RMA · 2 - 1 1st Leg."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Real_Madrid_CF_season",
+        "title": "2023–24 Real Madrid CF season - Wikipedia",
+        "snippet": "In the Champions League, Madrid beat Borussia Dortmund 2–0 in the final to a record-extending 15th European Cup, with Dani Carvajal, Toni Kroos, Luka Modrić and"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_UEFA_Champions_League",
+        "title": "2023–24 UEFA Champions League - Wikipedia",
+        "snippet": "Real Madrid defeated Borussia Dortmund 2–0 in the final, which was played at the Wembley Stadium in London, England."
+      },
+      {
+        "url": "https://www.soccerpunter.com/team/all/23619/3468/Real-Madrid-in-Europe-Champions-League-2024-2025",
+        "title": "Real Madrid Results, Fixtures and Statistics in Europe Champions League 2024/2025 - SoccerPunter",
+        "snippet": "## Real Madrid Champions League Match Fixtures and Results. Real Madrid have played a total of 14 matches in Europe Champions League. Real Madrid did not win their last three matches in the competition. Real Madrid results for their home or away matches in. | 16/04/2025 | Real Madrid | 1 - 2 | Arsenal | 0-0 | H2H | O | + |. | 08/04/2025 | Arsenal | 3 - 0 | Real Madrid | 0-0 | H2H | O | + |. | 12/03/2025 | Atlético Madrid | 1 - 0 | Real Madrid | 1-0 | H2H | O | + |. | 04/03/2025 | Real Madrid | 2 - 1 | Atlético Madrid | 1-1 | H2H | O | + |. | 19/02/2025 | Real Madrid | 3 - 1 | Manchester City | 2-0 | H2H | O | + |. | 11/02/2025 | Manchester City | 2 - 3 | Real Madrid | 1-0 | H2H | O | + |."
+      },
+      {
+        "url": "https://fbref.com/en/squads/53a2f082/2024-2025/c8/Real-Madrid-Stats-Champions-League",
+        "title": "2024-2025 Real Madrid Stats, Champions League | FBref.com",
+        "snippet": "2024-2025 Real Madrid Stats (Champions League) ; Record: 26-6-6, 84 points (2.21 per game), 2nd in La Liga (1st Tier) ; Home Record: 16-1-2, 49 points Away Record"
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS",
+        "title": "Real Madrid 2025 UEFA Champions League Results - ESPN",
+        "snippet": "# Real Madrid. | Wed, Apr 15 | Bayern Munich | 4 - 32nd Leg · Bayern Munich wins 6-4 on aggregate | Real Madrid | FT | UEFA Champions League |. | Tue, Apr 7 | Real Madrid | 1 - 21st Leg | Bayern Munich | FT | UEFA Champions League |. | Tue, Mar 17 | Manchester City | 1 - 22nd Leg · Real Madrid wins 5-1 on aggregate | Real Madrid | FT | UEFA Champions League |. | Wed, Mar 11 | Real Madrid | 3 - 01st Leg | Manchester City | FT | UEFA Champions League |. | Wed, Feb 25 | Real Madrid | 2 - 12nd Leg · Real Madrid wins 3-1 on aggregate | Benfica | FT | UEFA Champions League |. | Tue, Nov 4 | Liverpool | 1 - 0 | Real Madrid | FT | UEFA Champions League |."
+      },
+      {
+        "url": "https://www.flashscoreusa.com/soccer/europe/champions-league-2024-2025/",
+        "title": "Champions League 2024/2025 results, Soccer Europe - Flashscore",
+        "snippet": "[View more news](https://www.flashscoreusa.com/soccer/europe/champions-league-2024-2025/news/). [Bracket](https://www.flashscoreusa.com/soccer/europe/champions-league-2024-2025/). [](https://www.flashscoreusa.com/game/soccer/inter-Iw7eKK25/psg-CjhkPw0k/?mid=6LTndcTP \"Click for details!\"). [](https://www.flashscoreusa.com/game/soccer/arsenal-hA1Zm19f/psg-CjhkPw0k/?mid=QZXKxRyo \"Click for details!\"). [](https://www.flashscoreusa.com/game/soccer/barcelona-SKbpVP5K/inter-Iw7eKK25/?mid=0hltp9qB \"Click for details!\"). [](https://www.flashscoreusa.com/game/soccer/barcelona-SKbpVP5K/inter-Iw7eKK25/?mid=vw0XoVEb \"Click for details!\"). [](https://www.flashscoreusa.com/game/soccer/arsenal-hA1Zm19f/psg-CjhkPw0k/?mid=8IilrmEN \"Click for details!\"). [](https://www.flashscoreusa.com/game/soccer/bayern-munich-nVp0wiqd/inter-Iw7eKK25/?mid=foKPnXT7 \"Click for details!\"). [](https://www.flashscoreusa.com/game/soccer/arsenal-hA1Zm19f/real-madrid-W8mj7MDD/?mid=x0xK7Af5 \"Click for details!\"). [](https://www.flashscoreusa.com/game/soccer/aston-villa-W00wmLO0/psg-CjhkPw0k/?mid=K6Sd07Vs \"Click for details!\"). [](https://www.flashscoreusa.com/game/soccer/barcelona-SKbpVP5K/dortmund-nP1i5US1/?mid=Qg2T3XIj \"Click for details!\"). [](https://www.flashscoreusa.com/game/soccer/barcelona-SKbpVP5K/dortmund-nP1i5US1/?mid=tMQd9geT \"Click for details!\"). [](https://www.flashscoreusa.com/game/soccer/aston-villa-W00wmLO0/psg-CjhkPw0k/?mid=0IFOIFo9 \"Click for details!\"). [Show more games](https://www.flashscoreusa.com/soccer/europe/champions-league-2024-2025/results/). [Show more games](https://www.flashscoreusa.com/soccer/europe/champions-league-2024-2025/results/). [Show more games](https://www.flashscoreusa.com/soccer/europe/champions-league-2024-2025/fixtures/). [Euro](https://www.flashscoreusa.com/soccer/europe/euro/). [Champions League](https://www.flashscoreusa.com/soccer/europe/champions-league/). [Champions League](https://www.flashscoreusa.com/soccer/europe/champions-league/). [SOCCER](https://www.flashscoreusa.com/). [UEFA Champions League](https://www.flashscoreusa.com/soccer/europe/champions-league/). [SOCCER SCORES](https://www.flashscoreusa.com/). [Advertise](https://www.flashscoreusa.com/advertise/). *   ### Personalised advertising and content, advertising and content measurement, audience research and services development 958 partners can use this purpose. #### Personalised advertising and content, advertising and content measurement, audience research and services development 958 partners can use this purpose. Advertising presented to you on this service can be based on limited data, such as the website or app you are using, your non-precise location, your device type or which content you are (or have been) interacting with (for example, to limit the number of times an ad is presented to you)."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season",
+        "title": "2024–25 Real Madrid CF season - Wikipedia",
+        "snippet": "*   [(Top)](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-90)**[\"Official Announcement: Mbappé\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/comunicado-oficial-mbappe-03-06-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-91)**[\"Official Announcement: Endrick\"](https://www.realmadrid.com/en-US/news/club/announcements/official-announcement-endrick). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-93)**[\"Official Statement: Huijsen\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/comunicado-oficial-huijsen-17-05-2025). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-94)**[\"Official Announcement: Alexander-Arnold\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/comunicado-oficial-30-05-2025). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-95)**[\"Official Announcement: Kepa\"](https://www.realmadrid.com/en-US/news/club/announcements/official-announcement-kepa-14-08-2023). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-96)**[\"Official Announcement: Toni Kroos\"](https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-toni-kroos-21-05-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-97)**[\"Official Announcement: Joselu\"](https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-joselu-28-06-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-99)**[\"Official Announcement: Luka Modrić renewal\"](https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-17-07-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-100)**[\"Official Announcement: Lucas Vázquez contract renewal\"](https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-renovacion-de-lucas-vazquez-18-07-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-101)**[\"Official Announcement: Andriy Lunin contract renewal\"](https://www.realmadrid.com/en-US/news/club/announcements/comunicado-renovacion-lunin-13-09-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-102)**[\"Official Announcement: Dani Carvajal signs contract renewal\"](https://www.realmadrid.com/en-US/news/club/latest-news/c-06-10-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-103)**[\"Real Madrid match schedule for DirecTV Soccer Champions Tour\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/los-partidos-del-real-madrid-en-la-pretemporada-por-usa-19-03-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-112)**[\"Valencia-Real Madrid game postponed\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/aplazado-valencia-real-madrid-31-10-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-115)**[\"Our 36th LaLiga title!\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/campeones-liga-2024-04-05-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-118)**[\"League phase standings\"](https://www.uefa.com/uefachampionsleague/history/seasons/2025/groups/). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-129)**[\"Valverde, Mahou Cinco Estrellas Player of August\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/valverde-jugador-cinco-estrellas-mahou-de-agosto-19-09-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-130)**[\"Mbappé, Mahou Cinco Estrellas Player of September\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/mbappe-jugador-cinco-estrellas-mahou-de-septiembre-17-10-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-131)**[\"Vini Jr. named Mahou Cinco Estrellas Player for October\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/vini-jr-jugador-cinco-estrellas-mahou-de-octubre-22-11-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-132)**[\"Bellingham, Mahou Cinco Estrellas Player of November\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/bellingham-jugador-cinco-estrellas-mahou-de-noviembre-12-12-2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-133)**[\"Mbappé named Mahou Cinco Estrellas Player of December\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/mbappe-jugador-cinco-estrellas-mahou-de-diciembre-05-01-2025). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-134)**[\"Mbappé named Mahou Cinco Estrellas player for January\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/mbappe-jugador-cinco-estrellas-mahou-de-enero-14-02-2025). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-135)**[\"Brahim named Mahou Cinco Estrellas Player for February\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/brahim-jugador-cinco-estrellas-mahou-de-febrero-08-03-2025). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-136)**[\"Tchouaméni named Mahou Five Star Player for March\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/tchouameni-jugador-cinco-estrellas-mahou-de-marzo-22-04-2025). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-137)**[\"Tchouaméni named Mahou Cinco Estrellas Player of the month for April\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/tchouameni-jugador-cinco-estrellas-mahou-de-abril-22-05-2025). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-143)**[\"Mbappé: Golden Boot 2024–25\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/mbappe-bota-de-oro-2024-25-25-05-2025). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-144)**[\"Mbappé named Mahou Cinco Estrellas Player of the Season\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/mbappe-jugador-cinco-estrellas-mahou-de-la-temporada-27-05-2025). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season#cite_ref-145)**[\"The Best FIFA Men's 11\"](https://www.fifa.com/en/the-best-fifa-football-awards/2024/articles/mens-11-vote)."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "title": "2025–26 Real Madrid CF season - Wikipedia",
+        "snippet": "**[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-37)**[\"Official Announcement: Endrick\"](https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-endrick-23-12-2025). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-41)**[\"Official Announcement: Xabi Alonso\"](https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-xabi-alonso-12-01-2026). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-42)**[\"Official Announcement: Álvaro Arbeloa\"](https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-alvaro-arbeloa-12-01-2026). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-55)**[\"Celta Vigo 1–2 Real Madrid: Federico Valverde scores late winner to cut Barcelona lead in La Liga\"](https://www.bbc.com/sport/football/live/cgqgzd55nq1t). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-63)**[\"Bayern Munich 4–3 Real Madrid (6–4 on agg): German champions score two late goals to squeeze into Champions League semi-finals\"](https://www.bbc.com/sport/football/live/ce84ryj43dmt). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-Squad_66-0)**[\"Real Madrid squad\"](https://www.realmadrid.com/en-US/football/first-team/players). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-67)**[\"Official Statement: Huijsen\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/comunicado-oficial-huijsen-17-05-2025). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-68)**[\"Official Announcement: Alexander-Arnold\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/comunicado-oficial-30-05-2025). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-69)**[\"Official Announcement: Carreras\"](https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-carreras-14-07-2025). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-72)**[\"Official Announcement: Mastantuono\"](https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-mastantuono-13-06-2025). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-UCL_table_82-0)**[\"League phase table\"](https://www.uefa.com/uefachampionsleague/standings/). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-86)**[\"Kylian Mbappé, LALIGA EA SPORTS Player of the Month for September\"](https://www.laliga.com/en-GB/news/kylian-mbappe-laliga-ea-sports-player-of-the-month-for-september). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-87)**[\"Arda Güler, LALIGA EA SPORTS U23 Player of the Month for September 25/26\"](https://www.laliga.com/en-GB/news/arda-guler-laliga-ea-sports-u23-player-of-the-month-for-september-25-26). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-89)**[\"Kylian Mbappé wins LALIGA EA SPORTS Player of the Month award for October\"](https://www.laliga.com/en-GB/news/kylian-mbappe-wins-laliga-ea-sports-player-of-the-month-award-for-october). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-90)**[\"Gonzalo, LALIGA EA SPORTS Goal of the Month for January\"](https://www.laliga.com/en-GB/news/gonzalo-laliga-ea-sports-goal-of-the-month-for-january). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-92)**[\"Mbappé, August's Mahou Cinco Estrellas Player of the Month\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/premio-12-09-2025). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-93)**[\"Mbappé named Mahou Cinco Estrellas Player for September\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/mbappe-jugador-cinco-estrellas-mahou-de-septiembre-24-10-2025). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-94)**[\"Arda Güler, Mahou Cinco Estrellas Player for October\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/guler-jugador-cinco-estrellas-mahou-de-octubre-07-11-2025). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-95)**[\"Mbappé, Mahou Cinco Estrellas Player of November\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/mbappe-jugador-cinco-estrellas-mahou-de-noviembre-12-12-2025). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-96)**[\"Courtois named Mahou Cinco Estrellas Player for December\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/courtois-jugador-cinco-estrellas-mahou-de-diciembre-06-01-2026). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-97)**[\"Mbappé, Mahou Five-Star Player of January\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/mbappe-jugador-cinco-estrellas-mahou-de-enero-06-02-2026). **[^](https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season#cite_ref-98)**[\"Valverde, Mahou Five-Star Player for February\"](https://www.realmadrid.com/en-US/news/football/first-team/latest-news/valverde-jugador-cinco-estrellas-mahou-de-febrero-19-03-2026)."
+      },
+      {
+        "url": "https://www.uefa.com/uefachampionsleague/news/029c-1e9a2f63fe2d-ebf9ad643892-1000--2025-26-champions-league-all-the-fixtures-and-results/",
+        "title": "2025/26 Champions League: All the fixtures and results - UEFA.com",
+        "snippet": "[Paris 5-4 Bayern München](https://www.uefa.com/uefachampionsleague/match/2048072--paris-vs-bayern-munchen/). [Atlético de Madrid 1-1 Arsenal](https://www.uefa.com/uefachampionsleague/match/2048071--atleti-vs-arsenal/). [Arsenal 1-0 Atlético de Madrid (agg: 2-1)](https://www.uefa.com/uefachampionsleague/match/2048074--arsenal-vs-atleti/). [Bayern München 1-1 Paris (agg: 5-6)](https://www.uefa.com/uefachampionsleague/match/2048073--bayern-munchen-vs-paris/). [Barcelona 0-2 Atlético de Madrid](https://www.uefa.com/uefachampionsleague/match/2048065--barcelona-vs-atleti/). [Paris 2-0 Liverpool](https://www.uefa.com/uefachampionsleague/match/2048063--paris-vs-liverpool/). [Atlético de Madrid 1-2 Barcelona (agg: 3-2)](https://www.uefa.com/uefachampionsleague/match/2048067--atleti-vs-barcelona/). [Liverpool 0-2 Paris (agg: 0-4)](https://www.uefa.com/uefachampionsleague/match/2048069--liverpool-vs-paris/). **Wednesday 18 March**[Barcelona 7-2 Newcastle (agg: 8-3)](https://www.uefa.com/uefachampionsleague/match/2048059--barcelona-vs-newcastle/). [Tottenham 3-2 Atlético de Madrid (agg: 5-7)](https://www.uefa.com/uefachampionsleague/match/2048060--tottenham-vs-atleti/). [Atalanta 1-6 Bayern München](https://www.uefa.com/uefachampionsleague/match/2048050--atalanta-vs-bayern-munchen/). [Atlético de Madrid 5-2 Tottenham](https://www.uefa.com/uefachampionsleague/match/2048052--atleti-vs-tottenham/). [Newcastle 1-1 Barcelona](https://www.uefa.com/uefachampionsleague/match/2048051--newcastle-vs-barcelona/). [Newcastle 3-2 Qarabağ (agg: 9-3)](https://www.uefa.com/uefachampionsleague/match/2047776--newcastle-vs-qarabag/). ****Wednesday 18 February****[Qarabağ 1-6 Newcastle](https://www.uefa.com/uefachampionsleague/match/2047768--qarabag-vs-newcastle/). [Club Brugge 3-3 Atlético de Madrid](https://www.uefa.com/uefachampionsleague/match/2047767--club-brugge-vs-atleti/). [Barcelona 4-1 Copenhagen](https://www.uefa.com/uefachampionsleague/match/2046033--barcelona-vs-copenhagen/). [Liverpool 6-0 Qarabağ](https://www.uefa.com/uefachampionsleague/match/2046031--liverpool-vs-qarabag/). [Galatasaray 1-1 Atlético de Madrid](https://www.uefa.com/uefachampionsleague/match/2046025--galatasaray-vs-atleti/). [Atalanta 2-1 Chelsea](https://www.uefa.com/uefachampionsleague/match/2045996--atalanta-vs-chelsea/). [Barcelona 2-1 Frankfurt](https://www.uefa.com/uefachampionsleague/match/2045995--barcelona-vs-frankfurt/). [PSV Eindhoven 2-3 Atlético de Madrid](https://www.uefa.com/uefachampionsleague/match/2045998--psv-vs-atleti/). [Qarabağ 2-4 Ajax](https://www.uefa.com/uefachampionsleague/match/2046008--qarabag-vs-ajax/). [Chelsea 3-0 Barcelona](https://www.uefa.com/uefachampionsleague/match/2045976--chelsea-vs-barcelona/). [Arsenal 3-1 Bayern München](https://www.uefa.com/uefachampionsleague/match/2045986--arsenal-vs-bayern-munchen/). [Atlético de Madrid 2-1 Inter](https://www.uefa.com/uefachampionsleague/match/2045987--atleti-vs-inter/). [Paris Saint-Germain 1-2 Bayern München](https://www.uefa.com/uefachampionsleague/match/2045957--paris-vs-bayern-munchen/). [Qarabağ 2-2 Chelsea](https://www.uefa.com/uefachampionsleague/match/2045972--qarabag-vs-chelsea/). [Ajax 0-3 Galatasaray](https://www.uefa.com/uefachampionsleague/match/2045970--ajax-vs-galatasaray/). [Barcelona 6-1 Olympiacos](https://www.uefa.com/uefachampionsleague/match/2045939--barcelona-vs-olympiacos/). [Arsenal 4-0 Atlético de Madrid](https://www.uefa.com/uefachampionsleague/match/2045940--arsenal-vs-atleti/). [Atlético de Madrid 5-1 Frankfurt](https://www.uefa.com/uefachampionsleague/match/2045923--atleti-vs-frankfurt/). [Galatasaray 1-0 Liverpool](https://www.uefa.com/uefachampionsleague/match/2045927--galatasaray-vs-liverpool/). [Barcelona 1-2 Paris Saint-Germain](https://www.uefa.com/uefachampionsleague/match/2045938--barcelona-vs-paris/). [Bayern München 3-1 Chelsea](https://www.uefa.com/uefachampionsleague/match/2045910--bayern-munchen-vs-chelsea/). [Liverpool 3-2 Atlético de Madrid](https://www.uefa.com/uefachampionsleague/match/2045911--liverpool-vs-atleti/)."
+      },
+      {
+        "url": "https://www.worldfootball.net/competition/co19/uefa-champions-league/results-and-standings/",
+        "title": "Champions League 2025/2026 » Results & Standing",
+        "snippet": "## Champions League Champions League. ## News ticker. ## Topscorer. Mbappé | Kylian Mbappé | Real Madrid | Real Madrid | 11 | 15 | 3 | 1,36 |. Kane | Harry Kane | Bayern Munich | Bayern Munich | 11 | 12 | 3 | 1,09 |. Gordon | Anthony Gordon | Newcastle United | Newcastle United | 12 | 10 | 5 | 0,83 |. Alvarez | Julián Alvarez | Atlético Madrid | Atlético Madrid | 13 | 9 | 2 | 0,69 |. Haaland | Erling Haaland | Manchester City | Manchester City | 10 | 8 | 1 | 0,8 |."
+      },
+      {
+        "url": "https://www.facebook.com/esohnanetwork/posts/real-madrid-cf-knocked-out-of-the-202526-uefa-champions-league-after-a-thrilling/1367094502102869/",
+        "title": "ESohna - Network",
+        "snippet": "# Real Madrid C.F. Knocked Out Of The... ## ESohna - Network's Post. ### **ESohna - Network**. Real Madrid C.F. Knocked Out Of The 2025/26 UEFA Champions League After A Thrilling 4-3 Defeat To FC Bayern München. The German Side Advanced To The Semifinals With A 6-4 Aggregate Win. If there is any team that can win Real Vardrid both home and away is Bayern Munich! If there is any team that can win Real Vardrid both home and away is Bayern Munich! The best team in Europe right now Image 6: 😂Image 7: 😂Image 8: 😂.... Mia San Mia Image 9: 🔥Image 10: 🔥Image 11: 🔥! Another Trophless loading Image 17: 😂Image 18: 😂. Absolutely incredible an a truly phenomenal game of footbball but still awful that alth madrid making Barcelona suffered so much this season an now on the verge of denying the top Spanish club+entire spain of any chance of winning a European trophy once again. Thinks we love to see Image 27: 😁Image 28: 😁Image 29: 😁."
+      },
+      {
+        "url": "https://www.uefa.com/uefachampionsleague/clubs/50051--real-madrid/matches/",
+        "title": "Real Madrid | Matches | UEFA Champions League 2025/26 | UEFA.com",
+        "snippet": "Champions League Official   Live football scores & Fantasy. UEFA.com works better on other browsers. For the best possible experience, we recommend using Chrome, Firefox or Microsoft Edge. # Real Madrid C.F. Matches UEFA Champions League 2025/26. ## 15 Real Madrid C.F. Real Madrid. Overview     Matches     Table     Stats     Squad     Domestic. ### 16 September 2025. ### 22 October 2025. ### 04 November 2025. ### 20 January 2026. ### 17 February 2026. ### 11 March 2026. ### 07 April 2026."
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2024",
+        "title": "Manchester City 2024 UEFA Champions League Results - ESPN",
+        "snippet": "# Manchester City. | Wed, Feb 19 | Real Madrid | 3 - 12nd Leg · Real Madrid wins 6-3 on aggregate | Manchester City | FT | UEFA Champions League |. | Tue, Feb 11 | Manchester City | 2 - 31st Leg | Real Madrid | FT | UEFA Champions League |. | Wed, Jan 29 | Manchester City | 3 - 1 | Club Brugge | FT | UEFA Champions League |. | Wed, Dec 11 | Juventus | 2 - 0 | Manchester City | FT | UEFA Champions League |. | Tue, Nov 5 | Sporting CP | 4 - 1 | Manchester City | FT | UEFA Champions League |. | Wed, Oct 23 | Manchester City | 5 - 0 | Sparta Prague | FT | UEFA Champions League |. | Tue, Oct 1 | Slovan Bratislava | 0 - 4 | Manchester City | FT | UEFA Champions League |."
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2023",
+        "title": "Manchester City 2023 UEFA Champions League Results - ESPN",
+        "snippet": "Get all the Manchester City results for the 2023 UEFA Champions League season on ESPN. Includes game summary and statistics for every Manchester City game."
+      },
+      {
+        "url": "https://fbref.com/en/squads/b8fd03ef/2023-2024/c8/Manchester-City-Stats-Champions-League",
+        "title": "2023-2024 Manchester City Stats, Champions League - FBref.com",
+        "snippet": "2023-2024 Manchester City Stats (Champions League) ; Record: 28-7-3, 91 points (2.39 per game), 1st in Premier League (1st Tier) ; Home Record: 14-5-0, 47 points"
+      },
+      {
+        "url": "https://fbref.com/en/squads/b8fd03ef/2023-2024/matchlogs/c8/schedule/Manchester-City-Scores-and-Fixtures-Champions-League",
+        "title": "2023-2024 Manchester City Scores and Fixtures, Champions League",
+        "snippet": "2023-2024 Manchester City Scores and Fixtures (Champions League) ; Record: 28-7-3, 91 points (2.39 per game), 1st in Premier League (1st Tier) ; Home Record: 14-5"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "title": "2023–24 Manchester City F.C. season - Wikipedia",
+        "snippet": "Manchester City's title defence in the Champions League came to an end at the quarter-final stage on 17 April 2024, when they were knocked out by Real Madrid in"
+      },
+      {
+        "url": "https://www.facebook.com/zflixfootball/posts/the-2023-champions-league-final-concluded-with-manchester-city-lifting-the-troph/122221594328286874/",
+        "title": "The 2023 Champions League final concluded with Manchester City ...",
+        "snippet": "The 2023 Champions League final ended with Manchester City lifting the trophy and completing a historic treble. A hard-fought 1–0 win over Inter"
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "title": "Manchester City 2025 UEFA Champions League Results - ESPN",
+        "snippet": "# Manchester City. | Tue, Mar 17 | Manchester City | 1 - 22nd Leg · Real Madrid wins 5-1 on aggregate | Real Madrid | FT | UEFA Champions League |. | Wed, Mar 11 | Real Madrid | 3 - 01st Leg | Manchester City | FT | UEFA Champions League |. | Wed, Jan 28 | Manchester City | 2 - 0 | Galatasaray | FT | UEFA Champions League |. | Tue, Jan 20 | Bodo/Glimt | 3 - 1 | Manchester City | FT | UEFA Champions League |. | Wed, Dec 10 | Real Madrid | 1 - 2 | Manchester City | FT | UEFA Champions League |. | Tue, Oct 21 | Villarreal | 0 - 2 | Manchester City | FT | UEFA Champions League |. | Wed, Oct 1 | AS Monaco | 2 - 2 | Manchester City | FT | UEFA Champions League |."
+      },
+      {
+        "url": "https://fbref.com/en/squads/b8fd03ef/2024-2025/c8/Manchester-City-Stats-Champions-League",
+        "title": "2024-2025 Manchester City Stats, Champions League - FBref.com",
+        "snippet": "2024-2025 Manchester City Stats (Champions League) ; Record: 21-8-9, 71 points (1.87 per game), 3rd in Premier League (1st Tier) ; Home Record: 13-3-3, 42 points"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "title": "2024–25 Manchester City F.C. season - Wikipedia",
+        "snippet": "[Jump to content](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#bodyContent). *   [(Top)](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#). *   [1 Kits](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#Kits). *   [2.3 Autumn period](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#Autumn_period). *   [4.1 Transfers in](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#Transfers_in). *   [4.2 Transfers out](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#Transfers_out). *   [4.3 Loaned out](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#Loaned_out). *   [6.2 Premier League](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#Premier_League). *   [6.2.1 League table](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#League_table). *   [6.2.4 Matches](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#Matches). *   [6.6.1 League phase](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#League_phase). *   [7.1 Overall](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#Overall). *   [7.2 Goalscorers](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#Goalscorers). *   [9 Notes](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#Notes). *   [Article](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season \"View the content page [c]\"). *   [Read](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season). *   [Read](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season). ([2025–26](https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season \"2025–26 Manchester City F.C. season\") home alt.)**![Image 101](https://upload.wikimedia.org/wikipedia/commons/8/80/Kit_left_arm_mancity25cwc.png). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-115)**Bajkowski, Simon (3 September 2023). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-116)**Bray, Joe (2025-01-07). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-121)**City, Manchester. **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-127)**Cooper, Matthew (2025-04-14). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-133)**[\"Kick-off time altered for City's Premier League trip to Wolves\"](https://www.mancity.com/news/mens/wolves-v-manchester-city-kick-off-amend-63860887). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-141)**[\"Wolves match moved for live TV coverage\"](https://www.mancity.com/news/mens/wolves-home-premier-league-tv-broadcast-selection-may-2025-63878151). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-152)**[\"League phase standings\"](https://www.uefa.com/uefachampionsleague/history/seasons/2025/groups/). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-154)**[\"City's FIFA Club World Cup 2025 fixtures confirmed\"](https://www.mancity.com/news/mens/fifa-club-world-cup-2025-fixtures-confirmed-63869011). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-157)**Mumford, Jack. **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-158)**[\"Haaland voted Premier League Player of the Month\"](https://www.premierleague.com/news/4110692). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-159)**[\"Premier League Award - Guinness Goal of the Season, 2024/25\"](https://www.premierleague.com/awards/goal-of-the-season/2024-25). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-160)**Clayton, David (6 September 2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-161)**Leigh, Neil (7 October 2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-162)**[\"Stones voted Etihad Player of the Month for October\"](https://www.mancity.com/news/mens/etihad-player-of-the-month-october-202425-63866586). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-163)**Mumford, Jack (5 December 2024). **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-164)**Mumford, Jack. **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-167)**Leigh, Neil. **[^](https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season#cite_ref-168)**Leigh, Neil."
+      },
+      {
+        "url": "https://www.transfermarkt.us/manchester-city/spielplan/verein/281/saison_id/2024",
+        "title": "Manchester City - Schedule 24/25 | Transfermarkt",
+        "snippet": "| 12 | Sat Nov 23, 2024 | 12:30 PM | H | (2.) | Tottenham Hotspur | Tottenham (10.) | 4-3-3 Attacking | 55.097 | 0:4 |. | 23 | Sat Jan 25, 2025 | 12:30 PM | H | (5.) | Chelsea FC | Chelsea (4.) | 4-3-3 Attacking | 55.097 | 3:1 |. | Group Stage | Wed Jan 29, 2025 | 3:00 PM | H |  | Club Brugge KV | Club Brugge | 4-2-3-1 | 51.237 | 3:1 |. | Group G | Sun Jun 22, 2025 | 9:00 PM | H |  | Al-Ain FC | Al-Ain | 4-1-4-1 | 40.392 | 6:0 |. | Third Round | Sat Jan 11, 2025 | 12:45 PM | H |  | Salford City | Salford | 3-4-2-1 | 52.056 | 8:0 |. | Third Round | Tue Sep 24, 2024 | 2:45 PM | H |  | Watford FC | Watford | 3-4-2-1 |  | 2:1 |."
+      },
+      {
+        "url": "https://www.uefa.com/uefachampionsleague/history/clubs/52919--man-city/",
+        "title": "Man City | History | UEFA Champions League | UEFA.com",
+        "snippet": "Champions League Official   Live football scores & Fantasy. UEFA.com works better on other browsers. For the best possible experience, we recommend using Chrome, Firefox or Microsoft Edge. # Man City History. ## Matches played. 2025/26   P   W   D   L      Round of 16   10     5     1     4. 2024/25   P   W   D   L      Knockout phase play-offs   10     3     2     5. 2023/24   P   W   D   L      Quarter-finals   10     8     2     0. 2022/23   P   W   D   L      Final   13     8     5     0. 2021/22   P   W   D   L      Semi-finals   12     7     2     3. 2012/13   P   W   D   L      Group stage   6     0     3     3."
+      },
+      {
+        "url": "https://www.uefa.com/uefachampionsleague/history/seasons/2025/",
+        "title": "UEFA Champions League 2024/25",
+        "snippet": "[UEFA Champions League](https://www.uefa.com/uefachampionsleague/). [2024/25](https://www.uefa.com/uefachampionsleague/history/seasons/2025/). [2023/24](https://www.uefa.com/uefachampionsleague/history/seasons/2024/). [2022/23](https://www.uefa.com/uefachampionsleague/history/seasons/2023/). [2021/22](https://www.uefa.com/uefachampionsleague/history/seasons/2022/). [2020/21](https://www.uefa.com/uefachampionsleague/history/seasons/2021/). [2019/20](https://www.uefa.com/uefachampionsleague/history/seasons/2020/). [2018/19](https://www.uefa.com/uefachampionsleague/history/seasons/2019/). [2017/18](https://www.uefa.com/uefachampionsleague/history/seasons/2018/). [2016/17](https://www.uefa.com/uefachampionsleague/history/seasons/2017/). [2015/16](https://www.uefa.com/uefachampionsleague/history/seasons/2016/). [2014/15](https://www.uefa.com/uefachampionsleague/history/seasons/2015/). [2013/14](https://www.uefa.com/uefachampionsleague/history/seasons/2014/). [2012/13](https://www.uefa.com/uefachampionsleague/history/seasons/2013/). [2011/12](https://www.uefa.com/uefachampionsleague/history/seasons/2012/). [2010/11](https://www.uefa.com/uefachampionsleague/history/seasons/2011/). [2009/10](https://www.uefa.com/uefachampionsleague/history/seasons/2010/). [2008/09](https://www.uefa.com/uefachampionsleague/history/seasons/2009/). [2007/08](https://www.uefa.com/uefachampionsleague/history/seasons/2008/). [2006/07](https://www.uefa.com/uefachampionsleague/history/seasons/2006/). [2005/06](https://www.uefa.com/uefachampionsleague/history/seasons/2005/). [2004/05](https://www.uefa.com/uefachampionsleague/history/seasons/2004/). [2003/04](https://www.uefa.com/uefachampionsleague/history/seasons/2003/). [2002/03](https://www.uefa.com/uefachampionsleague/history/seasons/2002/). [2001/02](https://www.uefa.com/uefachampionsleague/history/seasons/2001/). [2000/01](https://www.uefa.com/uefachampionsleague/history/seasons/2000/). [1999/00](https://www.uefa.com/uefachampionsleague/history/seasons/1999/). [1998/99](https://www.uefa.com/uefachampionsleague/history/seasons/1998/). [1997/98](https://www.uefa.com/uefachampionsleague/history/seasons/1997/). [1996/97](https://www.uefa.com/uefachampionsleague/history/seasons/1996/). [1995/96](https://www.uefa.com/uefachampionsleague/history/seasons/1995/). [1994/95](https://www.uefa.com/uefachampionsleague/history/seasons/1994/). [1993/94](https://www.uefa.com/uefachampionsleague/history/seasons/1993/). [1992/93](https://www.uefa.com/uefachampionsleague/history/seasons/1992/). [1991/92](https://www.uefa.com/uefachampionsleague/history/seasons/1991/). [1990/91](https://www.uefa.com/uefachampionsleague/history/seasons/1990/). [1989/90](https://www.uefa.com/uefachampionsleague/history/seasons/1989/). [1988/89](https://www.uefa.com/uefachampionsleague/history/seasons/1988/). [1987/88](https://www.uefa.com/uefachampionsleague/history/seasons/1987/). [1986/87](https://www.uefa.com/uefachampionsleague/history/seasons/1986/). [1985/86](https://www.uefa.com/uefachampionsleague/history/seasons/1985/). [1984/85](https://www.uefa.com/uefachampionsleague/history/seasons/1984/). [1983/84](https://www.uefa.com/uefachampionsleague/history/seasons/1983/). [1982/83](https://www.uefa.com/uefachampionsleague/history/seasons/1982/). [1981/82](https://www.uefa.com/uefachampionsleague/history/seasons/1981/). [1980/81](https://www.uefa.com/uefachampionsleague/history/seasons/1980/). [1979/80](https://www.uefa.com/uefachampionsleague/history/seasons/1979/). [1978/79](https://www.uefa.com/uefachampionsleague/history/seasons/1978/). [1977/78](https://www.uefa.com/uefachampionsleague/history/seasons/1977/). [1976/77](https://www.uefa.com/uefachampionsleague/history/seasons/1976/). [1975/76](https://www.uefa.com/uefachampionsleague/history/seasons/1975/). [1974/75](https://www.uefa.com/uefachampionsleague/history/seasons/1974/). [1973/74](https://www.uefa.com/uefachampionsleague/history/seasons/1973/). [1972/73](https://www.uefa.com/uefachampionsleague/history/seasons/1972/). [1971/72](https://www.uefa.com/uefachampionsleague/history/seasons/1971/). [1970/71](https://www.uefa.com/uefachampionsleague/history/seasons/1970/). [1969/70](https://www.uefa.com/uefachampionsleague/history/seasons/1969/). [1968/69](https://www.uefa.com/uefachampionsleague/history/seasons/1968/). [1967/68](https://www.uefa.com/uefachampionsleague/history/seasons/1967/). [1966/67](https://www.uefa.com/uefachampionsleague/history/seasons/1966/). [1965/66](https://www.uefa.com/uefachampionsleague/history/seasons/1965/). [1964/65](https://www.uefa.com/uefachampionsleague/history/seasons/1964/). [1963/64](https://www.uefa.com/uefachampionsleague/history/seasons/1963/). [1962/63](https://www.uefa.com/uefachampionsleague/history/seasons/1962/). [1961/62](https://www.uefa.com/uefachampionsleague/history/seasons/1961/). [1960/61](https://www.uefa.com/uefachampionsleague/history/seasons/1960/). [1959/60](https://www.uefa.com/uefachampionsleague/history/seasons/1959/). [1958/59](https://www.uefa.com/uefachampionsleague/history/seasons/1958/). [1957/58](https://www.uefa.com/uefachampionsleague/history/seasons/1957/). [1956/57](https://www.uefa.com/uefachampionsleague/history/seasons/1956/). [1955/56](https://www.uefa.com/uefachampionsleague/history/seasons/1955/). [2024/25](https://www.uefa.com/uefachampionsleague/history/seasons/2025/). [2023/24](https://www.uefa.com/uefachampionsleague/history/seasons/2024/). [2022/23](https://www.uefa.com/uefachampionsleague/history/seasons/2023/). [2021/22](https://www.uefa.com/uefachampionsleague/history/seasons/2022/). [2020/21](https://www.uefa.com/uefachampionsleague/history/seasons/2021/). [2019/20](https://www.uefa.com/uefachampionsleague/history/seasons/2020/). [2018/19](https://www.uefa.com/uefachampionsleague/history/seasons/2019/). [2017/18](https://www.uefa.com/uefachampionsleague/history/seasons/2018/). [2016/17](https://www.uefa.com/uefachampionsleague/history/seasons/2017/). [2015/16](https://www.uefa.com/uefachampionsleague/history/seasons/2016/). [2014/15](https://www.uefa.com/uefachampionsleague/history/seasons/2015/). [2013/14](https://www.uefa.com/uefachampionsleague/history/seasons/2014/). [2012/13](https://www.uefa.com/uefachampionsleague/history/seasons/2013/). [2011/12](https://www.uefa.com/uefachampionsleague/history/seasons/2012/). [2010/11](https://www.uefa.com/uefachampionsleague/history/seasons/2011/). [2009/10](https://www.uefa.com/uefachampionsleague/history/seasons/2010/). [2008/09](https://www.uefa.com/uefachampionsleague/history/seasons/2009/). [2007/08](https://www.uefa.com/uefachampionsleague/history/seasons/2008/). [2006/07](https://www.uefa.com/uefachampionsleague/history/seasons/2006/). [2005/06](https://www.uefa.com/uefachampionsleague/history/seasons/2005/). [2004/05](https://www.uefa.com/uefachampionsleague/history/seasons/2004/). [2003/04](https://www.uefa.com/uefachampionsleague/history/seasons/2003/). [2002/03](https://www.uefa.com/uefachampionsleague/history/seasons/2002/). [2001/02](https://www.uefa.com/uefachampionsleague/history/seasons/2001/). [2000/01](https://www.uefa.com/uefachampionsleague/history/seasons/2000/). [1999/00](https://www.uefa.com/uefachampionsleague/history/seasons/1999/). [1998/99](https://www.uefa.com/uefachampionsleague/history/seasons/1998/). [1997/98](https://www.uefa.com/uefachampionsleague/history/seasons/1997/). [1996/97](https://www.uefa.com/uefachampionsleague/history/seasons/1996/). [1995/96](https://www.uefa.com/uefachampionsleague/history/seasons/1995/). [1994/95](https://www.uefa.com/uefachampionsleague/history/seasons/1994/). [1993/94](https://www.uefa.com/uefachampionsleague/history/seasons/1993/). [1992/93](https://www.uefa.com/uefachampionsleague/history/seasons/1992/). [1991/92](https://www.uefa.com/uefachampionsleague/history/seasons/1991/). [1990/91](https://www.uefa.com/uefachampionsleague/history/seasons/1990/). [1989/90](https://www.uefa.com/uefachampionsleague/history/seasons/1989/). [1988/89](https://www.uefa.com/uefachampionsleague/history/seasons/1988/). [1987/88](https://www.uefa.com/uefachampionsleague/history/seasons/1987/). [1986/87](https://www.uefa.com/uefachampionsleague/history/seasons/1986/). [1985/86](https://www.uefa.com/uefachampionsleague/history/seasons/1985/). [1984/85](https://www.uefa.com/uefachampionsleague/history/seasons/1984/). [1983/84](https://www.uefa.com/uefachampionsleague/history/seasons/1983/). [1982/83](https://www.uefa.com/uefachampionsleague/history/seasons/1982/). [1981/82](https://www.uefa.com/uefachampionsleague/history/seasons/1981/). [1980/81](https://www.uefa.com/uefachampionsleague/history/seasons/1980/). [1979/80](https://www.uefa.com/uefachampionsleague/history/seasons/1979/). [1978/79](https://www.uefa.com/uefachampionsleague/history/seasons/1978/). [1977/78](https://www.uefa.com/uefachampionsleague/history/seasons/1977/). [1976/77](https://www.uefa.com/uefachampionsleague/history/seasons/1976/). [1975/76](https://www.uefa.com/uefachampionsleague/history/seasons/1975/). [1974/75](https://www.uefa.com/uefachampionsleague/history/seasons/1974/). [1973/74](https://www.uefa.com/uefachampionsleague/history/seasons/1973/). [1972/73](https://www.uefa.com/uefachampionsleague/history/seasons/1972/). [1971/72](https://www.uefa.com/uefachampionsleague/history/seasons/1971/). [1970/71](https://www.uefa.com/uefachampionsleague/history/seasons/1970/). [1969/70](https://www.uefa.com/uefachampionsleague/history/seasons/1969/). [1968/69](https://www.uefa.com/uefachampionsleague/history/seasons/1968/). [1967/68](https://www.uefa.com/uefachampionsleague/history/seasons/1967/). [1966/67](https://www.uefa.com/uefachampionsleague/history/seasons/1966/). [1965/66](https://www.uefa.com/uefachampionsleague/history/seasons/1965/). [1964/65](https://www.uefa.com/uefachampionsleague/history/seasons/1964/). [1963/64](https://www.uefa.com/uefachampionsleague/history/seasons/1963/). [1962/63](https://www.uefa.com/uefachampionsleague/history/seasons/1962/). [1961/62](https://www.uefa.com/uefachampionsleague/history/seasons/1961/). [1960/61](https://www.uefa.com/uefachampionsleague/history/seasons/1960/). [1959/60](https://www.uefa.com/uefachampionsleague/history/seasons/1959/). [1958/59](https://www.uefa.com/uefachampionsleague/history/seasons/1958/). [1957/58](https://www.uefa.com/uefachampionsleague/history/seasons/1957/). [1956/57](https://www.uefa.com/uefachampionsleague/history/seasons/1956/). [1955/56](https://www.uefa.com/uefachampionsleague/history/seasons/1955/). [Watch highlights](https://www.uefa.com/uefachampionsleague/match/2044466--paris-vs-inter/). *   [Teams](https://www.uefa.com/uefachampionsleague/clubs/). *   [Final](https://www.uefa.com/uefachampionsleague/event-guide/). *   [About](https://www.uefa.com/uefachampionsleague/about/). *   [![Image 39: App Store](https://www.uefa.com/uefachampionsleague/history/seasons/2025/)](https://apps.apple.com/us/app/uefa-champions-league-official/id1024506667). *   [![Image 40: Google Play](https://www.uefa.com/uefachampionsleague/history/seasons/2025/)](https://play.google.com/store/apps/details?id=com.uefa.ucl)."
+      },
+      {
+        "url": "https://www.uefa.com/uefachampionsleague/clubs/52919--man-city/",
+        "title": "Man City | UEFA Champions League 2025/26",
+        "snippet": "Man City 3 - 0 Brentford. 9 May 2026 • English Premier League ; Everton 3 - 3 Man City. 4 May 2026 • English Premier League ; Man City 2 - 1 Southampton. 25 Apr"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "2025–26 Manchester City F.C. season - Wikipedia",
+        "snippet": "On 17 March, City were beaten 1–5 on aggregate by Real Madrid in the last-16 round of the Champions League to end their participation in this season's"
+      },
+      {
+        "url": "https://www.uefa.com/uefachampionsleague/clubs/52919--man-city/standings/",
+        "title": "Man City | League phase table | UEFA Champions League 2025/26",
+        "snippet": "# Man City | League phase table | UEFA Champions League 2025/26 | UEFA.com. Champions League Official  Live football scores & Fantasy. Image 3: UEFA GamingImage 4: UEFA.tvMatch calendarStore (national teams)Store (clubs)UEFA rankingsTickets and hospitality. # Manchester City League phase table UEFA Champions League 2025/26. 4 May 2026 • English Premier League. Man City 2 - 1 Southampton. 25 Apr 2026 • English FA Cup. Burnley 0 - 1 Man City. Man City 2 - 1 Arsenal. Chelsea 0 - 3 Man City. ## League phase table. Standings are provisional until all league phase matches have been played and officially validated by UEFA. Confirmations of qualification / elimination are based on the provisional standings and are therefore for guidance purposes only until all league phase matches are completed and final standings have been validated by UEFA. The UEFA word, the UEFA logo and all marks related to UEFA competitions, are protected by trademarks and/or copyright of UEFA."
+      },
+      {
+        "url": "https://www.uefa.com/uefachampionsleague/video/02a2-2004f203abf6-e9d4a3c757e7-1000--every-man-city-2025-26-champions-league-goal-so-far/",
+        "title": "Every Man City 2025/26 Champions League goal so far | Video",
+        "snippet": "Featured ; 04:21. Every Man City 2025/26 Champions League goal so far. 26/02/2026 ; 00:52. Reaction: Luis Enrique on 'intense' battle with Bayern. 2 days ago ; 00:"
+      },
+      {
+        "url": "https://www.uefa.com/uefachampionsleague/clubs/52919--man-city/matches/",
+        "title": "Man City | Matches | UEFA Champions League 2025/26 | UEFA.com",
+        "snippet": "Champions League Official   Live football scores & Fantasy. UEFA.com works better on other browsers. For the best possible experience, we recommend using Chrome, Firefox or Microsoft Edge. # Manchester City Matches UEFA Champions League 2025/26. ## 1 Manchester City Man City. Overview     Matches     Table     Stats     Squad     Domestic. ### 18 September 2025. ### 01 October 2025. ### 05 November 2025. ### 20 January 2026. ### 11 March 2026."
+      }
+    ],
+    "chunk_count": 46,
+    "chunks": [
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2023",
+        "title": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2023",
+        "heading": "",
+        "chunk_text": "e\nTue, Apr 9\nReal Madrid\n3 - 3\n1st Leg\nManchester City\nFT\nUEFA Champions League\nMarch, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Mar 6\nReal Madrid\n1 - 1\n2nd Leg · Real Madrid wins 2-1 on aggregate\nRB Leipzig\nFT\nUEFA Champions League\nFebruary, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Feb 13\nRB Leipzig\n0 - 1\n1st Leg\nReal Madrid\nFT\nUEFA Champions League\nDecember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Dec 12\n1. FC Union Berlin\n2 - 3\nReal Madrid\nFT\nUEFA Champions League\nNovember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Nov 29\nReal Madrid\n4 - 2\nNapoli\nFT\nUEFA Champions League\nWed, Nov 8\nReal Madrid\n3 - 0\nBraga\nFT\nUEFA Champions League\nOctober, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Oct 24\nBraga\n1 - 2\nReal Madrid\nFT\nUEFA Champions League\nTue, Oct 3\nNapoli\n2 - 3\nReal Madrid\nFT\nUEFA Champions League\nSeptember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Sep 20\nReal Madrid\n1 - 0\n1. FC Union Berlin\nFT\nUEFA Champions League",
+        "score": 7.7909,
+        "rank": 0
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Real_Madrid_CF_season",
+        "title": "2023–24 Real Madrid CF season",
+        "heading": "",
+        "chunk_text": "Jump to content\nMain menu\nDonate\nCreate account\nLog in\nContents hide\n(Top)\nSummary\nToggle Summary subsection\nKits\nPlayers\nTransfers\nToggle Transfers subsection\nPre-season and friendlies\nCompetitions\nToggle Competitions subsection\nStatistics\nToggle Statistics subsection\nAwards\nToggle Awards subsection\nNotes\nReferences\nExternal links\n2023–24 Real Madrid CF season\n11 languages\nArticle\nTalk\nRead\nEdit\nView history\nTools\nAppearance hide\nFrom Wikipedia, the free encyclopedia\nReal Madrid\n2023–24 season\nPresident\tFlorentino Pérez\nHead coach\tCarlo Ancelotti\nStadium\tSantiago Bernabéu\nLa Liga\t1st\nCopa del Rey\tRound of 16\nSupercopa de España\tWinners\nUEFA Champions League\tWinners\nTop goalscorer\tLeague:\nJude Bellingham (19)\nAll:\nVinícius Júnior (24)\nHighest home attendance\t77,981 vs Barcelona\nLowest home attendance\t65,017 vs Las Palmas\nAverage home league attendance\t72,061\nBiggest win\t5–0 vs Alavés\nBiggest defeat\t2–4 vs Atlético Madrid\n1–3 vs Atlético Madrid\n\nHome colours\n\t\nAway colours\n\t\nThird colours\n\n← 2022–23\n2024–25 →\n\nThe 2023–24 season was Real Madrid Club de Fútbol's 120th season in existence and the club's 93rd consecutive season in the top flight of Spanish football. In addition to the domestic league, Real Madrid participated in this season's editions of the Copa del Rey, the Supercopa de España and the UEFA Champions League.",
+        "score": 7.2145,
+        "rank": 1
+      },
+      {
+        "url": "https://www.soccerpunter.com/team/all/23619/3468/Real-Madrid-in-Europe-Champions-League-2024-2025",
+        "title": "https://www.soccerpunter.com/team/all/23619/3468/Real-Madrid-in-Europe-Champions-League-2024-2025",
+        "heading": "",
+        "chunk_text": "al of 14 matches in Europe Champions League. Their current statistics is 8 win and 6 lose.\nReal Madrid did not win their last three matches in the competition.\nThe overall results is shown by default. You can also analyze Real Madrid results for their home or away matches in Champions League 2024/2025.\nClick on + to view detailed soccer statistics of the goal scorers, yellow and red cards for each match.\nThe match kick-off date and time is automatically converted to your local timezone.\nTeam | Total Matches | Win | Draw | Lose |\n---|---|---|---|---|\nReal Madrid | 14 | 8 | 0 | 6 |\nThe graph shows the performance and results of Real Madrid in Champions League.\nAchievement | Statistics |\n---|---|\nLongest winning run | 6 |\nLongest losing streak | 3 |\nLongest run without loss | 6 |\nLongest run without win | 3 |\nClean sheets | 1 |\nMatches over 2.25 goals | 11 |\nMatches under 2.25 goals | 3 |\nMatches First Half Over 0.5 | 10 |\nMatches First Half Under 0.5 | 4 |\nMatches odd | 9 |\nMatches even | 5 |\nAverage goals scored | 2.07 |\nAverage goals allowed | 1.57 |\nFailure to score | 4 |\nBiggest victory | 5 - 1 |\nBiggest defeat | 3 - 0 |\nMissed penalties | 0 |\nPenalty goals | 0 |\nOwn goals | 0 |\nGoalless draw at home match | 0 (0%) |\nGoalless draw at away match | 0 (0%) |\nComeback win | 1 |\nReal Madrid are in the 11th position of Champions League and they are in contention for Play-off.",
+        "score": 7.1165,
+        "rank": 2
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2024",
+        "title": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2024",
+        "heading": "",
+        "chunk_text": "d, Feb 19\nReal Madrid\n3 - 1\n2nd Leg · Real Madrid wins 6-3 on aggregate\nManchester City\nFT\nUEFA Champions League\nTue, Feb 11\nManchester City\n2 - 3\n1st Leg\nReal Madrid\nFT\nUEFA Champions League\nJanuary, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Jan 29\nBrest\n0 - 3\nReal Madrid\nFT\nUEFA Champions League\nWed, Jan 22\nReal Madrid\n5 - 1\nRB Salzburg\nFT\nUEFA Champions League\nDecember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Dec 10\nAtalanta\n2 - 3\nReal Madrid\nFT\nUEFA Champions League\nNovember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Nov 27\nLiverpool\n2 - 0\nReal Madrid\nFT\nUEFA Champions League\nTue, Nov 5\nReal Madrid\n1 - 3\nAC Milan\nFT\nUEFA Champions League\nOctober, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Oct 22\nReal Madrid\n5 - 2\nBorussia Dortmund\nFT\nUEFA Champions League\nWed, Oct 2\nLille\n1 - 0\nReal Madrid\nFT\nUEFA Champions League\nSeptember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Sep 17\nReal Madrid\n3 - 1\nVfB Stuttgart\nFT\nUEFA Champions League",
+        "score": 7.0558,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Real_Madrid_CF_season",
+        "title": "2023–24 Real Madrid CF season",
+        "heading": "",
+        "chunk_text": "Madrid entered the tournament in the round of 32, as they had qualified for the 2024 Supercopa de España.\n\n6 January 2024\nRound of 32\tArandina\t1–3\tReal Madrid\tAranda de Duero\n18 January 2024\nRound of 16\tAtlético Madrid\t4–2 (a.e.t.)\tReal Madrid\tMadrid\nSupercopa de España[edit]\nMain articles: 2024 Supercopa de España and 2024 Supercopa de España final\n\nMadrid qualified for the tournament by winning the 2022–23 Copa del Rey.[113]\n\n10 January 2024\nSemi-finals\tReal Madrid\t5–3 (a.e.t.)\tAtlético Madrid\tRiyadh, Saudi Arabia\n14 January 2024\nFinal\tReal Madrid\t4–1\tBarcelona\tRiyadh, Saudi Arabia\nUEFA Champions League[edit]\nMain article: 2023–24 UEFA Champions League\nGroup stage[edit]\nMain article: 2023–24 UEFA Champions League group stage § Group C\n\nThe group stage draw was held on 31 August 2023.[114]",
+        "score": 6.8667,
+        "rank": 4
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS",
+        "title": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS",
+        "heading": "",
+        "chunk_text": "Madrid\n2 - 1\n2nd Leg · Real Madrid wins 3-1 on aggregate\nBenfica\nFT\nUEFA Champions League\nTue, Feb 17\nBenfica\n0 - 1\n1st Leg\nReal Madrid\nFT\nUEFA Champions League\nJanuary, 2026\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Jan 28\nBenfica\n4 - 2\nReal Madrid\nFT\nUEFA Champions League\nTue, Jan 20\nReal Madrid\n6 - 1\nAS Monaco\nFT\nUEFA Champions League\nDecember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Dec 10\nReal Madrid\n1 - 2\nManchester City\nFT\nUEFA Champions League\nNovember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Nov 26\nOlympiacos\n3 - 4\nReal Madrid\nFT\nUEFA Champions League\nTue, Nov 4\nLiverpool\n1 - 0\nReal Madrid\nFT\nUEFA Champions League\nOctober, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Oct 22\nReal Madrid\n1 - 0\nJuventus\nFT\nUEFA Champions League\nSeptember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Sep 30\nKairat Almaty\n0 - 5\nReal Madrid\nFT\nUEFA Champions League\nTue, Sep 16\nReal Madrid\n2 - 1\nMarseille\nFT\nUEFA Champions League",
+        "score": 6.4885,
+        "rank": 5
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Real_Madrid_CF_season",
+        "title": "2023–24 Real Madrid CF season",
+        "heading": "",
+        "chunk_text": "Pos\tTeam\nvte\n\tPld\tW\tD\tL\tGF\tGA\tGD\tPts\tQualification\t\tRMA\tNAP\tBRA\tUNB\n1\t Real Madrid\t6\t6\t0\t0\t16\t7\t+9\t18\tAdvance to knockout phase\t\t—\t4–2\t3–0\t1–0\n2\t Napoli\t6\t3\t1\t2\t10\t9\t+1\t10\t\t2–3\t—\t2–0\t1–1\n3\t Braga\t6\t1\t1\t4\t6\t12\t−6\t4\tTransfer to Europa League\t\t1–2\t1–2\t—\t1–1\n4\t Union Berlin\t6\t0\t2\t4\t6\t10\t−4\t2\t\t\t2–3\t0–1\t2–3\t—\nSource: UEFA\nRules for classification: Group stage tiebreakers\n20 September 2023\n1\tReal Madrid \t1–0\t Union Berlin\tMadrid, Spain\n3 October 2023\n2\tNapoli \t2–3\t Real Madrid\tNaples, Italy\n24 October 2023\n3\tBraga \t1–2\t Real Madrid\tBraga, Portugal\n8 November 2023\n4\tReal Madrid \t3–0\t Braga\tMadrid, Spain\n29 November 2023\n5\tReal Madrid \t4–2\t Napoli\tMadrid, Spain\n12 December 2023\n6\tUnion Berlin \t2–3\t Real Madrid\tBerlin, Germany\nKnockout phase[edit]\nMain article: 2023–24 UEFA Champions League knockout phase\nRound of 16[edit]\n\nThe draw for the round of 16 was held on 18 December 2023.[116]\n\n13 February 2024\nFirst leg\tRB Leipzig \t0–1\t Real Madrid\tLeipzig, Germany\n6 March 2024\nSecond leg\tReal Madrid \t1–1\n(2–1 agg.)\t RB Leipzig\tMadrid, Spain\nQuarter-finals[edit]\n\nThe draw for the quarter-finals and semi-finals was held on 15 March 2024.[117]",
+        "score": 6.296,
+        "rank": 6
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "heading": "",
+        "chunk_text": "2025–26 Real Madrid CF season\n2025–26 season | ||||\n---|---|---|---|---|\nPresident | Florentino Pérez | |||\nHead coach | Xabi Alonso (until 12 January) Álvaro Arbeloa (from 12 January) | |||\nStadium | Bernabéu | |||\nLa Liga | 2nd | |||\nCopa del Rey | Round of 16 | |||\nSupercopa de España | Runners-up | |||\nUEFA Champions League | Quarter-finals | |||\nTop goalscorer | League: Kylian Mbappé (24) All: Kylian Mbappé (41) | |||\nHighest home attendance | 78,107 vs Barcelona | |||\nLowest home attendance | 61,468 vs Alavés | |||\nAverage home league attendance | 72,005 | |||\nBiggest win | 5–0 vs Kairat 6–1 vs Monaco | |||\nBiggest defeat | 2–5 vs Atlético Madrid | |||\n| ||||\nAll statistics correct as of 10 May 2026. |\nThe 2025–26 season is Real Madrid Club de Fútbol's 122nd season in existence and the club's 95th consecutive season in the top flight of Spanish football.",
+        "score": 6.2406,
+        "rank": 7
+      },
+      {
+        "url": "https://www.soccerpunter.com/team/all/23619/3468/Real-Madrid-in-Europe-Champions-League-2024-2025",
+        "title": "https://www.soccerpunter.com/team/all/23619/3468/Real-Madrid-in-Europe-Champions-League-2024-2025",
+        "heading": "",
+        "chunk_text": "al of 14 matches in Europe Champions League. Their current statistics is 8 win and 6 lose.\nReal Madrid did not win their last three matches in the competition.\nThe overall results is shown by default. You can also analyze Real Madrid results for their home or away matches in Champions League 2024/2025.\nClick on + to view detailed soccer statistics of the goal scorers, yellow and red cards for each match.\nThe match kick-off date and time is automatically converted to your local timezone.\nTeam | Total Matches | Win | Draw | Lose |\n---|---|---|---|---|\nReal Madrid | 14 | 8 | 0 | 6 |\nThe graph shows the performance and results of Real Madrid in Champions League.\nAchievement | Statistics |\n---|---|\nLongest winning run | 6 |\nLongest losing streak | 3 |\nLongest run without loss | 6 |\nLongest run without win | 3 |\nClean sheets | 1 |\nMatches over 2.25 goals | 11 |\nMatches under 2.25 goals | 3 |\nMatches First Half Over 0.5 | 10 |\nMatches First Half Under 0.5 | 4 |\nMatches odd | 9 |\nMatches even | 5 |\nAverage goals scored | 2.07 |\nAverage goals allowed | 1.57 |\nFailure to score | 4 |\nBiggest victory | 5 - 1 |\nBiggest defeat | 3 - 0 |\nMissed penalties | 0 |\nPenalty goals | 0 |\nOwn goals | 0 |\nGoalless draw at home match | 0 (0%) |\nGoalless draw at away match | 0 (0%) |\nComeback win | 1 |\nReal Madrid are in the 11th position of Champions League and they are in contention for Play-off.",
+        "score": 8.2765,
+        "rank": 0
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2023",
+        "title": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2023",
+        "heading": "",
+        "chunk_text": "e\nTue, Apr 9\nReal Madrid\n3 - 3\n1st Leg\nManchester City\nFT\nUEFA Champions League\nMarch, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Mar 6\nReal Madrid\n1 - 1\n2nd Leg · Real Madrid wins 2-1 on aggregate\nRB Leipzig\nFT\nUEFA Champions League\nFebruary, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Feb 13\nRB Leipzig\n0 - 1\n1st Leg\nReal Madrid\nFT\nUEFA Champions League\nDecember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Dec 12\n1. FC Union Berlin\n2 - 3\nReal Madrid\nFT\nUEFA Champions League\nNovember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Nov 29\nReal Madrid\n4 - 2\nNapoli\nFT\nUEFA Champions League\nWed, Nov 8\nReal Madrid\n3 - 0\nBraga\nFT\nUEFA Champions League\nOctober, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Oct 24\nBraga\n1 - 2\nReal Madrid\nFT\nUEFA Champions League\nTue, Oct 3\nNapoli\n2 - 3\nReal Madrid\nFT\nUEFA Champions League\nSeptember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Sep 20\nReal Madrid\n1 - 0\n1. FC Union Berlin\nFT\nUEFA Champions League",
+        "score": 7.9054,
+        "rank": 1
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2024",
+        "title": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2024",
+        "heading": "",
+        "chunk_text": "d, Feb 19\nReal Madrid\n3 - 1\n2nd Leg · Real Madrid wins 6-3 on aggregate\nManchester City\nFT\nUEFA Champions League\nTue, Feb 11\nManchester City\n2 - 3\n1st Leg\nReal Madrid\nFT\nUEFA Champions League\nJanuary, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Jan 29\nBrest\n0 - 3\nReal Madrid\nFT\nUEFA Champions League\nWed, Jan 22\nReal Madrid\n5 - 1\nRB Salzburg\nFT\nUEFA Champions League\nDecember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Dec 10\nAtalanta\n2 - 3\nReal Madrid\nFT\nUEFA Champions League\nNovember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Nov 27\nLiverpool\n2 - 0\nReal Madrid\nFT\nUEFA Champions League\nTue, Nov 5\nReal Madrid\n1 - 3\nAC Milan\nFT\nUEFA Champions League\nOctober, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Oct 22\nReal Madrid\n5 - 2\nBorussia Dortmund\nFT\nUEFA Champions League\nWed, Oct 2\nLille\n1 - 0\nReal Madrid\nFT\nUEFA Champions League\nSeptember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Sep 17\nReal Madrid\n3 - 1\nVfB Stuttgart\nFT\nUEFA Champions League",
+        "score": 7.8674,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season",
+        "title": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season",
+        "heading": "",
+        "chunk_text": "2024–25 Real Madrid CF season\n2024–25 season | ||||\n---|---|---|---|---|\nPresident | Florentino Pérez | |||\nHead coach | Carlo Ancelotti (until 25 May) Xabi Alonso (from 1 June) | |||\nStadium | Santiago Bernabéu | |||\nLa Liga | 2nd | |||\nCopa del Rey | Runners-up | |||\nSupercopa de España | Runners-up | |||\nUEFA Champions League | Quarter-finals | |||\nUEFA Super Cup | Winners | |||\nFIFA Intercontinental Cup | Winners | |||\nFIFA Club World Cup | Semi-finals | |||\nTop goalscorer | League: Kylian Mbappé (31) All: Kylian Mbappé (44) | |||\nHighest home attendance | 81,044 vs Real Sociedad | |||\nLowest home attendance | 60,753 vs Mallorca | |||\nAverage home league attendance | 72,711 | |||\nBiggest win | 5–0 vs Minera | |||\nBiggest defeat | 0–4 vs Barcelona 0–4 vs Paris Saint-Germain | |||\n| ||||\nThe 2024–25 season was Real Madrid Club de Fútbol's 121st season in existence and the club's 94th consecutive season in the top flight of Spanish football. In addition to the domestic league, Real Madrid participated in this season's editions of the Copa del Rey, the Supercopa de España and the UEFA Champions League.\nAs the reigning European champions, Real Madrid contested the UEFA Super Cup against Atalanta, winning 2–0 and claiming a record-breaking sixth title,[1] then went on to win the inaugural edition of the FIFA Intercontinental Cup, beating Pachuca 3–0 in the final,[2] and also competed in the FIFA Club World Cup where they reached the semi-finals.",
+        "score": 7.7642,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Real_Madrid_CF_season",
+        "title": "2023–24 Real Madrid CF season",
+        "heading": "",
+        "chunk_text": "Madrid entered the tournament in the round of 32, as they had qualified for the 2024 Supercopa de España.\n\n6 January 2024\nRound of 32\tArandina\t1–3\tReal Madrid\tAranda de Duero\n18 January 2024\nRound of 16\tAtlético Madrid\t4–2 (a.e.t.)\tReal Madrid\tMadrid\nSupercopa de España[edit]\nMain articles: 2024 Supercopa de España and 2024 Supercopa de España final\n\nMadrid qualified for the tournament by winning the 2022–23 Copa del Rey.[113]\n\n10 January 2024\nSemi-finals\tReal Madrid\t5–3 (a.e.t.)\tAtlético Madrid\tRiyadh, Saudi Arabia\n14 January 2024\nFinal\tReal Madrid\t4–1\tBarcelona\tRiyadh, Saudi Arabia\nUEFA Champions League[edit]\nMain article: 2023–24 UEFA Champions League\nGroup stage[edit]\nMain article: 2023–24 UEFA Champions League group stage § Group C\n\nThe group stage draw was held on 31 August 2023.[114]",
+        "score": 7.5781,
+        "rank": 4
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season",
+        "title": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Real_Madrid_CF_season",
+        "heading": "",
+        "chunk_text": "s. Archived from the original on 2 October 2024. Retrieved 29 September 2024.\n- ^ \"Valencia-Real Madrid game postponed\". Real Madrid CF. 31 October 2024. Archived from the original on 5 November 2024. Retrieved 31 October 2024.\n- ^ \"El Minera - Real Madrid se jugará en el Cartagonova con rebaja de 20 € para abonados locales\" [The Minera - Real Madrid match will be played at the Cartagonova with a €20 discount for local season ticket holders] (in Spanish). Marca. 11 December 2024. Archived from the original on 23 December 2024. Retrieved 23 December 2024.\n- ^ \"Our 36th LaLiga title!\". Real Madrid CF. 4 May 2024. Archived from the original on 4 May 2024. Retrieved 4 May 2024.\n- ^ \"Champions League league phase draw: All 36 teams learn their opponents\". UEFA.com. Union of European Football Associations. 29 August 2024. Archived from the original on 29 August 2024. Retrieved 29 August 2024.\n- ^ \"League phase standings\". UEFA. Retrieved 30 August 2025.\n- ^ \"Communiqué officiel: La Ligue des Champions au stade de Roudourou\" [Official statement: Champions League at the Stade de Roudourou] (in French). Stade Brestois 29. 27 August 2024. Archived from the original on 31 August 2024. Retrieved 31 August 2024.\n- ^ \"Champions League knockout phase play-off draw: Manchester City get Real Madrid, Bayern visit Celtic\". UEFA.com. Union of European Football Associations. 31 January 2025. Archived from the original on 31 January 2025.",
+        "score": 7.4168,
+        "rank": 5
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Real_Madrid_CF_season",
+        "title": "2023–24 Real Madrid CF season",
+        "heading": "",
+        "chunk_text": "e original on 4 May 2024. Retrieved 4 May 2024.\n^ Emons, Michael (8 May 2024). \"Real Madird 2–1 Bayern Munich (agg: 4–3): Joselu scores twice to take Real into Champions League final\". BBC Sport. BBC. Archived from the original on 8 May 2024. Retrieved 8 May 2024.\n^ \"Granada 0–4 Real Madrid\". The Athletic. 11 May 2024. Archived from the original on 11 May 2024. Retrieved 11 May 2024.\n^ \"Real Madrid 5–0 Alavés\". The Athletic. 14 May 2024. Archived from the original on 14 May 2024. Retrieved 14 May 2024.\n^ \"Villarreal 4–4 Real Madrid\". The Athletic. 19 May 2024. Archived from the original on 19 May 2024. Retrieved 19 May 2024.\n^ Thomas, Marissa (25 May 2024). \"Real Madrid 0–0 Betis: Kroos gets Bernabéu send off as Real draw with Betis\". BBC Sport. BBC. Archived from the original on 26 May 2024. Retrieved 25 May 2024.\n^ \"Nacho and Modrić, 26 trophies with Real Madrid\". Real Madrid CF. 1 June 2024. Archived from the original on 1 June 2024. Retrieved 1 June 2024.\n^ Gittins, William (2 March 2024). \"Why are Real Madrid playing in last season's purple away kit against Valencia in LaLiga?\". AS. Archived from the original on 18 June 2024. Retrieved 18 June 2024.\n^ \"Official Announcement: Fran García\". Real Madrid CF. 9 June 2023. Archived from the original on 7 December 2023. Retrieved 9 June 2023.\n^ \"Official Announcement: Bellingham\". Real Madrid CF. 14 June 2023. Archived from the original on 7 December 2023. Retrieved 14 June 2023.\n^ a b \"Official Announcement: Brahim Díaz\".",
+        "score": 7.2993,
+        "rank": 6
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Real_Madrid_CF_season",
+        "title": "2023–24 Real Madrid CF season",
+        "heading": "",
+        "chunk_text": "on 4 June 2024. Retrieved 4 June 2024.\n^ \"UEFA Champions League Goal of the Season: Federico Valverde tops Technical Observer selection\". UEFA. 3 June 2024. Archived from the original on 4 June 2024. Retrieved 4 June 2024.\n^ \"Who made the 2023 FIFPRO Men's World 11?\". FIFPRO. 15 January 2024. Archived from the original on 6 February 2025. Retrieved 26 May 2025.\n^ \"Bellingham named Mahou Five Star Player of the Season\". Real Madrid CF. 5 June 2024. Archived from the original on 5 June 2024. Retrieved 5 June 2024.\nExternal links[edit]\nOfficial website\nvte\nReal Madrid CF seasons",
+        "score": 6.9091,
+        "rank": 7
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "heading": "",
+        "chunk_text": "26. |\nThe 2025–26 season is Real Madrid Club de Fútbol's 122nd season in existence and the club's 95th consecutive season in the top flight of Spanish football.",
+        "score": 8.5932,
+        "rank": 0
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "heading": "",
+        "chunk_text": "2025–26 season is Real Madrid Club de Fútbol's 122nd season in existence and the club's 95th consecutive season in the top flight of Spanish football.",
+        "score": 8.4156,
+        "rank": 1
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "heading": "",
+        "chunk_text": "The 2025–26 season is Real Madrid Club de Fútbol's 122nd season in existence and the club's 95th consecutive season in the top flight of Spanish football.",
+        "score": 8.3813,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Real_Madrid_CF_season",
+        "heading": "",
+        "chunk_text": "6. |\nThe 2025–26 season is Real Madrid Club de Fútbol's 122nd season in existence and the club's 95th consecutive season in the top flight of Spanish football.",
+        "score": 8.2562,
+        "rank": 3
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2024",
+        "title": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS/season/2024",
+        "heading": "",
+        "chunk_text": "d, Feb 19\nReal Madrid\n3 - 1\n2nd Leg · Real Madrid wins 6-3 on aggregate\nManchester City\nFT\nUEFA Champions League\nTue, Feb 11\nManchester City\n2 - 3\n1st Leg\nReal Madrid\nFT\nUEFA Champions League\nJanuary, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Jan 29\nBrest\n0 - 3\nReal Madrid\nFT\nUEFA Champions League\nWed, Jan 22\nReal Madrid\n5 - 1\nRB Salzburg\nFT\nUEFA Champions League\nDecember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Dec 10\nAtalanta\n2 - 3\nReal Madrid\nFT\nUEFA Champions League\nNovember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Nov 27\nLiverpool\n2 - 0\nReal Madrid\nFT\nUEFA Champions League\nTue, Nov 5\nReal Madrid\n1 - 3\nAC Milan\nFT\nUEFA Champions League\nOctober, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Oct 22\nReal Madrid\n5 - 2\nBorussia Dortmund\nFT\nUEFA Champions League\nWed, Oct 2\nLille\n1 - 0\nReal Madrid\nFT\nUEFA Champions League\nSeptember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Sep 17\nReal Madrid\n3 - 1\nVfB Stuttgart\nFT\nUEFA Champions League",
+        "score": 7.4295,
+        "rank": 4
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS",
+        "title": "https://www.espn.com/soccer/team/results/_/id/86/league/UEFA.CHAMPIONS",
+        "heading": "",
+        "chunk_text": "Madrid\n2 - 1\n2nd Leg · Real Madrid wins 3-1 on aggregate\nBenfica\nFT\nUEFA Champions League\nTue, Feb 17\nBenfica\n0 - 1\n1st Leg\nReal Madrid\nFT\nUEFA Champions League\nJanuary, 2026\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Jan 28\nBenfica\n4 - 2\nReal Madrid\nFT\nUEFA Champions League\nTue, Jan 20\nReal Madrid\n6 - 1\nAS Monaco\nFT\nUEFA Champions League\nDecember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Dec 10\nReal Madrid\n1 - 2\nManchester City\nFT\nUEFA Champions League\nNovember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Nov 26\nOlympiacos\n3 - 4\nReal Madrid\nFT\nUEFA Champions League\nTue, Nov 4\nLiverpool\n1 - 0\nReal Madrid\nFT\nUEFA Champions League\nOctober, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Oct 22\nReal Madrid\n1 - 0\nJuventus\nFT\nUEFA Champions League\nSeptember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Sep 30\nKairat Almaty\n0 - 5\nReal Madrid\nFT\nUEFA Champions League\nTue, Sep 16\nReal Madrid\n2 - 1\nMarseille\nFT\nUEFA Champions League",
+        "score": 7.311,
+        "rank": 5
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "2023–24 Manchester City F.C. season\n2023–24 season | ||||\n---|---|---|---|---|\nOwner | City Football Group | |||\nChairman | Khaldoon Al Mubarak | |||\nManager | Pep Guardiola | |||\nStadium | City of Manchester Stadium | |||\nPremier League | 1st | |||\nFA Cup | Runners-up | |||\nEFL Cup | Third round | |||\nFA Community Shield | Runners-up | |||\nUEFA Champions League | Quarter-finals | |||\nUEFA Super Cup | Winners | |||\nFIFA Club World Cup | Winners | |||\nTop goalscorer | League: Erling Haaland (27) All: Erling Haaland (38) | |||\nHighest home attendance | 53,544 v West Ham United 19 May 2024 (Premier League) | |||\nLowest home attendance | 50,204 v Red Star Belgrade 19 September 2023 (Champions League) | |||\nAverage home league attendance | 53,302 | |||\nBiggest win | 6–1 v Bournemouth (Home) 4 November 2023 (Premier League) 5–0 v Huddersfield Town (Home) 7 January 2024 (FA Cup) | |||\nBiggest defeat | 0–1 v Newcastle United (Away) 27 September 2023 (EFL Cup) 1–2 v Wolverhampton Wanderers (Away) 30 September 2023 (Premier League) 0–1 v Arsenal (Away) 8 October 2023 (Premier League) 0–1 v Aston Villa (Away) 6 December 2023 (Premier League) 1–2 v Manchester United (Neutral) 25 May 2024 (FA Cup) | |||\n| ||||\nThe 2023–24 season was the 129th season in the existence of Manchester City Football Club and their 22nd consecutive season in the top flight of English football, where they were competing as three-time defending champions.",
+        "score": 8.2776,
+        "rank": 0
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2023",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2023",
+        "heading": "",
+        "chunk_text": "ESULT\nCOMPETITION\nWed, Mar 6\nManchester City\n3 - 1\n2nd Leg · Manchester City wins 6-2 on aggregate\nF.C. København\nFT\nUEFA Champions League\nFebruary, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Feb 13\nF.C. København\n1 - 3\n1st Leg\nManchester City\nFT\nUEFA Champions League\nDecember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Dec 13\nRed Star Belgrade\n2 - 3\nManchester City\nFT\nUEFA Champions League\nNovember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Nov 28\nManchester City\n3 - 2\nRB Leipzig\nFT\nUEFA Champions League\nTue, Nov 7\nManchester City\n3 - 0\nYoung Boys\nFT\nUEFA Champions League\nOctober, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Oct 25\nYoung Boys\n1 - 3\nManchester City\nFT\nUEFA Champions League\nWed, Oct 4\nRB Leipzig\n1 - 3\nManchester City\nFT\nUEFA Champions League\nSeptember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Sep 19\nManchester City\n3 - 1\nRed Star Belgrade\nFT\nUEFA Champions League",
+        "score": 8.1117,
+        "rank": 1
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "\"West Ham 1-3 Manchester City: Pep Guardiola returns to oversee impressive win as Erling Haaland scores seventh of season\". Sky Sports. Retrieved 23 September 2023.\n- ^ Joe Shread (30 September 2023). \"Wolves 2-1 Man City: Champions' perfect start to Premier League season ended in surprise Molineux defeat\". Sky Sports. Retrieved 6 October 2023.\n- ^ \"Arsenal v Man City, 2023/24\". Premier League. Retrieved 4 November 2023.\n- ^ \"Man Utd v Man City, 2023/24\". Premier League. Retrieved 4 November 2023.\n- ^ \"Man City v Bournemouth, 2023/24\". Premier League. Retrieved 4 November 2023.\n- ^ \"Man City-Young Boys: UEFA Champions League 2023/24 Group stage\". UEFA. Retrieved 7 November 2023.\n- ^ \"Man City-Leipzig: UEFA Champions League 2023/24 Group stage\". UEFA. Retrieved 30 November 2023.\n- ^ \"Aston Villa v Man City, 2023/24\". Premier League. Retrieved 8 December 2023.\n- ^ \"Luton v Man City, 2023/24\". Premier League. Retrieved 14 December 2023.\n- ^ \"Crvena zvezda-Man City: UEFA Champions League 2023/24 Group stage\". UEFA. Retrieved 14 December 2023.\n- ^ \"Palace deny Man City win with 95th-minute penalty\". BBC Sport. Retrieved 24 December 2023.\n- ^ \"Champions Man City come from behind to beat Everton\". BBC Sport. Retrieved 27 December 2023.\n- ^ \"Bobb scores late winner for Man City at Newcastle\". BBC Sport. Retrieved 13 January 2024.\n- ^ a b \"Phillips joins West Ham on loan\". Manchester City F.C. 26 January 2024.",
+        "score": 7.7105,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "Associations. 13 February 2024. Retrieved 13 February 2024.\n- ^ \"UEFA Champions League quarter-final, semi-final and final draws: Where are they, when are they, who is involved?\". UEFA. 6 March 2024. Retrieved 6 March 2024.\n- ^ \"Man City learn Club World Cup draw fate\". BBC Sport. 5 September 2023. Retrieved 5 September 2023.\n- ^ a b c d \"2023–2024 Manchester City Stats\". FBref. Retrieved 26 July 2023.\n- ^ \"Haaland scores five as Man City thrash Luton\". BBC Sport. 27 February 2024. Retrieved 27 February 2024.\n- ^ \"Foden scores hat-trick as Man City beat Villa\". BBC Sport. Retrieved 3 April 2024.\n- ^ \"Haaland scores four as Man City thrash Wolves\". BBC Sport. Retrieved 4 May 2024.\n- ^ Kelsey, George (22 December 2023). \"Rodrigo and Walker claim Club World Cup awards\". Manchester City F.C. Retrieved 22 December 2023.\n- ^ \"2023/24 UEFA Champions League Team of the Season\". UEFA. Union of European Football Associations. 3 June 2024. Retrieved 3 June 2024.\n- ^ Leigh, Neil (20 August 2024). \"City quartet named in PFA Team of the Year\". Manchester City F.C. Retrieved 20 August 2024.\n- ^ \"Oscar Bobb wins January Premier League Goal of the Month\". Manchester City F.C. 16 February 2024. Retrieved 16 February 2024.\n- ^ Brown, Paul (6 September 2023). \"Rodrigo voted Player of the Month for August\". Manchester City F.C. Retrieved 6 September 2023.\n- ^ \"Alvarez voted Etihad Player of the Month for September\". Manchester City F.C. 8 October 2023.",
+        "score": 6.1665,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "er signs Man City contract extension to 2026\". BBC Sport. 14 September 2023. Retrieved 14 September 2023.\n- ^ Leigh, Neil (26 February 2024). \"Bobb signs extension to City deal!\". Manchester City F.C. Retrieved 26 February 2024.\n- ^ Mumford, Jack (23 May 2024). \"CARSON EXTENDS CITY STAY WITH NEW ONE-YEAR DEAL\". mancity.com.\n- ^ Pollard, Rob (20 April 2023). \"City set for South Korea as part of 2023/24 preseason tour\". Manchester City F.C. Retrieved 20 April 2023.\n- ^ Johnson, Isaac (16 May 2023). \"Man City announce two more friendlies for pre-season Asia tour including Bayern Munich fixture\". Manchester Evening News. Retrieved 16 May 2023.\n- ^ Premier League Handbook: Season 2023/24 (PDF). 29 August 2023. Archived (PDF) from the original on 1 September 2023. Retrieved 22 September 2023.\n- ^ \"Premier League 2023/24 fixtures released\". Premier League. 15 June 2023. Retrieved 15 June 2023.\n- ^ \"Manchester derby at the Etihad selected for TV coverage\". Manchester City F.C. 26 January 2024. Retrieved 26 January 2024.\n- ^ a b \"Three more Premier League games in March moved for TV coverage\". Manchester City F.C. 5 February 2024. Retrieved 7 February 2024.\n- ^ \"Two of Palace's April fixtures rescheduled\". Crystal Palace F.C. 27 February 2024. Retrieved 29 February 2024.\n- ^ \"City v Wolves kick-off time moved\". Manchester City F.C. 5 April 2024.",
+        "score": 5.5999,
+        "rank": 4
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_UEFA_Champions_League",
+        "title": "2023–24 UEFA Champions League",
+        "heading": "2023–24 UEFA Champions League",
+        "chunk_text": "2023–24 UEFA Champions League\n\na \"2023–2024 m. UEFA čempionų lyga – Lithuanian\")\n*   [Latviešu](https://lv.wikipedia.org/wiki/2023.%E2%80%942024._gada_UEFA_%C4%8Cempionu_l%C4%ABgas_sezona \"2023.—2024.",
+        "score": 2.8535,
+        "rank": 5
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_UEFA_Champions_League",
+        "title": "2023–24 UEFA Champions League",
+        "heading": "2023–24 UEFA Champions League",
+        "chunk_text": "2023–24 UEFA Champions League\n\n24 m. UEFA čempionų lyga – Lithuanian\")\n*   [Latviešu](https://lv.wikipedia.org/wiki/2023.%E2%80%942024._gada_UEFA_%C4%8Cempionu_l%C4%ABgas_sezona \"2023.—2024.",
+        "score": 2.7792,
+        "rank": 6
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_UEFA_Champions_League",
+        "title": "2023–24 UEFA Champions League",
+        "heading": "2023–24 UEFA Champions League",
+        "chunk_text": "2023–24 UEFA Champions League\n\n\"2023–2024 m. UEFA čempionų lyga – Lithuanian\")\n*   [Latviešu](https://lv.wikipedia.org/wiki/2023.%E2%80%942024._gada_UEFA_%C4%8Cempionu_l%C4%ABgas_sezona \"2023.—2024.",
+        "score": 2.633,
+        "rank": 7
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "2024–25 Manchester City F.C. season\n2024–25 season | ||||\n---|---|---|---|---|\nOwner | City Football Group | |||\nChairman | Khaldoon Al Mubarak | |||\nManager | Pep Guardiola | |||\nStadium | City of Manchester Stadium | |||\nPremier League | 3rd | |||\nFA Cup | Runners-up | |||\nEFL Cup | Fourth round | |||\nFA Community Shield | Winners | |||\nUEFA Champions League | Knockout phase play-offs | |||\nFIFA Club World Cup | Round of 16 | |||\nTop goalscorer | League: Erling Haaland (22) All: Erling Haaland (34) | |||\nHighest home attendance | 52,846 v Arsenal 22 September 2024 (Premier League) | |||\nLowest home attendance | 40,584 v Watford 24 September 2024 (EFL Cup) | |||\nAverage home league attendance | 52,519 | |||\nBiggest win | 8–0 v Salford City (Home) 11 January 2025 (FA Cup) | |||\nBiggest defeat | 0–4 v Tottenham Hotspur (Home) 23 November 2024 (Premier League) 1–5 v Arsenal (Away) 2 February 2025 (Premier League) | |||\n| ||||\nThe 2024–25 season was the 130th season in the existence of Manchester City Football Club and their 23rd consecutive season in the top flight of English football.",
+        "score": 8.5386,
+        "rank": 0
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2024",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2024",
+        "heading": "",
+        "chunk_text": "ITION\nWed, Dec 11\nJuventus\n2 - 0\nManchester City\nFT\nUEFA Champions League\nNovember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Nov 26\nManchester City\n3 - 3\nFeyenoord Rotterdam\nFT\nUEFA Champions League\nTue, Nov 5\nSporting CP\n4 - 1\nManchester City\nFT\nUEFA Champions League\nOctober, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Oct 23\nManchester City\n5 - 0\nSparta Prague\nFT\nUEFA Champions League\nTue, Oct 1\nSlovan Bratislava\n0 - 4\nManchester City\nFT\nUEFA Champions League\nSeptember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Sep 18\nManchester City\n0 - 0\nInternazionale\nFT\nUEFA Champions League",
+        "score": 8.5233,
+        "rank": 1
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2023",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2023",
+        "heading": "",
+        "chunk_text": "ESULT\nCOMPETITION\nWed, Mar 6\nManchester City\n3 - 1\n2nd Leg · Manchester City wins 6-2 on aggregate\nF.C. København\nFT\nUEFA Champions League\nFebruary, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Feb 13\nF.C. København\n1 - 3\n1st Leg\nManchester City\nFT\nUEFA Champions League\nDecember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Dec 13\nRed Star Belgrade\n2 - 3\nManchester City\nFT\nUEFA Champions League\nNovember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Nov 28\nManchester City\n3 - 2\nRB Leipzig\nFT\nUEFA Champions League\nTue, Nov 7\nManchester City\n3 - 0\nYoung Boys\nFT\nUEFA Champions League\nOctober, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Oct 25\nYoung Boys\n1 - 3\nManchester City\nFT\nUEFA Champions League\nWed, Oct 4\nRB Leipzig\n1 - 3\nManchester City\nFT\nUEFA Champions League\nSeptember, 2023\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Sep 19\nManchester City\n3 - 1\nRed Star Belgrade\nFT\nUEFA Champions League",
+        "score": 8.3366,
+        "rank": 2
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "heading": "",
+        "chunk_text": "ec 10\nReal Madrid\n1 - 2\nManchester City\nFT\nUEFA Champions League\nNovember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Nov 25\nManchester City\n0 - 2\nBayer Leverkusen\nFT\nUEFA Champions League\nWed, Nov 5\nManchester City\n4 - 1\nBorussia Dortmund\nFT\nUEFA Champions League\nOctober, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Oct 21\nVillarreal\n0 - 2\nManchester City\nFT\nUEFA Champions League\nWed, Oct 1\nAS Monaco\n2 - 2\nManchester City\nFT\nUEFA Champions League\nSeptember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nThu, Sep 18\nManchester City\n2 - 0\nNapoli\nFT\nUEFA Champions League",
+        "score": 8.2655,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "2023–24 Manchester City F.C. season\n2023–24 season | ||||\n---|---|---|---|---|\nOwner | City Football Group | |||\nChairman | Khaldoon Al Mubarak | |||\nManager | Pep Guardiola | |||\nStadium | City of Manchester Stadium | |||\nPremier League | 1st | |||\nFA Cup | Runners-up | |||\nEFL Cup | Third round | |||\nFA Community Shield | Runners-up | |||\nUEFA Champions League | Quarter-finals | |||\nUEFA Super Cup | Winners | |||\nFIFA Club World Cup | Winners | |||\nTop goalscorer | League: Erling Haaland (27) All: Erling Haaland (38) | |||\nHighest home attendance | 53,544 v West Ham United 19 May 2024 (Premier League) | |||\nLowest home attendance | 50,204 v Red Star Belgrade 19 September 2023 (Champions League) | |||\nAverage home league attendance | 53,302 | |||\nBiggest win | 6–1 v Bournemouth (Home) 4 November 2023 (Premier League) 5–0 v Huddersfield Town (Home) 7 January 2024 (FA Cup) | |||\nBiggest defeat | 0–1 v Newcastle United (Away) 27 September 2023 (EFL Cup) 1–2 v Wolverhampton Wanderers (Away) 30 September 2023 (Premier League) 0–1 v Arsenal (Away) 8 October 2023 (Premier League) 0–1 v Aston Villa (Away) 6 December 2023 (Premier League) 1–2 v Manchester United (Neutral) 25 May 2024 (FA Cup) | |||\n| ||||\nThe 2023–24 season was the 129th season in the existence of Manchester City Football Club and their 22nd consecutive season in the top flight of English football, where they were competing as three-time defending champions.",
+        "score": 8.0599,
+        "rank": 4
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "er 2024.\n- ^ \"2024/25 UEFA Champions League: Matches, final, key dates\". UEFA. 1 January 2024. Archived from the original on 14 April 2024. Retrieved 17 April 2024.\n- ^ \"League phase standings\". UEFA. Retrieved 30 August 2025.\n- ^ \"City discover FIFA Club World Cup 2025 group stage opponents\". Manchester City F.C. 5 December 2024. Retrieved 9 December 2024.\n- ^ \"City's FIFA Club World Cup 2025 fixtures confirmed\". Manchester City F.C. 7 December 2024. Retrieved 9 December 2024.\n- ^ a b c d \"2024–2025 Manchester City Stats\". FBref. Archived from the original on 7 September 2024. Retrieved 26 July 2024.\n- ^ Mumford, Jack. \"Gvardiol named 2024/25 Etihad Player of the Season\". Manchester City FC. Retrieved 2025-06-12.\n- ^ \"Haaland voted Premier League Player of the Month\". Premier League. 13 September 2024. Archived from the original on 13 September 2024. Retrieved 13 September 2024.\n- ^ \"Premier League Award - Guinness Goal of the Season, 2024/25\". www.premierleague.com. Retrieved 2025-06-12.\n- ^ Clayton, David (6 September 2024). \"Haaland voted Etihad Player of the Month\". Manchester City F.C. Retrieved 6 September 2024.\n- ^ Leigh, Neil (7 October 2024). \"Haaland voted Etihad Player of the Month for September\". Manchester City F.C. Retrieved 8 October 2024.\n- ^ \"Stones voted Etihad Player of the Month for October\". Manchester City F.C. 7 November 2024. Retrieved 23 November 2024.\n- ^ Mumford, Jack (5 December 2024). \"Nunes named Etihad Player of the Month for November\".",
+        "score": 7.6466,
+        "rank": 5
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "uccessive Premier League Golden Boot\". Manchester City F.C. Retrieved 19 May 2024.\n- ^ a b Mumford, Jack (21 May 2024). \"Pep Guardiola named Premier League Manager of the Season\". Manchester City F.C. Retrieved 21 May 2024.\n- ^ \"FA Cup Final 2024 LIVE: Watch Man City vs Man Utd stream plus score, line-ups, commentary & latest updates from Wembley\". BBC Sport. 25 May 2024. Retrieved 29 May 2024.\n- ^ a b Jack, Mumford (26 May 2024). \"Foden wins 2023/24 Etihad Player of the Season\". Manchester City F.C. Retrieved 26 May 2024.\n- ^ a b Leigh, Neil (20 August 2024). \"Phil Foden named PFA Players' Player of the Year\". Manchester City F.C. Retrieved 20 August 2024.\n- ^ \"City players in Euro 2024 and Copa America squads\". Manchester City F.C. 8 June 2024. Retrieved 8 June 2024.\n- ^ \"Manchester City squad list\". Manchester City F.C. Retrieved 5 June 2022.\n- ^ \"City Complete Kovacic Signing\". Manchester City F.C. Retrieved 27 June 2023.\n- ^ \"Man City sign midfielder Kovacic for initial £25m\". BBC Sport. Retrieved 16 July 2023.\n- ^ \"AFC Wimbledon sell young keeper to Manchester City\". BBC Sport. Retrieved 5 June 2023.\n- ^ a b \"Welcome Jamal Baptiste!\" (in Dutch). Lommel SK. 1 September 2023. Retrieved 1 September 2023.\n- ^ a b Smith, Jonathan. \"City sign Claudio Echeverri from River Plate\". Manchester City F.C. Retrieved 25 January 2024.\n- ^ \"Boro Agree Deal To Sign Departing Man City Youngster\". Middlesbrough F.C. 6 June 2023.",
+        "score": 7.3781,
+        "rank": 6
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "25. Retrieved 22 January 2025.\n- ^ \"Wright joins Norwich on loan\". Manchester City FC. 4 February 2025. Retrieved 4 February 2025.\n- ^ \"Kayka set for Bahia loan\". Manchester City F.C. 7 February 2025. Retrieved 7 February 2025.\n- ^ City, Manchester. \"Brooklyn Nfonkeu\". www.mancity.com. Retrieved 2025-02-19.\n- ^ a b \"Premier League clubs publish 2023/24 released lists\". Premier League. 5 June 2024. Archived from the original on 25 June 2024. Retrieved 7 June 2024.\n- ^ \"Josh Adam signs for Wrexham AFC\". Wrexham A.F.C. 9 September 2024. Retrieved 10 September 2024.\n- ^ \"Jamal Baptiste signs\". Sheffield United F.C. 5 November 2024. Retrieved 5 November 2024.\n- ^ \"Ortega Moreno signs fresh City deal\". Manchester City F.C. 8 June 2024. Retrieved 8 June 2024.\n- ^ \"Haaland signs new 10-year city contract\". Manchester City F.C. 17 January 2025. Retrieved 17 January 2025.\n- ^ Cooper, Matthew (2025-04-14). \"Guardiola confirms Man City star has earned new contract - but might not sign it\". Daily Mirror. Retrieved 2025-07-01.\n- ^ \"City return to USA for 2024/25 pre-season tour\". Manchester City F.C. 19 March 2024. Retrieved 26 March 2024.\n- ^ \"Premier League Handbook: Season 2024/25\" (PDF). Premier League. 11 December 2024. Retrieved 1 February 2025.\n- ^ a b c \"City's Fixtures With West Ham, Arsenal And Newcastle All To Be Televised\". Manchester City F.C. 5 July 2024. Retrieved 5 July 2024.\n- ^ \"Premier League trip to Wolves moved for TV coverage\". Manchester City F.C. 6 August 2024.",
+        "score": 6.4431,
+        "rank": 7
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "2025–26 Manchester City F.C. season\n2025–26 season | ||||\n---|---|---|---|---|\nOwner | City Football Group | |||\nChairman | Khaldoon Al Mubarak | |||\nManager | Pep Guardiola | |||\nStadium | City of Manchester Stadium | |||\nPremier League | 2nd | |||\nFA Cup | Final | |||\nEFL Cup | Winners | |||\nUEFA Champions League | Round of 16 | |||\nTop goalscorer | League: Erling Haaland (26) All: Erling Haaland (37) | |||\nHighest home attendance | 52,534 v Manchester United 14 September 2025 (Premier League) | |||\nLowest home attendance | 35,259 v Galatasaray 28 January 2026 (Champions League) | |||\nAverage home league attendance | 52,241 | |||\nBiggest win | 10–1 v Exeter City (Home) 10 January 2026 (FA Cup) | |||\nBiggest defeat | 0–3 v Real Madrid (Away) 11 March 2026 (UEFA Champions League) | |||\n| ||||\nAll statistics correct as of 9 May 2026. |\nThe 2025–26 season is the 131st season in the existence of Manchester City Football Club and their 24th consecutive season in the topflight of English football. In addition to the domestic league, Manchester City is also participating in the FA Cup, EFL Cup and UEFA Champions League, entering the latter for the 15th consecutive season.\nThis is the club's first season since 2014–15 without midfielder Kevin De Bruyne, who departed for Napoli following the expiration of his contract, and the first season since 2016–17 without Kyle Walker (to Burnley) and Ederson (to Fenerbahçe).",
+        "score": 8.6323,
+        "rank": 0
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2024",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS/season/2024",
+        "heading": "",
+        "chunk_text": "ITION\nWed, Dec 11\nJuventus\n2 - 0\nManchester City\nFT\nUEFA Champions League\nNovember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Nov 26\nManchester City\n3 - 3\nFeyenoord Rotterdam\nFT\nUEFA Champions League\nTue, Nov 5\nSporting CP\n4 - 1\nManchester City\nFT\nUEFA Champions League\nOctober, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Oct 23\nManchester City\n5 - 0\nSparta Prague\nFT\nUEFA Champions League\nTue, Oct 1\nSlovan Bratislava\n0 - 4\nManchester City\nFT\nUEFA Champions League\nSeptember, 2024\nDATE\nMATCH\nRESULT\nCOMPETITION\nWed, Sep 18\nManchester City\n0 - 0\nInternazionale\nFT\nUEFA Champions League",
+        "score": 7.8712,
+        "rank": 1
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "heading": "",
+        "chunk_text": "ec 10\nReal Madrid\n1 - 2\nManchester City\nFT\nUEFA Champions League\nNovember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Nov 25\nManchester City\n0 - 2\nBayer Leverkusen\nFT\nUEFA Champions League\nWed, Nov 5\nManchester City\n4 - 1\nBorussia Dortmund\nFT\nUEFA Champions League\nOctober, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Oct 21\nVillarreal\n0 - 2\nManchester City\nFT\nUEFA Champions League\nWed, Oct 1\nAS Monaco\n2 - 2\nManchester City\nFT\nUEFA Champions League\nSeptember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nThu, Sep 18\nManchester City\n2 - 0\nNapoli\nFT\nUEFA Champions League",
+        "score": 7.8065,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "trieved 5 April 2026.\n- ^ \"City to face Huddersfield in Carabao Cup third round\". Manchester City F.C. 27 August 2025. Retrieved 27 August 2025.\n- ^ \"City to face Swansea in Carabao Cup Fourth Round\". Manchester City F.C. 24 September 2025. Retrieved 24 September 2025.\n- ^ \"City to host Brentford in Carabao Cup quarter-final\". Manchester City F.C. 29 October 2025. Retrieved 30 October 2025.\n- ^ \"Dates and kick-off times confirmed for Carabao Cup semi-final with Newcastle United\". Manchester City F.C. 19 December 2025. Retrieved 19 December 2025.\n- ^ \"City discover eight opponents in 2025/26 Champions League league phase\". Manchester City F.C. 28 August 2025. Retrieved 28 August 2025.\n- ^ \"City's Champions League - League Phase fixtures finalised\". Manchester City F.C. 30 August 2025. Retrieved 30 August 2025.\n- ^ \"League phase table\". UEFA.com. Union of European Football Associations. Retrieved 28 January 2026.\n- ^ \"City to face Real Madrid in Champions League Round of 16\". Manchester City F.C. 27 February 2026. Retrieved 27 February 2026.\n- ^ \"Dates and kick-off times confirmed for Real Madrid tie\". Manchester City F.C. 27 February 2026. Retrieved 27 February 2026.\n- ^ a b c d \"2025–2026 Manchester City Stats\". FBref. Retrieved 25 August 2025.\n- ^ Hafez, Shamoon. \"FA Cup quarter-final LIVE: Manchester City vs Liverpool - score, radio commentary, text updates & match stats\". BBC Sport. Retrieved 2026-04-04.\n- ^ Clayton, David (6 September 2025).",
+        "score": 6.8221,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "eved 2026-04-12.\n- ^ \"City to face Palermo FC in pre-season fixture\". Manchester City F.C. 7 July 2025. Retrieved 7 July 2025.\n- ^ \"The Anglo-Palermitan Trophy in numbers\". Palermo FC. 14 August 2025. Retrieved 21 August 2025.\n- ^ \"Premier League Handbook 2022/23\" (PDF). Premier League. pp. 109–111. Archived (PDF) from the original on 27 August 2022. Retrieved 24 August 2022.\n- ^ \"City to start 2025/26 Premier League season at Wolves\". Manchester City F.C. 18 June 2025. Retrieved 18 June 2025.\n- ^ a b \"Premier League TV selections for August confirmed\". Manchester City F.C. 9 July 2025. Retrieved 9 July 2025.\n- ^ a b \"New dates for Manchester Derby and Arsenal clashes\". Manchester City F.C. 23 July 2025. Retrieved 23 July 2025.\n- ^ a b \"Two Premier League games in October moved for TV\". Manchester City F.C. 20 August 2025. Retrieved 21 August 2025.\n- ^ a b c @ManCity (19 September 2025). \"PL Fixture Confirmations\" (Tweet). Retrieved 19 September 2025 – via X (formerly Twitter).\n- ^ a b \"Fulham and Palace clashes moved for TV broadcast\". Manchester City F.C. 15 October 2025. Retrieved 15 October 2025.\n- ^ a b c d \"Sunderland clash switched to New Year's Day plus Forest, Chelsea and Brighton selected for broadcast\". Manchester City F.C. 31 October 2025. Retrieved 31 October 2025.\n- ^ a b \"New dates for January trips to United and Spurs\". Manchester City F.C. 20 November 2025.",
+        "score": 6.6446,
+        "rank": 4
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "25. Retrieved 22 January 2025.\n- ^ \"Wright joins Norwich on loan\". Manchester City FC. 4 February 2025. Retrieved 4 February 2025.\n- ^ \"Kayka set for Bahia loan\". Manchester City F.C. 7 February 2025. Retrieved 7 February 2025.\n- ^ City, Manchester. \"Brooklyn Nfonkeu\". www.mancity.com. Retrieved 2025-02-19.\n- ^ a b \"Premier League clubs publish 2023/24 released lists\". Premier League. 5 June 2024. Archived from the original on 25 June 2024. Retrieved 7 June 2024.\n- ^ \"Josh Adam signs for Wrexham AFC\". Wrexham A.F.C. 9 September 2024. Retrieved 10 September 2024.\n- ^ \"Jamal Baptiste signs\". Sheffield United F.C. 5 November 2024. Retrieved 5 November 2024.\n- ^ \"Ortega Moreno signs fresh City deal\". Manchester City F.C. 8 June 2024. Retrieved 8 June 2024.\n- ^ \"Haaland signs new 10-year city contract\". Manchester City F.C. 17 January 2025. Retrieved 17 January 2025.\n- ^ Cooper, Matthew (2025-04-14). \"Guardiola confirms Man City star has earned new contract - but might not sign it\". Daily Mirror. Retrieved 2025-07-01.\n- ^ \"City return to USA for 2024/25 pre-season tour\". Manchester City F.C. 19 March 2024. Retrieved 26 March 2024.\n- ^ \"Premier League Handbook: Season 2024/25\" (PDF). Premier League. 11 December 2024. Retrieved 1 February 2025.\n- ^ a b c \"City's Fixtures With West Ham, Arsenal And Newcastle All To Be Televised\". Manchester City F.C. 5 July 2024. Retrieved 5 July 2024.\n- ^ \"Premier League trip to Wolves moved for TV coverage\". Manchester City F.C. 6 August 2024.",
+        "score": 6.1323,
+        "rank": 5
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "ld Wednesday\". BBC Sport. 2026-02-02. Retrieved 2026-02-02.\n- ^ \"Leicester City: Jamaal Lascelles leaves Newcastle for Foxes, as Manchester City's Divine Mukasa make loan move\". BBC Sport. 2026-02-03. Retrieved 2026-02-03.\n- ^ \"De Bruyne to bring curtain down on illustrious 10-year City career\". Manchester City FC. 4 April 2025. Retrieved 6 April 2025.\n- ^ \"De Bruyne to join Napoli\". Manchester City FC. 12 June 2025. Retrieved 12 June 2025.\n- ^ \"Carson to leave City this summer\". Manchester City FC. 9 June 2025. Retrieved 9 June 2025.\n- ^ \"Man City cult hero keeper Carson retires at 40\". BBC Sport. 24 October 2025. Retrieved 24 October 2025.\n- ^ \"Premier League clubs publish 2024/25 released lists\". Premier League. Retrieved 11 June 2025.\n- ^ \"Rúben Dias signs new contract\". Manchester City F.C. 22 August 2025. Retrieved 22 August 2025.\n- ^ \"Rico Lewis signs new contract\". Manchester City F.C. 12 September 2025. Retrieved 12 September 2025.\n- ^ \"O'Reilly signs fresh City contract!\". Manchester City FC. 26 September 2025. Retrieved 26 September 2025.\n- ^ \"Savinho extends City contract!\". Manchester City FC. 3 October 2025. Retrieved 3 October 2025.\n- ^ Mumford, Jack. \"Bettinelli signs new one-year contract\". Manchester City FC. Retrieved 2026-04-12.\n- ^ \"City to face Palermo FC in pre-season fixture\". Manchester City F.C. 7 July 2025. Retrieved 7 July 2025.\n- ^ \"The Anglo-Palermitan Trophy in numbers\". Palermo FC. 14 August 2025.",
+        "score": 4.6197,
+        "rank": 6
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2024%E2%80%9325_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "hield\n[edit]As the defending Premier League champions, Manchester City faced reigning FA Cup winners Manchester United in the traditional season opener.",
+        "score": 3.286,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 4,
+      "decompose_ms": 3833,
+      "search_ms": 4918,
+      "extract_ms": 35605,
+      "chunk_ms": 572,
+      "retrieve_ms": 15757,
+      "synthesis_ms": 18208,
+      "embedding_cleanup_ms": 1,
+      "sub_queries_count": 6,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 93476,
+    "elapsed_s": 96.64,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

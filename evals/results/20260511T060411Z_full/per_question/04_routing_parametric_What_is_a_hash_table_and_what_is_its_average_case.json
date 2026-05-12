@@ -1,0 +1,95 @@
+{
+  "id": "p4",
+  "category": "routing_parametric",
+  "domain": "computer-science",
+  "question": "What is a hash table and what is its average-case lookup complexity?",
+  "expected_mode": "parametric",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Textbook CS — define hash table + O(1) avg lookup, O(n) worst case.",
+  "key_facts": [
+    "hash function",
+    "O(1)",
+    "collision"
+  ],
+  "ground_truth": "A hash table is a key-value data structure that uses a hash function to compute an index into an array of buckets. Average-case lookup, insert, and delete are O(1); worst case is O(n) when collisions degrade performance.",
+  "session_id": "eval-20260511T060411Z-p4",
+  "verdict": "pass",
+  "aggregate": 1.0,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 1.0,
+    "context_recall": 1.0,
+    "context_precision": 1.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.877,
+    "aggregate": 1.0
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 1.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "parametric (N/A)"
+    },
+    "context_precision": {
+      "score": 1.0,
+      "relevant": 0,
+      "total": 0,
+      "reasoning": "parametric (N/A)"
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "hash function",
+        "O(1)",
+        "collision"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.877,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "pipeline": {
+    "answer": "A hash table is a data structure that maps keys to values using a hash function to compute an index into an array of buckets. Its average-case lookup, insertion, and deletion complexity is O(1), assuming a good hash function and ample capacity to avoid collisions. The worst-case complexity is O(n) when many keys collide, but this is rare with proper design.",
+    "mode": "parametric",
+    "rewritten_query": "What is a hash table and what is its average-case lookup complexity?",
+    "rewrote": false,
+    "rationale": "Textbook CS concept, timeless.",
+    "sub_queries": [
+      "What is a hash table and what is its average-case lookup complexity?"
+    ],
+    "citations": [],
+    "urls": [],
+    "chunk_count": 0,
+    "chunks": [],
+    "latency_breakdown": {
+      "decompose_ms": 8399,
+      "sub_queries_count": 1,
+      "mode": "parametric",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 9371,
+    "elapsed_s": 12.47,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

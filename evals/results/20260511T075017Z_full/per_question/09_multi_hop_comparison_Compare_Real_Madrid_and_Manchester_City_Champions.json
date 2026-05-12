@@ -1,0 +1,339 @@
+{
+  "id": "mh2",
+  "category": "multi_hop_comparison",
+  "domain": "sports",
+  "question": "Compare Real Madrid and Manchester City Champions League performance over the last 3 seasons.",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Per-club, per-season decomposition.",
+  "key_facts": [
+    "Champions League",
+    "Real Madrid",
+    "Manchester City"
+  ],
+  "ground_truth": "Real Madrid won the 2023-24 Champions League. Manchester City won 2022-23. Both have been semifinalists or better in most recent seasons.",
+  "session_id": "eval-20260511T075017Z-mh2",
+  "verdict": "pass",
+  "aggregate": 0.808,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.667,
+    "context_recall": 1.0,
+    "context_precision": 0.375,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.808,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.808
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.667,
+      "supported": 4,
+      "total": 6,
+      "reasoning": "Real Madrid stats and City 2025-26 elimination supported; City 2023-24/2024-25 data missing."
+    },
+    "context_precision": {
+      "score": 0.375,
+      "relevant": 3,
+      "total": 8,
+      "reasoning": "Chunks 2, 6, 8 show Man City's UCL round of 16 exit; no Real Madrid data."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "Champions League",
+        "Real Madrid",
+        "Manchester City"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": [
+      "Champions League",
+      "Real Madrid",
+      "Manchester City"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 3899,
+      "search_ms": 2138,
+      "extract_ms": 29986,
+      "chunk_ms": 20,
+      "retrieve_ms": 2166,
+      "synthesis_ms": 8435,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 58737,
+    "pipeline_s": 64.61
+  },
+  "judge_reasoning": "Real Madrid stats and City 2025-26 elimination supported; City 2023-24/2024-25 data missing.",
+  "pipeline": {
+    "answer": "# Real Madrid vs Manchester City: Champions League Performance (2023–24 to 2025–26)\n\nOver the last three seasons, Real Madrid maintained consistent group-stage excellence and delivered a decisive knockout blow to Manchester City in 2025–26. City, however, can only be assessed for that single campaign due to missing data for 2023–24 and 2024–25.\n\n## Real Madrid: Sustained Dominance\n\n**2023–24 season (first 5 matchdays):** Real Madrid had a perfect record of **5 wins, 0 losses — 15 points**, scoring 13 goals and conceding 5 [3]. This campaign is described as \"a dream season where everything was perfect\" [3].\n\n**2025–26 season (first 5 matchdays):** A slight dip saw **4 wins, 1 loss — 12 points**, with 12 goals scored and 5 conceded [3]. The defense remained equally stingy.\n\n**Knockout stage (2025–26):** Madrid emphatically eliminated Manchester City in the Round of 16, winning **5–1 on aggregate**, including a **3–0 away win** on 11 March 2026 — City's biggest defeat of the season [2].\n\n### Real Madrid: First 5 Matchdays Comparison\n\n| Metric | 2023–24 | 2025–26 | Source |\n|---|---|---|---|\n| Wins | 5 | 4 | [3] |\n| Points | 15 | 12 | [3] |\n| Goals scored | 13 | 12 | [3] |\n| Goals conceded | 5 | 5 | [3] |\n\n## Manchester City: Limited Data, Clear Result in 2025–26\n\n**No source in the provided chunks covers City's Champions League performance in 2023–24 or 2024–25** [1][2][3][4]. One social media post suggests City won only the Community Shield in 2024–25 and failed to qualify for the 2025–26 UCL — a claim **contradicted by the detailed 2025–26 fixture data** [1][2][4].\n\n**2025–26 campaign:** City reached the Round of 16, exiting after a **5–1 aggregate loss to Real Madrid** [2]. Their league phase results included:\n\n| Date | Opponent | Result | Source |\n|---|----------|--------|--------|\n| 18 Sep 2025 | Napoli (H) | **2–0** win | [2] |\n| 1 Oct 2025 | Monaco (A) | **2–2** draw | [1] |\n| 21 Oct 2025 | Villarreal (A) | **2–0** win | [1] |\n| 5 Nov 2025 | Dortmund (H) | **4–1** win | [1] |\n| 25 Nov 2025 | Leverkusen (H) | **0–2** loss | [1] |\n| 10 Dec 2025 | Real Madrid (A) | **2–1** win | [1] |\n| 28 Jan 2026 | Galatasaray (H) | League phase match | [2] |\n\nCity's **lowest attendance** of the season came against Galatasaray at the Etihad (35,259) [2].\n\n## Head-to-Head: The Defining Clash\n\nThe two clubs met in the **2025–26 Round of 16**, with Real Madrid winning **5–1 on aggregate**. The second leg at the Bernabéu was City's **biggest defeat of the season** (0–3) [2]. This single tie encapsulates the gulf between the sides in the only season with complete comparative data.\n\n## Key Takeaways\n\n- **Real Madrid's consistency is unmatched**: Perfect group stage in 2023–24 (15 points) and near-perfect in 2025–26 (12 points) [3].\n- **Manchester City's data is incomplete**: No source covers their 2023–24 or 2024–25 UCL campaigns; the claim of non-qualification for 2025–26 is unsubstantiated [1][2][3][4].\n- **Real Madrid dominated the only direct meeting**: A 5–1 aggregate win in the 2025–26 Round of 16 [2].\n- **City's league phase was mixed in 2025–26**: Wins over Real Madrid (A) and Dortmund, but a loss to Leverkusen and a draw with Monaco [1][2].\n- **Defensive solidity separates the sides**: Real Madrid conceded just 5 goals in both group-stage comparisons; City's defensive record in 2025–26 is unclear from available data [1][2][3].",
+    "mode": "search",
+    "rewritten_query": "Compare Real Madrid and Manchester City Champions League performance over the last 3 seasons.",
+    "rewrote": false,
+    "rationale": "Recent multi-season comparison requires sourced match data.",
+    "sub_queries": [
+      "Real Madrid Champions League performance 2023-24 to 2025-26 season",
+      "Manchester City Champions League performance 2023-24 to 2025-26 season"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "snippet": "ITION\nWed, Dec 10\nReal Madrid\n1 - 2\nManchester City\nFT\nUEFA Champions League\nNovember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Nov 25\nManchester City\n0 - 2\nBayer Leverkusen\nFT\nUEFA Champions League\nWed, Nov 5\nManchester City\n4 - 1\nBorussia Dortmund\nFT\nUEFA Champions League\nOctober, 2025\nDATE\nMATCH\nR"
+      },
+      {
+        "num": 2,
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "snippet": "2025–26 Manchester City F.C. season\n2025–26 season | ||||\n---|---|---|---|---|\nOwner | City Football Group | |||\nChairman | Khaldoon Al Mubarak | |||\nManager | Pep Guardiola | |||\nStadium | City of Manchester Stadium | |||\nPremier League | 2nd | |||\nFA Cup | Final | |||\nEFL Cup | Winners | |||\nUEFA "
+      },
+      {
+        "num": 3,
+        "url": "https://www.facebook.com/groups/458978894153456/posts/25563129819978350/",
+        "title": "Group title pending | 📊 Real Madrid 2023/24 🆚 2025/26 — You will be surprised | Facebook",
+        "snippet": "Group title pending | 📊 Real Madrid 2023/24 🆚 2025/26 — You will be surprised | Facebook\n\n[Log In](https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&next=https%3A%2F%2Fwww.facebook.com%2Fgroups%2F458978894153456%2Fposts%2F25563129819978350%2F)\n\nLog In\n\n[Forgot Account?](http"
+      },
+      {
+        "num": 4,
+        "url": "https://www.facebook.com/groups/1006581580322891/posts/1463330764647968/",
+        "title": "Man City fans | ✅ Community Shield | Facebook",
+        "snippet": "[Man City fans](https://www.facebook.com/groups/1006581580322891/?__cft__[0]=AZaEJYyZZTufPmCLpToH8TkHZ3jco5FhKvOmoKVwXRaWugzc7X1eCU11HUzRlISUa6RUdA8rPDWlsFYCrpzvJFOjynOI4heIY6nIw_TUz3hz3V22nrnke9cpOSY99oKKYS0rrlWK0QSBby23AjCGUFPDYnENDni1gIPQIqV492g0tPoig7mzuQD8M65c4rW7JZH2irIipY5d2uK_d-QP__bi&__tn__"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.facebook.com/groups/458978894153456/posts/25563129819978350/",
+        "title": "Real Madrid's performance in 2023/24 and 2025/26 seasons",
+        "snippet": "Real Madrid this season: ▷ 24 games ▷ 20 wins ▷ 3 draws ▷ 1 defeat ▷ 55 goals scored ▷ 18 goals conceded ▷ 11 clean sheets ▷ 100% record in UCL"
+      },
+      {
+        "url": "https://fbref.com/en/squads/53a2f082/2024-2025/c8/Real-Madrid-Stats-Champions-League",
+        "title": "2024-2025 Real Madrid Stats, Champions League | FBref.com",
+        "snippet": "2024-2025 Real Madrid Stats (Champions League) ; Record: 26-6-6, 84 points (2.21 per game), 2nd in La Liga (1st Tier) ; Home Record: 16-1-2, 49 points Away Record"
+      },
+      {
+        "url": "https://fbref.com/en/squads/53a2f082/2025-2026/c8/Real-Madrid-Stats-Champions-League",
+        "title": "2025-2026 Real Madrid Stats (Champions League) - FBref.com",
+        "snippet": "2025-2026 Real Madrid Stats (Champions League) ; Record: 24-5-5, 77 points (2.26 per game), 2nd in La Liga (1st Tier) ; Home Record: 14-1-2, 43 points Away Record"
+      },
+      {
+        "url": "https://www.uefa.com/uefachampionsleague/clubs/50051--real-madrid/",
+        "title": "Real Madrid | UEFA Champions League 2025/26",
+        "snippet": "Champions League Official   Live football scores & Fantasy. UEFA.com works better on other browsers. For the best possible experience, we recommend using Chrome, Firefox or Microsoft Edge. # Real Madrid C.F. UEFA Champions League 2025/26. ## Real Madrid C.F. Real Madrid. Overview     Matches     Table     Stats     Squad     Domestic. ## Matches. Highlights available from midnight where you are. ## Key stats. Real Madrid  vs  Select club. Real Madrid  vs  Bayern München. Real Madrid  vs  Man City. Real Madrid  vs  Kairat Almaty. ## Features."
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/86/real-madrid",
+        "title": "Real Madrid 2025 Results - ESPN",
+        "snippet": "| Wed, Apr 15 | Bayern Munich | 4 - 32nd Leg · Bayern Munich wins 6-4 on aggregate | Real Madrid | FT | UEFA Champions League |. | Sat, Feb 21 | Osasuna | 2 - 1 | Real Madrid | FT | Spanish LALIGA |. | Sat, Jan 24 | Villarreal | 0 - 2 | Real Madrid | FT | Spanish LALIGA |. | Sat, Jan 17 | Real Madrid | 2 - 0 | Levante | FT | Spanish LALIGA |. | Sun, Nov 30 | Girona | 1 - 1 | Real Madrid | FT | Spanish LALIGA |. | Sun, Nov 23 | Elche | 2 - 2 | Real Madrid | FT | Spanish LALIGA |. | Tue, Nov 4 | Liverpool | 1 - 0 | Real Madrid | FT | UEFA Champions League |. | Sat, Nov 1 | Real Madrid | 4 - 0 | Valencia | FT | Spanish LALIGA |."
+      },
+      {
+        "url": "https://forzafootball.com/news/real-madrids-route-to-the-2025-26-champions-league-final-159338843",
+        "title": "Real Madrid's Route to the 2025–26 Champions League Final",
+        "snippet": "Los Blancos have endured another sticky season which has already witnessed one managerial change and their generally inconsistent performances"
+      },
+      {
+        "url": "https://fbref.com/en/squads/b8fd03ef/2024-2025/c8/Manchester-City-Stats-Champions-League",
+        "title": "2024-2025 Manchester City Stats, Champions League - FBref.com",
+        "snippet": "2024-2025 Manchester City Stats (Champions League) ; Record: 21-8-9, 71 points (1.87 per game), 3rd in Premier League (1st Tier) ; Home Record: 13-3-3, 42 points"
+      },
+      {
+        "url": "https://www.mancity.com/annualreport2025/mens-team/",
+        "title": "Men’s Team - Manchester City | Annual Report 2024-25",
+        "snippet": "In finishing third in the table, Pep Guardiola’s side extended an astonishing run of qualification for the UEFA Champions League. An unbeaten run of ten games towards the end of the Premier League season ensured that City will be competing in the top-tier European club competition for the 15th consecutive time in the 2025-26 season. Manchester City qualified for the Champions League for a 15th consecutive season. The reigning Premier League champions went on to display their class and resilience in the closing weeks to win seven and draw three of the final ten domestic games and rise to third in the standings. In that time the 25-year-old bagged eight Premier League hat-tricks, five more than any other top-flight player in the last three seasons and reached 100 goal involvements (84 goals and 16 assists) after 94 games played, faster than any other player since the Premier League was established."
+      },
+      {
+        "url": "https://www.facebook.com/groups/1006581580322891/posts/1463330764647968/",
+        "title": "Manchester City's Disappointing 2025-26 Season Performance",
+        "snippet": "OFFICIAL: Manchester City secures qualification for the 2025/2026 UEFA Champions League; our fifteenth consecutive season of participation. No"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "2025–26 Manchester City F.C. season - Wikipedia",
+        "snippet": "2025–26 Manchester City F.C. season ; 52,534 v Manchester United 14 September 2025 (Premier League) · 35,259 v Galatasaray 28 January 2026 (Champions League)."
+      },
+      {
+        "url": "https://www.uefa.com/uefachampionsleague/clubs/52919--man-city/",
+        "title": "Man City | UEFA Champions League 2025/26",
+        "snippet": "Visit UEFA.com to find out how Man City are doing in the UEFA Champions League 2025/2026, including latest match news, stats, squad list and news updates."
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "title": "Manchester City 2025 UEFA Champions League Results - ESPN",
+        "snippet": "# Manchester City. | Tue, Mar 17 | Manchester City | 1 - 22nd Leg · Real Madrid wins 5-1 on aggregate | Real Madrid | FT | UEFA Champions League |. | Wed, Mar 11 | Real Madrid | 3 - 01st Leg | Manchester City | FT | UEFA Champions League |. | Wed, Jan 28 | Manchester City | 2 - 0 | Galatasaray | FT | UEFA Champions League |. | Tue, Jan 20 | Bodo/Glimt | 3 - 1 | Manchester City | FT | UEFA Champions League |. | Wed, Dec 10 | Real Madrid | 1 - 2 | Manchester City | FT | UEFA Champions League |. | Tue, Oct 21 | Villarreal | 0 - 2 | Manchester City | FT | UEFA Champions League |. | Wed, Oct 1 | AS Monaco | 2 - 2 | Manchester City | FT | UEFA Champions League |."
+      }
+    ],
+    "chunk_count": 15,
+    "chunks": [
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "heading": "",
+        "chunk_text": "ITION\nWed, Dec 10\nReal Madrid\n1 - 2\nManchester City\nFT\nUEFA Champions League\nNovember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Nov 25\nManchester City\n0 - 2\nBayer Leverkusen\nFT\nUEFA Champions League\nWed, Nov 5\nManchester City\n4 - 1\nBorussia Dortmund\nFT\nUEFA Champions League\nOctober, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Oct 21\nVillarreal\n0 - 2\nManchester City\nFT\nUEFA Champions League\nWed, Oct 1\nAS Monaco\n2 - 2\nManchester City\nFT\nUEFA Champions League\nSeptember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nThu, Sep 18\nManchester City\n2 - 0\nNapoli\nFT\nUEFA Champions League",
+        "score": 5.227,
+        "rank": 0
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "2025–26 Manchester City F.C. season\n2025–26 season | ||||\n---|---|---|---|---|\nOwner | City Football Group | |||\nChairman | Khaldoon Al Mubarak | |||\nManager | Pep Guardiola | |||\nStadium | City of Manchester Stadium | |||\nPremier League | 2nd | |||\nFA Cup | Final | |||\nEFL Cup | Winners | |||\nUEFA Champions League | Round of 16 | |||\nTop goalscorer | League: Erling Haaland (26) All: Erling Haaland (37) | |||\nHighest home attendance | 52,534 v Manchester United 14 September 2025 (Premier League) | |||\nLowest home attendance | 35,259 v Galatasaray 28 January 2026 (Champions League) | |||\nAverage home league attendance | 52,241 | |||\nBiggest win | 10–1 v Exeter City (Home) 10 January 2026 (FA Cup) | |||\nBiggest defeat | 0–3 v Real Madrid (Away) 11 March 2026 (UEFA Champions League) | |||\n| ||||\nAll statistics correct as of 9 May 2026. |\nThe 2025–26 season is the 131st season in the existence of Manchester City Football Club and their 24th consecutive season in the topflight of English football. In addition to the domestic league, Manchester City is also participating in the FA Cup, EFL Cup and UEFA Champions League, entering the latter for the 15th consecutive season.\nThis is the club's first season since 2014–15 without midfielder Kevin De Bruyne, who departed for Napoli following the expiration of his contract, and the first season since 2016–17 without Kyle Walker (to Burnley) and Ederson (to Fenerbahçe).",
+        "score": 5.0587,
+        "rank": 1
+      },
+      {
+        "url": "https://www.facebook.com/groups/458978894153456/posts/25563129819978350/",
+        "title": "Group title pending | 📊 Real Madrid 2023/24 🆚 2025/26 — You will be surprised | Facebook",
+        "heading": "Group title pending | 📊 Real Madrid 2023/24 🆚 2025/26 — You will be surprised | Facebook",
+        "chunk_text": "Group title pending | 📊 Real Madrid 2023/24 🆚 2025/26 — You will be surprised | Facebook\n\n[Log In](https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&next=https%3A%2F%2Fwww.facebook.com%2Fgroups%2F458978894153456%2Fposts%2F25563129819978350%2F)\n\nLog In\n\n[Forgot Account?](https://www.facebook.com/recover/initiate?ars=royal_blue_bar)\n\n![Image 2](https://static.xx.fbcdn.net/rsrc.php/y-/r/oJDN4UDRn_R.webp)\n\nReal Madrid's performance in 2023/24 and 2025/26 seasons\n\nSummarized by AI from the post below\n\n[](https://www.facebook.com/groups/458978894153456/?__cft__[0]=AZbhflFJot7Ru7H69L4fLRejyeqpd9LCj57gO_ahEUXfDyOY8FqB_Fz747AX9LgMF0QkTE_US2sYgR8NBVgsx1n1z485X5UDGlzEEJ_rKMbThOTQSC4es_EfrWOztEceh5FuxYvHBK-7diqgGCIyDYceFFEObraVfXw4mzZ-sCCDhVZpiQ9KXAbxyGdpMif8pqDjwp7X_pGrdt9iZlWermub&__tn__=%3C%3C%2CP-R)",
+        "score": 3.4375,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "5 without midfielder Kevin De Bruyne, who departed for Napoli following the expiration of his contract, and the first season since 2016–17 without Kyle Walker (to Burnley) and Ederson (to Fenerbahçe). Bernardo Silva was named as the club's new captain after Walker's departure. This also marks the first campaign since 2020–21 which Manchester City did not enter as reigning Premier League champions.\nOn 17 March, City were beaten 1–5 on aggregate by Real Madrid in the last-16 round of the Champions League to end their participation in this season's competition. On 22 March they won 2–0 against Arsenal to win the EFL Cup for the first time in five seasons. Pep Guardiola became the first manager to win the competition on five occasions.\nKits\n[edit]Supplier: Puma / Sponsor: Etihad Airways (Front) / OKX (Sleeves)\nHome\n|\nHome alt.\n|\nAway\n|\nAway alt.\n|\nThird\n|\nFourth\n|\nSeason summary\n[edit]Pre-season\n[edit]The revamped 2025 FIFA Club World Cup spanned the period between the 2024–25 and 2025–26 English football seasons. City's involvement in this competition is documented on their 2024–25 season page.\nIt had been anticipated that City's squad would need a major overhaul in the summer to remain competitive at the highest level after a trophyless season.",
+        "score": 3.3142,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "trieved 5 April 2026.\n- ^ \"City to face Huddersfield in Carabao Cup third round\". Manchester City F.C. 27 August 2025. Retrieved 27 August 2025.\n- ^ \"City to face Swansea in Carabao Cup Fourth Round\". Manchester City F.C. 24 September 2025. Retrieved 24 September 2025.\n- ^ \"City to host Brentford in Carabao Cup quarter-final\". Manchester City F.C. 29 October 2025. Retrieved 30 October 2025.\n- ^ \"Dates and kick-off times confirmed for Carabao Cup semi-final with Newcastle United\". Manchester City F.C. 19 December 2025. Retrieved 19 December 2025.\n- ^ \"City discover eight opponents in 2025/26 Champions League league phase\". Manchester City F.C. 28 August 2025. Retrieved 28 August 2025.\n- ^ \"City's Champions League - League Phase fixtures finalised\". Manchester City F.C. 30 August 2025. Retrieved 30 August 2025.\n- ^ \"League phase table\". UEFA.com. Union of European Football Associations. Retrieved 28 January 2026.\n- ^ \"City to face Real Madrid in Champions League Round of 16\". Manchester City F.C. 27 February 2026. Retrieved 27 February 2026.\n- ^ \"Dates and kick-off times confirmed for Real Madrid tie\". Manchester City F.C. 27 February 2026. Retrieved 27 February 2026.\n- ^ a b c d \"2025–2026 Manchester City Stats\". FBref. Retrieved 25 August 2025.\n- ^ Hafez, Shamoon. \"FA Cup quarter-final LIVE: Manchester City vs Liverpool - score, radio commentary, text updates & match stats\". BBC Sport. Retrieved 2026-04-04.\n- ^ Clayton, David (6 September 2025).",
+        "score": 2.5643,
+        "rank": 4
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "round | 5 | 5 | 0 | 0 | 21 | 3 | +18 | 100.00 | |\nEFL Cup | 24 September 2025 | 22 March 2026 | Third round | Winners | 6 | 6 | 0 | 0 | 14 | 2 | +12 | 100.00 |\nUEFA Champions League | 18 September 2025 | 17 March 2026 | League phase | Round of 16 | 10 | 5 | 1 | 4 | 16 | 14 | +2 | 50.00 |\nTotal | 56 | 38 | 9 | 9 | 123 | 51 | +72 | 67.86 |\nLast updated: 9 May 2026\nSource: Soccerway\nPremier League\n[edit]League table\n[edit]Pos | Team | Pld | W | D | L | GF | GA | GD | Pts | Qualification or relegation |\n---|---|---|---|---|---|---|---|---|---|---|\n1 | Arsenal (Q) | 36 | 24 | 7 | 5 | 68 | 26 | +42 | 79 | Qualification for the Champions League league phase[a] |\n2 | Manchester City (Q) | 35 | 22 | 8 | 5 | 72 | 32 | +40 | 74 | |\n3 | Manchester United (Q) | 36 | 18 | 11 | 7 | 63 | 48 | +15 | 65 | |\n4 | Liverpool (Y) | 36 | 17 | 8 | 11 | 60 | 48 | +12 | 59 | |\n5 | Aston Villa (Y) | 36 | 17 | 8 | 11 | 50 | 46 | +4 | 59 |\nRules for classification: 1) Points; 2) Goal difference; 3) Goals scored; 4) If the champions, relegated teams or qualified teams for UEFA competitions cannot be determined by rules 1 to 3, rules 4.1 to 4.3 are applied – 4.1) Points gained in head-to-head record between such teams; 4.2) Away goals scored in head-to-head record between such teams; 4.3) Play-offs[117]\n(Q) Qualified for the phase indicated; (Y) Assured of at least the Conference League play-off round, but may still qualify for the Champions League or Europa League\nNotes:\n- ^ The Premier League gained an ad",
+        "score": 2.0881,
+        "rank": 5
+      },
+      {
+        "url": "https://www.facebook.com/groups/458978894153456/posts/25563129819978350/",
+        "title": "Group title pending | 📊 Real Madrid 2023/24 🆚 2025/26 — You will be surprised | Facebook",
+        "heading": "[Group title pending](https://www.facebook.com/groups/458978894153456/?__cft__[0]=AZbhflFJot7Ru7H69L4fLRejyeqpd9LCj57gO_ahEUXfDyOY8FqB_Fz747AX9LgMF0QkTE_US2sYgR8NBVgsx1n1z485X5UDGlzEEJ_rKMbThOTQSC4es_EfrWOztEceh5FuxYvHBK-7diqgGCIyDYceFFEObraVfXw4mzZ-sCCDhVZpiQ9KXAbxyGdpMif8pqDjwp7X_pGrdt9iZlWermub&__tn__=-UC%2CP-R) ·",
+        "chunk_text": "[Group title pending](https://www.facebook.com/groups/458978894153456/?__cft__[0]=AZbhflFJot7Ru7H69L4fLRejyeqpd9LCj57gO_ahEUXfDyOY8FqB_Fz747AX9LgMF0QkTE_US2sYgR8NBVgsx1n1z485X5UDGlzEEJ_rKMbThOTQSC4es_EfrWOztEceh5FuxYvHBK-7diqgGCIyDYceFFEObraVfXw4mzZ-sCCDhVZpiQ9KXAbxyGdpMif8pqDjwp7X_pGrdt9iZlWermub&__tn__=-UC%2CP-R) ·\n\nJoin\n\nReal madrid fans\n\n· [November 27, 2025](https://www.facebook.com/groups/458978894153456/?multi_permalinks=25563129819978350&hoisted_section_header_type=recently_seen&__cft__[0]=AZbhflFJot7Ru7H69L4fLRejyeqpd9LCj57gO_ahEUXfDyOY8FqB_Fz747AX9LgMF0QkTE_US2sYgR8NBVgsx1n1z485X5UDGlzEEJ_rKMbThOTQSC4es_EfrWOztEceh5FuxYvHBK-7diqgGCIyDYceFFEObraVfXw4mzZ-sCCDhVZpiQ9KXAbxyGdpMif8pqDjwp7X_pGrdt9iZlWermub&__tn__=%2CO%2CP-R) ·\n\n![Image 3: 📊](https://static.xx.fbcdn.net/images/emoji.php/v9/t49/2/16/1f4ca.png) Real Madrid 2023/24 ![Image 4: 🆚](https://static.xx.fbcdn.net/images/emoji.php/v9/t70/2/16/1f19a.png) 2025/26 — You will be surprised!\n\nIn LaLiga after 13 matchdays:\n\n2023/24: 32 points. 2nd place. 28 goals scored. 9 goals conceded.\n\n2025/26: 32 points. 1st place. 28 goals scored. 12 goals conceded.\n\nIn UCL after 5 matchdays:\n\n2023/24: 5 wins. 15 points. 13 goals scored. 5 goals conceded.\n\n2025/26: 4 wins. 12 points. 12 goals scored. 5 goals conceded.\n\nJust one more defeat than in 23/24 and only one goal less scored — while 23/24 is considered a dream season where everything was perfect, some people seriously think Xabi Alonso’s job should be in danger? That’s ridiculous.",
+        "score": -8.0811,
+        "rank": 6
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "2025–26 Manchester City F.C. season\n2025–26 season | ||||\n---|---|---|---|---|\nOwner | City Football Group | |||\nChairman | Khaldoon Al Mubarak | |||\nManager | Pep Guardiola | |||\nStadium | City of Manchester Stadium | |||\nPremier League | 2nd | |||\nFA Cup | Final | |||\nEFL Cup | Winners | |||\nUEFA Champions League | Round of 16 | |||\nTop goalscorer | League: Erling Haaland (26) All: Erling Haaland (37) | |||\nHighest home attendance | 52,534 v Manchester United 14 September 2025 (Premier League) | |||\nLowest home attendance | 35,259 v Galatasaray 28 January 2026 (Champions League) | |||\nAverage home league attendance | 52,241 | |||\nBiggest win | 10–1 v Exeter City (Home) 10 January 2026 (FA Cup) | |||\nBiggest defeat | 0–3 v Real Madrid (Away) 11 March 2026 (UEFA Champions League) | |||\n| ||||\nAll statistics correct as of 9 May 2026. |\nThe 2025–26 season is the 131st season in the existence of Manchester City Football Club and their 24th consecutive season in the topflight of English football. In addition to the domestic league, Manchester City is also participating in the FA Cup, EFL Cup and UEFA Champions League, entering the latter for the 15th consecutive season.\nThis is the club's first season since 2014–15 without midfielder Kevin De Bruyne, who departed for Napoli following the expiration of his contract, and the first season since 2016–17 without Kyle Walker (to Burnley) and Ederson (to Fenerbahçe).",
+        "score": 7.7839,
+        "rank": 0
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "eved 2026-04-12.\n- ^ \"City to face Palermo FC in pre-season fixture\". Manchester City F.C. 7 July 2025. Retrieved 7 July 2025.\n- ^ \"The Anglo-Palermitan Trophy in numbers\". Palermo FC. 14 August 2025. Retrieved 21 August 2025.\n- ^ \"Premier League Handbook 2022/23\" (PDF). Premier League. pp. 109–111. Archived (PDF) from the original on 27 August 2022. Retrieved 24 August 2022.\n- ^ \"City to start 2025/26 Premier League season at Wolves\". Manchester City F.C. 18 June 2025. Retrieved 18 June 2025.\n- ^ a b \"Premier League TV selections for August confirmed\". Manchester City F.C. 9 July 2025. Retrieved 9 July 2025.\n- ^ a b \"New dates for Manchester Derby and Arsenal clashes\". Manchester City F.C. 23 July 2025. Retrieved 23 July 2025.\n- ^ a b \"Two Premier League games in October moved for TV\". Manchester City F.C. 20 August 2025. Retrieved 21 August 2025.\n- ^ a b c @ManCity (19 September 2025). \"PL Fixture Confirmations\" (Tweet). Retrieved 19 September 2025 – via X (formerly Twitter).\n- ^ a b \"Fulham and Palace clashes moved for TV broadcast\". Manchester City F.C. 15 October 2025. Retrieved 15 October 2025.\n- ^ a b c d \"Sunderland clash switched to New Year's Day plus Forest, Chelsea and Brighton selected for broadcast\". Manchester City F.C. 31 October 2025. Retrieved 31 October 2025.\n- ^ a b \"New dates for January trips to United and Spurs\". Manchester City F.C. 20 November 2025.",
+        "score": 7.0935,
+        "rank": 1
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "trieved 5 April 2026.\n- ^ \"City to face Huddersfield in Carabao Cup third round\". Manchester City F.C. 27 August 2025. Retrieved 27 August 2025.\n- ^ \"City to face Swansea in Carabao Cup Fourth Round\". Manchester City F.C. 24 September 2025. Retrieved 24 September 2025.\n- ^ \"City to host Brentford in Carabao Cup quarter-final\". Manchester City F.C. 29 October 2025. Retrieved 30 October 2025.\n- ^ \"Dates and kick-off times confirmed for Carabao Cup semi-final with Newcastle United\". Manchester City F.C. 19 December 2025. Retrieved 19 December 2025.\n- ^ \"City discover eight opponents in 2025/26 Champions League league phase\". Manchester City F.C. 28 August 2025. Retrieved 28 August 2025.\n- ^ \"City's Champions League - League Phase fixtures finalised\". Manchester City F.C. 30 August 2025. Retrieved 30 August 2025.\n- ^ \"League phase table\". UEFA.com. Union of European Football Associations. Retrieved 28 January 2026.\n- ^ \"City to face Real Madrid in Champions League Round of 16\". Manchester City F.C. 27 February 2026. Retrieved 27 February 2026.\n- ^ \"Dates and kick-off times confirmed for Real Madrid tie\". Manchester City F.C. 27 February 2026. Retrieved 27 February 2026.\n- ^ a b c d \"2025–2026 Manchester City Stats\". FBref. Retrieved 25 August 2025.\n- ^ Hafez, Shamoon. \"FA Cup quarter-final LIVE: Manchester City vs Liverpool - score, radio commentary, text updates & match stats\". BBC Sport. Retrieved 2026-04-04.\n- ^ Clayton, David (6 September 2025).",
+        "score": 7.0537,
+        "rank": 2
+      },
+      {
+        "url": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "title": "https://www.espn.com/soccer/team/results/_/id/382/league/UEFA.CHAMPIONS",
+        "heading": "",
+        "chunk_text": "ITION\nWed, Dec 10\nReal Madrid\n1 - 2\nManchester City\nFT\nUEFA Champions League\nNovember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Nov 25\nManchester City\n0 - 2\nBayer Leverkusen\nFT\nUEFA Champions League\nWed, Nov 5\nManchester City\n4 - 1\nBorussia Dortmund\nFT\nUEFA Champions League\nOctober, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nTue, Oct 21\nVillarreal\n0 - 2\nManchester City\nFT\nUEFA Champions League\nWed, Oct 1\nAS Monaco\n2 - 2\nManchester City\nFT\nUEFA Champions League\nSeptember, 2025\nDATE\nMATCH\nRESULT\nCOMPETITION\nThu, Sep 18\nManchester City\n2 - 0\nNapoli\nFT\nUEFA Champions League",
+        "score": 6.8062,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "title": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Manchester_City_F.C._season",
+        "heading": "",
+        "chunk_text": "her key exits included İlkay Gündoğan to Galatasaray and Manuel Akanji on loan to Inter Milan.[14][15]\nFollowing the September 2025 international break, Manchester City recorded consecutive victories. On 14 September, City defeated Manchester United 3–0 at home in the Premier League, with goals from Phil Foden and a brace from Erling Haaland.[16] Four days later, on 18 September 2025, City beat Napoli 2–0 in their opening UEFA Champions League league stage match. Haaland scored his 50th goal in the competition in his 49th appearance, becoming the fastest player to reach the milestone, while Jérémy Doku added the second against the Italian side, who played most of the match with ten men.[17]\nAutumn period\n[edit]Manchester City resumed their league campaign on 21 September with a 1–1 draw at Arsenal. Erling Haaland put City ahead after nine minutes, but Gabriel Martinelli’s stoppage-time equaliser(90+3) rescued a point for the hosts.[18][19] Three days later, on 24 September 2025, City advanced in the EFL Cup with a 2–0 victory over Huddersfield Town in the third round, as Phil Foden opened the scoring and Savinho doubled the lead.[20][21] This was followed up with an emphatic 5–1 Premier League victory over Burnley on 27 September.",
+        "score": 6.578,
+        "rank": 4
+      },
+      {
+        "url": "https://www.facebook.com/groups/1006581580322891/posts/1463330764647968/",
+        "title": "Man City fans | ✅ Community Shield | Facebook",
+        "heading": "[Man City fans](https://www.facebook.com/groups/1006581580322891/?__cft__[0]=AZaEJYyZZTufPmCLpToH8TkHZ3jco5FhKvOmoKVwXRaWugzc7X1eCU11HUzRlISUa6RUdA8rPDWlsFYCrpzvJFOjynOI4heIY6nIw_TUz3hz3V22nrnke9cpOSY99oKKYS0rrlWK0QSBby23AjCGUFPDYnENDni1gIPQIqV492g0tPoig7mzuQD8M65c4rW7JZH2irIipY5d2uK_d-QP__bi&__tn__=-UC%2CP-R)",
+        "chunk_text": "[Man City fans](https://www.facebook.com/groups/1006581580322891/?__cft__[0]=AZaEJYyZZTufPmCLpToH8TkHZ3jco5FhKvOmoKVwXRaWugzc7X1eCU11HUzRlISUa6RUdA8rPDWlsFYCrpzvJFOjynOI4heIY6nIw_TUz3hz3V22nrnke9cpOSY99oKKYS0rrlWK0QSBby23AjCGUFPDYnENDni1gIPQIqV492g0tPoig7mzuQD8M65c4rW7JZH2irIipY5d2uK_d-QP__bi&__tn__=-UC%2CP-R)\n\nMan City Transfer News\n\n· [May 17, 2025](https://www.facebook.com/groups/1006581580322891/?multi_permalinks=1463330764647968&hoisted_section_header_type=recently_seen&__cft__[0]=AZaEJYyZZTufPmCLpToH8TkHZ3jco5FhKvOmoKVwXRaWugzc7X1eCU11HUzRlISUa6RUdA8rPDWlsFYCrpzvJFOjynOI4heIY6nIw_TUz3hz3V22nrnke9cpOSY99oKKYS0rrlWK0QSBby23AjCGUFPDYnENDni1gIPQIqV492g0tPoig7mzuQD8M65c4rW7JZH2irIipY5d2uK_d-QP__bi&__tn__=%2CO%2CP-R) ·\n\n![Image 2: ✅](https://static.xx.fbcdn.net/images/emoji.php/v9/tb4/2/16/2705.png) Community Shield\n\n![Image 3: ❌](https://static.xx.fbcdn.net/images/emoji.php/v9/t5e/2/16/274c.png) Champions League\n\n![Image 4: ❌](https://static.xx.fbcdn.net/images/emoji.php/v9/t5e/2/16/274c.png) Premier League\n\n![Image 5: ❌](https://static.xx.fbcdn.net/images/emoji.php/v9/t5e/2/16/274c.png) League Cup\n\n![Image 6: ❌](https://static.xx.fbcdn.net/images/emoji.php/v9/t5e/2/16/274c.png) FA Cup\n\n![Image 7: ⏳](https://static.xx.fbcdn.net/images/emoji.php/v9/t38/2/16/23f3.png) 2025-26 UCL qualification\n\nManchester City will finish the season having won just one trophy and have yet to qualify for next season's UEFA Champions League\n\n( Source : ESPN FC)\n\nMan City Transfer News",
+        "score": 0.8398,
+        "rank": 5
+      },
+      {
+        "url": "https://www.facebook.com/groups/458978894153456/posts/25563129819978350/",
+        "title": "Group title pending | 📊 Real Madrid 2023/24 🆚 2025/26 — You will be surprised | Facebook",
+        "heading": "Group title pending | 📊 Real Madrid 2023/24 🆚 2025/26 — You will be surprised | Facebook",
+        "chunk_text": "Group title pending | 📊 Real Madrid 2023/24 🆚 2025/26 — You will be surprised | Facebook\n\n[Log In](https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&next=https%3A%2F%2Fwww.facebook.com%2Fgroups%2F458978894153456%2Fposts%2F25563129819978350%2F)\n\nLog In\n\n[Forgot Account?](https://www.facebook.com/recover/initiate?ars=royal_blue_bar)\n\n![Image 2](https://static.xx.fbcdn.net/rsrc.php/y-/r/oJDN4UDRn_R.webp)\n\nReal Madrid's performance in 2023/24 and 2025/26 seasons\n\nSummarized by AI from the post below\n\n[](https://www.facebook.com/groups/458978894153456/?__cft__[0]=AZbhflFJot7Ru7H69L4fLRejyeqpd9LCj57gO_ahEUXfDyOY8FqB_Fz747AX9LgMF0QkTE_US2sYgR8NBVgsx1n1z485X5UDGlzEEJ_rKMbThOTQSC4es_EfrWOztEceh5FuxYvHBK-7diqgGCIyDYceFFEObraVfXw4mzZ-sCCDhVZpiQ9KXAbxyGdpMif8pqDjwp7X_pGrdt9iZlWermub&__tn__=%3C%3C%2CP-R)",
+        "score": -2.9778,
+        "rank": 6
+      },
+      {
+        "url": "https://www.facebook.com/groups/458978894153456/posts/25563129819978350/",
+        "title": "Group title pending | 📊 Real Madrid 2023/24 🆚 2025/26 — You will be surprised | Facebook",
+        "heading": "[Group title pending](https://www.facebook.com/groups/458978894153456/?__cft__[0]=AZbhflFJot7Ru7H69L4fLRejyeqpd9LCj57gO_ahEUXfDyOY8FqB_Fz747AX9LgMF0QkTE_US2sYgR8NBVgsx1n1z485X5UDGlzEEJ_rKMbThOTQSC4es_EfrWOztEceh5FuxYvHBK-7diqgGCIyDYceFFEObraVfXw4mzZ-sCCDhVZpiQ9KXAbxyGdpMif8pqDjwp7X_pGrdt9iZlWermub&__tn__=-UC%2CP-R) ·",
+        "chunk_text": "[Group title pending](https://www.facebook.com/groups/458978894153456/?__cft__[0]=AZbhflFJot7Ru7H69L4fLRejyeqpd9LCj57gO_ahEUXfDyOY8FqB_Fz747AX9LgMF0QkTE_US2sYgR8NBVgsx1n1z485X5UDGlzEEJ_rKMbThOTQSC4es_EfrWOztEceh5FuxYvHBK-7diqgGCIyDYceFFEObraVfXw4mzZ-sCCDhVZpiQ9KXAbxyGdpMif8pqDjwp7X_pGrdt9iZlWermub&__tn__=-UC%2CP-R) ·\n\nJoin\n\nReal madrid fans\n\n· [November 27, 2025](https://www.facebook.com/groups/458978894153456/?multi_permalinks=25563129819978350&hoisted_section_header_type=recently_seen&__cft__[0]=AZbhflFJot7Ru7H69L4fLRejyeqpd9LCj57gO_ahEUXfDyOY8FqB_Fz747AX9LgMF0QkTE_US2sYgR8NBVgsx1n1z485X5UDGlzEEJ_rKMbThOTQSC4es_EfrWOztEceh5FuxYvHBK-7diqgGCIyDYceFFEObraVfXw4mzZ-sCCDhVZpiQ9KXAbxyGdpMif8pqDjwp7X_pGrdt9iZlWermub&__tn__=%2CO%2CP-R) ·\n\n![Image 3: 📊](https://static.xx.fbcdn.net/images/emoji.php/v9/t49/2/16/1f4ca.png) Real Madrid 2023/24 ![Image 4: 🆚](https://static.xx.fbcdn.net/images/emoji.php/v9/t70/2/16/1f19a.png) 2025/26 — You will be surprised!\n\nIn LaLiga after 13 matchdays:\n\n2023/24: 32 points. 2nd place. 28 goals scored. 9 goals conceded.\n\n2025/26: 32 points. 1st place. 28 goals scored. 12 goals conceded.\n\nIn UCL after 5 matchdays:\n\n2023/24: 5 wins. 15 points. 13 goals scored. 5 goals conceded.\n\n2025/26: 4 wins. 12 points. 12 goals scored. 5 goals conceded.\n\nJust one more defeat than in 23/24 and only one goal less scored — while 23/24 is considered a dream season where everything was perfect, some people seriously think Xabi Alonso’s job should be in danger? That’s ridiculous.",
+        "score": -8.4995,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 3899,
+      "search_ms": 2138,
+      "extract_ms": 29986,
+      "chunk_ms": 20,
+      "retrieve_ms": 2166,
+      "synthesis_ms": 8435,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 58737,
+    "elapsed_s": 64.61,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

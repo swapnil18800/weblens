@@ -1,0 +1,225 @@
+{
+  "id": "amb3",
+  "category": "ambiguity",
+  "domain": "music",
+  "question": "What's their latest single about?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "No subject — should refuse or scope.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T161015Z-amb3",
+  "verdict": "pass",
+  "aggregate": 0.875,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 1.0,
+    "context_recall": 1.0,
+    "context_precision": 0.375,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.327,
+    "aggregate": 0.875,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.875
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 1.0,
+      "supported": 7,
+      "total": 7,
+      "reasoning": "All claims are directly supported by chunk [1]."
+    },
+    "context_precision": {
+      "score": 0.375,
+      "relevant": 3,
+      "total": 8,
+      "reasoning": "Chunks 1, 3, 8 mention 'Potential' or latest single; others are irrelevant."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.327,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 4,
+      "decompose_ms": 2618,
+      "search_ms": 3934,
+      "extract_ms": 9664,
+      "chunk_ms": 89,
+      "retrieve_ms": 3228,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 1,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 26358,
+    "pipeline_s": 29.03
+  },
+  "judge_reasoning": "All claims are directly supported by chunk [1].",
+  "pipeline": {
+    "answer": "**Artist:** sombr (2026 Grammy nominee for Best New Artist [1]).\n\n**Latest single:** \"Potential\"\n\n**Release date:** April 16, 2026, at 6:00 PM ET [1].\n\n**Meaning/thematic content:** The song is a poignant exploration of how relationships often collapse under the weight of **excessive expectations**. The central lyrical hook captures this with the line, *\"before we even start, we call it potential\"* [1].\n\n- **Purpose:** The track deliberately bridges back to sombr's intimate \"bedroom-pop\" aesthetic (following the more radio-focused \"Homewrecker\"), using a soft acoustic opening and synth pads reminiscent of his breakthrough hit \"back to friends\" [1].\n\n**Production context:** \"Potential\" was produced by **Dan Nigro** (Olivia Rodrigo, Chappell Roan), his first high-profile producer. Nigro's touch yields \"softer piano attacks\" and \"richer atmosphere\" rather than a direct pop punch [1].\n\n**Broader project context:** This is the third track from sombr's upcoming studio album, expected June 2026 [1].",
+    "mode": "search",
+    "rewritten_query": "What's their latest single about?",
+    "rewrote": false,
+    "rationale": "Time-sensitive; needs context and source for latest release.",
+    "sub_queries": [
+      "Latest single from [artist/band name] released as of 2026-05-11 and its meaning"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.inspiredbybeatz.com/en/sombr-drops-potential-today-what-the-new-single-reveals/",
+        "title": "Sombr Drops “Potential” Today: What the New Single Reveals About Fall 2026",
+        "snippet": "DROP\n\n*   ▸ “Potential” drops today, April 16, at 6:00 PM ET (midnight Berlin time) – including the music video via Warner Records.\n*   ▸ The single is the third track from his upcoming studio album, expected in June.\n*   ▸ Tour kicks off September 29 in Vancouver, wrapping November 23 at Madison Sq"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.facebook.com/RickAstley/videos/so-excited-for-the-release-of-my-new-song-waiting-on-you-have-you-been-waiting-w/4261928427387440/",
+        "title": "So excited for the release of my new song 'Waiting On You'. Have ...",
+        "snippet": "Age has not limits…the decade you enter no meaning, it's the ... Last viewed on: May 11, 2026. More videos you may like."
+      },
+      {
+        "url": "https://www.yahoo.com/entertainment/music/articles/now-hear-may-2026-144819039.html",
+        "title": "Now Hear This: May 2026 - Yahoo",
+        "snippet": "TEN TON DEVIL came to me because it was the title of a song I released as Stereo Assassin years ago. I had a few other names before TTD but they"
+      },
+      {
+        "url": "https://www.instagram.com/reel/DU5t6Ixk7_g/",
+        "title": "Today we drop the latest single \"Knowledge | Understanding",
+        "snippet": "704 likes, 27 comments - daleknwk on February 18, 2026: \"Today we drop the latest single \"Knowledge | Understanding | Wisdom\" A call to arms"
+      },
+      {
+        "url": "https://www.inspiredbybeatz.com/en/sombr-drops-potential-today-what-the-new-single-reveals/",
+        "title": "Sombr Drops \"Potential\" Today: What the New Single Reveals About...",
+        "snippet": "On Thursday, April 16, 2026, at 6:00 PM Eastern Time, sombr will release his new single “Potential” – complete with a music video."
+      },
+      {
+        "url": "https://parade.com/entertainment/80s-rock-icon-76-releases-nostalgic-new-single-fans-calling-right-song-right-time",
+        "title": "'80s Rock Icon, 76, Releases 'Nostalgic' New Single - Parade",
+        "snippet": "Peter Gabriel releases a new song monthly from upcoming album o/i through 2026. “Won't Stand Down” encourages activism and hope. Each song"
+      },
+      {
+        "url": "https://www.instagram.com/p/DXZU5KHDd4k/",
+        "title": "Song meaning from the artist My new song, More than Ordinary, is ...",
+        "snippet": "Song meaning from the artist My new song, More than Ordinary, is an energetic, hard rock song ultimately about celebrating that we are"
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://www.inspiredbybeatz.com/en/sombr-drops-potential-today-what-the-new-single-reveals/",
+        "title": "Sombr Drops “Potential” Today: What the New Single Reveals About Fall 2026",
+        "heading": "DROP",
+        "chunk_text": "DROP\n\n*   ▸ “Potential” drops today, April 16, at 6:00 PM ET (midnight Berlin time) – including the music video via Warner Records.\n*   ▸ The single is the third track from his upcoming studio album, expected in June.\n*   ▸ Tour kicks off September 29 in Vancouver, wrapping November 23 at Madison Square Garden.\n*   ▸ Opening acts: Interpol, The Last Dinner Party, Tom Odell, Dove Cameron, Balu Brigada, King Princess, The Hellp, Hannah Jadagu.\n*   ▸ 2026 Grammy nominee for Best New Artist – the award will be presented at the 2027 Grammys.",
+        "score": 0.0851,
+        "rank": 0
+      },
+      {
+        "url": "https://www.inspiredbybeatz.com/en/sombr-drops-potential-today-what-the-new-single-reveals/",
+        "title": "Sombr Drops “Potential” Today: What the New Single Reveals About Fall 2026",
+        "heading": "The Tour Strategy: 37 Arenas, Major Opening Lineup",
+        "chunk_text": "The Tour Strategy: 37 Arenas, Major Opening Lineup\n\nThe “You Are the Reason” tour kicks off on September 29, 2026, in Vancouver and wraps up on November 23, 2026, at a sold-out Madison Square Garden. For an artist who was recording in Brooklyn apartments just two years ago, 37 shows across eight weeks represent a massive leap in scale. The European leg, set for early 2027, includes three German stops: Berlin’s Mercedes-Benz Arena, Cologne’s Lanxess Arena, and Munich’s Olympiahalle.\n\nThe opening lineup reveals just how confidently Team Warner is positioning this tour. Interpol as main support sends a message—the New York post-punk legends typically headline their own shows. The Last Dinner Party, fresh Brit Award winners, were 2024’s breakout band in the UK. Tom Odell, Dove Cameron, and King Princess cover a range of subgenres: singer-songwriter, pop-crossover, indie-queer. This isn’t a standard support bill—it’s a festival lineup compressed into a tour.\n\nFor sombr himself, it’s a calculated move. A 21-year-old headliner with just two years since his breakthrough could easily stumble on an arena run. But with an opening roster like this, even on off nights, there’s a crowd already buzzing in the venue. [Much like Boiler Room events](https://www.inspiredbybeatz.com/en/boiler-room-15-years-club-culture/), it’s about the full experience, not just the main act.",
+        "score": -0.808,
+        "rank": 1
+      },
+      {
+        "url": "https://www.inspiredbybeatz.com/en/sombr-drops-potential-today-what-the-new-single-reveals/",
+        "title": "Sombr Drops “Potential” Today: What the New Single Reveals About Fall 2026",
+        "heading": "Why “Potential” Is More Than Just a Tour Trailer",
+        "chunk_text": "Why “Potential” Is More Than Just a Tour Trailer\n\nFor those who haven’t followed the sombr hype, a quick catch-up is in order. The artist broke through in 2024 with “back to friends”—a bedroom-pop ballad that went viral on TikTok and has since amassed over 1.3 billion Spotify streams. The follow-up single, “undressed,” confirmed he’s no one-hit wonder. Then came “Homewrecker” in spring 2026—his first single with a deliberate radio focus: broader production, a clearer chorus, and a chart strategy replacing viral randomness.\n\n“Potential” aims to bridge back to that intimate aesthetic. In teaser snippets on Instagram and TikTok, an acoustic opener leads into a synth pad reminiscent of “back to friends”’ atmosphere. Lyrically, as much as the first hook reveals, the song explores why relationships often collapse under excessive expectations—“before we even start, we call it potential.” This is exactly what fans expect from sombr: big emotions distilled into a single, defining line.\n\n“Potential” was produced by Dan Nigro, credited as the mastermind behind Olivia Rodrigo’s “Drivers License” and Chappell Roan’s breakthrough album. This marks Nigro as the first high-profile producer in sombr’s discography. His touch is audible: softer piano attacks than on “Homewrecker,” less direct pop punch, but richer atmosphere. The track feels like a deliberate pivot back toward intimacy—a signal to fans who worried sombr might veer too far into radio pop after “Homewrecker.”",
+        "score": -0.988,
+        "rank": 2
+      },
+      {
+        "url": "https://www.inspiredbybeatz.com/en/sombr-drops-potential-today-what-the-new-single-reveals/",
+        "title": "Sombr Drops “Potential” Today: What the New Single Reveals About Fall 2026",
+        "heading": "Latest Posts",
+        "chunk_text": "Latest Posts\n\n*   [![Image 164](https://www.inspiredbybeatz.com/wp-content/uploads/2026/05/pompeii-utility-earl-sweatshirt-mike-take-2026-cover-hero-150x150.jpg)](https://www.inspiredbybeatz.com/en/pompeii-utility-earl-double-album/) ##### [POMPEII // UTILITY: What Earl’s Double Album Reveals](https://www.inspiredbybeatz.com/en/pompeii-utility-earl-double-album/)\n\nEarl Sweatshirt, MIKE, and Surf Gang released a 33-track double album on April 3, 2026. What remains a month later?...",
+        "score": -1.8903,
+        "rank": 3
+      },
+      {
+        "url": "https://www.yahoo.com/entertainment/music/articles/now-hear-may-2026-144819039.html",
+        "title": "https://www.yahoo.com/entertainment/music/articles/now-hear-may-2026-144819039.html",
+        "heading": "",
+        "chunk_text": "Now Hear This: May 2026\nNow Hear This is a monthly A&R column that provides you with exciting new sounds we discovered through the innovative new music discovery platform Groover.\nEach month, you can expect a varied bouillabaisse of songs from a vast spectrum of artists from all over the globe, regardless of genre or geography.\nThis month, SPIN has selected 11 artists who deserve your attention, including the next-level IDM of eassae, the uplifting songwriting style of Andrea Magee, the cosmopolitan synthpop of MIDNIGHT MYSTERY CLUB, the timeless UK jangle pop of The Kind Hills, the modern indie rock of KINSALE, the electronic groove metal of Ten Ton Devil, the glacial beauty of Ones Loved, the driving, Echo-eseque Saint Clare, the dark alt-pop of Elnoir, the progressive world jazz of Floating Sheep and the widescreen country of Italy’s Cadillac Ranch.\nWho knows, your next favorite act could just be a read away.\neassae\nSounds like: Melodic, tuneful IDM that blurs the lines between John Carpenter film scores and Aphex Twin style grooves.\nInterview:\nDescribe your approach to music and how you would explain your sound to others?\nI would say it’s play and experimentation. I’m not a classically trained musician. Other that a few years of piano lessons in secondary school, my music education is primarily self-directed.",
+        "score": -1.918,
+        "rank": 4
+      },
+      {
+        "url": "https://www.yahoo.com/entertainment/music/articles/now-hear-may-2026-144819039.html",
+        "title": "https://www.yahoo.com/entertainment/music/articles/now-hear-may-2026-144819039.html",
+        "heading": "",
+        "chunk_text": "my projects which I think is very important for the overall image. In the past I’ve had Soul-Sick, Stereo Assassin and Cruel Twisted Smile all reaching a certain level of attention in their own right. TEN TON DEVIL came to me because it was the title of a song I released as Stereo Assassin years ago. I had a few other names before TTD but they were already taken lol, then it hit me... plagiarize myself! lol”.\nWhat are some artists and albums that have informed your creative direction?\nThat’s tough because literally everything I see or hear is a song title, a lyric, a drum pattern, a riff etc etc etc. as for bands that influence me they are far and wide reaching. Everything from Godflesh to The Yardbirds but standout artists are absolute such as King Crimson, Nine Inch Nails, Every Time I Die, Candiria, Car Bomb and The Dillinger Escape Plan. Also some of the newer artists are really doing amazing stuff that really sparks my creativity such as Slay Squad, Alpha Wolf, Darknet, Code Orange and Signs of the Swarm.\nWhat’s the most exciting thing happening in music right now?\nI’m really excited with the state of Metal music and its subgenres, in particular Deathcore, slamcore and Thall. These younger artists are really redefining how heavy music can be and the proficiency of these artists is amazing. Also, I really enjoy the blending of Metal with Electronic music and its aesthetics.",
+        "score": -8.5172,
+        "rank": 5
+      },
+      {
+        "url": "https://www.yahoo.com/entertainment/music/articles/now-hear-may-2026-144819039.html",
+        "title": "https://www.yahoo.com/entertainment/music/articles/now-hear-may-2026-144819039.html",
+        "heading": "",
+        "chunk_text": "How did you come up with the name of your act?\nKINSALE was the name of the street I (Raymond) used to live on, where the majority of our debut EP Nights & Weekends was written and partially recorded. Band names can be hard to come up with, but one day it felt like an obvious choice, and we went with it.\nWhat are some artists and albums that have informed your creative direction?\nTom Petty’s Wildflowers is definitely a North Star album for our band, but we love anything that has that timeless quality to it like R.E.M., Wilco, Beck, The Cure, Elliott Smith, Oasis, Radiohead, and of course The Beatles. The ’90s as a decade was just such a great time in music in terms of inspiration in our lifetime, and I think that comes through in our music too. We’re always looking into new artists as well, and of course, being based in Atlanta, there’s always new music coming out of different pockets of the city that keeps things inspiring, with such a strong musical history to draw on as well.\nWhat’s the most exciting thing happening in music right now?\nThere are fewer gatekeepers, and distribution is much easier now. Being able to have your music reach more people in so many different places, and hearing how they respond to it, is always exciting.",
+        "score": -8.6419,
+        "rank": 6
+      },
+      {
+        "url": "https://www.yahoo.com/entertainment/music/articles/now-hear-may-2026-144819039.html",
+        "title": "https://www.yahoo.com/entertainment/music/articles/now-hear-may-2026-144819039.html",
+        "heading": "",
+        "chunk_text": "s and Valerie Broussard shaped my understanding of emotional intensity in vocal performance, especially in darker pop contexts.\nI’ve also been influenced by the cinematic minimalism of Massive Attack. Albums like Mezzanine taught me that silence and restraint can be more powerful than density.\nOn a more theatrical and conceptual level, Lady Gaga’s ARTPOP had a direct impact on my latest single “Bless His Name,” especially in how it embraces excess, symbolism, and provocation without losing structure.\nMore broadly, I’m drawn to projects that build a world rather than just a collection of songs.\nWhat’s the most exciting thing happening in music right now?\nThe collapse of traditional gatekeeping, but not in the naive sense people talk about. It’s not that everyone has equal opportunity, it’s that artists are now forced to build their own ecosystems.\nWhat’s interesting is the shift toward narrative-driven projects. Audiences don’t just want songs, they want context, identity, and continuity. Music is becoming closer to world-building than ever before.\nWhere do you see the music world heading in the next five years?\nMore fragmentation, but also more precision. We’ll see fewer “universal” hits and more hyper-targeted audiences. Artists who understand positioning, storytelling, and visual identity will have a significant advantage.\nI think AI will put serious pressure on the current streaming model as we know it.",
+        "score": -8.749,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 4,
+      "decompose_ms": 2618,
+      "search_ms": 3934,
+      "extract_ms": 9664,
+      "chunk_ms": 89,
+      "retrieve_ms": 3228,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 1,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 26358,
+    "elapsed_s": 29.03,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

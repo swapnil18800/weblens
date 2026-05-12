@@ -1,0 +1,226 @@
+{
+  "id": "amb3",
+  "category": "ambiguity",
+  "domain": "music",
+  "question": "What's their latest single about?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "No subject — should refuse or scope.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T075017Z-amb3",
+  "verdict": "partial",
+  "aggregate": 0.709,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.4,
+    "context_recall": 1.0,
+    "context_precision": 0.143,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.709,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.709
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.4,
+      "supported": 2,
+      "total": 5,
+      "reasoning": "Only Tedeschi Trucks Band's single and meaning are supported; others lack source backing."
+    },
+    "context_precision": {
+      "score": 0.143,
+      "relevant": 1,
+      "total": 7,
+      "reasoning": "Only chunk 3 mentions a specific single and its theme, directly answering the question."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 4902,
+      "search_ms": 2065,
+      "extract_ms": 7879,
+      "chunk_ms": 80,
+      "retrieve_ms": 1672,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 20202,
+    "pipeline_s": 22.75
+  },
+  "judge_reasoning": "Only Tedeschi Trucks Band's single and meaning are supported; others lack source backing.",
+  "pipeline": {
+    "answer": "The question does not specify a particular artist, so I cannot provide a single answer. However, based on the provided sources, here are the most recent singles for artists mentioned and their meanings as of early 2026:\n\n- **Tedeschi Trucks Band** – Single: **\"I Got You\"** [3]. Meaning/subject: A \"jaunty\" and \"infectious\" love song written by Mattison, described by the band as \"a breath of fresh air\" and \"pretty different for us\" [3]. It draws from the spirit of Derek and the Dominos and Delaney & Bonnie [3].\n\n- **Broadside** – Single: **\"Dark Passenger\"** [2]. Meaning/subject: No explicit meaning provided in sources, only that it is an \"intense new single\" from their album *Nowhere, At Last* [2].\n\n- **I Am the Avalanche** – Two singles (titles not given in source) [2]. Meaning/subject: No information available in sources [2].\n\nFor other artists (e.g., Enter Shikari, Little Feat, Gretta Ray), the provided sources do not specify their most recent singles or meanings [2][3]. No single release data for 2026 is found in source [1], which is a general playlist. Therefore, the most detailed single/meaning information available is for Tedeschi Trucks Band’s **\"I Got You\"** [3].",
+    "mode": "search",
+    "rewritten_query": "What's their latest single about?",
+    "rewrote": false,
+    "rationale": "Time-sensitive inquiry about a recent release without specifying artist.",
+    "sub_queries": [
+      "What is the most recent single released by [artist] and its meaning or subject matter as of 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://open.spotify.com/playlist/5VfSw4ZamxsZQabsnIS0ga",
+        "title": "New Music Releases 2026 - Most Recent Songs 2026 - Today Release Song 2026 - Latest Music 2026 Mix - playlist by Vibes Music*",
+        "snippet": "New Music Releases 2026 - Most Recent Songs 2026 - Today Release Song 2026 - Latest Music 2026 Mix\n\nmusic releases 2026 - latest music 2026 mix - new music 2026 - today release song 2026 - release song 2026 - most recent songs 2026 - new music releases 2026 - latest music 2026 - recent songs 2026 - "
+      },
+      {
+        "num": 2,
+        "url": "https://en.wikipedia.org/wiki/List_of_2026_albums",
+        "title": "List of 2026 albums",
+        "snippet": "List of 2026 albums\n\nThe following is a **list of [albums](https://en.wikipedia.org/wiki/Album \"Album\"), [EPs](https://en.wikipedia.org/wiki/Extended_play \"Extended play\"), and [mixtapes](https://en.wikipedia.org/wiki/Mixtape \"Mixtape\") released or scheduled for release in 2026**. These albums are ("
+      },
+      {
+        "num": 3,
+        "url": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "title": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "snippet": "tell me now/ I have loved you from the beginning.’\nFuture Soul, due out on March 20, will be Tedeschi Trucks Band’s sixth studio album from which we’ve already been introduced to the jaunty I Got You. The infectious first single, written by Mattison, draws from the spirit of Derek and the Dominos an"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://open.spotify.com/playlist/5VfSw4ZamxsZQabsnIS0ga",
+        "title": "New Music Releases 2026 - Most Recent Songs 2026 - Spotify",
+        "snippet": "I Feel So Free · Madonna ; drop dead · Olivia Rodrigo ; RUNWAY · Lady Gaga, Doechii ; Younger You - From the \"Hannah Montana 20th Anniversary Special\" · Miley Cyrus."
+      },
+      {
+        "url": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "title": "Songs of the Week 2026: Take 1",
+        "snippet": "The next day we heard the latest single, Who Am I, from her fellow Americans Tedeschi Trucks Band and were captivated by its rolling riff and"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/List_of_2026_albums",
+        "title": "List of 2026 albums - Wikipedia",
+        "snippet": "\"Joost Klein releases new 24-track album Kleinkunst featuring collab with a Eurovision artist\". ... In Verses out in February 2026 + new single \"Aozora\"\"."
+      },
+      {
+        "url": "https://www.nytimes.com/2026/04/21/arts/music/amplifier-newsletter-new-songs-nine-inch-noize.html",
+        "title": "7 New Songs You Should Hear Now - The New York Times",
+        "snippet": "Nine Inch Nails' LP with Boys Noize, Raye's collaboration with Al Green, the latest from a Black Midi member and more."
+      },
+      {
+        "url": "https://open.spotify.com/playlist/7G2BJ1tqMHFrGwKicbxrxL",
+        "title": "Best Music Releases This Month (Latest English Songs 2026) - Spotify",
+        "snippet": "New Songs 2026 - Best Music Releases This Month (Latest English Songs 2026). Find our playlist with these keywords: recent songs 2026 - latest music 2026 - new"
+      },
+      {
+        "url": "https://genius.com/albums/Genius/2026-singles-release-calendar",
+        "title": "2026 Singles Release Calendar Lyrics and Tracklist - Genius",
+        "snippet": "This page highlights the notable singles released in all genres throughout 2026. ... What is the most popular song on 2026 Singles Release Calendar by Genius?"
+      }
+    ],
+    "chunk_count": 7,
+    "chunks": [
+      {
+        "url": "https://open.spotify.com/playlist/5VfSw4ZamxsZQabsnIS0ga",
+        "title": "New Music Releases 2026 - Most Recent Songs 2026 - Today Release Song 2026 - Latest Music 2026 Mix - playlist by Vibes Music*",
+        "heading": "New Music Releases 2026 - Most Recent Songs 2026 - Today Release Song 2026 - Latest Music 2026 Mix",
+        "chunk_text": "New Music Releases 2026 - Most Recent Songs 2026 - Today Release Song 2026 - Latest Music 2026 Mix\n\nmusic releases 2026 - latest music 2026 mix - new music 2026 - today release song 2026 - release song 2026 - most recent songs 2026 - new music releases 2026 - latest music 2026 - recent songs 2026 - newest music 2026 - latest music releases 2026 - latest song releases 2026\n\n[Vibes Music*](https://open.spotify.com/user/31nyk3wei3vmqlcbmo53ulobpipy)\n\n•173 saves•\n\n80 songs, about 4 hr 30 min\n\n•\n\nList",
+        "score": -0.4913,
+        "rank": 0
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/List_of_2026_albums",
+        "title": "List of 2026 albums",
+        "heading": "List of 2026 albums",
+        "chunk_text": "List of 2026 albums\n\nThe following is a **list of [albums](https://en.wikipedia.org/wiki/Album \"Album\"), [EPs](https://en.wikipedia.org/wiki/Extended_play \"Extended play\"), and [mixtapes](https://en.wikipedia.org/wiki/Mixtape \"Mixtape\") released or scheduled for release in 2026**. These albums are (1) original, i.e. excluding [reissues](https://en.wikipedia.org/wiki/Reissue \"Reissue\"), [remasters](https://en.wikipedia.org/wiki/Remasters \"Remasters\"), and [compilations](https://en.wikipedia.org/wiki/Compilation_album \"Compilation album\") of previously released recordings, and (2) [notable](https://en.wikipedia.org/wiki/Wikipedia:MUS \"Wikipedia:MUS\"), defined as having received significant coverage from reliable sources independent of the subject.\n\nFor additional information about bands formed, reformed, disbanded, or on hiatus, for deaths of musicians, and for links to musical awards, see [2026 in music](https://en.wikipedia.org/wiki/2026_in_music \"2026 in music\").",
+        "score": -2.3591,
+        "rank": 1
+      },
+      {
+        "url": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "title": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "heading": "",
+        "chunk_text": "tell me now/ I have loved you from the beginning.’\nFuture Soul, due out on March 20, will be Tedeschi Trucks Band’s sixth studio album from which we’ve already been introduced to the jaunty I Got You. The infectious first single, written by Mattison, draws from the spirit of Derek and the Dominos and Delaney & Bonnie. Trucks describes it as ‘a breath of fresh air and pretty different for us. It feels like the band, but it doesn’t feel like anything we’ve done before’.\nThe 11-track album is the follow-up to their 2022 conceptual quadruple studio album, I Am The Moon, and last year’s live release, Tedeschi Trucks Band and Leon Russell Present: Mad Dogs & Englishmen Revisited. Co-produced by Mike Elizondo and Trucks, Future Soul reflects a full-band collaborative approach under the influence of southern rock, funk, blues and soul. It will include other recent additions to the band’s live repertoire, Crazy Cryin’ and the title track.\nTo promote album the 12-piece ensemble will perform a 10-night residency at New York City’s Beacon Theatre before launching their 35-date Future Soul 2026 US Tour on April 14.",
+        "score": -4.2063,
+        "rank": 2
+      },
+      {
+        "url": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "title": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "heading": "",
+        "chunk_text": "ns (with Esmé Patterson, Jess Williamson and Sierra Ferrell) and what he calls ‘regenerative’ music.\nGraves’ 2023 album Movie Of The Week, his most ambitious project, made the listener a collaborator. It began as a soundtrack for a film that never got off the ground. But he ploughed on and he and his band created their own imaginary soundtrack. ‘I love how the human brain applies plot to things,’ he told Under The Radar. ‘Like if you put a movie on and then play music over it, your brain will connect and recontextualise them. My intended goal is to have people apply that concept to this album.\n‘What I like is the idea that somebody’s going to make a better album out of this body of music than I can, but they’re going to do it by accident. It’s going to be titled something more interesting, arranged in a way that I had never thought about, and might even be able to pull a narrative out of it that I didn’t intend. It makes this album regenerative.’\nHe explained the interactive experience: listeners were invited to hear myriad versions of the tracks on his website where they were given space to insert a word of their choice to change the theme and the vibe and create their own soundtrack and artwork – with a little help generated by AI, it should be added.",
+        "score": -5.6593,
+        "rank": 3
+      },
+      {
+        "url": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "title": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "heading": "",
+        "chunk_text": "in’ and the title track.\nTo promote album the 12-piece ensemble will perform a 10-night residency at New York City’s Beacon Theatre before launching their 35-date Future Soul 2026 US Tour on April 14. Joining them at various points are The Black Crowes, Whiskey Myers, Alabama Shakes, Jason Isbell and The 400 Unit, Sheryl Crow, Lukas Nelson, JJ Grey & Mofro, and Molly Tuttle.\nThe band, whose debut studio album, Revelator, won the 2012 Grammy for Best Blues Album, will also perform at numerous festivals including Bonnaroo, New Orleans Jazz & Heritage Festival and Telluride Bluegrass Festival as well as their own Sun, Sand & Soul extravaganza. They will also be supporting veterans The Eagles at two farewell shows in May.\nThe future of soulful rock is in safe hands. Loving hands.\nLong Distance Love: Little Feat (Featuring Amy Helm)\nLittle Feat’s remembrance of one of their most cherished songs could never be a slavish remake. What would be the point? And so their celebration of Long Distance Love, more than 50 years after the late Lowell George wrote it, springs a couple of surprises with Bill Payne’s bluesy introduction and piano-bathed coda. Beautiful bookends.\nOur Song of the Week at herecomesthesong.com and its evocative accompanying video are ‘dedicated to friends living and past, to ideals, dreams and reality, life weathered.",
+        "score": -5.868,
+        "rank": 4
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/List_of_2026_albums",
+        "title": "List of 2026 albums",
+        "heading": "References",
+        "chunk_text": "References\n\nhare-new-single-the-maker/). _Lambgoat_. January 27, 2026. Retrieved January 27, 2026.\n401.   **[^](https://en.wikipedia.org/wiki/List_of_2026_albums#cite_ref-401)**Bintliff, Amber (January 16, 2026). [\"Broadside announces new album _Nowhere, At Last_ alongside intense new single \"Dark Passenger\"\"](https://www.melodicmag.com/news/broadside-announces-new-album-nowhere-at-last-alongside-intense-new-single-dark-passenger/). _Melodic Magazine_. Retrieved January 16, 2026.\n402.   **[^](https://en.wikipedia.org/wiki/List_of_2026_albums#cite_ref-402)**Tepper, Ned (April 10, 2026). [\"Enter Shikari Just Released _Lose Your Self_ Out of Nowhere, and It's as Heavy as It Is Defiant\"](https://bluntmag.com.au/news/enter-shikari-lose-your-self-surprise-album/). _Blunt Magazine_. Retrieved April 10, 2026.\n403.   **[^](https://en.wikipedia.org/wiki/List_of_2026_albums#cite_ref-403)**Collette, Doug (April 8, 2026). [\"Gregg Allman's Timeless Soul & Grit Gets Reawakened on _Great as Ever: Live in Philadelphia '86_\"](https://glidemagazine.com/324360/gregg-allmans-timeless-soul-grit-reawaken-on-great-as-ever-live-in-philadelphia-86-album-review/). _Glide Magazine_. Retrieved April 22, 2026.\n404.   **[^](https://en.wikipedia.org/wiki/List_of_2026_albums#cite_ref-404)**[\"I Am the Avalanche announce new LP _The Horror Show_, share 2 singles\"](https://www.brooklynvegan.com/i-am-the-avalanche-announce-new-lp-the-horror-show-share-2-singles/). _BrooklynVegan_. February 12, 2026.",
+        "score": -6.7269,
+        "rank": 5
+      },
+      {
+        "url": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "title": "https://www.herecomesthesong.com/post/songs-of-the-week-2026-take-1",
+        "heading": "",
+        "chunk_text": "he uncertain start of a new romance, the 10 tracks capture Andrews at her most vulnerable.\n‘Valentine is a record in pursuit of love,’ Andrews says. ‘That love is a lot more than I gave it credit for. It’s built over years, it’s built with trust, with changes, it becomes something new and unrecognisable, the deeper you go.’\nCo-produced by multi-instrumentalist Jerry Bernhardt, the album is said to have been influenced sonically by Lee Hazlewood and Nancy Sinatra, Big Star, Fleetwood Mac and Hasten Down The Wind-era Linda Ronstadt. Andrews said recently how much she was enamoured with the great American songbook. Perhaps we can look forward to an album of standards including one crooned by Nancy’s dad.\nWhile Valentine marks her first new release since Loose Future in 2022, she has continued to break ground as a multi-medium artist. As well as conducting a songwriting workshop, Andrews published her second collection of poetry, Love Is A Dog That Bites When It’s Scared, and has enjoyed gallery exhibitions of the paintings she regularly offers followers on social media.\n‘I was in one of the darkest periods of my life,’ Andrews explains, ‘and songs were the only way I could reckon with it.",
+        "score": -6.7308,
+        "rank": 6
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 4902,
+      "search_ms": 2065,
+      "extract_ms": 7879,
+      "chunk_ms": 80,
+      "retrieve_ms": 1672,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 20202,
+    "elapsed_s": 22.75,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "id": "rs3",
+  "category": "routing_search_obvious",
+  "domain": "ai",
+  "question": "What's the latest Anthropic Claude model as of mid-2026?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Recent product release — must search; LLM may not know cutoff.",
+  "key_facts": [
+    "Claude",
+    "Opus"
+  ],
+  "ground_truth": "As of May 2026, Anthropic's frontier Claude family includes Opus 4.7 and Sonnet 4.6, with Haiku 4.5 as the fast tier.",
+  "session_id": "eval-20260511T161015Z-rs3",
+  "verdict": "partial",
+  "aggregate": 0.785,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.8,
+    "context_recall": 1.0,
+    "context_precision": 0.125,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.625,
+    "aggregate": 0.785,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.785
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.8,
+      "supported": 4,
+      "total": 5,
+      "reasoning": "Opus 4.7 as latest supported [2]; Opus 4.6 launch [1]; Claude 5 not confirmed [4]; Opus 4.7 API model [5]."
+    },
+    "context_precision": {
+      "score": 0.125,
+      "relevant": 1,
+      "total": 8,
+      "reasoning": "Only chunk 2 explicitly states the latest Claude model as of mid-2026: Opus 4.7."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "Claude",
+        "Opus"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.625,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "Claude",
+      "Opus"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 4,
+      "decompose_ms": 1963,
+      "search_ms": 2316,
+      "extract_ms": 7159,
+      "chunk_ms": 44,
+      "retrieve_ms": 1857,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 2,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 20439,
+    "pipeline_s": 24.26
+  },
+  "judge_reasoning": "Opus 4.7 as latest supported [2]; Opus 4.6 launch [1]; Claude 5 not confirmed [4]; Opus 4.7 API model [5].",
+  "pipeline": {
+    "answer": "**As of May 2026, the latest Anthropic Claude flagship model is Claude Opus 4.7,** and it is the most capable publicly available model [2]. One source explicitly states that “as of April 2026, the latest version of Claude is Opus 4.7” [2].\n\nPrevious releases in the 2026 cycle include:\n- **Claude Opus 4.6**, launched on February 5, 2026, with a 1-million-token context window [1][4].\n- **Claude Opus 4.1** and **Opus 4**, which have already been retired or had their lifecycle endings noted [5].\n\nAdditional timeline context:\n- Leaks suggested **Claude 5 (codenamed “Fennec”)** might release around February–March 2026 [1], but it was **not confirmed as publicly available** in the sources by May 2026.\n- The same source details that Opus 4.6 was a major launch but notes Opus 4.7 supersedes it [2][5].\n- End-of-life data shows that \"Claude Opus 4.7\" is listed as the current API model for Opus-class models, replacing Opus 4 and 4.1 [5].\n\n**Summary:** The latest model as of May 2026 is **Claude Opus 4.7** [2], with Opus 4.6 having been released earlier in February 2026 [1][4]. There is no confirmed release of Claude 5 in these sources.",
+    "mode": "search",
+    "rewritten_query": "What's the latest Anthropic Claude model as of mid-2026?",
+    "rewrote": false,
+    "rationale": "Time-sensitive; model releases change frequently.",
+    "sub_queries": [
+      "Latest Anthropic Claude model name and release date as of May 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://fazal-sec.medium.com/anthropics-explosive-start-to-2026-everything-claude-has-launched-and-why-it-s-shaking-up-the-668788c2c9de",
+        "title": "Anthropic’s Explosive Start to 2026: Everything Claude Has Launched (And Why It’s Shaking Up the…",
+        "snippet": "Claude Opus 4.6 Drops February 5: A 1-Million Token Brain\n\nOn February 5, 2026, Anthropic officially launched **Claude Opus 4.6** — and it’s a serious leap forward. This is Anthropic’s first major model release of the year, and it arrives with some genuinely impressive capabilities.\n\nThe headline fe"
+      },
+      {
+        "num": 2,
+        "url": "https://www.lorka.ai/ai-models/anthropic",
+        "title": "Anthropic Claude AI Models List (2026): All Versions Compared",
+        "snippet": "Latest Claude AI Version\n\nAnthropic has developed a number of Claude AI models. In 2026, Opus 4.7 is the most capable publicly available model, while others also have their own unique advantages in speed and creativity. Find out what each version does best to help you get your work done faster and s"
+      },
+      {
+        "num": 4,
+        "url": "https://www.the-ai-corner.com/p/everything-claude-shipped-2026-complete-guide",
+        "title": "https://www.the-ai-corner.com/p/everything-claude-shipped-2026-complete-guide",
+        "snippet": "Everything Claude Has Shipped in 2026. And How to Actually Use It\nAnthropic shipped a major release roughly every two weeks since January. Here’s what’s live, what matters, and exactly how to set each thing up\nI’ll be honest with you.\nKeeping up with Anthropic this year has been genuinely hard. A ne"
+      },
+      {
+        "num": 5,
+        "url": "https://endoflife.date/claude",
+        "title": "Anthropic Claude",
+        "snippet": "Anthropic Claude\n\nnths ago (21 Jan 2025) | Ended 9 months ago (21 Jul 2025) | claude-sonnet-4-6 |\n| [Claude 2.1](https://platform.claude.com/docs/en/about-claude/model-deprecations#2025-01-21-claude-2-claude-2-1-and-claude-sonnet-3-models \"Release Notes / Changelog for Claude 2.1\") | 2 years and 5 m"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.lorka.ai/ai-models/anthropic",
+        "title": "Anthropic Claude AI Models List (2026): All Versions Compared",
+        "snippet": "As of April 2026, the latest version of Claude is Opus 4.7. Claude AI version release timeline: Apr 2026 - Opus 4.7; Feb 2026 - Sonnet 4.6; Feb 2026 - Opus 4.6"
+      },
+      {
+        "url": "https://releasebot.io/updates/anthropic",
+        "title": "Anthropic Release Notes - May 2026 Latest Updates - Releasebot",
+        "snippet": "May 1, 2026. Anthropic logo. Claude Code by Anthropic. 2.1.126. Claude Code releases a broad update with smarter model picking, project purge tools, stronger"
+      },
+      {
+        "url": "https://www.the-ai-corner.com/p/everything-claude-shipped-2026-complete-guide",
+        "title": "Everything Claude Has Shipped in 2026. And How to Actually Use It",
+        "snippet": "Claude Opus 4.6 official launch image from Anthropic showing the model name against a collage of. Claude Opus 4.6 launched February 5, 2026."
+      },
+      {
+        "url": "https://fazal-sec.medium.com/anthropics-explosive-start-to-2026-everything-claude-has-launched-and-why-it-s-shaking-up-the-668788c2c9de",
+        "title": "Anthropic's Explosive Start to 2026: Everything Claude Has ... - Fazal",
+        "snippet": "On February 5, 2026, Anthropic officially launched Claude Opus 4.6 — and it's a serious leap forward. This is Anthropic's first major model"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=akdRAquseP4",
+        "title": "Claude 5 Release Date: Everything We Know So Far (2026)",
+        "snippet": "... Anthropic's next flagship model, including the rumored release window, expected context window size, coding benchmarks, pricing, and how it"
+      },
+      {
+        "url": "https://endoflife.date/claude",
+        "title": "Anthropic Claude - endoflife.date",
+        "snippet": "Anthropic Claude ; Claude Opus 4, 11 months ago. (22 May 2025). Ended 3 weeks and 3 days ago. (14 Apr 2026) ; Claude Sonnet 3.7, 1 year and 2"
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://fazal-sec.medium.com/anthropics-explosive-start-to-2026-everything-claude-has-launched-and-why-it-s-shaking-up-the-668788c2c9de",
+        "title": "Anthropic’s Explosive Start to 2026: Everything Claude Has Launched (And Why It’s Shaking Up the…",
+        "heading": "Claude Opus 4.6 Drops February 5: A 1-Million Token Brain",
+        "chunk_text": "Claude Opus 4.6 Drops February 5: A 1-Million Token Brain\n\nOn February 5, 2026, Anthropic officially launched **Claude Opus 4.6** — and it’s a serious leap forward. This is Anthropic’s first major model release of the year, and it arrives with some genuinely impressive capabilities.\n\nThe headline feature? A **1-million-token context window**. To put that in perspective, that’s enough to process entire corporate document libraries in a single session. Think of it like giving someone a photographic memory for your entire company’s knowledge base, and then asking them to do analysis on all of it simultaneously.\n\nBeyond that, Claude Opus 4.6 brings stronger coding skills, better planning and debugging, improved financial analysis abilities (it now holds the top spot on the Finance Agent benchmark), and a remarkable **14.5-hour task completion time horizon** — the longest of any AI model as of February 2026. It’s not just smarter; it can work _longer_ without losing the plot.\n\nThe model is also the intelligence layer behind Claude’s new multi-agent “team” features, where multiple AI instances can collaborate on complex tasks. Available across claude.ai, the API, and major cloud platforms, this release set the stage for everything that followed.",
+        "score": 7.9517,
+        "rank": 0
+      },
+      {
+        "url": "https://www.lorka.ai/ai-models/anthropic",
+        "title": "Anthropic Claude AI Models List (2026): All Versions Compared",
+        "heading": "Latest Claude AI Version",
+        "chunk_text": "Latest Claude AI Version\n\nAnthropic has developed a number of Claude AI models. In 2026, Opus 4.7 is the most capable publicly available model, while others also have their own unique advantages in speed and creativity. Find out what each version does best to help you get your work done faster and smarter.\n\nAs of April 2026, the latest version of Claude is Opus 4.7.",
+        "score": 7.6552,
+        "rank": 1
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=akdRAquseP4",
+        "title": "Claude 5 Release Date: Everything We Know So Far (2026)",
+        "heading": "Claude 5 Release Date: Everything We Know So Far (2026)",
+        "chunk_text": "Claude 5 Release Date: Everything We Know So Far (2026)\n\n[![Image 7: BitBiasedAI](https://yt3.ggpht.com/JQKCJuyv7sm6d6l-d4MHat1hmFTvZSMqsWmWhIYeTOfo99uO6dgNb66B5qgs2zFS6vz53lzM=s48-c-k-c0x00ffffff-no-rj)](https://www.youtube.com/@BitBiasedAI)\n\n[BitBiasedAI](https://www.youtube.com/@BitBiasedAI)\n\nBitBiasedAI\n\n44.4K subscribers\n\nSubscribe\n\nSubscribed\n\n158\n\nShare\n\nSave\n\nDownload\n\nDownload\n\n10K views 8 days ago[NEW YORK](https://www.youtube.com/results?search_query=New+York&sp=EiG4AQHCARtDaElKT3dnXzA2VlB3b2tSWXY1MzRRYVBDOGc%253D)\n\n10,912 views • Premiered May 2, 2026 • NEW YORK\n\nLink to our newsletter: [https://bitbiased.ai/](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbmVmUzVRanRmdDZHeEVXWXRCYXB6Y20ycDJRZ3xBQ3Jtc0tub3YzTS1uMHJOdDlTZGt4SFBwM29OUjZGbzJVQ092NlM5bGM2Sll1emNxa29QZ29SZHAycDhGMWlLX3gzUGN3NTFhY0JrRi1lcGZ5ZzZGR09tdDVFMlBGS1FFZDZhWDlobWFnWWtZbmVqTWp4MlV4dw&q=https%3A%2F%2Fbitbiased.ai%2F&v=akdRAquseP4) When is Claude 5 coming out — and will it actually beat GPT-5 and Gemini 3? In this video I break down every leak, rumor, and public clue about Anthropic's next flagship model, including the rumored release window, expected context window size, coding benchmarks, ......more\n\n...more\n\nHow this was made\n\nAuto-dubbed\n\nAudio tracks for some languages were automatically generated. [Learn more](https://support.google.com/youtube/answer/15569972?hl=en)",
+        "score": 7.1431,
+        "rank": 2
+      },
+      {
+        "url": "https://fazal-sec.medium.com/anthropics-explosive-start-to-2026-everything-claude-has-launched-and-why-it-s-shaking-up-the-668788c2c9de",
+        "title": "Anthropic’s Explosive Start to 2026: Everything Claude Has Launched (And Why It’s Shaking Up the…",
+        "heading": "What’s Coming Next: Claude 5 on the Horizon",
+        "chunk_text": "What’s Coming Next: Claude 5 on the Horizon\n\nLeaks suggest **Claude 5 (codenamed “Fennec” for Sonnet 5)** has already appeared in Google Vertex AI logs, with a likely release window of February or March 2026. Early intelligence points to coding capabilities that surpass even Opus 4.6, a “Dev Team” multi-agent collaboration mode, and pricing roughly 50% lower than current flagship models.\n\nMeanwhile, CEO Dario Amodei published a 20,000-word essay in January titled _“The Adolescence of Technology,”_ warning about AI risks — including some uncomfortable internal findings about “alignment faking” behavior discovered during Opus 4 testing. The essay signals that as Anthropic races forward commercially, its commitment to responsible development isn’t just marketing.",
+        "score": 7.0674,
+        "rank": 3
+      },
+      {
+        "url": "https://www.the-ai-corner.com/p/everything-claude-shipped-2026-complete-guide",
+        "title": "https://www.the-ai-corner.com/p/everything-claude-shipped-2026-complete-guide",
+        "heading": "",
+        "chunk_text": "Everything Claude Has Shipped in 2026. And How to Actually Use It\nAnthropic shipped a major release roughly every two weeks since January. Here’s what’s live, what matters, and exactly how to set each thing up\nI’ll be honest with you.\nKeeping up with Anthropic this year has been genuinely hard. A new release almost every day. A major one every two weeks. New models, new tools, new product categories that didn’t exist three months ago. If you took a few weeks off, you missed more than you think.\nAnd this isn’t like missing a LinkedIn feature nobody uses. Claude impacts how you work. The people who’ve been paying attention have rebuilt entire workflows. The people who haven’t are still copy-pasting context into every new chat.\nThis is the guide I wish existed when I started. Everything that’s live as of March 28, 2026. How to set each thing up. When to use what. What’s actually worth your time.\nBookmark it. Come back to it. Share it with your team.\nThe Models\nClaude Opus 4.6\nThe ceiling.",
+        "score": 6.4657,
+        "rank": 4
+      },
+      {
+        "url": "https://endoflife.date/claude",
+        "title": "Anthropic Claude",
+        "heading": "Anthropic Claude",
+        "chunk_text": "Anthropic Claude\n\nnths ago (21 Jan 2025) | Ended 9 months ago (21 Jul 2025) | claude-sonnet-4-6 |\n| [Claude 2.1](https://platform.claude.com/docs/en/about-claude/model-deprecations#2025-01-21-claude-2-claude-2-1-and-claude-sonnet-3-models \"Release Notes / Changelog for Claude 2.1\") | 2 years and 5 months ago (21 Nov 2023) | Ended 1 year and 3 months ago (21 Jan 2025) | Ended 9 months ago (21 Jul 2025) | claude-opus-4-7 |\n| [Claude Instant 1.2](https://www.anthropic.com/news/releasing-claude-instant-1-2 \"Release Notes / Changelog for Claude Instant 1.2\") | 2 years and 9 months ago (09 Aug 2023) | Ended 1 year and 6 months ago (06 Nov 2024) | Ended 1 year and 6 months ago (06 Nov 2024) | claude-haiku-4-5-20251001 |\n| [Claude 2.0](https://www.anthropic.com/news/claude-2 \"Release Notes / Changelog for Claude 2.0\") | 2 years and 10 months ago (11 Jul 2023) | Ended 1 year and 3 months ago (21 Jan 2025) | Ended 9 months ago (21 Jul 2025) | claude-opus-4-7 |\n| [Claude 1.3](https://www.maginative.com/article/anthropic-releases-safer-improved-version-of-ai-assistant-claude/ \"Release Notes / Changelog for Claude 1.3\") | 3 years ago (18 Apr 2023) | Ended 1 year and 8 months ago (04 Sep 2024) | Ended 1 year and 6 months ago (06 Nov 2024) | claude-haiku-4-5-20251001 |\n| Claude Instant 1.1 | 3 years ago (31 Mar 2023) | Ended 1 year and 6 months ago (06 Nov 2024) | Ended 1 year and 6 months ago (06 Nov 2024) | claude-haiku-4-5-20251001 |\n| Claude 1.2 | 3 years ago (14 Mar 2023) | Ended 1 year and 8 months ago",
+        "score": 6.4643,
+        "rank": 5
+      },
+      {
+        "url": "https://endoflife.date/claude",
+        "title": "Anthropic Claude",
+        "heading": "Anthropic Claude",
+        "chunk_text": "Anthropic Claude\n\nDec 2025) | Ended 2 months and 3 weeks ago (19 Feb 2026) | claude-haiku-4-5-20251001 |\n| [Claude Sonnet 3.5 (20241022)](https://www.anthropic.com/news/3-5-models-and-computer-use \"Release Notes / Changelog for Claude Sonnet 3.5 (20241022)\") | 1 year and 6 months ago (22 Oct 2024) | Ended 9 months ago (13 Aug 2025) | Ended 6 months ago (28 Oct 2025) | claude-sonnet-4-6 |\n| [Claude Sonnet 3.5 (20240620)](https://www.anthropic.com/news/claude-3-5-sonnet \"Release Notes / Changelog for Claude Sonnet 3.5 (20240620)\") | 1 year and 10 months ago (21 Jun 2024) | Ended 9 months ago (13 Aug 2025) | Ended 6 months ago (28 Oct 2025) | claude-sonnet-4-6 |\n| [Claude Haiku 3](https://www.anthropic.com/news/claude-3-haiku \"Release Notes / Changelog for Claude Haiku 3\") | 2 years ago (13 Mar 2024) | Ended 2 months and 3 weeks ago (19 Feb 2026) | Ended 3 weeks ago (20 Apr 2026) | claude-haiku-4-5-20251001 |\n| [Claude Opus 3](https://www.anthropic.com/news/claude-3-family \"Release Notes / Changelog for Claude Opus 3\") | 2 years ago (04 Mar 2024) | Ended 10 months ago (30 Jun 2025) | Ended 4 months ago (05 Jan 2026) | claude-opus-4-7 |\n| [Claude Sonnet 3](https://www.anthropic.com/news/claude-3-family \"Release Notes / Changelog for Claude Sonnet 3\") | 2 years ago (04 Mar 2024) | Ended 1 year and 3 months ago (21 Jan 2025) | Ended 9 months ago (21 Jul 2025) | claude-sonnet-4-6 |\n| [Claude 2.1](https://platform.claude.com/docs/en/about-claude/model-deprecations#2025-01-21-claude-2-claude-2-1-and-cl",
+        "score": 6.1648,
+        "rank": 6
+      },
+      {
+        "url": "https://endoflife.date/claude",
+        "title": "Anthropic Claude",
+        "heading": "Anthropic Claude",
+        "chunk_text": "Anthropic Claude\n\nNotes / Changelog for Claude Sonnet 4.5\") | 7 months ago (29 Sep 2025) | Yes | Ends in 4 months and 3 weeks (29 Sep 2026) | N/A |\n| [Claude Opus 4.1](https://www.anthropic.com/news/claude-opus-4-1 \"Release Notes / Changelog for Claude Opus 4.1\") | 9 months ago (05 Aug 2025) | Yes | Ends in 2 months and 3 weeks (05 Aug 2026) | N/A |\n| [Claude Sonnet 4](https://www.anthropic.com/news/claude-4 \"Release Notes / Changelog for Claude Sonnet 4\") | 11 months ago (22 May 2025) | Ended 3 weeks and 6 days ago (14 Apr 2026) | Ends in 1 month and 5 days (15 Jun 2026) | claude-sonnet-4-6 |\n| [Claude Opus 4](https://www.anthropic.com/news/claude-4 \"Release Notes / Changelog for Claude Opus 4\") | 11 months ago (22 May 2025) | Ended 3 weeks and 6 days ago (14 Apr 2026) | Ends in 1 month and 5 days (15 Jun 2026) | claude-opus-4-7 |\n| [Claude Sonnet 3.7](https://www.anthropic.com/news/claude-3-7-sonnet \"Release Notes / Changelog for Claude Sonnet 3.7\") | 1 year and 2 months ago (24 Feb 2025) | Ended 6 months ago (28 Oct 2025) | Ended 2 months and 3 weeks ago (19 Feb 2026) | claude-sonnet-4-6 |\n| [Claude Haiku 3.5](https://www.anthropic.com/news/3-5-models-and-computer-use \"Release Notes / Changelog for Claude Haiku 3.5\") | 1 year and 6 months ago (22 Oct 2024) | Ended 4 months and 3 weeks ago (19 Dec 2025) | Ended 2 months and 3 weeks ago (19 Feb 2026) | claude-haiku-4-5-20251001 |\n| [Claude Sonnet 3.5 (20241022)](https://www.anthropic.com/news/3-5-models-and-computer-use \"Release Notes / Chan",
+        "score": 5.9202,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 4,
+      "decompose_ms": 1963,
+      "search_ms": 2316,
+      "extract_ms": 7159,
+      "chunk_ms": 44,
+      "retrieve_ms": 1857,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 2,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 20439,
+    "elapsed_s": 24.26,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

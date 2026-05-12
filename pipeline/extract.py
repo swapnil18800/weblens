@@ -15,6 +15,7 @@ avoid hammering Jina's free-tier rate limit (3 concurrent max).
 import asyncio
 import logging
 import re
+import unicodedata
 from dataclasses import dataclass
 from typing import List, Optional
 
@@ -41,20 +42,42 @@ _BOILERPLATE_LINE_RE = re.compile(
     r"manage (your )?cookie preferences|"
     r"subscribe to (our )?newsletter|"
     r"sign up for (our )?newsletter|"
+    r"join (our )?(newsletter|mailing list)|"
     r"follow us on (twitter|facebook|linkedin|instagram)|"
     r"share (this|on) (twitter|facebook|linkedin)|"
-    r"(all rights reserved|©\s*\d{4})"
+    r"(read more|continue reading|see also|related (articles?|posts?|stories)|you (may|might) also (like|enjoy)|more from|trending now)\b.*|"
+    r"(home|menu|search|login|sign\s*(in|up)|register|about (us)?|contact (us)?|privacy policy|terms of (use|service))\s*$|"
+    r"(all rights reserved|©\s*\d{4}|copyright\s+©?\s*\d{4})"
     r").*$",
     re.IGNORECASE,
 )
 
+# Zero-width / invisible unicode chars that survive NFKC normalization
+_INVISIBLE_RE = re.compile(r"[​‌‍⁠﻿]")
+# Excess blank lines — collapse 3+ to 2
+_BLANK_LINES_RE = re.compile(r"\n{3,}")
+
+
+def _normalize_unicode(text: str) -> str:
+    """NFKC normalization (curly quotes, full-width chars, ligatures → ASCII)
+    plus zero-width strip. Deterministic, <1ms per page."""
+    if not text:
+        return text
+    text = unicodedata.normalize("NFKC", text)
+    text = _INVISIBLE_RE.sub("", text)
+    return text
+
 
 def _strip_boilerplate(markdown: str) -> str:
-    """Drop lines matching common cookie/newsletter/footer patterns."""
+    """Drop lines matching common cookie/newsletter/footer/nav patterns.
+    Also: unicode normalize and collapse excess blank lines."""
     if not markdown:
         return markdown
+    markdown = _normalize_unicode(markdown)
     kept = [ln for ln in markdown.split("\n") if not _BOILERPLATE_LINE_RE.match(ln)]
-    return "\n".join(kept)
+    out = "\n".join(kept)
+    out = _BLANK_LINES_RE.sub("\n\n", out)
+    return out
 
 
 @dataclass
@@ -98,8 +121,9 @@ async def _load_from_cache(urls: List[str]) -> dict[str, ExtractedPage]:
         )
         result = {}
         for r in rows:
-            # Strip Jina headers even from cached markdown (backwards-compat)
-            md = _strip_jina_headers(r["markdown"])
+            # Strip Jina headers + boilerplate even from cached markdown
+            # (cache may predate the latest boilerplate patterns)
+            md = _strip_boilerplate(_strip_jina_headers(r["markdown"]))
             result[r["url"]] = ExtractedPage(
                 url=r["url"],
                 title=r["title"] or r["url"],

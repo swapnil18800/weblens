@@ -25,3 +25,7 @@ tavily-python==0.5.0
 
 # HTML → text fallback extractor (when Jina Reader is blocked)
 trafilatura==1.12.2
+
+# LangGraph pipeline orchestration + LangSmith tracing
+langgraph==1.1.9
+langsmith==0.8.3

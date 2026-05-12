@@ -1,0 +1,344 @@
+{
+  "id": "ctr1",
+  "category": "contradiction",
+  "domain": "health",
+  "question": "Is intermittent fasting effective for long-term weight loss?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Should surface that evidence is mixed — some meta-analyses show modest benefit, others show equivalence to standard calorie restriction.",
+  "key_facts": [
+    "intermittent fasting",
+    "calorie restriction"
+  ],
+  "ground_truth": "Recent meta-analyses suggest intermittent fasting produces weight loss similar to continuous calorie restriction over 6-12 months; long-term adherence is the main challenge. Evidence on metabolic markers is mixed.",
+  "session_id": "eval-20260511T075017Z-ctr1",
+  "verdict": "pass",
+  "aggregate": 0.86,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.8,
+    "context_recall": 1.0,
+    "context_precision": 0.5,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.86,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.86
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.8,
+      "supported": 4,
+      "total": 5,
+      "reasoning": "Most claims supported by chunks; table's 'ad-libitum' claim not in sources."
+    },
+    "context_precision": {
+      "score": 0.5,
+      "relevant": 4,
+      "total": 8,
+      "reasoning": "Chunks 1,3,5,7 directly discuss IF effectiveness for weight loss; others are metadata or unrelated."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "intermittent fasting",
+        "calorie restriction"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": [
+      "intermittent fasting",
+      "calorie restriction"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 3135,
+      "search_ms": 2035,
+      "extract_ms": 24335,
+      "chunk_ms": 59,
+      "retrieve_ms": 4510,
+      "synthesis_ms": 16745,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 62905,
+    "pipeline_s": 66.22
+  },
+  "judge_reasoning": "Most claims supported by chunks; table's 'ad-libitum' claim not in sources.",
+  "pipeline": {
+    "answer": "# Is intermittent fasting effective for long-term weight loss?\n\nThe evidence indicates that **intermittent fasting (IF) is not superior to standard dietary approaches for long-term weight loss** in individuals with obesity or overweight. While IF can produce weight loss comparable to other methods, its unique effectiveness remains unproven, and significant risks—particularly regarding disordered eating—warrant caution.\n\n## Comparative Effectiveness\n\n- **Cochrane meta-analysis (2026, 22 studies, ~2,000 participants):** IF produced only “moderate” weight loss in obese/overweight adults and “does not differ significantly from standard dietary advice” [1]. The evidence is low-certainty for short-term reduction and “unlikely” for medium-term weight loss compared to continuous energy restriction (CER) [3].\n- **Silverii et al. meta-analysis (2023):** Focusing exclusively on individuals with obesity, IF diets were “no more effective, nor less effective, than non-intermittent fasting diets” for weight loss [3].\n- **Comparison table:**\n\n| Approach | Effectiveness | Key Limitation | Source |\n|----------|--------------|----------------|--------|\n| Intermittent fasting | Comparable to CER | No unique benefit for long-term loss | [1][3] |\n| Standard calorie restriction | Comparable to IF | Requires sustained adherence | [1][3] |\n| Ad-libitum eating (no structure) | Less effective | Outperformed by both IF and CER | [3] |\n\n## Risks and Contraindications\n\n**Primary risk: Disordered eating**\nIF is considered a form of disordered eating that can heighten the risk of full-blown eating disorders [4][5]. **Patients with current or past eating disorders should never be encouraged** to practice IF [5]. Extreme caution is needed for **adolescents, young adults, and those identifying as female or gender diverse**, as these groups carry increased risk factors [5].\n\n**Physical side effects**\nCommonly reported effects include hunger, headaches, fatigue, and mood disturbances [4].\n\n**Context-dependent outcomes:**\nA 28-day trial of a 5:2 pattern in healthy adults found no increased disordered eating, but this benefit was linked to **low baseline disordered eating risk**—IF may be **helpful for low-risk individuals but harmful for those at high risk** [5]. The key clinical guide is to weigh prospective benefit against individual risk profile [5].\n\n## Long-Term Sustainability and Evidence Gaps\n\n- Most human studies are short-term with small samples; long-term effectiveness and safety remain **largely unknown** [4].\n- Mental and emotional health effects are often ignored in the literature [4].\n- High dropout rates in weight-loss studies suggest IF is **not sustainable** for many participants [4].\n\n## Key Takeaways\n\n- IF is **not more effective** than standard calorie-restricted diets for long-term weight loss in obese populations [1][3].\n- Any weight loss achieved with IF is likely comparable to other dietary interventions—not uniquely effective [3][1].\n- The **primary risk is disordered eating**, particularly for individuals with a history of eating disorders, adolescents, and certain demographic groups [4][5].\n- Long-term evidence (>1 year) for safety and effectiveness is **lacking**, limiting confidence in IF as a sustained strategy [4].\n- Clinical recommendations should focus on individual risk profiles: IF may be acceptable for low-risk individuals but contra-indicated for those with elevated risk [5].",
+    "mode": "search",
+    "rewritten_query": "Is intermittent fasting effective for long-term weight loss?",
+    "rewrote": false,
+    "rationale": "Contested health topic; sources differ, must surface evidence.",
+    "sub_queries": [
+      "Intermittent fasting effectiveness for long-term weight loss meta-analysis",
+      "Intermittent fasting risks and limitations"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://sciencemediacentre.es/en/intermittent-fasting-not-effective-weight-loss-obese-or-overweight-individuals-according-meta",
+        "title": "Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis",
+        "snippet": "Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis\n\nA meta-analysis published in the _Cochrane Database of Systematic Reviews_ concludes that intermittent fasting is not particularly effective for weight loss in adults who are ob"
+      },
+      {
+        "num": 3,
+        "url": "https://www.nmcd-journal.com/article/S0939-4753(23)00186-2/fulltext",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials",
+        "snippet": "1 Introduction\n\nThe primary aim of our meta-analysis is to assess the specific effect of intermittent fasting in the treatment of obesity, excluding overweight subjects and non-medical precepts; thus, we explored differences between intermittent fasting diets and non-intermittent fasting diets conce"
+      },
+      {
+        "num": 4,
+        "url": "https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/",
+        "title": "Is Intermittent Fasting Dangerous? - The Emily Program",
+        "snippet": "[](https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/)What Is Intermittent Fasting?\n\nIntermittent fasting is a pattern of eating that includes regular periods of fasting. Unlike traditional diets, intermittent fasting does not include any rules on what foods “should” or “should not” be"
+      },
+      {
+        "num": 5,
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/",
+        "title": "Intermittent fasting: consider the risks of disordered eating for your patient",
+        "snippet": "[](https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/)Abstract\n\nThis is a commentary on “Intermittent fasting: is there a role in the treatment of diabetes? A review of the literature and guide for primary care physicians” by Albosta et al. While this article adequately summarized the biochemical cl"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://sciencemediacentre.es/en/intermittent-fasting-not-effective-weight-loss-obese-or-overweight-individuals-according-meta",
+        "title": "Intermittent fasting and weight loss",
+        "snippet": "# Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis. A meta-analysis published in the *Cochrane Database of Systematic Reviews* concludes that intermittent fasting is not particularly effective for weight loss in adults who are obese or overweight, who showed moderate weight loss. The article does not say that intermittent fasting is not effective for weight loss. What it does say is that, based on the studies included so far, there is no evidence that it is superior to classic calorie restriction in terms of weight loss. But we do have evidence that it is an alternative for weight loss that is, at a minimum, as effective as classic calorie restriction. The study is an analysis of clinical trials to date comparing intermittent fasting with the classic diet. It suggests that intermittent fasting does not result in greater weight loss than traditional diets. ## [Intermittent fasting weight loss comparable to that of calorie restriction diets](/en/intermittent-fasting-weight-loss-comparable-calorie-restriction-diets)."
+      },
+      {
+        "url": "https://www.sciencedirect.com/science/article/pii/S1658361225000186",
+        "title": "Evaluation of the effectiveness of intermittent fasting versus caloric restriction in weight loss and improving cardiometabolic health: A systematic review and meta-analysis - ScienceDirect",
+        "snippet": "# Original Article Evaluation of the effectiveness of intermittent fasting versus caloric restriction in weight loss and improving cardiometabolic health: A systematic review and meta-analysis. We aimed to conduct a systematic review and meta-analysis exploring the effects of IF and ER on body weight and cardiometabolic factors. PRISMA compliant methods were used, and PubMed and the Cochrane CENTRAL Library were systematically searched for relevant randomized controlled trials (RCTs) from database inception to September 27, 2023. A total of 2931 records were identified through a database search. All trials were published between 2011 and 2022, and included a total of 1258 participants (24–209 per study). Additionally, IF resulted in a slightly greater, but statistically nonsignificant, decrease in weight, triglyceride levels, fasting plasma glucose, and diastolic blood pressure than ER. IF appears to be slightly advantageous over ER in terms of body weight, cardiometabolic factors, and plasma glucose levels."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39501676/",
+        "title": "Longer-term effects of intermittent fasting on body composition and ...",
+        "snippet": "In adults with overweight or obesity, IF and CR are comparably effective for reducing body weight and adiposity, as well as for improving cardiometabolic"
+      },
+      {
+        "url": "https://www.nmcd-journal.com/article/S0939-4753(23)00186-2/fulltext",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with ...",
+        "snippet": "Intermittent Fasting do not lead to a greater weight loss than controls in the obese. •. Intermittent Fasting do not lead to a reduction in blood pressure in"
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37248144/",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with ...",
+        "snippet": "Conclusions: IF is not associated with greater or lesser weight loss than non-intermittent fasting diets. Further data on psychological"
+      },
+      {
+        "url": "https://www.thelancet.com/journals/eclinm/article/PIIS2589-5370(24)00098-1/fulltext",
+        "title": "Intermittent fasting and health outcomes: an umbrella review of ...",
+        "snippet": "Intermittent fasting and health outcomes: an umbrella review of systematic reviews and meta-analyses of randomised controlled trials"
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/",
+        "title": "Intermittent fasting: consider the risks of disordered eating for ... - PMC",
+        "snippet": "An important risk that intermittent fasting may pose is the potential to increase risk of disordered eating, which has only recently started to be examined."
+      },
+      {
+        "url": "https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/",
+        "title": "Is Intermittent Fasting Dangerous? - The Emily Program",
+        "snippet": "## What Is Intermittent Fasting? Intermittent fasting is a pattern of eating that includes regular periods of fasting. Participants limit their eating to a certain window of time—for example, only eight hours per day or even alternate days of the week—and do not eat for the remainder of the time. The risks of intermittent fasting may not be readily apparent in our society that celebrates weight loss at any cost, so in this article, we will cover the potential negative side effects of intermittent fasting, including the dangers for those at risk of or suffering from an eating disorder. Many studies that have shown any improvement in certain health issues were done on mice, which limits what we know about the impact or positive side effects of intermittent fasting on humans. While intermittent fasting is not itself an eating disorder, it can be considered a form of disordered eating. The following are some of the negative side effects of intermittent fasting:."
+      },
+      {
+        "url": "https://zoe.com/learn/intermittent-fasting-pros-and-cons?srsltid=AfmBOopABxqgbW0bJlpQn1G5deMV5X-_LikW7aJixtgTU5Ci5Uy8ArDl",
+        "title": "The Pros and Cons of Intermittent Fasting Assessed",
+        "snippet": "There’s evidence to suggest that intermittent fasting can help with short-term weight loss and may reduce the risk of heart disease and type 2 diabetes. Some types of intermittent fasting restrict the time you can eat to a specific period each day. So far, studies have found that intermittent fasting can help people lose weight and reduce their risk of type 2 diabetes and heart disease. A recent study30253-5) involving men with a high risk of diabetes looked at the effects of intermittent fasting with a 6-hour eating window early in the day, with the last meal at 3 p.m. The researchers saw that this improved both insulin sensitivity and the function of the pancreas, which produces insulin. However, like most diets, intermittent fasting can reduce your energy, could lead to disordered eating, and may be hard to sustain in the long term. So far, studies have found that intermittent fasting can help people lose weight and reduce their risk of type 2 diabetes and heart disease."
+      },
+      {
+        "url": "https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-q-and-a-is-intermittent-fasting-a-helpful-practice-or-health-risk/",
+        "title": "Mayo Clinic Q and A: Is intermittent fasting a helpful practice or health risk? - Mayo Clinic News Network",
+        "snippet": "# Mayo Clinic Q and A: Is intermittent fasting a helpful practice or health risk? While we know that it works for some people to lose weight, the reality is that whether or not it helps organs such as the heart is still to be determined. It showed that people practicing intermittent fasting are twice as likely to die from heart disease or die in general than those who don't practice. The most common form of intermittent fasting I have seen is that people just skip breakfast. It is not fully understood why, but there are numerous studies showing that people who skip breakfast have an increased risk for heart disease and other ailments. If you match that with no food, no calories at all, that might be the reason why studies show that people practicing intermittent fasting are not necessarily healthier or safer."
+      },
+      {
+        "url": "https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting",
+        "title": "Intermittent Fasting Benefits, Risks, and How it Works",
+        "snippet": "[Skip to cookie consent](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting#cookieNotice)[Skip to main content](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting#main-content)[Skip to pause video preview](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting#)[Skip to alerts](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting#)[Skip to pause carousel](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting#). *   [About](https://www.massgeneralbrigham.org/en/about). *   [English](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting). *   [Overview](https://www.massgeneralbrigham.org/en/patient-care). *   [Overview](https://www.massgeneralbrigham.org/en/patient-care/patient-visitor-information). *   [Overview](https://www.massgeneralbrigham.org/en/patient-care/services-and-specialties). *   [Overview](https://www.massgeneralbrigham.org/en/research-and-innovation). *   [English](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting). 1.   [About Us](https://www.massgeneralbrigham.org/en/about). *   [share on facebook](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting#). *   [share on linkedIn](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting#). *   [share on X, formerly known as Twitter](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting#). *   [share by email](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting#). ![Image 4: A clock on a dinner plate, with a woman's hands holding a fork and knife on either side.](https://www.massgeneralbrigham.org/content/mgb-global/global/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting/_jcr_content/root/container_1214295969/image.coreimg.jpeg/1764859455819/clock-on-plate-1200x660.jpeg). *   Improved [blood sugar](https://www.massgeneralbrigham.org/en/about/newsroom/articles/how-to-control-blood-sugar-with-diet). ![Image 5: Couple cooking a heart-healthy meal in the kitchen](https://www.massgeneralbrigham.org/content/mgb-global/global/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting/_jcr_content/root/container_1214295969_1046759292/global_extended_teas.coreimg.jpeg/1764859455583/heart-health-guide-hero-1070x700.jpeg). ![Image 6: A woman in a longsleeve top wearing glasses with her hair pulled back puts together a salad with lots of ingredients set out on the kitchen counter](https://www.massgeneralbrigham.org/content/mgb-global/global/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting/_jcr_content/root/container_1214295969_1046759292/float_image_teaser.coreimg.jpeg/1764859455725/salad-prep-1070x700.jpeg). Consider adopting the Mediterranean diet or a plant-based diet, and [update your grocery list](https://www.massgeneralbrigham.org/en/about/newsroom/articles/heart-healthy-grocery-list) to ensure you have plenty of nutritious foods on hand. [About](https://www.massgeneralbrigham.org/en/about). [Back to top](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting#backTop). For more information about these cookies and the data collected, please refer to our [Privacy Policy](https://www.massgeneralbrigham.org/en/notices/web-privacy-policy).[×](https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting#cookieNoticeClose)."
+      },
+      {
+        "url": "https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2025.1524125/full",
+        "title": "Frontiers | A perspective on intermittent fasting and cardiovascular risk in the era of obesity pharmacotherapy",
+        "snippet": "# A perspective on intermittent fasting and cardiovascular risk in the era of obesity pharmacotherapy. However, several randomized clinical trials have shown that intermittent fasting is not more effective than standard daily caloric restriction for short-term weight loss or cardiometabolic improvements in patients with obesity. Observational studies also suggest cardiovascular benefits from extended rather than reduced eating windows, and indicate that long-term intermittent fasting regimens may increase the risk of cardiovascular disease mortality. In this perspective, we discuss evidence that may support potential adverse effects of intermittent fasting on cardiovascular health through the loss of lean mass, circadian misalignment and poor dietary choices associated with reward-based eating. In this perspective, we critically evaluate the effects of IF on cardiovascular health, focusing on potential adverse outcomes that may be associated with loss of lean mass, circadian misalignment, and dietary patterns driven by reward-based eating."
+      }
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://sciencemediacentre.es/en/intermittent-fasting-not-effective-weight-loss-obese-or-overweight-individuals-according-meta",
+        "title": "Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis",
+        "heading": "Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis",
+        "chunk_text": "Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis\n\nA meta-analysis published in the _Cochrane Database of Systematic Reviews_ concludes that intermittent fasting is not particularly effective for weight loss in adults who are obese or overweight, who showed moderate weight loss. This strategy also does not differ significantly from standard dietary advice or improvement in quality of life. The review included 22 studies with nearly 2,000 participants and evaluated various forms of intermittent fasting, including restricting food intake for most of the day and fasting every other day.\n\n[SMC Spain](https://sciencemediacentre.es/en/autor/smc)\n\n16/02/2026 - 02:00 CET\n\n[X](https://sciencemediacentre.es/#x)[Bluesky](https://sciencemediacentre.es/#bluesky)[LinkedIn](https://sciencemediacentre.es/#linkedin)[Telegram](https://sciencemediacentre.es/#telegram)[WhatsApp](https://sciencemediacentre.es/#whatsapp)\n\n[Versión en castellano](https://sciencemediacentre.es/node/6745)\n\n![Image 2: ayuno](https://sciencemediacentre.es/sites/default/files/2026-02/baja%20ayuno.jpg)\n\nExpert reactions",
+        "score": 9.0213,
+        "rank": 0
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37248144/",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials - PubMed",
+        "heading": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials",
+        "chunk_text": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials\n\nGiovanni Antonio Silverii et al. Nutr Metab Cardiovasc Dis.2023 Aug.\n\nFree article\n\nShow details\n\nDisplay options\n\nDisplay options\n\nFormat\n\nNutr Metab Cardiovasc Dis\n\nActions\n\n*   [Search in PubMed](https://pubmed.ncbi.nlm.nih.gov/?term=%22Nutr+Metab+Cardiovasc+Dis%22%5Bjour%5D&sort=date&sort_order=desc)\n*   [Search in NLM Catalog](https://www.ncbi.nlm.nih.gov/nlmcatalog?term=%22Nutr+Metab+Cardiovasc+Dis%22%5BTitle+Abbreviation%5D)\n*   [Add to Search](https://pubmed.ncbi.nlm.nih.gov/37248144/#)\n\n. 2023 Aug;33(8):1481-1489.\n\ndoi: 10.1016/j.numecd.2023.05.005.  Epub 2023 May 10.",
+        "score": 8.5477,
+        "rank": 1
+      },
+      {
+        "url": "https://www.nmcd-journal.com/article/S0939-4753(23)00186-2/fulltext",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials",
+        "heading": "1 Introduction",
+        "chunk_text": "1 Introduction\n\nThe primary aim of our meta-analysis is to assess the specific effect of intermittent fasting in the treatment of obesity, excluding overweight subjects and non-medical precepts; thus, we explored differences between intermittent fasting diets and non-intermittent fasting diets concerning weight loss in individuals with obesity. Moreover, we included only trials with a minimum duration of 8 weeks, in order to exclude very short-term interventions which are unlikely to produce major weight changes in people with obesity. The secondary aim is the exploration of possible effects of intermittent fasting on blood pressure, lipid profile, and blood glucose, together with its effects on the perceived quality of life, psychological status, and adherence to the prescribed diet.",
+        "score": 8.2105,
+        "rank": 2
+      },
+      {
+        "url": "https://www.nmcd-journal.com/article/S0939-4753(23)00186-2/fulltext",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials",
+        "heading": "4 Discussion",
+        "chunk_text": "4 Discussion\n\n**The effectiveness of intermittent fasting to reduce body Mass index and glucose metabolism: a systematic review and meta-analysis**\n\n_J Clin Med._ 2019; **8**:1645\n\nfasc. 10\n\n,[46](https://www.nmcd-journal.com/article/S0939-4753(23)00186-2/fulltext#)\n\n46.\n\nYang, F. ...\n\n**Effect of epidemic intermittent fasting on cardiometabolic risk factors: a systematic review and meta-analysis of randomized controlled trials**\n\n_Front Nutr._ 2021; **8**, 669325\n\n], performed on a mixed population of overweight subjects with or without obesity showed a greater efficacy on weight loss of intermittent fasting in comparison with control diets. On the other hand, a Cochrane review, also including both individuals with and without obesity, reported only a short-term reduction of body weight with IF when compared to ad libitum diet, with low-certainty evidence; when IF was compared to CER, the weight-reducing effect was uncertain in the short term, and unlikely in the medium term; a subgroup analysis was performed including subjects with overweight, but not for those with obesity [[24](https://www.nmcd-journal.com/article/S0939-4753(23)00186-2/fulltext#)\n\n24.\n\nAllaf, M. ...\n\n**Intermittent fasting for the prevention of cardiovascular disease**\n\n_Cochrane Database Syst Rev._ 2021; **2021**\n\nfasc. 3",
+        "score": 7.294,
+        "rank": 3
+      },
+      {
+        "url": "https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/",
+        "title": "Is Intermittent Fasting Dangerous? - The Emily Program",
+        "heading": "[](https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/)Is Intermittent Fasting Good for You?",
+        "chunk_text": "[](https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/)Is Intermittent Fasting Good for You?\n\nThe evidence of the long-term effectiveness and safety of intermittent fasting is still unknown. Many studies that have shown any improvement in certain health issues were done on [mice](https://www.sciencedirect.com/science/article/pii/S1550413118305126), which limits what we know about the impact or positive side effects of intermittent fasting on humans. The majority of studies involving humans include only small sample sizes tracked over a short span of time. Many report measurable physiological outcomes like short-term weight loss, but they generally ignore any mental and emotional health effects, which is especially detrimental considering how closely linked weight loss and eating disorders can be.",
+        "score": 7.071,
+        "rank": 4
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37248144/",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials - PubMed",
+        "heading": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials",
+        "chunk_text": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials\n\n[Giovanni Antonio Silverii](https://pubmed.ncbi.nlm.nih.gov/?term=Silverii+GA&cauthor_id=37248144)[1](https://pubmed.ncbi.nlm.nih.gov/37248144/#full-view-affiliation-1 \"Florence University, Biomedical Sciences Department, Italy. Electronic address: giovanniantonio.silverii@unifi.it.\"),[Barbara Cresci](https://pubmed.ncbi.nlm.nih.gov/?term=Cresci+B&cauthor_id=37248144)[2](https://pubmed.ncbi.nlm.nih.gov/37248144/#full-view-affiliation-2 \"Careggi Hospital, Diabetology, Italy.\"),[Federica Benvenuti](https://pubmed.ncbi.nlm.nih.gov/?term=Benvenuti+F&cauthor_id=37248144)[3](https://pubmed.ncbi.nlm.nih.gov/37248144/#full-view-affiliation-3 \"Careggi Hospital, Psychiatry, Italy.\"),[Federica Santagiuliana](https://pubmed.ncbi.nlm.nih.gov/?term=Santagiuliana+F&cauthor_id=37248144)[2](https://pubmed.ncbi.nlm.nih.gov/37248144/#full-view-affiliation-2 \"Careggi Hospital, Diabetology, Italy.\"),[Francesco Rotella](https://pubmed.ncbi.nlm.nih.gov/?term=Rotella+F&cauthor_id=37248144)[3](https://pubmed.ncbi.nlm.nih.gov/37248144/#full-view-affiliation-3 \"Careggi Hospital, Psychiatry, Italy.\"),[Edoardo Mannucci](https://pubmed.ncbi.nlm.nih.gov/?term=Mannucci+E&cauthor_id=37248144)[4](https://pubmed.ncbi.nlm.nih.gov/37248144/#full-view-affiliation-4 \"Florence University, Biomedical Sciences Department, Italy.\")\n\nAffiliations  Expand",
+        "score": 6.9947,
+        "rank": 5
+      },
+      {
+        "url": "https://www.nmcd-journal.com/article/S0939-4753(23)00186-2/fulltext",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials",
+        "heading": "4 Discussion",
+        "chunk_text": "4 Discussion\n\nIF diets seem to be no more effective, nor less effective, than non-intermittent fasting diets, in inducing weight loss in patients with obesity. Some previous meta-analyses [[14–20](https://www.nmcd-journal.com/article/S0939-4753(23)00186-2/fulltext#)\n\n14.\n\nCui, Y. ...\n\n**Health effects of alternate-day fasting in adults: a systematic review and meta-analysis**\n\n_Front Nutr._ 2020; **7**, 586036\n\n15.\n\nPark, J. ∙ Seo, Y.-G. ∙ Paek, Y.-J. ...\n\n**Effect of alternate-day fasting on obesity and cardiometabolic risk: a systematic review and meta-analysis**\n\n_Metabolism._ 2020; **111**, 154336\n\n16.\n\nJohnston, B.C. ...\n\n**Comparison of weight loss among named diet programs in overweight and obese adults: a meta-analysis**\n\n_JAMA._ 2014; **312**:923-933\n\nfasc. 9\n\n17.\n\nHe, S. ∙ Wang, J. ∙ Zhang, J. ...\n\n**Intermittent versus continuous energy restriction for weight loss and metabolic improvement: a meta-analysis and systematic review**\n\n_Obesity._ 2021; **29**:108-115\n\nfasc. 1\n\n18.\n\nPellegrini, M. ...\n\n**Effects of time-restricted feeding on body weight and metabolism. A systematic review and meta-analysis**\n\n_Rev Endocr Metab Disord._ 2020; **21**:17-33\n\nfasc. 1\n\n19.\n\nHarris, L. ...\n\n**Intermittent fasting interventions for treatment of overweight and obesity in adults: a systematic review and meta-analysis**\n\n_JBI Database Syst. Rev. Implement. Rep._ 2018; **16**:507-547\n\nfasc. 2\n\n20.\n\nCho, Y. ...",
+        "score": 6.9509,
+        "rank": 6
+      },
+      {
+        "url": "https://www.nmcd-journal.com/article/S0939-4753(23)00186-2/fulltext",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials",
+        "heading": "References",
+        "chunk_text": "References\n\nPellegrini, M. ...\n\n**Effects of time-restricted feeding on body weight and metabolism. A systematic review and meta-analysis**\n\n_Rev Endocr Metab Disord._ 2020; **21**:17-33\n\nfasc. 1\n\nHarris, L. ...\n\n**Intermittent fasting interventions for treatment of overweight and obesity in adults: a systematic review and meta-analysis**\n\n_JBI Database Syst. Rev. Implement. Rep._ 2018; **16**:507-547\n\nfasc. 2\n\nCho, Y. ...\n\n**The effectiveness of intermittent fasting to reduce body Mass index and glucose metabolism: a systematic review and meta-analysis**\n\n_J Clin Med._ 2019; **8**:1645\n\nfasc. 10\n\nCioffi, I. ...\n\n**Intermittent versus continuous energy restriction on weight loss and cardiometabolic outcomes: a systematic review and meta-analysis of randomized controlled trials**\n\n_J Transl Med._ 2018; **16**:371\n\nfasc. 1\n\nRynders, C.A. ∙ Thomas, E.A. ∙ Zaman, A. ...\n\n**Effectiveness of intermittent fasting and time-restricted feeding compared to continuous energy restriction for weight loss**\n\n_Nutrients._ 2019; **11**:2442\n\nfasc. 10\n\nEnríquez Guerrero, A. ∙ San Mauro Martín, I. ∙ Garicano Vilar, E. ...\n\n**Effectiveness of an intermittent fasting diet versus continuous energy restriction on anthropometric measurements, body composition and lipid profile in overweight and obese adults: a meta-analysis**\n\n_Eur J Clin Nutr._ 2021; **75**:1024-1039\n\nfasc. 7\n\nAllaf, M. ...\n\n**Intermittent fasting for the prevention of cardiovascular disease**\n\n_Cochrane Database Syst Rev._ 2021; **2021**",
+        "score": 6.4448,
+        "rank": 7
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/",
+        "title": "Intermittent fasting: consider the risks of disordered eating for your patient",
+        "heading": "[](https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/)Abstract",
+        "chunk_text": "[](https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/)Abstract\n\nThis is a commentary on “Intermittent fasting: is there a role in the treatment of diabetes? A review of the literature and guide for primary care physicians” by Albosta et al. While this article adequately summarized the biochemical clinical advantages and limitations, we feel it failed to mention a few drawbacks, primarily the risk for disordered eating and eating disorders. Here we delve into the emerging data on intermittent fasting or time-restricted feeding in patient populations and urge clinicians to consider these risks prior to encouragement of intermittent fasting.\n\n**Keywords:**Diabetes, Intermittent fasting, Health, Nutrition, Disordered eating, Eating disorders",
+        "score": 7.3937,
+        "rank": 0
+      },
+      {
+        "url": "https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting",
+        "title": "Intermittent Fasting Benefits, Risks, and How it Works",
+        "heading": "Intermittent Fasting Benefits, Risks, and How it Works | Mass General Brigham",
+        "chunk_text": "Intermittent Fasting Benefits, Risks, and How it Works | Mass General Brigham\n\n1.   [About Us](https://www.massgeneralbrigham.org/en/about)\n2.   [Newsroom](https://www.massgeneralbrigham.org/en/about/newsroom)\n3.    Intermittent Fasting Benefits, Risks, and How it Works\n\nMore alert details",
+        "score": 7.2143,
+        "rank": 1
+      },
+      {
+        "url": "https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/",
+        "title": "Is Intermittent Fasting Dangerous? - The Emily Program",
+        "heading": "[](https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/)What Is Intermittent Fasting?",
+        "chunk_text": "[](https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/)What Is Intermittent Fasting?\n\nIntermittent fasting is a pattern of eating that includes regular periods of fasting. Unlike traditional diets, intermittent fasting does not include any rules on what foods “should” or “should not” be eaten; instead, it specifies when and when not to eat. Participants limit their eating to a certain window of time—for example, only eight hours per day or even alternate days of the week—and do not eat for the remainder of the time.\n\nIn the last several years, the trend of intermittent fasting has become increasingly popular. Proponents of intermittent fasting tout its promises of improved health and weight loss. However, the notable dangers of intermittent fasting are often left out in conversations about the subject. The risks of intermittent fasting may not be readily apparent in our society that celebrates weight loss at any cost, so in this article, we will cover the potential negative side effects of intermittent fasting, including the dangers for those at risk of or suffering from an eating disorder.",
+        "score": 7.142,
+        "rank": 2
+      },
+      {
+        "url": "https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting",
+        "title": "Intermittent Fasting Benefits, Risks, and How it Works",
+        "heading": "Intermittent Fasting Benefits and Risks",
+        "chunk_text": "Intermittent Fasting Benefits and Risks\n\nFood is fuel for your body. But getting the right balance of calories and nutrients can be tricky. Intermittent fasting is one approach to eating that’s gained a lot of popularity. But is it a smart strategy, or a passing fad?\n\n“It’s not a magic cure for losing weight, but the research on intermittent fasting is promising,” says Mary Hyer, RD, LDN, CCRP. Hyer is a cardiac rehabilitation dietitian with the [Mass General Brigham Heart and Vascular Institute](https://www.massgeneralbrigham.org/en/about/heart-and-vascular-institute) and works with patients at the [Elfers Cardiovascular Center at Newton-Wellesley Hospital](https://www.nwh.org/elfers-cardiovascular-center/elfers-cardiovascular-center).\n\nSo how does it work—and should you try it? Hyer shares the intermittent fasting pros, cons, and facts you should know before you start.",
+        "score": 6.7523,
+        "rank": 3
+      },
+      {
+        "url": "https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/",
+        "title": "Is Intermittent Fasting Dangerous? - The Emily Program",
+        "heading": "[](https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/)Is Intermittent Fasting Safe?",
+        "chunk_text": "[](https://emilyprogram.com/blog/is-intermittent-fasting-dangerous/)Is Intermittent Fasting Safe?\n\nThere are numerous health risks associated with intermittent fasting. [Research](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9998115/) reveals a range of negative physical and mental side effects of intermittent fasting. Like most restrictive diets, side effects include—but are not limited to—hunger, headaches, fatigue, and mood disturbances. The long-term safety and effectiveness of intermittent fasting are still largely unconfirmed, again, given that most [existing studies](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4516560/#S17title) have involved animals rather than human participants. Current human research is [very limited](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7415631/) in size and duration, in part because this diet fad is not sustainable. In fact, many people are unable to complete intermittent fasting trials, as demonstrated by the [high drop-out rate](https://www.chhs.colostate.edu/krnc/monthly-blog/is-intermittent-fasting-evidence-based/#:~:text=Especially%20the%20research%20surrounding%20IF,IF%20in%20the%20long%20run.) of intermittent fasting weight loss studies. Most concerning is participants’ [heightened risk](https://www.sciencedirect.com/science/article/abs/pii/S1471015322000873) of developing or exacerbating an eating disorder, a serious issue that should not be overlooked. While intermittent fasting is not itself an eating disorder, it can be considered a form of disordered eating.",
+        "score": 6.2946,
+        "rank": 4
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/",
+        "title": "Intermittent fasting: consider the risks of disordered eating for your patient",
+        "heading": "[](https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/)Intermittent fasting and risks of disordered eating and eating disorders",
+        "chunk_text": "[](https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/)Intermittent fasting and risks of disordered eating and eating disorders\n\nA study designed to investigate the outcomes of a short intermittent fasting trial (28 days) was led by Langdon-Daly [[4](https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/#CR4)]. Unlike the previous studies, this trial included participants of all ages, not just young people, allowing for a better understanding of how intermittent fasting may affect individuals of all ages. The study involved initiating a 4 weeklong intermittent fasting period to compare the eating behavior of the participants before and after the fasting stage, while controlling for confounding variables. In healthy adults, adopting a 5:2 intermittent fasting pattern did not lead to an increase in disordered eating, including binge eating, and seemed to enhance all dietary, metabolic, and mood-related outcomes. Lower levels of disordered eating during the trial were linked with lower levels of baseline disordered eating, which introduces the possibility that intermittent fasting may be helpful for patients at low risk for disordered eating and harmful for those at high risk. Adjusting for baseline risk, this study found that undergoing a brief period of intermittent fasting did not lead to adverse effects as one could expect, but indeed had a positive reaction on them.",
+        "score": 5.9277,
+        "rank": 5
+      },
+      {
+        "url": "https://www.massgeneralbrigham.org/en/about/newsroom/articles/pros-and-cons-of-intermittent-fasting",
+        "title": "Intermittent Fasting Benefits, Risks, and How it Works",
+        "heading": "Intermittent Fasting Benefits, Risks, and How it Works | Mass General Brigham",
+        "chunk_text": "Intermittent Fasting Benefits, Risks, and How it Works | Mass General Brigham\n\n*           *    Research News \n        *   [Alzheimer's Disease](https://www.massgeneralbrigham.org/en/research-and-innovation/for-researchers-and-collaborators/alzheimers)\n        *   [Artificial Intelligence](https://www.massgeneralbrigham.org/en/research-and-innovation/for-researchers-and-collaborators/artificial-intelligence)\n\n*    Graduate Medical Education",
+        "score": 5.5668,
+        "rank": 6
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/",
+        "title": "Intermittent fasting: consider the risks of disordered eating for your patient",
+        "heading": "[](https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/)Intermittent fasting and risks of disordered eating and eating disorders",
+        "chunk_text": "[](https://pmc.ncbi.nlm.nih.gov/articles/PMC10589984/)Intermittent fasting and risks of disordered eating and eating disorders\n\nCurrently, there is a reasonable consensus forming that intermittent fasting may be implemented in certain scenarios, namely for diabetes. The cruciality lies in the patient’s/physician’s ability to make an informed judgement on whether the prospective benefit is worth the risk for their patients. Narrowing in on disordered eating, the key seems to be using context to one’s advantage in this decision-making process. At this point in time based on existing data, the most reasonable clinical guide for a practitioner to use, in our opinion, is the following: Patients with an eating disorder or history of an eating disorder or disordered eating should never be encouraged to engage in intermittent fasting. Furthermore, extreme caution should be taken in recommending intermittent fasting to patients that carry risk factors for disordered eating such as being an adolescent/young adult, particularly those who identify as female or gender diverse populations.",
+        "score": 5.4457,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 3135,
+      "search_ms": 2035,
+      "extract_ms": 24335,
+      "chunk_ms": 59,
+      "retrieve_ms": 4510,
+      "synthesis_ms": 16745,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 62905,
+    "elapsed_s": 66.22,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

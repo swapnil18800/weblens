@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS page_cache (
     title       TEXT,
     markdown    TEXT NOT NULL,
     fetched_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    expires_at  TIMESTAMPTZ NOT NULL DEFAULT NOW() + INTERVAL '24 hours'
+    expires_at  TIMESTAMPTZ NOT NULL DEFAULT NOW() + INTERVAL '2 hours'
 );
 
 -- ── Chunk storage with vector embeddings ─────────────────────────────────────
@@ -64,3 +64,26 @@ CREATE TABLE IF NOT EXISTS rag_session_messages (
 
 CREATE INDEX IF NOT EXISTS rag_session_messages_sid_idx
     ON rag_session_messages (session_id, created_at);
+
+-- ── Semantic query cache (Phase A3) ──────────────────────────────────────────
+-- Caches answers keyed by query semantic similarity. Lookup gated on a
+-- settings flag (`SEMANTIC_CACHE_ENABLED=true`) and a 250ms hard timeout so
+-- a missed cache never blocks the request path.
+CREATE TABLE IF NOT EXISTS query_cache (
+    query_hash       TEXT PRIMARY KEY,
+    query_text       TEXT NOT NULL,
+    query_embedding  vector(384) NOT NULL,
+    answer           TEXT NOT NULL,
+    citations        JSONB NOT NULL DEFAULT '[]',
+    urls             JSONB NOT NULL DEFAULT '[]',
+    sub_queries      JSONB NOT NULL DEFAULT '[]',
+    mode             TEXT NOT NULL DEFAULT 'search',  -- 'parametric' | 'search'
+    latency_breakdown JSONB NOT NULL DEFAULT '{}',
+    created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    expires_at       TIMESTAMPTZ NOT NULL DEFAULT NOW() + INTERVAL '2 hours',
+    hit_count        INTEGER NOT NULL DEFAULT 0,
+    last_hit_at      TIMESTAMPTZ
+);
+CREATE INDEX IF NOT EXISTS query_cache_embedding_idx
+    ON query_cache USING ivfflat (query_embedding vector_cosine_ops) WITH (lists = 50);
+CREATE INDEX IF NOT EXISTS query_cache_expires_idx ON query_cache (expires_at);

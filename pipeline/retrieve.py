@@ -22,6 +22,7 @@ from dataclasses import dataclass, field
 from typing import List
 
 import numpy as np
+from langsmith import traceable
 
 from pipeline.chunk import Chunk
 from pipeline.embed import (
@@ -172,6 +173,38 @@ def _cap_per_url(ranked: List[RankedChunk], top_k: int) -> tuple[List[RankedChun
     return out, len(ranked) - len(out)
 
 
+# ── Traced retrieval sub-stages (visible as separate spans in LangSmith) ──────
+# These wrap the inline pipeline stages so each shows up with its proper
+# run_type icon. They're thin shims — no behavioral change.
+
+@traceable(run_type="retriever", name="BM25 pre-filter")
+def _traced_bm25(query: str, chunks: List[Chunk], top_k: int):
+    bm25_index, _ = build_bm25(chunks)
+    return bm25_search(bm25_index, query, chunks, top_k=top_k)
+
+
+@traceable(run_type="retriever", name="Dense embed + cosine")
+def _traced_dense_embed_and_score(query: str, candidate_texts: List[str]):
+    """Returns (query_vec, candidate_matrix, cosine_sims)."""
+    embeddings = embed_texts([query] + candidate_texts)
+    query_vec = embeddings[0]
+    candidate_matrix = embeddings[1:]
+    cosine_sims = (candidate_matrix @ query_vec).tolist()
+    return query_vec, candidate_matrix, cosine_sims
+
+
+@traceable(run_type="chain", name="Reciprocal Rank Fusion")
+def _traced_rrf(
+    vec_ranks: List[tuple], bm25_ranks: List[tuple], n: int
+) -> List[tuple]:
+    return _rrf_merge(vec_ranks, bm25_ranks, n)
+
+
+@traceable(run_type="retriever", name="Cross-encoder rerank")
+def _traced_rerank(query: str, candidates: List[Chunk], fallback_scores: List[float], top_k: int):
+    return _cross_encoder_rerank(query, candidates, fallback_scores, top_k)
+
+
 # ── Public API ──────────────────────────────────────────────────────────────────
 
 async def retrieve(
@@ -189,23 +222,21 @@ async def retrieve(
     loop = asyncio.get_event_loop()
 
     # ── Stage 1: BM25 pre-filter (no embedding, instant) ───────────────────────
-    bm25_index, _ = await loop.run_in_executor(None, build_bm25, chunks)
     embed_pool = min(EMBED_POOL, len(chunks))
-    bm25_ranked = bm25_search(bm25_index, query, chunks, top_k=embed_pool)
+    bm25_ranked = await loop.run_in_executor(None, _traced_bm25, query, chunks, embed_pool)
     # bm25_ranked: [(global_chunk_idx, score)] sorted desc
 
     # Map to local index space for the candidate list
     candidate_global_idx = [i for i, _ in bm25_ranked]
     candidates = [chunks[i] for i in candidate_global_idx]
 
-    # ── Stage 2: Embed query + BM25 candidates only ─────────────────────────────
-    texts = [query] + [c.chunk_text for c in candidates]
-    embeddings = await loop.run_in_executor(None, embed_texts, texts)
-    query_vec        = embeddings[0]           # (384,)
-    candidate_matrix = embeddings[1:]          # (EMBED_POOL, 384)
+    # ── Stage 2: Embed query + BM25 candidates only + cosine score ───────────
+    candidate_texts = [c.chunk_text for c in candidates]
+    query_vec, candidate_matrix, cosine_sims = await loop.run_in_executor(
+        None, _traced_dense_embed_and_score, query, candidate_texts
+    )
 
-    # ── Stage 3: Cosine similarity over candidates ──────────────────────────────
-    cosine_sims = (candidate_matrix @ query_vec).tolist()   # dot = cosine (normalised)
+    # ── Stage 3: Rank by cosine ─────────────────────────────────────────────
     vec_local_ranks = sorted(
         range(len(candidates)), key=lambda i: cosine_sims[i], reverse=True
     )
@@ -215,7 +246,7 @@ async def retrieve(
     bm25_local_ranks = [(i, s) for i, (_, s) in enumerate(bm25_ranked)]
 
     # ── Stage 4: RRF ────────────────────────────────────────────────────────────
-    rrf_ranks = _rrf_merge(vec_ranks_list, bm25_local_ranks, n=len(candidates))
+    rrf_ranks = _traced_rrf(vec_ranks_list, bm25_local_ranks, n=len(candidates))
 
     # ── Stage 5: Cross-encoder rerank (sync, thread pool) ───────────────────────
     # Run CE on the full pool, then apply dedup + per-URL cap, THEN trim to top_k.
@@ -226,7 +257,7 @@ async def retrieve(
     ce_scores = [s            for _, s in rrf_ranks[:ce_pool]]
 
     reranked = await loop.run_in_executor(
-        None, _cross_encoder_rerank, query, ce_chunks, ce_scores, ce_pool,
+        None, _traced_rerank, query, ce_chunks, ce_scores, ce_pool,
     )
 
     pre_filter = [

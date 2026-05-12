@@ -4,9 +4,13 @@ import {
   Brain,
   CheckCircle2,
   ChevronRight,
+  Database,
+  Eraser,
+  GitBranch,
   GitMerge,
   Loader2,
   OctagonX,
+  PencilLine,
   Sparkles,
   Zap,
 } from "lucide-react";
@@ -94,6 +98,25 @@ export default function ReasoningTrace({ turn, defaultOpen = true, onChunkClick 
             className="overflow-hidden"
           >
             <div className="px-3.5 pb-3.5 pt-2.5 border-t border-white/[0.06] space-y-2">
+              {/* Query rewrite — only shown when a rewrite actually happened
+                  (multi-turn context where anaphora was resolved). */}
+              {turn.pipeline.rewrote && (
+                <PhaseRow
+                  status="done"
+                  Icon={PencilLine}
+                  runningLabel=""
+                  doneLabel="Rewrote query (context-aware)"
+                  elapsedMs={turn.pipeline.rewriteMs}
+                  rightTags={turn.rewrittenQuery
+                    ? [<Tag key="rw" color="info" title={turn.rewrittenQuery}>{
+                        turn.rewrittenQuery.length > 48
+                          ? turn.rewrittenQuery.slice(0, 45) + "…"
+                          : turn.rewrittenQuery
+                      }</Tag>]
+                    : undefined}
+                />
+              )}
+
               {/* Analyze */}
               <PhaseRow
                 status={analyzeStatus}
@@ -102,6 +125,17 @@ export default function ReasoningTrace({ turn, defaultOpen = true, onChunkClick 
                 doneLabel="Analyzed question"
                 elapsedMs={analyzeElapsedMs}
               />
+
+              {/* Route — shown after analyze when mode is known. parametric vs search vs cache. */}
+              {turn.pipeline.decomposeMode && (
+                <PhaseRow
+                  status="done"
+                  Icon={GitBranch}
+                  runningLabel=""
+                  doneLabel={`Routed: ${routeLabel(turn.pipeline.decomposeMode)}`}
+                  rightTags={[<Tag key="mode" color={routeTagColor(turn.pipeline.decomposeMode)}>{turn.pipeline.decomposeMode}</Tag>]}
+                />
+              )}
 
               {/* Decomposed */}
               {showDecomposeStep && (
@@ -112,6 +146,22 @@ export default function ReasoningTrace({ turn, defaultOpen = true, onChunkClick 
                   doneLabel={`Decomposed into ${turn.subQueries.length} sub-questions`}
                   rightTags={[<Tag key="n" color="info">{turn.subQueries.length}</Tag>]}
                 />
+              )}
+
+              {/* Page cache hit/miss summary — only when extract has run and we
+                  received page_cache_info from the backend. */}
+              {(turn.pipeline.pageCacheHits !== undefined || turn.pipeline.pageCacheMisses !== undefined) && (
+                (turn.pipeline.pageCacheHits! > 0 || turn.pipeline.pageCacheMisses! > 0) && (
+                  <PhaseRow
+                    status="done"
+                    Icon={Database}
+                    runningLabel=""
+                    doneLabel={`Page cache: ${turn.pipeline.pageCacheHits ?? 0} hit${(turn.pipeline.pageCacheHits ?? 0) === 1 ? "" : "s"} · ${turn.pipeline.pageCacheMisses ?? 0} fetched`}
+                    rightTags={[<Tag key="cache" color={(turn.pipeline.pageCacheHits ?? 0) > 0 ? "good" : "info"}>
+                      {(turn.pipeline.pageCacheHits ?? 0)}/{((turn.pipeline.pageCacheHits ?? 0) + (turn.pipeline.pageCacheMisses ?? 0))}
+                    </Tag>]}
+                  />
+                )
               )}
 
               {/* Sub-query traces — open only during live streaming for single-Q;
@@ -135,6 +185,17 @@ export default function ReasoningTrace({ turn, defaultOpen = true, onChunkClick 
                   runningLabel="Combining sub-answers"
                   doneLabel="Combined sub-answers"
                   elapsedMs={phaseElapsed(turn.combiningStartedAt, turn.combiningCompletedAt, isStreaming, now)}
+                />
+              )}
+
+              {/* Embedding cleanup — visibility into the post-retrieval housekeeping */}
+              {turn.pipeline.cleanupMs !== undefined && (
+                <PhaseRow
+                  status="done"
+                  Icon={Eraser}
+                  runningLabel=""
+                  doneLabel={`Cleaned up embeddings${turn.pipeline.cleanupFreedChunks ? ` (${turn.pipeline.cleanupFreedChunks} chunks freed)` : ""}`}
+                  elapsedMs={turn.pipeline.cleanupMs}
                 />
               )}
 
@@ -162,6 +223,24 @@ export default function ReasoningTrace({ turn, defaultOpen = true, onChunkClick 
       </AnimatePresence>
     </div>
   );
+}
+
+/** Map raw mode string from backend to a friendly route label. */
+function routeLabel(mode: string): string {
+  switch (mode) {
+    case "parametric": return "direct LLM (parametric)";
+    case "search":     return "web search";
+    case "cache":      return "semantic cache hit";
+    case "fast_path":  return "fast path";
+    case "llm":        return "LLM";
+    default:           return mode;
+  }
+}
+
+function routeTagColor(mode: string): "good" | "info" | "warn" {
+  if (mode === "cache") return "good";
+  if (mode === "parametric") return "info";
+  return "warn"; // search (most common, default amber)
 }
 
 /** Resolve a synthesis-phase elapsed: frozen if completed, live while running. */
@@ -229,9 +308,10 @@ const TAG_COLOR: Record<TagColor, string> = {
   bad:  "bg-rose-500/10 text-rose-300 border-rose-500/30",
 };
 
-export function Tag({ children, color }: { children: React.ReactNode; color: TagColor }) {
+export function Tag({ children, color, title }: { children: React.ReactNode; color: TagColor; title?: string }) {
   return (
     <span
+      title={title}
       className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px]
                   font-mono font-medium tracking-wide whitespace-nowrap border
                   ${TAG_COLOR[color]}`}

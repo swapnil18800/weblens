@@ -1,0 +1,95 @@
+{
+  "id": "pc2",
+  "category": "paraphrase_cache",
+  "domain": "computer-science",
+  "question": "How does RRF work when combining multiple search results?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Paraphrase of pc1 — should hit cache when SEMANTIC_CACHE_ENABLED=true.",
+  "key_facts": [
+    "RRF",
+    "rank",
+    "fusion"
+  ],
+  "ground_truth": "RRF combines rankings from multiple retrievers by summing 1/(k + rank) across all rankers per document; documents with consistently high ranks across systems score highest.",
+  "session_id": "eval-20260511T060411Z-pc2",
+  "verdict": "partial",
+  "aggregate": 0.5,
+  "failure_mode": "wrong_route",
+  "metrics": {
+    "faithfulness": 0.5,
+    "context_recall": 0.0,
+    "context_precision": 1.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.0,
+    "answer_relevancy": 0.605,
+    "aggregate": 0.5
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.5,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "no chunks"
+    },
+    "context_precision": {
+      "score": 1.0,
+      "relevant": 0,
+      "total": 0,
+      "reasoning": "no chunks"
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "RRF",
+        "rank",
+        "fusion"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.605,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "pipeline": {
+    "answer": "Reciprocal Rank Fusion (RRF) combines ranked lists from multiple search systems by assigning a score to each document based on the reciprocal of its rank: score(d) = Σ 1 / (k + rank_i(d)), where k is a constant (typically 60). Documents are then sorted by descending total score. RRF is a simple, effective fusion method that requires no training and works with heterogeneous rankers.",
+    "mode": "parametric",
+    "rewritten_query": "How does RRF work when combining multiple search results?",
+    "rewrote": false,
+    "rationale": "Established IR algorithm; textbook knowledge.",
+    "sub_queries": [
+      "How does RRF work when combining multiple search results?"
+    ],
+    "citations": [],
+    "urls": [],
+    "chunk_count": 0,
+    "chunks": [],
+    "latency_breakdown": {
+      "decompose_ms": 7154,
+      "sub_queries_count": 1,
+      "mode": "parametric",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 9336,
+    "elapsed_s": 14.17,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

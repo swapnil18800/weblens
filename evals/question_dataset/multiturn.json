@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "version": "v7-multi-1",
+    "created_at": "2026-05-11",
+    "description": "Multi-turn scenarios. Each scenario shares one session_id across all turns; turns within a scenario run serially.",
+    "smoke_ids": ["mt1"]
+  },
+  "scenarios": [
+    {
+      "id": "mt1",
+      "name": "anaphora_cross_entity",
+      "tags": ["anaphora", "comparison"],
+      "turns": [
+        {
+          "turn": 1,
+          "question": "What was NVIDIA's FY2024 data-center segment revenue?",
+          "expected_behavior": "Establish topic. Answer should cite a figure (~$47B for FY2024).",
+          "key_facts": ["NVIDIA", "data center", "FY2024"]
+        },
+        {
+          "turn": 2,
+          "question": "and AMD?",
+          "expected_behavior": "Rewriter should resolve to AMD's FY2024 data-center revenue. Answer should not blend NVIDIA's figures.",
+          "key_facts": ["AMD", "data center"]
+        },
+        {
+          "turn": 3,
+          "question": "which grew faster YoY?",
+          "expected_behavior": "Should compare growth rates of NVIDIA vs AMD data-center segments, not introduce a third entity.",
+          "key_facts": ["growth", "NVIDIA", "AMD"]
+        }
+      ]
+    },
+    {
+      "id": "mt2",
+      "name": "refinement_narrowing",
+      "tags": ["refinement"],
+      "turns": [
+        {
+          "turn": 1,
+          "question": "What is Anthropic's latest Claude model?",
+          "expected_behavior": "Should surface the Opus 4.x / Sonnet 4.x family.",
+          "key_facts": ["Claude", "Anthropic"]
+        },
+        {
+          "turn": 2,
+          "question": "what's its context window?",
+          "expected_behavior": "Anaphora — should answer the context window of the model just mentioned, not a different one.",
+          "key_facts": ["context window", "tokens"]
+        }
+      ]
+    },
+    {
+      "id": "mt3",
+      "name": "topic_switch_leakage",
+      "tags": ["topic-switch", "leakage-test"],
+      "turns": [
+        {
+          "turn": 1,
+          "question": "How much did Taylor Swift's Eras Tour gross worldwide?",
+          "expected_behavior": "Should cite figure (~$2.07B+).",
+          "key_facts": ["Eras Tour", "Taylor Swift", "billion"]
+        },
+        {
+          "turn": 2,
+          "question": "Switch topic — what was Tesla's vehicle delivery count in Q1 2026?",
+          "expected_behavior": "Must NOT carry over Swift/concert context. Should answer Tesla's Q1 2026 deliveries cleanly.",
+          "key_facts": ["Tesla", "Q1 2026", "deliveries"]
+        }
+      ]
+    },
+    {
+      "id": "mt4",
+      "name": "drill_down_concept",
+      "tags": ["drill-down", "concept"],
+      "turns": [
+        {
+          "turn": 1,
+          "question": "Compare RAG and fine-tuning for adapting an LLM to a niche domain.",
+          "expected_behavior": "Should cover both approaches.",
+          "key_facts": ["RAG", "fine-tuning"]
+        },
+        {
+          "turn": 2,
+          "question": "when is RAG cheaper to maintain?",
+          "expected_behavior": "Follow-up about RAG's maintenance cost relative to fine-tuning. Should reference: no retraining, just update the index; data freshness; per-query inference cost trade-offs.",
+          "key_facts": ["RAG", "maintenance", "fine-tuning"]
+        }
+      ]
+    },
+    {
+      "id": "mt5",
+      "name": "citation_followup",
+      "tags": ["citation", "drill-down"],
+      "turns": [
+        {
+          "turn": 1,
+          "question": "Summarize the EU AI Act's definition of 'high-risk AI system'.",
+          "expected_behavior": "Should give a concise summary with citations.",
+          "key_facts": ["EU AI Act", "high-risk"]
+        },
+        {
+          "turn": 2,
+          "question": "Which source did you use for that definition?",
+          "expected_behavior": "Should refer back to the cited source(s) from turn 1 — primarily the EU AI Act text itself or an EU Commission summary.",
+          "key_facts": ["EU AI Act", "Regulation", "Article"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,363 @@
+{
+  "id": "mh1",
+  "category": "multi_hop_comparison",
+  "domain": "ai",
+  "question": "Compare GPT-4o, Claude Opus 4.7, and Gemini 2.5 Pro on long-context handling and agentic tool use.",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Should decompose into per-model or per-dimension sub-queries.",
+  "key_facts": [
+    "context window",
+    "tool use",
+    "GPT-4o",
+    "Claude",
+    "Gemini"
+  ],
+  "ground_truth": "All three offer large context windows (≥128k tokens). Claude Opus 4.7 emphasizes extended tool-use and agentic workflows; GPT-4o has multimodal+tool capabilities; Gemini 2.5 Pro has very large context and code/agent reasoning.",
+  "session_id": "eval-20260511T060411Z-mh1",
+  "verdict": "partial",
+  "aggregate": 0.6,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.765,
+    "aggregate": 0.6
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.0,
+      "relevant": 0,
+      "total": 8,
+      "reasoning": "All chunks only discuss GPT-4o, not Claude Opus 4.7 or Gemini 2.5 Pro, and lack comparison."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "context window",
+        "tool use",
+        "GPT-4o",
+        "Claude",
+        "Gemini"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.765,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "context window",
+      "tool use",
+      "GPT-4o",
+      "Claude",
+      "Gemini"
+    ]
+  },
+  "pipeline": {
+    "answer": "GPT-4o, Claude Opus 4.7, and Gemini 2.5 Pro each offer distinct strengths in long-context processing and agentic tool use, with Gemini leading in raw context capacity and native tool integration, Opus 4.7 excelling in production-grade agentic coding, and GPT-4o prioritizing multimodal real-time interaction.\n\n## Long-Context Handling\n\nThe models differ significantly in context window size and practical application:\n\n- **Gemini 2.5 Pro** leads with a **1,000,000-token context window** capable of processing entire codebases, long video transcripts, or hours of video content [8][9]. Its output cap of up to **64,000 tokens** is 8× higher than Gemini 2.0 Flash’s 8K limit [8].\n- **Claude Opus 4.7** also supports **1M tokens** with no long-context pricing premium [7], and adds file system-based memory for continuity across multi-session work [5].\n- **GPT-4o** has a **128,000-token window**, smaller than Claude 3 [4], but sufficient for lengthy documents, reports, and transcripts [4].\n\n| Capability | GPT-4o | Claude Opus 4.7 | Gemini 2.5 Pro |\n|------------|--------|------------------|----------------|\n| Context window | 128K tokens [4] | 1M tokens [7] | 1M tokens [8] |\n| Output limit | Not specified | Not specified | 64K tokens [8] |\n| Video processing | Image frames only | Image frames only | 3 hours native [9] |\n| Long-context pricing premium | Standard | None [7] | Standard |\n| **Source** | [4] | [5][7] | [8][9] |\n\n## Agentic Tool Use\n\nEach model approaches tool-based autonomy differently:\n\n**Gemini 2.5 Pro** leads in native agentic infrastructure with **Model Context Protocol (MCP)** integration, allowing developers to bundle context sections and tools (search, code executors, calculators) in single API requests [8]. It minimizes glue code for agent frameworks and supports **Project Mariner** \"computer use\" for web browsing and local operations, plus **Deep Think** mode for controlled reasoning latency [8].\n\n**Claude Opus 4.7** targets production-grade agentic coding, fixing multi-step task completion issues from Opus 4.6 [6]. It shows strong results on **SWE-bench Pro, Terminal-Bench 2.0, and CursorBench**, directly measuring coding autonomy [5][7]. However, web research quality regressed compared to Opus 4.6 [6], and its new tokenizer increases token counts by **12–18%** on typical workloads [6].\n\n**GPT-4o** emphasizes multimodal agentic behavior: processing text, audio, and images simultaneously for real-time conversational responses, transcription, translation, and content creation [1][3]. It is **2× faster** and **half the price** of GPT-4 Turbo with **5× higher rate limits** [3]. While sources don't explicitly call it \"agentic,\" its camera+speech and file+multimodal integrations imply tool-driven context-aware behaviors [1].\n\n## Key Takeaways\n\n- **Gemini 2.5 Pro** offers the largest context window (1M tokens) and most comprehensive native tool-use infrastructure (MCP, computer use, reasoning modes) for developer-led agentic frameworks.\n- **Claude Opus 4.7** is strongest for autonomous coding workflows and multi-step task persistence, though web research regresses and tokenizer costs rise ~12-18%.\n- **GPT-4o** excels in real-time multimodal interaction (voice+vision+text) but has the smallest context window (128K tokens) and less explicit agentic tool-use primitives.\n- For production agentic systems, choose based on primary workload: coding autonomy (Opus 4.7), context-heavy tasks (Gemini 2.5 Pro), or multimodal real-time applications (GPT-4o).",
+    "mode": "search",
+    "rewritten_query": "Compare GPT-4o, Claude Opus 4.7, and Gemini 2.5 Pro on long-context handling and agentic tool use.",
+    "rewrote": false,
+    "rationale": "Comparative evaluation of recent models requires sourced benchmarks.",
+    "sub_queries": [
+      "GPT-4o long-context handling and agentic tool use capabilities",
+      "Claude Opus 4.7 long-context handling and agentic tool use capabilities",
+      "Gemini 2.5 Pro long-context handling and agentic tool use capabilities"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.grammarly.com/blog/ai/what-is-gpt-4o/",
+        "title": "https://www.grammarly.com/blog/ai/what-is-gpt-4o/",
+        "snippet": "nge of people to access a highly advanced AI model. Let’s take a closer look at these benefits.\nMultimodal capabilities\nGPT-4o’s multimodal capabilities represent a major advancement in generative AI. Previous GPT models relied on a combination of models to process speech, images, and text, which co"
+      },
+      {
+        "num": 3,
+        "url": "https://openai.com/index/hello-gpt-4o/",
+        "title": "Hello GPT-4o",
+        "snippet": "ChatGPT-4o Risk Scorecard\n\nGPT‑4o’s text and image capabilities are starting to roll out today in ChatGPT. We are making GPT‑4o available in the free tier, and to Plus users with up to 5x higher message limits. We'll roll out a new version of Voice Mode with GPT‑4o in alpha within ChatGPT Plus in th"
+      },
+      {
+        "num": 4,
+        "url": "https://www.ibm.com/think/topics/gpt-4o",
+        "title": "https://www.ibm.com/think/topics/gpt-4o",
+        "snippet": "words into tokens, then apply complex mathematics to analyze that data.\nGPT-4o converts non-Roman languages, such as Chinese, Hindi and Arabic, into tokens much more efficiently than its predecessors. Because OpenAI charges API users per input or output token, GPT-4o’s improved efficiency in non-Rom"
+      },
+      {
+        "num": 5,
+        "url": "https://almcorp.com/blog/claude-opus-4-7/",
+        "title": "https://almcorp.com/blog/claude-opus-4-7/",
+        "snippet": "dels as impressive responders to AI models as dependable work systems.\nDetailed FAQ about Claude Opus 4.7\nWhat is Claude Opus 4.7?\nClaude Opus 4.7 is Anthropic’s latest generally available Opus model. It is positioned as a premium model for advanced coding, long-running agentic tasks, document-heavy"
+      },
+      {
+        "num": 6,
+        "url": "https://www.mindstudio.ai/blog/claude-opus-4-7-review/",
+        "title": "https://www.mindstudio.ai/blog/claude-opus-4-7-review/",
+        "snippet": "Claude Opus 4.7 Review: What Actually Changed and What Got Worse\nOpus 4.7 fixes agentic persistence and boosts coding benchmarks but regresses on web research and costs more due to a new tokenizer. Full breakdown.\nThe Short Version\nClaude Opus 4.7 is a meaningful step forward for agentic coding work"
+      },
+      {
+        "num": 7,
+        "url": "https://caylent.com/blog/claude-opus-4-7-deep-dive-capabilities-migration-and-the-new-economics-of-long-running-agents",
+        "title": "https://caylent.com/blog/claude-opus-4-7-deep-dive-capabilities-migration-and-the-new-economics-of-long-running-agents",
+        "snippet": "Caylent Catalysts™\nGenerative AI Strategy\nAccelerate your generative AI initiatives with ideation sessions for use case prioritization, foundation model selection, and an assessment of your data landscape and organizational readiness.\nExplore Claude Opus 4.7, Anthropic’s most capable generally avail"
+      },
+      {
+        "num": 8,
+        "url": "https://futureagi.com/blog/google-gemini-2-5-pro-2025/",
+        "title": "https://futureagi.com/blog/google-gemini-2-5-pro-2025/",
+        "snippet": "2.5 Pro features native SDK support for the Model Context Protocol (MCP), allowing developers to specify numerous context sections or tools inside a single API request for advanced agentic workflows. MCP lets you provide one request with several contexts, such as a user inquiry, a knowledge base, an"
+      },
+      {
+        "num": 9,
+        "url": "https://arxiv.org/abs/2507.06261",
+        "title": "https://arxiv.org/abs/2507.06261",
+        "snippet": "holz\nView PDF\nHTML (experimental)\nAbstract:In this report, we introduce the Gemini 2.X model family: Gemini 2.5 Pro and Gemini 2.5 Flash, as well as our earlier Gemini 2.0 Flash and Flash-Lite models. Gemini 2.5 Pro is our most capable model yet, achieving SoTA performance on frontier coding and rea"
+      },
+      {
+        "num": 10,
+        "url": "https://medium.com/@pankaj_pandey/google-gemini-2-5-pro-pushing-the-limits-of-ai-reasoning-and-multimodality-32c085bb7045",
+        "title": "Google Gemini 2.5 Pro: Pushing the Limits of AI Reasoning and Multimodality",
+        "snippet": "Google Gemini 2.5 Pro: Pushing the Limits of AI Reasoning and Multimodality\n\n[Listen](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2Fplans%3Fdimension%3Dpost_audio_button%26postId%3D32c085bb7045&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40pankaj_pandey%2Fgoogle-gemini"
+      }
+    ],
+    "urls": [
+      "https://community.openai.com/t/gpt-4o-innate-agentic-tool-use-capabilities/1002857",
+      "https://community.openai.com/t/gpt-4o-innate-agentic-tool-use-capabilities/1002857/6",
+      "https://www.grammarly.com/blog/ai/what-is-gpt-4o/",
+      "https://www.ibm.com/think/topics/gpt-4o",
+      "https://openai.com/index/hello-gpt-4o/",
+      "https://ivibudh.medium.com/exploring-the-capabilities-of-gpt-4o-a-comprehensive-overview-8fae4a778615",
+      "https://caylent.com/blog/claude-opus-4-7-deep-dive-capabilities-migration-and-the-new-economics-of-long-running-agents",
+      "https://www.youtube.com/watch?v=Tv3lIkbdAGc",
+      "https://www.youtube.com/watch?v=VpdUP_e9aP0",
+      "https://www.linkedin.com/pulse/claude-opus-47-most-powerful-ai-tool-you-can-access-questions-steyn-u2nnf",
+      "https://almcorp.com/blog/claude-opus-4-7/",
+      "https://www.mindstudio.ai/blog/claude-opus-4-7-review/",
+      "https://arxiv.org/abs/2507.06261",
+      "https://callsphere.tech/blog/gemini-2-5-pro-agentic-ai-google-vs-gpt-5-4-claude-4-6-2026",
+      "https://futureagi.com/blog/google-gemini-2-5-pro-2025/",
+      "https://www.youtube.com/watch?v=S0X86SNd5tM",
+      "https://www.reddit.com/r/singularity/comments/1l4c50z/gemini_25_pro_is_amazing_in_long_context/",
+      "https://medium.com/@pankaj_pandey/google-gemini-2-5-pro-pushing-the-limits-of-ai-reasoning-and-multimodality-32c085bb7045"
+    ],
+    "chunk_count": 22,
+    "chunks": [
+      {
+        "url": "https://www.grammarly.com/blog/ai/what-is-gpt-4o/",
+        "title": "https://www.grammarly.com/blog/ai/what-is-gpt-4o/",
+        "heading": "",
+        "chunk_text": "nge of people to access a highly advanced AI model. Let’s take a closer look at these benefits.\nMultimodal capabilities\nGPT-4o’s multimodal capabilities represent a major advancement in generative AI. Previous GPT models relied on a combination of models to process speech, images, and text, which could lead to information loss in transit. With GPT-4o, the model can capture the full context of your prompts.\nGPT-4o’s multimodal capabilities also make AI integration much more seamless on mobile devices, since you can point your camera at an object while speaking to GPT-4o.\nReal-time responses\nGPT-4o is fast, which is largely due to the model being trained end-to-end with audio, text, and images. Conversations can happen in real time, making interactions more natural, especially speech. Its speed makes it a powerful tool for translation and assistive applications, like speech-to-text and image-to-audio conversion.\nAvailability\nGPT-4o is available for free through ChatGPT (albeit in a limited capacity), meaning that everyday users can access the capabilities of OpenAI’s most advanced model right away. This is especially beneficial to those who use it for assistive purposes since it removes barriers to access.\nGPT-4o limitations\nDespite its sophistication, GPT-4o has some drawbacks, some of which are due to its advanced nature.",
+        "score": 5.3499,
+        "rank": 0
+      },
+      {
+        "url": "https://ivibudh.medium.com/exploring-the-capabilities-of-gpt-4o-a-comprehensive-overview-8fae4a778615",
+        "title": "Exploring the Capabilities of GPT-4o: A Comprehensive Overview",
+        "heading": "Conclusion",
+        "chunk_text": "Conclusion\n\nGPT-4o represents a significant leap forward in AI technology, offering advanced capabilities across a range of applications. From enhancing accessibility and creative content generation to improving software development and providing personalized companionship, GPT-4o is poised to make a substantial impact. As it continues to evolve, its potential for autonomous decision-making and real-time interaction promises to reshape our interactions with AI.",
+        "score": 4.9712,
+        "rank": 1
+      },
+      {
+        "url": "https://ivibudh.medium.com/exploring-the-capabilities-of-gpt-4o-a-comprehensive-overview-8fae4a778615",
+        "title": "Exploring the Capabilities of GPT-4o: A Comprehensive Overview",
+        "heading": "Exploring the Capabilities of GPT-4o: A Comprehensive Overview",
+        "chunk_text": "Exploring the Capabilities of GPT-4o: A Comprehensive Overview\n\nThe introduction of GPT-4o marks a significant advancement in the field of artificial intelligence, offering enhanced capabilities and a broader range of applications compared to its predecessors. This article delves into the key features and use cases of GPT-4o, based on a recent video discussion and additional research.\n\n![Image 5](https://miro.medium.com/v2/resize:fit:515/1*1QQri5LIETpi5cy_8kJ27A.jpeg)",
+        "score": 4.6889,
+        "rank": 2
+      },
+      {
+        "url": "https://www.grammarly.com/blog/ai/what-is-gpt-4o/",
+        "title": "https://www.grammarly.com/blog/ai/what-is-gpt-4o/",
+        "heading": "",
+        "chunk_text": "GPT-4o is the latest advancement from OpenAI, bringing the most updated multimodal AI capabilities to platforms like ChatGPT. This guide will explain what GPT-4o is, how it operates, and the various ways it can enhance interactions and productivity across different applications.\nTable of contents\n- What is GPT-4o?\n- How does GPT-4o work?\n- GPT-4 vs. GPT-4 Turbo vs. GPT-4o\n- Ways to use GPT-4o\n- Benefits\n- Limitations\n- Conclusion\nWhat is GPT-4o?\nGPT-4o (the “o” stands for omni) is an advanced AI model developed by OpenAI, designed to power generative AI platforms such as ChatGPT. Unlike its predecessors, GPT-4o is the first version in the GPT series capable of processing text, audio, and images simultaneously. This multimodal capability enables the model to understand and generate responses across different formats much more quickly, making interactions more seamless and natural.\nThe introduction of GPT-4o marks a significant evolution from earlier GPT models, which primarily focused on text processing. With its ability to handle multiple input types, GPT-4o supports a broader range of applications, from creating and analyzing images to transcribing and translating audio. This versatility allows for more dynamic and engaging user experiences, whether in creative, educational, or practical contexts.",
+        "score": 4.558,
+        "rank": 3
+      },
+      {
+        "url": "https://openai.com/index/hello-gpt-4o/",
+        "title": "Hello GPT-4o",
+        "heading": "ChatGPT-4o Risk Scorecard",
+        "chunk_text": "ChatGPT-4o Risk Scorecard\n\nGPT‑4o’s text and image capabilities are starting to roll out today in ChatGPT. We are making GPT‑4o available in the free tier, and to Plus users with up to 5x higher message limits. We'll roll out a new version of Voice Mode with GPT‑4o in alpha within ChatGPT Plus in the coming weeks.\n\nDevelopers can also now access GPT‑4o in the API as a text and vision model. GPT‑4o is 2x faster, half the price, and has 5x higher rate limits compared to GPT‑4 Turbo. We plan to launch support for GPT‑4o's new audio and video capabilities to a small group of trusted partners in the API in the coming weeks.",
+        "score": 4.4579,
+        "rank": 4
+      },
+      {
+        "url": "https://www.grammarly.com/blog/ai/what-is-gpt-4o/",
+        "title": "https://www.grammarly.com/blog/ai/what-is-gpt-4o/",
+        "heading": "",
+        "chunk_text": "eate and analyze images\nGPT-4o can create original images to use for advertising, creative tasks, or education. Using its image analysis capabilities, you can ask it to describe a chart or photograph. GPT-4o can also turn an image of text, like a handwritten note, into text or speech.\nTranscription and translation\nWith GPT-4o, you can transcribe audio from meetings, videos, or one-on-one conversations in real time and translate audio from one language to another.\nSummarize and analyze existing content\nGPT-4o has advanced reasoning capabilities that can be used to summarize and analyze data. For example, you can upload a long data report and ask for an overview of the key points that would appeal to a particular audience. The overview can be in the form of written text, audio, charts, or a combination of all three.\nAssisting with common tasks\nGPT-4o can assist you with simple tasks like creating to-do lists based on a meeting discussion, explaining a math equation, or helping you recall the name of a song or movie based on details you can remember.\nGPT-4o benefits\nGPT-4o’s multimodal capabilities, speed, and availability make it possible for a broad range of people to access a highly advanced AI model. Let’s take a closer look at these benefits.\nMultimodal capabilities\nGPT-4o’s multimodal capabilities represent a major advancement in generative AI.",
+        "score": 4.4095,
+        "rank": 5
+      },
+      {
+        "url": "https://www.ibm.com/think/topics/gpt-4o",
+        "title": "https://www.ibm.com/think/topics/gpt-4o",
+        "heading": "",
+        "chunk_text": "words into tokens, then apply complex mathematics to analyze that data.\nGPT-4o converts non-Roman languages, such as Chinese, Hindi and Arabic, into tokens much more efficiently than its predecessors. Because OpenAI charges API users per input or output token, GPT-4o’s improved efficiency in non-Roman scripts makes it more cost-effective for use cases in those languages.\nIn addition to its new multimodal capabilities, GPT-4o brings many of the same functions as seen in prior iterations:\nQuestion-answering\nDocument analysis and summarization\nSentiment analysis\nData analysis\nCoding\nWith a knowledge cutoff of October 2023, GPT-4o is OpenAI’s most current model in terms of its knowledge base. A knowledge cutoff is the point in time at which a model’s training data concludes. Users can ask GPT-4o questions and receive answers, though at the risk of hallucinations.\nUsers can upload files and have ChatGPT analyze and summarize them. GPT-4o’s context window of 128,000 tokens allows it to process large input datasets, though that is not quite as large as that of Claude 3.\nThe context window of an LLM represents the maximum number of tokens that it can field while maintaining contextual awareness over the entire input sequence.",
+        "score": 4.4063,
+        "rank": 6
+      },
+      {
+        "url": "https://www.ibm.com/think/topics/gpt-4o",
+        "title": "https://www.ibm.com/think/topics/gpt-4o",
+        "heading": "",
+        "chunk_text": "n Discrete Reasoning Over Paragraphs (DROP), which tests a model’s ability to reason across several paragraphs.\nOverall, GPT-4o did not demonstrate a significant boost in performance over GPT-4 Turbo. Its comparative advancements lie chiefly with its multimodal capabilities and increased speed.\nOpenAI is making GPT-4o available for both free and premium users in various locations and products:\nChatGPT Plus, Team and Enterprise\nChatGPT Free\nDesktop and mobile app\nAI applications\nMicrosoft Azure OpenAI Studio\nSubscribers to OpenAI’s premium ChatGPT services have varying levels of access to GPT-4o. ChatGPT Plus users can send up to 80 messages every 3 hours on GPT-4o, with Team users getting more access. Enterprise users have unlimited access to GPT-4o.\nUsers of the free ChatGPT tier can engage with GPT-4o as the default model behind the chatbot while demand allows. When a free user reaches their limit, they’ll be rolled back to GPT-4o mini3.\nOpenAI released a macOS desktop app along with GPT-4o that integrates the new model with a user’s MacBook. OpenAI’s ChatGPT mobile apps also grant access to GPT-4o based on a user’s subscription tier.\nChatGPT Plus, Teams and Enterprise users can build custom GPTs through which they and others can use specialized versions of GPT-4o tailored to specific use cases.",
+        "score": 3.9457,
+        "rank": 7
+      },
+      {
+        "url": "https://almcorp.com/blog/claude-opus-4-7/",
+        "title": "https://almcorp.com/blog/claude-opus-4-7/",
+        "heading": "",
+        "chunk_text": "dels as impressive responders to AI models as dependable work systems.\nDetailed FAQ about Claude Opus 4.7\nWhat is Claude Opus 4.7?\nClaude Opus 4.7 is Anthropic’s latest generally available Opus model. It is positioned as a premium model for advanced coding, long-running agentic tasks, document-heavy reasoning, high-resolution visual understanding, and professional workflows that need better instruction fidelity and more reliable execution than earlier versions.\nIs Claude Opus 4.7 better than Claude Opus 4.6?\nBased on Anthropic’s release information and supporting ecosystem coverage, yes, especially in coding, tool-using workflows, long-horizon reasoning, visual detail handling, and exact instruction following. The upgrade is not only about raw score increases. It is about stronger execution on difficult tasks and fewer failure modes in production-style workflows.\nWhat are the main benchmark improvements for Claude Opus 4.7?\nThe most cited improvements include stronger results on SWE-bench Pro, SWE-bench Verified, Terminal-Bench 2.0, CursorBench, finance-oriented evaluations, document reasoning benchmarks, and legal analysis tasks.",
+        "score": 7.5644,
+        "rank": 0
+      },
+      {
+        "url": "https://almcorp.com/blog/claude-opus-4-7/",
+        "title": "https://almcorp.com/blog/claude-opus-4-7/",
+        "heading": "",
+        "chunk_text": "tency or cost. The best approach is to route by task difficulty rather than use one effort level universally.\nIs Claude Opus 4.7 mainly a coding model?\nNo, but coding is one of its clearest strengths. The release also emphasizes finance, legal reasoning, enterprise document analysis, visual understanding, and long-running autonomous work. It is better understood as a premium execution model with especially strong engineering performance.\nIs Claude Opus 4.7 good for enterprise agents?\nThat appears to be one of its core use cases. Anthropic, AWS, and several early-access partners all describe improvements in long-running agentic execution, tool use, and multi-step workflows. For organizations building agents that must stay coherent over time, this is one of the most relevant aspects of the release.\nDoes Claude Opus 4.7 have better memory?\nAnthropic says Opus 4.7 is better at using file system-based memory and at carrying forward useful notes across long, multi-session work. That does not mean it replaces good system design, but it does suggest better continuity in longer workflows.\nIs Claude Opus 4.7 safer than previous versions?\nAnthropic says the overall safety profile is similar to Opus 4.6, with improvements in some areas such as honesty and resistance to prompt injection, and modest weakness in at least one area of harm-reduction behavior.",
+        "score": 7.0282,
+        "rank": 1
+      },
+      {
+        "url": "https://www.mindstudio.ai/blog/claude-opus-4-7-review/",
+        "title": "https://www.mindstudio.ai/blog/claude-opus-4-7-review/",
+        "heading": "",
+        "chunk_text": "Claude Opus 4.7 Review: What Actually Changed and What Got Worse\nOpus 4.7 fixes agentic persistence and boosts coding benchmarks but regresses on web research and costs more due to a new tokenizer. Full breakdown.\nThe Short Version\nClaude Opus 4.7 is a meaningful step forward for agentic coding workflows. It fixes a persistent issue with multi-step task completion, posts real gains on SWE-Bench and HumanEval, and introduces a redesigned tokenizer that improves multilingual handling. But the same tokenizer bumps token counts by roughly 12–18% on typical workloads, which means you’re paying more per task even if the model performs better. And web research quality — one area where Opus 4.6 was genuinely strong — has taken a measurable hit.\nThis is not a clean upgrade for every use case. Whether it’s worth switching depends entirely on what you’re using it for.\nFor a full overview of what Anthropic positioned this release as, see what Opus 4.7 is and why Anthropic built it this way.",
+        "score": 6.638,
+        "rank": 2
+      },
+      {
+        "url": "https://www.mindstudio.ai/blog/claude-opus-4-7-review/",
+        "title": "https://www.mindstudio.ai/blog/claude-opus-4-7-review/",
+        "heading": "",
+        "chunk_text": "lows, the gap is smaller than it was six months ago.\nHow This Affects Remy\nRemy uses Claude Opus as its core agent for complex reasoning and spec compilation, with Sonnet handling specialist subtasks. The Opus 4.7 improvements to agentic persistence are directly relevant here — the same failure modes that affected 4.6 in long coding sessions also affected spec-to-code compilation for larger applications.\nWith 4.7, Remy handles longer, more complex specs with fewer mid-process failures.",
+        "score": 6.5338,
+        "rank": 3
+      },
+      {
+        "url": "https://caylent.com/blog/claude-opus-4-7-deep-dive-capabilities-migration-and-the-new-economics-of-long-running-agents",
+        "title": "https://caylent.com/blog/claude-opus-4-7-deep-dive-capabilities-migration-and-the-new-economics-of-long-running-agents",
+        "heading": "",
+        "chunk_text": "Caylent Catalysts™\nGenerative AI Strategy\nAccelerate your generative AI initiatives with ideation sessions for use case prioritization, foundation model selection, and an assessment of your data landscape and organizational readiness.\nExplore Claude Opus 4.7, Anthropic’s most capable generally available model, with stronger agentic coding, high-resolution vision, 1M context, and a migration story that matters almost as much as the benchmark scores.\nAnthropic is not moving the frontier tier down-market this time. It’s making the premium tier more useful.\nThat’s the real story behind Claude Opus 4.7. Pricing stays where Opus 4.6 pricing was, but the model is positioned as meaningfully better at agentic coding, long-horizon autonomy, multimodal reasoning, memory, and enterprise knowledge work. In other words, the headline is not a cheaper frontier model. It’s that the same price card is now supposed to buy more sustained autonomy and better execution on the kinds of workflows that matter in production.\nAt a spec level, Opus 4.7 is positioned as Anthropic’s most capable generally available model for coding, enterprise workflows, multimodal reasoning, financial analysis, life sciences, cybersecurity, and long-running agentic work. It supports a 1M context window with no long-context pricing premium, up to 128K output tokens, and standard Opus pricing at $5 per million input tokens and $25 per million output tokens.",
+        "score": 5.9222,
+        "rank": 4
+      },
+      {
+        "url": "https://almcorp.com/blog/claude-opus-4-7/",
+        "title": "https://almcorp.com/blog/claude-opus-4-7/",
+        "heading": "",
+        "chunk_text": "ing and tokenizer changes mean in real workloads? Which use cases benefit most? And when should a team keep using a smaller or cheaper model instead?\nThis article answers those questions in one place. It also covers the benchmarks that matter, the tradeoffs most launch posts skip, the migration issues teams should test before rollout, and the practical implications for coding, document-heavy work, visual reasoning, enterprise adoption, and AI-assisted workflows.\nWhat Claude Opus 4.7 actually is\nClaude Opus 4.7 is Anthropic’s most capable generally available Opus model at the time of release. The company positions it as a model built for hard, multi-step work: advanced software engineering, long-horizon agentic tasks, visual understanding where detail matters, and professional knowledge work that requires rigor rather than fluent guesswork.\nThat positioning is important. Opus 4.7 is not being framed as a broad consumer chatbot upgrade first. It is being framed as a model for serious execution. Anthropic’s own release language emphasizes confidence on difficult coding work, long-running tasks, precise instruction following, and the model’s tendency to verify outputs before it reports back.",
+        "score": 5.8065,
+        "rank": 5
+      },
+      {
+        "url": "https://www.mindstudio.ai/blog/claude-opus-4-7-review/",
+        "title": "https://www.mindstudio.ai/blog/claude-opus-4-7-review/",
+        "heading": "",
+        "chunk_text": "pus 4.7 regressed. For coding, the gap has narrowed in Opus 4.7’s favor, but GPT-5.4 is still more consistent on refactoring large codebases with complex dependencies. Neither model is a clean winner. Your use case determines which one is actually better for you.\nA direct benchmark comparison across Opus 4.7, GPT-5.4, and Gemini 3.1 Pro breaks this down across specific task categories if you want the full picture.\nAgainst Claude Mythos\nAnthropic’s most capable model, Claude Mythos, posts an 93.9% on SWE-Bench Verified — roughly 15 points above Opus 4.7. Mythos is demonstrably better at complex reasoning, long-context understanding, and agentic tasks. It’s also substantially more expensive.\nThe question of what Anthropic is holding back with Opus 4.7 vs. Mythos is worth reading if you’re deciding whether Mythos is justified for your workload, or if 4.7 covers your needs at a lower cost.\nAgainst the Rest\nFor teams considering open-weight alternatives, Qwen 3.6 Plus has emerged as a credible competitor in agentic coding at significantly lower cost. It doesn’t match Opus 4.7 on complex multi-file tasks, but for more contained coding workflows, the gap is smaller than it was six months ago.\nHow This Affects Remy\nRemy uses Claude Opus as its core agent for complex reasoning and spec compilation, with Sonnet handling specialist subtasks.",
+        "score": 5.7494,
+        "rank": 6
+      },
+      {
+        "url": "https://almcorp.com/blog/claude-opus-4-7/",
+        "title": "https://almcorp.com/blog/claude-opus-4-7/",
+        "heading": "",
+        "chunk_text": "elease messaging is full of practical signals: long-running task coherence, tool use, file system memory, visual resolution, safer cyber deployment, prompt retuning guidance, and tokenization caveats. Those are not hobbyist details. They are production details.\nThat is also why the release is relevant outside pure engineering. Legal, finance, operations, marketing technology, analytics, support, and knowledge management teams all increasingly use AI in workflows where “good enough” is not actually good enough. The value goes to models and systems that reduce rework, surface uncertainty correctly, and fit into governed enterprise stacks.\nIf Opus 4.7 performs in production the way Anthropic and partners suggest, it will not just be remembered as a stronger Opus release. It will be remembered as part of the transition from AI models as impressive responders to AI models as dependable work systems.\nDetailed FAQ about Claude Opus 4.7\nWhat is Claude Opus 4.7?\nClaude Opus 4.7 is Anthropic’s latest generally available Opus model.",
+        "score": 5.6478,
+        "rank": 7
+      },
+      {
+        "url": "https://futureagi.com/blog/google-gemini-2-5-pro-2025/",
+        "title": "https://futureagi.com/blog/google-gemini-2-5-pro-2025/",
+        "heading": "",
+        "chunk_text": "2.5 Pro features native SDK support for the Model Context Protocol (MCP), allowing developers to specify numerous context sections or tools inside a single API request for advanced agentic workflows. MCP lets you provide one request with several contexts, such as a user inquiry, a knowledge base, and scratchpad memory, or allow the model to engage different tools (search engines, code executors, calculators). This integration minimizes glue code by enabling Gemini to dynamically manage context streams and tool calls, allowing for seamless integration into existing agent frameworks with little configuration. Google is investigating hosted MCP servers to help with the deployment of these agentic apps without the need for self-hosting each component.\nLive API Enhancements and Native Audio I/O: How Gemini Now Supports Voice Input and Spoken Conversational Responses\nGemini’s Live API now supports audio-visual input and generates native audio replies, enabling an input of spoken instructions or photos to get natural-sounding conversation in return. The TTS system supports many speaker voices and allows for customization of tone, accent, and style. Features such as Affective Dialogue and Proactive Audio ensure that the model reacts suitably to user emotions while ignoring ambient noise.",
+        "score": 7.1998,
+        "rank": 0
+      },
+      {
+        "url": "https://futureagi.com/blog/google-gemini-2-5-pro-2025/",
+        "title": "https://futureagi.com/blog/google-gemini-2-5-pro-2025/",
+        "heading": "",
+        "chunk_text": "Model Context Protocol (MCP) is integrated into both the Gemini API and SDK, enabling the direct connection of open-source tools, external APIs, or custom procedures within prompts.\n- It’s easy to design unified apps that analyze code, documentation, media, and more since it natively processes text, audio, photos, and video.\nGemini 2.5 Pro New Features and Enhancements: Everything That Changed at Google I/O 2025\n1 Million Token Context Window: How Gemini 2.5 Pro Handles Entire Codebases and Long Video Transcripts\nGemini 2.5 Pro supports up to 1,000,000 tokens in a single prompt-approximately hundreds of thousands of words, allowing for the simultaneous loading of whole codebases or extensive transcripts. The 1 M-token window works for both Pro and Flash, but only Pro can send up to 64K tokens, which is 8 times more than Gemini 2.0 Flash’s cap of 8K. This capability helps to generate entire papers, comprehensive documentation, or full functions in one API call, saving the need for many searches. Google’s benchmarks show Gemini 2.5 Pro as the leader in long-form video understanding and coding activities, showing its superior management of large contexts.\nModel Context Protocol Support: How MCP Enables Native Tool Integration and Multi-Step Agentic Workflows\nGemini 2.5 Pro features native SDK support for the Model Context Protocol (MCP), allowing developers to specify numerous context sections or tools inside a single API request for advanced agentic workflows.",
+        "score": 7.0882,
+        "rank": 1
+      },
+      {
+        "url": "https://arxiv.org/abs/2507.06261",
+        "title": "https://arxiv.org/abs/2507.06261",
+        "heading": "",
+        "chunk_text": "holz\nView PDF\nHTML (experimental)\nAbstract:In this report, we introduce the Gemini 2.X model family: Gemini 2.5 Pro and Gemini 2.5 Flash, as well as our earlier Gemini 2.0 Flash and Flash-Lite models. Gemini 2.5 Pro is our most capable model yet, achieving SoTA performance on frontier coding and reasoning benchmarks. In addition to its incredible coding and reasoning skills, Gemini 2.5 Pro is a thinking model that excels at multimodal understanding and it is now able to process up to 3 hours of video content. Its unique combination of long context, multimodal and reasoning capabilities can be combined to unlock new agentic workflows. Gemini 2.5 Flash provides excellent reasoning abilities at a fraction of the compute and latency requirements and Gemini 2.0 Flash and Flash-Lite provide high performance at low latency and cost.",
+        "score": 6.7671,
+        "rank": 2
+      },
+      {
+        "url": "https://futureagi.com/blog/google-gemini-2-5-pro-2025/",
+        "title": "https://futureagi.com/blog/google-gemini-2-5-pro-2025/",
+        "heading": "",
+        "chunk_text": "interactive UI components directly from the API. 2.5 Pro can be deployed on Vertex AI or Google AI Studio, integrated into your app backend, and tuned on customized data for domain-specific processes. The lightweight 2.5 Flash form has been launched in the Gemini web application and Google AI Studio preview, providing 20–30% improvements in token efficiency for low-latency, cost-effective deployment. The huge context window, multimodal I/O, and tool-use APIs help you construct text, speech, and visual chatbots, coding assistants, and AI tutors with little integration effort.\nNow, we have looked at the most important features and enhancements. Let’s compare it with other models.\nComparative Analysis: Gemini 2.5 Pro vs Gemini Flash, Claude 3.7, OpenAI o4-Mini, Grok 3, and DeepSeek R1\nWe analyze its characteristics and features in comparison to its siblings (Gemini 2.5 Flash, Gemini 2.0 Flash) and major rivals like as OpenAI’s “o4-mini,” Anthropic’s Claude 3.7 (Sonnet), xAI’s Grok 3 Beta, and the open-source DeepSeek R1. The table defines key differences:\n| Model | Context Window | Multimodal Support | Reasoning Mode | Notable Strengths |\n| Gemini 2.5 Pro | 1,000,000 tokens(64K output) | Text, Code, Images, Audio, Video in; Text and Audio out | Deep Think mode for extended reasoning, configurable thinking budget | State-of-the-art coding and math performance; highest long-context and multimodal understanding. Best for complex, large-scale tasks.",
+        "score": 6.331,
+        "rank": 3
+      },
+      {
+        "url": "https://futureagi.com/blog/google-gemini-2-5-pro-2025/",
+        "title": "https://futureagi.com/blog/google-gemini-2-5-pro-2025/",
+        "heading": "",
+        "chunk_text": "y transforming?\nRead this post if you wish further information on the claim, tool support, speed, and practical value: Gemini 2.5 Pro Release: 1M Tokens, MCP, Is the justified hype?\nGemini 2.5 Pro Key Highlights: WebDev Arena Leadership, Long Context, Deep Think, and MCP Tool Integration\n- Gemini 2.5 Pro leads the WebDev Arena scoreboard with an ELO score of 1415 and succeeds in the LMArena human-preference rankings, establishing it as the preferred model for code-oriented processes.\n- Allows up to one million tokens in a single prompt-suitable for extensive documents, multi-file codebases, or video transcripts-while providing cutting-edge long-context and video comprehension.\n- Produces spoken responses from the model that offers seamless voice interfaces and richer conversational UIs free from TTS.\n- Under controlled conditions, built-in security protections and Project Mariner “computer use” let the model do online surfing and local file operations.\n- By evaluating several ideas before offering a response, the experimental “Deep Think” improves performance on benchmarks including USAMO, LiveCode Bench, and MMMU.\n- Provides short “thought summaries” in API and Vertex AI answers for transparency and allows you to alter thinking budgets for tighter compute/latency control.\n- The Model Context Protocol (MCP) is integrated into both the Gemini API and SDK, enabling the direct connection of open-source tools, external APIs, or custom procedures within prompts.\n- It’s easy to des",
+        "score": 6.0098,
+        "rank": 4
+      },
+      {
+        "url": "https://medium.com/@pankaj_pandey/google-gemini-2-5-pro-pushing-the-limits-of-ai-reasoning-and-multimodality-32c085bb7045",
+        "title": "Google Gemini 2.5 Pro: Pushing the Limits of AI Reasoning and Multimodality",
+        "heading": "Google Gemini 2.5 Pro: Pushing the Limits of AI Reasoning and Multimodality",
+        "chunk_text": "Google Gemini 2.5 Pro: Pushing the Limits of AI Reasoning and Multimodality\n\n[Listen](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2Fplans%3Fdimension%3Dpost_audio_button%26postId%3D32c085bb7045&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40pankaj_pandey%2Fgoogle-gemini-2-5-pro-pushing-the-limits-of-ai-reasoning-and-multimodality-32c085bb7045&source=---header_actions--32c085bb7045---------------------post_audio_button------------------)\n\nShare\n\n> An In‑Depth Guide to Google’s Most Advanced “Thinking Model” — Capable of Deep Reasoning, Superior Coding and Massive Context Processing\n\nPress enter or click to view image in full size\n\n![Image 5](https://miro.medium.com/v2/resize:fit:700/1*1QvMphreoz6h46Wx37moKA.jpeg)\n\nGemini 2.5 Pro\n\nIn today’s hyper-competitive AI landscape, breakthroughs are defined not only by incremental performance gains but also by radical improvements in reasoning, multimodality and context handling.\n\nGoogle’s Gemini 2.5 Pro represents such a breakthrough. As one of the most advanced large language models (LLMs) available publicly today, **_Gemini 2.5 Pro is designed to “think” step‑by‑step — delivering nuanced, accurate and context‑rich responses that outperform many competitors in complex tasks._**\n\n**Note:**_This information reflects the capabilities, access methods and details available for Google’s Gemini 2.5 Pro(gemini-2.5-pro-exp-03–25) as of March 28, 2025. Given the rapid pace of AI development, details may change in the future._",
+        "score": 3.4517,
+        "rank": 5
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 2938,
+      "search_ms": 2906,
+      "extract_ms": 22266,
+      "chunk_ms": 83,
+      "retrieve_ms": 4492,
+      "synthesis_ms": 17062,
+      "sub_queries_count": 3,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 61262,
+    "elapsed_s": 65.69,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "id": "tf2",
+  "category": "temporal_freshness",
+  "domain": "geopolitics",
+  "question": "What is the current status of the Russia-Ukraine conflict as of May 2026?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Must reflect May 2026 reality; no key_facts (rapidly evolving).",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T161015Z-tf2",
+  "verdict": "partial",
+  "aggregate": 0.775,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.875,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.775,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.775
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.875,
+      "relevant": 7,
+      "total": 8,
+      "reasoning": "Chunks 1-7 provide status updates, territorial changes, and peace talks as of May 2026. Chunk 8 is unrelated."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 3,
+      "decompose_ms": 4321,
+      "search_ms": 4917,
+      "extract_ms": 16936,
+      "chunk_ms": 74,
+      "retrieve_ms": 6597,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 44246,
+    "pipeline_s": 48.06
+  },
+  "judge_reasoning": "refusal",
+  "pipeline": {
+    "answer": "As of May 2026, the Russia-Ukraine conflict remains in a protracted stalemate with active fighting, failed ceasefires, and stalled peace talks.\n\n**Territorial Control & Recent Battlespace**\n- Since the full-scale invasion began in February 2022, Russia has seized a total of **45,749 square miles** (roughly 20% of Ukraine), including Crimea and pre-2022 Donbas holdings [1].\n- In the four-week period from April 7 to May 5, 2026, Russian forces **lost a net 46 square miles** of Ukrainian territory (double the size of Manhattan), compared to a net gain of 17 square miles in the prior four weeks [1]. Over the last week of that period (April 28–May 5), Russia lost 21 square miles [1].\n- Over the past 12 months (May 2025–May 2026), Russia captured **1,714 square miles** total (about 0.7% of Ukraine’s territory), averaging 143 square miles per month [1].\n- As of May 9, Ukrainian forces recently advanced in northern Kharkiv Oblast and near Borova, while Russian forces continued limited offensive operations but failed to achieve significant breakthroughs [3].\n\n**Ceasefire Failures & Stalled Diplomacy**\n- Both countries announced separate ceasefires for different dates in early May 2026; Russia rejected Ukraine’s proposed May 6 ceasefire and launched dozens of drone strikes that night [2].\n- Russian forces used the May 9–11 ceasefire window for rotations and logistics, likely to prepare for future offensives [3].\n- Peace negotiations remain stalled after the Iran war diverted international attention; Ukrainian negotiator Rustem Umerov met U.S. officials in Miami on May 7 to discuss talks [2].\n- The Kremlin demands Ukrainian withdrawal from unoccupied Donetsk Oblast as a precondition for any ceasefire—a condition Russia has failed to achieve on the battlefield [4].\n\n**Human & Military Toll**\n- Total Russian casualties (killed and seriously wounded) had reached approximately **1.3 million** as of February 2026 [3].\n- A previously agreed POW swap of 1,000 prisoners each had not yet been conducted as of May 9, 2026 [3].",
+    "mode": "search",
+    "rewritten_query": "What is the current status of the Russia-Ukraine conflict as of May 2026?",
+    "rewrote": false,
+    "rationale": "Highly time-sensitive geopolitical situation; requires sourced current information.",
+    "sub_queries": [
+      "Current status of the Russia-Ukraine conflict as of May 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-may-6-2026",
+        "title": "The Russia-Ukraine War Report Card, May 6, 2026",
+        "snippet": "The Russia-Ukraine War Report Card, May 6, 2026\n\n(Based on data from the [Institute for the Study of War](https://storymaps.arcgis.com/stories/36a7f6a6f5a9448496de641cf64bd375).)\n\n*   Since Feb. 24, 2022:\n    *   Russia: +**29,124**square miles. 12% of Ukraine. (Area roughly equivalent to half the U"
+      },
+      {
+        "num": 2,
+        "url": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "title": "War in Ukraine",
+        "snippet": "Recent Developments\n\nUkrainian negotiator Rustem Umerov met with U.S. officials in Miami to discuss the status of peace talks with Russia, both sides said; Russia-Ukraine peace negotiations have stalled in the wake of the Iran war [(Reuters)](https://www.reuters.com/world/europe/ukraines-top-negotia"
+      },
+      {
+        "num": 3,
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-9-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-9-2026/",
+        "snippet": ". Total Russian casualties (killed and seriously wounded) are reportedly 1.3 million as of February 2026.[39]\nKey Takeaways\n- Russian and Ukrainian forces continued limited offensive operations across the theater throughout the first day of the May 9 – 11 ceasefire.\n- Russian forces used the ceasefi"
+      },
+      {
+        "num": 4,
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-8-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-8-2026/",
+        "snippet": "the Kremlin demands that Ukrainian forces withdraw from the remainder of Donetsk Oblast as a precondition for a ceasefire — a battlefield objective that Russian forces have thus far failed to achieve. Russian Presidential Aide Yuri Ushakov, a senior Kremlin official who regularly comments on the sta"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-may-6-2026",
+        "title": "The Russia-Ukraine War Report Card, May 6, 2026",
+        "snippet": "In the period of April 7–May 5, 2026: Russian forces saw a net loss of 46 square miles of Ukrainian territory, according to ISW data. During the"
+      },
+      {
+        "url": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "title": "War in Ukraine | Global Conflict Tracker",
+        "snippet": "Russia Announces Ceasefire to Mark World War II. May 4, 2026. Russian President Vladimir Putin announced that Russia would observe a two-day"
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-8-2026/",
+        "title": "Russian Offensive Campaign Assessment, May 8, 2026",
+        "snippet": "Ukrainian forces are reconnoitering and interdicting Russian ground lines of communication (GLOCs) in occupied Mariupol, Donetsk Oblast."
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-9-2026/",
+        "title": "Russian Offensive Campaign Assessment, May 9, 2026",
+        "snippet": "Russian and Ukrainian forces continued limited offensive operations across the theater throughout the first day of the May 9 - 11 ceasefire."
+      },
+      {
+        "url": "https://albertmohler.com/2026/05/11/briefing-5-11-26/",
+        "title": "Monday, May 11, 2026",
+        "snippet": "Putin Sends a New Signal: Is the Conflict in Ukraine Coming to an End? Clearly, Putin Is Running Out of Time, and Russians Know It. Coming out"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=DBcVP99Glh0",
+        "title": "Could the Russia-Ukraine war be in its final stages?",
+        "snippet": "Vladimir Putin says the Ukraine war may be over soon. Attacks have been intensifying in recent weeks. And a stalemate on the battlefield is"
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-may-6-2026",
+        "title": "The Russia-Ukraine War Report Card, May 6, 2026",
+        "heading": "The Russia-Ukraine War Report Card, May 6, 2026",
+        "chunk_text": "The Russia-Ukraine War Report Card, May 6, 2026\n\n(Based on data from the [Institute for the Study of War](https://storymaps.arcgis.com/stories/36a7f6a6f5a9448496de641cf64bd375).)\n\n*   Since Feb. 24, 2022:\n    *   Russia: +**29,124**square miles. 12% of Ukraine. (Area roughly equivalent to half the U.S. state of Illinois).\n\n*   Total area of all Ukrainian territory Russia presently controls, including Crimea and parts of Donbas, that Russia had seized prior to the full-scale invasion on Feb. 24, 2022:\n    *   Russia: +45,749 square miles. About 20% of Ukraine. (Area roughly equivalent to the U.S. state of Pennsylvania.)4",
+        "score": 8.2551,
+        "rank": 0
+      },
+      {
+        "url": "https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-may-6-2026",
+        "title": "The Russia-Ukraine War Report Card, May 6, 2026",
+        "heading": "The Russia-Ukraine War Report Card, May 6, 2026",
+        "chunk_text": "The Russia-Ukraine War Report Card, May 6, 2026\n\n*   In the period of April 7–May 5, 2026: Russian forces saw a net loss of 46 square miles of Ukrainian territory, according to ISW data. During the previous four-week period of March 10–April 7, 2026, Russian forces registered a net gain of 17 square miles, according to ISW data.\n*   In the past week (April 28–May 5, 2026): Russia lost 21 square miles of Ukrainian territory, according to ISW data, following a 7 square mile loss during the previous week of April 21–28, 2026. In Russia, Ukraine’s foothold across the Kursk and Belgorod regions remained 4 square miles over the past week (April 28–May 5, 2026), according to ISW data, the same as the previous week (April 21–28, 2026).\n*   According to RM’s measurements using ISW data, from May 6, 2025, to May 5, 2026, Russia captured**1,714 square miles**(slightly bigger than the state of Rhode Island)—about 0.7% of Ukraine’s total territory of 233,062 square miles at the time of its independence in 1991.\n*   Russia’s average monthly gains for the past 12 months were 143 square miles.5\n\n**Russian net territorial control in Ukraine by month: February 2022–April 2026**(Based on data from the [Institute for the Study of War](https://storymaps.arcgis.com/stories/36a7f6a6f5a9448496de641cf64bd375);click[here](https://infogram.com/wrc-monthly-zoom-1hxj48m001xlq2v) for an interactive version of this chart)_._",
+        "score": 7.4446,
+        "rank": 1
+      },
+      {
+        "url": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "title": "War in Ukraine",
+        "heading": "Recent Developments",
+        "chunk_text": "Recent Developments\n\nUkrainian negotiator Rustem Umerov met with U.S. officials in Miami to discuss the status of peace talks with Russia, both sides said; Russia-Ukraine peace negotiations have stalled in the wake of the Iran war [(Reuters)](https://www.reuters.com/world/europe/ukraines-top-negotiator-miami-talks-source-says-2026-05-07/). Ukrainian President Volodymyr Zelenskyy called the talks “substantive” in a social media post and said Kyiv aimed to “reinvigorate diplomacy” [(Ukrainian President)](https://x.com/ZelenskyyUa/status/2052695679730917454).\n\n##### Russia Rejects Ukraine’s Ceasefire\n\nMay 6, 2026\n\nRussia fired dozens of drone strikes at Ukraine overnight despite Kyiv announcing a ceasefire that was set to begin at midnight, Ukrainian officials said; both countries announced ceasefires for different dates this week, with neither accepting the dates proposed by the other [(AP)](https://apnews.com/article/russia-ukraine-war-ceasefire-drones-missiles-crimea-484f28530eb0c2ce64fff9be5eb7c9d3).\n\n##### Russia Announces Ceasefire to Mark World War II\n\nMay 4, 2026",
+        "score": 7.3353,
+        "rank": 2
+      },
+      {
+        "url": "https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-may-6-2026",
+        "title": "The Russia-Ukraine War Report Card, May 6, 2026",
+        "heading": "The Russia-Ukraine War Report Card, May 6, 2026",
+        "chunk_text": "The Russia-Ukraine War Report Card, May 6, 2026\n\n_Find past issues in the Russia-Ukraine War Report Card_[_archive_](https://www.russiamatters.org/news-archive/russia-ukraine-war-report-card \"https://www.russiamatters.org/news-archive/russia-ukraine-war-report-card\")_._\n\n**May 5, 2026, update:**1 RM’s analysis of ISW’s 2 data for the past four weeks (April 7–May 5, 2026) indicates that Russian forces lost 46 square miles of Ukraine’s territory during that period (double the size of Manhattan Island). In contrast, during the previous four-week period (March 10–April 7, 2026), Russia registered a net gain of 17 square miles of Ukrainian territory. During the past week (April 28–May 5, 2026), Russia suffered a net loss of 21 square miles, compared to [7](https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-april-29-2026) square miles (net), which it lost in the preceding week (April 21–28, 2026), according to ISW data. According to [DeepState](https://deepstatemap.live/), that past week of April 28–May 5, 2026, saw the Russian armed forces advance in or near nine distinct Ukrainian settlements, while the Ukrainian armed forces conducted a sweep in two settlements in that period.\n\n**Territorial Control**_(figures as of May 5, 2026)3_\n\n![Image 2](https://www.russiamatters.org/sites/default/files/media/inline/050526territorialcontrol.jpg)\n**Report Card***\n\n**Change in Russia’s control of Ukrainian territory and change in Ukraine’s control of Russian territory**",
+        "score": 6.6252,
+        "rank": 3
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-9-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-9-2026/",
+        "heading": "",
+        "chunk_text": ". Total Russian casualties (killed and seriously wounded) are reportedly 1.3 million as of February 2026.[39]\nKey Takeaways\n- Russian and Ukrainian forces continued limited offensive operations across the theater throughout the first day of the May 9 – 11 ceasefire.\n- Russian forces used the ceasefire to conduct rotations, reinforcements, redeployments, and logistics throughout the theater, likely to support imminent future offensive operations.\n- Russia and Ukraine have not yet conducted the reportedly agreed to prisoner-of-war (POW) swap of 1,000 prisoners each as of May 9.\n- Ukrainian defense successes on the battlefield have prevented Russian forces from making significant advances across the theater, depriving Russian President Vladimir Putin of any significant operational successes to celebrate on Victory Day.\n- Russia’s war in Ukraine forced Putin to hold his Victory Day parade on a much smaller scale than in previous years, as Putin cannot reliably defend deep rear areas, including the capital, from Ukrainian drones.\n- Putin’s insistence on holding the Victory Day parade despite the threat of Ukrainian strikes reflects Putin’s refusal to accept the realities of the current battlespace.\n- Putin used Victory Day to position the war in Ukraine as this generation of Russians’ equivalent to the Soviet Union’s role in World War II.\n- Russian forces continue to suffer increasing casualty rates.\n- Ukrainian forces recently advanced in northern Kharkiv Oblast and in the Borova",
+        "score": 6.4292,
+        "rank": 4
+      },
+      {
+        "url": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "title": "War in Ukraine",
+        "heading": "Recent Developments",
+        "chunk_text": "Recent Developments\n\nIn a social media post today, Ukrainian President Volodymyr Zelenskyy praised his country’s success in maintaining its independence and statehood amid the war, vowing “we will do everything to secure peace and justice” [(Ukrainian President)](https://x.com/ZelenskyyUa/status/2026183302969774260). A Kremlin spokesperson said today that Russia is continuing its peacemaking efforts and argued that other countries’ interventions in the war had expanded the conflict into a broader confrontation with the West [(Reuters)](https://www.reuters.com/world/europe/kremlin-says-ukraine-conflict-has-evolved-into-much-wider-confrontation-with-2026-02-24/). Top EU officials are visiting Kyiv to show support for Ukraine, but no senior U.S. official is joining the delegation [(_FT_)](https://www.ft.com/content/a654e36c-19b7-4932-bdf8-f22e9c10a643). The anniversary of Russia’s invasion comes amid slow-moving territorial shifts, stalled U.S.-backed peace talks, and a steady Russian aerial campaign on Ukraine’s energy infrastructure [(_WSJ_)](https://www.wsj.com/world/as-war-enters-fifth-year-ukraine-shows-russian-victory-is-anything-but-inevitable-7898d921). French President Emmanuel Macron and British Prime Minister Keir Starmer are convening a so-called Coalition of the Willing to support Ukraine, reflecting Europe’s increased support over the past year [(UKG)](https://www.gov.uk/government/news/uk-steps-up-support-for-ukraine-four-years-on-from-putins-full-scale-invasion).",
+        "score": 5.8322,
+        "rank": 5
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-8-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-8-2026/",
+        "heading": "",
+        "chunk_text": "the Kremlin demands that Ukrainian forces withdraw from the remainder of Donetsk Oblast as a precondition for a ceasefire — a battlefield objective that Russian forces have thus far failed to achieve. Russian Presidential Aide Yuri Ushakov, a senior Kremlin official who regularly comments on the status of negotiations involving Ukraine in an official capacity, claimed on May 7 that another round of trilateral US-Ukrainian-Russian negotiations currently makes no sense as Ukraine must take “one serious step” of withdrawing from unoccupied Donetsk Oblast before Russia will agree to cease hostilities and continue peace negotiations.[18] The Kremlin reportedly has long held a demand over unoccupied Donbas as a precondition for enacting a ceasefire or reaching a peace settlement in Ukraine.[19] Ceding the remainder of unoccupied Donetsk and Luhansk oblasts would grant Russia control over Ukraine’s Fortress Belt, a series of fortified cities that have served as the backbone of Ukraine’s defense in the area since 2014.[20] This Kremlin demand notably does not guarantee that Ukraine and Russia will conclude a peace agreement, so the Kremlin is effectively demanding territory from which it can launch a renewed offensive against less prepared Ukrainian positions at a time of its choosing during the negotiations process.\nRussian forces are performing worse on the battlefield in Spring 2026 than when the Kremlin emphasized its demand for Donetsk Oblast in 2025.",
+        "score": 4.9558,
+        "rank": 6
+      },
+      {
+        "url": "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+        "title": "War in Ukraine",
+        "heading": "Recent Developments",
+        "chunk_text": "Recent Developments\n\nBelgian and French forces seized a tanker in the North Sea suspected of carrying sanctioned Russian oil, Belgium’s defense minister said [(Belgium MoD)](https://x.com/FranckenTheo). In a social media post, French President Emmanuel Macron called the seizure a “major blow” to the Russian shadow fleet transporting sanctioned oil [(President of France)](https://x.com/EmmanuelMacron/status/2028035399054942433).\n\n##### Ghanaians Killed in Ukraine\n\nFebruary 27, 2026\n\nAn estimated 272 Ghanaians have been recruited to fight for Russia in Ukraine, and at least 55 have been killed, Ghana’s foreign minister said during a visit to Ukraine; he said the Ghanaian government would work to dismantle illegal recruitment schemes [(AP)](https://apnews.com/article/ghana-russia-ukraine-fighters-war-f77465f7c2c1d4f6749557a60ccf9046).\n\n##### U.S., Ukraine Hold Talks After Russian Missile and Drone Barrage\n\nFebruary 26, 2026",
+        "score": 4.6738,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 3,
+      "decompose_ms": 4321,
+      "search_ms": 4917,
+      "extract_ms": 16936,
+      "chunk_ms": 74,
+      "retrieve_ms": 6597,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 44246,
+    "elapsed_s": 48.06,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

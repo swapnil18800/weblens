@@ -1,0 +1,243 @@
+{
+  "id": "ref1",
+  "category": "refusal_unknown",
+  "domain": "finance",
+  "question": "What was OpenAI's exact net income in Q1 2026?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "OpenAI is privately held — exact net income is not public. Should say so.",
+  "key_facts": [
+    "private",
+    "not disclosed"
+  ],
+  "ground_truth": "OpenAI does not publicly disclose quarterly net income (private company). Reported figures are partial or leaked.",
+  "session_id": "eval-20260511T075017Z-ref1",
+  "verdict": "partial",
+  "aggregate": 0.4,
+  "failure_mode": "hallucination",
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 0.5,
+    "context_precision": 0.0,
+    "answer_correctness": 0.5,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.4,
+    "m1_factual_correctness": 0.5,
+    "m3_retrieval_recall": 0.5,
+    "m7_judge_score": 0.4
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.0,
+      "relevant": 0,
+      "total": 8,
+      "reasoning": "No chunk provides OpenAI's exact net income for Q1 2026."
+    },
+    "answer_correctness": {
+      "score": 0.5,
+      "hit_facts": [
+        "not disclosed"
+      ],
+      "missed_facts": [
+        "private"
+      ],
+      "reasoning": "heuristic=0.50; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": [
+      "not disclosed"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 2148,
+      "search_ms": 1790,
+      "extract_ms": 7731,
+      "chunk_ms": 33,
+      "retrieve_ms": 1322,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 176439,
+    "pipeline_s": 178.81
+  },
+  "judge_reasoning": "refusal",
+  "pipeline": {
+    "answer": "**OpenAI has not publicly disclosed its Q1 2026 net income.** The available sources provide revenue estimates and projections, but no net income (profit) figure for Q1 2026 is reported.\n\nKey financial indicators from the sources:\n- **Revenue run-rate**: Sacra estimates OpenAI hit $25B in *annualized* revenue by February 2026, up from $20B at end of 2025 [2]. A separate source projects Q1 2026 revenue could be \"$4–5 billion at run rate\" [1].\n- **Revenue target**: OpenAI was targeting ~$20B in annual revenue for full-year 2026 [1].\n- **Gross margin constraints**: The company posted a 33% gross margin, with inference costs projected at $14.1B for 2026 [2], suggesting significant costs that would impact net income.\n- **No Q1 2026 results released**: As of April 28, 2026, the company had not yet disclosed actual Q1 2026 revenue or weekly active user figures [1].\n\n**The absence of net income data is notable.** The only profitability metric cited is the 33% gross margin, and costs such as $8.4B in inference costs (2025) and revenue-sharing agreements with Microsoft (up to 80% of API traffic margin go to Microsoft [3]) indicate substantial expense pressure. Without explicit net income figures in any source, the question cannot be answered with available data.",
+    "mode": "search",
+    "rewritten_query": "What was OpenAI's exact net income in Q1 2026?",
+    "rewrote": false,
+    "rationale": "Time-sensitive financial metric, must be sourced.",
+    "sub_queries": [
+      "OpenAI net income Q1 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+        "title": "OpenAI Misses 2026 Revenue: WSJ Hits $1.4T Stargate Bet",
+        "snippet": "Q1 2026 Hyperscaler Capex: The Numbers Behind the Pressure\n\n| Company | 2026 Capex Guidance | YoY Change | OpenAI Exposure | Reports |\n| --- | --- | --- | --- | --- |\n| Amazon | ~$200 billion | +~50% | $38B AWS Bedrock + $100B Anthropic | April 29, after close |\n| Alphabet (Google) | Up to $185 bill"
+      },
+      {
+        "num": 2,
+        "url": "https://sacra.com/c/openai/",
+        "title": "OpenAI revenue, valuation & funding",
+        "snippet": "Valuation & Funding\n\n[OpenAI](https://sacra.com/c/openai/) is actively laying the groundwork for a 2026 IPO, having hired Cynthia Gaylor, former CFO of DocuSign, as its first head of investor relations to sharpen investor messaging and governance ahead of the listing. Internal targets discussed incl"
+      },
+      {
+        "num": 3,
+        "url": "https://futuresearch.ai/openai-revenue-forecast/",
+        "title": "OpenAI Revenue, Losses, and Profitability in 2026: Full Financial Breakdown",
+        "snippet": "API Revenue Growth\n\nEstimates suggest the API business was generating approximately **[$510 million annually](https://futuresearch.ai/openai-api-profit)** by mid-2024—around 15% of OpenAI's ARR. Despite this growth, internal projections and industry analysis suggest OpenAI expects API revenue to be "
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://sacra.com/c/openai/",
+        "title": "OpenAI revenue, valuation & funding | Sacra",
+        "snippet": "Sacra estimates that OpenAI hit $25B in annualized revenue in February 2026, up from $20B at the end of 2025. The acceleration tracks with rising adoption of ChatGPT products across consumers and enterprises, as weekly active users grew to 910M, up from 800M in October and 700M in July, and paying business users surpassed 9M as of February 2026, up from 5M in August. OpenAI monetizes primarily through ChatGPT subscriptions, which account for the bulk of revenue, complemented by API usage and enterprise sales of tools like ChatGPT Deep Research. OpenAI posted a 33% gross margin, constrained by inference costs that reached $8.4B in 2025 and are projected to rise to $14.1B in 2026, with paying users accounting for approximately 66% of inference spend. OpenAI is a developer of large-scale generative AI models and consumer-facing products, including ChatGPT, DALL-E, Whisper, and developer APIs. OpenAI was founded in 2015 as a non-profit AI research lab and later restructured into a capped-profit company to attract funding."
+      },
+      {
+        "url": "https://futuresearch.ai/openai-revenue-forecast/",
+        "title": "OpenAI Revenue, Losses, and Profitability in 2026 - FutureSearch",
+        "snippet": "Expert forecasters with expert AI research tools consider every angle, and give the most accurate forecast of OpenAI's revenue 2025 - 2027. OpenAI is experiencing the fastest revenue growth of any major technology company in history. **The company grew from $1B revenue in 2023 to $3.7B in 2024—a 270% increase**—likely the fastest growth rate ever achieved by a company at that scale. To put this in perspective, the time required to scale from $1B to $100B in revenue has been decreasing by roughly 40% per decade:. If OpenAI continues this trajectory, it will reach $10B in revenue in 2025 and potentially $100B by 2027—**faster than any company in history**. The key data points are Sam Altman's statement that ARR was $3.4B in June 2024, recent statements by the CFO indicating $3.7B in revenue for 2024, and a recent statement that they expect to reach $12.7B in revenue in 2025. We estimate ARR of $6B in December 2024 with $3.7B in revenue for all of 2024."
+      },
+      {
+        "url": "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+        "title": "OpenAI Misses 2026 Revenue: WSJ Hits $1.4T Stargate Bet",
+        "snippet": "On April 28, 2026, the _Wall Street Journal_ reported that the company missed its own internal monthly sales targets for early 2026, fell short of an internal goal of 1 billion ChatGPT weekly active users by year-end 2025, and is now navigating an internal rift between CEO Sam Altman and CFO Sarah Friar over whether OpenAI’s revenue can support the more than $1.4 trillion in AI infrastructure commitments it has signed with Oracle, Microsoft, Amazon, Google, CoreWeave, and the Stargate consortium. 1.   [What the WSJ Actually Reported on April 28, 2026](https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/#toc-0). 5.   [Anthropic Is Closing the Gap Faster Than Expected](https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/#toc-4). 6.   [Q1 2026 Hyperscaler Capex: The Numbers Behind the Pressure](https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/#toc-5). 9.   [What History Tells Us: Hyper-Growth Companies and Capex Mismatches](https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/#toc-8). [The April 29 Earnings Reports Are Now a Referendum](https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/#toc-12). 1.   [What did the Wall Street Journal report about OpenAI on April 28, 2026?](https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/#toc-14). 2.   [How did OpenAI respond to the WSJ report?](https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/#toc-15). 8.   [What does the OpenAI miss mean for AI capex broadly?](https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/#toc-21)."
+      },
+      {
+        "url": "https://www.reddit.com/r/technology/comments/1qjhopz/openais_internal_documents_predict_14_billion/",
+        "title": "OpenAI's internal documents predict $14 billion loss in 2026 according to report : r/technology",
+        "snippet": "[Skip to main content](https://www.reddit.com/r/technology/comments/1qjhopz/openais_internal_documents_predict_14_billion/#main-content)OpenAI's internal documents predict $14 billion loss in 2026 according to report : r/technology. Open menu Open navigation[](https://www.reddit.com/)Go to Reddit Home. [Sign Up](https://www.reddit.com/register/)Sign up for Reddit[Log In](https://www.reddit.com/login/)Log in to Reddit. [![Image 1](https://b.thumbs.redditmedia.com/J_fCwTYJkoM-way-eaOHv8AOHoF_jNXNqOvPrQ7bINY.png) Go to technology](https://www.reddit.com/r/technology/). [r/technology](https://www.reddit.com/r/technology/)•4mo ago. [Infinityy100b](https://www.reddit.com/user/Infinityy100b/). [Artificial Intelligence](https://www.reddit.com/r/technology/?f=flair_name%3A%22Artificial%20Intelligence%22). [](https://www.pcgamer.com/software/ai/openais-internal-documents-predict-usd14-billion-loss-in-2026-according-to-report/). [![Image 2: r/technology - OpenAI's internal documents predict $14 billion loss in 2026 according to report](https://external-preview.redd.it/openais-internal-documents-predict-14-billion-loss-in-2026-v0-rAOZZoY36pQ1q5F4jl0S321_X0tbie67QnzeTLZDDrY.jpeg?width=640&crop=smart&auto=webp&s=b43881d975a696fea01779fe8a4b2f942ede0211)](https://www.pcgamer.com/software/ai/openais-internal-documents-predict-usd14-billion-loss-in-2026-according-to-report/)[![Image 3: r/technology - OpenAI's internal documents predict $14 billion loss in 2026 according to report](https://external-preview.redd.it/openais-internal-documents-predict-14-billion-loss-in-2026-v0-rAOZZoY36pQ1q5F4jl0S321_X0tbie67QnzeTLZDDrY.jpeg?width=640&crop=smart&auto=webp&s=b43881d975a696fea01779fe8a4b2f942ede0211)](https://www.pcgamer.com/software/ai/openais-internal-documents-predict-usd14-billion-loss-in-2026-according-to-report/). [pcgamer.com Open](https://www.pcgamer.com/software/ai/openais-internal-documents-predict-usd14-billion-loss-in-2026-according-to-report/). By continuing, you agree to our[User Agreement](https://www.redditinc.com/policies/user-agreement)and acknowledge that you understand the[Privacy Policy](https://www.redditinc.com/policies/privacy-policy). [OpenAI's projected financial losses in 2026](https://www.reddit.com/answers/d13d4ccc-4e48-47da-ac79-2bc99e049ea0/?q=OpenAI%27s+projected+financial+losses+in+2026&source=PDP). [OpenAI vs Anthropic revenue comparison](https://www.reddit.com/answers/24bdec33-69b1-4c47-b84a-74cdc464808b/?q=OpenAI+vs+Anthropic+revenue+comparison&source=PDP). [Impact of 5G on everyday life](https://www.reddit.com/answers/e943852b-780a-474e-a7f8-696c4fe21bd4/?q=Impact+of+5G+on+everyday+life&source=PDP). [Future of quantum computing technology](https://www.reddit.com/answers/1b3e8e3e-87f1-4f71-ba43-ca33056198d4/?q=Future+of+quantum+computing+technology&source=PDP). [Innovations in renewable energy solutions](https://www.reddit.com/answers/2377d05e-5a95-47ba-9e7c-295efd9f6ff7/?q=Innovations+in+renewable+energy+solutions&source=PDP). [Reddit Rules](https://www.redditinc.com/policies/content-policy)[Privacy Policy](https://www.reddit.com/policies/privacy-policy)[User Agreement](https://www.redditinc.com/policies/user-agreement)[Your Privacy Choices](https://support.reddithelp.com/hc/articles/43980704794004)[Accessibility](https://support.reddithelp.com/hc/sections/38303584022676-Accessibility)[Reddit, Inc. All rights reserved.](https://redditinc.com/). *   [About Reddit](https://www.redditinc.com/). *   [Advertise](https://ads.reddit.com/register?utm_source=web3x_consumer&utm_name=left_nav_cta). *   [Developer Platform](https://developers.reddit.com/?utm_source=reddit&utm_medium=left_nav_resources). *   [Reddit Pro BETA](https://www.reddit.com/reddit-pro?utm_source=reddit&utm_medium=left_nav_resources). *   [Help](https://support.reddithelp.com/hc?utm_source=reddit&utm_medium=footer&utm_campaign=evergreen). *   [Careers](https://www.redditinc.com/careers). *   [Press](https://www.redditinc.com/press). *   [Best of Reddit](https://www.reddit.com/posts/2026/global/). *   [Reddit Rules](https://www.redditinc.com/policies/content-policy). *   [Privacy Policy](https://www.reddit.com/policies/privacy-policy). *   [User Agreement](https://www.redditinc.com/policies/user-agreement). All rights reserved.](https://redditinc.com/)."
+      },
+      {
+        "url": "https://finance.yahoo.com/markets/stocks/articles/openai-falls-short-of-revenue-and-user-targets-as-it-races-toward-ipo-wsj-reports-031016046.html",
+        "title": "OpenAI falls short of revenue and user targets as it races toward IPO ...",
+        "snippet": "OpenAI missed multiple monthly revenue targets earlier this year after losing ​ground to ​Anthropic in coding and ​enterprise markets, the"
+      },
+      {
+        "url": "https://news.ycombinator.com/item?id=47140623",
+        "title": "OpenAI resets spending expectations, from $1.4T to $600B | Hacker News",
+        "snippet": "| |  | | --- | | OpenAI resets spending expectations, from $1.4T to $600B (cnbc.com) | | 225 points by randycupertino 74 days ago | hide | past | favorite | 191 comments |     |  |  | | --- | --- | | |  | | --- | | paxys 74 days ago  | next )   > OpenAI is projecting that its total revenue for 2030 will be more than $280 billion For context, that is more than the annual revenue of all but 3 tech companies in the world (Nvidia, Apple, Google), and about the same as Microsoft. So a casual 1300% revenue growth in under 4 years for a company that is already valued in the hundreds of billions. | | | |  | | --- | | raincole 74 days ago  | parent | next )   > a casual 1300% revenue growth in under 4 years for a company that is already valued in the hundreds of billions."
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+        "title": "OpenAI Misses 2026 Revenue: WSJ Hits $1.4T Stargate Bet",
+        "heading": "Q1 2026 Hyperscaler Capex: The Numbers Behind the Pressure",
+        "chunk_text": "Q1 2026 Hyperscaler Capex: The Numbers Behind the Pressure\n\n| Company | 2026 Capex Guidance | YoY Change | OpenAI Exposure | Reports |\n| --- | --- | --- | --- | --- |\n| Amazon | ~$200 billion | +~50% | $38B AWS Bedrock + $100B Anthropic | April 29, after close |\n| Alphabet (Google) | Up to $185 billion | ~2x 2025 | $40B Anthropic stake; no direct OpenAI | April 29, after close |\n| Microsoft | ~$140 billion | +~35% | Largest single OpenAI customer | April 29, after close |\n| Meta Platforms | $115–135 billion | ~2x 2025 | None direct; Llama 4 internal | April 29, after close |\n| Oracle | ~$35 billion | +~70% | $300B OpenAI commitment is core | Reported earlier |\n| CoreWeave | ~$25 billion | +~80% | Anchor tenant: OpenAI / Stargate | Reported earlier |\n\nThe asymmetry is plain. Microsoft, which once enjoyed full exclusivity on OpenAI workloads, is now competing with Oracle, AWS, Google Cloud and CoreWeave for the same compute dollars. Meanwhile, Oracle and CoreWeave have effectively bet their growth narratives on the OpenAI contract, leaving them more exposed than Microsoft to a sustained miss. The message from tonight’s earnings will not be in the Q1 numbers — it will be in the management commentary about whether AI revenue is keeping pace with AI capex.",
+        "score": 6.9344,
+        "rank": 0
+      },
+      {
+        "url": "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+        "title": "OpenAI Misses 2026 Revenue: WSJ Hits $1.4T Stargate Bet",
+        "heading": "What is OpenAI’s 2026 revenue target?",
+        "chunk_text": "What is OpenAI’s 2026 revenue target?\n\nAccording to multiple reports including AInvest, OpenAI is targeting approximately $20 billion in annual revenue for calendar 2026, more than threefold the roughly $6 billion the company recorded in 2024. The internal plan that was reportedly missed in early 2026 is consistent with that full-year target.",
+        "score": 6.7081,
+        "rank": 1
+      },
+      {
+        "url": "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+        "title": "OpenAI Misses 2026 Revenue: WSJ Hits $1.4T Stargate Bet",
+        "heading": "How did OpenAI respond to the WSJ report?",
+        "chunk_text": "How did OpenAI respond to the WSJ report?\n\nCEO Sam Altman and CFO Sarah Friar issued a joint statement on April 28, 2026 calling the WSJ report “ridiculous” and pointing to OpenAI’s $122 billion in cumulative funding as evidence the business is on plan. The company has not yet disclosed actual Q1 2026 revenue or current weekly active user figures.",
+        "score": 6.372,
+        "rank": 2
+      },
+      {
+        "url": "https://tech-insider.org/openai-revenue-miss-friar-altman-stargate-2026/",
+        "title": "OpenAI Misses 2026 Revenue: WSJ Hits $1.4T Stargate Bet",
+        "heading": "Five Predictions for the Next 90 Days",
+        "chunk_text": "Five Predictions for the Next 90 Days\n\nCombining the WSJ story, tonight’s hyperscaler earnings, and the broader competitive picture, five things are likely to happen in the next 90 days. First, OpenAI will publicly disclose Q1 2026 revenue and weekly active user figures earlier than originally planned, almost certainly within the next two weeks, in an effort to reset the narrative. The figures will be high — likely above $4–5 billion in Q1 revenue at run rate — but the question for investors will be whether they match or undershoot the internal plan that the WSJ said was missed. A clean print does not erase the leak; it just reframes it.\n\nSecond, OpenAI’s IPO timeline will quietly slip from late 2026 to early 2027. The company will not formally announce a delay — that would itself confirm the underlying problem — but the bankers will quietly stop showing the company at scheduled investor meetings and the S-1 iteration will pause. The market will read the absence of news as the news. Third, Oracle and CoreWeave will face escalating pressure from analysts to disclose specific OpenAI revenue contribution figures in their next earnings cycles. Both companies have so far avoided naming OpenAI as a customer concentration; that posture is no longer tenable.",
+        "score": 5.978,
+        "rank": 3
+      },
+      {
+        "url": "https://sacra.com/c/openai/",
+        "title": "OpenAI revenue, valuation & funding",
+        "heading": "Valuation & Funding",
+        "chunk_text": "Valuation & Funding\n\n[OpenAI](https://sacra.com/c/openai/) is actively laying the groundwork for a 2026 IPO, having hired Cynthia Gaylor, former CFO of DocuSign, as its first head of investor relations to sharpen investor messaging and governance ahead of the listing. Internal targets discussed include a filing in H2 2026 and a 2027 listing, with the company potentially valued at up to $1 trillion.",
+        "score": 5.7246,
+        "rank": 4
+      },
+      {
+        "url": "https://sacra.com/c/openai/",
+        "title": "OpenAI revenue, valuation & funding",
+        "heading": "$178.00B",
+        "chunk_text": "$178.00B\n\n2026\n\nOverview\n\nReports\n\nFilings\n\n[](https://sacra.com/access/)\n\nSacra estimates that [OpenAI](https://sacra.com/c/openai/) hit $25B in annualized revenue in February 2026, up from $20B at the end of 2025.\n\n[OpenAI](https://sacra.com/c/openai/) CFO Sarah Friar confirmed the $20B 2025 figure alongside $6B in 2024 and $2B in 2023, reflecting roughly 10x growth from 2023 to 2025. [OpenAI](https://sacra.com/c/openai/)'s own March 2026 funding announcement disclosed approximately $2B in monthly revenue and noted the company reached $1B in quarterly revenue by the end of 2024. Weekly active ChatGPT users stood at 900M+ as of the funding announcement, with 50M+ paying subscribers and API volume above 15B tokens per minute.\n\nEnterprise has become a meaningfully larger share of the mix, representing more than 40% of revenue and on track to reach parity with consumer by end of 2026. Codex scaled to 2M+ weekly users, up 5x in three months with usage growing 70%+ month over month, reinforcing the enterprise growth trajectory.\n\n[OpenAI](https://sacra.com/c/openai/) posted a 33% gross margin, constrained by inference costs that reached $8.4B in 2025 and are projected to rise to $14.1B in 2026. [OpenAI](https://sacra.com/c/openai/) projects reaching $85B in revenue by 2030.",
+        "score": 5.4716,
+        "rank": 5
+      },
+      {
+        "url": "https://futuresearch.ai/openai-revenue-forecast/",
+        "title": "OpenAI Revenue, Losses, and Profitability in 2026: Full Financial Breakdown",
+        "heading": "API Revenue Growth",
+        "chunk_text": "API Revenue Growth\n\nEstimates suggest the API business was generating approximately **[$510 million annually](https://futuresearch.ai/openai-api-profit)** by mid-2024—around 15% of OpenAI's ARR. Despite this growth, internal projections and industry analysis suggest OpenAI expects API revenue to be outpaced by both subscription-based products (like ChatGPT Plus, Team, and Enterprise) and emerging offerings such as AI agents. By mid-2024, [subscriptions accounted for approximately 85%](https://www.reuters.com/technology/artificial-intelligence/openai-considers-taking-browser-search-google-information-reports-2024-02-16/) of OpenAI's ARR. Nevertheless, the API remains a strategically important component of OpenAI's business, offering scalable, usage-based income and enabling a wide ecosystem of applications across industries.\n\n**OpenAI's API by the numbers:**\n\n*   **June 2024 API Total Revenue**: $41.2M\n*   **Gross profit margin** (from revenue and inference costs): [75%](https://futuresearch.ai/openai-api-profit) (June 2024)\n*   **June 2024 API ARR**: [$510M](https://futuresearch.ai/openai-api-profit); 15% of total OpenAI ARR\n\nAs of late 2024, API usage reached **[1.4 billion tokens per minute](https://openai.com/index/introducing-chatgpt-search/)**, up dramatically from [200 million](https://www.theverge.com/2024/4/9/24125031/openai-gpt-4-turbo-api-spring-update) at the start of the year.",
+        "score": 2.551,
+        "rank": 6
+      },
+      {
+        "url": "https://futuresearch.ai/openai-revenue-forecast/",
+        "title": "OpenAI Revenue, Losses, and Profitability in 2026: Full Financial Breakdown",
+        "heading": "The Microsoft Conundrum",
+        "chunk_text": "The Microsoft Conundrum\n\n**Even more challenging for OpenAI's balance sheet and cashflow** is that the investment included revenue-sharing agreements. Much of OpenAI's API traffic comes from Azure, and **Microsoft gets a large portion of that, potentially as high as 80%**. OpenAI cannot move to other clouds as it has signed exclusivity – [renewed in 2025](https://www.theinformation.com/articles/microsoft-extends-exclusive-cloud-deal-with-openai-through-2030) – with Azure as the only cloud OpenAI provider (though this may have been [relaxed](https://www.theverge.com/2025/1/16/24344838/microsoft-openai-oracle-partnership-azure-stargate) in 2025 if Azure cannot scale to meet OpenAI's needs, and OpenAI can turn to Oracle). The original exclusivity agreement was [modified in Jan 2025](https://www.theverge.com/2025/1/16/24344838/microsoft-openai-oracle-partnership-azure-stargate) so that OpenAI may use other company's data centers, but Microsoft has the right of first refusal.\n\nAny investors or regulators reviewing OpenAI's books would expect to see the Microsoft Azure credits recorded as both income and expense. Microsoft is essentially paying itself – providing OpenAI prepaid access to Azure rather than handing OpenAI cash to spend elsewhere. (It treats the Azure credits as deferred payment for OpenAI's IP, aligning with how ASC 606 handles non-cash consideration.)",
+        "score": 1.8557,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 2148,
+      "search_ms": 1790,
+      "extract_ms": 7731,
+      "chunk_ms": 33,
+      "retrieve_ms": 1322,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 176439,
+    "elapsed_s": 178.81,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

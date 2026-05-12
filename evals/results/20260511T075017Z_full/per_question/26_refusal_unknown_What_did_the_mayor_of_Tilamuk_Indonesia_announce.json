@@ -1,0 +1,246 @@
+{
+  "id": "ref2",
+  "category": "refusal_unknown",
+  "domain": "obscure",
+  "question": "What did the mayor of Tilamuk, Indonesia announce on Tuesday?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Likely no English-language source — should admit not found cleanly.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T075017Z-ref2",
+  "verdict": "partial",
+  "aggregate": 0.6,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.6,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.6
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.0,
+      "relevant": 0,
+      "total": 8,
+      "reasoning": "No chunk mentions Tilamuk, Indonesia, or any mayor's announcement on Tuesday."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 1901,
+      "search_ms": 3720,
+      "extract_ms": 12270,
+      "chunk_ms": 8,
+      "retrieve_ms": 1198,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 23375,
+    "pipeline_s": 97.83
+  },
+  "judge_reasoning": "refusal",
+  "pipeline": {
+    "answer": "**No announcement of a Tilamuk Indonesia mayor announcement on either date has been found in the provided sources.**\n\nThe sources cover a range of events on **Tuesday, 5 May 2026** — including an Indonesia vs. China U17 football match [2], a magnitude 3.3 earthquake south of Java, Indonesia [4], and a Montreal news digest [1] — but none mention a mayoral announcement in Tilamuk.\n\nFor **Tuesday, 12 May 2026**, the only source is a FOX Weather TV listing, which has no connection to Indonesian municipal politics [5].\n\nThere is also no reference linking the dates \"2026-05-05\" or \"2026-05-12\" to any mayoral announcement in Tilamuk, Indonesia, in any of the five provided sources [1][2][3][4][5].",
+    "mode": "search",
+    "rewritten_query": "What did the mayor of Tilamuk, Indonesia announce on Tuesday?",
+    "rewrote": false,
+    "rationale": "Recent local political news, must be sourced.",
+    "sub_queries": [
+      "Tilamuk Indonesia mayor announcement Tuesday 2026-05-05 or 2026-05-12"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://ca.headtopics.com/2026-05-05",
+        "title": "https://ca.headtopics.com/2026-05-05",
+        "snippet": "05 May 2026, Tuesday NewsLatest News On 05 May 2026, Tuesday These Montreal restaurants were ranked among the best in Canada2026-05-05 7:58 PM Use of force officers testify at coroner’s inquest looking into death of Sarnia man shot by police2026-05-05 7:58 PM B.C. judge’s characterization of man acc"
+      },
+      {
+        "num": 2,
+        "url": "https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17",
+        "title": "Match Events Indonesia VS China - AFC U17 Asian Cup - Tuesday 05-05-2026",
+        "snippet": "[China ![Image 8](https://imgs.ysscores.com/teams/128/1921763070825.png)](javascript:void(0))\n\n[Events](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17-events \"Events Match Indonesia And China - AFC U17 Asian Cup - Tuesday 05-05-2026\")[Detail](https://www.ysscores.com/en/match/"
+      },
+      {
+        "num": 3,
+        "url": "https://www.pafosbuses.com/post/announcement_01-05-2026",
+        "title": "Announcement_01/05/2026",
+        "snippet": "Recent Posts\n\n[See All](https://www.pafosbuses.com/news)\n\n[![Image 2: Announcement 10/05/2026, Parade for Paphos Flower Festival 2026 - By Pafos Municipality](https://static.wixstatic.com/media/c10970_e296f85eb33d4da0a5ea5ff69e228f46~mv2.png/v1/fill/w_289,h_162,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,"
+      },
+      {
+        "num": 4,
+        "url": "https://www.volcanodiscovery.com/earthquakes/quake-info/22973220/mag3quake-May-5-2026-South-of-Java-Indonesia.html",
+        "title": "https://www.volcanodiscovery.com/earthquakes/quake-info/22973220/mag3quake-May-5-2026-South-of-Java-Indonesia.html",
+        "snippet": "A light magnitude 3.3 earthquake occurred in the Indian Ocean 266 km (165 mi) from Indonesia in the afternoon of Tuesday, May 5, 2026 at 5.36 pm local time (GMT +7). The quake had a very shallow depth of 26 km (16 mi) and was not felt (or at least not reported so).\nDate & time | May 5, 2026 10:36:41"
+      },
+      {
+        "num": 5,
+        "url": "https://www.ontvtonight.com/guide/listings/show?cid=69025340&pid=17823133623&tm=2026-05-12+09%3A00%3A00&provider=",
+        "title": "FOX Weather First - \"05-12-2026\"",
+        "snippet": "America's biggest weather news to help you prepare for your day.\n\nnew 2026 English Stereo\n\nNewscast Entertainment Weather National News\n\nBefore / After\n\n![Image 5: -](https://d2po7v53a8yrck.cloudfront.net/pic/ott-tv-strip.png)\n\n[![Image 6](https://d2po7v53a8yrck.cloudfront.net/pic/ott-icons/show-pre"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.volcanodiscovery.com/earthquakes/quake-info/22973220/mag3quake-May-5-2026-South-of-Java-Indonesia.html",
+        "title": "Light Mag. 3.3 Earthquake - Indian Ocean, Indonesia, on Tuesday, May 5, 2026, at 05:36 pm (GMT +7)",
+        "snippet": "# Mag. 3.3 earthquake - Indian Ocean, Indonesia, on Tuesday, May 5, 2026, at 05:36 pm (GMT +7) -. A light magnitude 3.3 earthquake occurred in the Indian Ocean 266 km (165 mi) from  Indonesia in the afternoon of Tuesday, May 5, 2026 at 5.36 pm local time (GMT +7). | Local time at epicenter | Tuesday, **May 5, 2026, at 05:36 pm** (GMT +7) |. | **3.3** | 26 km 16 mi | 10:36:41 | South of Java, Indonesia | **BMKG** (Meteorological, Climatological, and Geophysical Agency of Indonesia) |. | May 5, 04:12 am (GMT +7) | 3.3  10 km | 19 km (12 mi) to the NE | Indian Ocean, Indonesia  I FELT IT | Info |  |. | May 4, 06:23 pm (GMT +7) | 3.4  10 km | 19 km (12 mi) to the E | Indian Ocean, Indonesia  I FELT IT | Info |  |."
+      },
+      {
+        "url": "https://www.pafosbuses.com/post/announcement_01-05-2026",
+        "title": "Announcement_01/05/2026",
+        "snippet": "Title: Announcement_01/05/2026\nOsypa Logo and when click will take you to the home page. Call Us Now FREE: 80005588​​. # Announcement\\_01/05/2026. We would like to remind you that on 01/05/2026 is a public holiday. On public holidays, buses operate according to the Sunday schedule. Buses that do not run on Sundays, do not operate on public holidays. Only the two airport lines 612 and 613 operate year-round without any changes. ## Recent Posts. Easter Announcement 12-14/04/2026. We would like to inform you that on Sunday / Monday and Tuesday of Easter (12-14/04/2026) the Sunday/Holiday schedule will be applied on the routes, for the remaining days the regular schedule will be. Important Announcement - 27/03/2026. Click to go to top of page."
+      },
+      {
+        "url": "https://ca.headtopics.com/2026-05-05",
+        "title": "05 May 2026, Tuesday News | Latest News On 05 May 2026, Tuesday",
+        "snippet": "# 05 May 2026, Tuesday News. ## Latest News On 05 May 2026, Tuesday. These Montreal restaurants were ranked among the best in Canada. Use of force officers testify at coroner’s inquest looking into death of Sarnia man shot by police. B.C. judge’s characterization of man accused of raping teen as ‘person of bad moral fibre’ was a legal error: Appeal Court. Brandt’s ‘lottery’ proposal to buy REAL one council vote away from approval. Trial begins for Ont. man accused of dumping his best friend’s remains after shooting him. Trump says he’s pausing U.S. effort to guide stranded vessels out of Strait of Hormuz. Vivek Ramaswamy Is Projected To Win The GOP Primary In Ohio Governor's Race. Trump will host Brazilian president for talks on economy and security, a White House official says. B.C. Supreme Court hears challenge to $12-billion pipeline approval. New central command centre just what Toronto Police Service needs ahead of World Cup, Mayor says."
+      },
+      {
+        "url": "https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17",
+        "title": "Match Details | Indonesia VS China - AFC U17 Asian Cup - Tuesday 05-05-2026",
+        "snippet": "Title: Match Details | Indonesia VS China - AFC U17 Asian Cup - Tuesday 05-05-2026\n#### The Most Searched Teams. #### The Most Searched Championships. ###### language. ###### My TimeZone. ###### Time Format. ###### Hidden Championships. ### Indonesia. 05:30 pm Start Soon **0** Days. ### China). KING ABDULLAH SPORTS CITY PITCH A STARS (JEDDAH)). w l l l e. ##### Unavailable). Groups Standing) Playoffs) Matches Map). ###### Hidden List At Home. Matches  Videos  News  Standings  Transfer  settings). ###### Dark-Mode."
+      },
+      {
+        "url": "https://birmingham.public-i.tv/core/portal/webcast_interactive/1088786",
+        "title": "Licensing Sub-Committee B - 05/05/2026 - Tuesday 5 May 2026, 12:00pm - Birmingham City Council Webcasting",
+        "snippet": "Title: Licensing Sub-Committee B - 05/05/2026 - Tuesday 5 May 2026, 12:00pm - Birmingham City Council Webcasting\n# Licensing Sub-Committee B - 05/05/2026 - Tuesday 5 May 2026, 12:00pm - Birmingham City Council Webcasting. ## Licensing Sub-Committee B - 05/05/2026 Tuesday, 5th May 2026 at 12:00pm. ### Agenda. ### Slides. ### Transcript. ### Map. ### Resources. ### Twitter. ### Forums. ### Speakers. ### Feedback. ### Votes. ## Cookie preferences. ### This website uses cookies. ### Necessary. ### Preferences. ### Statistics. ### Third-Party Services."
+      },
+      {
+        "url": "https://www.ontvtonight.com/guide/listings/show?cid=69025340&pid=17823133623&tm=2026-05-12+09%3A00%3A00&provider=",
+        "title": "FOX Weather First - \"05-12-2026\" - 05:00 am Tuesday, May 12 on WNYW FOX Weather",
+        "snippet": "Title: FOX Weather First - \"05-12-2026\" - 05:00 am Tuesday, May 12 on WNYW FOX Weather\n## FOX Weather First: 05-12-2026. ##### **05:00 am - 08:00 am**, Tuesday, May 12 on WNYW FOX Weather (5.3). Average User Rating: 10.00 (1 votes). My Rating: Sign in or Register to view last vote. America's biggest weather news to help you prepare for your day. | |  |  | | --- | --- | |  | **Fox Nation PARK'd** 04:00 am | | |  |  | | --- | --- | | **Weather Command** 08:00 am |  | |. |  | **Fox Nation PARK'd** 04:00 am |. | **Weather Command** 08:00 am |  |. Start customizing your television guide! ##### About On TV Tonight. ##### TV Listings. ##### Popular. © 2026 ON TV TONIGHT | Legal Notices | Privacy Policy."
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://ca.headtopics.com/2026-05-05",
+        "title": "https://ca.headtopics.com/2026-05-05",
+        "heading": "",
+        "chunk_text": "05 May 2026, Tuesday NewsLatest News On 05 May 2026, Tuesday These Montreal restaurants were ranked among the best in Canada2026-05-05 7:58 PM Use of force officers testify at coroner’s inquest looking into death of Sarnia man shot by police2026-05-05 7:58 PM B.C. judge’s characterization of man accused of raping teen as ‘person of bad moral fibre’ was a legal error: Appeal Court2026-05-05 7:58 PM Brandt’s ‘lottery’ proposal to buy REAL one council vote away from approval2026-05-05 7:58 PM Trial begins for Ont. man accused of dumping his best friend’s remains after shooting him2026-05-05 7:57 PM ‘A big oopsie’: Colts coach comes clean about viral press conference2026-05-05 7:57 PM Vehicle fire closes lanes on Hwy. 417 in Ottawa during rush hour2026-05-05 7:57 PM Trump says he’s pausing U.S. effort to guide stranded vessels out of Strait of Hormuz2026-05-05 7:56 PM Megyn Kelly Bashes Trump For Unsuccessfully ‘Bullying His Way Out Of Everything’2026-05-05 7:55 PM Vivek Ramaswamy Is Projected To Win The GOP Primary In Ohio Governor's Race2026-05-05 7:55 PM Trump will host Brazilian president for talks on economy and security, a White House official says2026-05-05 7:51 PM Ontario to lower colorectal cancer screening age to 452026-05-05 7:50 PM B.C.",
+        "score": 2.9601,
+        "rank": 0
+      },
+      {
+        "url": "https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17",
+        "title": "Match Events Indonesia VS China - AFC U17 Asian Cup - Tuesday 05-05-2026",
+        "heading": "[China ![Image 8](https://imgs.ysscores.com/teams/128/1921763070825.png)](javascript:void(0))",
+        "chunk_text": "[China ![Image 8](https://imgs.ysscores.com/teams/128/1921763070825.png)](javascript:void(0))\n\n[Events](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17-events \"Events Match Indonesia And China - AFC U17 Asian Cup - Tuesday 05-05-2026\")[Detail](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17 \"Carrier Channel And Commentator for Match Indonesia And China - AFC U17 Asian Cup - Tuesday 05-05-2026\")[Statics](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17-statics \"Statics for Match Indonesia And China AFC U17 Asian Cup Tuesday 05-05-2026\")[Standings](javascript:void(0);)\n\n[All](javascript:void(0))[Home](javascript:void(0))[Away](javascript:void(0))\n\n[Scorers](javascript:void(0);)[News](javascript:void(0);)[Fan Zone](javascript:void(0);)\n\nDiscover more\n\nLive Sporting Events\n\nSoccer\n\nVideo\n\n[Highlights](https://www.youtube.com/watch?v=6A4gSsJ_X-U)\n\n[Full Match](https://www.youtube.com/watch?v=xYoOA-GDsWQ)\n\nEvents\n\n[Top](javascript:void(0))[All](javascript:void(0))\n\nEnded\n\n[Keanu Senjaya](javascript:void(0))\n\n87’\n\n0 - 0\n\nMid Match\n\nStart Match\n\nEnded\n\n[Keanu Senjaya](javascript:void(0))\n\n87’\n\n0 - 0\n\nMid Match\n\nStart Match\n\nStatics\n\n![Image 9](https://imgs.ysscores.com/teams/128/6741763080927.png)\n\n39 %\n\n6 Total Shots 19\n\n4 Offsides 2\n\n7 Fouls 5\n\n![Image 10](https://imgs.ysscores.com/teams/128/1921763070825.png)\n\n61 %\n\nIndonesia\n\nChina\n\n32%\n\n29%\n\n39%\n\nAttack\n\n39 %\n\nPossession\n\n61 %\n\n6 Total Shots 19\n\n1 Shots on Goal 4\n\n0 Shots off Goal 9\n\n3 Blocked Shots 6\n\n259 Total Passes 373\n\n2 Corner Kicks 12\n\n4 Offsides 2",
+        "score": 1.7938,
+        "rank": 1
+      },
+      {
+        "url": "https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17",
+        "title": "Match Events Indonesia VS China - AFC U17 Asian Cup - Tuesday 05-05-2026",
+        "heading": "Events Match Indonesia And China - AFC U17 Asian Cup - Tuesday 05-05-2026",
+        "chunk_text": "Events Match Indonesia And China - AFC U17 Asian Cup - Tuesday 05-05-2026\n\n###### [Hidden Championships](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17#)\n\n[](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17#)Time Format\n\n24 hours**Timings within 24 hours**\n\n12 hours**Timing AM / PM**\n\n[](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17#)My TimeZone\n\nMy TimeZone\n\nSaudi Arabia**GMT +3**\n\nUniversal Time**UTC**\n\n[](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17#)ترتيب المباريات حسب\n\nالبطولة**سيتم عرض المباريات داخل صندوق يخص كل بطولة بشكل منفصل**\n\nالتوقيت**سيتم عرض المباريات بشكل تصاعدي من الأقرب إلى الأبعد من حيث التوقيت**\n\nالأكثر اهمية**سيتم عرض المباريات بشكل تصاعدي من الأقرب إلى الأبعد من حيث التوقيت**\n\nالمفضلة فقط**سيتم عرض مباريات الأندية والمنتخبات المضافة في قائمة المفضلة فقط**\n\n[](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17#)language\n\nالعربية\n\nEnglish\n\nFrançais\n\nEspañol",
+        "score": -0.0364,
+        "rank": 2
+      },
+      {
+        "url": "https://www.pafosbuses.com/post/announcement_01-05-2026",
+        "title": "Announcement_01/05/2026",
+        "heading": "Recent Posts",
+        "chunk_text": "Recent Posts\n\n[See All](https://www.pafosbuses.com/news)\n\n[![Image 2: Announcement 10/05/2026, Parade for Paphos Flower Festival 2026 - By Pafos Municipality](https://static.wixstatic.com/media/c10970_e296f85eb33d4da0a5ea5ff69e228f46~mv2.png/v1/fill/w_289,h_162,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c10970_e296f85eb33d4da0a5ea5ff69e228f46~mv2.png)](https://www.pafosbuses.com/post/announcement-10-05-2026-parade-for-paphos-flower-festival-2026-by-pafos-municipality)\n\n[Announcement 10/05/2026, Parade for Paphos Flower Festival 2026 - By Pafos Municipality](https://www.pafosbuses.com/post/announcement-10-05-2026-parade-for-paphos-flower-festival-2026-by-pafos-municipality)\n\n[Easter Announcement 12-14/04/2026](https://www.pafosbuses.com/post/easter-announcement-12-14-04-2026)\n\nWe would like to inform you that on Sunday / Monday and Tuesday of Easter (12-14/04/2026) the Sunday/Holiday schedule will be applied on the routes, for the remaining days the regular schedule will be\n\n[![Image 3: Announcement_01/04/2026](https://static.wixstatic.com/media/c10970_339f6419acf74ec984e226551cefa0ef~mv2.png/v1/fill/w_289,h_162,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c10970_339f6419acf74ec984e226551cefa0ef~mv2.png)](https://www.pafosbuses.com/post/announcement_01-04-2026)\n\n[Announcement_01/04/2026](https://www.pafosbuses.com/post/announcement_01-04-2026)",
+        "score": -0.048,
+        "rank": 3
+      },
+      {
+        "url": "https://www.volcanodiscovery.com/earthquakes/quake-info/22973220/mag3quake-May-5-2026-South-of-Java-Indonesia.html",
+        "title": "https://www.volcanodiscovery.com/earthquakes/quake-info/22973220/mag3quake-May-5-2026-South-of-Java-Indonesia.html",
+        "heading": "",
+        "chunk_text": "A light magnitude 3.3 earthquake occurred in the Indian Ocean 266 km (165 mi) from Indonesia in the afternoon of Tuesday, May 5, 2026 at 5.36 pm local time (GMT +7). The quake had a very shallow depth of 26 km (16 mi) and was not felt (or at least not reported so).\nDate & time | May 5, 2026 10:36:41 UTC - |\nLocal time at epicenter | Tuesday, May 5, 2026, at 05:36 pm (GMT +7) |\nStatus | confirmed (manually revised) |\nMagnitude | 3.3 |\nDepth | 26 km |\nEpicenter latitude / longitude | 10.57°S / 110.38°E Indonesia |\nSeismic antipode | 10.57°N / 69.62°W Venezuela |\nShaking intensity | II Very weak shaking |\nFelt | 0 reports |\nPrimary data source | BMKG (Meteorological, Climatological, and Geophysical Agency of Indonesia) |\nWeather at epicenter at time of quake | Broken Clouds 28.3°C (83 F), humidity: 76%, wind: 9 m/s (17 kts) from ESE |\nEstimated seismic energy released | 5.6 x 109 joules (1.56 megawatt hours, equivalent to 1.34 tons of TNT) | equivalent to ONE quake of magnitude 3.3 | about seismic energy |\nDistance | Place | Max.",
+        "score": -0.3218,
+        "rank": 4
+      },
+      {
+        "url": "https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17",
+        "title": "Match Events Indonesia VS China - AFC U17 Asian Cup - Tuesday 05-05-2026",
+        "heading": "Events Match Indonesia And China - AFC U17 Asian Cup - Tuesday 05-05-2026",
+        "chunk_text": "Events Match Indonesia And China - AFC U17 Asian Cup - Tuesday 05-05-2026\n\n[![Image 5: YSscores](https://www.ysscores.com/images/icon-dark.svg)![Image 6: YSscores](https://www.ysscores.com/images/yala-logo-light.svg)](https://www.ysscores.com/en/index)\n\n*   [Home](https://www.ysscores.com/)\n*   [Matches](https://www.ysscores.com/en/today_matches)\n*   [News](https://www.ysscores.com/en/news)\n*   [Standings](https://www.ysscores.com/en/rank)\n*   [Videos](https://www.ysscores.com/en/video)\n*   [Transfer](https://www.ysscores.com/en/transfer)\n*   [](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17#)\n\n*   [About Us](https://www.ysscores.com/en/about)\n    *   [Contact Us](https://www.ysscores.com/en/contact)\n    *   [Privacy Policy](https://www.ysscores.com/en/PrivacyPolicy)\n\n[](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17#)\n\n#### Championships\n\n#### Players\n\n#### Teams\n\n#### The Most Searched Teams\n\n#### The Most Searched Championships\n\n[Login](https://www.ysscores.com/en/login)\n\n[](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17#)\n\nAppearance\n\n###### Dark-Mode\n\n- [x]\n\nlanguage\n\n###### [language English](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17#)\n\nTime\n\n###### [My TimeZone America/Los_Angeles](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17#)\n\n###### [Time Format 12 hours](https://www.ysscores.com/en/match/19603367/Indonesia-U17-vs-China-U17#)",
+        "score": -2.2379,
+        "rank": 5
+      },
+      {
+        "url": "https://ca.headtopics.com/2026-05-05",
+        "title": "https://ca.headtopics.com/2026-05-05",
+        "heading": "",
+        "chunk_text": "2026-05-05 6:51 PM Ontario FAST shows what’s possible: Now make speed the standard for all priority cancer meds2026-05-05 6:47 PM Eby hits back at claim B.C.",
+        "score": -3.1464,
+        "rank": 6
+      },
+      {
+        "url": "https://www.ontvtonight.com/guide/listings/show?cid=69025340&pid=17823133623&tm=2026-05-12+09%3A00%3A00&provider=",
+        "title": "FOX Weather First - \"05-12-2026\"",
+        "heading": "",
+        "chunk_text": "America's biggest weather news to help you prepare for your day.\n\nnew 2026 English Stereo\n\nNewscast Entertainment Weather National News\n\nBefore / After\n\n![Image 5: -](https://d2po7v53a8yrck.cloudfront.net/pic/ott-tv-strip.png)\n\n[![Image 6](https://d2po7v53a8yrck.cloudfront.net/pic/ott-icons/show-previous.png?v=920260511)](https://www.ontvtonight.com/guide/listings/show?cid=69025340&pid=14190001570&tm=2026-05-12+08%3A00%3A00&provider=)**[FOX Weather @ Night](https://www.ontvtonight.com/guide/listings/show?cid=69025340&pid=14190001570&tm=2026-05-12+08%3A00%3A00&provider=)** 04:00 am**[Weather Command](https://www.ontvtonight.com/guide/listings/show?cid=69025340&pid=13750557174&tm=2026-05-12+12%3A00%3A00&provider=)** 08:00 am[![Image 7](https://d2po7v53a8yrck.cloudfront.net/pic/ott-icons/show-next.png?v=920260511)](https://www.ontvtonight.com/guide/listings/show?cid=69025340&pid=13750557174&tm=2026-05-12+12%3A00%3A00&provider=)",
+        "score": -3.4211,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 1901,
+      "search_ms": 3720,
+      "extract_ms": 12270,
+      "chunk_ms": 8,
+      "retrieve_ms": 1198,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 23375,
+    "elapsed_s": 97.83,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

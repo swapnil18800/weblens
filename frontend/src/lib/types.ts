@@ -108,7 +108,10 @@ export type ErrorReason =
 
 // Server-Sent Event payload shapes (mirrors backend SSE protocol)
 export type SseEvent =
+  | { event: "rewrite_done"; data: { original_query: string; rewritten_query: string; rewrote: boolean; latency_ms: number } }
   | { event: "decompose_done"; data: { sub_queries: string[]; original_query: string; rewritten_query?: string; rewrote?: boolean; mode: "fast_path" | "llm"; latency_ms: number } }
+  | { event: "page_cache_info"; data: { hits: number; misses: number; from_cache_urls: string[]; fetched_urls: string[] } }
+  | { event: "embedding_cleanup_done"; data: { freed_candidate_count: number; freed_chunks_count: number; latency_ms: number } }
   | { event: "search_done"; data: {
       urls: UrlInfo[];
       sub_queries: string[];
@@ -135,7 +138,10 @@ export type SseEvent =
 // ── Chat store shapes ────────────────────────────────────────────────────────
 
 export type StepKind =
+  | "rewrite"
+  | "route"
   | "decompose"
+  | "page_cache"
   | "search"
   | "extract"
   | "chunk"
@@ -144,7 +150,8 @@ export type StepKind =
   | "dense"
   | "rrf"
   | "rerank"
-  | "generate";
+  | "generate"
+  | "cleanup";
 
 export type StepStatus = "pending" | "running" | "done" | "failed";
 
@@ -177,15 +184,21 @@ export interface SubqueryState {
 }
 
 export interface PipelineGlobals {
+  rewriteMs?: number;
+  rewrote?: boolean;
   decomposeMs?: number;
   decomposeMode?: "fast_path" | "llm";
   searchMs?: number;
   extractMs?: number;
+  pageCacheHits?: number;
+  pageCacheMisses?: number;
   chunkMs?: number;
   embedMs?: number;
   embedDevice?: string;
   retrieveMs?: number;
   rerankMs?: number;
+  cleanupMs?: number;
+  cleanupFreedChunks?: number;
   pages?: PageInfo[];
   perPageChunks?: PerPageChunk[];
   totalChunks?: number;
@@ -292,8 +305,18 @@ export interface EvalQuestion {
   timing?: { pipeline_s?: number; total_latency_ms?: number; latency_breakdown?: Record<string, number> };
 }
 
+export interface CachedRow {
+  query_hash: string;
+  query_text: string;
+  mode: string;
+  inserted_at: string | null;
+  expires_at: string | null;
+  hit_count: number;
+}
+
 export interface EvalRunDetail {
   run_id: string;
   summary: any;
   questions: EvalQuestion[];
+  cached_rows?: CachedRow[];
 }

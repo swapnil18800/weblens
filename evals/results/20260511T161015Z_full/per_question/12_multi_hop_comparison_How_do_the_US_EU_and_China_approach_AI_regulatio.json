@@ -1,0 +1,583 @@
+{
+  "id": "mh5",
+  "category": "multi_hop_comparison",
+  "domain": "geopolitics",
+  "question": "How do the US, EU, and China approach AI regulation in 2025-2026, and where do they disagree most?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Decompose by jurisdiction; identify points of divergence.",
+  "key_facts": [
+    "EU AI Act",
+    "China",
+    "United States"
+  ],
+  "ground_truth": "EU AI Act (in force) is the most prescriptive, with risk tiers. US relies on sectoral regulation + executive orders. China has model registration and content rules. Biggest divergence: pre-market approval (EU) vs ex post enforcement (US).",
+  "session_id": "eval-20260511T161015Z-mh5",
+  "verdict": "pass",
+  "aggregate": 0.843,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.714,
+    "context_recall": 1.0,
+    "context_precision": 1.0,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.5,
+    "answer_relevancy": 0.788,
+    "aggregate": 0.843,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.843
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.714,
+      "supported": 5,
+      "total": 7,
+      "reasoning": "Most claims supported; missing details on Texas law and global investment figure."
+    },
+    "context_precision": {
+      "score": 1.0,
+      "relevant": 8,
+      "total": 8,
+      "reasoning": "All chunks discuss US, EU, or China AI regulation in 2025-2026, directly addressing the question."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "EU AI Act",
+        "China",
+        "United States"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=0.67; LLM-assist promoted 1 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.788,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "EU AI Act",
+      "China",
+      "United States"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 2,
+      "decompose_ms": 3156,
+      "search_ms": 3695,
+      "extract_ms": 16353,
+      "chunk_ms": 103,
+      "retrieve_ms": 17067,
+      "synthesis_ms": 19613,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 4,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 75970,
+    "pipeline_s": 78.72
+  },
+  "judge_reasoning": "Most claims supported; missing details on Texas law and global investment figure.",
+  "pipeline": {
+    "answer": "The US, EU, and China are advancing fundamentally divergent AI regulatory strategies in 2025-2026, disagreeing most sharply on enforcement philosophy (voluntary vs. binding), regulatory scope (sectoral vs. comprehensive), and underlying values (innovation, rights-protection, or state security). While all three claim to promote \"trustworthy AI,\" no global consensus emerges [6].\n\n## US Approach: Innovation-Led and Preemption-Driven\n\nThe Trump administration’s **Executive Order 14365** (December 11, 2025) centralizes federal control and explicitly targets state-level AI laws as \"innovation-limiting\" [3][5]. Key actions include:\n\n- **AI Litigation Task Force** (January 9, 2026) empowered to challenge state laws on interstate commerce and preemption grounds [2][3][5]\n- **Commerce Department Evaluation** due March 11, 2026, but not yet publicly released [3]\n- **No single comprehensive statute**—existing regulators apply five cross-cutting AI principles within their mandates [6]\n- Priorities **industry-led standards** (NIST AI RMF) and voluntary frameworks; global AI investment hit **$49.2bn** in H1 2025 [6][11]\n\nDespite federal pushback, key state AI laws take effect:\n\n| State | Law / Effective | Main Provisions |\n|-------|----------------|-----------------|\n| **California** | AI Transparency Act (Jan. 1, 2026) | Training data transparency, AI-generated content disclosure [1][2] |\n| **Texas** | Responsible AI Governance Act (Jan. 1, 2026) | Bans social scoring, biometric misuse, discriminatory AI [1] |\n| **Colorado** | AI Act (2026) | Anti-discrimination documentation for high-risk AI [1] |\n| **New York** | Frontier AI Transparency Law (Jan. 1, 2027) | Mirrors California’s requirements [1][2] |\n\n## EU Approach: Comprehensive Risk-Based Framework\n\nThe **EU AI Act** remains the world’s first binding horizontal framework, using a four-tier risk classification [6][8]. Its phased rollout continues:\n\n- **Main application date**: 2 August 2026 for transparency obligations (Article 50) and AI sandbox requirements [9][4]\n- **High-risk rules deferred**: The **Digital Omnibus proposal** (November 19, 2025) delayed high-risk compliance. Political agreement on 7 May 2026 set new deadlines [7][4]:\n  - **2 December 2027**: High-risk rules for biometrics, critical infrastructure, employment, education [4][7]\n  - **2 August 2028**: High-risk systems embedded in regulated products [4]\n- Other 2026 milestones: High-risk classification guidelines expected 2 February 2026; second Code of Practice draft on labeling published 3 March 2026 [9]\n- **Extraterritorial reach**: Any provider whose AI output is used in the EU must comply [6]\n- Penalties reach **7% of global annual turnover** [1]\n\n## China Approach: Content-Focused State Control\n\nChina already enforces **three binding regulations** governing algorithmic recommendations, deepfakes, and generative AI, with mandatory government filing requirements [6]. New 2025-2026 measures include:\n\n- **Synthetic content identification rules** effective **September 1, 2025**—clear labeling required [1]\n- **Generative AI Services Management Measures** impose obligations on consent, data quality, content labeling, and user rights [1]\n- **2026 enforcement priorities**: Minors' data protection compliance (deadline January 31, 2026) and new rules on agentic AI [12]\n- AI oversight embedded within data protection and security frameworks, strengthening privacy/compliance roles [1]\n\n## Core Disagreements\n\n| Dimension | EU | US | China |\n|-----------|----|----|-------|\n| **Philosophy** | Rights-protective, precautionary | Innovation-friendly, sectoral | State-security & social stability |\n| **Mechanism** | Binding risk-tiered law | Existing agency mandates + principles | Direct content & algorithm regulations |\n| **Enforcement** | Extraterritorial, phased penalties | Voluntary standards, state-level variation | Mandatory filings, active audits |\n| **Key 2025-2026 focus** | GPAI compliance & authority designation | Avoiding overregulation, federal preemption | Minor data protection & agentic AI rules |\n\nEU and Chinese frameworks impose binding obligations with extraterritorial reach, while the US resists comprehensive federal law and actively challenges state regulation [3][5][6]. China focuses on content control and state security, the EU on fundamental rights, and the US on market-led innovation—creating \"convergence on principles, divergence on implementation\" [6].\n\n## Key Takeaways\n\n- **US vs. EU**: The US prioritizes innovation and voluntary standards; the EU enforces binding risk-tiered rules with extraterritorial reach and high penalties [6][8]\n- **US vs. China**: The US resists state-level regulation and promotes federal preemption; China enforces mandatory government filings and content controls [5][6]\n- **EU vs. China**: Both impose binding rules, but the EU focuses on rights-based precaution, China on state security and direct algorithmic control [1][6]\n- **No global regime**: The three jurisdictions share \"trustworthy AI\" rhetoric but fundamentally disagree on enforcement philosophy, scope, and underlying values [6]\n- **Divergence is growing**: The US actively preempts state laws while regulating minimally at federal level, contrasting with expanding EU timelines and China's agile enforcement [3][5][12]",
+    "mode": "search",
+    "rewritten_query": "How do the US, EU, and China approach AI regulation in 2025-2026, and where do they disagree most?",
+    "rewrote": false,
+    "rationale": "Multi-region comparative question; time-sensitive policy details require sourced evidence.",
+    "sub_queries": [
+      "US AI regulation policy 2025-2026",
+      "EU AI Act implementation and updates 2025-2026",
+      "China AI regulation policy 2025-2026",
+      "Key disagreements between US, EU, China on AI regulation 2025-2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/",
+        "title": "Where AI Regulation is Heading in 2026: A Global Outlook | Blog | OneTrust",
+        "snippet": "[](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)Asia-Pacific: Enforcement Arrives Across Multiple Markets\n\nSeveral APAC jurisdictions already operate under binding AI frameworks.China enforces multiple AI regulations, including the Generative AI Services Man"
+      },
+      {
+        "num": 2,
+        "url": "https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws",
+        "title": "Trump Signs AI Executive Order as States Implement AI Laws",
+        "snippet": "In September 2025, California enacted an AI transparency law requiring large AI developers to publish a public AI framework outlining how they integrate national and international standards and industry best practices into their frontier AI policies.[Footnote 3](https://er.educause.edu/articles/2026"
+      },
+      {
+        "num": 3,
+        "url": "https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial",
+        "title": "White House Releases a National Policy Framework for Artificial Intelligence | Insights | Holland & Knight",
+        "snippet": "Executive Order (EO) 14365: Removing Barriers to American Leadership in AI\n\nThe Trump Administration issued \"[Removing Barriers to American Leadership in Artificial Intelligence](https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intellig"
+      },
+      {
+        "num": 4,
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "title": "AI Act",
+        "snippet": "Application timeline\n\nThe AI Act entered into force on 1 August 2024, and will be fully applicable 2 years later on 2 August 2026, with some exceptions:\n\n*   prohibited AI practices and AI literacy obligations entered into application from 2 February 2025\n*   the governance rules and the obligations"
+      },
+      {
+        "num": 5,
+        "url": "https://www.vorys.com/publication-battle-for-ai-governance-white-houses-plan-to-centralize-ai-regulation-and-states-continuous-opposition",
+        "title": "Battle for AI Governance: White House’s Plan to Centralize AI Regulation and States’ Continuous Opposition",
+        "snippet": "**Federal Takeover: Goodbye State Patchwork?**\n\nOn December 11, 2025, President Trump signed an executive order on AI, marking a pivotal shift in the regulatory landscape as the White House attempts to centralize AI regulation. The executive order’s directive is clear: unify AI oversight at the fede"
+      },
+      {
+        "num": 6,
+        "url": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "title": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "snippet": "ingle AI statute. Instead, existing regulators — the FCA, ICO, Ofcom, CMA — apply five cross-cutting AI principles within their existing mandates.\n- China regulates AI content and algorithms directly. Three binding regulations already govern algorithmic recommendations, deepfakes, and generative AI,"
+      },
+      {
+        "num": 7,
+        "url": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "title": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "snippet": "The Digital AI Omnibus: Proposed deferral of high risk AI obligations under the AI Act\nAt a glance\n- The European Commission published the Digital Omnibus on AI (Omnibus) on 19 November 2025, proposing to defer the high-risk compliance deadline from 2 August 2026 to 2 December 2027.\n- The second pol"
+      },
+      {
+        "num": 8,
+        "url": "https://www.dataguard.com/eu-ai-act/timeline",
+        "title": "https://www.dataguard.com/eu-ai-act/timeline",
+        "snippet": "The EU AI Act came into force in August 2024, triggering a gradual implementation timeline for companies developing, using, or importing AI products. Depending on varied risk levels and supply-chain roles, there are different deadlines to become compliant. Here’s a breakdown of the key dates.\nThe EU"
+      },
+      {
+        "num": 9,
+        "url": "https://www.kennedyslaw.com/en/thought-leadership/article/2026/the-eu-ai-act-implementation-timeline-understanding-the-next-deadline-for-compliance/",
+        "title": "The EU AI Act implementation timeline: understanding the next deadline for compliance",
+        "snippet": "2026: Main application dates\n\n*   By 2 February 2026: The Commission was expected to publish guidelines specifying the practical implementation of Article 6, including the classification of \"High-Risk\" AI systems and the related requirements.\n*   3 March 2026: The [Second Draft Code of Practice](htt"
+      },
+      {
+        "num": 10,
+        "url": "https://www.uscc.gov/sites/default/files/2026-03/Two_Loops--How_Chinas_Open_AI_Strategy_Reinforces_Its_Industrial_Dominance.pdf",
+        "title": "Two Loops: How China’s Open AI Strategy Reinforces Its Industrial Dominance",
+        "snippet": "Endnotes\n\nKyle Chan et al., “Full Stack: China’s Evolving Industrial Policy for AI,” RAND , June 26, 2025. https://www.rand.org/pubs/perspectives/PEA4012-\n\n1.html#:~:text=and%20state%20agencies .\n\n> 118\n\nSunny Cheung, “Open-Source Technology and PRC National Strategy: Part I,” Jamestown Foundation ,"
+      },
+      {
+        "num": 11,
+        "url": "https://www.linkedin.com/pulse/update-ai-regulation-eu-us-china-august-10-2025-oleksandr-zavadetskyi-6tzye",
+        "title": "https://www.linkedin.com/pulse/update-ai-regulation-eu-us-china-august-10-2025-oleksandr-zavadetskyi-6tzye",
+        "snippet": "An update on AI regulation in the EU, the US, and China, August 10, 2025\nSome numbers first. According to EY Ireland, global investment in generative AI surged to $49.2bn in the first half of 2025, eclipsing the full-year total for 2024. Despite a drop in deals, total value doubled year-on-year, ref"
+      },
+      {
+        "num": 12,
+        "url": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "title": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "snippet": "expected to take an active enforcement approach throughout 2026.\nBeyond cybersecurity, the protection of minors' personal information is also expected to be a key compliance focus in 2026. On 28 Dec. 2025, the Cyberspace Administration of China issued a directive requiring companies that collect min"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws",
+        "title": "Trump Signs AI Executive Order as States Implement AI Laws | EDUCAUSE Review",
+        "snippet": "In December 2025, President Trump issued an executive order establishing a national artificial intelligence (AI) policy framework, challenging stricter state AI laws, and tying certain federal funding to state compliance. On December 11, 2025, President Trump issued an executive order (EO) titled \"Ensuring a National Policy Framework for Artificial Intelligence.\" The EO establishes a federal initiative intended to \"sustain and enhance the United States' global AI dominance through a minimally burdensome national policy framework for AI.\"Footnote1 It also addresses state laws that the Trump administration views as inconsistent with the proposed national framework. The order also instructs the Secretary of Commerce, in consultation with other administration officials, to publish an evaluation of existing state AI laws that identifies those the administration considers onerous or inconsistent with the goals of the order. The EO directs the Secretary of Commerce to issue a policy notice that outlines the conditions under which states may remain eligible for certain funding under the Broadband Equity, Access, and Deployment (BEAD) Program."
+      },
+      {
+        "url": "https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial",
+        "title": "White House Releases a National Policy Framework for Artificial Intelligence | Insights | Holland & Knight",
+        "snippet": "*   This Holland & Knight alert reviews the Framework's core policy positions and situates them alongside related congressional proposals, including U.S. Sen. Marsha Blackburn's updated TRUMP AMERICA AI Act. The White House released a [National Policy Framework for Artificial Intelligence](https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf) (Framework) on March 20, 2026, outlining legislative recommendations intended to guide U.S. Congress as it considers federal artificial intelligence (AI) legislation. The Trump Administration issued \"[Removing Barriers to American Leadership in Artificial Intelligence](https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/)\" (EO 14365) on December 11, 2025, which initiated a coordinated federal review of state-level AI laws and directed agencies to develop policy recommendations, standards and legislative proposals to inform a national approach. Our [HK Health AI Navigator](https://www.hklaw.com/en/general-pages/holland-knight-health-artificial-intelligence-navigator) tracks and interprets AI-related laws and policies impacting the healthcare industry. ### [Warning Signs: Potential Congressional Investigations in Healthcare _Holland & Knight Alert_ / May 6, 2026 / 7 Minutes](https://www.hklaw.com/en/insights/publications/2026/05/warning-signs-potential-congressional-investigations)### [Introducing Trade Matters: Insights on International Trade Policies, Practices and Risks _Holland & Knight Trade Matters Blog_ / May 1, 2026](https://www.hklaw.com/en/insights/publications/2026/05/introducing-trade-matters)### [AI and Cyber-Enabled Tools Are Changing Sanctions Compliance Risks: Are You Prepared?"
+      },
+      {
+        "url": "https://www.nga.org/updates/in-summary-the-white-house-national-legislative-policy-framework-for-artificial-intelligence/",
+        "title": "In Summary: The White House National Legislative Policy Framework for Artificial Intelligence - National Governors Association",
+        "snippet": "[![National Governors Association](https://www.nga.org/wp-content/themes/nga/images/branding/logo.svg)](https://www.nga.org). [![National Governors Association](https://www.nga.org/wp-content/themes/nga/images/branding/logo.svg)](https://www.nga.org). Last July, the White House released “[Winning the Race: America’s AI Action Plan](https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf),” which framed AI as a matter of national competitiveness and emphasized innovation, infrastructure, and international engagement. That direction was reinforced in a December 2025 executive order “[Ensuring a National Policy Framework for Artificial Intelligence](https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/),” which stated that the United States should pursue a minimally burdensome national AI framework, expressed concern that a patchwork of state laws could create compliance burdens, affect interstate commerce, and slow innovation, and directed White House officials to prepare legislative recommendations establishing a uniform federal policy framework for AI that would preempt conflicting state AI laws. These White House recommendations were released last Friday as a [National Policy Framework for Artificial Intelligence](https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf). ![](https://www.nga.org/wp-content/uploads/2026/04/NGA-NMVC-1.png). ![](https://www.nga.org/wp-content/uploads/2026/04/naw2026.jpg). [#### Governors at Work During National Apprenticesh ...](https://www.nga.org/news/commentary/governors-at-work-during-national-apprenticeship-week/)[Read More](https://www.nga.org/news/commentary/governors-at-work-during-national-apprenticeship-week/). ![](https://www.nga.org/wp-content/uploads/2026/04/Governors-Energy.png). ![](https://www.nga.org/wp-content/uploads/2026/04/broadband-1080-x-1080-px.png). ![](https://www.nga.org/wp-content/uploads/2026/04/Mrs-Moore-SARM-Reception-1-scaled.jpg). ![](https://www.nga.org/wp-content/uploads/2026/04/statement_4.26.png). ![](https://www.nga.org/wp-content/uploads/2026/04/IMG_8924-scaled-e1776868263476.jpg). [#### NGA Convenes Broadband Leaders to Promote Work ...](https://www.nga.org/news/press-releases/nga-convenes-broadband-leaders-to-promote-workforce-and-community-development-in-states-and-territories/)[Read More](https://www.nga.org/news/press-releases/nga-convenes-broadband-leaders-to-promote-workforce-and-community-development-in-states-and-territories/). ![](https://www.nga.org/wp-content/uploads/2026/04/funding_report.jpg). ![](https://www.nga.org/wp-content/uploads/2026/04/illicit_drug_trends.jpg). ![](https://www.nga.org/wp-content/uploads/2022/01/pexels-photo-371936.jpeg). ![](https://www.nga.org/wp-content/uploads/2026/04/RAD-Philly-Collage-1440-x-1080-px-1.png). ![](https://www.nga.org/wp-content/uploads/2026/04/judicial_security_briefing-scaled.jpeg)."
+      },
+      {
+        "url": "https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf",
+        "title": "White House National Policy Framework for AI - Legislative Recommendations",
+        "snippet": "• Congress should affirm that existing child privacy protections apply to AI systems, including limits on data collection for model training and targeted advertising. • Congress should ensure that it does not preempt states from enforcing their own generally applicable laws protecting children, such as prohibitions on child sexual abuse material, even where such material is generated by AI. # A National Policy Framework for Artificial Intelligence L E G I S L A T I V E R E C O M M E N D A T I O N S T H E W H I T E H O U S E. • Congress should consider establishing a federal framework protecting individuals from the unauthorized distribution or commercial use of AI-generated digital replicas of their voice, likeness, or other identifiable attributes, while providing clear exceptions for parody, satire, news reporting, and other expressive works protected by the First Amendment."
+      },
+      {
+        "url": "https://www.vorys.com/publication-battle-for-ai-governance-white-houses-plan-to-centralize-ai-regulation-and-states-continuous-opposition",
+        "title": "Battle for AI Governance: White House's Plan to Centralize ...",
+        "snippet": "# Battle for AI Governance: White House’s Plan to Centralize AI Regulation and States’ Continuous Opposition. On one side, the Trump Administration is pressing for a single, national framework that limits fragmented state-by-state rules. On the other, states like California, Colorado, Utah, and Texas who have enacted and continue to enact AI-related laws are moving ahead with their own compliance regimes. For organizations leveraging AI, including those entrusting their data to such organizations, the fight between federal and state regulations includes profound implications for data privacy as businesses and consumers stand between the crossfires. On December 11, 2025, President Trump signed an executive order on AI, marking a pivotal shift in the regulatory landscape as the White House attempts to centralize AI regulation. The executive order’s directive is clear: unify AI oversight at the federal level and reduce patchwork state regulations."
+      },
+      {
+        "url": "https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/",
+        "title": "Where AI Regulation is Heading in 2026: A Global Outlook",
+        "snippet": "[Skip to main content](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/#main-content). *   [AI Governance Centralize governance from policy to runtime](https://www.onetrust.com/content/onetrust/us/en/solutions/ai-governance). *   [Data Use Governance Enable data use with real-time policy enforcement for AI-ready data](https://www.onetrust.com/content/onetrust/us/en/solutions/data-use-governance). *   [EU AI Act](https://www.onetrust.com/content/onetrust/us/en/solutions/eu-ai-act-compliance). *   [English](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/#). *   [English](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/#). *   [English](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/#). *   [English](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/#). *   [AI Governance Centralize governance from policy to runtime](https://www.onetrust.com/content/onetrust/us/en/solutions/ai-governance). *   [Data Use Governance Enable data use with real-time policy enforcement for AI-ready data](https://www.onetrust.com/content/onetrust/us/en/solutions/data-use-governance). *   [EU AI Act](https://www.onetrust.com/content/onetrust/us/en/solutions/eu-ai-act-compliance). *   [English](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/#). *   [English](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/#). *   [Heading into 2026](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/#heading-into-2026 \"Heading into 2026\"). ## [](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)Patterns Shaping AI Regulation Worldwide. ## [](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)Europe: AI Governance Matures Under the EU AI Act. The EU Artificial Intelligence Act entered into force in August 2024, with obligations phasing in through 2027. ## [](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)United States: State AI Laws Anchor Enforcement. ## [](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)Asia-Pacific: Enforcement Arrives Across Multiple Markets. ## [](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)Heading Into 2026. ## [](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)FAQs: What Privacy Leaders Need to Know About AI Laws. *   [AI Governance](https://www.onetrust.com/content/onetrust/us/en/solutions/ai-governance). *   [Glossary of AI Governance, Privacy & Data Risk Terms](https://www.onetrust.com/content/onetrust/us/en/glossary). *   [AI DPIA](https://www.onetrust.com/content/onetrust/us/en/glossary/ai-dpia). *   [AI Risk Management](https://www.onetrust.com/content/onetrust/us/en/glossary/ai-risk-management)."
+      },
+      {
+        "url": "https://artificialintelligenceact.eu/implementation-timeline/",
+        "title": "Implementation Timeline | EU Artificial Intelligence Act",
+        "snippet": "This page lists all of the key dates you need to be aware of relating to the implementation of the EU AI Act. For a summary of all tasks and responsibilities assigned to the AI Office or Member States by the EU AI Act, see our blog posts and infographics on the topic. For a timeline of all key events in the AI Act’s history so far, see our Historic Timeline of the AI Act. If you want to be notified about significant updates to the Act and its implementation, subscribe to the EU AI Act Newsletter, a biweekly newsletter by the Future of Life Institute. **Providers:** Providers of GPAI models that have been placed on the market / put into service before this date need to be compliant with the AI Act by 2 August 2027. **Member States:** Deadline for Member States to report to the Commission on the status of the financial and human resources of the national competent authorities."
+      },
+      {
+        "url": "https://www.kennedyslaw.com/en/thought-leadership/article/2026/the-eu-ai-act-implementation-timeline-understanding-the-next-deadline-for-compliance/",
+        "title": "The EU AI Act implementation timeline: understanding the next deadline for compliance",
+        "snippet": "# The EU AI Act implementation timeline: understanding the next deadline for compliance. Published in the Official Journal of the European Union on 12 July 2024, the AI Act is subject to a phased implementation timetable under Article 113, with different provisions becoming applicable at different stages rather than the Regulation becoming fully applicable from day one as a single block. To understand what lies ahead in their journey to compliance, organisations should look at the timeline for application of the AI Act, paying particular attention to the varying deadlines for different chapters, obligations and transitional arrangements to become applicable. The prohibitions and AI literacy obligations have already become applicable, the rules on general-purpose AI models and certain governance provisions have also started to apply, and most of the remaining obligations are scheduled to apply from 2 August 2026, with Article 6(1) and the corresponding obligations applying later, from 2 August 2027."
+      },
+      {
+        "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act",
+        "title": "Timeline for the Implementation of the EU AI Act | AI Act Service Desk",
+        "snippet": "# Timeline for the Implementation of the EU AI Act. The EU's AI Act legislation applies progressively, with a full roll-out foreseen by 2 August 2027. General provisions (definitions & AI literacy) and prohibitions apply. Rules for general-purpose AI apply and governance must be in place. * AI Act obligations for providers of general-purpose AI models enter into application. The majority of rules of the AI Act come into force and enforcement starts. * Rules for high-risk AI systems in Annex III enter into application \\*\\*. * Transparency rules (Article 50) start to apply. * Measures in support of innovation start apply. * Enforcement of the AI Act starts at national and EU-level. Rules for high-risk AI embedded in regulated products apply \\*\\*. \\*\\* In the context of the Digital Omnibus package, the Commission has proposed linking the application of rules governing high-risk AI systems to the availability of support tools, including the necessary harmonised standards."
+      },
+      {
+        "url": "https://www.dataguard.com/eu-ai-act/timeline",
+        "title": "EU AI Act Timeline: Key Compliance Dates & Deadlines Explained",
+        "snippet": "2.   [Eu Ai Act](https://www.dataguard.com/eu-ai-act/). [The EU AI Act](https://www.dataguard.com/frameworks/eu-ai-act/) came into force in August 2024, triggering a gradual implementation timeline for companies developing, using, or importing AI products. *   [What level of risk does the AI carry with it?](https://www.dataguard.com/eu-ai-act/timeline#what-level-of-risk-does-the-ai-carry-with-it). *   [Is the AI already out on the market?](https://www.dataguard.com/eu-ai-act/timeline#is-the-ai-already-out-on-the-market). *   [Scenario #1: Providers of new GPAI systems](https://www.dataguard.com/eu-ai-act/timeline#scenario-1-providers-of-new-gpai-systems). *   [Scenario #2: Operators of high-risk AI systems](https://www.dataguard.com/eu-ai-act/timeline#scenario-2-operators-of-high-risk-ai-systems). *   [Scenario #3: GPAI operators whose AI system is already on the market](https://www.dataguard.com/eu-ai-act/timeline#scenario-3-gpai-operators-whose-ai-system-is-already-on-the-market). *   [Obligations for providers](https://www.dataguard.com/eu-ai-act/timeline#obligations-for-providers). *   [Obligations for deployers](https://www.dataguard.com/eu-ai-act/timeline#obligations-for-deployers). *   [Obligations for importers and distributors](https://www.dataguard.com/eu-ai-act/timeline#obligations-for-importers-and-distributors). [AI providers](https://www.dataguard.com/blog/the-eu-ai-act-and-obligations-for-providers/) create the AI system. [AI deployers](https://www.dataguard.com/blog/the-eu-ai-act-obligations-for-deployer/) use AI systems. While the EU Commission is working with member states to build out the reporting and monitoring infrastructure of the AI Act until August 2025, companies have several key areas to focus on: establishing[a risk management system](https://www.dataguard.com/product/security/), implementing data governance measures, drawing up technical documentation, maintaining records, preparing detailed instructions, and more. *   [EU AI Act](https://www.dataguard.com/frameworks/eu-ai-act/)."
+      },
+      {
+        "url": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "title": "Proposed deferral of high risk AI obligations under the AI Act",
+        "snippet": "Your A to Z of employment laws for jurisdictions across EMEA, AsiaPac and the Americas. A global guide to employer obligations. A guide to implementation of the EU Whistleblower Protection Directive. A guide to employer obligations across the EU and UK. # The Digital AI Omnibus: Proposed deferral of high risk AI obligations under the AI Act. On 28 April 2026, the European Parliament, the Council of the EU, and the European Commission held their second political trilogue on the Omnibus – a proposal to amend the Act by postponing high-risk AI compliance deadlines and introducing other simplification measures. The Omnibus is a legislative proposal published by the European Commission on 19 November 2025 that seeks to amend the Act. The most significant change is the deferral of the AI Act's high-risk obligations from the original date of 2 August 2026."
+      },
+      {
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "title": "AI Act | Shaping Europe's digital future - European Union",
+        "snippet": "[Skip to main content](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#main-content). [en](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai). *   [en English](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai). To facilitate the transition to the new regulatory framework, the Commission has launched the [AI Pact](https://digital-strategy.ec.europa.eu/en/policies/ai-pact), a voluntary initiative that seeks to support the future implementation, engage with stakeholders and invite AI providers and deployers from Europe and beyond to comply with the key obligations of the AI Act ahead of time. *   [Risk-based Approach](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai). *   [Compliance and enforcement](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai). *   [Simplification Proposal](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai). *   The [GPAI Code of Practice](https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai) is a voluntary compliance tool submitted to the Commission by independent experts, which offers practical guidance to help providers comply with their obligations under the AI Act related to transparency, copyright, and safety & security. [Share](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#share). *   [Facebook](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#facebook). *   [LinkedIn](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#linkedin). *   [X](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#x). *   [Whatsapp](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#whatsapp). *   [E-mail](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#email). *   [Gmail](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#gmail). *   [Print](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#print). *   [Typepad](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#typepad). *   [Pinterest](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#pinterest). *   [Blogger](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#blogger). *   [Pocket](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#pocket). *   [YahooMail](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#yahoomail). *   [Threads](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#threads). *   [Weibo](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#weibo). *   [Viadeo](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#viadeo). *   [Reddit](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#reddit). *   [Qzone](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#qzone). *   [Netvibes](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#netvibes). *   [Yammer](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#yammer). *   [Tumblr](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#tumblr). *   [Digg](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#digg). *   [Mastodon](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#mastodon). *   [BlueSky](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai#bluesky)."
+      },
+      {
+        "url": "https://www.nytimes.com/2026/02/02/business/china-ai-regulations.html",
+        "title": "Move Fast, but Obey the Rules: China's Vision for Dominating A.I.",
+        "snippet": "China's tight regulatory guardrails leave firms like DeepSeek racing to match the A.I. abilities of its global rivals like OpenAI and Anthropic."
+      },
+      {
+        "url": "https://www.congress.gov/bill/119th-congress/house-bill/6275/text",
+        "title": "Text - H.R.6275 - 119th Congress (2025-2026): China AI Power ...",
+        "snippet": "To require the Secretary of Commerce to submit a report annually on the advanced artificial intelligence capabilities of the People's Republic"
+      },
+      {
+        "url": "https://www.uscc.gov/sites/default/files/2026-03/Two_Loops--How_Chinas_Open_AI_Strategy_Reinforces_Its_Industrial_Dominance.pdf",
+        "title": "[PDF] How China's Open AI Strategy Reinforces Its Industrial Dominance",
+        "snippet": "● China’s open AI model strategy and its manufacturing dominance are mutually reinforcing. In 2025, major U.S. and Chinese frontier AI labs released large language models (LLMs) that. > Hannas et al., “China’s Advanced AI Research: Monitoring China’s Paths to ‘General’ Artificial Intelligence,” Center for Strategic and Emerging. AI: From LLMs to World Models,” arXiv , September 24, 2025, 9. Rachel Metz, “OpenAI Releases Two ‘Open’ AI Models after DeepSeek’s Success,” Bloomberg , August 5, 2025. Kif Leswing, “Zuckerberg Says Meta Likely Won’t Open Source All of Its ‘Superintelligence’ AI Models,” TechCrunch , July 30, 2025. https://techcrunch.com/2025/07/30/zuckerberg-says-meta-likely-wont-open-source-all-of-its-superintelligence-ai-models/ . https://www.cnbc.com/2025/12/09/meta-avocado-ai-strategy-issues.html .USCC.gov U.S.-China Economic and Security Review Commission | 29. https://www.bloomberg.com/news/articles/2026-02-17/china-ai-startup-moon-. shot-seeks-10-billion-value-in-new-funding ; Caroline Meinhardt et al., “Beyond DeepSeek: China’s Diverse Open-Weight AI Ecosystem and Its. Policy Implications,” Stanford University’s Human-Centered Artificial Intelligence Institute , December 2025, 14. Startup Moonshot AI Rivals U.S. with Cheap Open Model,” Tech Target , July 14, 2025. priseai/news/366627679/China-startup-Moonshot-AI-rivals-US-with-cheap-open-model . https://www.theguardian.com/technology/2025/jul/26/china-calls-for-global-ai-cooperation-days-after-trump-administration-unveils-low-. https://archive.ph/L4rYh ; “AI Model Rankings,” Open Router , accessed December 8, 2025."
+      },
+      {
+        "url": "https://www.mayerbrown.com/en/insights/publications/2026/04/china-issues-draft-rules-on-interactive-ai-services",
+        "title": "China Issues Draft Rules on Interactive AI Services - Mayer Brown",
+        "snippet": "[Skip to main content](https://www.mayerbrown.com/en/insights/publications/2026/04/china-issues-draft-rules-on-interactive-ai-services#main). *   [privacy](https://www.mayerbrown.com/en/insights?q=privacy). *   [View All](https://www.mayerbrown.com/en/insights). *   [Antitrust & Competition](https://www.mayerbrown.com/en/services/antitrust--competition). *   [Banking & Finance](https://www.mayerbrown.com/en/services/banking--finance). *   [Capital Markets](https://www.mayerbrown.com/en/services/capital-markets). *   [Corporate & Securities](https://www.mayerbrown.com/en/services/corporate--securities). *   [Cybersecurity & Data Privacy](https://www.mayerbrown.com/en/services/cybersecurity--data-privacy). *   [Financial Services](https://www.mayerbrown.com/en/services/financial-services). *   [International Arbitration](https://www.mayerbrown.com/en/services/international-arbitration). *   [International Trade](https://www.mayerbrown.com/en/services/international-trade). *   [Lending](https://www.mayerbrown.com/en/services/lending). *   [Litigation & Dispute Resolution](https://www.mayerbrown.com/en/services/litigation--dispute-resolution). *   [Mergers & Acquisitions](https://www.mayerbrown.com/en/services/mergers--acquisitions). *   [Private Credit](https://www.mayerbrown.com/en/services/private-credit). [View All Services](https://www.mayerbrown.com/en/services). *   [Pro Bono](https://www.mayerbrown.com/en/services/special-interests/pro-bono). *   [NextGen](https://www.mayerbrown.com/en/information/nextgen). *   [Follow](https://www.mayerbrown.com/en/about-us/follow). *   [privacy](https://www.mayerbrown.com/en/insights?q=privacy). *   [View All](https://www.mayerbrown.com/en/insights). *   [Antitrust & Competition](https://www.mayerbrown.com/en/services/antitrust--competition). *   [Banking & Finance](https://www.mayerbrown.com/en/services/banking--finance). *   [Capital Markets](https://www.mayerbrown.com/en/services/capital-markets). *   [Corporate & Securities](https://www.mayerbrown.com/en/services/corporate--securities). *   [Cybersecurity & Data Privacy](https://www.mayerbrown.com/en/services/cybersecurity--data-privacy). *   [Financial Services](https://www.mayerbrown.com/en/services/financial-services). *   [International Arbitration](https://www.mayerbrown.com/en/services/international-arbitration). *   [International Trade](https://www.mayerbrown.com/en/services/international-trade). *   [Lending](https://www.mayerbrown.com/en/services/lending). *   [Litigation & Dispute Resolution](https://www.mayerbrown.com/en/services/litigation--dispute-resolution). *   [Mergers & Acquisitions](https://www.mayerbrown.com/en/services/mergers--acquisitions). *   [Private Credit](https://www.mayerbrown.com/en/services/private-credit). [View All Services](https://www.mayerbrown.com/en/services). *   [Pro Bono](https://www.mayerbrown.com/en/services/special-interests/pro-bono). *   [NextGen](https://www.mayerbrown.com/en/information/nextgen). *   [Follow](https://www.mayerbrown.com/en/about-us/follow). *   [Insights](https://www.mayerbrown.com/en/insights). [Generate PDF](https://1npdf11.onenorth.com/pdfrenderer.svc/v1/ABCpdf11/GetRenderedPdfByUrl/china-issues-draft-rules-on-interactive-ai-services.pdf/?url=https://www.mayerbrown.com/en/pdf/insights/publications/2026/04/china-issues-draft-rules-on-interactive-ai-services?pdf-options=countrycode%3AUS). *   [](https://www.linkedin.com/shareArticle?mini=true&url=https://www.mayerbrown.com/en/insights/publications/2026/04/china-issues-draft-rules-on-interactive-ai-services). *   [](mailto:?subject=China%20Issues%20Draft%20Rules%20on%20Interactive%20AI%20Services&body=https://www.mayerbrown.com/en/insights/publications/2026/04/china-issues-draft-rules-on-interactive-ai-services). *   [](https://www.facebook.com/sharer/sharer.php?u=https://www.mayerbrown.com/en/insights/publications/2026/04/china-issues-draft-rules-on-interactive-ai-services). *   [](https://twitter.com/intent/tweet?url=https://www.mayerbrown.com/en/insights/publications/2026/04/china-issues-draft-rules-on-interactive-ai-services). *   [Cybersecurity & Data Privacy](https://www.mayerbrown.com/en/services/cybersecurity--data-privacy). More information about the individual Mayer Brown Practices and PKW can be found in the [Legal Notices](https://www.mayerbrown.com/en/legal-notices/overview)section of our website. [Cookie Policy](https://www.mayerbrown.com/en/legal-notices/overview/cookie-policy). [Cookie Policy](https://www.mayerbrown.com/en/legal-notices/overview/cookie-policy)."
+      },
+      {
+        "url": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "title": "Notes from the Asia-Pacific region: Strong start to 2026 for China's data, AI governance landscape",
+        "snippet": "[About](https://iapp.org/about). [Contact](https://contact.iapp.org/support/home). [Store](https://store.iapp.org/). [Store](https://store.iapp.org/). 1.   [Home](https://iapp.org/). 3.   [News](https://iapp.org/news). [Subscribe to IAPP Newsletters](https://iapp.org/news/subscriptions). Subscriptions to this and other IAPP newsletters can be found_[_here_](https://iapp.org/news/subscriptions)_._. [](https://www.linkedin.com/shareArticle?mini=true&url=https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape \"LinkedIn\"). [](https://www.facebook.com/sharer/sharer.php?u=https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape \"Facebook\"). [![Image 4: IAPP web conference, Consent by proxy: When AI agents start deciding for us](https://images.contentstack.io/v3/assets/bltd4dd5b2d705252bc/bltc9b39679afcb9d65/69f39df5cc157bc40121b7d5/WC_SecuritiAI_052826.png?width=640&quality=75&format=pjpg&auto=webp)](https://iapp.org/resources/article/consent-by-proxy-when-ai-agents-start-deciding-for-us)[![Image 5: IAPP Canada Symposium 2026: Privacy, AI Governance, Cybersecurity Law](https://images.contentstack.io/v3/assets/bltd4dd5b2d705252bc/blta46110ed2e77bb4d/69e0f0be60d3d0bb9e99e36d/CS26_Web_banners_FINAL_286-250-tile_ad_block-website.png?width=640&quality=75&format=pjpg&auto=webp)](https://iapp.org/conference/iapp-canada-symposium). ### [Notes from the Asia-Pacific region: China's Cybersecurity Law amendments introduce AI provisions](https://iapp.org/news/a/notes-from-the-asia-pacific-region-china-s-cybersecurity-law-amendments-introduce-ai-provisions). ### [Notes from the Asia-Pacific region: China's AI Plus initiative accelerates AI integration](https://iapp.org/news/a/notes-from-the-asia-pacific-region-china-s-ai-plus-initiative-accelerates-ai-integration). ### [China releases 'AI Plus' plan, rolls out AI labeling law](https://iapp.org/news/a/china-releases-ai-plus-plan-rolls-out-ai-labeling-law). ### [ANPD'S 2026 reorganization: What it means for privacy and data protection in Brazil](https://iapp.org/news/a/anpds-2026-reorganization-what-it-means-for-privacy-and-data-protection-in-brazil). *   [Contact us](https://contact.iapp.org/support/home). *   [Mission](https://iapp.org/about). *   [Partner with us](https://iapp.org/enterprise-services/contact). *   [Press](https://iapp.org/about/media). *   [IAPP store](https://store.iapp.org/). *   [Certifications](https://iapp.org/certify). *   [Certification FAQs](https://iapp.org/certify/faqs). *   [Certification training](https://iapp.org/train). *   [New-to-privacy training](https://iapp.org/train/foundations). *   [Become a member](https://iapp.org/membership). *   [For new members](https://iapp.org/membership/iapp-new-member-guide). *   [Upcoming conferences](https://iapp.org/conferences). *   [Today's news](https://iapp.org/news). *   [Top resources](https://iapp.org/resources). *   [Subscribe to newsletters](https://iapp.org/news/subscriptions). [Conditions of use](https://iapp.org/about/conditions-of-use)[IAPP Cookie notice](https://iapp.org/about/cookie-notice)Manage cookies[Privacy notice](https://iapp.org/about/privacy-notice)[Refund policy](https://iapp.org/about/refund-policy). [Learn more](https://iapp.org/about/cookie-notice/). [Cookie notice](https://iapp.org/about/cookie-notice/)."
+      },
+      {
+        "url": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "title": "AI Regulation Compared: EU, US, UK, China (2026)",
+        "snippet": "*   [The four major regulatory approaches](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#the-four-major-regulatory-approaches). *   [Risk-based four-tier classification](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#risk-based-four-tier-classification). *   [GPAI model obligations](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#gpai-model-obligations). *   [Why it matters](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#why-it-matters). *   [United States: Sector-specific and innovation-first](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#united-states-sector-specific-and-innovation-first). *   [State-level laws — the emerging patchwork](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#state-level-laws-the-emerging-patchwork). *   [NIST AI Risk Management Framework](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#nist-ai-risk-management-framework). *   [Key regulatory requirements](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#key-regulatory-requirements). *   [Other notable jurisdictions](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#other-notable-jurisdictions). *   [Practical multi-jurisdiction compliance strategy](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#practical-multi-jurisdiction-compliance-strategy). *   [Step 3: Layer jurisdiction-specific obligations](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#step-3-layer-jurisdiction-specific-obligations). *   [Does the EU AI Act apply to US companies?](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#does-the-eu-ai-act-apply-to-us-companies). *   [Can I comply with all four jurisdictions using one compliance programme?](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#can-i-comply-with-all-four-jurisdictions-using-one-compliance-programme). *   [Conclusion](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#conclusion). *   [The four major regulatory approaches](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#the-four-major-regulatory-approaches). *   [Risk-based four-tier classification](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#risk-based-four-tier-classification). *   [GPAI model obligations](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#gpai-model-obligations). *   [Why it matters](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#why-it-matters). *   [United States: Sector-specific and innovation-first](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#united-states-sector-specific-and-innovation-first). *   [State-level laws — the emerging patchwork](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#state-level-laws-the-emerging-patchwork). *   [NIST AI Risk Management Framework](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#nist-ai-risk-management-framework). *   [Key regulatory requirements](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#key-regulatory-requirements). *   [Other notable jurisdictions](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#other-notable-jurisdictions). *   [Practical multi-jurisdiction compliance strategy](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#practical-multi-jurisdiction-compliance-strategy). *   [Step 3: Layer jurisdiction-specific obligations](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#step-3-layer-jurisdiction-specific-obligations). *   [Does the EU AI Act apply to US companies?](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#does-the-eu-ai-act-apply-to-us-companies). *   [Can I comply with all four jurisdictions using one compliance programme?](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#can-i-comply-with-all-four-jurisdictions-using-one-compliance-programme). *   [Conclusion](https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global#conclusion)."
+      },
+      {
+        "url": "https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more",
+        "title": "AI Regulations in 2025: US, EU, UK, Japan, China & More",
+        "snippet": "Learn More Here ![Image 3](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/695252d964d80285e26b2f53_Polygon%201.svg)](https://www.anecdotes.ai/agentic-grc). [![Image 6](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/6952dccb27b8e0f645e76f89_Icon2%20-%20Data.svg) Data Engine Your GRC data infrastructure](https://www.anecdotes.ai/data-engine). [![Image 11](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/69f33e370a5ef38c453ccb81_Icon2%20-%20Agentic%20Ai.svg) Agentic GRC AI-powered GRC automation](https://www.anecdotes.ai/agentic-grc). [![Image 16](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/6952dccbdff2fe5f993deb6e_Icon2%20-%20GRC%20(2).svg) Core Applications Core GRC applications](https://www.anecdotes.ai/core-applications). [![Image 22](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/69b04ec4c6ddde98a8fe9b00_Frame%20(3)%20(1).png) See Our **AI-Native Enterprise GRC** Platform in Action Watch Now](https://www.anecdotes.ai/watch-demo). [![Image 23](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/6953c5aefb428692c6ef6fc1_Frame%20(25).svg) A-CCM Agentic Continuous Control Monitoring](https://www.anecdotes.ai/a-ccm)[![Image 24](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/6953c5ae2a1a2983567588b4_Frame%20(26).svg) A-ERM Agentic Enterprise Risk Management](https://www.anecdotes.ai/a-erm)[![Image 25](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/6953c57345ca375f544fc73b_Icon2%20-%20APLM.svg) A-PLM Agentic Policy Lifecycle Management](https://www.anecdotes.ai/a-plm). [![Image 26](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/6952dccb27b8e0f645e76f89_Icon2%20-%20Data.svg) Data Engine Your GRC data infrastructure](https://www.anecdotes.ai/data-engine). [![Image 31](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/69f33e370a5ef38c453ccb81_Icon2%20-%20Agentic%20Ai.svg) Agentic GRC AI-powered GRC automation](https://www.anecdotes.ai/agentic-grc). [![Image 36](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/6952dccbdff2fe5f993deb6e_Icon2%20-%20GRC%20(2).svg) Core Applications Core GRC applications](https://www.anecdotes.ai/core-applications). [![Image 45](https://cdn.prod.website-files.com/5fe349b0c7ae10566e743048/6979e9df314342f23a5f6b0f_Learning%20center%20-%20AI%20Regulation.svg)![Image 46](https://cdn.prod.website-files.com/5fe349b0c7ae10566e743048/6979e9df314342f23a5f6b0f_Learning%20center%20-%20AI%20Regulation.svg)](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#). [Table of Contents ![Image 47](https://cdn.prod.website-files.com/5fe349b0112dc43657761ee3/664edfd2ea68d20bc65b6bc0_toc-arrows.svg)](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#). [What Are AI Regulations?](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#what-are-ai-regulationsnbsp)[The Importance of Regulating AI Technologies](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#the-importance-of-regulating-ai-technologiesnbsp)[Key Components of AI Regulations](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#key-components-of-ai-regulationsnbsp)[Privacy and Data Protection](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#privacy-and-data-protection)[Safety and Security](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#safety-and-security)[Transparency and Explainability](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#transparency-and-explainability)[Accountability and Responsibility](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#accountability-and-responsibility)[AI Regulations Around the World](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#ai-regulations-around-the-worldnbsp)[1. USA: Executive Order 14179](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#2-usa-executive-order-14179)[3. USA: AI Bill of Rights](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#3-usa-ai-bill-of-rights)[4. Canada: Artificial Intelligence and Data Act (AIDA)](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#5-canada-artificial-intelligence-and-data-act-aida)[6. Establish Clear AI Governance Policies](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#1-establish-clear-ai-governance-policies)[2. Implement Continuous Compliance Solutions](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#2-implement-continuous-compliance-solutions)[3. Implement Thorough Data Management Practices](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#3-implement-thorough-data-management-practices)[4. Monitor and Audit AI Systems Continuously](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#4-monitor-and-audit-ai-systems-continuously)[5. Provide Ongoing Training and Awareness](https://www.anecdotes.ai/learn/ai-regulations-in-2025-us-eu-uk-japan-china-and-more#5-provide-ongoing-training-and-awareness). *   [Risk](https://www.anecdotes.ai/risk). *   [About us](https://www.anecdotes.ai/about-us). [We take security compliance seriously.](https://www.anecdotes.ai/trust)."
+      },
+      {
+        "url": "https://www.linkedin.com/pulse/update-ai-regulation-eu-us-china-august-10-2025-oleksandr-zavadetskyi-6tzye",
+        "title": "An update on AI regulation in the EU, the US, and China, August 10 ...",
+        "snippet": "During the drafting stage, firms voiced concerns that training data disclosures could expose trade secrets or increase rights-holder claims."
+      },
+      {
+        "url": "https://interconnect.substack.com/p/eu-china-us-three-different-attitudes",
+        "title": "🤖EU, China, US: Three Different Attitudes Toward AI Regulation",
+        "snippet": "### US is the most open, EU is the least open, and China (knowing its redlines) is somewhere in between. Even though it has only been nine months since ChatGPT’s first launch, we already have a good sense of how the three largest economic bodies – EU, China, US – plan to regulate generative AI. So instead, I will do a comparison of the “why” behind the attitudes and motivations of European, Chinese, and American regulators. EU regulators are the first to start regulating generative AI, and that “need to be first” is driven by their desire to achieve the so-called “Brussels effect”. As you can see, to achieve the full Brussels effect, **you have to be both the first and the toughest.** And that’s exactly what is happening with the EU AI Act. The Act’s risk-first approach, by enumerating a list of “unacceptable risks” and “high risks” covering a wide swath of industries and use cases, is arguably the toughest framework we’ve seen yet."
+      },
+      {
+        "url": "https://pernot-leplay.com/ai-regulation-china-eu-us-comparison/",
+        "title": "AI Dilemma: Regulation in China, EU & US - Comparative Analysis",
+        "snippet": "## The AI Dilemma: AI Regulation in China, EU & the U.S. * The AI Dilemma: AI Regulation in China, EU & the U.S. While the AI Act doesn’t directly grant individual rights as the GDPR does, its ultimate goal is to protect fundamental rights, a core driver that distinguishes the EU’s approach from those of China and the U.S. The EU has prioritized swift action on AI regulation, a point that European Commissioner Thierry Breton has proudly emphasized. China has positioned itself as an early mover in AI regulation, a contrast to its approach in data privacy, where it largely follows the EU’s model (particularly regarding consumer privacy, rather than citizen privacy). This framework allows room for censorship and selective enforcement, distinguishing China’s approach from the EU and U.S., where respect for individual rights and democratic values is embedded in both emerging laws and ethical guidelines for AI."
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=ceg4iHBWsok",
+        "title": "Global AI Regulation 2026: US, China, India, EU Policies ... - YouTube",
+        "snippet": "Artificial Intelligence is advancing faster than ever, bringing immense opportunities and serious challenges."
+      }
+    ],
+    "chunk_count": 32,
+    "chunks": [
+      {
+        "url": "https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/",
+        "title": "Where AI Regulation is Heading in 2026: A Global Outlook | Blog | OneTrust",
+        "heading": "Where AI Regulation Is Heading in 2026: A Global Outlook",
+        "chunk_text": "Where AI Regulation Is Heading in 2026: A Global Outlook\n\nArtificial intelligence (AI)regulation is moving from theory to enforcement, reshaping how privacy leaders manage accountability worldwide.\n\nBeatriz Peon\n\nContent Marketing\n\nFebruary 11, 2026\n\n![Image 4: Team members discuss a work project on an office staircase](https://www.onetrust.com/content/dam/onetrust/brand/content/graphic/blog-post/where-ai-regulation-is-heading-in-2026-a-global-outlook/ot-hero-blog-where-ai-regulation-is-heading-in-2026.jpg/_jcr_content/renditions/original)\n\n* * *",
+        "score": 8.7605,
+        "rank": 0
+      },
+      {
+        "url": "https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/",
+        "title": "Where AI Regulation is Heading in 2026: A Global Outlook | Blog | OneTrust",
+        "heading": "[](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)United States: State AI Laws Anchor Enforcement",
+        "chunk_text": "[](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)United States: State AI Laws Anchor Enforcement\n\nIn the absence of a federal AI statute, US states are establishing enforceable standards that draw heavily on consumer and privacy protections.\n\nSeveral AI laws take effect in 2026. Colorado’s AI Act applies to developers and deployers of high-risk AI systems and focuses on preventing algorithmic discrimination. It introduces documentation requirements, transparency when consumers interact with AI, and risk mitigation tied to consequential decisions.\n\nTexas follows with the Responsible Artificial Intelligence Governance Act, effective January 1, 2026. While many obligations apply to governmental agencies, the law reinforces prohibitions on social scoring, biometric misuse, and discriminatory AI practices. Enforcement relies heavily on documented safeguards and reasonable care defenses.\n\nCalifornia continues to shape expectations nationwide. The AI Transparency Act and the Generative AI Training Data Transparency Act both take effect on January 1, 2026. These laws require disclosure of AI-generated content, public summaries of training datasets, and controls around detection tools and provenance data. Enforcement authority sits with the California Attorney General, with penalties tied to ongoing noncompliance.\n\nNew York’s automated employment decision rules and the federal TAKE IT DOWN Act addressing nonconsensual synthetic content further reinforce notice, bias monitoring, and rapid takedown obligations.",
+        "score": 8.4441,
+        "rank": 1
+      },
+      {
+        "url": "https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws",
+        "title": "Trump Signs AI Executive Order as States Implement AI Laws",
+        "heading": "",
+        "chunk_text": "In September 2025, California enacted an AI transparency law requiring large AI developers to publish a public AI framework outlining how they integrate national and international standards and industry best practices into their frontier AI policies.[Footnote 3](https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws#fn3) In December 2025, New York adopted a frontier AI transparency law that mirrors many of California's requirements.[Footnote 4](https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws#fn4) California's AI law took effect on January 1, 2026, and New York's law will take effect on January 1, 2027. It remains to be seen how these states and their AI laws will be impacted by the actions resulting from President Trump's EO, though any effort to enforce the anti-state regulation provisions of the AI order is expected to be challenged by the affected states in federal court.\n\nEDUCAUSE will continue to monitor relevant federal and state activity concerning AI transparency, safety, and regulatory coordination and will provide updates to members as additional guidance or rulemaking emerges.",
+        "score": 8.0547,
+        "rank": 2
+      },
+      {
+        "url": "https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws",
+        "title": "Trump Signs AI Executive Order as States Implement AI Laws",
+        "heading": "",
+        "chunk_text": "In December 2025, President Trump issued an executive order establishing a national artificial intelligence (AI) policy framework, challenging stricter state AI laws, and tying certain federal funding to state compliance.\n\nOn December 11, 2025, President Trump issued an executive order (EO) titled \"Ensuring a National Policy Framework for Artificial Intelligence.\" The EO establishes a federal initiative intended to \"sustain and enhance the United States' global AI dominance through a minimally burdensome national policy framework for AI.\"[Footnote 1](https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws#fn1) It also addresses state laws that the Trump administration views as inconsistent with the proposed national framework.\n\nThe EO directs the Attorney General to establish an AI Litigation Task Force, empowered to challenge state AI laws. The order authorizes the Task Force to bring challenges on grounds such as unconstitutional regulation of interstate commerce, federal preemption, or other legal deficiencies identified by the Attorney General.\n\nThe order also instructs the Secretary of Commerce, in consultation with other administration officials, to publish an evaluation of existing state AI laws that identifies those the administration considers onerous or inconsistent with the goals of the order.",
+        "score": 8.0333,
+        "rank": 3
+      },
+      {
+        "url": "https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial",
+        "title": "White House Releases a National Policy Framework for Artificial Intelligence | Insights | Holland & Knight",
+        "heading": "Executive Order (EO) 14365: Removing Barriers to American Leadership in AI",
+        "chunk_text": "Executive Order (EO) 14365: Removing Barriers to American Leadership in AI\n\nThe Trump Administration issued \"[Removing Barriers to American Leadership in Artificial Intelligence](https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/)\" (EO 14365) on December 11, 2025, which initiated a coordinated federal review of state-level AI laws and directed agencies to develop policy recommendations, standards and legislative proposals to inform a national approach.\n\nNotably, EO 14365 required the U.S. Department of Commerce Secretary to submit, within 90 days, an evaluation identifying \"onerous\" state AI laws and recommend potential referrals to a newly established AI Litigation Task Force tasked with challenging unconstitutional or preempted state measures.\n\nThough the Task Force was announced on January 9, 2026, within the required 30-day timeframe, the Commerce Department has not yet publicly released its required evaluation, which had been due by March 11, 2026. This delay introduces some uncertainty regarding the Trump Administration's near-term posture on state preemption enforcement, even as the Framework reinforces a clear preference for national uniformity. Further, the Framework's endorsement of federal preemption is particularly notable when viewed against the current state-led approach to AI regulation.",
+        "score": 7.8747,
+        "rank": 4
+      },
+      {
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "title": "AI Act",
+        "heading": "Application timeline",
+        "chunk_text": "Application timeline\n\nThe AI Act entered into force on 1 August 2024, and will be fully applicable 2 years later on 2 August 2026, with some exceptions:\n\n*   prohibited AI practices and AI literacy obligations entered into application from 2 February 2025\n*   the governance rules and the obligations for GPAI models became applicable on 2 August 2025\n*   the rules for high-risk AI systems - embedded into regulated products - have an extended transition period until 2 August 2028 (as a result of the political agreement on the proposal to simplify the AI Act – '[AI omnibus](https://digital-strategy.ec.europa.eu/en/library/digital-omnibus-ai-regulation-proposal)')",
+        "score": 7.8552,
+        "rank": 5
+      },
+      {
+        "url": "https://www.vorys.com/publication-battle-for-ai-governance-white-houses-plan-to-centralize-ai-regulation-and-states-continuous-opposition",
+        "title": "Battle for AI Governance: White House’s Plan to Centralize AI Regulation and States’ Continuous Opposition",
+        "heading": "**Federal Takeover: Goodbye State Patchwork?**",
+        "chunk_text": "**Federal Takeover: Goodbye State Patchwork?**\n\nOn December 11, 2025, President Trump signed an executive order on AI, marking a pivotal shift in the regulatory landscape as the White House attempts to centralize AI regulation. The executive order’s directive is clear: unify AI oversight at the federal level and reduce patchwork state regulations. Its central provision directs federal agencies to identify and challenge state AI laws deemed inconsistent with national policy.\n\nPresident Trump tasked the Attorney General with coordinating litigation efforts against state measures that impose what the administration characterizes as innovation-limiting requirements, and in January 2026 the Attorney General announced the AI litigation task force, as directed by the executive order. Moreover, the order also allows federal funding and infrastructure support to be conditioned on state alignment with national AI policy.",
+        "score": 7.3849,
+        "rank": 6
+      },
+      {
+        "url": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "title": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "heading": "",
+        "chunk_text": "ingle AI statute. Instead, existing regulators — the FCA, ICO, Ofcom, CMA — apply five cross-cutting AI principles within their existing mandates.\n- China regulates AI content and algorithms directly. Three binding regulations already govern algorithmic recommendations, deepfakes, and generative AI, with mandatory government filing requirements.\n- Practical strategy: build to the EU AI Act as the highest common denominator, then map jurisdiction-specific requirements using NIST AI RMF and ISO 42001 to fill gaps.\nThe four major regulatory approaches\nBefore examining each jurisdiction in detail, the table below provides a high-level comparison of the four major AI regulatory regimes as they stand in 2026.\nThis table reveals a fundamental truth: there is no single \"global AI regulation.\" Each jurisdiction reflects different policy priorities — consumer protection, innovation promotion, content control, or fundamental rights — and organisations operating internationally must navigate all of them.\nIs your AI system high-risk?\nFind out in 2 minutes — free, no signup required.\nTake the free assessmentEuropean Union: Comprehensive risk-based regulation\nThe EU AI Act (Regulation (EU) 2024/1689) is the world's first comprehensive, binding legal framework for artificial intelligence. It entered into force on 1 August 2024, with obligations phasing in between February 2025 and August 2027.",
+        "score": 6.7572,
+        "rank": 7
+      },
+      {
+        "url": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "title": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "heading": "",
+        "chunk_text": "The Digital AI Omnibus: Proposed deferral of high risk AI obligations under the AI Act\nAt a glance\n- The European Commission published the Digital Omnibus on AI (Omnibus) on 19 November 2025, proposing to defer the high-risk compliance deadline from 2 August 2026 to 2 December 2027.\n- The second political trilogue between the European Parliament, the Council of the EU, and the European Commission on 28 April 2026 ended without agreement.\n- If the Omnibus is not formally adopted before 2 August 2026, the original AI Act's (Act) provisions, including the high-risk obligations and their current timeline, will apply from that date as written.\n- Organisations deploying AI in employment contexts should continue preparing for compliance against the current 2 August 2026 deadline.\nOn 28 April 2026, the European Parliament, the Council of the EU, and the European Commission held their second political trilogue on the Omnibus – a proposal to amend the Act by postponing high-risk AI compliance deadlines and introducing other simplification measures.\nThe Act classifies AI systems used in employment-related decisions as high-risk, including tools used for recruitment, candidate selection, performance evaluation, task allocation, monitoring of workers, and decisions on promotion or termination.",
+        "score": 8.1491,
+        "rank": 0
+      },
+      {
+        "url": "https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/",
+        "title": "Where AI Regulation is Heading in 2026: A Global Outlook | Blog | OneTrust",
+        "heading": "[](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)Europe: AI Governance Matures Under the EU AI Act",
+        "chunk_text": "[](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)Europe: AI Governance Matures Under the EU AI Act\n\nThe EU Artificial Intelligence Act entered into force in August 2024, with obligations phasing in through 2027. By 2026, organizations will already be subject to rules covering prohibited AI practices, general-purpose AI models, transparency requirements, and penalties.\n\nThe Act’s risk-based structure aligns closely with GDPR principles.High-risk AI systems, including those used for profiling, biometric identification, or decisions affecting fundamental rights, must undergo pre-deployment assessments, extensive documentation, post-market monitoring, and incident reporting. Deployers are required to assess impacts on fundamental rights,a process privacy teams already manage through DPIAs.\n\nGeneral-purpose AI introduces centralized oversight through the EU AI Office, alongside documentation and risk-management expectations that extend across supply chains. Penalties exceed GDPR thresholds, reaching up to seven percent of global annual turnover for the most serious violations.\n\nAlongside the AI Act, the European Commission introduced the EU Digital Omnibus proposal in late 2025. The initiative aims to simplify and align elements of the GDPR, the AI Act, and the ePrivacy framework. Proposed changes include adjustments to definitions of personal data, data subject rights, and legitimate interest, with greater flexibility for certain AI training activities.",
+        "score": 8.1177,
+        "rank": 1
+      },
+      {
+        "url": "https://www.dataguard.com/eu-ai-act/timeline",
+        "title": "https://www.dataguard.com/eu-ai-act/timeline",
+        "heading": "",
+        "chunk_text": "The EU AI Act came into force in August 2024, triggering a gradual implementation timeline for companies developing, using, or importing AI products. Depending on varied risk levels and supply-chain roles, there are different deadlines to become compliant. Here’s a breakdown of the key dates.\nThe EU AI Act timeline: Who has what deadline to become compliant?\nThe EU AI Act has a staggered implementation timeline. Some companies have until 2027 to adapt to its requirements. Others have until 2026, while new AI developers will feel its effects as early as August 2025.\nTo know which deadline applies to you, consider three factors:\n- Your company’s role in the AI supply chain (are you a provider, a deployer, or another kind of operator)\n- Your AI system’s level of risk\n- For providers: is your AI system already available on the market, or will it become available after August 2025\nWhat role do you play in the AI supply chain?\nCompanies have different sets of responsibilities and deadlines depending on whether they develop, use, or import an AI system. The collective term for everyone on the supply chain is an “operator.” Broken down into more specific roles, operators can be split into:\nAI providers\nAI providers create the AI system. Think of a company developing AI that can automate large parts of a bank’s transaction monitoring and offer predictive analytics.\nAI deployers\nAI deployers use AI systems.",
+        "score": 8.0198,
+        "rank": 2
+      },
+      {
+        "url": "https://www.kennedyslaw.com/en/thought-leadership/article/2026/the-eu-ai-act-implementation-timeline-understanding-the-next-deadline-for-compliance/",
+        "title": "The EU AI Act implementation timeline: understanding the next deadline for compliance",
+        "heading": "2026: Main application dates",
+        "chunk_text": "2026: Main application dates\n\n*   By 2 February 2026: The Commission was expected to publish guidelines specifying the practical implementation of Article 6, including the classification of \"High-Risk\" AI systems and the related requirements.\n*   3 March 2026: The [Second Draft Code of Practice](https://digital-strategy.ec.europa.eu/en/library/commission-publishes-second-draft-code-practice-marking-and-labelling-ai-generated-content) on marking and labelling of AI-generated content is published.\n*   2 August 2026: Most of the remaining rules in the Act become active. Most of the remaining provisions of the AI Act become applicable, except Article 6(1).\n\n*   Transparency rules (like labelling AI-generated content) start. The transparency obligations under Article 50 become applicable.\n    *   Every EU Member State must have at least one \"AI Sandbox\" (a testing environment for innovation) running.",
+        "score": 8.0134,
+        "rank": 3
+      },
+      {
+        "url": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "title": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+        "heading": "",
+        "chunk_text": "nt-related decisions as high-risk, including tools used for recruitment, candidate selection, performance evaluation, task allocation, monitoring of workers, and decisions on promotion or termination. These high-risk system obligations are scheduled to apply from 2 August 2026.\nThe Omnibus is a legislative proposal published by the European Commission on 19 November 2025 that seeks to amend the Act. The most significant change is the deferral of the AI Act's high-risk obligations from the original date of 2 August 2026. If the Omnibus is adopted as currently negotiated, the compliance deadline for these employment-related systems would move from 2 August 2026, to 2 December 2027.\nThe proposal was prompted by the fact that the Act's timely implementation has faced significant delays, particularly around the designation of national competent authorities and the finalisation of harmonised standards and compliance tools needed for high-risk AI system requirements.\nOn 28 April, the European Parliament, the Council of the EU, and the European Commission convened their second political trilogue on the Omnibus. The parties were unable to reach agreement, and a further trilogue has been scheduled for 13 May 2026.",
+        "score": 7.8009,
+        "rank": 4
+      },
+      {
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "title": "AI Act",
+        "heading": "Application timeline",
+        "chunk_text": "Application timeline\n\nThe AI Act entered into force on 1 August 2024, and will be fully applicable 2 years later on 2 August 2026, with some exceptions:\n\n*   prohibited AI practices and AI literacy obligations entered into application from 2 February 2025\n*   the governance rules and the obligations for GPAI models became applicable on 2 August 2025\n*   the rules for high-risk AI systems - embedded into regulated products - have an extended transition period until 2 August 2028 (as a result of the political agreement on the proposal to simplify the AI Act – '[AI omnibus](https://digital-strategy.ec.europa.eu/en/library/digital-omnibus-ai-regulation-proposal)')",
+        "score": 7.539,
+        "rank": 5
+      },
+      {
+        "url": "https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws",
+        "title": "Trump Signs AI Executive Order as States Implement AI Laws",
+        "heading": "",
+        "chunk_text": "In September 2025, California enacted an AI transparency law requiring large AI developers to publish a public AI framework outlining how they integrate national and international standards and industry best practices into their frontier AI policies.[Footnote 3](https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws#fn3) In December 2025, New York adopted a frontier AI transparency law that mirrors many of California's requirements.[Footnote 4](https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws#fn4) California's AI law took effect on January 1, 2026, and New York's law will take effect on January 1, 2027. It remains to be seen how these states and their AI laws will be impacted by the actions resulting from President Trump's EO, though any effort to enforce the anti-state regulation provisions of the AI order is expected to be challenged by the affected states in federal court.\n\nEDUCAUSE will continue to monitor relevant federal and state activity concerning AI transparency, safety, and regulatory coordination and will provide updates to members as additional guidance or rulemaking emerges.",
+        "score": 6.7242,
+        "rank": 6
+      },
+      {
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "title": "AI Act",
+        "heading": "How the Commission is simplifying the AI Act implementation?",
+        "chunk_text": "How the Commission is simplifying the AI Act implementation?\n\nThe [Digital Package on Simplification](https://digital-strategy.ec.europa.eu/en/policies/digital-rulebook) proposed amendments to simplify the AI Act implementation and ensure the rules remain clear, simple, and innovation-friendly. This legislative proposal (dubbed as the '[AI omnibus](https://digital-strategy.ec.europa.eu/en/library/digital-omnibus-ai-regulation-proposal)') has been adopted on 19 November 2025 and a [political agreement](https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens) was reached on 7 May 2026.\n\nFollowing the political agreement, a **clear implementation timeline** is set for the rules governing**high-risk AI systems**:\n\n*   Rules for **systems used in certain high-risk areas** — including biometrics, critical infrastructure, education, employment, migration, asylum and border control — will **apply from 2 December 2027**.\n*   For **systems integrated into products** such as lifts or toys, the rules will **apply from 2 August 2028**.\n\nThis ensures the rules apply when companies have the right support tools to facilitate implementation, such as standards.\n\nIn addition, the following **amendments to the AI Act**have been agreed:",
+        "score": 6.5141,
+        "rank": 7
+      },
+      {
+        "url": "https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/",
+        "title": "Where AI Regulation is Heading in 2026: A Global Outlook | Blog | OneTrust",
+        "heading": "[](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)Asia-Pacific: Enforcement Arrives Across Multiple Markets",
+        "chunk_text": "[](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)Asia-Pacific: Enforcement Arrives Across Multiple Markets\n\nSeveral APAC jurisdictions already operate under binding AI frameworks.China enforces multiple AI regulations, including the Generative AI Services Management Measures and synthetic content identification rules effective September 1, 2025. These laws impose obligations around consent, data quality, content labeling, user rights, and complaint handling.\n\nSouth Korea’s Basic AI Act enters into force in January 2026. It applies extraterritorially where systems affect Korean users and introduces requirements for transparency, risk assessment, human oversight, and documentation, particularly for high-impact and large-scale AI systems.\n\nJapan’s AI Act takes a principles-based approach, relying on cooperation and existing laws rather than penalties, but still embeds expectations around transparency and responsible use. Vietnam’s Law on Digital Technology introduces AI provisions effective in 2026, including labeling, transparency, and prohibitions tied to human rights and public order.\n\nAcross the region, AI governance is increasingly embedded within data protection and security frameworks, reinforcing privacy teams’ role in oversight.",
+        "score": 8.9695,
+        "rank": 0
+      },
+      {
+        "url": "https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/",
+        "title": "Where AI Regulation is Heading in 2026: A Global Outlook | Blog | OneTrust",
+        "heading": "Where AI Regulation Is Heading in 2026: A Global Outlook",
+        "chunk_text": "Where AI Regulation Is Heading in 2026: A Global Outlook\n\nArtificial intelligence (AI)regulation is moving from theory to enforcement, reshaping how privacy leaders manage accountability worldwide.\n\nBeatriz Peon\n\nContent Marketing\n\nFebruary 11, 2026\n\n![Image 4: Team members discuss a work project on an office staircase](https://www.onetrust.com/content/dam/onetrust/brand/content/graphic/blog-post/where-ai-regulation-is-heading-in-2026-a-global-outlook/ot-hero-blog-where-ai-regulation-is-heading-in-2026.jpg/_jcr_content/renditions/original)\n\n* * *",
+        "score": 7.6388,
+        "rank": 1
+      },
+      {
+        "url": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "title": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "heading": "",
+        "chunk_text": "ingle AI statute. Instead, existing regulators — the FCA, ICO, Ofcom, CMA — apply five cross-cutting AI principles within their existing mandates.\n- China regulates AI content and algorithms directly. Three binding regulations already govern algorithmic recommendations, deepfakes, and generative AI, with mandatory government filing requirements.\n- Practical strategy: build to the EU AI Act as the highest common denominator, then map jurisdiction-specific requirements using NIST AI RMF and ISO 42001 to fill gaps.\nThe four major regulatory approaches\nBefore examining each jurisdiction in detail, the table below provides a high-level comparison of the four major AI regulatory regimes as they stand in 2026.\nThis table reveals a fundamental truth: there is no single \"global AI regulation.\" Each jurisdiction reflects different policy priorities — consumer protection, innovation promotion, content control, or fundamental rights — and organisations operating internationally must navigate all of them.\nIs your AI system high-risk?\nFind out in 2 minutes — free, no signup required.\nTake the free assessmentEuropean Union: Comprehensive risk-based regulation\nThe EU AI Act (Regulation (EU) 2024/1689) is the world's first comprehensive, binding legal framework for artificial intelligence. It entered into force on 1 August 2024, with obligations phasing in between February 2025 and August 2027.",
+        "score": 7.5237,
+        "rank": 2
+      },
+      {
+        "url": "https://www.uscc.gov/sites/default/files/2026-03/Two_Loops--How_Chinas_Open_AI_Strategy_Reinforces_Its_Industrial_Dominance.pdf",
+        "title": "Two Loops: How China’s Open AI Strategy Reinforces Its Industrial Dominance",
+        "heading": "Endnotes",
+        "chunk_text": "Endnotes\n\nKyle Chan et al., “Full Stack: China’s Evolving Industrial Policy for AI,” RAND , June 26, 2025. https://www.rand.org/pubs/perspectives/PEA4012-\n\n1.html#:~:text=and%20state%20agencies .\n\n> 118\n\nSunny Cheung, “Open-Source Technology and PRC National Strategy: Part I,” Jamestown Foundation , May 10, 2025. https://jame-\n\nstown.org/program/open-source-technology-and-prc-national-strategy-part-i/.\n\n> 119\n\nMao Li, “ 从小红书破圈到 DeepSeek 崛起:中国互联网创新的国际突围路径 ” [From Xiaohongshu to the Rise of DeepSeek: The International\n\nBreakthrough Path of China’s Internet Innovation], S&T Daily , February 21, 2025. https://www.stdaily.com/web/gdxw/2025-02/21/con-\n\ntent_299631.html .\n\n> 120\n\nKyle Chan et al., “Full Stack: China’s Evolving Industrial Policy for AI,” RAND , June 26, 2025. https://www.rand.org/pubs/perspectives/PEA4012-\n\n1.html .\n\n> 121\n\n“China Calls for Global AI Cooperation Days after Trump Administration Unveils Low-Regulation Strategy,” Guardian , July 26, 2025.\n\nhttps://www.theguardian.com/technology/2025/jul/26/china-calls-for-global-ai-cooperation-days-after-trump-administration-unveils-low-\n\nregulation-strategy ; “ 李强出席 2025 世界人工智能大会暨人工智能全球治理高级别会议开幕式并致辞 ” [Li Qiang Attended the Opening Cere-\n\nmony of the 2025 World Artificial Intelligence Conference and the High-Level Conference on Global Governance of Artificial Intelligence and\n\nDelivered a Speech], Xinhua , July 26, 2025. https://www.gov.cn/yaowen/liebiao/202507/content_7033942.htm ; Li Qiang, “Address by China",
+        "score": 7.0006,
+        "rank": 3
+      },
+      {
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "title": "AI Act",
+        "heading": "Application timeline",
+        "chunk_text": "Application timeline\n\nThe AI Act entered into force on 1 August 2024, and will be fully applicable 2 years later on 2 August 2026, with some exceptions:\n\n*   prohibited AI practices and AI literacy obligations entered into application from 2 February 2025\n*   the governance rules and the obligations for GPAI models became applicable on 2 August 2025\n*   the rules for high-risk AI systems - embedded into regulated products - have an extended transition period until 2 August 2028 (as a result of the political agreement on the proposal to simplify the AI Act – '[AI omnibus](https://digital-strategy.ec.europa.eu/en/library/digital-omnibus-ai-regulation-proposal)')",
+        "score": 6.728,
+        "rank": 4
+      },
+      {
+        "url": "https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws",
+        "title": "Trump Signs AI Executive Order as States Implement AI Laws",
+        "heading": "",
+        "chunk_text": "In September 2025, California enacted an AI transparency law requiring large AI developers to publish a public AI framework outlining how they integrate national and international standards and industry best practices into their frontier AI policies.[Footnote 3](https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws#fn3) In December 2025, New York adopted a frontier AI transparency law that mirrors many of California's requirements.[Footnote 4](https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws#fn4) California's AI law took effect on January 1, 2026, and New York's law will take effect on January 1, 2027. It remains to be seen how these states and their AI laws will be impacted by the actions resulting from President Trump's EO, though any effort to enforce the anti-state regulation provisions of the AI order is expected to be challenged by the affected states in federal court.\n\nEDUCAUSE will continue to monitor relevant federal and state activity concerning AI transparency, safety, and regulatory coordination and will provide updates to members as additional guidance or rulemaking emerges.",
+        "score": 6.6101,
+        "rank": 5
+      },
+      {
+        "url": "https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws",
+        "title": "Trump Signs AI Executive Order as States Implement AI Laws",
+        "heading": "",
+        "chunk_text": "In December 2025, President Trump issued an executive order establishing a national artificial intelligence (AI) policy framework, challenging stricter state AI laws, and tying certain federal funding to state compliance.\n\nOn December 11, 2025, President Trump issued an executive order (EO) titled \"Ensuring a National Policy Framework for Artificial Intelligence.\" The EO establishes a federal initiative intended to \"sustain and enhance the United States' global AI dominance through a minimally burdensome national policy framework for AI.\"[Footnote 1](https://er.educause.edu/articles/2026/3/trump-signs-ai-executive-order-as-states-implement-ai-laws#fn1) It also addresses state laws that the Trump administration views as inconsistent with the proposed national framework.\n\nThe EO directs the Attorney General to establish an AI Litigation Task Force, empowered to challenge state AI laws. The order authorizes the Task Force to bring challenges on grounds such as unconstitutional regulation of interstate commerce, federal preemption, or other legal deficiencies identified by the Attorney General.\n\nThe order also instructs the Secretary of Commerce, in consultation with other administration officials, to publish an evaluation of existing state AI laws that identifies those the administration considers onerous or inconsistent with the goals of the order.",
+        "score": 6.5319,
+        "rank": 6
+      },
+      {
+        "url": "https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial",
+        "title": "White House Releases a National Policy Framework for Artificial Intelligence | Insights | Holland & Knight",
+        "heading": "Executive Order (EO) 14365: Removing Barriers to American Leadership in AI",
+        "chunk_text": "Executive Order (EO) 14365: Removing Barriers to American Leadership in AI\n\nThe Trump Administration issued \"[Removing Barriers to American Leadership in Artificial Intelligence](https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/)\" (EO 14365) on December 11, 2025, which initiated a coordinated federal review of state-level AI laws and directed agencies to develop policy recommendations, standards and legislative proposals to inform a national approach.\n\nNotably, EO 14365 required the U.S. Department of Commerce Secretary to submit, within 90 days, an evaluation identifying \"onerous\" state AI laws and recommend potential referrals to a newly established AI Litigation Task Force tasked with challenging unconstitutional or preempted state measures.\n\nThough the Task Force was announced on January 9, 2026, within the required 30-day timeframe, the Commerce Department has not yet publicly released its required evaluation, which had been due by March 11, 2026. This delay introduces some uncertainty regarding the Trump Administration's near-term posture on state preemption enforcement, even as the Framework reinforces a clear preference for national uniformity. Further, the Framework's endorsement of federal preemption is particularly notable when viewed against the current state-led approach to AI regulation.",
+        "score": 6.3696,
+        "rank": 7
+      },
+      {
+        "url": "https://www.linkedin.com/pulse/update-ai-regulation-eu-us-china-august-10-2025-oleksandr-zavadetskyi-6tzye",
+        "title": "https://www.linkedin.com/pulse/update-ai-regulation-eu-us-china-august-10-2025-oleksandr-zavadetskyi-6tzye",
+        "heading": "",
+        "chunk_text": "An update on AI regulation in the EU, the US, and China, August 10, 2025\nSome numbers first. According to EY Ireland, global investment in generative AI surged to $49.2bn in the first half of 2025, eclipsing the full-year total for 2024. Despite a drop in deals, total value doubled year-on-year, reflecting a pivot towards more mature and revenue-focused ventures. Average late-stage deal size has more than tripled to $1.55bn, while early and seed-stage activity has stagnated or declined. Landmark rounds from OpenAI, xAI, Anthropic, and Databricks drove much of the volume, alongside a notable $3.3bn agentic AI acquisition by Capgemini.\nIn the EU, the EU AI Act entered a new phase on August 2, requiring member states to designate market surveillance authorities and begin enforcement. Although in force for a year, this stage marks the start of strict oversight for AI providers across Europe. Countries must inform the European Commission of their chosen regulators, but many may miss the deadline. Experts caution that without skilled, well-funded bodies, risks to safety and rights could increase.\nGPAI models - defined as those trained with over 10^23 FLOP and capable of generating language - must now meet obligations regarding training data disclosure and copyright compliance when entering the EU market. Models already available before August 2, 2025, have until August 2, 2027, to comply, while new ones must meet requirements immediately.",
+        "score": 6.4024,
+        "rank": 0
+      },
+      {
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "title": "AI Act",
+        "heading": "Application timeline",
+        "chunk_text": "Application timeline\n\nThe AI Act entered into force on 1 August 2024, and will be fully applicable 2 years later on 2 August 2026, with some exceptions:\n\n*   prohibited AI practices and AI literacy obligations entered into application from 2 February 2025\n*   the governance rules and the obligations for GPAI models became applicable on 2 August 2025\n*   the rules for high-risk AI systems - embedded into regulated products - have an extended transition period until 2 August 2028 (as a result of the political agreement on the proposal to simplify the AI Act – '[AI omnibus](https://digital-strategy.ec.europa.eu/en/library/digital-omnibus-ai-regulation-proposal)')",
+        "score": 6.2754,
+        "rank": 1
+      },
+      {
+        "url": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "title": "https://iapp.org/news/a/notes-from-the-asia-pacific-region-strong-start-to-2026-for-china-s-data-ai-governance-landscape",
+        "heading": "",
+        "chunk_text": "expected to take an active enforcement approach throughout 2026.\nBeyond cybersecurity, the protection of minors' personal information is also expected to be a key compliance focus in 2026. On 28 Dec. 2025, the Cyberspace Administration of China issued a directive requiring companies that collect minors' personal information to complete compliance audits and submit filings to their local CAC offices by 31 Jan. 2026.\nThe filing must include information such as the nature, categories and volume of minors' personal information collected, an impact assessment report, a signed letter of undertaking and any additional materials required by the CAC on a case-by-case basis. Given the extremely tight deadline, companies that have not yet taken action should do so immediately.\nLooking ahead, 2026 is poised to be a dynamic year for AI deployment and the continued development of China's digital economy. China is expected to maintain an agile approach to AI governance, seeking to balance technological innovation with data security, privacy protection and intellectual property rights.\nIn recent months, regulators have released draft rules and industry standards addressing AI security and agentic AI issues.",
+        "score": 5.655,
+        "rank": 2
+      },
+      {
+        "url": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "title": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "heading": "",
+        "chunk_text": "ectory is regulatory convergence on principles (transparency, fairness, accountability) combined with continued divergence on specifics (enforcement mechanisms, content requirements, penalty regimes). Organisations should plan for a permanently multi-jurisdictional landscape and build compliance programmes accordingly.\nConclusion\nGlobal AI regulation in 2026 is characterised by convergence on principles and divergence on implementation. The EU AI Act, US sector-specific approach, UK regulator-led governance, and China's content-focused regulations all acknowledge that AI systems require oversight — but they disagree profoundly on what that oversight should look like, who should provide it, and what values it should protect.\nFor organisations operating across borders, the practical implications are clear:\n- Build to the EU AI Act as the global baseline. It is the most comprehensive framework and satisfying its requirements will address the majority of obligations elsewhere.\n- Map NIST AI RMF and ISO 42001 to create a structured governance layer that demonstrates due diligence across jurisdictions.\n- Maintain jurisdiction-specific compliance modules for obligations that cannot be satisfied by EU compliance alone — particularly Chinese content requirements and US state-level mandates.\n- Invest in regulatory monitoring.",
+        "score": 4.8894,
+        "rank": 3
+      },
+      {
+        "url": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "title": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "heading": "",
+        "chunk_text": "689) is the world's first comprehensive, binding legal framework for artificial intelligence. It entered into force on 1 August 2024, with obligations phasing in between February 2025 and August 2027. For a detailed timeline, see our EU AI Act compliance checklist for 2026.\nRisk-based four-tier classification\nThe AI Act classifies AI systems into four tiers based on their potential risk to health, safety, and fundamental rights:\nThe classification rules are set out in Article 6, and the prohibited practices are defined in Article 5. If you're unsure how your system is classified, our free AI Act risk classification tool can help you determine your obligations in under five minutes.\nExtraterritorial scope — the \"Brussels Effect\"\nOne of the AI Act's most consequential features is its extraterritorial scope, defined in Article 2. The regulation applies to:\n- Providers (developers) of AI systems that are placed on the EU market or put into service in the EU, regardless of where the provider is established.\n- Deployers (users) of AI systems that are located within the EU.\n- Providers and deployers located in third countries where the output produced by the AI system is used in the EU.\nThis means a US-based company that builds an AI hiring tool used by a German employer must comply with the AI Act — even if the company has no office, server, or employee in the European Union.",
+        "score": 4.8209,
+        "rank": 4
+      },
+      {
+        "url": "https://www.dataguard.com/eu-ai-act/timeline",
+        "title": "https://www.dataguard.com/eu-ai-act/timeline",
+        "heading": "",
+        "chunk_text": "r AI doesn’t have the potential to negatively affect public health, fundamental rights, or society.\n- High risk: These AI systems will be under the biggest scrutiny before being allowed on the market. If used improperly, they have the potential to bring significant consequences for individuals.\n- Unacceptable risk: As of February 2025, the EU AI Act has banned AI systems that could threaten people’s safety.\nIs the AI already out on the market?\nIf an AI system is already available on the market, operators have at least until 2026 to comply with the EU AI Act. Any GPAI products not released before August 2025 will have to follow the new regulation as of August 2025.\nThe EU AI Act timeline: What are the key dates for your company?\nConsidering these different factors, there are three deadlines that might apply to you:\n- August 2025: For providers whose GPAI system isn’t on the market yet\n- August 2026: For high-risk AI operators\n- August 2027: For operators of GPAI already on the market\nScenario #1: Providers of new GPAI systems\nKey date: August 2025\nGeneral Purpose AI systems released after August 2nd, 2025, must follow the Act’s provisions.\nAt the time of writing, the newly established EU AI Office is working on the General-Purpose AI Code of Practice to offer added guidance.\nIn addition, as of August 2nd, 2025, Member States should have defined which authorities to report to.",
+        "score": 4.4172,
+        "rank": 5
+      },
+      {
+        "url": "https://www.dataguard.com/eu-ai-act/timeline",
+        "title": "https://www.dataguard.com/eu-ai-act/timeline",
+        "heading": "",
+        "chunk_text": "ished EU AI Office is working on the General-Purpose AI Code of Practice to offer added guidance.\nIn addition, as of August 2nd, 2025, Member States should have defined which authorities to report to. If your company is an operator of GPAI already on the market, your deadline will be in 2027.\nScenario #2: Operators of high-risk AI systems\nKey date: August 2026\nAs of August 2026, operators of AI systems that have the potential to bring significant consequences for individuals will need to be compliant with the EU AI Act.\nFor example, models used in fields like biometrics, critical infrastructure, education, employment, or public services will come under closer scrutiny.\nThis category can seem broad, which is why the European Commission has set out to provide more detailed guidelines and examples until February 2026.\nScenario #3: GPAI operators whose AI system is already on the market\nKey date: August 2027\nAs of August 2nd, 2027, the EU AI Act becomes applicable for everyone.",
+        "score": 4.4099,
+        "rank": 6
+      },
+      {
+        "url": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "title": "https://www.legalithm.com/en/blog/ai-regulation-comparison-eu-us-uk-china-global",
+        "heading": "",
+        "chunk_text": "ingle AI statute. Instead, existing regulators — the FCA, ICO, Ofcom, CMA — apply five cross-cutting AI principles within their existing mandates.\n- China regulates AI content and algorithms directly. Three binding regulations already govern algorithmic recommendations, deepfakes, and generative AI, with mandatory government filing requirements.\n- Practical strategy: build to the EU AI Act as the highest common denominator, then map jurisdiction-specific requirements using NIST AI RMF and ISO 42001 to fill gaps.\nThe four major regulatory approaches\nBefore examining each jurisdiction in detail, the table below provides a high-level comparison of the four major AI regulatory regimes as they stand in 2026.\nThis table reveals a fundamental truth: there is no single \"global AI regulation.\" Each jurisdiction reflects different policy priorities — consumer protection, innovation promotion, content control, or fundamental rights — and organisations operating internationally must navigate all of them.\nIs your AI system high-risk?\nFind out in 2 minutes — free, no signup required.\nTake the free assessmentEuropean Union: Comprehensive risk-based regulation\nThe EU AI Act (Regulation (EU) 2024/1689) is the world's first comprehensive, binding legal framework for artificial intelligence. It entered into force on 1 August 2024, with obligations phasing in between February 2025 and August 2027.",
+        "score": 4.3509,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 2,
+      "decompose_ms": 3156,
+      "search_ms": 3695,
+      "extract_ms": 16353,
+      "chunk_ms": 103,
+      "retrieve_ms": 17067,
+      "synthesis_ms": 19613,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 4,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 75970,
+    "elapsed_s": 78.72,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

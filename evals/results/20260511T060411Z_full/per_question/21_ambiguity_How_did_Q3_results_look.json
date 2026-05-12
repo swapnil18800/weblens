@@ -1,0 +1,272 @@
+{
+  "id": "amb2",
+  "category": "ambiguity",
+  "domain": "finance",
+  "question": "How did Q3 results look?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Underspecified — which company / which Q3. Should ask or note ambiguity.",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T060411Z-amb2",
+  "verdict": "partial",
+  "aggregate": 0.717,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.833,
+    "context_recall": 1.0,
+    "context_precision": 0.25,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.5,
+    "answer_relevancy": 0.535,
+    "aggregate": 0.717
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.833,
+      "supported": 5,
+      "total": 6,
+      "reasoning": "Most claims match chunks; 'all except communication services surpassed Mag 7' is unsupported."
+    },
+    "context_precision": {
+      "score": 0.25,
+      "relevant": 2,
+      "total": 8,
+      "reasoning": "Chunks 1 and 4 directly discuss Q3 earnings results; others are irrelevant or historical."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.535,
+      "method": "embedding"
+    },
+    "context_recall_hits": []
+  },
+  "pipeline": {
+    "answer": "# Q3 Earnings Results: A Tale of Broad Market Strength and Standout Performers\n\nThe latest Q3 earnings season reveals a robust market backdrop, with the S&P 500 on pace for **14% earnings growth** — the fourth consecutive quarter of double-digit expansion, far exceeding the 7% analysts had estimated on September 30 [1]. However, beneath the aggregate numbers, individual companies and sectors show dramatic variation, from AI-driven cloud giants to memory-chip turnarounds.\n\n## Broader Market and Sector Dynamics\n\n**Key market metrics for Q3 2025:**\n- **85% of S&P 500 companies** beat EPS estimates [1].\n- The \"Magnificent 7\" grew EPS **21%**, versus **13%** for the other 493 stocks [1].\n- **IT** led all sectors with **40% EPS growth**; over 90% of IT companies beat revenue estimates and 98% exceeded EPS estimates [1].\n- Among top-performing sectors (utilities, communication services, IT, industrials), all except communication services surpassed the Magnificent 7 in Q3 earnings growth [1].\n\n**Investor behavior shifted notably:**\n- Share prices showed **smaller rallies on beats and steeper declines on misses** versus historical averages, signaling high expectations and possible \"AI fatigue\" [1][5].\n- Concerns over private credit, a hawkish Fed pivot, and AI bubbles emerged, prompting selective profit-taking [5].\n- Despite caution, U.S. equity ETF flows remained strong: weekly inflows after negative S&P 500 weeks were 17% above average, and the week of November 10 saw **$26 billion** in net inflows — double the 2025 weekly average [5].\n\n## Individual Company Results\n\n### Microsoft Q3 FY2026 (ended March 31, 2026)\n\nMicrosoft posted strong cloud and AI-fueled growth [3]:\n\n| Metric | Q3 FY2026 | Y/Y Change |\n|---|---|---|\n| Revenue | $82.9B | +18% (+15% CC) |\n| Operating Income | $38.4B | +20% (+16% CC) |\n| Net Income (GAAP) | $31.8B | +23% |\n| Diluted EPS (GAAP) | $4.27 | +23% |\n\nNon-GAAP net income (excluding OpenAI investments) grew 20% [3]. CEO Satya Nadella highlighted the company's focus on \"delivering cloud and AI infrastructure and solutions that empower every business to maximize their outcomes in the agentic computing era\" [3].\n\n### SanDisk Q3 2026 (fiscal quarter ended ~March/April 2026)\n\nSanDisk delivered a dramatic turnaround [6]:\n\n| Metric | Q3 2026 GAAP | Y/Y Change |\n|---|---|---|\n| Revenue | – | **+251%** |\n| Gross Margin | 78.4% | +55.9 ppt |\n| Operating Income | – | **+319%** |\n| Net Income | – | **+287%** |\n| Diluted EPS | – | **+273%** |\n\nGrowth was fueled by **Datacenter (up 233%)** and **Edge (up 118%)**, while Consumer revenue fell 10% [6]. The company guided Q4 2026 revenue of **$7.75B–$8.25B** and non-GAAP EPS of **$30.00–$33.00** [6].\n\n### CSG Systems Q3 2025\n\nCSG reported Q3 revenues of **$279.3 million**, up only 2.4% year-over-year, exceeding expectations by just 0.5% — the weakest growth and largest miss versus estimates in the data & business process services group [4].\n\n### Nasdaq Q3 2026\n\nNo Q3 2026 financial data was found in the available sources; the documentation only covers historical results through 2018 [2].\n\n## Key Takeaways\n\n- **Broad strength**: S&P 500 Q3 earnings grew 14%, with 85% of companies beating estimates — but the market punished misses more than usual [1][5].\n- **AI is the differentiator**: Cloud and AI drove Microsoft's 18% revenue growth and SanDisk's 251% surge, while the \"Magnificent 7\" outperformed the rest of the market (21% vs. 13% EPS growth) [1][3][6].\n- **Sector divergence**: IT led at 40% EPS growth, but communication services lagged even its peers due to a weak Mag 7 constituent [1].\n- **Investor caution beneath the surface**: Despite strong ETF inflows, risk appetite was tempered by concerns over AI valuations, private credit, and Fed policy [1][5].",
+    "mode": "search",
+    "rewritten_query": "How did Q3 results look?",
+    "rewrote": false,
+    "rationale": "Earnings results are time-sensitive and need citing.",
+    "sub_queries": [
+      "Most recent Q3 earnings results and performance",
+      "Q3 financial report highlights as of May 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "title": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "snippet": "This article has additional related content\nU.S. stocks, as measured by the S&P 500 Index, are on pace for 14% growth in earnings for Q3 2025. This marks the fourth consecutive quarter of double-digit growth and comes in well ahead of analysts’ Sept. 30 estimates of 7%.\nThe “Magnificent 7” stocks we"
+      },
+      {
+        "num": 2,
+        "url": "https://ir.nasdaq.com/financials/quarterly-results",
+        "title": "https://ir.nasdaq.com/financials/quarterly-results",
+        "snippet": "Quarterly Results\nFirst Quarter\n2026\nFirst Quarter\n2025\nFourth Quarter\nThird Quarter\nSecond Quarter\nFirst Quarter\n2024\nFourth Quarter\nThird Quarter\nSecond Quarter\nFirst Quarter\n2023\nFourth Quarter\nJanuary 31, 2024\nThird Quarter\nOctober 18th, 2023\nSecond Quarter\nJuly 19th, 2023\nFirst Quarter\n2022\nFou"
+      },
+      {
+        "num": 3,
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q3/press-release-webcast",
+        "title": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q3/press-release-webcast",
+        "snippet": "of Microsoft’s SEC filings, including, but not limited to, its annual report on Form 10-K and quarterly reports on Form 10-Q, copies of which may be obtained by contacting Microsoft’s Investor Relations department at (800) 285-7772 or at Microsoft’s Investor Relations website at http://www.microsoft"
+      },
+      {
+        "num": 4,
+        "url": "https://finance.yahoo.com/news/q3-earnings-outperformers-csg-nasdaq-175802016.html",
+        "title": "https://finance.yahoo.com/news/q3-earnings-outperformers-csg-nasdaq-175802016.html",
+        "snippet": "handling sensitive personal and financial information, creating outsized headline risk when things go wrong in this area.\nThe 11 data & business process services stocks we track reported a strong Q3. As a group, revenues beat analysts’ consensus estimates by 2.9% while next quarter’s revenue guidanc"
+      },
+      {
+        "num": 5,
+        "url": "https://www.ishares.com/us/insights/earnings-commentary-q3",
+        "title": "https://www.ishares.com/us/insights/earnings-commentary-q3",
+        "snippet": "3. Even though companies beat expectations, share prices didn't necessarily rally.\nCompanies that fell short of Q3 expectations tended to see sharper declines than normal, while those that reported strong earnings were less likely to see a pop in share price during the week of earnings compared to p"
+      },
+      {
+        "num": 6,
+        "url": "https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-third-quarter-2026-financial-results",
+        "title": "https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-third-quarter-2026-financial-results",
+        "snippet": "76% |\n|\n|\n|\n|\n|\nup 17% |\n|\nOperating Income (Loss) |\n|\n|\n|\n|\nup 319% |\n|\n|\n|\n|\n|\n* |\n|\nNet Income (Loss) |\n|\n|\n|\n|\nup 287% |\n|\n|\n|\n|\n|\n* |\n|\nDiluted Net Income (Loss) Per Share |\n|\n|\n|\n|\nup 273% |\n|\n|\n|\n|\n|\n* |\n|\n* Not a meaningful figure |\nEnd Market Summary\n|\nRevenue ($ in millions) |\nQ3 2026 |\n|\n"
+      }
+    ],
+    "urls": [
+      "https://www.ishares.com/us/insights/earnings-commentary-q3",
+      "https://www.spglobal.com/market-intelligence/en/news-insights/research/2025/12/q3-2025-earnings-review",
+      "https://www.youtube.com/watch?v=P83_u2A_O48",
+      "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+      "https://finance.yahoo.com/news/q3-earnings-outperformers-csg-nasdaq-175802016.html",
+      "https://ir.nasdaq.com/financials/quarterly-results",
+      "https://s202.q4cdn.com/561055838/files/doc_financials/2026/q3/BILL-Q3-26-Press-Release-5-7-26.pdf",
+      "https://www.marketscreener.com/news/news-reports-third-quarter-results-for-fiscal-2026-ce7f5bdadc8ef727",
+      "https://www.moomoo.com/news/post/69589726/press-release-bill-reports-third-quarter-fiscal-year-2026-financial",
+      "https://www.investing.com/news/company-news/bill-q3-2026-slides-first-gaap-profit-16-core-revenue-growth-93CH-4670757",
+      "https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-third-quarter-2026-financial-results",
+      "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q3/press-release-webcast"
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "title": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "heading": "",
+        "chunk_text": "This article has additional related content\nU.S. stocks, as measured by the S&P 500 Index, are on pace for 14% growth in earnings for Q3 2025. This marks the fourth consecutive quarter of double-digit growth and comes in well ahead of analysts’ Sept. 30 estimates of 7%.\nThe “Magnificent 7” stocks were standouts once again, growing earnings per share (EPS) 21% in the quarter compared to 13% for the “other 493.” Our data shows 85% of companies beating their EPS estimates, though market reaction showed a smaller price reward for beats and greater punishment for misses than historically has been the case. This is likely a reflection of the market’s high expectations after what’s shaping up to be a third consecutive year of healthy gains.\nAgainst this backdrop ― and amid recent whiffs of AI consternation ― we offer three reflections anchored in the most recent quarter’s earnings:\nWithin the context of an exceptional quarter at the index level, there were clearly leaders and laggards. Even in those sectors that wowed, we saw notable differentiation.\nOf the four S&P 500 sectors that have driven performance year-to-date (utilities, communication services, IT and industrials), all but one notched Q3 earnings growth above the Mag 7. Communication services was the exception, weighed down by disappointing results from a Mag 7 constituent.\nThe upshot: Even the top tier features differentiation.",
+        "score": 6.6679,
+        "rank": 0
+      },
+      {
+        "url": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "title": "https://www.blackrock.com/us/financial-professionals/insights/q3-earnings-equity-market-outlook",
+        "heading": "",
+        "chunk_text": "ed Q3 earnings growth above the Mag 7. Communication services was the exception, weighed down by disappointing results from a Mag 7 constituent.\nThe upshot: Even the top tier features differentiation. Dispersion crosses sectors, themes and the individual stocks within them, and this means exciting potential to generate alpha through skilled stock selection.\nThe top-earning sector this quarter was IT, boasting 40% EPS growth. Over 90% of companies beat revenue estimates and almost all (98%) exceeded EPS growth estimates. Yet from a return perspective, our analysis as of Nov. 14, 2025, found a 305% difference between IT’s top and bottom performers.\nEach of the S&P’s top-performing sectors of the year has a distinct AI influence. Likewise, AI was the defining line between leaders and laggards within these sectors.\nIn IT, we observe the picks and shovels of the AI buildout disrupting traditional software and services. In utilities, we see a preference for areas likely to grow amid AI data center energy needs, including nuclear, renewables and gas. And in industrials, we find that companies enabling the AI revolution are preferred over cyclically exposed transportation companies.",
+        "score": 5.8596,
+        "rank": 1
+      },
+      {
+        "url": "https://ir.nasdaq.com/financials/quarterly-results",
+        "title": "https://ir.nasdaq.com/financials/quarterly-results",
+        "heading": "",
+        "chunk_text": "Quarterly Results\nFirst Quarter\n2026\nFirst Quarter\n2025\nFourth Quarter\nThird Quarter\nSecond Quarter\nFirst Quarter\n2024\nFourth Quarter\nThird Quarter\nSecond Quarter\nFirst Quarter\n2023\nFourth Quarter\nJanuary 31, 2024\nThird Quarter\nOctober 18th, 2023\nSecond Quarter\nJuly 19th, 2023\nFirst Quarter\n2022\nFourth Quarter\nJanuary 25th, 2023\nThird Quarter\nOctober 19th, 2022\nSecond Quarter\nJuly 20th, 2022\nFirst Quarter\nApril 20th, 2022\n2021\nFourth Quarter\nJanuary 26th, 2022\nThird Quarter\nOctober 20th, 2021\nSecond Quarter\nJuly 21st, 2021\nFirst Quarter\nApril 21st, 2021\n2020\nFourth Quarter\nJanuary 27th, 2021\nThird Quarter\nOctober 21st, 2020\nSecond Quarter\nJuly 22nd, 2020\nFirst Quarter\nApril 22nd, 2020\n2019\nFourth Quarter\nJanuary 29th, 2020\n- Q4 19 Earnings Press Release 911.8 KB\n- Q4 19 Earnings Presentation 547.9 KB\nThird Quarter\nOctober 23rd, 2019\n- Q3 19 Earnings Press Release 760.8 KB\n- Q3 19 Earnings Presentation 2.6 MB\nSecond Quarter\nJuly 24th, 2019\n- Q2 19 Earnings Press Release 835.3 KB\n- Q2 19 Earnings Presentation 2.5 MB\nFirst Quarter\nApril 24th, 2019\n- Q1 19 Earnings Press Release 755.9 KB\n- Q1 19 Earnings Presentation 544.5 KB\n- Q1 19 Summary Financial Statements 162.1 KB\n2018\nFourth Quarter\nJanuary 30th, 2019\n- Q4 18 Earnings Press Release 541.2 KB\n- Q4 18 Earnings Presentation 548.9 KB\nThird Quarter\nOctober 24th, 2018\n- Q3 18 Earnings Press Release 531.5 KB\n- Q3 18 Earnings Presentation 733.3 KB\nSecond Quarter\nJuly 25th, 2018\n- Q2 18 Earnings Press Release 488.1 KB\nFirst Quarter",
+        "score": 5.5671,
+        "rank": 2
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q3/press-release-webcast",
+        "title": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q3/press-release-webcast",
+        "heading": "",
+        "chunk_text": "Press Release & Webcast\nEarnings Release FY26 Q3\nMicrosoft Cloud and AI Strength Fuels Third Quarter Results\nREDMOND, Wash. — April 29, 2026 — Microsoft Corp. today announced the following results for the quarter ended March 31, 2026, as compared to the corresponding period of last fiscal year:\n· Revenue was $82.9 billion and increased 18% (up 15% in constant currency)\n· Operating income was $38.4 billion and increased 20% (up 16% in constant currency)\n· Net income was $31.8 billion and increased 23% on a GAAP basis, and increased 20% (up 18% in constant currency) on a non-GAAP basis\n· Diluted earnings per share was $4.27 and increased 23% on a GAAP basis, and increased 21% (up 18% in constant currency) on a non-GAAP basis\n· Non-GAAP results exclude the impact from investments in OpenAI, explained in the Non-GAAP Definition section below\n“We are focused on delivering cloud and AI infrastructure and solutions that empower every business to eval-max their outcomes in the agentic computing era,\" said Satya Nadella, chairman and chief executive officer of Microsoft.",
+        "score": 4.4076,
+        "rank": 3
+      },
+      {
+        "url": "https://finance.yahoo.com/news/q3-earnings-outperformers-csg-nasdaq-175802016.html",
+        "title": "https://finance.yahoo.com/news/q3-earnings-outperformers-csg-nasdaq-175802016.html",
+        "heading": "",
+        "chunk_text": "handling sensitive personal and financial information, creating outsized headline risk when things go wrong in this area.\nThe 11 data & business process services stocks we track reported a strong Q3. As a group, revenues beat analysts’ consensus estimates by 2.9% while next quarter’s revenue guidance was in line.\nLuckily, data & business process services stocks have performed well with share prices up 11.8% on average since the latest earnings results.\nCSG (NASDAQ:CSGS)\nPowering billions of critical customer interactions annually, CSG Systems (NASDAQ:CSGS) provides cloud-based software platforms that help companies manage customer interactions, process payments, and monetize their services.\nCSG reported revenues of $279.3 million, up 2.4% year on year. This print exceeded analysts’ expectations by 0.5%. Overall, it was an exceptional quarter for the company with a beat of analysts’ EPS estimates and a narrow beat of analysts’ revenue estimates.\nCSG delivered the weakest performance against analyst estimates and slowest revenue growth of the whole group.",
+        "score": 4.1575,
+        "rank": 4
+      },
+      {
+        "url": "https://www.ishares.com/us/insights/earnings-commentary-q3",
+        "title": "https://www.ishares.com/us/insights/earnings-commentary-q3",
+        "heading": "",
+        "chunk_text": "3. Even though companies beat expectations, share prices didn't necessarily rally.\nCompanies that fell short of Q3 expectations tended to see sharper declines than normal, while those that reported strong earnings were less likely to see a pop in share price during the week of earnings compared to previous quarters.7 We feel this may suggest signs of investor AI fatigue. Concerns surrounding risks in private credit, a hawkish Fed pivot, and AI bubbles all emerged over the course of earnings season, likely spurring a bout of profit taking in select companies.\nBut profit taking appears to be selective, as that runs counter to the trend in ETF flows, where we’ve seen a clear preference to buy the dip. Weekly U.S. equity ETF flows after a week where the S&P 500 was negative have been 17% higher this year than the average flow week. This trend persisted in the most recent bout of uncertainty: the week of November 10, U.S.-listed ETFs saw $26B of net inflows, which is 2x the average weekly flow in 2025.",
+        "score": 2.2362,
+        "rank": 5
+      },
+      {
+        "url": "https://ir.nasdaq.com/financials/quarterly-results",
+        "title": "https://ir.nasdaq.com/financials/quarterly-results",
+        "heading": "",
+        "chunk_text": "KB\nThird Quarter\nOctober 24th, 2018\n- Q3 18 Earnings Press Release 531.5 KB\n- Q3 18 Earnings Presentation 733.3 KB\nSecond Quarter\nJuly 25th, 2018\n- Q2 18 Earnings Press Release 488.1 KB\nFirst Quarter\nApril 25th, 2018\n- Q1 18 Earnings Press Release 492.6 KB\n- Q1 18 Earnings Presentation 2.2 MB\n2017\nFourth Quarter\nJanuary 31st, 2018\n- Q4 17 Earnings Press Release 557.6 KB\n- Q4 17 Earnings Presentation 2.2 MB\nThird Quarter\nOctober 25th, 2017\n- Q3 17 Earnings Press Release 749.7 KB\n- Q3 17 Earnings Presentation 629.9 KB\n- Q3 17 Summary Financial Statements 113.8 KB\n- Q3 17 Earnings Transcript 273.1 KB\nSecond Quarter\nJuly 26th, 2017\n- Q2 17 Earnings Press Release 816.8 KB\n- Q2 17 Earnings Presentation 1.2 MB\n- Q2 17 Summary Financial Statements 114.1 KB\n- Q2 17 Earnings Transcript 266.6 KB\nFirst Quarter\nApril 26th, 2017\n- Q1 17 Earnings Press Release 774.8 KB\n- Q1 17 Earnings Presentation 1.2 MB\n- Q1 17 Earnings Transcript 267.2 KB\n2016\nFourth Quarter\nJanuary 31st, 2017\n- Q4 16 Earnings Press Release 733.2 KB\n- Q4 16 Earnings Presentation 1.3 MB\n- Q4 16 Summary Financial Statements 297.4 KB\n- Q4 16 Earnings Transcript 301.6 KB\nThird Quarter\nOctober 26th, 2016\n- Q3 16 Earnings Press Release 697.4 KB\n- Q3 16 Earnings Presentation 1.2 MB\n- Q3 16 Summary Financial Statements 250.9 KB\n- Q3 16 Earnings Transcript 533.3 KB\nSecond Quarter\nJuly 27th, 2016\n- Q2 16 Earnings Press Release 285.5 KB\n- Q2 16 Earnings Presentation 594.9 KB\n- Q2 16 Summary Financial Statements 249.2 KB\n- Q2 16 Ea",
+        "score": 0.0374,
+        "rank": 6
+      },
+      {
+        "url": "https://ir.nasdaq.com/financials/quarterly-results",
+        "title": "https://ir.nasdaq.com/financials/quarterly-results",
+        "heading": "",
+        "chunk_text": "Third Quarter\n- Q3 14 Earnings Press Release 231.2 KB\n- Q3 14 Earnings Presentation 748.9 KB\n- Q3 14 Summary Financial Statements 110.1 KB\n- Q3 14 Earnings Transcript 283.9 KB\nSecond Quarter\n- Q2 14 Earnings Press Release 163.2 KB\n- Q2 14 Earnings Presentation 668 KB\n- Q2 14 Summary Financial Statements 107.9 KB\n- Q2 14 Earnings Transcript 425.3 KB\nFirst Quarter\n- Q1 14 Earnings Press Release 169.2 KB\n- Q1 14 Earnings Presentation 725.5 KB\n- Q1 14 Earnings Transcript 427.4 KB\n2013\nFourth Quarter\n- Q4 13 Earnings Press Release 220 KB\n- Q4 13 Earnings Presentation 753.7 KB\n- Q4 13 Summary Financial Statements 125.8 KB\n- Q4 13 Earnings Transcript 416.3 KB\nThird Quarter\n- Q3 13 Earnings Press Release 177.5 KB\n- Q3 13 Earnings Presentation 802.5 KB\n- Q3 13 Summary Financial Statements 104.7 KB\n- Q3 13 Earnings Transcript 425.2 KB\nSecond Quarter\n- Q2 13 Earnings Press Release 174 KB\n- Q2 13 Earnings Presentation 1.2 MB\n- Q2 13 Summary Financial Statements 109.5 KB\n- Q2 13 Earnings Transcript 144.2 KB\nFirst Quarter\n- Q1 13 Earnings Press Release 226.4 KB\n- Q1 13 Earnings Presentation 1.1 MB\n- Q1 13 Summary Financial Statements 225.5 KB\n- Q1 13 Earnings Transcript 334.5 KB\n2012\nFourth Quarter\n- Q4 12 Earnings Press Release 137.1 KB\n- Q4 12 Earnings Presentation 175.5 KB\n- Q4 12 Summary Financial Statements 130.1 KB\n- Q4 12 Earnings Transcript 219 KB\nThird Quarter\n- Q3 12 Earnings Press Release 119.5 KB\n- Q3 12 Earnings Presentation 204 KB\n- Q3 12 Summary Financial Statements 124.4 K",
+        "score": -1.5973,
+        "rank": 7
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q3/press-release-webcast",
+        "title": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q3/press-release-webcast",
+        "heading": "",
+        "chunk_text": "of Microsoft’s SEC filings, including, but not limited to, its annual report on Form 10-K and quarterly reports on Form 10-Q, copies of which may be obtained by contacting Microsoft’s Investor Relations department at (800) 285-7772 or at Microsoft’s Investor Relations website at http://www.microsoft.com/en-us/investor.\nAll information in this release is as of March 31, 2026. The company undertakes no duty to update any forward-looking statement to conform the statement to actual results or changes in the company’s expectations.\nFor more information, press only:\nMicrosoft Media Relations, WE Communications for Microsoft, (425) 638-7777, rrt@we-worldwide.com\nFor more information, financial analysts and investors only:\nJonathan Neilson, Vice President, Investor Relations, (425) 706-4400\nNote to editors: For more information, news and perspectives from Microsoft, please visit the Microsoft News Center at http://www.microsoft.com/news. Web links, telephone numbers, and titles were correct at time of publication, but may since have changed. Shareholder and financial information, as well as today’s 2:30 p.m.",
+        "score": 5.9745,
+        "rank": 0
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q3/press-release-webcast",
+        "title": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q3/press-release-webcast",
+        "heading": "",
+        "chunk_text": "Press Release & Webcast\nEarnings Release FY26 Q3\nMicrosoft Cloud and AI Strength Fuels Third Quarter Results\nREDMOND, Wash. — April 29, 2026 — Microsoft Corp. today announced the following results for the quarter ended March 31, 2026, as compared to the corresponding period of last fiscal year:\n· Revenue was $82.9 billion and increased 18% (up 15% in constant currency)\n· Operating income was $38.4 billion and increased 20% (up 16% in constant currency)\n· Net income was $31.8 billion and increased 23% on a GAAP basis, and increased 20% (up 18% in constant currency) on a non-GAAP basis\n· Diluted earnings per share was $4.27 and increased 23% on a GAAP basis, and increased 21% (up 18% in constant currency) on a non-GAAP basis\n· Non-GAAP results exclude the impact from investments in OpenAI, explained in the Non-GAAP Definition section below\n“We are focused on delivering cloud and AI infrastructure and solutions that empower every business to eval-max their outcomes in the agentic computing era,\" said Satya Nadella, chairman and chief executive officer of Microsoft.",
+        "score": -0.317,
+        "rank": 1
+      },
+      {
+        "url": "https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-third-quarter-2026-financial-results",
+        "title": "https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-third-quarter-2026-financial-results",
+        "heading": "",
+        "chunk_text": "76% |\n|\n|\n|\n|\n|\nup 17% |\n|\nOperating Income (Loss) |\n|\n|\n|\n|\nup 319% |\n|\n|\n|\n|\n|\n* |\n|\nNet Income (Loss) |\n|\n|\n|\n|\nup 287% |\n|\n|\n|\n|\n|\n* |\n|\nDiluted Net Income (Loss) Per Share |\n|\n|\n|\n|\nup 273% |\n|\n|\n|\n|\n|\n* |\n|\n* Not a meaningful figure |\nEnd Market Summary\n|\nRevenue ($ in millions) |\nQ3 2026 |\n|\nQ2 2026 |\n|\n|\n|\nQ3 2025 |\n|\nY/Y |\n|\nDatacenter |\n|\n|\n|\n|\nup 233% |\n|\n|\n|\nup 645% |\n|\nEdge |\n|\n|\n|\n|\nup 118% |\n|\n|\n|\nup 295% |\n|\nConsumer |\n|\n|\n|\n|\ndown 10% |\n|\n|\n|\nup 44% |\n|\nTotal Revenue |\n|\n|\n|\n|\nup 97% |\n|\n|\n|\nup 251% |\nAdditional details can be found within the Company’s earnings presentation, which is accessible online at investor.sandisk.com.\nBusiness Outlook for Fiscal Fourth Quarter of 2026\n|\n(in millions, except per share amounts) |\nGAAP |\nNon-GAAP(1) |\n|\nRevenue |\n|\n|\n|\nGross Margin |\n78.9% - 80.9% |\n79.0% - 81.0% |\n|\nOperating Expenses |\n|\n|\n|\nInterest and Other Income (Expense), Net |\n|\n|\n|\nTax Expense (2) |\nN/A |\n|\n|\nDiluted Net Income Per Share |\nN/A |\n|\n|\nDiluted Shares Outstanding |\n~ 158 |\n~ 158 |\n|\n(1) |\n|\nNon-GAAP gross margin guidance excludes stock-based compensation expense, totaling approximately |\n|\n(2) |\n|\nNon-GAAP tax expense is determined based on a Non-GAAP pre-tax income or loss.",
+        "score": -0.4555,
+        "rank": 2
+      },
+      {
+        "url": "https://ir.nasdaq.com/financials/quarterly-results",
+        "title": "https://ir.nasdaq.com/financials/quarterly-results",
+        "heading": "",
+        "chunk_text": "Financial Statements 130.1 KB\n- Q4 12 Earnings Transcript 219 KB\nThird Quarter\n- Q3 12 Earnings Press Release 119.5 KB\n- Q3 12 Earnings Presentation 204 KB\n- Q3 12 Summary Financial Statements 124.4 KB\n- Q3 12 Earnings Transcript 236.6 KB\nSecond Quarter\n- Q2 12 Earnings Press Release 116 KB\n- Q2 12 Earnings Presentation 243.4 KB\n- Q2 12 Summary Financial Statements 102.6 KB\n- Q2 12 Earnings Transcript 258.6 KB\nFirst Quarter\n- Q1 12 Earnings Press Release 396.4 KB\n- Q1 12 Earnings Presentation 430.8 KB\n- Q1 12 Summary Financial Statements 122.9 KB\n- Q1 12 Earnings Transcript 212.2 KB\n2011\nFourth Quarter\n- Q4 11 Earnings Press Release 546.8 KB\n- Q4 11 Earnings Presentation 470.5 KB\n- Q4 11 Summary Financial Statements 110.9 KB\n- Q4 11 Earnings Transcript 268.4 KB\nThird Quarter\n- Q3 11 Earnings Press Release 452.5 KB\n- Q3 11 Earnings Presentation 447.9 KB\n- Q3 11 Earnings Transcript 245.4 KB\nSecond Quarter\n- Q2 11 Earnings Release 302.8 KB\n- Q2 11 Earnings Presentation 230.1 KB\n- Q2 11 Summary Financial Statements 106.5 KB\n- Q2 11 Earnings Transcript 240.7 KB\nFirst Quarter\n- Q1 11 Earnings Press Release 139.7 KB\n- Q1 11 Earnings Presentation 421.8 KB\n- Q1 11 Summary Financial Statements 108.6 KB\n- Q1 11 Earnings Transcript 266.9 KB\n2010\nFourth Quarter\n- Q4 10 Earnings Press Release 175.7 KB\n- Q4 10 Earnings Presentation 359.9 KB\n- Q4 10 Summary Financial Statements 116.7 KB\n- Q4 10 Earnings Transcript 252.5 KB\nThird Quarter\n- Q3 10 Earnings Press Release 154.8 KB\n- Q3 10 Earning",
+        "score": -2.5776,
+        "rank": 3
+      },
+      {
+        "url": "https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-third-quarter-2026-financial-results",
+        "title": "https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-third-quarter-2026-financial-results",
+        "heading": "",
+        "chunk_text": ". Signed two additional NBM agreements in the fiscal fourth quarter.\n-\nExpect fourth quarter revenue to be in the range of\n$7.75 billion to$8.25 billion , with expected Non-GAAP diluted net income per share to be in the range of$30.00 to$33.00 .\n“This quarter marks a fundamental inflection point for Sandisk — where our technology leadership is enabling a deliberate shift in our mix toward the highest-value end markets, led by Datacenter,” said\nQ3 2026 Financial Highlights\n|\n|\nGAAP |\n|\nNon-GAAP |\n||||||||\n|\n($ in millions, except per share amounts) |\nQ3 2026 |\n|\nQ2 2026 |\n|\n|\n|\nQ3 2026 |\n|\nQ2 2026 |\n|\n|\n|\nRevenue |\n|\n|\n|\n|\nup 97% |\n|\n|\n|\n|\n|\nup 97% |\n|\nGross Margin |\n78.4% |\n|\n50.9% |\n|\nup 27.5 ppt |\n|\n78.4% |\n|\n51.1% |\n|\nup 27.3 ppt |\n|\nOperating Expenses |\n|\n|\n|\n|\nup 16% |\n|\n|\n|\n|\n|\nup 8% |\n|\nOperating Income |\n|\n|\n|\n|\nup 286% |\n|\n|\n|\n|\n|\nup 272% |\n|\nNet Income |\n|\n|\n|\n|\nup 350% |\n|\n|\n|\n|\n|\nup 280% |\n|\nDiluted Net Income Per Share |\n|\n|\n|\n|\nup 347% |\n|\n|\n|\n|\n|\nup 278% |\n|\n|\nGAAP |\n|\nNon-GAAP |\n||||||||\n|\n($ in millions, except per share amounts) |\nQ3 2026 |\n|\nQ3 2025 |\n|\nY/Y |\n|\nQ3 2026 |\n|\nQ3 2025 |\n|\nY/Y |\n|\nRevenue |\n|\n|\n|\n|\nup 251% |\n|\n|\n|\n|\n|\nup 251% |\n|\nGross Margin |\n78.4% |\n|\n22.5% |\n|\nup 55.9 ppt |\n|\n78.4% |\n|\n22.7% |\n|\nup 55.7 ppt |\n|\nOperating Expenses |\n|\n|\n|\n|\ndown 76% |\n|\n|\n|\n|\n|\nup 17% |\n|\nOperating Income (Loss) |\n|\n|\n|\n|\nup 319% |\n|\n|\n|\n|\n|\n* |\n|\nNet Income (Loss) |\n|\n|\n|\n|\nup 287% |\n|\n|\n|\n|\n|\n* |\n|\nDiluted Net Income (Loss) Per Share |\n|\n|\n|\n|\nup 273% |\n|\n|",
+        "score": -2.6728,
+        "rank": 4
+      },
+      {
+        "url": "https://ir.nasdaq.com/financials/quarterly-results",
+        "title": "https://ir.nasdaq.com/financials/quarterly-results",
+        "heading": "",
+        "chunk_text": "3 16 Earnings Transcript 533.3 KB\nSecond Quarter\nJuly 27th, 2016\n- Q2 16 Earnings Press Release 285.5 KB\n- Q2 16 Earnings Presentation 594.9 KB\n- Q2 16 Summary Financial Statements 249.2 KB\n- Q2 16 Earnings Transcript 283.7 KB\nFirst Quarter\nApril 27th, 2016\n- Q1 16 Earnings Press Release 502.5 KB\n- Q1 16 Earnings Presentation 1.2 MB\n- Q1 16 Summary Financial Statements 250.5 KB\n- Q1 16 Earnings Transcript 270.5 KB\n2015\nFourth Quarter\n- Q4 15 Earnings Press Release 509.2 KB\n- Q4 15 Earnings Presentation 1.2 MB\n- Q4 15 Summary Financial Statements 263.8 KB\n- Q4 15 Earnings Transcript 295.3 KB\nThird Quarter\n- Q3 15 Earnings Press Release 251 KB\n- Q3 15 Earnings Presentation 547.9 KB\n- Q3 15 Summary Financial Statements 247.6 KB\n- Q3 15 Earnings Transcript 274 KB\nSecond Quarter\n- Q2 15 Earnings Press Release 500.4 KB\n- Q2 15 Earnings Presentation 1.3 MB\n- Q2 15 Summary Financial Statements 245.1 KB\n- Q2 15 Earnings Transcript 250.1 KB\nFirst Quarter\n- Q1 15 Earnings Press Release 290.5 KB\n- Q1 15 Earnings Presentation 720 KB\n- Q1 15 Summary Financial Statements 231.2 KB\n- Q1 15 Earnings Transcript 259.9 KB\n2014\nFourth Quarter\n- Q4 14 Earnings Press Release 260.2 KB\n- Q4 14 Earnings Presentation 767.8 KB\n- Q4 14 Summary Financial Statements 180.5 KB\n- Q4 14 Earnings Transcript 270.6 KB\nThird Quarter\n- Q3 14 Earnings Press Release 231.2 KB\n- Q3 14 Earnings Presentation 748.9 KB\n- Q3 14 Summary Financial Statements 110.1 KB\n- Q3 14 Earnings Transcript 283.9 KB\nSecond Quarter\n- Q2 14",
+        "score": -3.3421,
+        "rank": 5
+      },
+      {
+        "url": "https://ir.nasdaq.com/financials/quarterly-results",
+        "title": "https://ir.nasdaq.com/financials/quarterly-results",
+        "heading": "",
+        "chunk_text": "Third Quarter\n- Q3 14 Earnings Press Release 231.2 KB\n- Q3 14 Earnings Presentation 748.9 KB\n- Q3 14 Summary Financial Statements 110.1 KB\n- Q3 14 Earnings Transcript 283.9 KB\nSecond Quarter\n- Q2 14 Earnings Press Release 163.2 KB\n- Q2 14 Earnings Presentation 668 KB\n- Q2 14 Summary Financial Statements 107.9 KB\n- Q2 14 Earnings Transcript 425.3 KB\nFirst Quarter\n- Q1 14 Earnings Press Release 169.2 KB\n- Q1 14 Earnings Presentation 725.5 KB\n- Q1 14 Earnings Transcript 427.4 KB\n2013\nFourth Quarter\n- Q4 13 Earnings Press Release 220 KB\n- Q4 13 Earnings Presentation 753.7 KB\n- Q4 13 Summary Financial Statements 125.8 KB\n- Q4 13 Earnings Transcript 416.3 KB\nThird Quarter\n- Q3 13 Earnings Press Release 177.5 KB\n- Q3 13 Earnings Presentation 802.5 KB\n- Q3 13 Summary Financial Statements 104.7 KB\n- Q3 13 Earnings Transcript 425.2 KB\nSecond Quarter\n- Q2 13 Earnings Press Release 174 KB\n- Q2 13 Earnings Presentation 1.2 MB\n- Q2 13 Summary Financial Statements 109.5 KB\n- Q2 13 Earnings Transcript 144.2 KB\nFirst Quarter\n- Q1 13 Earnings Press Release 226.4 KB\n- Q1 13 Earnings Presentation 1.1 MB\n- Q1 13 Summary Financial Statements 225.5 KB\n- Q1 13 Earnings Transcript 334.5 KB\n2012\nFourth Quarter\n- Q4 12 Earnings Press Release 137.1 KB\n- Q4 12 Earnings Presentation 175.5 KB\n- Q4 12 Summary Financial Statements 130.1 KB\n- Q4 12 Earnings Transcript 219 KB\nThird Quarter\n- Q3 12 Earnings Press Release 119.5 KB\n- Q3 12 Earnings Presentation 204 KB\n- Q3 12 Summary Financial Statements 124.4 K",
+        "score": -3.459,
+        "rank": 6
+      },
+      {
+        "url": "https://ir.nasdaq.com/financials/quarterly-results",
+        "title": "https://ir.nasdaq.com/financials/quarterly-results",
+        "heading": "",
+        "chunk_text": "KB\nThird Quarter\nOctober 24th, 2018\n- Q3 18 Earnings Press Release 531.5 KB\n- Q3 18 Earnings Presentation 733.3 KB\nSecond Quarter\nJuly 25th, 2018\n- Q2 18 Earnings Press Release 488.1 KB\nFirst Quarter\nApril 25th, 2018\n- Q1 18 Earnings Press Release 492.6 KB\n- Q1 18 Earnings Presentation 2.2 MB\n2017\nFourth Quarter\nJanuary 31st, 2018\n- Q4 17 Earnings Press Release 557.6 KB\n- Q4 17 Earnings Presentation 2.2 MB\nThird Quarter\nOctober 25th, 2017\n- Q3 17 Earnings Press Release 749.7 KB\n- Q3 17 Earnings Presentation 629.9 KB\n- Q3 17 Summary Financial Statements 113.8 KB\n- Q3 17 Earnings Transcript 273.1 KB\nSecond Quarter\nJuly 26th, 2017\n- Q2 17 Earnings Press Release 816.8 KB\n- Q2 17 Earnings Presentation 1.2 MB\n- Q2 17 Summary Financial Statements 114.1 KB\n- Q2 17 Earnings Transcript 266.6 KB\nFirst Quarter\nApril 26th, 2017\n- Q1 17 Earnings Press Release 774.8 KB\n- Q1 17 Earnings Presentation 1.2 MB\n- Q1 17 Earnings Transcript 267.2 KB\n2016\nFourth Quarter\nJanuary 31st, 2017\n- Q4 16 Earnings Press Release 733.2 KB\n- Q4 16 Earnings Presentation 1.3 MB\n- Q4 16 Summary Financial Statements 297.4 KB\n- Q4 16 Earnings Transcript 301.6 KB\nThird Quarter\nOctober 26th, 2016\n- Q3 16 Earnings Press Release 697.4 KB\n- Q3 16 Earnings Presentation 1.2 MB\n- Q3 16 Summary Financial Statements 250.9 KB\n- Q3 16 Earnings Transcript 533.3 KB\nSecond Quarter\nJuly 27th, 2016\n- Q2 16 Earnings Press Release 285.5 KB\n- Q2 16 Earnings Presentation 594.9 KB\n- Q2 16 Summary Financial Statements 249.2 KB\n- Q2 16 Ea",
+        "score": -4.5454,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 6253,
+      "search_ms": 5573,
+      "extract_ms": 13611,
+      "chunk_ms": 49,
+      "retrieve_ms": 4056,
+      "synthesis_ms": 19022,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 59940,
+    "elapsed_s": 63.93,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

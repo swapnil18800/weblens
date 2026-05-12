@@ -1,0 +1,170 @@
+{
+  "id": "rs1",
+  "category": "routing_search_obvious",
+  "domain": "demographics",
+  "question": "What is the current population of Brazil?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Numbers drift — must route to search, not parametric.",
+  "key_facts": [
+    "million",
+    "Brazil"
+  ],
+  "ground_truth": "Population estimates for Brazil in 2025-2026 are around 217 million (varies by source).",
+  "session_id": "eval-20260511T060411Z-rs1",
+  "verdict": "partial",
+  "aggregate": 0.783,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.75,
+    "context_recall": 1.0,
+    "context_precision": 0.167,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 1.0,
+    "answer_relevancy": 0.666,
+    "aggregate": 0.783
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.75,
+      "supported": 3,
+      "total": 4,
+      "reasoning": "Chunks support 212.6M, IBGE, Aug 29 date, and UN projections; Worldometer live counter not in chunks."
+    },
+    "context_precision": {
+      "score": 0.167,
+      "relevant": 1,
+      "total": 6,
+      "reasoning": "Only chunk 2 directly states Brazil's current population (212.6 million in 2024). Others lack the specific figure."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "million",
+        "Brazil"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.666,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "million",
+      "Brazil"
+    ]
+  },
+  "pipeline": {
+    "answer": "**212.6 million** as of July 1, 2024, according to the Brazilian Institute of Geography and Statistics (IBGE) [1]. This official estimate was published on August 29, 2024 [1]. \n\nWorldometer’s live counter, which processes UN data, continuously updates an estimate of the current population [2], though the exact live figure is not a snapshot in the given sources. The UN’s 2024 Revision medium-fertility variant projects the population will grow slowly to **216.1 million by 2030** and peak around **219.2 million in 2040**, before declining to **217.5 million by 2050** [2].",
+    "mode": "search",
+    "rewritten_query": "What is the current population of Brazil?",
+    "rewrote": false,
+    "rationale": "Population numbers drift; need a sourced recent figure.",
+    "sub_queries": [
+      "Current population of Brazil"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "title": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "snippet": "of population size. Altogether, 65.7 million people, or 30.9% of the total, are distributed across 48 municipalities with a population greater than 500,000 people, or 0.9% of Brazilian municipalities. Another considerable portion of the population, around 27.3% (58 million), is in the 339 municipali"
+      },
+      {
+        "num": 2,
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "https://www.worldometers.info/world-population/brazil-population/",
+        "snippet": "Nations Population Division.\nThe Population of Brazil (1950 - 2026) chart plots the total population count as of July 1 of each year, from 1950 to 2026.\nThe Yearly Population Growth Rate chart plots the annual percentage changes in population registered on July 1 of each year, from 1951 to 2026. Thi"
+      }
+    ],
+    "urls": [
+      "https://www.worldometers.info/world-population/brazil-population/",
+      "https://www.macrotrends.net/global-metrics/countries/bra/brazil/population",
+      "https://tradingeconomics.com/brazil/population",
+      "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+      "https://www.unfpa.org/data/world-population/BR",
+      "https://en.wikipedia.org/wiki/Demographics_of_Brazil"
+    ],
+    "chunk_count": 6,
+    "chunks": [
+      {
+        "url": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "title": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "heading": "",
+        "chunk_text": "of population size. Altogether, 65.7 million people, or 30.9% of the total, are distributed across 48 municipalities with a population greater than 500,000 people, or 0.9% of Brazilian municipalities. Another considerable portion of the population, around 27.3% (58 million), is in the 339 municipalities with a population between 100,000 and 500,000, which corresponds to 6.1% of the total number of municipalities.\n“Although the largest urban centers are no longer experiencing the great growth they once did, they still have the demographic weight that comes from a process of concentration that lasted for several decades — and, over the years, several municipalities have ended up surpassing the 500,000 inhabitants mark,” explained Marcio Minamiguchi, the manager of Population Projections and Estimates at IBGE.\nAt the other end, the least populated municipalities, with up to 5 thousand inhabitants, are 23.1% of the total (1,288) and account for only 2% of the population (4.3 million).\nMETHOD — The estimates of the resident population in the municipalities were calculated based on the Population Projections for Brazil and Federation Units, 2024 Revision [Projeções da População do Brasil e Unidades da Federação, Revisão 2024] and on the total population of the municipalities listed by the 2010 and 2022 Demographic Censuses.",
+        "score": 6.9049,
+        "rank": 0
+      },
+      {
+        "url": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "title": "https://www.gov.br/secom/en/latest-news/2024/08/ibge-brazils-population-reaches-212-6-million",
+        "heading": "",
+        "chunk_text": "Notícias\nRESEARCH\nIBGE: Brazil's population reaches 212.6 million\nSão Paulo is Brazil’s most populous city, with 11.9 million inhabitants - Credit: Paulo Pinto/Agência Brasil\nThe Brazilian population reached an estimated 212.6 million people on July 1, 2024, according to the Brazilian Institute of Geography and Statistics (IBGE) [Instituto Brasileiro de Geografia e Estatística/IBGE]. The survey data was published on the Official Gazette of the Union on Thursday, August 29, by means of an ordinance.\nThe IBGE study is one of the parameters used by the Federal Court of Auditors [Tribunal de Contas da União/TCU] to calculate the State and Federal District Participation Funds [Fundos de Participação dos Estados e do Distrito Federal/FPE] and the Municipal Participation Funds [Fundos de Participação dos Estados e do Distrito Federal dos Municípios/FPM), which is a constitutional instrument for transferring funds from the Union to states and municipalities provided. The survey is also a reference for social, economic and demographic indicators.\nCITIES — According to the survey, the country has 15 cities with over 1 million inhabitants; 13 are capitals. In total, 42.7 million people live in these cities, representing 20.1% of the country’s population.",
+        "score": 6.7461,
+        "rank": 1
+      },
+      {
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "https://www.worldometers.info/world-population/brazil-population/",
+        "heading": "",
+        "chunk_text": "Nations Population Division.\nThe Population of Brazil (1950 - 2026) chart plots the total population count as of July 1 of each year, from 1950 to 2026.\nThe Yearly Population Growth Rate chart plots the annual percentage changes in population registered on July 1 of each year, from 1951 to 2026. This value can differ from the Yearly % Change shown in the historical table, which shows the last year equivalent percentage change assuming homogeneous change in the preceding five year period.\nYear: as of July 1 of the year indicated.\nPopulation: Overall total population (both sexes and all ages) in the country as of July 1 of the year indicated, as estimated by the United Nations, Department of Economic and Social Affairs, Population Division. World Population Prospects: The 2024 Revision. For forecasted years, the U.N. medium-fertility variant is used.\nYearly % Change: For 2026: percentage change in total population over the last year (from July 1, 2025 to June 30, 2026). For all other years: latest year annual percentage change equivalent assuming homogeneous change in the preceding five year period, calculated through reverse compounding.\nYearly Change: For 2026: absolute change in total population (increase or decrease in number of people) over the last year (from July 1, 2025 to June 30, 2026).",
+        "score": 1.7602,
+        "rank": 2
+      },
+      {
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "https://www.worldometers.info/world-population/brazil-population/",
+        "heading": "",
+        "chunk_text": "5 | Juiz de Fora | 518,218 |\n| 36 | Maringá | 473,708 |\n| 37 | Macapá | 471,922 |\n| 38 | Jundiaí | 465,531 |\n| 39 | Porto Velho | 422,943 |\n| 40 | Petrolina | 418,619 |\n| 41 | São José do Rio Preto | 414,406 |\n| 42 | Americana | 412,133 |\n| 43 | Volta Redonda | 398,107 |\n| 44 | Caxias do Sul | 383,774 |\n| 45 | Campina Grande | 369,184 |\n| 46 | Colina de Laranjeiras | 365,960 |\n| 47 | Boa Vista | 360,361 |\n| 48 | Piracicaba | 357,844 |\n| 49 | Montes Claros | 355,651 |\n| 50 | Anápolis | 354,576 |\n| 51 | Praia Grande | 352,067 |\n| 52 | Bauru | 351,405 |\n| 53 | Francisco Morato | 346,105 |\n| 54 | Franca | 337,878 |\n| 55 | Rio Branco | 332,810 |\n| 56 | Gravataí | 330,969 |\n| 57 | Canoas | 325,022 |\n| 58 | Uberaba | 312,745 |\n| 59 | Campos dos Goytacazes | 310,590 |\n| 60 | Taubaté | 310,170 |\n| 61 | Caruaru | 299,805 |\n| 62 | Ponta Grossa | 296,610 |\n| 63 | Cascavel | 289,904 |\n| 64 | Limeira | 284,657 |\n| 65 | Pelotas | 280,551 |\n| 66 | Vitória da Conquista | 268,375 |\n| 67 | Mossoró | 259,132 |\n| 68 | Itajaí | 248,590 |\n| 69 | Ipatinga | 244,390 |\n| 70 | Governador Valadares | 239,060 |\nThe Brazil Population (Live) counter shows a continuously updated estimate of the current population of Brazil delivered by Worldometer's RTS algorithm, which processes data collected from the United Nations Population Division.\nThe Population of Brazil (1950 - 2026) chart plots the total population count as of July 1 of each year, from 1950 to 2026.\nThe Yearly Population Growth Rate chart plots t",
+        "score": -3.521,
+        "rank": 3
+      },
+      {
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "https://www.worldometers.info/world-population/brazil-population/",
+        "heading": "",
+        "chunk_text": "er than the median age indicated and half are younger. This parameter provides an indication of age distribution.\nFertility Rate: (Total Fertility Rate, or TFR), it is expressed as children per woman. It is calculated as the average number of children an average woman will have during her reproductive period (15 to 49 years old) based on the current fertility rates of every age group in the country, and assuming she is not subject to mortality.\nDensity (P/Km²): (Population Density) Population per square Kilometer (Km²).\nUrban Pop % : Urban population as a percentage of total population.\nUrban Population: Population living in areas classified as urban according to the criteria used by each country.\nCountry's Share of World Pop: Total population in the country as a percentage of total World Population as of July 1 of the year indicated.\nWorld Population: Total World Population as of July 1 of the year indicated.\nGlobal Rank: Position held by Brazil in the list of all countries worldwide ranked by population (from the highest population to the lowest population) as of July 1 of the year indicated.",
+        "score": -4.1673,
+        "rank": 4
+      },
+      {
+        "url": "https://www.worldometers.info/world-population/brazil-population/",
+        "title": "https://www.worldometers.info/world-population/brazil-population/",
+        "heading": "",
+        "chunk_text": "| 8 |\nSource: Worldometer (www.Worldometers.info)\nElaboration of data by United Nations, Department of Economic and Social Affairs, Population Division. World Population Prospects: The 2024 Revision. (Medium-fertility variant).\n| Year | Population | Yearly % Change | Yearly Change | Migrants (net) | Median Age | Fertility Rate | Density (P/Km²) | Urban Pop % | Urban Population | Country's Share of World Pop | World Population | Brazil Global Rank |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| 2030 | 216,074,411 | 0.3% | 652,401 | −146,325 | 36.9 | 1.58 | 26 | 93.2% | 201,296,099 | 2.52% | 8,569,124,911 | 7 |\n| 2035 | 218,199,707 | 0.2% | 425,059 | −85,233 | 38.9 | 1.57 | 26 | 94.7% | 206,742,576 | 2.46% | 8,885,210,181 | 7 |\n| 2040 | 219,237,084 | 0.09% | 207,475 | −30,634 | 40.8 | 1.57 | 26 | 96.2% | 210,796,522 | 2.39% | 9,177,190,203 | 7 |\n| 2045 | 219,026,196 | −0.02% | −42,178 | −32,815 | 42.5 | 1.57 | 26 | 97.5% | 213,520,940 | 2.32% | 9,439,639,668 | 7 |\n| 2050 | 217,489,299 | −0.14% | −307,379 | −29,987 | 43.9 | 1.56 | 26 | 98.9% | 215,063,348 | 2.25% | 9,664,378,587 | 9 |\nSource: Worldometer (www.Worldometers.info)\nElaboration of data by United Nations, Department of Economic and Social Affairs, Population Division. World Population Prospects: The 2024 Revision.",
+        "score": -6.5554,
+        "rank": 5
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 3150,
+      "search_ms": 2588,
+      "extract_ms": 7202,
+      "chunk_ms": 16,
+      "retrieve_ms": 9363,
+      "synthesis_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 26787,
+    "elapsed_s": 31.1,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

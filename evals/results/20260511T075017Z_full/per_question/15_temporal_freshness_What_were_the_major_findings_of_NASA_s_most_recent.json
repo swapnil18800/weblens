@@ -1,0 +1,356 @@
+{
+  "id": "tf3",
+  "category": "temporal_freshness",
+  "domain": "space",
+  "question": "What were the major findings of NASA's most recent Mars rover or lander mission?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Should surface 2025-2026 mission findings (Perseverance, sample-return updates).",
+  "key_facts": [
+    "Perseverance",
+    "Mars"
+  ],
+  "ground_truth": "Perseverance continues caching samples for future return; Mars Sample Return architecture was redesigned in 2024-2025 due to cost. New findings on organic molecules and ancient water environments.",
+  "session_id": "eval-20260511T075017Z-tf3",
+  "verdict": "partial",
+  "aggregate": 0.742,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.833,
+    "context_recall": 1.0,
+    "context_precision": 0.375,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.5,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.742,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.742
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.833,
+      "supported": 5,
+      "total": 6,
+      "reasoning": "5 claims supported; 'Anthropic's Claude AI' not in chunks; InSight dates and sample depot supported."
+    },
+    "context_precision": {
+      "score": 0.375,
+      "relevant": 3,
+      "total": 8,
+      "reasoning": "Chunks 1,5,7 describe Perseverance's AI-planned drive, a major finding. Others are references or unrelated."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "Perseverance",
+        "Mars"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": [
+      "Perseverance",
+      "Mars"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 3515,
+      "search_ms": 2078,
+      "extract_ms": 14052,
+      "chunk_ms": 39,
+      "retrieve_ms": 2409,
+      "synthesis_ms": 23120,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 56437,
+    "pipeline_s": 60.36
+  },
+  "judge_reasoning": "5 claims supported; 'Anthropic's Claude AI' not in chunks; InSight dates and sample depot supported.",
+  "pipeline": {
+    "answer": "# Major Findings of NASA's Recent Mars Missions (2018–2026)\n\nNASA's two most recent Mars missions—the **Perseverance rover** (landed February 2021, still operating) and the **InSight lander** (November 2018–December 2022)—have delivered groundbreaking discoveries spanning AI-driven exploration, planetary seismology, and sample collection for future Earth return [2][4].\n\n## Perseverance Rover: AI Exploration and Sample Caching\n\nPerseverance continues to operate within Jezero Crater, an ancient lakebed, managing its journey from JPL's Rover Operations Center [1][2]. Major findings include:\n\n- **First AI-Planned Drives on Mars**: In January 2026, Perseverance completed the first-ever drives planned entirely by artificial intelligence using Anthropic's Claude AI models [1]. The AI analyzed HiRISE orbital images and digital elevation models to identify hazards such as boulder fields, bedrock, and sand ripples, then charted safe continuous paths [1]. The rover successfully traveled hundreds of feet on Martian sols 1,707 and 1,709 using these AI-generated routes [1].\n- **Sample Collection Progress**: Perseverance has systematically collected and cached rock core samples from Jezero Crater, depositing its first sample tube in early 2022 and building a depot intended for future return to Earth [2].\n- **Ingenuity Helicopter Legacy**: The Ingenuity helicopter completed an extended mission spanning over three years before ending operations in January 2024, demonstrating powered flight in Mars' thin atmosphere and serving as a rover scout [2].\n- **Anomalous \"Pet Rock\"**: In May 2024, Perseverance accidentally picked up a pet rock nicknamed \"Dwayne,\" which traveled with the rover for over a year before being lost in August 2024 [2].\n\n## InSight Lander: Mars' Interior Revealed\n\nInSight operated from November 2018 until December 2022, when its solar-powered batteries depleted and NASA officially declared the mission over [4]. Key findings:\n\n- **First Detection of Marsquakes**: InSight recorded over 1,300 seismic events, the first-ever quakes detected on another planet [3]. More than 50 events were clearly locatable; the largest cluster came from Cerberus Fossae, a region with geologically recent volcanism (within the last two million years) [3]. The biggest quake—magnitude 5 in May 2022—caused vibrations lasting at least six hours [3].\n- **Planetary Structure Insights**: Seismic wave analysis allowed scientists to study Mars' **three internal layers** (crust, mantle, core), revealing how the planet's structure differs from Earth's [3][5].\n- **Atmospheric and Magnetic Surprises**: The mission recorded strange magnetic pulses and frequent **dust devils**, showing a more dynamically active planet than expected [5]. Local magnetic field variations were linked to daily atmospheric cycles [5].\n- **Landing Site and Instrumentation**: The lander touched down in a shallow crater called \"Homestead hollow\" within Elysium Planitia [5][6]. A heat flow probe failed to fully deploy, but the seismometer SEIS was so sensitive that the team trickled soil over its cable to insulate it from wind and temperature extremes [3]. Total lifetime cost was estimated at $814 million [4].\n\n## Comparison Table: Perseverance vs. InSight\n\n| Feature | Perseverance Rover | InSight Lander |\n|---------|-------------------|----------------|\n| **Operational Period** | Feb 2021–present (still active) | Nov 2018–Dec 2022 (ended) |\n| **Key Discovery** | First AI-planned Mars drives [1] | First marsquake detection [3] |\n| **Sample Collection** | Rock cores cached for return [2] | N/A |\n| **Mission Cost** | Not specified in sources | ~$814 million [4] |\n| **Notable Anomaly** | \"Pet rock\" Dwayne carried for months [2] | Failed heat flow probe [5] |\n\n## Key Takeaways\n\n- **Perseverance** achieved the first AI-planned extraterrestrial drives and continues building a sample depot for Earth return, while its companion Ingenuity proved powered flight on Mars.\n- **InSight** revolutionized planetary seismology by detecting over 1,300 quakes, mapping Mars' internal layers, and revealing an unexpectedly dynamic atmosphere.\n- Both missions demonstrate NASA's ability to operate long-duration robotic missions with cutting-edge technology (AI planning, sensitive seismometers) despite challenging Martian conditions.\n- The combination of rover and lander data provides complementary insights—Perseverance focuses on surface geology and sample collection, while InSight probes deep interior structure.",
+    "mode": "search",
+    "rewritten_query": "What were the major findings of NASA's most recent Mars rover or lander mission?",
+    "rewrote": false,
+    "rationale": "Recent mission findings require up-to-date sourced information.",
+    "sub_queries": [
+      "Major findings of NASA's Perseverance Mars rover mission up to 2026-05-11",
+      "Major findings of NASA's InSight Mars lander mission up to 2026-05-11"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.sciencedaily.com/releases/2026/01/260131084555.htm",
+        "title": "NASA’s Perseverance rover completes the first AI-planned drive on Mars",
+        "snippet": "NASA’s Perseverance rover completes the first AI-planned drive on Mars\n\nDate:February 2, 2026 Source:Jet Propulsion Laboratory Summary:NASA’s Perseverance rover has just made history by driving across Mars using routes planned by artificial intelligence instead of human operators. A vision-capable A"
+      },
+      {
+        "num": 2,
+        "url": "https://en.wikipedia.org/wiki/Perseverance_(rover)",
+        "title": "Perseverance (rover)",
+        "snippet": "References\n\nasa.gov (March 5, 2021). [\"Perseverance Is Roving on Mars – NASA's Mars Exploration Program\"](https://mars.nasa.gov/resources/25689/perseverance-is-roving-on-mars/). _NASA's Mars Exploration Program_. [Archived](https://web.archive.org/web/20210306120119/https://mars.nasa.gov/resources/2"
+      },
+      {
+        "num": 3,
+        "url": "https://science.nasa.gov/mission/insight/science-highlights/",
+        "title": "Science Highlights - NASA Science",
+        "snippet": "**Detected First Quake on Another Planet**\n\nInSight made the first-ever detection of quakes on the Red Planet. Its onboard seismometer measured over 1,300 seismic events, and over 50 of them had signals that were clear enough for the team to derive information about their location on Mars. The large"
+      },
+      {
+        "num": 4,
+        "url": "https://www.planetary.org/space-missions/insight",
+        "title": "InSight, NASA's Mars lander that studied the planet's interior",
+        "snippet": "Mission complete\n\nOn Dec. 21, 2022 NASA officially [declared InSight's mission over](https://www.nasa.gov/press-release/nasa-retires-insight-mars-lander-mission-after-years-of-science). The space agency had tried to make contact with the lander but said its solar-powered batteries appeared to have r"
+      },
+      {
+        "num": 5,
+        "url": "https://spacenews.com/a-year-of-surprising-science-from-nasas-insight-mars-mission/",
+        "title": "A Year of Surprising Science From NASA’s InSight Mars Mission",
+        "snippet": "A new understanding of Mars is beginning to emerge, thanks to the first year of NASA’s InSight lander mission. Findings described in a set of six papers published today reveal a planet alive with quakes, dust devils and strange magnetic pulses.\n\nFive of the papers were published in Nature. An additi"
+      },
+      {
+        "num": 6,
+        "url": "https://www.space.com/42731-insight-mars-lander-space-photos-mro.html",
+        "title": "https://www.space.com/42731-insight-mars-lander-space-photos-mro.html",
+        "snippet": "NASA's Insight Lander on Mars Spotted from Space!\nNASA's newly arrived Mars lander has been spotted by one its orbiting cousins.\nThe space agency's Mars Reconnaissance Orbiter used its supersharp High Resolution Imaging Science Experiment camera (HiRISE) to photograph the InSight lander, as well as "
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.youtube.com/watch?v=-StZggK4hhA",
+        "title": "NASA to Share Details of New Perseverance Mars Rover Finding",
+        "snippet": "Experts discuss the analysis of a rock sampled by NASA's Perseverance Mars rover last year. The sample, called “Sapphire Canyon,” was"
+      },
+      {
+        "url": "https://www.facebook.com/SpaceXplore.io/posts/may-4-2026-mars-exploration-peak-perseverance-rover-discovers-ancient-river-delt/122308168466219152/",
+        "title": "May 4, 2026 Mars Exploration Peak- Perseverance Rover Discovers ...",
+        "snippet": "The rover has collected four samples from an ancient river delta in the Red Planet's Jezero Crater since July 7, bringing the total count of"
+      },
+      {
+        "url": "https://phys.org/news/2026-04-nasa-perseverance-curiosity-panoramas-capture.html",
+        "title": "Perseverance and Curiosity panoramas reveal dual sides of Mars",
+        "snippet": "NASA's Curiosity and Perseverance rovers have captured two 360-degree landscapes that highlight how the missions are revealing details of"
+      },
+      {
+        "url": "https://www.facebook.com/NOVApbs/videos/signs-of-life-on-mars-nasas-discovery-explained/880555674564552/",
+        "title": "NASA's Perseverance rover may have found the clearest signs of ...",
+        "snippet": "NASA's Perseverance rover may have found the clearest signs of ancient life on Mars yet — inside a strange speckled rock in Jezero Crater."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Perseverance_(rover)",
+        "title": "Perseverance (rover) - Wikipedia",
+        "snippet": "Looking for habitability: identify past environments that were capable of supporting microbial life. Seeking biosignatures: seek signs of possible past"
+      },
+      {
+        "url": "https://www.sciencedaily.com/releases/2026/01/260131084555.htm",
+        "title": "NASA’s Perseverance rover completes the first AI-planned drive on Mars",
+        "snippet": "[Skip to main content](https://www.sciencedaily.com/releases/2026/01/260131084555.htm#main). ![Image 2: Perseverance First AI-Planned Drive on Mars](https://www.sciencedaily.com/images/1920/nasa-perseverance-mars-rover-exploring-planet.webp). *   [Space & Time](https://www.sciencedaily.com/news/space_time/). *   [Mars](https://www.sciencedaily.com/news/space_time/mars/). *   [Space Exploration](https://www.sciencedaily.com/news/space_time/space_exploration/). *   [NASA](https://www.sciencedaily.com/news/space_time/nasa/). *   [Mars Exploration Rover](https://www.sciencedaily.com/terms/mars_exploration_rover.htm). [Materials](https://www.jpl.nasa.gov/news/nasas-perseverance-rover-completes-first-ai-planned-drive-on-mars/) provided by [**Jet Propulsion Laboratory**](https://www.jpl.nasa.gov/). [Scientists Propose New Theory That Explains Sand Ripples on Mars and on Earth](https://www.sciencedaily.com/releases/2024/03/240312133825.htm). [Confirmation of Ancient Lake on Mars Builds Excitement for Perseverance Rover's Samples](https://www.sciencedaily.com/releases/2024/01/240126171636.htm). [Martian Rock-Metal Composite Shows Potential of 3D Printing on Mars](https://www.sciencedaily.com/releases/2022/09/220906083538.htm). [The Sands of Mars Are Green as Well as Red, Rover Perseverance Discovers](https://www.sciencedaily.com/releases/2022/08/220825205856.htm). *   [NASA Tests Powerful New Thruster for Mars](https://www.sciencedaily.com/releases/2026/05/260505234611.htm). [SPACE & TIME](https://www.sciencedaily.com/news/space_time/). [NASA](https://www.sciencedaily.com/news/space_time/nasa/). *   [Top Science News](https://www.sciencedaily.com/news/top/science/). *   [Latest News](https://www.sciencedaily.com/news/). *   [Top Science News](https://www.sciencedaily.com/news/top/science/). *   [Latest News](https://www.sciencedaily.com/news/). *   [Health](https://www.sciencedaily.com/releases/2026/01/260131084555.htm#). _more topics_](https://www.sciencedaily.com/news/health_medicine/). _more topics_](https://www.sciencedaily.com/news/mind_brain/). [Living Well](https://www.sciencedaily.com/news/living_well/). _more topics_](https://www.sciencedaily.com/news/living_well/). _more topics_](https://www.sciencedaily.com/news/matter_energy/). [Space & Time](https://www.sciencedaily.com/news/space_time/). *   [Solar System](https://www.sciencedaily.com/news/space_time/solar_system/). _more topics_](https://www.sciencedaily.com/news/space_time/). _more topics_](https://www.sciencedaily.com/news/computers_math/). _more topics_](https://www.sciencedaily.com/news/plants_animals/). [Earth & Climate](https://www.sciencedaily.com/news/earth_climate/). *   [Climate](https://www.sciencedaily.com/news/earth_climate/climate/). *   [Earthquakes](https://www.sciencedaily.com/news/earth_climate/earthquakes/). *   [Geology](https://www.sciencedaily.com/news/earth_climate/geology/). *   [Pollution](https://www.sciencedaily.com/news/earth_climate/pollution/). _more topics_](https://www.sciencedaily.com/news/earth_climate/). _more topics_](https://www.sciencedaily.com/news/fossils_ruins/). *   [Society](https://www.sciencedaily.com/releases/2026/01/260131084555.htm#). _more topics_](https://www.sciencedaily.com/news/science_society/). *   [Medical Technology](https://www.sciencedaily.com/news/matter_energy/medical_technology/). _more topics_](https://www.sciencedaily.com/news/business_industry/). _more topics_](https://www.sciencedaily.com/news/education_learning/). *   [Top News](https://www.sciencedaily.com/news/strange_offbeat/)."
+      },
+      {
+        "url": "https://www.msn.com/en-in/news/techandscience/what-nasa-s-insight-lander-discovered-on-mars/vi-AA1ZrNBu?cvid=69fc65c8bd2e4a02b761802035d962dd&ocid=hpmsn",
+        "title": "What NASA's InSight lander discovered on Mars | Watch - MSN",
+        "snippet": "From detecting marsquakes to measuring the planet's internal structure, the data revealed details never seen before. These findings are helping"
+      },
+      {
+        "url": "https://spacenews.com/a-year-of-surprising-science-from-nasas-insight-mars-mission/",
+        "title": "A Year of Surprising Science From NASA's InSight Mars Mission",
+        "snippet": "InSight measures wind speed, direction and air pressure nearly continuously, offering more data than previous landed missions. The spacecraft's"
+      },
+      {
+        "url": "https://science.nasa.gov/mission/insight/science-highlights/",
+        "title": "Science Highlights",
+        "snippet": "InSight's onboard seismometer detected a magnitude 4 marsquake in 2021 that scientists later determined to be caused by a meteoroid strike. This was one of the"
+      },
+      {
+        "url": "https://www.space.com/42731-insight-mars-lander-space-photos-mro.html",
+        "title": "NASA's Insight Lander on Mars Spotted from Space!",
+        "snippet": "InSight will map the Martian interior in unprecedented detail using a seismometer suite and a self-burrowing heat probe, both of which must be"
+      },
+      {
+        "url": "https://www.msn.com/en-us/news/technology/nasa-was-searching-for-this-on-mars-and-insight-finally-found-it/vi-AA1UE6JF?ocid=iehpM",
+        "title": "NASA was searching for this on Mars and InSight finally found it - MSN",
+        "snippet": "The discovery provides new insight into the planet's internal structure and how Mars evolved over time. Using seismic readings and long-term"
+      },
+      {
+        "url": "https://www.planetary.org/space-missions/insight",
+        "title": "InSight, NASA's Mars lander that studied the… | The Planetary Society",
+        "snippet": "Learn how our members and community are changing the worlds. # InSight, NASA's Mars lander that studied the planet's interior. > * Mars and Earth both had conditions suitable for life for some periods of time 3 to 4 billion years ago, until Mars lost its atmosphere and became a cold, dry desert. > * NASA's InSight spacecraft studied Mars' interior and Marsquakes to learn how other worlds, including Earth-like exoplanets around other stars, evolve. To learn why our planet took such a different evolutionary path and what the possibilities are for other worlds including Earth-like exoplanets, we need to learn about Mars' interior. Its mission was to learn more about how Mars' interior is layered so scientists could compare Mars with what we know about other planets and Earth. One of InSight's primary science instruments, a heat-flow probe known as the mole, failed to work because the soil at the landing site was different than predicted."
+      }
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://www.sciencedaily.com/releases/2026/01/260131084555.htm",
+        "title": "NASA’s Perseverance rover completes the first AI-planned drive on Mars",
+        "heading": "NASA’s Perseverance rover completes the first AI-planned drive on Mars",
+        "chunk_text": "NASA’s Perseverance rover completes the first AI-planned drive on Mars\n\nDate:February 2, 2026 Source:Jet Propulsion Laboratory Summary:NASA’s Perseverance rover has just made history by driving across Mars using routes planned by artificial intelligence instead of human operators. A vision-capable AI analyzed the same images and terrain data normally used by rover planners, identified hazards like rocks and sand ripples, and charted a safe path across the Martian surface. After extensive testing in a virtual replica of the rover, Perseverance successfully followed the AI-generated routes, traveling hundreds of feet autonomously.Share:\n\n[Facebook](https://www.sciencedaily.com/releases/2026/01/260131084555.htm#)[Twitter](https://www.sciencedaily.com/releases/2026/01/260131084555.htm#)[Pinterest](https://www.sciencedaily.com/releases/2026/01/260131084555.htm#)[LinkedIN](https://www.sciencedaily.com/releases/2026/01/260131084555.htm#)[Email](https://www.sciencedaily.com/releases/2026/01/260131084555.htm#)\n\nFULL STORY\n\n* * *\n\n![Image 2: Perseverance First AI-Planned Drive on Mars](https://www.sciencedaily.com/images/1920/nasa-perseverance-mars-rover-exploring-planet.webp)\n\nNASA’s Perseverance rover has completed the first Mars drives planned entirely by artificial intelligence. The success points toward a future where robots explore distant worlds with far less help from Earth. Credit: Shutterstock",
+        "score": 6.9401,
+        "rank": 0
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Perseverance_(rover)",
+        "title": "Perseverance (rover)",
+        "heading": "References",
+        "chunk_text": "References\n\nasa.gov (March 5, 2021). [\"Perseverance Is Roving on Mars – NASA's Mars Exploration Program\"](https://mars.nasa.gov/resources/25689/perseverance-is-roving-on-mars/). _NASA's Mars Exploration Program_. [Archived](https://web.archive.org/web/20210306120119/https://mars.nasa.gov/resources/25689/perseverance-is-roving-on-mars/) from the original on March 6, 2021. Retrieved March 6, 2021.\n95.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-96)**mars.nasa.gov. [\"Perseverance Rover Mars Rock Samples\"](https://web.archive.org/web/20221111210250/https://mars.nasa.gov/mars-rock-samples/). _NASA Mars Exploration_. Archived from [the original](https://mars.nasa.gov/mars-rock-samples) on November 11, 2022. Retrieved December 25, 2023.\n96.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-97)**[\"Nobody Tell Elmo About Issole\"](https://mars.nasa.gov/mars2020/mission/status/363/nobody-tell-elmo-about-issole). _nasa.gov_. February 4, 2022. Retrieved February 11, 2022.\n97.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-98)**mars.nasa.gov (August 26, 2021). [\"NASA's Perseverance Plans Next Sample Attempt\"](https://mars.nasa.gov/news/9022/nasas-perseverance-plans-next-sample-attempt). _NASA's Mars Exploration Program_. Retrieved August 27, 2021.\n98.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-99)**[\"Sample Caching Dry Run, 1st sample tube cached\"](https://twitter.com/nasapersevere/status/1413158800517783558).",
+        "score": 6.01,
+        "rank": 1
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Perseverance_(rover)",
+        "title": "Perseverance (rover)",
+        "heading": "References",
+        "chunk_text": "References\n\n1.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-1)**[\"Where is Perseverance?\"](https://science.nasa.gov/mission/mars-2020-perseverance/location-map/). _NASA Science_. NASA. April 18, 2024. Retrieved April 4, 2026.\n2.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-2)**Landers, Rob (February 17, 2021). [\"It's landing day! What you need to know about Perseverance Rover's landing on Mars\"](https://www.floridatoday.com/story/news/local/2021/02/18/mars-perseverance-rover-land-red-planet-ingenuity/6765226002/). _Florida Today_. [Archived](https://web.archive.org/web/20210219092938/https://www.floridatoday.com/story/news/local/2021/02/18/mars-perseverance-rover-land-red-planet-ingenuity/6765226002/) from the original on February 19, 2021. Retrieved February 19, 2021.\n3.   ^ [_**a**_](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-landingtime_3-0)[_**b**_](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-landingtime_3-1)mars.nasa.gov. [\"Touchdown! NASA's Mars Perseverance Rover Safely Lands on Red Planet\"](https://mars.nasa.gov/news/8865/touchdown-nasas-mars-perseverance-rover-safely-lands-on-red-planet). NASA. [Archived](https://web.archive.org/web/20210220060100/https://mars.nasa.gov/news/8865/touchdown-nasas-mars-perseverance-rover-safely-lands-on-red-planet/) from the original on February 20, 2021.",
+        "score": 5.8533,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Perseverance_(rover)",
+        "title": "Perseverance (rover)",
+        "heading": "References",
+        "chunk_text": "References\n\nwiki/The\\_New\\_York\\_Times \"The New York Times\")_. Archived from [the original](https://www.nytimes.com/2021/04/19/science/nasa-mars-helicopter.html) on December 28, 2021. Retrieved April 19, 2021.\n9.   ^ [_**a**_](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-NASA_20240125_9-0)[_**b**_](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-NASA_20240125_9-1)[\"After Three Years on Mars, NASA's Ingenuity Helicopter Mission Ends\"](https://www.jpl.nasa.gov/news/after-three-years-on-mars-nasas-ingenuity-helicopter-mission-ends). _[Jet Propulsion Laboratory](https://en.wikipedia.org/wiki/Jet\\_Propulsion\\_Laboratory \"Jet Propulsion Laboratory\")_.\n10.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-10)**[_NASA Science Live: Ingenuity Mars Helicopter Tribute & Legacy_](https://www.youtube.com/watch?v=lkZ6jkqPMEc), January 31, 2024, retrieved February 1, 2024\n11.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-11)**[\"Perseverance Rover Components - NASA Science\"](https://science.nasa.gov/mission/mars-2020-perseverance/rover-components/#power). _Mars 2020: Perseverance Rover_. April 16, 2024. Retrieved September 27, 2025.\n12.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-12)**[\"Europe To Press Ahead with ExoMars Plans Without NASA\"](https://spacenews.com/europe-press-ahead-exomars-plans-without-nasa/). SpaceNews. February 13, 2012.\n13.",
+        "score": 5.4833,
+        "rank": 3
+      },
+      {
+        "url": "https://www.sciencedaily.com/releases/2026/01/260131084555.htm",
+        "title": "NASA’s Perseverance rover completes the first AI-planned drive on Mars",
+        "heading": "NASA’s Perseverance rover completes the first AI-planned drive on Mars",
+        "chunk_text": "NASA’s Perseverance rover completes the first AI-planned drive on Mars\n\n[Materials](https://www.jpl.nasa.gov/news/nasas-perseverance-rover-completes-first-ai-planned-drive-on-mars/) provided by [**Jet Propulsion Laboratory**](https://www.jpl.nasa.gov/). _Note: Content may be edited for style and length._\n\n* * *\n\n**Related Multimedia**:\n\n*   [NASA Perseverance Rover’s View of Crater Rim Drive](https://youtu.be/CILH0lM5joQ)\n\n* * *\n\n**Cite This Page**:\n\n*   [MLA](https://www.sciencedaily.com/releases/2026/01/260131084555.htm#citation_mla)\n*   [APA](https://www.sciencedaily.com/releases/2026/01/260131084555.htm#citation_apa)\n*   [Chicago](https://www.sciencedaily.com/releases/2026/01/260131084555.htm#citation_chicago)\n\nJet Propulsion Laboratory. \"NASA’s Perseverance rover completes the first AI-planned drive on Mars.\" ScienceDaily. ScienceDaily, 2 February 2026. <www.sciencedaily.com/releases/2026/01/260131084555.htm>.\n\nJet Propulsion Laboratory. (2026, February 2). NASA’s Perseverance rover completes the first AI-planned drive on Mars. _ScienceDaily_. Retrieved May 10, 2026 from www.sciencedaily.com/releases/2026/01/260131084555.htm\n\nJet Propulsion Laboratory. \"NASA’s Perseverance rover completes the first AI-planned drive on Mars.\" ScienceDaily. www.sciencedaily.com/releases/2026/01/260131084555.htm (accessed May 10, 2026).",
+        "score": 5.2185,
+        "rank": 4
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Perseverance_(rover)",
+        "title": "Perseverance (rover)",
+        "heading": "References",
+        "chunk_text": "References\n\nas-perseverance-rover-loses-its-hitchhiking-pet-rock-after-more-than-a-year-together-on-mars). [Live Science](https://en.wikipedia.org/wiki/Live_Science \"Live Science\"). Retrieved August 29, 2024.\n91.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-92)**Kooser, Amanda (June 1, 2024). [\"NASA Mars Rover Picks Up Pet Rock Named 'Dwayne'\"](https://www.forbes.com/sites/amandakooser/2024/06/01/nasa-mars-rover-picks-up-pet-rock-named-dwayne/). _[Forbes](https://en.wikipedia.org/wiki/Forbes \"Forbes\")_. Retrieved August 29, 2024.\n92.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-93)**[\"Where is the rover\"](https://mars.nasa.gov/mars2020/mission/where-is-the-rover)\n93.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-94)**Erik Klemetti (February 18, 2021). [\"Jezero Crater: Perseverance rover will soon explore geology of ancient crater lake\"](https://astronomy.com/news/2021/02/jezero-crater-perseverance-rover-will-soon-explore-geology-of-ancient-crater-lake). _Astronomy.com_. Retrieved June 22, 2021.\n94.   **[^](https://en.wikipedia.org/wiki/Perseverance_(rover)#cite_ref-Nasa_2021_03_05_95-0)**mars.nasa.gov (March 5, 2021). [\"Perseverance Is Roving on Mars – NASA's Mars Exploration Program\"](https://mars.nasa.gov/resources/25689/perseverance-is-roving-on-mars/). _NASA's Mars Exploration Program_.",
+        "score": 4.977,
+        "rank": 5
+      },
+      {
+        "url": "https://www.sciencedaily.com/releases/2026/01/260131084555.htm",
+        "title": "NASA’s Perseverance rover completes the first AI-planned drive on Mars",
+        "heading": "NASA’s Perseverance rover completes the first AI-planned drive on Mars",
+        "chunk_text": "NASA’s Perseverance rover completes the first AI-planned drive on Mars\n\nThe work was coordinated from JPL's Rover Operations Center (ROC) and carried out in collaboration with Anthropic, using the company's Claude AI models.\n\n**Why Mars Rover Routes Are Hard to Plan**\n\nMars sits an average of about 140 million miles (225 million kilometers) from Earth. That distance creates long communication delays, making real-time control of a rover impossible. For nearly three decades, rover navigation has depended on human drivers who carefully study terrain data and plan routes in advance.\n\nThese planners design paths made up of waypoints, usually spaced no more than 330 feet (100 meters) apart, to reduce the risk of encountering hazards. The completed plans are sent through NASA's Deep Space Network, and the rover carries out the instructions on its own.\n\n**AI Takes Over Route Planning for Perseverance**\n\nDuring Perseverance's drives on the 1,707 and 1,709 Martian days, known as sols, the mission team shifted that responsibility to generative AI. The system examined high-resolution orbital images captured by the HiRISE (High Resolution Imaging Science Experiment) camera aboard NASA's Mars Reconnaissance Orbiter, along with terrain slope data from digital elevation models.\n\nUsing this information, the AI identified important surface features such as bedrock, outcrops, boulder fields, and sand ripples. It then produced a continuous driving path that included all necessary waypoints.",
+        "score": 3.2438,
+        "rank": 6
+      },
+      {
+        "url": "https://science.nasa.gov/mission/insight/science-highlights/",
+        "title": "Science Highlights - NASA Science",
+        "heading": "Highlights",
+        "chunk_text": "Highlights\n\n[![Image 13: NASA’s Simulated Mars Mission Marks 200 Days Inside Habitat](https://www.nasa.gov/wp-content/uploads/2026/05/chapea200-1.png?w=1024) 3 min read ### NASA’s Simulated Mars Mission Marks 200 Days Inside Habitat article 3 days ago](https://www.nasa.gov/humans-in-space/nasas-simulated-mars-mission-marks-200-days-inside-habitat/)[![Image 14: NASA Astronaut to Answer Questions from Students in Florida](https://www.nasa.gov/wp-content/uploads/2026/05/chris-williams-downlink-may-5.jpg?w=1024) 2 min read ### NASA Astronaut to Answer Questions from Students in Florida article 5 days ago](https://www.nasa.gov/general/nasa-astronaut-to-answer-questions-from-students-in-florida/)[![Image 15: Liquid Lifeline: NASA Tech Could Create IV Fluid In Space](https://www.nasa.gov/wp-content/uploads/2026/04/image-2-ivgen-mini-hardware-e1776959913490.jpeg?w=1024) 4 min read ### Liquid Lifeline: NASA Tech Could Create IV Fluid In Space article 2 weeks ago](https://www.nasa.gov/general/iv-fluid-in-space/)",
+        "score": -0.2727,
+        "rank": 7
+      },
+      {
+        "url": "https://www.planetary.org/space-missions/insight",
+        "title": "InSight, NASA's Mars lander that studied the planet's interior",
+        "heading": "Mission complete",
+        "chunk_text": "Mission complete\n\nOn Dec. 21, 2022 NASA officially [declared InSight's mission over](https://www.nasa.gov/press-release/nasa-retires-insight-mars-lander-mission-after-years-of-science). The space agency had tried to make contact with the lander but said its solar-powered batteries appeared to have run out of energy.\n\nIt's been estimated that NASA spent about $814 million on InSight over the project's lifetime. The Planetary Society has [additional context to help you understand this number](https://www.planetary.org/space-policy/cost-of-mars-insight).\n\n> ### Learn more\n> \n> \n> *   [Read about Mars](https://www.planetary.org/worlds/mars)\n> *   [Check out every mission to Mars, ever](https://www.planetary.org/space-missions/every-mars-mission)\n> *   [Learn about Marsquakes](https://www.planetary.org/articles/insight-detects-marsquake)",
+        "score": 8.0392,
+        "rank": 0
+      },
+      {
+        "url": "https://www.planetary.org/space-missions/insight",
+        "title": "InSight, NASA's Mars lander that studied the planet's interior",
+        "heading": "InSight, NASA's Mars lander that studied the planet's interior",
+        "chunk_text": "InSight, NASA's Mars lander that studied the planet's interior\n\n> ### Highlights\n> \n> \n> *   Mars and Earth both had conditions suitable for life for some periods of time 3 to 4 billion years ago, until Mars lost its atmosphere and became a cold, dry desert.\n> \n> *   NASA's InSight spacecraft studied Mars' interior and Marsquakes to learn how other worlds, including Earth-like exoplanets around other stars, evolve.\n> \n> *   InSight was operational on Mars from November 2018 until December 2022.",
+        "score": 6.2869,
+        "rank": 1
+      },
+      {
+        "url": "https://science.nasa.gov/mission/insight/science-highlights/",
+        "title": "Science Highlights - NASA Science",
+        "heading": "**Detected First Quake on Another Planet**",
+        "chunk_text": "**Detected First Quake on Another Planet**\n\nInSight made the first-ever detection of quakes on the Red Planet. Its onboard seismometer measured over 1,300 seismic events, and over 50 of them had signals that were clear enough for the team to derive information about their location on Mars. The largest cluster of high-quality events came from Cerberus Fossae, a region that shows evidence of geologically recent volcanism – within the last two million years. The instrument picked up all six of the largest events of the mission since the middle of 2021. The most recent one, in May 2022, had an estimated magnitude of 5, with vibrations reverberating through the planet for at least six hours.\n\nNASA’s InSight lander used the scoop on its robotic arm to begin trickling soil over the cable connecting its seismometer to the spacecraft. Scientists hope this makes it easier to detect marsquakes by helping to insulate the cable from the wind and from the extreme temperature shifts that cause the cable to expand and contract.\n\nNASA/JPL-Caltech",
+        "score": 4.9228,
+        "rank": 2
+      },
+      {
+        "url": "https://spacenews.com/a-year-of-surprising-science-from-nasas-insight-mars-mission/",
+        "title": "A Year of Surprising Science From NASA’s InSight Mars Mission",
+        "heading": "",
+        "chunk_text": "A new understanding of Mars is beginning to emerge, thanks to the first year of NASA’s InSight lander mission. Findings described in a set of six papers published today reveal a planet alive with quakes, dust devils and strange magnetic pulses.\n\nFive of the papers were published in Nature. An additional paper in Nature Communications details the InSight spacecraft’s landing site, a shallow crater nicknamed “Homestead hollow” in a region called Elysium Planitia.\n\nInSight is the first mission dedicated to looking deep beneath the Martian surface. Among its science tools are a seismometer for detecting quakes, sensors for gauging wind and air pressure, a magnetometer, and a heat flow probe designed to take the planet’s temperature.\n\nWhile the team continues to work on getting the probe into the Martian surface as intended, the ultra-sensitive seismometer, called the Seismic Experiment for Interior Structure (SEIS), has enabled scientists to “hear” multiple trembling events from hundreds to thousands of miles away.\n\nSeismic waves are affected by the materials they move through, giving scientists a way to study the composition of the planet’s inner structure. Mars can help the team better understand how all rocky planets, including Earth, first formed.\n\nUnderground",
+        "score": 4.1086,
+        "rank": 3
+      },
+      {
+        "url": "https://science.nasa.gov/mission/insight/science-highlights/",
+        "title": "Science Highlights - NASA Science",
+        "heading": "Highlights",
+        "chunk_text": "Highlights\n\n[![Image 10: Industry Moon Lander Training Cabin Lands at NASA for Artemis](https://www.nasa.gov/wp-content/uploads/2026/05/jsc2026e014124-140.jpg?w=1024) 3 min read ### Industry Moon Lander Training Cabin Lands at NASA for Artemis article 3 days ago](https://www.nasa.gov/directorates/esdmd/artemis-campaign-development-division/human-landing-system-program/industry-moon-lander-training-cabin-lands-at-nasa-for-artemis/)[![Image 11: NASA’s Simulated Mars Mission Marks 200 Days Inside Habitat](https://www.nasa.gov/wp-content/uploads/2026/05/chapea200-1.png?w=1024) 3 min read ### NASA’s Simulated Mars Mission Marks 200 Days Inside Habitat article 3 days ago](https://www.nasa.gov/humans-in-space/nasas-simulated-mars-mission-marks-200-days-inside-habitat/)[![Image 12: NASA’s Roman Poised to Transform Hunt for Elusive Neutron Stars](https://www.nasa.gov/wp-content/uploads/2026/05/stsci-ns.jpg?w=1024) 5 min read ### NASA’s Roman Poised to Transform Hunt for Elusive Neutron Stars article 4 days ago](https://www.nasa.gov/missions/roman-space-telescope/nasas-roman-poised-to-transform-hunt-for-elusive-neutron-stars/)",
+        "score": 3.8654,
+        "rank": 4
+      },
+      {
+        "url": "https://science.nasa.gov/mission/insight/science-highlights/",
+        "title": "Science Highlights - NASA Science",
+        "heading": "**Shed Light on Three Mars Layer**s",
+        "chunk_text": "**Shed Light on Three Mars Layer**s\n\n[![Image 45: This infographic shows those layers, and how InSight uses quakes to study them. It also shows a close-up of InSight and the major sources of marsquakes. Most quakes are created by heat and pressure inside the planet, which cause rock to fracture; another source is meteors striking the surface.](https://science.nasa.gov/wp-content/uploads/2024/03/pia25282-figurea.jpg?w=2048)](https://science.nasa.gov/wp-content/uploads/2024/03/pia25282-figurea.jpg)\n\nThis infographic shows three internal layers under the surface of Mars, and how InSight uses quakes to study them. It also shows a close-up of InSight and the major sources of marsquakes. Most quakes are created by heat and pressure inside the planet, which cause rock to fracture; another source is meteors striking the surface.\n\nNASA/JPL-Caltech",
+        "score": 3.6575,
+        "rank": 5
+      },
+      {
+        "url": "https://www.space.com/42731-insight-mars-lander-space-photos-mro.html",
+        "title": "https://www.space.com/42731-insight-mars-lander-space-photos-mro.html",
+        "heading": "",
+        "chunk_text": "NASA's Insight Lander on Mars Spotted from Space!\nNASA's newly arrived Mars lander has been spotted by one its orbiting cousins.\nThe space agency's Mars Reconnaissance Orbiter used its supersharp High Resolution Imaging Science Experiment camera (HiRISE) to photograph the InSight lander, as well as the hardware that helped the stationary robot ace its Nov. 26 touchdown on the equatorial plain known as Elysium Planitia.\n\"It looks like the heat shield (upper right) has its dark outside facing down, since it is so bright (saturated, probably a specular reflection),\" HiRISE principal investigator Alfred McEwen, of the University of Arizona, wrote in an image description today (Dec. 13). [Mars InSight in Photos: NASA's Mission to Probe Core of the Red Planet]\n\"The lander (middle) disturbed dust over a fair distance and has darkened the surface, as seen previously at the Phoenix and Curiosity landing sites,\" McEwen added, referring to the touchdowns of NASA's Phoenix lander and Curiosity rover in May 2008 and August 2012, respectively. \"The bright spot associated with the lander is probably another specular reflection, and there are two smaller bluish extensions that are the solar arrays, plus their shadows.\"\nHiRISE also captured InSight's back shell and parachute lying on the cratered red dirt.",
+        "score": 3.14,
+        "rank": 6
+      },
+      {
+        "url": "https://science.nasa.gov/mission/insight/science-highlights/",
+        "title": "Science Highlights - NASA Science",
+        "heading": "Highlights",
+        "chunk_text": "Highlights\n\n[![Image 7: NASA’s Simulated Mars Mission Marks 200 Days Inside Habitat](https://www.nasa.gov/wp-content/uploads/2026/05/chapea200-1.png?w=1024) 3 min read ### NASA’s Simulated Mars Mission Marks 200 Days Inside Habitat article 3 days ago](https://www.nasa.gov/humans-in-space/nasas-simulated-mars-mission-marks-200-days-inside-habitat/)[![Image 8: NASA Pushes Next-Gen Mars Helicopter Rotor Blades Past Mach 1](https://www.nasa.gov/wp-content/uploads/2026/05/1-pia26648-superrotor2-crop.jpg?w=1024) 6 min read ### NASA Pushes Next-Gen Mars Helicopter Rotor Blades Past Mach 1 article 3 days ago](https://www.nasa.gov/solar-system/planets/mars/nasa-pushes-next-gen-mars-helicopter-rotor-blades-past-mach-1/)[![Image 9: What’s Up: May 2026 Skywatching Tips from NASA](https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar-system/skywatching/2026/may/Windmill%20moonrise_Credit_PrestonDyches.jpg?w=1024) 3 min read ### What’s Up: May 2026 Skywatching Tips from NASA article 1 week ago](https://science.nasa.gov/solar-system/whats-up-may-2026-skywatching-tips-from-nasa/)\n\nBack\n\n* * *",
+        "score": 2.423,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 3515,
+      "search_ms": 2078,
+      "extract_ms": 14052,
+      "chunk_ms": 39,
+      "retrieve_ms": 2409,
+      "synthesis_ms": 23120,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 56437,
+    "elapsed_s": 60.36,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

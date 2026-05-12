@@ -1,0 +1,287 @@
+{
+  "id": "tf4",
+  "category": "temporal_freshness",
+  "domain": "policy",
+  "question": "What's the latest status of the EU AI Act's high-risk AI provisions implementation?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Should reflect 2025-2026 phased rollout status.",
+  "key_facts": [
+    "EU AI Act",
+    "high-risk"
+  ],
+  "ground_truth": "EU AI Act entered into force in August 2024 with phased applicability. Prohibitions and AI literacy rules from Feb 2025; general-purpose AI rules from Aug 2025; high-risk obligations from Aug 2026 in stages.",
+  "session_id": "eval-20260511T060411Z-tf4",
+  "verdict": "partial",
+  "aggregate": 0.6,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.0,
+    "context_recall": 1.0,
+    "context_precision": 0.5,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.5,
+    "answer_relevancy": 0.729,
+    "aggregate": 0.6
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.0,
+      "supported": 0,
+      "total": 0,
+      "reasoning": "refusal"
+    },
+    "context_precision": {
+      "score": 0.5,
+      "relevant": 4,
+      "total": 8,
+      "reasoning": "Chunks 1-4 discuss high-risk AI deadlines and implementation status; others are off-topic."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "EU AI Act",
+        "high-risk"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.729,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "EU AI Act",
+      "high-risk"
+    ]
+  },
+  "pipeline": {
+    "answer": "# EU AI Act High-Risk Provisions: Implementation Status as of May 2026\n\nThe EU AI Act's high-risk AI provisions are **not yet fully in force**, and a newly agreed provisional delay in May 2026 has reshaped the compliance timeline. While the original schedule set key deadlines for August 2026, legislative negotiations and standards development delays have created ongoing uncertainty for regulated entities [1][3].\n\n## Current Status & Key Deadlines\n\nOn **May 7, 2026**, EU lawmakers reached a provisional agreement to **delay key high-risk compliance deadlines** and simplify certain aspects of the Act [3]. This followed mounting calls from the European Parliament since late 2024 to ease burdens on SMEs and address overlaps with other legislation [1].\n\n| Compliance Obligation | Original Deadline | Revised Deadline | Source |\n|----------------------|-------------------|------------------|--------|\n| Stand-alone high-risk AI systems (Annex III) | 2 August 2026 | **2 December 2027** | [2][3][7] |\n| High-risk systems in regulated products (Annex I) | 2 August 2026 | **2 August 2028** | [3][7] |\n| Transparency measures for AI-generated content | (not specified) | **2 December 2026** | [3][7] |\n| National AI regulatory sandboxes | 2 August 2026 | **2 August 2027** | [3][5] |\n\nAlready-in-force provisions include prohibited AI bans (February 2025) and GPAI transparency rules (August 2025) [6].\n\n## Classification of High-Risk AI Systems\n\nHigh-risk systems fall into **two categories**:\n- **Annex III systems** – biometric identification, critical infrastructure, education, employment (recruitment, performance monitoring, promotion, termination), credit scoring, life/health insurance risk/pricing, public-sector functions (benefit eligibility, border/asylum control, law enforcement, justice, elections) [7]\n- **Annex I systems** – AI that is a product or safety component of products governed by EU product safety rules (e.g., medical devices, machinery, toys, lifts, radios) [7]\n\nAI components that merely assist users or optimise performance **without creating health or safety risks** are not subject to high-risk obligations [7].\n\n## Obligations Unaffected by the Delay\n\nEven with delayed deadlines, providers of high-risk systems must still prepare for: risk management systems, data governance, technical documentation, automatic logging, human oversight, accuracy/robustness/cybersecurity safeguards, conformity assessment, CE marking, and EU database registration [4]. The delay is part of the EU's **Digital Omnibus simplification package**, aimed at reducing compliance burdens [3].\n\n## Ongoing Uncertainty\n\nThe failure of earlier trilogue negotiations and delays in issuing harmonized standards have created \"considerable uncertainty\" for providers and manufacturers [1]. National authorities are still being designated across Member States [5]. The May 2026 agreement remains **provisional**, pending formal endorsement by the Council and European Parliament [3].\n\n## Key Takeaways\n\n- **High-risk AI provisions are delayed:** Stand-alone systems now face a December 2027 deadline (from August 2026), while product-embedded systems move to August 2028\n- **Two classification pathways:** Annex III (use-case based) and Annex I (product safety) determine high-risk status\n- **Obligations remain pending:** Risk management, documentation, human oversight, and conformity assessment must still be implemented\n- **Provisional deal not yet law:** Final texts require Council and Parliament approval\n- **National infrastructure still evolving:** AI sandboxes and competent authorities are not yet fully established across Member States",
+    "mode": "search",
+    "rewritten_query": "What's the latest status of the EU AI Act's high-risk AI provisions implementation?",
+    "rewrote": false,
+    "rationale": "Time-sensitive regulatory question requiring current status.",
+    "sub_queries": [
+      "Current implementation status of EU AI Act high-risk AI provisions as of May 2026",
+      "EU AI Act high-risk classification and compliance timeline updates"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://www.vde.com/topics-en/artificial-intelligence/blog/status-quo-ai-act",
+        "title": "Current State of the EU AI Act",
+        "snippet": "Requested Amendments to the EU AI Act\n\nThe EU AI Act was adopted on May 21, 2024, when the Council of the European Union formally approved the text previously negotiated with the European Parliament. Upon publication, the EU AI Act was promulgated in the Official Journal of the European Union (L Ser"
+      },
+      {
+        "num": 2,
+        "url": "https://www.hklaw.com/en/insights/publications/2026/04/us-companies-face-eu-ai-acts-possible-august-2026-compliance-deadline",
+        "title": "U.S. Companies Face EU AI Act's Possible August 2026 Compliance Deadline | Insights | Holland & Knight",
+        "snippet": "U.S.-based businesses that operate high-risk artificial intelligence (AI) systems should be mindful of the August 2, 2026, compliance deadline under the [European Union Artificial Intelligence Act](https://artificialintelligenceact.eu/ai-act-explorer/) (EU AI Act). The EU AI Act has been implemented"
+      },
+      {
+        "num": 3,
+        "url": "https://www.dpocentre.com/news/eu-ai-act-delay-high-risk-ai-deadlines/",
+        "title": "EU AI Act delay: New high-risk AI deadlines provisionally agreed",
+        "snippet": "EU AI Act delay: New high-risk AI deadlines provisionally agreed\n\nMay 7, 2026\n\n![Image 11](https://www.dpocentre.com/wp-content/uploads/2019/05/DPO_Logo_BlackR_300DPI.png)\n\nCategories\n\nTags\n\n[![Image 13: EU AI Act delay and new high-risk AI deadlines for organisations](https://www.dpocentre.com/wp-c"
+      },
+      {
+        "num": 4,
+        "url": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "title": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "snippet": "product falls within the material and territorial scope of the EU AI Act, and determining whether any AI systems or AI models you develop or deploy fall within one or more of the regulated categories. It is critical to verify that the AI system is not classified as a prohibited practice and to monit"
+      },
+      {
+        "num": 5,
+        "url": "https://artificialintelligenceact.eu/",
+        "title": "EU Artificial Intelligence Act | Up-to-date developments and analyses of the EU AI Act",
+        "snippet": "[AI Regulatory Sandbox Approaches: EU Member State Overview](https://artificialintelligenceact.eu/ai-regulatory-sandbox-approaches-eu-member-state-overview/)\n\nMay 2, 2025\n\nAI regulatory sandboxes are an important part of the implementation of the EU AI Act. According to Article 57 of the AI Act, eac"
+      },
+      {
+        "num": 6,
+        "url": "https://trilateralresearch.com/responsible-ai/eu-ai-act-implementation-timeline-mapping-your-models-to-the-new-risk-tiers",
+        "title": "https://trilateralresearch.com/responsible-ai/eu-ai-act-implementation-timeline-mapping-your-models-to-the-new-risk-tiers",
+        "snippet": "EU AI Act Compliance Timeline: Key Dates for 2025-2027 by Risk Tier\nReading Time: 3 minutes\nAuthors: \nTrilateral Research |\nDate: 12 November 2025\nThe EU AI Act entered into force on 1 August 2024. Two critical deadlines have now passed: prohibited AI systems were banned in February 2025, and Genera"
+      },
+      {
+        "num": 7,
+        "url": "https://www.traverssmith.com/knowledge/knowledge-container/eu-agrees-to-delay-key-ai-act-compliance-deadlines/",
+        "title": "EU agrees to delay key AI Act compliance deadlines | Travers Smith",
+        "snippet": "What are the revised compliance deadlines?\n\nThe timeline for high-risk systems is no longer looming quite so soon. Separate, fixed deadlines will apply to each of the two main high-risk categories, allowing time for regulatory guidance and technical standards first to be finalised:\n\n2 December 2027\n"
+      }
+    ],
+    "urls": [
+      "https://www.dpocentre.com/news/eu-ai-act-delay-high-risk-ai-deadlines/",
+      "https://www.vde.com/topics-en/artificial-intelligence/blog/status-quo-ai-act",
+      "https://www.hklaw.com/en/insights/publications/2026/04/us-companies-face-eu-ai-acts-possible-august-2026-compliance-deadline",
+      "https://artificialintelligenceact.eu/",
+      "https://www.traverssmith.com/knowledge/knowledge-container/eu-agrees-to-delay-key-ai-act-compliance-deadlines/",
+      "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+      "https://artificialintelligenceact.eu/implementation-timeline/",
+      "https://trilateralresearch.com/responsible-ai/eu-ai-act-implementation-timeline-mapping-your-models-to-the-new-risk-tiers",
+      "https://transcend.io/blog/eu-ai-act-implementation-timeline",
+      "https://www.pitch.law/knowledge-base/ai-act-compliance-timeline",
+      "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+      "https://artificialintelligenceact.eu/high-level-summary/"
+    ],
+    "chunk_count": 16,
+    "chunks": [
+      {
+        "url": "https://www.vde.com/topics-en/artificial-intelligence/blog/status-quo-ai-act",
+        "title": "Current State of the EU AI Act",
+        "heading": "Requested Amendments to the EU AI Act",
+        "chunk_text": "Requested Amendments to the EU AI Act\n\nThe EU AI Act was adopted on May 21, 2024, when the Council of the European Union formally approved the text previously negotiated with the European Parliament. Upon publication, the EU AI Act was promulgated in the Official Journal of the European Union (L Series) on July 12, 2024, as Regulation (EU) 2024/1689, and entered into force on August 1, 2024.\n\nFollowing publication and entry into force, a number of challenges emerged over time. In particular, the lack of harmonized standards and delays in the issuance of guidance by the European Commission jeopardize the timely implementation of the obligations set out in the AI Act.\n\nAs early as November 19, 2025, the European Commission presented its proposal for a “Digital Omnibus on AI” (COM(2025) 836), aimed at simplifying requirements and postponing certain deadlines under the AI Act. A concise interpretation of the Commission’s position can be summarized as follows: “Making the AI Act more workable through technical optimization and consolidation.”\n\nSince late 2024, the European Parliament has increasingly voiced doubts and has called more forcefully for amendments to the AI Act, arguing that:\n\n*   practical implementation reveals weaknesses,\n*   SMEs and start‑ups could be overburdened,\n*   AI technology is evolving faster than the law,\n*   overlaps exist with other digital legislation, and\n*   Europe’s competitiveness must not be put at risk.",
+        "score": 8.3256,
+        "rank": 0
+      },
+      {
+        "url": "https://www.hklaw.com/en/insights/publications/2026/04/us-companies-face-eu-ai-acts-possible-august-2026-compliance-deadline",
+        "title": "U.S. Companies Face EU AI Act's Possible August 2026 Compliance Deadline | Insights | Holland & Knight",
+        "heading": "",
+        "chunk_text": "U.S.-based businesses that operate high-risk artificial intelligence (AI) systems should be mindful of the August 2, 2026, compliance deadline under the [European Union Artificial Intelligence Act](https://artificialintelligenceact.eu/ai-act-explorer/) (EU AI Act). The EU AI Act has been implemented in phases since February 2025, with most remaining provisions taking effect on August 2, 2026, excluding [Article 6(1)](https://artificialintelligenceact.eu/article/6/), which will apply in August 2027. The upcoming regulation will apply to operators of high-risk AI systems that were placed on the market prior to August 2, 2026. Although the regulation is by a European authority, U.S. companies operating high-risk AI systems may be required to follow compliance measures.\n\nHigh-risk AI systems include those that are intended to be used for product safety measures as described in [Annex I](https://artificialintelligenceact.eu/annex/1/) of the EU AI Act or among the specific use-case categories listed in [Annex III](https://artificialintelligenceact.eu/annex/3/). The use cases that fall under the high-risk system classification include AI systems used for biometric identification, critical infrastructure, education, employment, access to essential services including credit scoring and insurance, law enforcement, migration and administration of justice.",
+        "score": 7.6665,
+        "rank": 1
+      },
+      {
+        "url": "https://www.dpocentre.com/news/eu-ai-act-delay-high-risk-ai-deadlines/",
+        "title": "EU AI Act delay: New high-risk AI deadlines provisionally agreed",
+        "heading": "EU AI Act delay: New high-risk AI deadlines provisionally agreed",
+        "chunk_text": "EU AI Act delay: New high-risk AI deadlines provisionally agreed\n\nMay 7, 2026\n\n![Image 11](https://www.dpocentre.com/wp-content/uploads/2019/05/DPO_Logo_BlackR_300DPI.png)\n\nCategories\n\nTags\n\n[![Image 13: EU AI Act delay and new high-risk AI deadlines for organisations](https://www.dpocentre.com/wp-content/uploads/2026/05/eu-ai-act-delay-high-risk-deadlines.png)](https://www.dpocentre.com/wp-content/uploads/2026/05/eu-ai-act-delay-high-risk-deadlines.png)\n\n[](https://www.dpocentre.com/wp-content/uploads/2026/05/eu-ai-act-delay-high-risk-deadlines.png)\n\nOn 7 May 2026,EU lawmakers reached a provisional agreement to simplify certain aspects of the EU [AI Act](https://www.dpocentre.com/glossary/ai-act/)The EU Artificial Intelligence Act was approved by the EU Council on 21 March 2024. A world-first comprehensive AI law, intended to harmonise rules for the development, deployment, and use of artificial intelligence systems across the EU. and delay key compliance deadlines for high-risk AI systems.",
+        "score": 7.2663,
+        "rank": 2
+      },
+      {
+        "url": "https://www.vde.com/topics-en/artificial-intelligence/blog/status-quo-ai-act",
+        "title": "Current State of the EU AI Act",
+        "heading": "Current State of the EU AI Act",
+        "chunk_text": "Current State of the EU AI Act\n\n**Why Standing Still Is Not an Option Despite the Trilogue Stalemate**\n\nThe path forward is clearly signposted. The EU AI Act itself establishes binding deadlines. Pursuant to Article 113 of the AI Act, Articles 2, 3, and 5 have applied since February 2, 2025. Articles 6(2), 25, and 50 are scheduled to apply as of August 2, 2026, followed by Article 6(1) as of August 2, 2027. However, due to the failure of the trilogue negotiations, this statutory timeline is now subject to considerable uncertainty. What do manufacturers and providers of AI systems need to take into account at this stage?\n\n[](https://www.vde.com/topics-en/artificial-intelligence/blog/status-quo-ai-act#)\n\n*   [Facebook](https://www.vde.com/topics-en/artificial-intelligence/blog/status-quo-ai-act# \"Facebook\")\n*   [X](https://www.vde.com/topics-en/artificial-intelligence/blog/status-quo-ai-act# \"X\")\n*   [Xing](https://www.vde.com/topics-en/artificial-intelligence/blog/status-quo-ai-act# \"Xing\")\n*   [LinkedIn](https://www.vde.com/topics-en/artificial-intelligence/blog/status-quo-ai-act# \"LinkedIn\")\n\nContact\n\nAI Projects & Services",
+        "score": 6.6639,
+        "rank": 3
+      },
+      {
+        "url": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "title": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "heading": "",
+        "chunk_text": "ct (TUF) and Italian Civil Code.\nThe provisions on penalties under the AI Act exceed even those provided for in the GDPR. The maximum fine was set at EUR 35,000,000 or 7% of annual worldwide turnover. Such fines can be imposed by national authorities, the European Data Protection Supervisor, or the European Commission. The European Data Protection Supervisor can impose fines on Union institutions, agencies and bodies. The European Commission can impose fines on providers of general-purpose AI models. National authorities can impose fines on other operators.\nWe recommend closely monitoring national legislative proposals and draft laws implementing the AI Act, and adopting a continuously updated approach to AI compliance. This is particularly important as liability for violations of AI-related obligations may extend beyond administrative sanctions and, in certain jurisdictions, may also include criminal liability.\nAI Act application timeline and key deadlines\nThe AI Act establishes a gradual application of its provisions, including transitional arrangements for AI systems placed on the market or put into service before certain dates. Obligations under the Act will apply to all operators of High-risk AI systems in place before 2 August 2026.",
+        "score": 6.3681,
+        "rank": 4
+      },
+      {
+        "url": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "title": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "heading": "",
+        "chunk_text": "ial harm they may pose, imposing escalating obligations where risks increase. AI systems which significantly impact fundamental rights, are therefore either prohibited or subject to stricter requirements and human oversight.\nIn practice, multiple issues, arise for AI providers and deployers:\n- Is their product considered High-risk or prohibited practice under the Act?\n- Which obligations specifically apply to their product?\n- How the EU regulator ensures enforcement and what business risks may arise as a result?\n- What measures should be implemented to ensure regulatory compliance and mitigate the risk of fines?\n- What are the key deadlines and optimal strategy to establish a strong AI compliance framework at this stage?\nWe have prepared a short update on the AI Act review to address these questions for you ahead of 2 August 2026.\nProhibited AI practices and classification of High-risk AI systems\nAs stated in the AI Act, AI technology has many beneficial uses.\nAt the same time, it can also be misused and provide novel and powerful tools for manipulative, exploitative and social control practices.\nSuch practices are particularly harmful and abusive and should be prohibited because they contradict Union values of respect for human dignity, freedom, equality, democracy and the rule of law and fundamental rights.\nFor example, AI systems providing social scoring of natural persons by public or private actors may lead to discriminatory outcomes and the exclusion of certain groups.",
+        "score": 5.823,
+        "rank": 5
+      },
+      {
+        "url": "https://artificialintelligenceact.eu/",
+        "title": "EU Artificial Intelligence Act | Up-to-date developments and analyses of the EU AI Act",
+        "heading": "[AI Regulatory Sandbox Approaches: EU Member State Overview](https://artificialintelligenceact.eu/ai-regulatory-sandbox-approaches-eu-member-state-overview/)",
+        "chunk_text": "[AI Regulatory Sandbox Approaches: EU Member State Overview](https://artificialintelligenceact.eu/ai-regulatory-sandbox-approaches-eu-member-state-overview/)\n\nMay 2, 2025\n\nAI regulatory sandboxes are an important part of the implementation of the EU AI Act. According to Article 57 of the AI Act, each Member State must establish at least one AI regulatory sandbox at the national level by 2 August 2026. This post provides an overview of...",
+        "score": 5.6542,
+        "rank": 6
+      },
+      {
+        "url": "https://artificialintelligenceact.eu/",
+        "title": "EU Artificial Intelligence Act | Up-to-date developments and analyses of the EU AI Act",
+        "heading": "[Overview of all AI Act National Implementation Plans](https://artificialintelligenceact.eu/national-implementation-plans/)",
+        "chunk_text": "[Overview of all AI Act National Implementation Plans](https://artificialintelligenceact.eu/national-implementation-plans/)\n\nNov 8, 2024\n\nThis post gives an overview of the national authorities to be designated under the AI Act and what we know about the national implementation plans.",
+        "score": 5.5728,
+        "rank": 7
+      },
+      {
+        "url": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "title": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "heading": "",
+        "chunk_text": "product falls within the material and territorial scope of the EU AI Act, and determining whether any AI systems or AI models you develop or deploy fall within one or more of the regulated categories. It is critical to verify that the AI system is not classified as a prohibited practice and to monitor regulatory updates on an ongoing basis, as the list of prohibited practices may be revised annually.\nObligations for providers and deployers of High-risk AI systems\nRequirements for High-risk AI systems are outlined in the Section II of the Act with the detailed list of obligations for providers and deployers of High-risk AI systems in Sections 2, 3 and 4.\nProviders of High-risk AI systems must ensure compliance with the requirements set out in Articles 8–15 throughout the system’s lifecycle, including the establishment of a documented risk management system, robust data governance measures, detailed technical documentation, automatic logging, appropriate human oversight, and safeguards for accuracy, robustness, and cybersecurity. Prior to placing a system on the market or putting it into service, providers must carry out the applicable conformity assessment, draw up an EU declaration of conformity, affix the CE marking, and register the system in the EU database.",
+        "score": 7.7435,
+        "rank": 0
+      },
+      {
+        "url": "https://trilateralresearch.com/responsible-ai/eu-ai-act-implementation-timeline-mapping-your-models-to-the-new-risk-tiers",
+        "title": "https://trilateralresearch.com/responsible-ai/eu-ai-act-implementation-timeline-mapping-your-models-to-the-new-risk-tiers",
+        "heading": "",
+        "chunk_text": "EU AI Act Compliance Timeline: Key Dates for 2025-2027 by Risk Tier\nReading Time: 3 minutes\nAuthors: \nTrilateral Research |\nDate: 12 November 2025\nThe EU AI Act entered into force on 1 August 2024. Two critical deadlines have now passed: prohibited AI systems were banned in February 2025, and General-Purpose AI (GPAI) transparency requirements became mandatory in August 2025. If you haven't met these obligations, you're currently non-compliant and face enforcement action from national AI authorities, which are now fully operational.\nThe next major deadline is August 2026 (less than 5 months away) for high-risk AI systems, followed by August 2027 for legacy systems integrated into regulated products. This article provides the complete implementation timeline, clarifies the risk-based tier system, and outlines what you must do now based on your compliance status.\nNot sure where your organisation stands? We can help you quickly assess your compliance position. Get in touch.\nUnderstanding and Classifying AI Risk Tiers\nClear definitions for immediate action\nThe AI Act defines four clear risk tiers, each with distinct regulatory obligations:\n- Unacceptable Risk (Prohibited AI): These AI systems pose significant threats to fundamental rights, public safety, and democratic values.",
+        "score": 7.5901,
+        "rank": 1
+      },
+      {
+        "url": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "title": "https://legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks",
+        "heading": "",
+        "chunk_text": "ifying all AI systems, assessing whether they fall under High-risk or prohibited categories, and implementing relevant measures for risk management, human oversight, data governance, and transparency. By 2 August 2026, conformity assessments should be completed, technical documentation finalized, CE marking affixed, and EU database registration for High-risk systems completed. After 2 August 2026, organizations should continuously monitor regulatory updates, respond to consultations, cooperate with authorities, report incidents promptly, and update compliance processes to mitigate administrative, civil, and criminal risks.\nWe welcome you to book a consultation with one of the Legal Nodes' legal professionals to kickstart your AI compliance journey.",
+        "score": 7.1951,
+        "rank": 2
+      },
+      {
+        "url": "https://www.dpocentre.com/news/eu-ai-act-delay-high-risk-ai-deadlines/",
+        "title": "EU AI Act delay: New high-risk AI deadlines provisionally agreed",
+        "heading": "**What the proposed EU AI Act delay means for organisations**",
+        "chunk_text": "**What the proposed EU AI Act delay means for organisations**\n\nFor organisations using, developing,procuring or embedding AI systems, this is a significant update, giving businesses more time to prepare. However, the AI Act is still moving forward,and it does not reduce the need for strong [AI governance](https://www.dpocentre.com/glossary/ai-governance/)The framework of policies, processes, and roles that ensure Artificial Intelligence (AI) is developed and used responsibly, ethically, and in compliance with applicable laws, societal expectations, and corporate values..Organisations should use the extended timeline to understand where AI is being used across the business, what risks it creates, and what controls will be needed.\n\nUnder the current AI Act timetable, many high-risk AI rules are due to apply from 2 August 2026. The proposed changes would move that deadline to:\n\n*   2 December 2027 for stand-alone high-risk AI systems\n*   2 August 2028 for high-risk systems built into regulated products,such as medical devices, machinery, toys, and lifts\n\nOther key changes include:\n\n*   National sandboxes would need to be in place by 2 August 2027\n*   Providers would have until 2 December 2026 to implement transparency measures for AI-generated content\n\nThe update is part of the EU’s wider digital simplification agenda,known as the Digital Omnibus package,which was unveiled on 19 November 2025.Its goal is to reduce unnecessary compliance burden,give businesses more legal certainty, and make the AI Act easier to apply across the EU.",
+        "score": 7.1066,
+        "rank": 3
+      },
+      {
+        "url": "https://www.hklaw.com/en/insights/publications/2026/04/us-companies-face-eu-ai-acts-possible-august-2026-compliance-deadline",
+        "title": "U.S. Companies Face EU AI Act's Possible August 2026 Compliance Deadline | Insights | Holland & Knight",
+        "heading": "",
+        "chunk_text": "U.S.-based businesses that operate high-risk artificial intelligence (AI) systems should be mindful of the August 2, 2026, compliance deadline under the [European Union Artificial Intelligence Act](https://artificialintelligenceact.eu/ai-act-explorer/) (EU AI Act). The EU AI Act has been implemented in phases since February 2025, with most remaining provisions taking effect on August 2, 2026, excluding [Article 6(1)](https://artificialintelligenceact.eu/article/6/), which will apply in August 2027. The upcoming regulation will apply to operators of high-risk AI systems that were placed on the market prior to August 2, 2026. Although the regulation is by a European authority, U.S. companies operating high-risk AI systems may be required to follow compliance measures.\n\nHigh-risk AI systems include those that are intended to be used for product safety measures as described in [Annex I](https://artificialintelligenceact.eu/annex/1/) of the EU AI Act or among the specific use-case categories listed in [Annex III](https://artificialintelligenceact.eu/annex/3/). The use cases that fall under the high-risk system classification include AI systems used for biometric identification, critical infrastructure, education, employment, access to essential services including credit scoring and insurance, law enforcement, migration and administration of justice.",
+        "score": 7.0443,
+        "rank": 4
+      },
+      {
+        "url": "https://www.dpocentre.com/news/eu-ai-act-delay-high-risk-ai-deadlines/",
+        "title": "EU AI Act delay: New high-risk AI deadlines provisionally agreed",
+        "heading": "**What happens next?**",
+        "chunk_text": "**What happens next?**\n\nThe deal is not yet final,and this provisional agreement still needs endorsement by the Council and European Parliament, followed by legal and linguistic checks before formal adoption.\n\nWe will continue to monitor the progress and provide updates as the EU AI Act timeline develops.\n\nFor regular updates on data protection, AI governance and regulatory change summaries of the latest news, subscribe to[**The DPIA newsletter**](https://www.dpocentre.com/resources/dpia/)\n\nFor practical guidance on who should lead AI governance within your organisation,read our blog[**AI Officer vs DPO: Defining roles in AI Governance**](https://www.dpocentre.com/blog/ai-officer-vs-dpo-ai-governance/)\n\nShare\n\n[](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.dpocentre.com%2Fnews%2Feu-ai-act-delay-high-risk-ai-deadlines%2F)[](https://twitter.com/intent/tweet?text=EU+AI+Act+delay%3A+New+high-risk+AI+deadlines+provisionally+agreed.+https%3A%2F%2Fwww.dpocentre.com%2Fnews%2Feu-ai-act-delay-high-risk-ai-deadlines%2F)[](https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.dpocentre.com%2Fnews%2Feu-ai-act-delay-high-risk-ai-deadlines%2F)[](https://pinterest.com/pin/find/?url=https%3A%2F%2Fwww.dpocentre.com%2Fnews%2Feu-ai-act-delay-high-risk-ai-deadlines%2F)\n\n#### Contact us\n\nThe DPO Centre Ltd\n\n[London:](https://what3words.com/posed.hired.curry) 50 Liverpool Street, London,\n\nEC2M 7PR",
+        "score": 6.84,
+        "rank": 5
+      },
+      {
+        "url": "https://www.traverssmith.com/knowledge/knowledge-container/eu-agrees-to-delay-key-ai-act-compliance-deadlines/",
+        "title": "EU agrees to delay key AI Act compliance deadlines | Travers Smith",
+        "heading": "What are the revised compliance deadlines?",
+        "chunk_text": "What are the revised compliance deadlines?\n\nThe timeline for high-risk systems is no longer looming quite so soon. Separate, fixed deadlines will apply to each of the two main high-risk categories, allowing time for regulatory guidance and technical standards first to be finalised:\n\n2 December 2027\n\nDeadline for \"Annex III\" systems\n\nA 16-month postponement covers new or substantially modified high-risk AI systems listed in Annex III, such as:\n\n*   certain biometrics use cases\n*   critical infrastructure\n*   access to educational and vocational training\n*   employment-related uses (e.g. recruitment, selection, performance monitoring, promotion, termination)\n*   credit checking and life and health insurance risk and pricing assessments\n*   various public sector functions (e.g. benefit eligibility, border/asylum control, law enforcement, justice, elections)\n\n2 August 2028\n\nDeadline for \"Annex I\" systems\n\nA 12-month postponement applies to AI systems that are products or safety components of products governed by EU product safety rules (medical devices, toys, lifts, radios, etc). The definition of “safety component” will also be narrowed: if an AI component merely assists users or optimises performance without creating health or safety risks, it will not be subject to high-risk obligations.\n\n2 December 2026\n\nDeadline for transparency for AI generated content",
+        "score": 6.7842,
+        "rank": 6
+      },
+      {
+        "url": "https://www.dpocentre.com/news/eu-ai-act-delay-high-risk-ai-deadlines/",
+        "title": "EU AI Act delay: New high-risk AI deadlines provisionally agreed",
+        "heading": "EU AI Act delay: New high-risk AI deadlines provisionally agreed",
+        "chunk_text": "EU AI Act delay: New high-risk AI deadlines provisionally agreed\n\nMay 7, 2026\n\n![Image 11](https://www.dpocentre.com/wp-content/uploads/2019/05/DPO_Logo_BlackR_300DPI.png)\n\nCategories\n\nTags\n\n[![Image 13: EU AI Act delay and new high-risk AI deadlines for organisations](https://www.dpocentre.com/wp-content/uploads/2026/05/eu-ai-act-delay-high-risk-deadlines.png)](https://www.dpocentre.com/wp-content/uploads/2026/05/eu-ai-act-delay-high-risk-deadlines.png)\n\n[](https://www.dpocentre.com/wp-content/uploads/2026/05/eu-ai-act-delay-high-risk-deadlines.png)\n\nOn 7 May 2026,EU lawmakers reached a provisional agreement to simplify certain aspects of the EU [AI Act](https://www.dpocentre.com/glossary/ai-act/)The EU Artificial Intelligence Act was approved by the EU Council on 21 March 2024. A world-first comprehensive AI law, intended to harmonise rules for the development, deployment, and use of artificial intelligence systems across the EU. and delay key compliance deadlines for high-risk AI systems.",
+        "score": 6.5105,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 5222,
+      "search_ms": 6513,
+      "extract_ms": 12641,
+      "chunk_ms": 98,
+      "retrieve_ms": 7134,
+      "synthesis_ms": 13775,
+      "sub_queries_count": 2,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 55914,
+    "elapsed_s": 60.0,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

@@ -1,0 +1,405 @@
+{
+  "id": "tf2",
+  "category": "temporal_freshness",
+  "domain": "geopolitics",
+  "question": "What is the current status of the Russia-Ukraine conflict as of May 2026?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "single",
+  "expected_behavior": "Must reflect May 2026 reality; no key_facts (rapidly evolving).",
+  "key_facts": [],
+  "ground_truth": "",
+  "session_id": "eval-20260511T075017Z-tf2",
+  "verdict": "partial",
+  "aggregate": 0.705,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.4,
+    "context_recall": 1.0,
+    "context_precision": 0.625,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.5,
+    "answer_relevancy": 0.0,
+    "aggregate": 0.705,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 1.0,
+    "m7_judge_score": 0.705
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.4,
+      "supported": 2,
+      "total": 5,
+      "reasoning": "Only ceasefire declarations and territorial loss are supported; strikes and partisan details lack source evidence."
+    },
+    "context_precision": {
+      "score": 0.625,
+      "relevant": 5,
+      "total": 8,
+      "reasoning": "Chunks 2,4,5,6,7 contain May 2026 conflict updates; others are older or unrelated."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [],
+      "missed_facts": [],
+      "reasoning": "no key_facts"
+    },
+    "answer_relevancy": {
+      "score": 0.0,
+      "method": "embedding",
+      "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when movi"
+    },
+    "context_recall_hits": []
+  },
+  "timing": {
+    "latency_breakdown": {
+      "decompose_ms": 3013,
+      "search_ms": 2617,
+      "extract_ms": 10218,
+      "chunk_ms": 118,
+      "retrieve_ms": 12754,
+      "synthesis_ms": 21098,
+      "sub_queries_count": 3,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 182559,
+    "pipeline_s": 186.09
+  },
+  "judge_reasoning": "Only ceasefire declarations and territorial loss are supported; strikes and partisan details lack source evidence.",
+  "pipeline": {
+    "answer": "Here is the synthesized answer to your question, combining the provided sub-answers into a cohesive final overview.\n\nThe status of the Russia-Ukraine conflict in May 2026 is defined by a pattern of competing ceasefire announcements, immediate breakdowns into heavy reciprocal strikes, and a stalemated diplomatic front, all set against a backdrop of Russia suffering its first net territorial loss in months.\n\n## Ceasefire Proposals and Violations\n\nMay 2026 was marked by a flurry of unilateral ceasefire declarations, which failed to halt hostilities.\n\n- **Competing Truces:** Russia announced a ceasefire for May 8–9, 2026, to coincide with Victory Day [1][3][4]. Ukraine, having not received an official notification, declared its own separate ceasefire for May 5–6 [4].\n- **International Mediation:** Following further international (including US-mediated) talks, a short-term ceasefire was observed from May 9–11, covering Russia's Victory Day period [1][3]. However, both sides accused the other of violations [3].\n- **Continued Strikes:** Despite the truce declarations, fighting continued. Russia launched deadly strikes on Kramatorsk and Zaporizhzhia on May 5, killing 17 [3], and hit a gas site in Poltava Oblast [3]. Ukraine retaliated deep inside Russia, striking an oil refinery in Perm for the third time [3] and an air traffic control center that paralyzed southern Russian airports [3]. Pro-Ukrainian partisans also set a locomotive ablaze in Lipetsk Oblast on May 10 [3].\n\n## Military and Territorial Dynamics\n\nThe conflict saw a notable operational shift, with Russian advances stalling and a Ukrainian territorial gain.\n\n- **Russian Territorial Loss:** In April 2026, Russian forces suffered a net territorial *loss* of 116 km² in Ukraine [2]. This was the first such reversal since Ukraine's August 2024 Kursk incursion, as the Russian rate of advance steadily declined since November 2025 [2].\n- **Ukrainian Operations:** Ukraine continued with ground counterattacks and mid-range strikes. Operational challenges for Russia were further exacerbated by the February 2026 Starlink ban and Kremlin throttling of Telegram [2].\n- **Prisoner Swaps:** A significant, ongoing 500-for-500 prisoner exchange was underway in early March 2026, with at least 300 Ukrainians returning home [1][3].\n\n## Diplomatic and Nuclear Status\n\nNo major diplomatic breakthrough occurred, with talks remaining tense and a key nuclear facility still idle.\n\n- **Negotiation Impasse:** A 32-hour Orthodox Easter truce occurred in April 2026 [1], but negotiations in Geneva on February 17–18 were described as \"very tense\" and ended without a breakthrough [1]. Russia continues to demand Ukraine withdraw from unoccupied Donetsk Oblast as a precondition for talks [5].\n- **Nuclear Plant Stalemate:** As of May 2025, the IAEA saw no signs that Russia was preparing to restart the Zaporizhzhia nuclear power plant [1].\n\n### Comparative Timeline of Key Ceasefire Events (May 2026)\n\n| Event | Date(s) | Outcome | Source |\n| :--- | :--- | :--- | :--- |\n| Ukraine's Unilateral Ceasefire | May 5–6 | Quickly broken by ongoing strikes [3]. | [1][4] |\n| Russia's Victory Day Ceasefire | May 8–9 | Largely observed for the period, but preceded by heavy attacks [1][3]. | [4] |\n| Internationally-Mediated Truce | May 9–11 | Short-term halt to large-scale ops; violations reported [1][3]. | [1][3] |\n\n## Key Takeaways\n\n- **Ceasefires are ephemeral:** May 2026 demonstrated that both unilateral and mediated ceasefires break down almost immediately, failing to stop reciprocal long-range strikes, particularly drones.\n- **Russian offensive stalling:** For the first time since 2024, Russia suffered a net territorial loss in April 2026, indicating a significant operational slowdown and growing Ukrainian counter-pressure [2].\n- **No diplomatic off-ramp:** Negotiations remain deadlocked, with no unified ceasefire or peace framework agreed upon, despite ongoing prisoner exchanges providing a narrow channel of cooperation [1][5].\n- **High-intensity attrition continues:** The conflict is characterized by relentless, high-tech attritional warfare, with drone and missile strikes hitting civilian and energy infrastructure on both sides of the border [3].",
+    "mode": "search",
+    "rewritten_query": "What is the current status of the Russia-Ukraine conflict as of May 2026?",
+    "rewrote": false,
+    "rationale": "Highly time-sensitive; requires recent, sourced information.",
+    "sub_queries": [
+      "current status of Russia-Ukraine conflict May 2026",
+      "recent developments Russia-Ukraine war as of May 2026",
+      "latest ceasefire negotiations Russia-Ukraine May 2026"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "title": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "snippet": ". He also said that he wished that a contingent of European troops to be sent to Ukraine once a ceasefire was reached, and that this contigent would be positioned close to the front line.[470]\nAn agreement to exchange prisoners of war was achieved at the trilateral meetings, and 500 prisoners from e"
+      },
+      {
+        "num": 2,
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "snippet": "Toplines\nRussian forces in April 2026 suffered a net loss of territory controlled in the Ukrainian theater for the first time since Ukraine’s August 2024 incursion into Kursk Oblast. ISW has observed evidence to assess that Russian forces lost control of 116 square kilometers in April 2026, not coun"
+      },
+      {
+        "num": 3,
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "snippet": "ory Day parade\". RBC News Ukraine. Retrieved 8 May 2026.\n- ^ \"Drones reportedly attack Chechnya: explosions reported in Grozny, strike on FSB building recorded – videos\". Ukrainian Pravda. 8 May 2026. Retrieved 8 May 2026.\n- ^ Sania Kozatskyi (8 May 2026). \"Ukraine Hits Russian Oil Refinery in Perm "
+      },
+      {
+        "num": 4,
+        "url": "https://www.aljazeera.com/news/2026/5/4/russia-and-ukraine-declare-competing-ceasefires",
+        "title": "https://www.aljazeera.com/news/2026/5/4/russia-and-ukraine-declare-competing-ceasefires",
+        "snippet": "Commander-in-Chief of the Russian Armed Forces, Vladimir Putin, a ceasefire has been declared from May 8–9, 2026,” the Russian Ministry of Defence said in a post on the state-backed messaging app MAX. “We hope that the Ukrainian side will follow suit.”\nUkraine’s President, Volodymyr Zelenskyy, said "
+      },
+      {
+        "num": 5,
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-8-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-8-2026/",
+        "snippet": "the Kremlin demands that Ukrainian forces withdraw from the remainder of Donetsk Oblast as a precondition for a ceasefire — a battlefield objective that Russian forces have thus far failed to achieve. Russian Presidential Aide Yuri Ushakov, a senior Kremlin official who regularly comments on the sta"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-may-6-2026",
+        "title": "The Russia-Ukraine War Report Card, May 6, 2026",
+        "snippet": "... May 5, 2026, Russia captured 1,714 square miles (slightly bigger than the state of Rhode Island)—about 0.7% of Ukraine's total territory of"
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-8-2026/",
+        "title": "Russian Offensive Campaign Assessment, May 8, 2026",
+        "snippet": "Ukrainian forces are reconnoitering and interdicting Russian ground lines of communication (GLOCs) in occupied Mariupol, Donetsk Oblast."
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-9-2026/",
+        "title": "Russian Offensive Campaign Assessment, May 9, 2026",
+        "snippet": "Russian and Ukrainian forces continued limited offensive operations across the theater throughout the first day of the May 9 – 11 ceasefire."
+      },
+      {
+        "url": "https://www.aljazeera.com/video/newsfeed/2026/5/10/ukraine-has-momentum-in-war-with",
+        "title": "'Ukraine has momentum in war with Russia'",
+        "snippet": "As Russia held its most scaled-back Victory Day parade in years with Vladimir Putin suggesting the war on Ukraine is 'coming to an end',"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=DBcVP99Glh0",
+        "title": "Could the Russia-Ukraine war be in its final stages?",
+        "snippet": "Vladimir Putin says the Ukraine war may be over soon. Attacks have been intensifying in recent weeks. And a stalemate on the battlefield is"
+      },
+      {
+        "url": "https://apnews.com/video/putin-russias-conflict-with-ukraine-coming-to-an-end-26dc861faaf743c2ba08598466059c6f",
+        "title": "Putin: Russia's conflict with Ukraine 'coming to an end'",
+        "snippet": "Russian President Vladimir Putin said a U.S.-brokered ceasefire with Ukraine had emerged following discussions with the United States,"
+      },
+      {
+        "url": "https://x.com/EuromaidanPR/status/2052998209799090375",
+        "title": "Russia – Ukraine War Updates: Key Developments as of May 9, 2026",
+        "snippet": "Russia – Ukraine War Updates: Key Developments as of May 9, 2026. Russia – Ukraine War Updates: Key Developments as of May 9, 2026."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "Timeline of the Russo-Ukrainian war (1 January 2026 - Wikipedia",
+        "snippet": "↑ \"Ukraine war latest: Russia extends its 'Victory Day truce', kills 7 and injures 35 in attack on Kharkiv Oblast\". The Kyiv Independent. 4 May 2026."
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "title": "Russian Offensive Campaign Assessment, May 2, 2026 | ISW",
+        "snippet": "Russian forces in April 2026 suffered a net loss of territory controlled in the Ukrainian theater for the first time since August 2024."
+      },
+      {
+        "url": "https://www.facebook.com/WISHNews8/posts/the-leaders-of-russia-and-ukraine-have-agreed-to-a-three-day-ceasefire-and-excha/1396791329161386/",
+        "title": "The leaders of Russia and Ukraine have agreed to a three-day ...",
+        "snippet": "The leaders of Russia and Ukraine have agreed to a three-day ceasefire and exchange of prisoners. The ceasefire will begin Saturday, May 9, 2026"
+      },
+      {
+        "url": "https://www.aljazeera.com/news/2026/5/4/russia-and-ukraine-declare-competing-ceasefires",
+        "title": "Russia and Ukraine declare competing ceasefires | News - Al Jazeera",
+        "snippet": "Russia announced on Monday that its ceasefire would be between May 8-9, when it traditionally marks Victory Day in the Great Patriotic War (as"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=1PLIFkxS530",
+        "title": "Trump announces brief Russia-Ukraine ceasefire deal - YouTube",
+        "snippet": "... negotiations to end the war continue ... The Briefing With Jen Psaki 5/10/2026 | MSNBC Breaking News Today May 10 2026."
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=vQwB0BtQzG0",
+        "title": "U.S. TRUCE FAILS? Russia & Ukraine Exchange Heavy Fire, Zel ...",
+        "snippet": "A U.S.-brokered ceasefire between Russia and Ukraine has ... The Briefing With Jen Psaki 5/10/2026 | MSNBC Breaking News Today May 10 2026."
+      },
+      {
+        "url": "https://x.com/TheStudyofWar/status/2052961762803163140",
+        "title": "a battlefield objective that Russian forces have thus far failed to ...",
+        "snippet": "Ukraine and Russia agreed to a three-day ceasefire from May 9 to 11 for the May 9 Victory Day parade and a prisoner of war exchange. Russia"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "title": "Peace negotiations in the Russo-Ukrainian war (2022–present)",
+        "snippet": "Negotiations halted due to disagreements over key points, Russia's proposed veto on Ukraine's defense, doubts about Russia's sincerity, and the Bucha massacre."
+      }
+    ],
+    "chunk_count": 22,
+    "chunks": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "title": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "heading": "",
+        "chunk_text": "ved from the original on 5 March 2026. Retrieved 5 March 2026.\n- ^ \"Press release on the release of Russian servicemen from Ukrainian captivity\". Ministry of Foreign Affairs of the Russian Federation. 5 March 2026. Retrieved 5 March 2026.\n- ^ Orlova, Alisa (6 March 2026). \"Second Round of 500-for-500 POW Swap Underway: 300 Ukrainians Return Home\". Kyiv Post. Archived from the original on 6 March 2026. Retrieved 6 March 2026.\n- ^ \"Ukraine says Russia violated ceasefire initiated by Kyiv\". Reuters. 6 May 2026. Retrieved 9 May 2026.\n- ^ \"May 8–9 ceasefire for war commemoration; Kyiv announces own ceasefire\". The Japan Times. 5 May 2026. Retrieved 9 May 2026.\n- ^ a b c d e f g h Ukraine's Peace Formula Philosophy (PDF), Government of Ukraine, 7 August 2023, Wikidata Q126897120, archived (PDF) from the original on 24 June 2024\n- ^ a b c d Summit on Peace in Ukraine: Joint Communiqué on a Peace Framework, Federal Department of Foreign Affairs, 21 June 2024, Wikidata Q126865377, archived from the original on 21 June 2024\n- ^ \"IAEA sees no signs Russia is preparing to restart Zaporizhzhya nuclear plant\". New Voice. 30 May 2025. Retrieved 23 November 2025.\n- ^ \"Most Ukrainians rule out any territorial concessions to end war\". Bloomberg. 24 May 2022. Archived from the original on 26 June 2022. Retrieved 16 October 2022.\n- ^ \"Nearly 90% of Ukrainians oppose territorial concessions to Russia - poll\". Euronews. 16 September 2022.",
+        "score": 7.6866,
+        "rank": 0
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-2-2026/",
+        "heading": "",
+        "chunk_text": "Toplines\nRussian forces in April 2026 suffered a net loss of territory controlled in the Ukrainian theater for the first time since Ukraine’s August 2024 incursion into Kursk Oblast. ISW has observed evidence to assess that Russian forces lost control of 116 square kilometers in April 2026, not counting areas into which Russian troops may have infiltrated. The Russian rate of advance across the battlefield has been steadily declining since November 2025 as continued Ukrainian ground counterattacks, Ukrainian mid-range strikes, the February 2026 block on Russia’s use of Starlink terminals in Ukraine, and the Kremlin’s throttling of Telegram have exacerbated existing problems within the Russian military.\nThe relative decline in the rate of Russian advances may be related in part to annual seasonal patterns.",
+        "score": 7.5974,
+        "rank": 1
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "title": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "heading": "",
+        "chunk_text": ", 56%; in Britain 53%; in the United States 46%; in Spain 44%; Germany 40%; France 37% and Italy 29%.[491]\nA US poll in May 2023 showed 46% public support for arming Ukraine in its war against Russia. By October 2023, this support had dropped to 41%. Both sides of the political spectrum saw a decline. Since the counteroffensive started in June 2023, Ukrainian forces have only retaken a series of small villages and settlements and are only in control of a small percentage of the territories occupied by Russian forces during the conflict.[492]\nSee also\n- 2022 Russo-Ukrainian Easter truce proposal\n- 2023 Russian Christmas truce proposal\n- April 2026 Russo-Ukrainian truce\n- May 2026 Russo-Ukrainian truce\n- 1918 Russia–Ukraine negotiations – Peace talks after Russia's exit from WWI\n- Black Sea Grain Initiative – 2022–2023 Russia–Ukraine agreement on grain export\n- Normandy Format – Group that met to stop the War in Donbas\n- Victory Plan for Ukraine: Comparative assessment\n- Zaporizhzhia Nuclear Power Plant crisis – Ongoing nuclear safety crisis during the Russo-Ukrainian war\nReferences\n- ^ \"Budapest Memorandums on Security Assurances, 1994 - Council on Foreign Relations\". Cfr.org. 5 December 1994. Archived from the original on 12 March 2017. Retrieved 7 March 2017.\n- ^ Borger, Julian (5 May 2023). \"We knew in 2011 Putin would attack Ukraine, says Bill Clinton\". The Guardian. ISSN 0261-3077. Archived from the original on 6 May 2023.",
+        "score": 7.4313,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "heading": "",
+        "chunk_text": "ory Day parade\". RBC News Ukraine. Retrieved 8 May 2026.\n- ^ \"Drones reportedly attack Chechnya: explosions reported in Grozny, strike on FSB building recorded – videos\". Ukrainian Pravda. 8 May 2026. Retrieved 8 May 2026.\n- ^ Sania Kozatskyi (8 May 2026). \"Ukraine Hits Russian Oil Refinery in Perm for Third Time\". UNN. Retrieved 8 May 2026.\n- ^ \"Airports in Southern Russia Paralyzed After Ukrainian Drone Hits Air Traffic Control Center\". The Moscow Times. 8 May 2026. Retrieved 9 May 2026.\n- ^ Robert Greenall (8 May 2026). \"Trump says Russia and Ukraine to observe three-day ceasefire\". BBC. Retrieved 9 May 2026.\n- ^ Dmytro Basmat (10 May 2026). \"Pro-Ukrainian partisans set locomotive ablaze in Russia's Lipetsk Oblast, group claims\". The Kyiv Independent. Retrieved 10 May 2026.",
+        "score": 7.2891,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "heading": "",
+        "chunk_text": "killed or wounded in Russia's war against Ukraine\". Ukrainska Pravda. 29 April 2026. Retrieved 6 May 2026.\n- ^ \"Ukrainian drones reportedly strike Russian explosives plant in Nizhny Novgorod Oblast\". The Kyiv Independent. 30 April 2026. Retrieved 30 April 2026.\n- ^ VLAD LITNAROVYCH (30 April 2026). \"Ukrainian Naval Drones Punch Through Kerch Bridge Shield, Hit Two Russian Guard Boats, Video\". united24media. Retrieved 30 April 2026.\n- ^ OLEKSANDRA BASHCHENKO (30 April 2026). \"Fourth oil tank explodes in Perm, evacuation underway\". RBC Ukraine. Retrieved 30 April 2026.\n- ^ Sleiman, Nadia (30 April 2026). \"Russian Offensive Campaign Assessment, April 30, 2026\". Institute for the Study of War. Retrieved 1 May 2026.\n- ^ \"Russia strikes Odesa with drones, injuring 20 people and damaging homes, kindergarten, hotel\". Meduza. 30 April 2026. Retrieved 1 May 2026.\n- ^ Abbey Fenbert (1 May 2026). \"Russia's battered Tuapse oil refinery hit by Ukrainian drones for 4th time, reigniting fires say\". The Kyiv Independent. Retrieved 1 May 2026.\n- ^ Noonan, Fiona (2 May 2026). \"Russian Offensive Campaign Assessment, May 1, 2026\". Institute for the Study of War. Retrieved 3 May 2026.\n- ^ Glynn, Jordan (3 May 2026). \"Russian Offensive Campaign Assessment, May 2, 2026\". Institute for the Study of War. Retrieved 3 May 2026.\n- ^ Samya Kullab (3 May 2026). \"Drone kills 2 in Kherson minibus strike, as Russia claims front-line progress\". AP News. Retrieved 3 May 2026.\n- ^ Glynn, Jordan (3 May 2026).",
+        "score": 7.2354,
+        "rank": 4
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "heading": "",
+        "chunk_text": "ar. Retrieved 3 May 2026.\n- ^ Samya Kullab (3 May 2026). \"Drone kills 2 in Kherson minibus strike, as Russia claims front-line progress\". AP News. Retrieved 3 May 2026.\n- ^ Glynn, Jordan (3 May 2026). \"Russian Offensive Campaign Assessment, May 2, 2026\". Institute for the Study of War. Retrieved 3 May 2026.\n- ^ IVAN KHOMENKO (2 May 2026). \"Ukraine Hits Russian Iskander Missile Unit and Key Radars in Crimea Overnight\". united24media. Retrieved 3 May 2026.\n- ^ YURI ZORIA (3 May 2026). \"Primorsk takes the torch from Tuapse: NASA satellites confirm fresh fires at Russia's largest Baltic oil export terminal\". euromaidanpress. Retrieved 3 May 2026.\n- ^ Kateryna Denisova (3 May 2026). \"Ukraine strikes Russian Kalibr missile carrier, patrol boat in Leningrad Oblast, Zelensky says\". The Kyiv Independent. Retrieved 3 May 2026.\n- ^ \"4 Killed, Oil Tankers Hit in Russian and Ukrainian Drone Strikes\". The Moscow Times. 3 May 2026. Retrieved 3 May 2026.\n- ^ YURI ZORIA (3 May 2026). \"\"Kinetic sanctions\" in action: Two more Russian shadow fleet tankers hit at Novorossiysk — the second naval drone strike in five days\". euromaidanpress. Retrieved 3 May 2026.\n- ^ \"Ukraine war latest: Russia extends its 'Victory Day truce', kills 7 and injures 35 in attack on Kharkiv Oblast\". The Kyiv Independent. 4 May 2026. Retrieved 5 May 2026.\n- ^ \"Ukrainian Drone Slams Into Skyscraper Near Central Moscow\". The Moscow Times. 4 May 2026.",
+        "score": 6.8747,
+        "rank": 5
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "heading": "",
+        "chunk_text": "ls 7 and injures 35 in attack on Kharkiv Oblast\". The Kyiv Independent. 4 May 2026. Retrieved 5 May 2026.\n- ^ \"Ukrainian Drone Slams Into Skyscraper Near Central Moscow\". The Moscow Times. 4 May 2026. Retrieved 4 May 2026.\n- ^ \"Attacks on Belgorod Region Leave At Least 1 Dead, Multiple Wounded\". The Moscow Times. 4 May 2026. Retrieved 5 May 2026.\n- ^ \"Putin declares May 8-9 ceasefire for war commemoration, Zelenskiy announces his own ceasefire\". Internazionale. Reuters. 4 May 2026. Retrieved 4 May 2026.\n- ^ Kateryna Hodunova (5 May 2026). \"17 dead after Russia carries out deadly evening strikes on Kramatorsk, Zaporizhzhia in Ukraine's east\". The Kyiv Independent. Retrieved 6 May 2026.\n- ^ Iryna Sitnikova (5 May 2026). \"Four dead, dozens wounded after Russia hits gas site in Poltava Oblast twice\". Hromadske. Retrieved 5 May 2026.\n- ^ Tania Myronyshena; Polina Moroziuk (7 May 2026). \"Massive forest fire sparked by Russian strikes in Ukraine's north doubles in size, drifts toward Russia\". The Kyiv Independent. Retrieved 9 May 2026.\n- ^ \"Ukrainian Attack Kills 5 in Annexed Crimea as Kyiv Accuses Russia of Violating Its Ceasefire\". The Moscow Times. 6 May 2026. Retrieved 6 May 2026.\n- ^ \"Russian Offensive Campaign Assessment, May 5, 2026\". ISW. 6 May 2026. Retrieved 5 May 2026.\n- ^ \"Multiple People Reported Dead in Ukrainian Strike on Republic of Chuvashia\". The Moscow Times. 5 May 2026. Retrieved 5 May 2026.\n- ^ IVAN KHOMENKO (5 May 2026).",
+        "score": 6.7557,
+        "rank": 6
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "title": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "heading": "",
+        "chunk_text": "nth, representatives of 83 states and three international organizations met in Kyiv to discuss the implementation of Ukraine's ten-point peace plan.[198] On 15 December, Putin said in his annual press conference that \"there will only be peace in Ukraine when we achieve our aims\" of \"denazification, demilitarisation and [Ukraine's] neutral status\".[199] He said that Ukraine did not give the now-annexed regions \"the attention they were due\" and that he would work to integrate them into Russia's \"economic and social life\".[200]\nThe New York Times reported in December 2023 that Putin had been signaling through intermediaries since at least September 2022 that \"he is open to a ceasefire that freezes the fighting along the current lines\";[201][202] a former senior Russian official told the Times that Putin \"is willing to stop at the current positions\" but is \"not willing to retreat one meter.\"[203] In January 2024, U.S.",
+        "score": 6.4599,
+        "rank": 7
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "title": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "heading": "",
+        "chunk_text": "ved from the original on 5 March 2026. Retrieved 5 March 2026.\n- ^ \"Press release on the release of Russian servicemen from Ukrainian captivity\". Ministry of Foreign Affairs of the Russian Federation. 5 March 2026. Retrieved 5 March 2026.\n- ^ Orlova, Alisa (6 March 2026). \"Second Round of 500-for-500 POW Swap Underway: 300 Ukrainians Return Home\". Kyiv Post. Archived from the original on 6 March 2026. Retrieved 6 March 2026.\n- ^ \"Ukraine says Russia violated ceasefire initiated by Kyiv\". Reuters. 6 May 2026. Retrieved 9 May 2026.\n- ^ \"May 8–9 ceasefire for war commemoration; Kyiv announces own ceasefire\". The Japan Times. 5 May 2026. Retrieved 9 May 2026.\n- ^ a b c d e f g h Ukraine's Peace Formula Philosophy (PDF), Government of Ukraine, 7 August 2023, Wikidata Q126897120, archived (PDF) from the original on 24 June 2024\n- ^ a b c d Summit on Peace in Ukraine: Joint Communiqué on a Peace Framework, Federal Department of Foreign Affairs, 21 June 2024, Wikidata Q126865377, archived from the original on 21 June 2024\n- ^ \"IAEA sees no signs Russia is preparing to restart Zaporizhzhya nuclear plant\". New Voice. 30 May 2025. Retrieved 23 November 2025.\n- ^ \"Most Ukrainians rule out any territorial concessions to end war\". Bloomberg. 24 May 2022. Archived from the original on 26 June 2022. Retrieved 16 October 2022.\n- ^ \"Nearly 90% of Ukrainians oppose territorial concessions to Russia - poll\". Euronews. 16 September 2022.",
+        "score": 7.5158,
+        "rank": 0
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "heading": "",
+        "chunk_text": "killed or wounded in Russia's war against Ukraine\". Ukrainska Pravda. 29 April 2026. Retrieved 6 May 2026.\n- ^ \"Ukrainian drones reportedly strike Russian explosives plant in Nizhny Novgorod Oblast\". The Kyiv Independent. 30 April 2026. Retrieved 30 April 2026.\n- ^ VLAD LITNAROVYCH (30 April 2026). \"Ukrainian Naval Drones Punch Through Kerch Bridge Shield, Hit Two Russian Guard Boats, Video\". united24media. Retrieved 30 April 2026.\n- ^ OLEKSANDRA BASHCHENKO (30 April 2026). \"Fourth oil tank explodes in Perm, evacuation underway\". RBC Ukraine. Retrieved 30 April 2026.\n- ^ Sleiman, Nadia (30 April 2026). \"Russian Offensive Campaign Assessment, April 30, 2026\". Institute for the Study of War. Retrieved 1 May 2026.\n- ^ \"Russia strikes Odesa with drones, injuring 20 people and damaging homes, kindergarten, hotel\". Meduza. 30 April 2026. Retrieved 1 May 2026.\n- ^ Abbey Fenbert (1 May 2026). \"Russia's battered Tuapse oil refinery hit by Ukrainian drones for 4th time, reigniting fires say\". The Kyiv Independent. Retrieved 1 May 2026.\n- ^ Noonan, Fiona (2 May 2026). \"Russian Offensive Campaign Assessment, May 1, 2026\". Institute for the Study of War. Retrieved 3 May 2026.\n- ^ Glynn, Jordan (3 May 2026). \"Russian Offensive Campaign Assessment, May 2, 2026\". Institute for the Study of War. Retrieved 3 May 2026.\n- ^ Samya Kullab (3 May 2026). \"Drone kills 2 in Kherson minibus strike, as Russia claims front-line progress\". AP News. Retrieved 3 May 2026.\n- ^ Glynn, Jordan (3 May 2026).",
+        "score": 7.238,
+        "rank": 1
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "heading": "",
+        "chunk_text": "ar. Retrieved 3 May 2026.\n- ^ Samya Kullab (3 May 2026). \"Drone kills 2 in Kherson minibus strike, as Russia claims front-line progress\". AP News. Retrieved 3 May 2026.\n- ^ Glynn, Jordan (3 May 2026). \"Russian Offensive Campaign Assessment, May 2, 2026\". Institute for the Study of War. Retrieved 3 May 2026.\n- ^ IVAN KHOMENKO (2 May 2026). \"Ukraine Hits Russian Iskander Missile Unit and Key Radars in Crimea Overnight\". united24media. Retrieved 3 May 2026.\n- ^ YURI ZORIA (3 May 2026). \"Primorsk takes the torch from Tuapse: NASA satellites confirm fresh fires at Russia's largest Baltic oil export terminal\". euromaidanpress. Retrieved 3 May 2026.\n- ^ Kateryna Denisova (3 May 2026). \"Ukraine strikes Russian Kalibr missile carrier, patrol boat in Leningrad Oblast, Zelensky says\". The Kyiv Independent. Retrieved 3 May 2026.\n- ^ \"4 Killed, Oil Tankers Hit in Russian and Ukrainian Drone Strikes\". The Moscow Times. 3 May 2026. Retrieved 3 May 2026.\n- ^ YURI ZORIA (3 May 2026). \"\"Kinetic sanctions\" in action: Two more Russian shadow fleet tankers hit at Novorossiysk — the second naval drone strike in five days\". euromaidanpress. Retrieved 3 May 2026.\n- ^ \"Ukraine war latest: Russia extends its 'Victory Day truce', kills 7 and injures 35 in attack on Kharkiv Oblast\". The Kyiv Independent. 4 May 2026. Retrieved 5 May 2026.\n- ^ \"Ukrainian Drone Slams Into Skyscraper Near Central Moscow\". The Moscow Times. 4 May 2026.",
+        "score": 7.1718,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "heading": "",
+        "chunk_text": "ory Day parade\". RBC News Ukraine. Retrieved 8 May 2026.\n- ^ \"Drones reportedly attack Chechnya: explosions reported in Grozny, strike on FSB building recorded – videos\". Ukrainian Pravda. 8 May 2026. Retrieved 8 May 2026.\n- ^ Sania Kozatskyi (8 May 2026). \"Ukraine Hits Russian Oil Refinery in Perm for Third Time\". UNN. Retrieved 8 May 2026.\n- ^ \"Airports in Southern Russia Paralyzed After Ukrainian Drone Hits Air Traffic Control Center\". The Moscow Times. 8 May 2026. Retrieved 9 May 2026.\n- ^ Robert Greenall (8 May 2026). \"Trump says Russia and Ukraine to observe three-day ceasefire\". BBC. Retrieved 9 May 2026.\n- ^ Dmytro Basmat (10 May 2026). \"Pro-Ukrainian partisans set locomotive ablaze in Russia's Lipetsk Oblast, group claims\". The Kyiv Independent. Retrieved 10 May 2026.",
+        "score": 6.7595,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "heading": "",
+        "chunk_text": "ls 7 and injures 35 in attack on Kharkiv Oblast\". The Kyiv Independent. 4 May 2026. Retrieved 5 May 2026.\n- ^ \"Ukrainian Drone Slams Into Skyscraper Near Central Moscow\". The Moscow Times. 4 May 2026. Retrieved 4 May 2026.\n- ^ \"Attacks on Belgorod Region Leave At Least 1 Dead, Multiple Wounded\". The Moscow Times. 4 May 2026. Retrieved 5 May 2026.\n- ^ \"Putin declares May 8-9 ceasefire for war commemoration, Zelenskiy announces his own ceasefire\". Internazionale. Reuters. 4 May 2026. Retrieved 4 May 2026.\n- ^ Kateryna Hodunova (5 May 2026). \"17 dead after Russia carries out deadly evening strikes on Kramatorsk, Zaporizhzhia in Ukraine's east\". The Kyiv Independent. Retrieved 6 May 2026.\n- ^ Iryna Sitnikova (5 May 2026). \"Four dead, dozens wounded after Russia hits gas site in Poltava Oblast twice\". Hromadske. Retrieved 5 May 2026.\n- ^ Tania Myronyshena; Polina Moroziuk (7 May 2026). \"Massive forest fire sparked by Russian strikes in Ukraine's north doubles in size, drifts toward Russia\". The Kyiv Independent. Retrieved 9 May 2026.\n- ^ \"Ukrainian Attack Kills 5 in Annexed Crimea as Kyiv Accuses Russia of Violating Its Ceasefire\". The Moscow Times. 6 May 2026. Retrieved 6 May 2026.\n- ^ \"Russian Offensive Campaign Assessment, May 5, 2026\". ISW. 6 May 2026. Retrieved 5 May 2026.\n- ^ \"Multiple People Reported Dead in Ukrainian Strike on Republic of Chuvashia\". The Moscow Times. 5 May 2026. Retrieved 5 May 2026.\n- ^ IVAN KHOMENKO (5 May 2026).",
+        "score": 6.3644,
+        "rank": 4
+      },
+      {
+        "url": "https://www.aljazeera.com/news/2026/5/4/russia-and-ukraine-declare-competing-ceasefires",
+        "title": "https://www.aljazeera.com/news/2026/5/4/russia-and-ukraine-declare-competing-ceasefires",
+        "heading": "",
+        "chunk_text": "Russia and Ukraine declare competing ceasefires\nMoscow’s declaration of a May 9 truce for its WWII parade comes as Kyiv revels in its adversary’s ‘fear’ of its drones.\nRussia and Ukraine have declared competing unilateral ceasefires in their four-year war.\nRussia announced on Monday that its ceasefire would be between May 8-9, when it traditionally marks Victory Day in the Great Patriotic War (as it calls World War II) with a major military parade in Moscow. Kyiv said later that it was calling its own ceasefire for May 5-6.\nRecommended Stories\nlist of 4 items- list 1 of 4How to escape Russia’s army: Soldiers serving in Ukraine seek a way out\n- list 2 of 4NATO chief says Europeans have ‘gotten the message’ from Trump on defence\n- list 3 of 4What is the Ukrainian anti-drone system Sky Map being used in the Gulf?\n- list 4 of 4Russian strikes kill at least eight in Ukraine, drones hit Moscow\n“In accordance with a decision of the Supreme Commander-in-Chief of the Russian Armed Forces, Vladimir Putin, a ceasefire has been declared from May 8–9, 2026,” the Russian Ministry of Defence said in a post on the state-backed messaging app MAX.",
+        "score": 1.7605,
+        "rank": 5
+      },
+      {
+        "url": "https://www.aljazeera.com/news/2026/5/4/russia-and-ukraine-declare-competing-ceasefires",
+        "title": "https://www.aljazeera.com/news/2026/5/4/russia-and-ukraine-declare-competing-ceasefires",
+        "heading": "",
+        "chunk_text": "Commander-in-Chief of the Russian Armed Forces, Vladimir Putin, a ceasefire has been declared from May 8–9, 2026,” the Russian Ministry of Defence said in a post on the state-backed messaging app MAX. “We hope that the Ukrainian side will follow suit.”\nUkraine’s President, Volodymyr Zelenskyy, said shortly afterwards that he had received no official notice from Russia, and that Ukraine would observe a separate ceasefire beginning at midnight on Tuesday, May 5.\n“As of today, there has been no official appeal to Ukraine regarding the modality of a cessation of hostilities that is being claimed on Russian social media,” Zelenskyy wrote on social media.\n“In this regard, we are announcing a ceasefire regime starting at 00:00 (2100 GMT) on the night of May 5-6.",
+        "score": 7.8462,
+        "rank": 0
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "title": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "heading": "",
+        "chunk_text": ". He also said that he wished that a contingent of European troops to be sent to Ukraine once a ceasefire was reached, and that this contigent would be positioned close to the front line.[470]\nAn agreement to exchange prisoners of war was achieved at the trilateral meetings, and 500 prisoners from each side were exchanged on 5 and 6 March.[471][472][473]\n2026 Russo-Ukrainian truces\nApril\nOn 11 April 2026 at 13:00 UTC a 32-hour truce began for Orthodox Easter between the Russian Federation and the Republic of Ukraine.\nMay\nA short-term ceasefire was observed in May 2026, following international mediation efforts and negotiations between the warring parties.[474] The truce was announced for the period of 9–11 May 2026, coinciding with Russia’s Victory Day commemorations, and included a temporary suspension of large-scale military operations along with a planned prisoner exchange between Ukraine and Russia.[475]\nOverview of key negotiation points\nKey negotiation points proposed or negotiated since the full-scale Russian invasion of Ukraine on 24 February 2022 include the following.\nIssue | Istanbul Communiqué/ (Mar/ |\nUkraine's Peace Formula (late 2022)[476] |\nBürgenstock Communiqué (Jun 2024)[477] |\nUS peace plan (Apr 2025)[478][357] |\nUS peace plan (Nov 2025)[400] |\n---|---|---|---|---|---|\nCeasefire, Russian withdrawal |\nCeasefire; disagreement on details[83][84] |\nCeasefire; Russian withdrawal to internationally recognized borders (#6)[476] |\nCeasefire; Russian withdrawal to",
+        "score": 7.7471,
+        "rank": 1
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "title": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "heading": "",
+        "chunk_text": "ved from the original on 5 March 2026. Retrieved 5 March 2026.\n- ^ \"Press release on the release of Russian servicemen from Ukrainian captivity\". Ministry of Foreign Affairs of the Russian Federation. 5 March 2026. Retrieved 5 March 2026.\n- ^ Orlova, Alisa (6 March 2026). \"Second Round of 500-for-500 POW Swap Underway: 300 Ukrainians Return Home\". Kyiv Post. Archived from the original on 6 March 2026. Retrieved 6 March 2026.\n- ^ \"Ukraine says Russia violated ceasefire initiated by Kyiv\". Reuters. 6 May 2026. Retrieved 9 May 2026.\n- ^ \"May 8–9 ceasefire for war commemoration; Kyiv announces own ceasefire\". The Japan Times. 5 May 2026. Retrieved 9 May 2026.\n- ^ a b c d e f g h Ukraine's Peace Formula Philosophy (PDF), Government of Ukraine, 7 August 2023, Wikidata Q126897120, archived (PDF) from the original on 24 June 2024\n- ^ a b c d Summit on Peace in Ukraine: Joint Communiqué on a Peace Framework, Federal Department of Foreign Affairs, 21 June 2024, Wikidata Q126865377, archived from the original on 21 June 2024\n- ^ \"IAEA sees no signs Russia is preparing to restart Zaporizhzhya nuclear plant\". New Voice. 30 May 2025. Retrieved 23 November 2025.\n- ^ \"Most Ukrainians rule out any territorial concessions to end war\". Bloomberg. 24 May 2022. Archived from the original on 26 June 2022. Retrieved 16 October 2022.\n- ^ \"Nearly 90% of Ukrainians oppose territorial concessions to Russia - poll\". Euronews. 16 September 2022.",
+        "score": 7.6825,
+        "rank": 2
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "heading": "",
+        "chunk_text": "ory Day parade\". RBC News Ukraine. Retrieved 8 May 2026.\n- ^ \"Drones reportedly attack Chechnya: explosions reported in Grozny, strike on FSB building recorded – videos\". Ukrainian Pravda. 8 May 2026. Retrieved 8 May 2026.\n- ^ Sania Kozatskyi (8 May 2026). \"Ukraine Hits Russian Oil Refinery in Perm for Third Time\". UNN. Retrieved 8 May 2026.\n- ^ \"Airports in Southern Russia Paralyzed After Ukrainian Drone Hits Air Traffic Control Center\". The Moscow Times. 8 May 2026. Retrieved 9 May 2026.\n- ^ Robert Greenall (8 May 2026). \"Trump says Russia and Ukraine to observe three-day ceasefire\". BBC. Retrieved 9 May 2026.\n- ^ Dmytro Basmat (10 May 2026). \"Pro-Ukrainian partisans set locomotive ablaze in Russia's Lipetsk Oblast, group claims\". The Kyiv Independent. Retrieved 10 May 2026.",
+        "score": 6.9183,
+        "rank": 3
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "title": "https://en.wikipedia.org/wiki/Timeline_of_the_Russo-Ukrainian_war_(1_January_2026_%E2%80%93_present)",
+        "heading": "",
+        "chunk_text": "ls 7 and injures 35 in attack on Kharkiv Oblast\". The Kyiv Independent. 4 May 2026. Retrieved 5 May 2026.\n- ^ \"Ukrainian Drone Slams Into Skyscraper Near Central Moscow\". The Moscow Times. 4 May 2026. Retrieved 4 May 2026.\n- ^ \"Attacks on Belgorod Region Leave At Least 1 Dead, Multiple Wounded\". The Moscow Times. 4 May 2026. Retrieved 5 May 2026.\n- ^ \"Putin declares May 8-9 ceasefire for war commemoration, Zelenskiy announces his own ceasefire\". Internazionale. Reuters. 4 May 2026. Retrieved 4 May 2026.\n- ^ Kateryna Hodunova (5 May 2026). \"17 dead after Russia carries out deadly evening strikes on Kramatorsk, Zaporizhzhia in Ukraine's east\". The Kyiv Independent. Retrieved 6 May 2026.\n- ^ Iryna Sitnikova (5 May 2026). \"Four dead, dozens wounded after Russia hits gas site in Poltava Oblast twice\". Hromadske. Retrieved 5 May 2026.\n- ^ Tania Myronyshena; Polina Moroziuk (7 May 2026). \"Massive forest fire sparked by Russian strikes in Ukraine's north doubles in size, drifts toward Russia\". The Kyiv Independent. Retrieved 9 May 2026.\n- ^ \"Ukrainian Attack Kills 5 in Annexed Crimea as Kyiv Accuses Russia of Violating Its Ceasefire\". The Moscow Times. 6 May 2026. Retrieved 6 May 2026.\n- ^ \"Russian Offensive Campaign Assessment, May 5, 2026\". ISW. 6 May 2026. Retrieved 5 May 2026.\n- ^ \"Multiple People Reported Dead in Ukrainian Strike on Republic of Chuvashia\". The Moscow Times. 5 May 2026. Retrieved 5 May 2026.\n- ^ IVAN KHOMENKO (5 May 2026).",
+        "score": 6.672,
+        "rank": 4
+      },
+      {
+        "url": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-8-2026/",
+        "title": "https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-may-8-2026/",
+        "heading": "",
+        "chunk_text": "the Kremlin demands that Ukrainian forces withdraw from the remainder of Donetsk Oblast as a precondition for a ceasefire — a battlefield objective that Russian forces have thus far failed to achieve. Russian Presidential Aide Yuri Ushakov, a senior Kremlin official who regularly comments on the status of negotiations involving Ukraine in an official capacity, claimed on May 7 that another round of trilateral US-Ukrainian-Russian negotiations currently makes no sense as Ukraine must take “one serious step” of withdrawing from unoccupied Donetsk Oblast before Russia will agree to cease hostilities and continue peace negotiations.[18] The Kremlin reportedly has long held a demand over unoccupied Donbas as a precondition for enacting a ceasefire or reaching a peace settlement in Ukraine.[19] Ceding the remainder of unoccupied Donetsk and Luhansk oblasts would grant Russia control over Ukraine’s Fortress Belt, a series of fortified cities that have served as the backbone of Ukraine’s defense in the area since 2014.[20] This Kremlin demand notably does not guarantee that Ukraine and Russia will conclude a peace agreement, so the Kremlin is effectively demanding territory from which it can launch a renewed offensive against less prepared Ukrainian positions at a time of its choosing during the negotiations process.\nRussian forces are performing worse on the battlefield in Spring 2026 than when the Kremlin emphasized its demand for Donetsk Oblast in 2025.",
+        "score": 6.5041,
+        "rank": 5
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "title": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "heading": "",
+        "chunk_text": "\"U.S. Rejects Putin's Latest Call for Ukraine Negotiations\". The New York Times.\n- ^ Hartog, Eva; Goryashko, Sergey (9 February 2024). \"Tucker Carlson's Putin interview: 9 takeaways\". Politico Europe. Retrieved 23 February 2024.\n- ^ \"Tucker Carlson Shares Controversial Two-Hour Vladimir Putin Interview\". Variety. 8 February 2024.\n- ^ \"Putin ally says 'Ukraine is Russia' and historical territory needs to 'come home'\". Reuters. 4 March 2024.\n- ^ \"'Ukraine Is, of Course, Russia:' Putin Ally\". Newsweek. 4 March 2024.\n- ^ \"Zelenskyy dismisses Pope Francis's call for Ukraine to negotiate peace with Russia\". Sky News. 10 March 2024.\n- ^ \"Germany: Putin's peace talk offer with Ukraine 'not serious'\". Anadolu Agency. 13 March 2024.\n- ^ \"Vladimir Putin ready to 'freeze' war in Ukraine with ceasefire recognising recent Russian gains, sources say\". Sky News. 24 May 2024.\n- ^ Walsh, Nick Paton (25 May 2024). \"Analysis: Putin signals he's open to peace talks, but Ukraine is right to be wary\". CNN. Retrieved 28 May 2024.\n- ^ \"Italy opposes Stoltenberg on using Western weapons against targets in Russia\". Euractiv. 27 May 2024.\n- ^ \"Why China Is Sabotaging Ukraine\". Foreign Affairs. 14 June 2024.\n- ^ a b c d \"Putin lays out his terms for ceasefire in Ukraine\". BBC News. 14 June 2024. Retrieved 14 June 2024.\n\"Vladimir Putin issues fresh demands to Ukraine to end war\". The Guardian. 14 June 2024. Retrieved 14 June 2024.\nRomanenko, Valentyna (14 June 2024).",
+        "score": 6.3034,
+        "rank": 6
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "title": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+        "heading": "",
+        "chunk_text": "ABC News. Archived from the original on 17 February 2026. Retrieved 17 February 2026.\n- ^ \"Separate talks on Iran and Ukraine-Russia set for Tuesday in Geneva, source says\". Reuters. 14 February 2026. Retrieved 17 February 2026.\n- ^ Zadorozhnyy, Tim (17 February 2026). \"Ukraine, Russia hold US-mediated Geneva talks focused on 'practical issues,' negotiations to resume Feb. 18\". The Kyiv Independent. Archived from the original on 17 February 2026. Retrieved 17 February 2026.\n- ^ \"Peace Talks in Geneva 'Very Tense,' Set to Resume Wednesday\". Kyiv Post. 17 February 2026. Archived from the original on 18 February 2026. Retrieved 18 February 2026.\n- ^ Revill, John; Le Poidevin, Olivia (18 February 2026). \"Two days of 'difficult' Ukraine talks end with no breakthrough\". Reuters. Retrieved 18 February 2026.\n- ^ Ventura, Tiago (18 February 2026). \"Ukraine-Russia Peace Talks End Abruptly, Zelensky Says Moscow Trying to 'Drag Out' Negotiations\". Time. Archived from the original on 19 February 2026. Retrieved 18 February 2026.\n- ^ a b Orlova, Alisa (18 February 2026). \"Geneva Talks Wrap in 2 Hours: Moscow Calls Them 'Tough,' Ukraine Reports Progress\". Kyiv Post. Archived from the original on 18 February 2026. Retrieved 18 February 2026.\n- ^ Zadorozhnyy, Tim (18 February 2026). \"'Difficult' talks in Geneva — Zelensky signals progress on ceasefire, political stalemate continues\". The Kyiv Independent. Archived from the original on 18 February 2026.",
+        "score": 5.8002,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "decompose_ms": 3013,
+      "search_ms": 2617,
+      "extract_ms": 10218,
+      "chunk_ms": 118,
+      "retrieve_ms": 12754,
+      "synthesis_ms": 21098,
+      "sub_queries_count": 3,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 182559,
+    "elapsed_s": 186.09,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}

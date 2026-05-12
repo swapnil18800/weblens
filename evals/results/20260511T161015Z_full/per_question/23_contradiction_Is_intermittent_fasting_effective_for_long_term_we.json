@@ -1,0 +1,257 @@
+{
+  "id": "ctr1",
+  "category": "contradiction",
+  "domain": "health",
+  "question": "Is intermittent fasting effective for long-term weight loss?",
+  "expected_mode": "search",
+  "expected_sub_query_count": "multi:2-3",
+  "expected_behavior": "Should surface that evidence is mixed — some meta-analyses show modest benefit, others show equivalence to standard calorie restriction.",
+  "key_facts": [
+    "intermittent fasting",
+    "calorie restriction"
+  ],
+  "ground_truth": "Recent meta-analyses suggest intermittent fasting produces weight loss similar to continuous calorie restriction over 6-12 months; long-term adherence is the main challenge. Evidence on metabolic markers is mixed.",
+  "session_id": "eval-20260511T161015Z-ctr1",
+  "verdict": "partial",
+  "aggregate": 0.742,
+  "failure_mode": null,
+  "metrics": {
+    "faithfulness": 0.833,
+    "context_recall": 0.5,
+    "context_precision": 0.875,
+    "answer_correctness": 1.0,
+    "routing_decomposition": 0.5,
+    "answer_relevancy": 0.745,
+    "aggregate": 0.742,
+    "m1_factual_correctness": 1.0,
+    "m3_retrieval_recall": 0.5,
+    "m7_judge_score": 0.742
+  },
+  "metric_details": {
+    "faithfulness": {
+      "score": 0.833,
+      "supported": 5,
+      "total": 6,
+      "reasoning": "Most claims match chunks; only umbrella review mention lacks support."
+    },
+    "context_precision": {
+      "score": 0.875,
+      "relevant": 7,
+      "total": 8,
+      "reasoning": "Most chunks directly discuss IF's effectiveness for weight loss; chunk 8 is a table of study info, not directly answering."
+    },
+    "answer_correctness": {
+      "score": 1.0,
+      "hit_facts": [
+        "intermittent fasting",
+        "calorie restriction"
+      ],
+      "missed_facts": [],
+      "reasoning": "heuristic=1.00; LLM-assist promoted 0 hit(s)."
+    },
+    "answer_relevancy": {
+      "score": 0.745,
+      "method": "embedding"
+    },
+    "context_recall_hits": [
+      "intermittent fasting"
+    ]
+  },
+  "timing": {
+    "latency_breakdown": {
+      "rewrite_ms": 6,
+      "decompose_ms": 3281,
+      "search_ms": 2087,
+      "extract_ms": 11111,
+      "chunk_ms": 187,
+      "retrieve_ms": 4807,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 33067,
+    "pipeline_s": 35.88
+  },
+  "judge_reasoning": "Most claims match chunks; only umbrella review mention lacks support.",
+  "pipeline": {
+    "answer": "**Inconsistent evidence for long-term superiority of intermittent fasting (IF) over controls**\n\n**Overall efficacy vs. no intervention/regular diet**\n- The 2026 Cochrane review (22 studies, ~2,000 participants) found that IF \"may result in little to no difference in weight loss\" compared to regular dietary advice, and likely makes little difference compared to no intervention [1][4].\n- A 2023 meta-analysis of 9 trials (540 participants with obesity, BMI >30) concluded that IF was \"not associated with a significantly greater reduction of body weight or BMI\" at any time point versus controls or continuous calorie restriction [2].\n\n**Modest longer-term benefits (≥6 months)**\n- A 2024 systematic review (24 studies, 2,032 participants, ≥6 months) reported that IF significantly reduced **body weight** (mean difference: −2.84 kg), **fat mass** (−3.06 kg), **waist circumference** (−3.85 cm), and **visceral fat** (SMD −0.37) compared to a control diet, but had no effect on insulin, HbA1c, total cholesterol, or systolic blood pressure [3].\n- When compared to **continuous calorie restriction (CR)**, IF only produced a small additional reduction in fat mass (−0.70 kg) and body fat percentage (−0.59%), with no difference in overall weight loss [3].\n\n**Limitations and quality of evidence**\n- Most reviews note **low to moderate quality** due to small sample sizes, short follow-up (≤12 months), and inconclusive results on quality of life and adverse events [2][4].\n- The 2024 umbrella review (Lancet) found moderate-quality evidence for some metabolic improvements (e.g., LDL reduction) but did not endorse IF as superior for long-term weight loss [5].\n\n**Key takeaway**: IF produces modest weight loss versus no intervention but does not outperform standard dietary advice or continuous calorie restriction in the longer term, and evidence beyond 12 months is lacking [3][4].",
+    "mode": "search",
+    "rewritten_query": "Is intermittent fasting effective for long-term weight loss?",
+    "rewrote": false,
+    "rationale": "Contested health topic; sources differ, must surface evidence.",
+    "sub_queries": [
+      "Intermittent fasting effectiveness for long-term weight loss meta-analysis"
+    ],
+    "citations": [
+      {
+        "num": 1,
+        "url": "https://sciencemediacentre.es/en/intermittent-fasting-not-effective-weight-loss-obese-or-overweight-individuals-according-meta",
+        "title": "Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis",
+        "snippet": "Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis\n\nA meta-analysis published in the _Cochrane Database of Systematic Reviews_ concludes that intermittent fasting is not particularly effective for weight loss in adults who are ob"
+      },
+      {
+        "num": 2,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37248144/",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials - PubMed",
+        "snippet": "Abstract\n\n**Aim:** To assess whether intermittent fasting (IF) diets are associated with improvement in weight loss, metabolic parameters, and subjective well-being, in people with obesity.\n\n**Data synthesis:** We performed a Meta-analysis of Randomized Controlled Trials longer than 2 months, retrie"
+      },
+      {
+        "num": 3,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39501676/",
+        "title": "Longer-term effects of intermittent fasting on body composition and cardiometabolic health in adults with overweight and obesity: A systematic review and meta-analysis - PubMed",
+        "snippet": "Abstract\n\nThe aim of the present study was to investigate the effects of long-term intermittent fasting (IF) on body composition and cardiometabolic health in adults with overweight and obesity. PubMed, Web of Science, and Scopus were searched from inception to March 2024 to identify original random"
+      },
+      {
+        "num": 4,
+        "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD015610.pub2",
+        "title": "Intermittent fasting for adults with overweight or obesity - Garegnani, LI - 2026 | Cochrane Library",
+        "snippet": "Authors' conclusions\n\nCompared to regular dietary advice, intermittent fasting may result in little to no difference in weight loss or quality of life. Intermittent fasting may result in little to no difference in adverse events, but the evidence is very uncertain. These approaches did not differ in"
+      },
+      {
+        "num": 5,
+        "url": "https://www.thelancet.com/journals/eclinm/article/PIIS2589-5370(24)00098-1/fulltext",
+        "title": "Intermittent fasting and health outcomes: an umbrella review of systematic reviews and meta-analyses of randomised controlled trials",
+        "snippet": "The basic information of included meta-analyses\n\nTable 2\n\nSummary of significant associations of intermittent fasting with health outcomes supported by moderate to high quality of evidence.\n\nAMSTAR, A Measurement Tool to Assess Systematic Reviews; ADF, alternate-day fasting; CER, continuous energy r"
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://sciencemediacentre.es/en/intermittent-fasting-not-effective-weight-loss-obese-or-overweight-individuals-according-meta",
+        "title": "Intermittent fasting and weight loss",
+        "snippet": "# Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis. A meta-analysis published in the *Cochrane Database of Systematic Reviews* concludes that intermittent fasting is not particularly effective for weight loss in adults who are obese or overweight, who showed moderate weight loss. The article does not say that intermittent fasting is not effective for weight loss. What it does say is that, based on the studies included so far, there is no evidence that it is superior to classic calorie restriction in terms of weight loss. But we do have evidence that it is an alternative for weight loss that is, at a minimum, as effective as classic calorie restriction. The study is an analysis of clinical trials to date comparing intermittent fasting with the classic diet. It suggests that intermittent fasting does not result in greater weight loss than traditional diets. ## [Intermittent fasting weight loss comparable to that of calorie restriction diets](/en/intermittent-fasting-weight-loss-comparable-calorie-restriction-diets)."
+      },
+      {
+        "url": "https://www.sciencedirect.com/science/article/pii/S1658361225000186",
+        "title": "Evaluation of the effectiveness of intermittent fasting versus caloric restriction in weight loss and improving cardiometabolic health: A systematic review and meta-analysis - ScienceDirect",
+        "snippet": "# Original Article Evaluation of the effectiveness of intermittent fasting versus caloric restriction in weight loss and improving cardiometabolic health: A systematic review and meta-analysis. We aimed to conduct a systematic review and meta-analysis exploring the effects of IF and ER on body weight and cardiometabolic factors. PRISMA compliant methods were used, and PubMed and the Cochrane CENTRAL Library were systematically searched for relevant randomized controlled trials (RCTs) from database inception to September 27, 2023. A total of 2931 records were identified through a database search. All trials were published between 2011 and 2022, and included a total of 1258 participants (24–209 per study). Additionally, IF resulted in a slightly greater, but statistically nonsignificant, decrease in weight, triglyceride levels, fasting plasma glucose, and diastolic blood pressure than ER. IF appears to be slightly advantageous over ER in terms of body weight, cardiometabolic factors, and plasma glucose levels."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39501676/",
+        "title": "Longer-term effects of intermittent fasting on body composition and ...",
+        "snippet": "In adults with overweight or obesity, IF and CR are comparably effective for reducing body weight and adiposity, as well as for improving cardiometabolic"
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37248144/",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with ...",
+        "snippet": "Conclusions: IF is not associated with greater or lesser weight loss than non-intermittent fasting diets. Further data on psychological"
+      },
+      {
+        "url": "https://www.thelancet.com/journals/eclinm/article/PIIS2589-5370(24)00098-1/fulltext",
+        "title": "Intermittent fasting and health outcomes: an umbrella review of ...",
+        "snippet": "Intermittent fasting and health outcomes: an umbrella review of systematic reviews and meta-analyses of randomised controlled trials"
+      },
+      {
+        "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD015610.pub2",
+        "title": "Intermittent fasting for adults with overweight or obesity - Garegnani, LI",
+        "snippet": "Compared to no intervention or waiting list, intermittent fasting likely makes little to no difference to weight loss (6 studies, 427 people)."
+      }
+    ],
+    "chunk_count": 8,
+    "chunks": [
+      {
+        "url": "https://sciencemediacentre.es/en/intermittent-fasting-not-effective-weight-loss-obese-or-overweight-individuals-according-meta",
+        "title": "Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis",
+        "heading": "Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis",
+        "chunk_text": "Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis\n\nA meta-analysis published in the _Cochrane Database of Systematic Reviews_ concludes that intermittent fasting is not particularly effective for weight loss in adults who are obese or overweight, who showed moderate weight loss. This strategy also does not differ significantly from standard dietary advice or improvement in quality of life. The review included 22 studies with nearly 2,000 participants and evaluated various forms of intermittent fasting, including restricting food intake for most of the day and fasting every other day.\n\n[SMC Spain](https://sciencemediacentre.es/en/autor/smc)\n\n16/02/2026 - 02:00 CET\n\n[X](https://sciencemediacentre.es/#x)[Bluesky](https://sciencemediacentre.es/#bluesky)[LinkedIn](https://sciencemediacentre.es/#linkedin)[Telegram](https://sciencemediacentre.es/#telegram)[WhatsApp](https://sciencemediacentre.es/#whatsapp)\n\n[Versión en castellano](https://sciencemediacentre.es/node/6745)\n\n![Image 2: ayuno](https://sciencemediacentre.es/sites/default/files/2026-02/baja%20ayuno.jpg)\n\nExpert reactions",
+        "score": 9.0213,
+        "rank": 0
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37248144/",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials - PubMed",
+        "heading": "Abstract",
+        "chunk_text": "Abstract\n\n**Aim:** To assess whether intermittent fasting (IF) diets are associated with improvement in weight loss, metabolic parameters, and subjective well-being, in people with obesity.\n\n**Data synthesis:** We performed a Meta-analysis of Randomized Controlled Trials longer than 2 months, retrieved through an extensive search on MedLine, Cochrane CENTRAL Library, and Embase online databases, comparing weight loss with IF diets and control diets in people with Body Mass index (BMI) > 30 kg/m 2. We retrieved 9 trials, enrolling 540 patients. IF was not associated with a significantly greater reduction of body weight or BMI at any time point with respect to controls or in respect to continuous restricted diets, with low-to moderate quality of evidence; no significant difference in efficacy between alternate day fasting and time restricted eating was found. Differences in fasting plasma glucose, total or high-density lipoprotein cholesterol or blood pressure at any time point were not statistically significant, whereas a reduction of low-density lipoprotein cholesterol (MD -8.39 [-15.96, -0.81] mg/dl, P = 0.03; I 2 = 0%) was observed at 2-4 months, but not in the longer term. Data on psychological parameters and overall well-being were insufficient to perform a formal meta-analysis, whereas a qualitative synthesis did not show any difference between IF and controls.",
+        "score": 7.2953,
+        "rank": 1
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37248144/",
+        "title": "Effectiveness of intermittent fasting for weight loss in individuals with obesity: A meta-analysis of randomized controlled trials - PubMed",
+        "heading": "Abstract",
+        "chunk_text": "Abstract\n\n**Conclusions:** IF is not associated with greater or lesser weight loss than non-intermittent fasting diets. Further data on psychological parameters and overall well-being are needed to properly assess the role of IF diets in the management of obesity.\n\n**Keywords:** Intermittent fasting; Meta-analysis; Obesity; Weight loss.\n\n[PubMed Disclaimer](https://pubmed.ncbi.nlm.nih.gov/disclaimer/)",
+        "score": 5.9746,
+        "rank": 2
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39501676/",
+        "title": "Longer-term effects of intermittent fasting on body composition and cardiometabolic health in adults with overweight and obesity: A systematic review and meta-analysis - PubMed",
+        "heading": "Abstract",
+        "chunk_text": "Abstract\n\nThe aim of the present study was to investigate the effects of long-term intermittent fasting (IF) on body composition and cardiometabolic health in adults with overweight and obesity. PubMed, Web of Science, and Scopus were searched from inception to March 2024 to identify original randomized trials that investigated the effects of IF versus either a control diet (CON) and/or continuous caloric restriction (CR). Participants were adults with overweight and obesity and intervention durations were ≥ 6 months. Overall, a total of 24 studies involving 2032 participants were included in the meta-analysis. Compared with CON, IF significantly reduced body weight [WMD: -2.84 kg], BMI [WMD: -1.41 kg.m 2], fat mass [WMD: -3.06 kg], fat-free mass [WMD: -0.81 kg], waist circumference [WMD: -3.85 cm], visceral fat [SMD: -0.37], fasting glucose [WMD: -0.14 mmol/l], triglycerides [WMD: -0.12 mmol/l], and diastolic blood pressure [WMD: -2.24 mmHg]. Conversely, IF significantly increased high-density lipoproteins [WMD: 0.04 mmol/l] when compared with CON, but had no effects on insulin, hemoglobin A1c%, total cholesterol, low-density lipoprotein, or systolic blood pressure. Compared with CR, IF significantly reduced fat mass [WMD: -0.70 kg], body fat percentage [WMD: -0.59%], and DBP [WMD: -0.91 mmHg], and increased HDL [WMD: 0.03 mmol/l], with no other significant effects.",
+        "score": 5.7505,
+        "rank": 3
+      },
+      {
+        "url": "https://sciencemediacentre.es/en/intermittent-fasting-not-effective-weight-loss-obese-or-overweight-individuals-according-meta",
+        "title": "Intermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis",
+        "heading": "Breadcrumb",
+        "chunk_text": "Breadcrumb\n\n1.   [Home](https://sciencemediacentre.es/en)\n\n*   [Reactions](https://sciencemediacentre.es/en/reactions)\n\nIntermittent fasting is not as effective for weight loss in obese or overweight individuals, according to a meta-analysis",
+        "score": 5.696,
+        "rank": 4
+      },
+      {
+        "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD015610.pub2",
+        "title": "Intermittent fasting for adults with overweight or obesity - Garegnani, LI - 2026 | Cochrane Library",
+        "heading": "Authors' conclusions",
+        "chunk_text": "Authors' conclusions\n\nCompared to regular dietary advice, intermittent fasting may result in little to no difference in weight loss or quality of life. Intermittent fasting may result in little to no difference in adverse events, but the evidence is very uncertain. These approaches did not differ in achieving weight loss, producing no clinically meaningful changes in most of the outcomes considered in this review. Compared to no intervention or waiting list, intermittent fasting likely results in little to no difference in weight loss and may result in little to no difference in quality of life or adverse events, but the evidence is very uncertain.\n\nPhysicians and patients may need to evaluate willingness and readiness to implement intermittent fasting as a treatment strategy, based on individual practicality and sustainability.\n\nThe included studies focused on short‐term effects of the intervention (up to 12 months), limiting the applicability of the evidence in this review to inform decision‐making for longer durations. It would be beneficial for future studies to extend follow‐up periods beyond 12 months to build a stronger evidence base for the long‐term effects.",
+        "score": 5.6797,
+        "rank": 5
+      },
+      {
+        "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD015610.pub2",
+        "title": "Intermittent fasting for adults with overweight or obesity - Garegnani, LI - 2026 | Cochrane Library",
+        "heading": "Intermittent fasting, traditional dietary advice or no treatment: which works better to help adults living with overweight or obesity lose weight?",
+        "chunk_text": "Intermittent fasting, traditional dietary advice or no treatment: which works better to help adults living with overweight or obesity lose weight?\n\n**Compared to no intervention or waiting list**, intermittent fasting likely makes little to no difference to weight loss (6 studies, 427 people). We are not sure about its effect on quality of life (1 study, 60 people) or unwanted events (2 studies, 189 people).\n\nNone of the included studies reported people's satisfaction with intermittent fasting, diabetes status or overall measures of other health problems.\n\n**What are the limitations of evidence?**\n\nWe are moderately confident in the results for weight loss when comparing intermittent fasting with no treatment. However, our confidence is low to very low for our other points of interest because most included studies did not use the most robust methods, they included few people, and reported results that were inconclusive.\n\n**How up‐to‐date is this review?**\n\nThe evidence is up to date to 5 November 2024.",
+        "score": 4.3064,
+        "rank": 6
+      },
+      {
+        "url": "https://www.thelancet.com/journals/eclinm/article/PIIS2589-5370(24)00098-1/fulltext",
+        "title": "Intermittent fasting and health outcomes: an umbrella review of systematic reviews and meta-analyses of randomised controlled trials",
+        "heading": "The basic information of included meta-analyses",
+        "chunk_text": "The basic information of included meta-analyses\n\nTable 2\n\nSummary of significant associations of intermittent fasting with health outcomes supported by moderate to high quality of evidence.\n\nAMSTAR, A Measurement Tool to Assess Systematic Reviews; ADF, alternate-day fasting; CER, continuous energy restriction; CR, continuous restriction; GRADE, Grading of Recommendations Assessment, Development and Evaluation; HOMA-IR, homeostatic model assessment for insulin resistance; MADF, modified alternate-day fasting; MD, mean difference; NA, not available; RD, regular diet; Ref, reference; RT, resistance training; TRE, time-restricted eating; TWF, twice-per-week fasting; SMD, standardized mean difference.\n\n*   [Open table in a new tab](https://www.thelancet.com/action/showFullTableHTML?isHtml=true&tableId=tbl2&pii=S2589-5370%2824%2900098-1)",
+        "score": 3.9924,
+        "rank": 7
+      }
+    ],
+    "latency_breakdown": {
+      "rewrite_ms": 6,
+      "decompose_ms": 3281,
+      "search_ms": 2087,
+      "extract_ms": 11111,
+      "chunk_ms": 187,
+      "retrieve_ms": 4807,
+      "synthesis_ms": 0,
+      "embedding_cleanup_ms": 0,
+      "sub_queries_count": 1,
+      "mode": "search",
+      "token_cost": {
+        "calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0,
+        "by_model": {}
+      }
+    },
+    "total_latency_ms": 33067,
+    "elapsed_s": 35.88,
+    "token_cost": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cost_usd": 0,
+      "by_model": {}
+    },
+    "error": null
+  }
+}
