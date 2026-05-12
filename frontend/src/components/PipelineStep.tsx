@@ -9,6 +9,7 @@ import { chars, ms, shortHost } from "../lib/format";
 import { Tag } from "./ReasoningTrace";
 
 const ICONS = {
+  rewrite: Wand2,
   decompose: Sparkles,
   search: Search,
   extract: Globe,

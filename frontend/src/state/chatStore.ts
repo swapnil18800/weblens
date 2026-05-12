@@ -49,7 +49,7 @@ const SESSION_KEY = "wsr_session_id";
 // In dev mode (default), session_id is persisted in localStorage so the
 // developer can come back to the same conversation across reloads, and the
 // sidebar lists all past sessions.
-const IS_PUBLIC = (import.meta.env.VITE_PUBLIC_MODE ?? "false").toString() === "true";
+const IS_PUBLIC = ((import.meta.env as Record<string, string>).VITE_PUBLIC_MODE ?? "false").toString() === "true";
 
 function _store(): Storage | null {
   return IS_PUBLIC ? null : localStorage;
@@ -66,6 +66,35 @@ function readSessionId(): string {
   const store = _store();
   if (!store) return newSessionId();   // public mode: fresh id per page load
   return store.getItem(SESSION_KEY) || newSessionId();
+}
+
+// ── "My sessions" tracker (dev-only) ────────────────────────────────────────
+// Records session IDs created from this browser so the sidebar can show a
+// small "you" badge that distinguishes the developer's own sessions from
+// anonymous traffic on the shared DB. Never used in public mode.
+const MY_SESSIONS_KEY = "wsr_my_sessions";
+
+export function getMySessions(): Set<string> {
+  if (IS_PUBLIC) return new Set();
+  try {
+    const raw = localStorage.getItem(MY_SESSIONS_KEY);
+    if (!raw) return new Set();
+    return new Set(JSON.parse(raw));
+  } catch {
+    return new Set();
+  }
+}
+
+export function addMySession(id: string): void {
+  if (IS_PUBLIC) return;
+  try {
+    const set = getMySessions();
+    if (set.has(id)) return;
+    set.add(id);
+    localStorage.setItem(MY_SESSIONS_KEY, JSON.stringify([...set]));
+  } catch {
+    /* storage full / unavailable — non-fatal */
+  }
 }
 
 function newTurn(question: string, versionGroupId?: string, versionIndex = 0): Turn {
@@ -314,15 +343,21 @@ export const useChat = create<ChatStore>((set, get) => ({
     const sessionId = get().sessionId;
     const nowIso = new Date().toISOString();
     set((s) => {
-      // Optimistically add or update this session in the sidebar list
+      // Optimistically add or update this session in the sidebar list.
+      // For continued sessions, preserve the existing title — overwriting it
+      // with the latest query causes a visible flash when refreshSessions()
+      // later returns the canonical title from the server.
+      const existing = s.sessions.find((x) => x.session_id === sessionId);
       const optimistic: SessionListItem = {
         session_id: sessionId,
-        title: q.trim().slice(0, 60),
-        message_count: 1,
+        title: existing?.title ?? q.trim().slice(0, 60),
+        message_count: (existing?.message_count ?? 0) + 1,
         last_active: nowIso,
-        created_at: nowIso,
+        created_at: existing?.created_at ?? nowIso,
       };
       const others = s.sessions.filter((x) => x.session_id !== sessionId);
+      // Mark this session as locally-owned (dev-only "you" badge in Sidebar).
+      addMySession(sessionId);
       return {
         turns: [...s.turns, turn],
         isStreaming: true,
@@ -353,6 +388,16 @@ export const useChat = create<ChatStore>((set, get) => ({
         mutateTurn(set, turn.id, (t) => {
           t.status = "error";
           t.errorMsg = String(err?.message || err);
+          t.synthesizing = false;
+          if (t.combiningStatus === "running") t.combiningStatus = "done";
+          if (t.finalStatus === "running") t.finalStatus = "done";
+          t.subqueries = t.subqueries.map((sq) => {
+            if (sq.done) return sq;
+            const steps = sq.steps.map((st) =>
+              st.status === "running" ? { ...st, status: "failed" as const } : st,
+            );
+            return { ...sq, steps, done: true, errorMsg: sq.errorMsg || t.errorMsg };
+          });
         });
       }
     } finally {
