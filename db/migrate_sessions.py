@@ -43,6 +43,12 @@ STMTS = [
     # Idempotent column additions for existing tables
     "ALTER TABLE rag_sessions ADD COLUMN IF NOT EXISTS title TEXT",
     "ALTER TABLE rag_session_messages ADD COLUMN IF NOT EXISTS traces JSONB DEFAULT '[]'",
+    # Phase 7: per-session conversational memory state — holds the rolling
+    # history summary, the active topic anchor, active constraints, and the
+    # count of messages already incorporated into the summary. JSON shape:
+    #   {"history_summary": str, "summarized_up_to": int,
+    #    "active_topic": str, "active_constraints": [str]}
+    "ALTER TABLE rag_sessions ADD COLUMN IF NOT EXISTS memory_state JSONB DEFAULT '{}'",
 ]
 
 

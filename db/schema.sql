@@ -42,9 +42,13 @@ CREATE INDEX IF NOT EXISTS page_cache_expires_idx ON page_cache (expires_at);
 
 -- ── Session persistence ──────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS rag_sessions (
-    session_id  TEXT PRIMARY KEY,
-    title       TEXT,
-    created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    session_id    TEXT PRIMARY KEY,
+    title         TEXT,
+    -- Phase 7: rolling-summary + topic-anchor memory. Shape:
+    --   {"history_summary": str, "summarized_up_to": int,
+    --    "active_topic": str, "active_constraints": [str]}
+    memory_state  JSONB DEFAULT '{}',
+    created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE IF NOT EXISTS rag_session_messages (

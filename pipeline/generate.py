@@ -2,8 +2,10 @@
 LLM answer generation — concise, grounded, citation-first.
 """
 import logging
+import re
 from collections import defaultdict
-from typing import AsyncIterator, List
+from typing import AsyncIterator, List, Set
+from urllib.parse import urlparse
 
 from llm.openai_client import get_llm
 from pipeline.retrieve import RankedChunk
@@ -32,13 +34,26 @@ Citation discipline (the most important rule):
   must end in at least one [N] marker.
 - Distribute citations: when multiple sources support a claim, cite multiple [N]s
   in the same sentence (e.g. "...rose 12% [3][7]."). Don't lean on one chunk.
-- Aim to use AT LEAST 3 distinct sources when the source list has 3+ chunks. If
-  you only end up citing 1–2 sources from a list of 8, you're under-using the
-  evidence — go back and weave in more.
+- You have N retrieved sources. **Use as many of them as are genuinely relevant** —
+  corroborate claims with multiple [N] citations per sentence when sources agree.
+  Do not omit a relevant source just to keep the answer shorter. Only ignore a
+  source if it is truly off-topic. Aim to ground every non-trivial sentence with
+  at least one [N], and cite as many distinct sources as the material supports.
+- Prefer a thorough answer that covers what the available sources collectively
+  say, over a terse one that ignores most of them.
 - Don't fabricate. If a fact isn't in any chunk, say "not found in sources".
 
+Hyperlinks (when relevant):
+- When you mention a specific named resource (a course, paper, tool, product,
+  repository, video, organization, person's profile) and the source material
+  attributes it to a URL, link the name with markdown: `[name](url)`.
+- Use ONLY URLs that appear in the provided sources below — never invent URLs.
+- Do not wrap the [N] citation markers in markdown links.
+- Don't link generic words ("article", "paper", "blog post"); link the specific
+  named entity.
+
 Style:
-- Length: 150–250 words.
+- Length: 150–280 words (lean longer if more sources are genuinely usable).
 - Start directly with the answer — no preamble.
 - Use markdown for structure: short bolded sub-labels, bullet lists for parallel
   facts, compact tables for any ≥3-way comparison or year-over-year breakdown.
@@ -50,10 +65,13 @@ _SYNTHESIS_SYSTEM = """\
 You are a synthesis expert. Merge the sub-answers below into one cohesive final answer to the original question.
 
 Citation discipline:
-- Preserve EVERY [N] marker that the sub-answers used. Don't drop them when
-  rewriting.
+- Carry forward EVERY [N] marker that the sub-answers used. Do not drop citations
+  during synthesis — fewer citations in the final answer than in the inputs is
+  almost always a bug.
 - When you combine claims from multiple sub-answers, stack citations
   ([N][M]) instead of dropping any.
+- Preserve markdown hyperlinks (`[name](url)`) from the sub-answers verbatim.
+  Never invent new URLs.
 
 Length: 350–550 words. Substantive but not bloated.
 
@@ -74,33 +92,43 @@ forward honestly."""
 
 # ── Prompt builder ──────────────────────────────────────────────────────────
 
-def _format_history_block(history: List[dict]) -> str:
+def _format_history_block(history: List[dict], history_summary: str = "") -> str:
     """Format prior turns as a 'Recent conversation context' block.
 
     Used by both generate_stream and synthesize_stream so the LLM can resolve
     references the rewriter couldn't fully bake into the rewritten query. The
     block is explicitly labeled 'do NOT cite — only sources' so history can
     never accidentally produce citations.
+
+    Phase 7: if a rolling `history_summary` of older turns is supplied, it is
+    rendered as a separate "Earlier conversation summary" section above the
+    recent verbatim turns.
     """
-    if not history:
+    sections: list[str] = []
+    if history_summary and history_summary.strip():
+        sections.append(
+            "Earlier conversation summary (do NOT cite this, only the numbered sources below):\n"
+            f"{history_summary.strip()}"
+        )
+    if history:
+        lines: List[str] = []
+        for t in history[-4:]:
+            q = (t.get("question") or "").strip()
+            a = (t.get("answer") or "").strip()
+            if len(a) > 360:
+                a = a[:360].rstrip() + " …"
+            if q:
+                lines.append(f"User: {q}")
+            if a:
+                lines.append(f"Assistant: {a}")
+        if lines:
+            sections.append(
+                "Recent conversation context (do NOT cite this, only the numbered sources below):\n"
+                + "\n".join(lines)
+            )
+    if not sections:
         return ""
-    lines: List[str] = []
-    for t in history[-4:]:
-        q = (t.get("question") or "").strip()
-        a = (t.get("answer") or "").strip()
-        if len(a) > 360:
-            a = a[:360].rstrip() + " …"
-        if q:
-            lines.append(f"User: {q}")
-        if a:
-            lines.append(f"Assistant: {a}")
-    if not lines:
-        return ""
-    block = "\n".join(lines)
-    return (
-        "Recent conversation context (do NOT cite this, only the numbered sources below):\n"
-        f"{block}\n\n"
-    )
+    return "\n\n".join(sections) + "\n\n"
 
 
 def _build_prompt(
@@ -108,6 +136,7 @@ def _build_prompt(
     ranked_chunks: List[RankedChunk],
     global_citation_map: "dict[str, int] | None" = None,
     history: "List[dict] | None" = None,
+    history_summary: str = "",
 ) -> str:
     """Format retrieved chunks as numbered per-chunk source blocks.
 
@@ -161,7 +190,7 @@ def _build_prompt(
         if any(rc.chunk.url == url for rc in ranked_chunks)
     )
 
-    history_block = _format_history_block(history or [])
+    history_block = _format_history_block(history or [], history_summary)
 
     return (
         f"{history_block}"
@@ -181,13 +210,15 @@ async def generate_stream(
     global_citation_map: "dict[str, int] | None" = None,
     max_tokens: int = 900,
     history: "List[dict] | None" = None,
+    history_summary: str = "",
 ) -> AsyncIterator[str]:
     """Stream answer tokens for a single sub-query (concise mode)."""
     if not ranked_chunks:
         yield "No relevant sources found for this question."
         return
 
-    prompt = _build_prompt(query, ranked_chunks, global_citation_map, history=history)
+    prompt = _build_prompt(query, ranked_chunks, global_citation_map,
+                           history=history, history_summary=history_summary)
     llm = get_llm()
     logger.debug("[generate] chunks=%d prompt_chars=%d", len(ranked_chunks), len(prompt))
 
@@ -200,6 +231,7 @@ async def synthesize_stream(
     sub_answers: List[dict],
     max_tokens: int = 1600,
     history: "List[dict] | None" = None,
+    history_summary: str = "",
 ) -> AsyncIterator[str]:
     """
     Synthesize N sub-answers into one final answer.
@@ -219,7 +251,7 @@ async def synthesize_stream(
     ]
     sub_text = "\n\n---\n\n".join(parts)
 
-    history_block = _format_history_block(history or [])
+    history_block = _format_history_block(history or [], history_summary)
 
     prompt = (
         f"{history_block}"
@@ -234,6 +266,53 @@ async def synthesize_stream(
 
     async for token in llm.astream(prompt, system=_SYNTHESIS_SYSTEM, max_tokens=max_tokens):
         yield token
+
+
+# ── Phase 6: hyperlink post-filter ───────────────────────────────────────────
+#
+# The sub-answer system prompt asks the LLM to use `[name](url)` markdown links
+# only for URLs that appear in the provided sources. As a safety net we strip
+# any `[name](url)` whose URL is NOT in the citation pool — protects against
+# the rare case where the model invents a URL or hallucinates one from
+# training data. `[N]` citation markers are untouched (they're not links).
+
+_MD_LINK_RE = re.compile(r"\[([^\]\n]+)\]\((https?://[^)\s]+)\)")
+
+
+def _normalize_url(u: str) -> str:
+    """Lowercase scheme/host, strip trailing slash, drop fragment — for allow-list matching."""
+    try:
+        p = urlparse(u)
+        host = (p.hostname or "").lower()
+        scheme = (p.scheme or "https").lower()
+        path = p.path.rstrip("/") or "/"
+        q = f"?{p.query}" if p.query else ""
+        return f"{scheme}://{host}{path}{q}"
+    except Exception:
+        return u.strip()
+
+
+def strip_unknown_links(answer: str, allowed_urls: "set[str] | list[str]") -> tuple[str, int]:
+    """Remove markdown links whose URLs are not in the allowed set.
+
+    Returns (cleaned_answer, stripped_count). Citation markers `[N]` are NOT
+    affected — only `[text](url)` patterns.
+    """
+    if not answer or not allowed_urls:
+        return answer, 0
+    allowed_norm: Set[str] = {_normalize_url(u) for u in allowed_urls}
+    stripped = 0
+
+    def _replace(m: re.Match) -> str:
+        nonlocal stripped
+        text, url = m.group(1), m.group(2)
+        if _normalize_url(url) in allowed_norm:
+            return m.group(0)
+        stripped += 1
+        return text  # keep the visible text, drop the bad link
+
+    cleaned = _MD_LINK_RE.sub(_replace, answer)
+    return cleaned, stripped
 
 
 def build_citations(

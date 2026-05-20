@@ -55,6 +55,12 @@ import db.client as db
 import db.sessions as sessions
 from config import settings
 from pipeline.graph import run_pipeline
+from pipeline.generation_registry import (
+    GenerationRegistry,
+    RunHandle,
+    consume as registry_consume,
+    get_registry,
+)
 from pipeline.title import generate_title
 
 logging.basicConfig(
@@ -216,30 +222,66 @@ async def _pipeline_stream(
     # Background: title generation (touches DB, never raises).
     asyncio.create_task(_title_session(session_id, query))
 
-    # Fetch recent conversation history for the rewriter + generate context.
-    # Best-effort — empty history if anything fails.
+    # Fetch composite conversational context — last-N verbatim turns + a
+    # rolling summary of older turns + topic anchor + constraints (Phase 7).
+    # Best-effort — empty defaults if anything fails.
     try:
-        history = await sessions.recent_turns(session_id, limit=settings.history_max_turns)
+        ctx = await sessions.recent_context(session_id, recent_n=settings.history_max_turns)
     except Exception:
-        history = []
+        ctx = {
+            "history_summary": "",
+            "recent_turns": [],
+            "active_topic": "",
+            "active_constraints": [],
+        }
+
+    # Phase 5 — Detached generation: run the pipeline as a REGISTERED background
+    # task whose events are buffered in a per-request handle. The SSE response
+    # below subscribes to that handle. If the client disconnects (session
+    # switch, tab close), the producer task continues to completion so the
+    # final answer is durably persisted by `node_emit_done`. A future
+    # `/api/search/{request_id}/resume` endpoint can re-attach a new subscriber
+    # using the same handle.
+    registry = get_registry()
+    handle: RunHandle = await registry.register(session_id=session_id, query=query)
+
+    async def _producer() -> None:
+        try:
+            with tracing_context(enabled=trace, project_name=settings.langsmith_project):
+                async for event_name, data in run_pipeline(
+                    query=query,
+                    session_id=session_id,
+                    history=ctx.get("recent_turns") or [],
+                    history_summary=ctx.get("history_summary") or "",
+                    active_topic=ctx.get("active_topic") or "",
+                    active_constraints=ctx.get("active_constraints") or [],
+                    max_results=req.max_results,
+                    top_k=req.top_k,
+                    cache_enabled=cache_override,
+                ):
+                    await handle.broadcast(event_name, data)
+        except Exception as exc:
+            logger.exception("[pipeline] Unhandled error for query: %s", query)
+            await handle.broadcast("error", {"message": str(exc), "reason": "internal"})
+        finally:
+            await registry.mark_done(handle)
+
+    handle.task = asyncio.create_task(_producer())
+
+    # The first event a fresh subscriber sees is the request_id. Frontends that
+    # want resume capability stash this; legacy frontends ignore it.
+    yield _sse("request_started", {
+        "request_id": handle.request_id,
+        "session_id": session_id,
+    })
 
     try:
-        with tracing_context(enabled=trace, project_name=settings.langsmith_project):
-            async for event_name, data in run_pipeline(
-                query=query,
-                session_id=session_id,
-                history=history,
-                max_results=req.max_results,
-                top_k=req.top_k,
-                cache_enabled=cache_override,
-            ):
-                yield _sse(event_name, data)
+        async for event_name, data in registry_consume(handle, replay=False):
+            yield _sse(event_name, data)
     except asyncio.CancelledError:
-        # Client disconnected; the graph task will be cancelled as the generator unwinds.
+        # Client disconnected — DO NOT cancel `handle.task`. The producer keeps
+        # running so the answer gets persisted; a resume request can pick it up.
         raise
-    except Exception as exc:
-        logger.exception("[pipeline] Unhandled error for query: %s", query)
-        yield _sse("error", {"message": str(exc), "reason": "internal"})
 
 
 # ── Routes ─────────────────────────────────────────────────────────────────────
@@ -256,6 +298,34 @@ async def search_endpoint(req: SearchRequest, request: Request):
         cache_override = False
     return StreamingResponse(
         _pipeline_stream(req, trace=trace, cache_override=cache_override),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+
+
+# Phase 5 — Resume endpoint. The original client (or another tab) can subscribe
+# to an in-flight or recently-completed generation by `request_id`. Replays the
+# buffered events first, then tails live events until the run completes.
+@app.get("/api/search/{request_id}/resume")
+async def search_resume_endpoint(request_id: str):
+    handle = get_registry().get(request_id)
+    if handle is None:
+        raise HTTPException(status_code=404, detail="request_id unknown or expired")
+
+    async def _stream() -> AsyncIterator[str]:
+        yield _sse("request_resumed", {
+            "request_id": handle.request_id,
+            "session_id": handle.session_id,
+            "done":       handle.done,
+        })
+        try:
+            async for event_name, data in registry_consume(handle, replay=True):
+                yield _sse(event_name, data)
+        except asyncio.CancelledError:
+            raise
+
+    return StreamingResponse(
+        _stream(),
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )

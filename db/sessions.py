@@ -97,6 +97,96 @@ async def recent_turns(session_id: str, limit: int = 4) -> List[dict]:
         return []
 
 
+# ── Phase 7: conversational memory state ───────────────────────────────────
+#
+# `memory_state` JSONB on rag_sessions. Shape:
+#   {
+#     "history_summary":    str,        # rolling ≤120-word summary of evicted turns
+#     "summarized_up_to":   int,        # # of session messages already folded into the summary
+#     "active_topic":       str,        # short label of the current conversation topic
+#     "active_constraints": [str],      # constraints / preferences the user has set
+#   }
+# Field is best-effort: never raises, returns {} on any failure.
+
+_EMPTY_MEMORY: dict = {
+    "history_summary": "",
+    "summarized_up_to": 0,
+    "active_topic": "",
+    "active_constraints": [],
+}
+
+
+async def get_memory_state(session_id: str) -> dict:
+    """Return the memory_state JSON for a session (empty defaults if missing)."""
+    try:
+        row = await db.fetchrow(
+            "SELECT memory_state FROM rag_sessions WHERE session_id = $1",
+            session_id,
+        )
+        if not row:
+            return dict(_EMPTY_MEMORY)
+        ms = _j(row["memory_state"], {}) or {}
+        merged = dict(_EMPTY_MEMORY)
+        merged.update(ms)
+        # Defensive type coercion.
+        if not isinstance(merged.get("history_summary"), str):
+            merged["history_summary"] = ""
+        if not isinstance(merged.get("summarized_up_to"), int):
+            try:
+                merged["summarized_up_to"] = int(merged.get("summarized_up_to") or 0)
+            except Exception:
+                merged["summarized_up_to"] = 0
+        if not isinstance(merged.get("active_topic"), str):
+            merged["active_topic"] = ""
+        if not isinstance(merged.get("active_constraints"), list):
+            merged["active_constraints"] = []
+        return merged
+    except Exception as exc:
+        logger.warning("[session] get_memory_state failed: %s", exc)
+        return dict(_EMPTY_MEMORY)
+
+
+async def update_memory_state(session_id: str, memory: dict) -> None:
+    """Upsert the memory_state JSON (best-effort, never raises)."""
+    if not isinstance(memory, dict):
+        return
+    try:
+        await db.execute(
+            """
+            INSERT INTO rag_sessions (session_id, memory_state)
+            VALUES ($1, $2::jsonb)
+            ON CONFLICT (session_id)
+            DO UPDATE SET memory_state = EXCLUDED.memory_state
+            """,
+            session_id,
+            json.dumps(memory),
+        )
+    except Exception as exc:
+        logger.warning("[session] update_memory_state failed: %s", exc)
+
+
+async def recent_context(session_id: str, recent_n: int = 4) -> dict:
+    """Phase 7 — return the composite context the rewriter and synthesis use:
+      {
+        "history_summary":    str,        # rolling summary of OLDER turns
+        "recent_turns":       [{question, answer}, ...]  # last N verbatim
+        "active_topic":       str,
+        "active_constraints": [str],
+      }
+    """
+    memory = await get_memory_state(session_id)
+    turns = await recent_turns(session_id, limit=recent_n)
+    return {
+        "history_summary":    memory.get("history_summary") or "",
+        "recent_turns":       turns,
+        "active_topic":       memory.get("active_topic") or "",
+        "active_constraints": memory.get("active_constraints") or [],
+        # `summarized_up_to` is internal — exposed for the summarizer to decide
+        # whether to roll a new turn into the summary.
+        "summarized_up_to":   int(memory.get("summarized_up_to") or 0),
+    }
+
+
 async def session_message_count(session_id: str) -> int:
     """Return how many messages the session already has (0 if missing)."""
     try:
